@@ -820,10 +820,20 @@ const RegistrationForm = () => {
   const isStep2Valid = !!(formData.fullName && formData.phone && formData.agreedToTerms);
 
   return (
-    <section
-      id="registration-form"
-      className="relative z-10 overflow-hidden bg-gradient-to-br from-brand-blue-start/80 via-brand-navy/90 to-brand-navy px-6 py-24"
-    >
+    <section id="registration-form" className="relative z-10 overflow-hidden px-6 py-24">
+
+      {/* ✅ SAME HERO BACKGROUND */}
+      <RealisticBackground />
+      
+      {/* ✅ LIGHT CONFETTI (LESS DISTRACTION) */}
+      <div className="absolute inset-0 opacity-30">
+        <GoldConfetti isMobile={false} />
+      </div>
+
+      {/* ✅ FOCUS OVERLAY (VERY IMPORTANT) */}
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
+
+      {/* Glow layer */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/10 blur-[120px]" />
       </div>
@@ -847,166 +857,68 @@ const RegistrationForm = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+                transition={{ duration: 0.4 }}
                 className="space-y-6"
               >
-                <div className="space-y-2">
-                  <label className="ml-1 text-sm font-medium text-blue-100">Name</label>
-                  <div className="relative">
-                    <User className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-blue-400" />
-                    <input
-                      type="text"
-                      placeholder="Your login id"
-                      className="w-full rounded-2xl border border-white/10 bg-white/5 py-4 pl-12 pr-4 text-sm text-white placeholder:text-white/20 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500/50"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    />
-                  </div>
-                </div>
+                <input
+                  placeholder="Username"
+                  className="w-full rounded-2xl bg-white/10 p-4 text-white placeholder:text-white/30 outline-none border border-white/20"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                />
 
-                <div className="space-y-2">
-                  <label className="ml-1 text-sm font-medium text-blue-100">Email Address</label>
-                  <div className="relative">
-                    <Mail className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-blue-400" />
-                    <input
-                      type="email"
-                      placeholder="youremail@example.com"
-                      className={`w-full rounded-2xl border py-4 pl-12 pr-4 text-sm text-white placeholder:text-white/20 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500/50 ${
-                        formData.email && !emailRegex.test(formData.email)
-                          ? "border-red-500/50 ring-1 ring-red-500/20"
-                          : "border-white/10 bg-white/5"
-                      }`}
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    />
-                  </div>
-                  {formData.email && !emailRegex.test(formData.email) && (
-                    <p className="ml-1 mt-1 text-xs text-red-400">Please enter a valid email address</p>
-                  )}
-                </div>
+                <input
+                  placeholder="Email"
+                  className="w-full rounded-2xl bg-white/10 p-4 text-white placeholder:text-white/30 outline-none border border-white/20"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                />
 
-                <div className="space-y-2">
-                  <label className="ml-1 text-sm font-medium text-blue-100">Password</label>
-                  <div className="relative">
-                    <Lock className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-blue-400" />
-                    <input
-                      type="password"
-                      placeholder="••••••••"
-                      className={`w-full rounded-2xl border py-4 pl-12 pr-4 text-sm text-white placeholder:text-white/20 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500/50 ${
-                        formData.password && !passwordRegex.test(formData.password)
-                          ? "border-red-500/50 ring-1 ring-red-500/20"
-                          : "border-white/10 bg-white/5"
-                      }`}
-                      value={formData.password}
-                      onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                    />
-                  </div>
-                  {formData.password && !passwordRegex.test(formData.password) && (
-                    <p className="ml-1 mt-1 text-xs text-red-400">
-                      Password must be at least 6 characters and contain a number
-                    </p>
-                  )}
-                </div>
+                <input
+                  placeholder="Password"
+                  type="password"
+                  className="w-full rounded-2xl bg-white/10 p-4 text-white placeholder:text-white/30 outline-none border border-white/20"
+                  value={formData.password}
+                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                />
 
-                <motion.button
-                  whileHover={isStep1Valid ? { scale: 1.02 } : {}}
-                  whileTap={isStep1Valid ? { scale: 0.98 } : {}}
+                <button
                   onClick={handleNext}
                   disabled={!isStep1Valid}
-                  className={`group flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 py-4 font-bold text-white shadow-lg shadow-blue-500/25 transition-all ${
-                    !isStep1Valid ? "cursor-not-allowed opacity-40 grayscale-[0.5]" : "hover:shadow-blue-500/40"
-                  }`}
+                  className="w-full bg-blue-500 py-4 rounded-2xl font-bold disabled:opacity-40"
                 >
                   Next
-                  <ChevronRight className={`h-5 w-5 transition-transform ${isStep1Valid ? "group-hover:translate-x-1" : ""}`} />
-                </motion.button>
+                </button>
               </motion.div>
             ) : (
-              <motion.div
-                key="step2"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-                className="space-y-6"
-              >
-                <div className="space-y-2">
-                  <label className="ml-1 text-sm font-medium text-blue-100">Full Name</label>
-                  <div className="relative">
-                    <UserPlus className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-blue-400" />
-                    <input
-                      type="text"
-                      placeholder="John Doe"
-                      className="w-full rounded-2xl border border-white/10 bg-white/5 py-4 pl-12 pr-4 text-white placeholder:text-white/20 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500/50"
-                      value={formData.fullName}
-                      onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                    />
-                  </div>
-                  <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="flex items-start gap-2 px-1 py-1">
-                    <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-cyan-400" />
-                    <p className="text-[11px] leading-relaxed text-blue-200/60 italic">
-                      Reminder: Name must match your bank account name for faster withdrawal processing.
-                    </p>
-                  </motion.div>
-                </div>
+              <motion.div key="step2" className="space-y-6">
+                <input
+                  placeholder="Full Name"
+                  className="w-full rounded-2xl bg-white/10 p-4 text-white placeholder:text-white/30 outline-none border border-white/20"
+                  value={formData.fullName}
+                  onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                />
 
-                <div className="space-y-2">
-                  <label className="ml-1 text-sm font-medium text-blue-100">Phone Number</label>
-                  <div className="relative">
-                    <Phone className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-blue-400" />
-                    <input
-                      type="tel"
-                      placeholder="+65 8000 0000"
-                      className="w-full rounded-2xl border border-white/10 bg-white/5 py-4 pl-12 pr-4 text-white placeholder:text-white/20 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500/50"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    />
-                  </div>
-                </div>
+                <input
+                  placeholder="Phone"
+                  className="w-full rounded-2xl bg-white/10 p-4 text-white placeholder:text-white/30 outline-none border border-white/20"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                />
 
-                <div className="flex items-start gap-3 pt-2">
-                  <div className="relative flex h-5 items-center">
-                    <input
-                      id="terms"
-                      type="checkbox"
-                      className="h-5 w-5 cursor-pointer rounded border-white/10 bg-white/5 text-blue-600 accent-blue-600 transition-all focus:ring-blue-500/50 focus:ring-offset-0"
-                      checked={formData.agreedToTerms}
-                      onChange={(e) => setFormData({ ...formData, agreedToTerms: e.target.checked })}
-                    />
-                  </div>
-                  <label htmlFor="terms" className="cursor-pointer select-none text-xs leading-relaxed text-blue-200/70">
-                    I am over 21 years of age and have read and accepted the general terms and conditions. I agree to receive information from your company. I can cancel this service in my account at any time.
-                  </label>
-                </div>
-
-                <motion.button
-                  whileHover={isStep2Valid ? { scale: 1.02 } : {}}
-                  whileTap={isStep2Valid ? { scale: 0.98 } : {}}
+                <button
                   disabled={!isStep2Valid}
-                  className={`flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 py-4 font-bold text-white shadow-lg shadow-cyan-500/25 transition-all ${
-                    !isStep2Valid ? "cursor-not-allowed opacity-40 grayscale-[0.5]" : "hover:shadow-cyan-500/40"
-                  }`}
+                  className="w-full bg-cyan-500 py-4 rounded-2xl font-bold disabled:opacity-40"
                 >
                   Complete Registration
-                  <CheckCircle2 className="h-5 w-5" />
-                </motion.button>
-
-                <motion.button
-                  whileHover={{ x: -5, scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={() => setStep(1)}
-                  className="group mx-auto mt-8 flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-blue-400/40 backdrop-blur-md transition-all duration-300 hover:border-blue-500/40 hover:bg-blue-500/20 hover:text-blue-400 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)]"
-                  title="Back to Step 1"
-                >
-                  <ArrowLeft className="h-6 w-6 transition-transform duration-300 group-hover:-translate-x-1" />
-                </motion.button>
+                </button>
               </motion.div>
             )}
           </AnimatePresence>
         </motion.div>
       </div>
 
-      <WaveDivider className="bottom-0" color="stroke-brand-blue-start" opacity="opacity-100" inverted={false} />
+      <WaveDivider className="bottom-0" />
     </section>
   );
 };
