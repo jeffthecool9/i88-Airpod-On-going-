@@ -1011,6 +1011,41 @@ const RegistrationForm = () => {
   );
 };
 
+const FloatingGirl = () => {
+  return (
+    <motion.div
+      className="pointer-events-none fixed bottom-0 right-0 z-[60] select-none"
+      animate={{
+        y: [0, -14, 0],
+        rotate: [0, -1.2, 0.8, 0],
+      }}
+      transition={{
+        duration: 4.8,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+    >
+      <img
+        src="/cola.png"
+        alt=""
+        className="
+          h-auto
+          w-[180px]
+          sm:w-[220px]
+          md:w-[280px]
+          lg:w-[340px]
+          xl:w-[380px]
+          object-contain
+          drop-shadow-[0_18px_40px_rgba(0,0,0,0.35)]
+        "
+      />
+
+      {/* optional soft glow */}
+      <div className="absolute bottom-[8%] right-[12%] -z-10 h-[120px] w-[120px] rounded-full bg-blue-400/20 blur-[60px]" />
+    </motion.div>
+  );
+};
+
 /* ----------------------------- App ----------------------------- */
 
 export default function App() {
