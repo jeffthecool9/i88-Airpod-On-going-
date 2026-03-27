@@ -539,32 +539,32 @@ const RealisticBackground = ({ isMobile = false }: { isMobile?: boolean }) => {
         />
       )}
 
-     <div className="absolute inset-0 overflow-hidden">
-  <motion.div
-    animate={prefersReducedMotion ? undefined : { x: [-20, 20, -20] }}
-    transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-    className={`absolute left-1/2 -translate-x-1/2 opacity-35 mix-blend-soft-light ${
-      isMobile ? "bottom-[-30px] h-[110px] w-[170%]" : "bottom-[-40px] h-[180px] w-[150%]"
-    }`}
-    style={{
-      background:
-        "radial-gradient(ellipse at center, rgba(180,220,255,0.22) 0%, rgba(160,210,255,0.12) 45%, transparent 78%)",
-      filter: isMobile ? "blur(26px)" : "blur(36px)",
-    }}
-  />
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          animate={prefersReducedMotion ? undefined : { x: [-20, 20, -20] }}
+          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+          className={`absolute left-1/2 -translate-x-1/2 opacity-35 mix-blend-soft-light ${
+            isMobile ? "bottom-[-30px] h-[110px] w-[170%]" : "bottom-[-40px] h-[180px] w-[150%]"
+          }`}
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(180,220,255,0.22) 0%, rgba(160,210,255,0.12) 45%, transparent 78%)",
+            filter: isMobile ? "blur(26px)" : "blur(36px)",
+          }}
+        />
 
-  <motion.div
-    animate={prefersReducedMotion ? undefined : { x: [16, -16, 16] }}
-    transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
-    className={`absolute left-1/2 -translate-x-1/2 opacity-18 mix-blend-soft-light ${
-      isMobile ? "bottom-[-50px] h-[140px] w-[190%]" : "bottom-[-70px] h-[220px] w-[170%]"
-    }`}
-    style={{
-      background:
-        "radial-gradient(ellipse at center, rgba(140,200,255,0.14) 0%, rgba(140,200,255,0.08) 50%, transparent 85%)",
-      filter: isMobile ? "blur(34px)" : "blur(50px)",
-    }}
-  />
+        <motion.div
+          animate={prefersReducedMotion ? undefined : { x: [16, -16, 16] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
+          className={`absolute left-1/2 -translate-x-1/2 opacity-18 mix-blend-soft-light ${
+            isMobile ? "bottom-[-50px] h-[140px] w-[190%]" : "bottom-[-70px] h-[220px] w-[170%]"
+          }`}
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(140,200,255,0.14) 0%, rgba(140,200,255,0.08) 50%, transparent 85%)",
+            filter: isMobile ? "blur(34px)" : "blur(50px)",
+          }}
+        />
         {!isMobile && (
           <motion.div
             animate={prefersReducedMotion ? undefined : { x: [-15, 15, -15] }}
@@ -1151,19 +1151,6 @@ export default function App() {
         </section>
 
         <section className="relative z-10 overflow-visible bg-gradient-to-br from-brand-deep-blue via-brand-vibrant-blue/40 to-brand-deep-blue px-6 pb-40 pt-16">
-          <div className="pointer-events-none absolute inset-0 opacity-20">
-            {[...Array(10)].map((_, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -100 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 2, delay: i * 0.2 }}
-                className="absolute h-px w-full bg-gradient-to-r from-transparent via-blue-400 to-transparent"
-                style={{ top: `${i * 10}%`, transform: `rotate(${i * 2 - 10}deg)` }}
-              />
-            ))}
-          </div>
-
           <div className="pointer-events-none absolute left-0 top-0 h-full w-full">
             <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-white/5 blur-[120px] animate-pulse" />
             <div className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-cyan-400/5 blur-[120px] animate-pulse delay-1000" />
@@ -1178,28 +1165,6 @@ export default function App() {
               </div>
 
               <div className="relative flex-1">
-                <div className="absolute left-0 top-1/2 hidden h-px w-full -translate-y-1/2 lg:block">
-                  <svg className="h-20 w-full -translate-y-1/2 overflow-visible" viewBox="0 0 1000 100" fill="none">
-                    <motion.path
-                      d="M 0 50 Q 250 10, 500 50 T 1000 50"
-                      stroke="url(#pipeline-gradient-light)"
-                      strokeWidth="0.5"
-                      strokeDasharray="10 10"
-                      initial={{ pathLength: 0, opacity: 0 }}
-                      whileInView={{ pathLength: 1, opacity: 0.3 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 2, ease: "easeInOut" }}
-                    />
-                    <defs>
-                      <linearGradient id="pipeline-gradient-light" x1="0" y1="0" x2="1000" y2="0" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#2563eb" stopOpacity="0" />
-                        <stop offset="0.5" stopColor="#2563eb" />
-                        <stop offset="1" stopColor="#2563eb" stopOpacity="0" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                </div>
-
                 <div className="grid grid-cols-4 gap-2 sm:gap-6 md:gap-12">
                   {stepData.map((item, i) => (
                     <motion.div
