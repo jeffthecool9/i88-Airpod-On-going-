@@ -2,7 +2,7 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
-
+import colaImg from "./assets/cola.png";
 import { motion, useScroll, useTransform, AnimatePresence, useReducedMotion } from "motion/react";
 import {
   ChevronRight,
@@ -1023,7 +1023,7 @@ const FloatingGirl = () => {
       }}
     >
       <img
-        src="/cola.png"
+       src={colaImg}
         alt="floating girl"
         style={{
           width: "100%",
