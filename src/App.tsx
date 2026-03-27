@@ -1041,10 +1041,10 @@ const FloatingGirl = () => {
         style={{
           filter: `
             brightness(1.15)
-            drop-shadow(0 0 6px rgba(125,211,252,0.95))
-            drop-shadow(0 0 12px rgba(56,189,248,0.9))
-            drop-shadow(0 0 22px rgba(59,130,246,0.75))
-            drop-shadow(0 0 38px rgba(34,211,238,0.55))
+         drop-shadow(0 0 8px rgba(125,211,252,1))
+drop-shadow(0 0 16px rgba(56,189,248,0.95))
+drop-shadow(0 0 28px rgba(59,130,246,0.85))
+drop-shadow(0 0 46px rgba(34,211,238,0.65))
           `,
         }}
       />
