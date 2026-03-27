@@ -1235,6 +1235,7 @@ export default function App() {
         </section>
 
         <RegistrationForm />
+        <FloatingGirl />
       </main>
     </div>
   );
