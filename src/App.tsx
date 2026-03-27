@@ -1014,38 +1014,28 @@ const RegistrationForm = () => {
 const FloatingGirl = () => {
   return (
     <motion.div
-      className="pointer-events-none fixed bottom-0 right-0 z-[60] select-none"
+      className="pointer-events-none fixed bottom-[-8px] right-[-6px] z-[40] select-none"
       animate={{
         y: [0, -14, 0],
         rotate: [0, -1.2, 0.8, 0],
+        scale: [1, 1.015, 1],
       }}
       transition={{
-        duration: 4.8,
+        duration: 5,
         repeat: Infinity,
         ease: "easeInOut",
       }}
     >
       <img
-        src="/cola.png"
+        src="/public/cola.png"
         alt=""
-        className="
-          h-auto
-          w-[180px]
-          sm:w-[220px]
-          md:w-[280px]
-          lg:w-[340px]
-          xl:w-[380px]
-          object-contain
-          drop-shadow-[0_18px_40px_rgba(0,0,0,0.35)]
-        "
+        className="h-auto w-[160px] object-contain drop-shadow-[0_18px_40px_rgba(0,0,0,0.35)] sm:w-[210px] md:w-[260px] lg:w-[320px] xl:w-[360px]"
       />
 
-      {/* optional soft glow */}
-      <div className="absolute bottom-[8%] right-[12%] -z-10 h-[120px] w-[120px] rounded-full bg-blue-400/20 blur-[60px]" />
+      <div className="absolute bottom-[10%] right-[14%] -z-10 h-[120px] w-[120px] rounded-full bg-blue-400/20 blur-[60px]" />
     </motion.div>
   );
 };
-
 /* ----------------------------- App ----------------------------- */
 
 export default function App() {
