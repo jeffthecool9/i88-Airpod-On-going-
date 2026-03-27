@@ -2,7 +2,7 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
-import colaImg from "./assets/cola.png";
+import colaImg from "./assets/cola1.png";
 import { motion, useScroll, useTransform, AnimatePresence, useReducedMotion } from "motion/react";
 import {
   ChevronRight,
@@ -1013,27 +1013,13 @@ const RegistrationForm = () => {
 
 const FloatingGirl = () => {
   return (
-    <motion.div
-      className="fixed bottom-0 right-0 z-[9999] pointer-events-none"
-      animate={{ y: [0, -20, 0] }}
-      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-      style={{
-        width: "320px",
-        border: "2px solid red",
-      }}
-    >
+    <div className="pointer-events-none fixed bottom-[-6px] right-[-10px] z-[25] select-none">
       <img
-       src={colaImg}
-        alt="floating girl"
-        style={{
-          width: "100%",
-          height: "auto",
-          display: "block",
-        }}
-        onError={() => console.log("IMAGE FAILED TO LOAD: /cola.png")}
-        onLoad={() => console.log("IMAGE LOADED OK: /cola.png")}
+        src={colaImg}
+        alt=""
+        className="h-auto w-[130px] object-contain drop-shadow-[0_18px_40px_rgba(0,0,0,0.28)] sm:w-[170px] md:w-[220px] lg:w-[260px] xl:w-[290px]"
       />
-    </motion.div>
+    </div>
   );
 };
 /* ----------------------------- App ----------------------------- */
