@@ -1014,25 +1014,25 @@ const RegistrationForm = () => {
 const FloatingGirl = () => {
   return (
     <motion.div
-      className="pointer-events-none fixed bottom-[-8px] right-[-6px] z-[40] select-none"
-      animate={{
-        y: [0, -14, 0],
-        rotate: [0, -1.2, 0.8, 0],
-        scale: [1, 1.015, 1],
-      }}
-      transition={{
-        duration: 5,
-        repeat: Infinity,
-        ease: "easeInOut",
+      className="fixed bottom-0 right-0 z-[9999] pointer-events-none"
+      animate={{ y: [0, -20, 0] }}
+      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+      style={{
+        width: "320px",
+        border: "2px solid red",
       }}
     >
       <img
-        src="/public/cola.png"
-        alt=""
-        className="h-auto w-[160px] object-contain drop-shadow-[0_18px_40px_rgba(0,0,0,0.35)] sm:w-[210px] md:w-[260px] lg:w-[320px] xl:w-[360px]"
+        src="/cola.png"
+        alt="floating girl"
+        style={{
+          width: "100%",
+          height: "auto",
+          display: "block",
+        }}
+        onError={() => console.log("IMAGE FAILED TO LOAD: /cola.png")}
+        onLoad={() => console.log("IMAGE LOADED OK: /cola.png")}
       />
-
-      <div className="absolute bottom-[10%] right-[14%] -z-10 h-[120px] w-[120px] rounded-full bg-blue-400/20 blur-[60px]" />
     </motion.div>
   );
 };
