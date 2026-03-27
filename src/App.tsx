@@ -1013,7 +1013,7 @@ const RegistrationForm = () => {
 
 const FloatingGirl = () => {
   return (
-    <div className="pointer-events-none fixed bottom-[-10px] right-[-20px] z-[25] select-none">
+    <div className="pointer-events-none fixed bottom-[-10px] right-[-40px] z-[25] select-none">
       <img
         src={colaImg}
         alt=""
