@@ -1014,6 +1014,33 @@ const RegistrationForm = () => {
 const FloatingGirl = () => {
   return (
     <div className="pointer-events-none fixed bottom-[-10px] right-[-40px] z-[25] select-none">
+      {/* animated glow */}
+      <motion.div
+        className="absolute inset-0 -z-10"
+        animate={{
+          opacity: [0.35, 0.7, 0.35],
+          scale: [1, 1.08, 1],
+        }}
+        transition={{
+          duration: 3.6,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      >
+        <div className="absolute bottom-[8%] right-[8%] h-[220px] w-[180px] rounded-full bg-cyan-300/35 blur-[55px]" />
+        <div className="absolute bottom-[18%] right-[12%] h-[180px] w-[140px] rounded-full bg-blue-400/30 blur-[45px]" />
+        <div className="absolute bottom-[28%] right-[18%] h-[120px] w-[100px] rounded-full bg-sky-200/25 blur-[36px]" />
+      </motion.div>
+
+      {/* optional edge blend */}
+      <motion.div
+        className="absolute inset-0 -z-10"
+        animate={{ opacity: [0.12, 0.28, 0.12] }}
+        transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <div className="absolute bottom-[0%] right-[0%] h-[260px] w-[220px] rounded-full bg-blue-500/18 blur-[80px]" />
+      </motion.div>
+
       <img
         src={colaImg}
         alt=""
