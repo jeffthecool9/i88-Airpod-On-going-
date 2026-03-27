@@ -539,31 +539,32 @@ const RealisticBackground = ({ isMobile = false }: { isMobile?: boolean }) => {
         />
       )}
 
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          animate={prefersReducedMotion ? undefined : { x: [-30, 30, -30] }}
-          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-          className={`absolute left-1/2 -translate-x-1/2 opacity-95 mix-blend-lighten ${
-            isMobile ? "-bottom-2 h-[160px] w-[190%]" : "-bottom-10 h-[350px] w-[160%]"
-          }`}
-          style={{
-            background:
-              "radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(255,255,255,0.9) 30%, rgba(240,245,255,0.6) 60%, transparent 80%)",
-            filter: isMobile ? "blur(22px)" : "blur(35px)",
-          }}
-        />
-        <motion.div
-          animate={prefersReducedMotion ? undefined : { x: [30, -30, 30] }}
-          transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
-          className={`absolute left-1/2 -translate-x-1/2 opacity-80 mix-blend-lighten ${
-            isMobile ? "-bottom-8 h-[220px] w-[220%]" : "-bottom-24 h-[450px] w-[180%]"
-          }`}
-          style={{
-            background:
-              "radial-gradient(ellipse at center, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 40%, rgba(232,240,254,0.4) 70%, transparent 90%)",
-            filter: isMobile ? "blur(30px)" : "blur(50px)",
-          }}
-        />
+     <div className="absolute inset-0 overflow-hidden">
+  <motion.div
+    animate={prefersReducedMotion ? undefined : { x: [-20, 20, -20] }}
+    transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+    className={`absolute left-1/2 -translate-x-1/2 opacity-35 mix-blend-soft-light ${
+      isMobile ? "bottom-[-30px] h-[110px] w-[170%]" : "bottom-[-40px] h-[180px] w-[150%]"
+    }`}
+    style={{
+      background:
+        "radial-gradient(ellipse at center, rgba(180,220,255,0.22) 0%, rgba(160,210,255,0.12) 45%, transparent 78%)",
+      filter: isMobile ? "blur(26px)" : "blur(36px)",
+    }}
+  />
+
+  <motion.div
+    animate={prefersReducedMotion ? undefined : { x: [16, -16, 16] }}
+    transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
+    className={`absolute left-1/2 -translate-x-1/2 opacity-18 mix-blend-soft-light ${
+      isMobile ? "bottom-[-50px] h-[140px] w-[190%]" : "bottom-[-70px] h-[220px] w-[170%]"
+    }`}
+    style={{
+      background:
+        "radial-gradient(ellipse at center, rgba(140,200,255,0.14) 0%, rgba(140,200,255,0.08) 50%, transparent 85%)",
+      filter: isMobile ? "blur(34px)" : "blur(50px)",
+    }}
+  />
         {!isMobile && (
           <motion.div
             animate={prefersReducedMotion ? undefined : { x: [-15, 15, -15] }}
