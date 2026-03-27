@@ -1013,11 +1013,20 @@ const RegistrationForm = () => {
 
 const FloatingGirl = () => {
   return (
-    <div className="pointer-events-none fixed bottom-[-6px] right-[-10px] z-[25] select-none">
+    <div className="pointer-events-none fixed bottom-[-10px] right-[-20px] z-[25] select-none">
       <img
         src={colaImg}
         alt=""
-        className="h-auto w-[130px] object-contain drop-shadow-[0_18px_40px_rgba(0,0,0,0.28)] sm:w-[170px] md:w-[220px] lg:w-[260px] xl:w-[290px]"
+        className="
+          h-auto
+          w-[280px]
+          sm:w-[360px]
+          md:w-[480px]
+          lg:w-[560px]
+          xl:w-[640px]
+          object-contain
+          drop-shadow-[0_25px_60px_rgba(0,0,0,0.35)]
+        "
       />
     </div>
   );
