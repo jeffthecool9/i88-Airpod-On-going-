@@ -917,7 +917,7 @@ const RegistrationForm = () => {
                     !isStep1Valid ? "cursor-not-allowed opacity-40 grayscale-[0.5]" : "hover:shadow-blue-500/40"
                   }`}
                 >
-                  Next
+                  Join Now
                   <ChevronRight className={`h-5 w-5 transition-transform ${isStep1Valid ? "group-hover:translate-x-1" : ""}`} />
                 </motion.button>
               </motion.div>
