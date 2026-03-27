@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
+import { motion, useScroll, useTransform, AnimatePresence, useReducedMotion } from "motion/react";
 import {
   ChevronRight,
   Zap,
@@ -20,7 +20,7 @@ import {
   AlertCircle,
   ArrowLeft,
 } from "lucide-react";
-import React, { useState, useEffect, ReactNode } from "react";
+import React, { useState, useEffect, useMemo, ReactNode } from "react";
 
 /* ----------------------------- Text System ----------------------------- */
 
@@ -322,93 +322,140 @@ const GoldCoin = () => (
   </div>
 );
 
-const GoldConfetti = () => {
+
+type ConfettiPiece = {
+  id: number;
+  width: number;
+  height: number;
+  startX: number;
+  driftX: number;
+  duration: number;
+  delay: number;
+  rotateX: number;
+  rotateY: number;
+  rotateZ: number;
+  depth: number;
+  scale: number;
+  color: string;
+  blur: number;
+};
+
+const CONFETTI_COLORS = [
+  "linear-gradient(135deg, #CD7F32 0%, #A57164 35%, #804A00 100%)",
+  "linear-gradient(135deg, #F9D423 0%, #FFD700 35%, #D4AF37 100%)",
+  "linear-gradient(135deg, #B87333 0%, #8B4513 35%, #CD7F32 100%)",
+  "linear-gradient(135deg, #E6BE8A 0%, #D4AF37 40%, #996515 100%)",
+];
+
+function createConfettiPieces(count: number, isMobile: boolean): ConfettiPiece[] {
+  return Array.from({ length: count }, (_, i) => {
+    const depth = Math.random();
+    const width = isMobile ? 8 + Math.random() * 10 : 10 + Math.random() * 14;
+    const height = Math.max(2, width * (0.22 + Math.random() * 0.18));
+
+    return {
+      id: i,
+      width,
+      height,
+      startX: Math.random() * 120 - 10,
+      driftX: (Math.random() - 0.5) * (isMobile ? 26 : 40),
+      duration: isMobile ? 9 + Math.random() * 5 : 10 + Math.random() * 6,
+      delay: Math.random() * 10,
+      rotateX: Math.random() * 360,
+      rotateY: Math.random() * 360,
+      rotateZ: Math.random() * 360,
+      depth,
+      scale: isMobile ? 0.7 + depth * 0.35 : 0.75 + depth * 0.45,
+      color: CONFETTI_COLORS[i % CONFETTI_COLORS.length],
+      blur: depth < 0.18 ? (isMobile ? 0.5 : 0.8) : 0,
+    };
+  });
+}
+
+const GoldConfetti = ({ isMobile = false }: { isMobile?: boolean }) => {
+  const prefersReducedMotion = useReducedMotion();
   const { scrollY } = useScroll();
-  const parallaxY = useTransform(scrollY, [0, 1000], [0, -250]);
+  const parallaxY = useTransform(scrollY, [0, 1000], [0, isMobile ? -90 : -180]);
+
+  const confettiCount = prefersReducedMotion ? 0 : isMobile ? 34 : 42;
+
+  const pieces = useMemo(
+    () => createConfettiPieces(confettiCount, isMobile),
+    [confettiCount, isMobile]
+  );
+
+  if (prefersReducedMotion || pieces.length === 0) return null;
 
   return (
-    <motion.div 
-      style={{ y: parallaxY }}
+    <motion.div
+      style={{ y: parallaxY, willChange: "transform" }}
       className="absolute inset-0 overflow-hidden pointer-events-none z-[5]"
     >
-      {[...Array(50)].map((_, i) => {
-        const width = Math.random() * 20 + 15; // 15px to 35px
-        const height = width * (0.25 + Math.random() * 0.2); // Short rectangle: 25-45% of width
-        const duration = Math.random() * 7 + 8; // Slower, more graceful fall
-        const delay = Math.random() * 15;
-        const left = Math.random() * 100;
-        const depth = Math.random(); // 0 (far) to 1 (near)
-        
-        // Elite Bronze and Gold Palette
-        const colors = [
-          "conic-gradient(from 45deg, #CD7F32, #A57164, #804A00, #CD7F32)", // Deep Bronze
-          "conic-gradient(from 45deg, #F9D423, #FFD700, #D4AF37, #F9D423)", // Pure Gold
-          "conic-gradient(from 45deg, #B87333, #8B4513, #CD7F32, #B87333)", // Copper Bronze
-          "conic-gradient(from 45deg, #E6BE8A, #D4AF37, #996515, #E6BE8A)", // Pale Gold
-        ];
-        const bg = colors[i % colors.length];
-
-        return (
-          <motion.div
-            key={`confetti-${i}`}
-            initial={{ 
-              top: "-10%", 
-              left: `${left}%`, 
-              rotateX: Math.random() * 360, 
-              rotateY: Math.random() * 360, 
-              rotateZ: Math.random() * 360,
-              opacity: 0,
-              scale: 0.4 + depth * 0.6
-            }}
-            animate={{ 
-              top: "110%", 
-              left: `${left + (Math.random() - 0.5) * 40}%`,
-              rotateX: [0, 1080, 2160],
-              rotateY: [0, 720, 1440],
-              rotateZ: [0, 360, 720],
-              opacity: [0, 1, 1, 0],
-              x: [0, Math.sin(i) * 80, 0] // Drifting horizontal motion
-            }}
-            transition={{ 
-              duration: duration, 
-              repeat: Infinity, 
-              delay: delay,
-              ease: "linear"
-            }}
-            className="absolute"
-            style={{
-              width: width,
-              height: height,
-              borderRadius: "1px",
-              background: bg,
-              boxShadow: `0 ${4 + depth * 8}px ${12 + depth * 16}px rgba(0, 0, 0, ${0.1 + depth * 0.2}), inset 0 0 4px rgba(255, 255, 255, 0.6)`,
-              filter: `brightness(1.1) contrast(1.1) blur(${depth < 0.2 ? "1.5px" : "0px"})`,
-              zIndex: Math.floor(depth * 10),
-              transformStyle: "preserve-3d"
-            }}
-          >
-            {/* Ultra HD Metallic Reflection Shader (Foil Effect) */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-white/40 via-transparent to-black/30" />
-            <motion.div 
-              animate={{ 
-                opacity: [0.1, 0.6, 0.1],
-                x: ["-100%", "100%"]
+      {pieces.map((piece) => (
+        <motion.div
+          key={piece.id}
+          initial={{
+            x: `${piece.startX}vw`,
+            y: "-12vh",
+            opacity: 0,
+            rotateX: piece.rotateX,
+            rotateY: piece.rotateY,
+            rotateZ: piece.rotateZ,
+            scale: piece.scale,
+          }}
+          animate={{
+            x: [
+              `${piece.startX}vw`,
+              `${piece.startX + piece.driftX * 0.45}vw`,
+              `${piece.startX + piece.driftX}vw`,
+            ],
+            y: ["-12vh", "52vh", "112vh"],
+            opacity: [0, 1, 1, 0],
+            rotateX: [piece.rotateX, piece.rotateX + 540, piece.rotateX + 1080],
+            rotateY: [piece.rotateY, piece.rotateY + 360, piece.rotateY + 720],
+            rotateZ: [piece.rotateZ, piece.rotateZ + 180, piece.rotateZ + 360],
+          }}
+          transition={{
+            duration: piece.duration,
+            repeat: Infinity,
+            delay: piece.delay,
+            ease: "linear",
+          }}
+          className="absolute left-0 top-0"
+          style={{
+            width: piece.width,
+            height: piece.height,
+            borderRadius: 1,
+            background: piece.color,
+            filter: `brightness(1.08) contrast(1.06) blur(${piece.blur}px)`,
+            boxShadow: isMobile
+              ? `0 ${2 + piece.depth * 3}px ${6 + piece.depth * 5}px rgba(0,0,0,${0.08 + piece.depth * 0.08})`
+              : `0 ${3 + piece.depth * 5}px ${8 + piece.depth * 8}px rgba(0,0,0,${0.1 + piece.depth * 0.12})`,
+            willChange: "transform, opacity",
+            transformStyle: isMobile ? "flat" : "preserve-3d",
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-tr from-white/35 via-transparent to-black/20" />
+          {!isMobile && (
+            <motion.div
+              animate={{ opacity: [0.12, 0.45, 0.12], x: ["-100%", "100%"] }}
+              transition={{
+                duration: 1.6,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: piece.delay * 0.15,
               }}
-              transition={{ 
-                duration: 1.5 + Math.random(), 
-                repeat: Infinity, 
-                ease: "easeInOut" 
-              }}
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent skew-x-12"
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12"
             />
-          </motion.div>
-        );
-      })}
+          )}
+        </motion.div>
+      ))}
     </motion.div>
   );
 };
 
-const RealisticBackground = () => (
+
+const RealisticBackground = ({ isMobile = false }: { isMobile?: boolean }) => {
   <div className="pointer-events-none absolute inset-0 z-0">
     {/* High-Resolution Color Tone from Image (Soft Periwinkle & Vibrant Blue) */}
     <motion.div 
@@ -951,19 +998,27 @@ export default function App() {
       });
     };
 
+    let rafId = 0;
+
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        setMousePos({ x: e.clientX, y: e.clientY });
+      });
     };
 
     updateViewport();
     window.addEventListener("resize", updateViewport);
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
 
     return () => {
+      cancelAnimationFrame(rafId);
       window.removeEventListener("resize", updateViewport);
       window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
+
+  const isMobile = viewport.width > 0 && viewport.width < 768;
 
   const stepData = [
     { step: "1", title: "Register", desc: "Create account", icon: UserPlus },
@@ -1060,12 +1115,9 @@ export default function App() {
 
       <main className="relative z-10">
         {/* HERO */}
-        <section className="relative flex min-h-screen items-center overflow-hidden px-6 pb-16 pt-16">
-          {/* Ultra HD Realistic Background Shader */}
-          <RealisticBackground />
-
-          {/* Falling Gold Confetti */}
-          <GoldConfetti />
+        <section className="relative flex min-h-[100svh] items-center overflow-hidden px-0 sm:px-6 pb-0 sm:pb-16 pt-0 sm:pt-16">
+          <RealisticBackground isMobile={isMobile} />
+          <GoldConfetti isMobile={isMobile} />
 
           <div className="relative z-10 mx-auto w-full max-w-6xl">
             {/* Hero content removed as requested */}
