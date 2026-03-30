@@ -552,12 +552,16 @@ export default function App() {
             <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-cyan-400/5 blur-[100px] animate-pulse delay-1000" />
           </div>
 
-          {/* Glossy Glass Box */}
-          <div className="relative z-10 mx-auto max-w-4xl rounded-[32px] border border-white/20 bg-gradient-to-br from-white/30 via-white/5 to-white/5 px-4 py-8 shadow-[0_30px_60px_rgba(0,0,0,0.4)] backdrop-blur-[32px] sm:px-10 sm:py-12 overflow-hidden">
+          {/* Glossy Glass Box WITH NEON BLUE BORDER */}
+          <div className="relative z-10 mx-auto max-w-4xl rounded-[32px] border border-cyan-400/60 bg-gradient-to-br from-cyan-900/30 via-white/5 to-white/5 px-4 py-8 shadow-[0_0_20px_rgba(34,211,238,0.3),0_30px_60px_rgba(0,0,0,0.5)] backdrop-blur-[32px] sm:px-10 sm:py-12 overflow-hidden">
             
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-transparent opacity-50" />
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent" />
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-white/50 to-transparent" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-cyan-400/10 via-transparent to-transparent opacity-50" />
+            
+            {/* Inner Neon Lines */}
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-300/80 to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-cyan-400/50 to-transparent" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-[1px] bg-gradient-to-b from-cyan-400/20 to-transparent" />
 
             <div className="relative z-10">
               <div className="mb-6 text-center sm:mb-10">
@@ -582,21 +586,21 @@ export default function App() {
                     >
                       <div className="flex flex-col items-center">
                         <div className="relative mb-2 sm:mb-4">
-                          <div className="absolute inset-0 rounded-full bg-blue-400/10 blur-2xl opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
-                          <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl border border-white/40 bg-white/20 backdrop-blur-3xl transition-all duration-500 group-hover:-translate-y-2 group-hover:border-white/60 group-hover:bg-white/30 group-hover:shadow-[0_20px_40px_rgba(255,255,255,0.15)] sm:h-20 sm:w-20 sm:rounded-[2.5rem] md:h-24 md:w-24">
+                          <div className="absolute inset-0 rounded-full bg-cyan-400/20 blur-2xl opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
+                          <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl border border-cyan-400/40 bg-white/10 backdrop-blur-3xl transition-all duration-500 group-hover:-translate-y-2 group-hover:border-cyan-300/80 group-hover:bg-cyan-500/20 group-hover:shadow-[0_20px_40px_rgba(34,211,238,0.25)] sm:h-20 sm:w-20 sm:rounded-[2.5rem] md:h-24 md:w-24">
                             <item.icon className="h-6 w-6 text-white transition-transform duration-500 group-hover:scale-110 sm:h-8 sm:w-8 md:h-10 md:w-10 drop-shadow-md" />
-                            <div className="absolute -left-2 -top-2 flex h-8 w-8 items-center justify-center rounded-lg border border-white/50 bg-white/30 backdrop-blur-md text-xs font-bold text-white shadow-[0_4px_12px_rgba(255,255,255,0.2)] transition-all duration-300 group-hover:border-white group-hover:bg-white/50 sm:-left-4 sm:-top-4 sm:h-12 sm:w-12 sm:rounded-2xl sm:text-xl">
+                            <div className="absolute -left-2 -top-2 flex h-8 w-8 items-center justify-center rounded-lg border border-cyan-400/50 bg-cyan-950/50 backdrop-blur-md text-xs font-bold text-cyan-300 shadow-[0_4px_12px_rgba(34,211,238,0.3)] transition-all duration-300 group-hover:border-cyan-300 group-hover:bg-cyan-500/50 group-hover:text-white sm:-left-4 sm:-top-4 sm:h-12 sm:w-12 sm:rounded-2xl sm:text-xl">
                               {item.step}
                             </div>
-                            <div className="absolute inset-0 rounded-2xl border border-white/0 opacity-0 group-hover:animate-ping group-hover:border-white/50 group-hover:opacity-30 sm:rounded-[2.5rem]" />
+                            <div className="absolute inset-0 rounded-2xl border border-cyan-400/0 opacity-0 group-hover:animate-ping group-hover:border-cyan-400/60 group-hover:opacity-40 sm:rounded-[2.5rem]" />
                           </div>
                         </div>
 
                         <div className="text-center space-y-1 sm:space-y-2">
-                          <h3 className="text-xs font-bold tracking-tight text-white transition-colors group-hover:text-cyan-100 sm:text-xl md:text-3xl drop-shadow-sm">
+                          <h3 className="text-xs font-bold tracking-tight text-white transition-colors group-hover:text-cyan-200 sm:text-xl md:text-3xl drop-shadow-sm">
                             {item.title}
                           </h3>
-                          <p className="mx-auto max-w-[180px] text-[10px] font-semibold leading-tight text-white/80 transition-colors group-hover:text-white sm:max-w-[200px] sm:text-sm md:text-base">
+                          <p className="mx-auto max-w-[180px] text-[10px] font-semibold leading-tight text-white/80 transition-colors group-hover:text-cyan-100 sm:max-w-[200px] sm:text-sm md:text-base">
                             {item.desc}
                           </p>
                         </div>
