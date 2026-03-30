@@ -251,24 +251,26 @@ const GoldConfetti = () => {
 
 const RealisticBackground = () => (
   <div className="pointer-events-none absolute inset-0 z-0">
-    {/* Base hero surface */}
+    {/* Base hero blue */}
     <div className="absolute inset-0 bg-[#0a1580]" />
 
-    {/* Soft top light only */}
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-10%,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.08)_22%,transparent_58%)]" />
+    {/* Sun glow from top center */}
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-12%,rgba(255,255,255,0.24)_0%,rgba(255,255,255,0.12)_18%,rgba(125,211,252,0.08)_32%,transparent_52%)]" />
 
-    {/* Very subtle side depth */}
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_30%,rgba(56,189,248,0.08)_0%,transparent_35%)]" />
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_35%,rgba(56,189,248,0.06)_0%,transparent_35%)]" />
+    {/* Soft blue atmosphere, very subtle */}
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_22%,rgba(34,211,238,0.10)_0%,transparent_38%)]" />
 
-    {/* Bottom dark blend so the seam feels embedded */}
-    <div className="absolute inset-x-0 bottom-0 h-[220px] bg-gradient-to-t from-[#040b3f] via-[#061058] to-transparent" />
+    {/* Mild side depth only */}
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_30%,rgba(59,130,246,0.08)_0%,transparent_32%)]" />
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_30%,rgba(59,130,246,0.06)_0%,transparent_32%)]" />
 
-    {/* Tiny texture only */}
-    <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+    {/* Very light texture */}
+    <div className="absolute inset-0 opacity-[0.04] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+
+    {/* Slight inner depth */}
+    <div className="absolute inset-0 shadow-[inset_0_0_180px_rgba(0,0,0,0.08)]" />
   </div>
 );
-
 const SectionKicker = ({ children }: { children: ReactNode }) => (
   <span className="text-[11px] font-semibold uppercase tracking-[0.32em] text-cyan-200/75">
     {children}
@@ -286,16 +288,16 @@ const SectionSeam = ({ className = "", flip = false }: { className?: string; fli
     <svg
       viewBox="0 0 1200 120"
       preserveAspectRatio="none"
-      className="block w-full h-[70px] sm:h-[110px]"
+      className="block w-full h-[76px] sm:h-[120px]"
       aria-hidden="true"
     >
-      {/* Main curve body - darker, like image 2 concept */}
+      {/* Dark curved band */}
       <path
         d="M0,0 C480,100 720,100 1200,0 L1200,120 L0,120 Z"
         fill="#020817"
       />
 
-      {/* Thin neon edge */}
+      {/* Cyan connectivity line */}
       <path
         d="M0,0 C480,100 720,100 1200,0"
         fill="none"
