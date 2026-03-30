@@ -867,7 +867,7 @@ export default function App() {
             {/* Hero content removed as requested */}
           </div>
 
-          <SectionSeam className="bottom-0" />
+          <SectionSeam className="bottom-[-8px]" flip />
         </section>
 
 {/* STEPS - CREATIVE PIPELINE */}
@@ -940,7 +940,7 @@ export default function App() {
     </div>
   </div>
 
-  <SectionSeam className="top-[-40px]" flip />
+  <SectionSeam className="bottom-0" />
 </section>
         
      <RegistrationForm />
