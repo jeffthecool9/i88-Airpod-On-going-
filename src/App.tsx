@@ -255,42 +255,6 @@ const RealisticBackground = () => (
       className="absolute inset-0" 
     />
     
-    {/* Realistic Sun (Top Right - Soft Yellow-to-White Core) */}
-    <div className="absolute -right-20 -top-20 h-[600px] w-[600px]">
-      {/* God Rays (Light Rays) */}
-      {[...Array(6)].map((_, i) => (
-        <motion.div
-          key={`ray-${i}`}
-          animate={{ 
-            opacity: [0.1, 0.2, 0.1],
-            rotate: [i * 15, i * 15 + 5, i * 15]
-          }}
-          transition={{ duration: 8 + i, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute inset-0 origin-center"
-          style={{
-            background: `conic-gradient(from ${i * 60}deg at 50% 50%, transparent 0%, rgba(255,255,255,0.15) 10%, transparent 20%)`,
-            filter: "blur(20px)"
-          }}
-        />
-      ))}
-      
-      <motion.div
-        animate={{ 
-          scale: [1, 1.1, 1],
-          opacity: [0.7, 0.9, 0.7]
-        }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,1)_0%,rgba(255,250,220,0.9)_20%,rgba(255,244,180,0.6)_40%,rgba(143,177,233,0)_75%)] blur-[40px]"
-      />
-      <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.6)_0%,transparent_70%)] blur-[100px]" />
-      {/* Sun Sparkle */}
-      <motion.div 
-        animate={{ rotate: 360 }}
-        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        className="absolute inset-0 opacity-40 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] mix-blend-screen"
-      />
-    </div>
-
     {/* Dynamic Multi-Layered Light Sweeps (Softer reflection) */}
     <motion.div
       animate={{ x: ["-100%", "200%"] }}
@@ -677,8 +641,41 @@ const RegistrationForm = () => {
 };
 
 const FloatingGirl = () => {
+  const [showFromSteps, setShowFromSteps] = useState(false);
+
+  useEffect(() => {
+    const stepsSection = document.getElementById("steps-to-claim");
+    if (!stepsSection) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowFromSteps(entry.isIntersecting && entry.intersectionRatio > 0.18);
+      },
+      {
+        threshold: [0, 0.12, 0.18, 0.3, 0.5],
+        rootMargin: "0px 0px -6% 0px",
+      }
+    );
+
+    observer.observe(stepsSection);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="pointer-events-none fixed bottom-[-10px] right-[-40px] z-[25] select-none">
+    <motion.div
+      aria-hidden="true"
+      className="pointer-events-none fixed bottom-[-10px] right-[-40px] z-[25] select-none"
+      initial={{ opacity: 0, y: 30, scale: 0.96 }}
+      animate={{
+        opacity: showFromSteps ? 1 : 0,
+        y: showFromSteps ? 0 : 30,
+        scale: showFromSteps ? 1 : 0.96,
+      }}
+      transition={{
+        duration: 0.45,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+    >
       {/* body-outline glow layer */}
       <motion.img
         src={colaImg}
@@ -696,7 +693,7 @@ const FloatingGirl = () => {
           opacity-90
         "
         animate={{
-          opacity: [0.45, 0.9, 0.45],
+          opacity: showFromSteps ? [0.45, 0.9, 0.45] : 0,
         }}
         transition={{
           duration: 2.8,
@@ -706,10 +703,10 @@ const FloatingGirl = () => {
         style={{
           filter: `
             brightness(1.15)
-         drop-shadow(0 0 8px rgba(125,211,252,1))
-drop-shadow(0 0 16px rgba(56,189,248,0.95))
-drop-shadow(0 0 28px rgba(59,130,246,0.85))
-drop-shadow(0 0 46px rgba(34,211,238,0.65))
+            drop-shadow(0 0 8px rgba(125,211,252,1))
+            drop-shadow(0 0 16px rgba(56,189,248,0.95))
+            drop-shadow(0 0 28px rgba(59,130,246,0.85))
+            drop-shadow(0 0 46px rgba(34,211,238,0.65))
           `,
         }}
       />
@@ -730,9 +727,10 @@ drop-shadow(0 0 46px rgba(34,211,238,0.65))
           drop-shadow-[0_25px_60px_rgba(0,0,0,0.35)]
         "
       />
-    </div>
+    </motion.div>
   );
 };
+
 /* ----------------------------- App ----------------------------- */
 
 export default function App() {
@@ -823,7 +821,7 @@ export default function App() {
             opacity: [0.1, 0.3, 0.1],
           }}
           transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute right-[20%] top-[10%] h-[30vw] w-[30vw] rounded-full bg-white/5 blur-[100px]"
+          className="absolute right-[20%] top-[10%] h-[30vw] w-[30vw] rounded-full bg-blue-200/5 blur-[100px]"
         />
 
         <motion.div
@@ -873,7 +871,7 @@ export default function App() {
         </section>
 
         {/* STEPS - CREATIVE PIPELINE */}
-        <section className="relative px-6 pt-16 pb-40 overflow-visible bg-gradient-to-br from-brand-deep-blue via-brand-vibrant-blue/40 to-brand-deep-blue z-10">
+        <section id="steps-to-claim" className="relative px-6 pt-16 pb-40 overflow-visible bg-gradient-to-br from-brand-deep-blue via-brand-vibrant-blue/40 to-brand-deep-blue z-10">
           {/* Abstract Background Lines */}
           {/* Animated Background Elements */}
           <div className="absolute left-0 top-0 h-full w-full pointer-events-none">
