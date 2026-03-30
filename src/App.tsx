@@ -2,7 +2,7 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
-
+import colaImg from "./assets/cola2.png";
 import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
 import {
   ChevronRight,
@@ -829,6 +829,63 @@ const RegistrationForm = () => {
   );
 };
 
+const FloatingGirl = () => {
+  return (
+    <div className="pointer-events-none fixed bottom-[-10px] right-[-40px] z-[25] select-none">
+      {/* body-outline glow layer */}
+      <motion.img
+        src={colaImg}
+        alt=""
+        aria-hidden="true"
+        className="
+          absolute inset-0
+          h-auto
+          w-[280px]
+          sm:w-[360px]
+          md:w-[480px]
+          lg:w-[560px]
+          xl:w-[640px]
+          object-contain
+          opacity-90
+        "
+        animate={{
+          opacity: [0.45, 0.9, 0.45],
+        }}
+        transition={{
+          duration: 2.8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        style={{
+          filter: `
+            brightness(1.15)
+         drop-shadow(0 0 8px rgba(125,211,252,1))
+drop-shadow(0 0 16px rgba(56,189,248,0.95))
+drop-shadow(0 0 28px rgba(59,130,246,0.85))
+drop-shadow(0 0 46px rgba(34,211,238,0.65))
+          `,
+        }}
+      />
+
+      {/* main girl image */}
+      <img
+        src={colaImg}
+        alt=""
+        className="
+          relative
+          h-auto
+          w-[280px]
+          sm:w-[360px]
+          md:w-[480px]
+          lg:w-[560px]
+          xl:w-[640px]
+          object-contain
+          drop-shadow-[0_25px_60px_rgba(0,0,0,0.35)]
+        "
+      />
+    </div>
+  );
+};
 /* ----------------------------- App ----------------------------- */
 
 export default function App() {
