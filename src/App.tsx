@@ -658,24 +658,13 @@ const DividerImage = ({
   inverted?: boolean;
   opacity?: string;
 }) => (
-<div className="relative w-full h-[120px] overflow-hidden">
-  {/* flare */}
-  <img
-    src="/divider2.png"
-    alt="divider flare"
-    className="
-      absolute
-      left-1/2
-      bottom-0
-      -translate-x-1/2
-      w-[160%]
-      max-w-none
-      mix-blend-screen
-      opacity-90
-      pointer-events-none
-    "
-  />
-</div>
+  <div className={`pointer-events-none absolute inset-x-0 z-[100] overflow-hidden ${className} ${opacity}`}>
+    <img
+      src={dividerImg}
+      alt=""
+      className={`block w-full h-[56px] object-cover md:h-[90px] ${inverted ? "rotate-180" : ""}`}
+    />
+  </div>
 );
 
 const SectionHeading = ({
@@ -1134,18 +1123,6 @@ export default function App() {
         </section>
 
         <section className="relative z-10 overflow-visible bg-gradient-to-br from-brand-deep-blue via-brand-vibrant-blue/40 to-brand-deep-blue px-6 pb-40 pt-16">
-          <div className="pointer-events-none absolute inset-0 opacity-20">
-            {[...Array(10)].map((_, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -100 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 2, delay: i * 0.2 }}
-                className="absolute h-px w-full bg-gradient-to-r from-transparent via-blue-400 to-transparent"
-                style={{ top: `${i * 10}%`, transform: `rotate(${i * 2 - 10}deg)` }}
-              />
-            ))}
-          </div>
 
           <div className="pointer-events-none absolute left-0 top-0 h-full w-full">
             <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-white/5 blur-[120px] animate-pulse" />
@@ -1161,27 +1138,6 @@ export default function App() {
               </div>
 
               <div className="relative flex-1">
-                <div className="absolute left-0 top-1/2 hidden h-px w-full -translate-y-1/2 lg:block">
-                  <svg className="h-20 w-full -translate-y-1/2 overflow-visible" viewBox="0 0 1000 100" fill="none">
-                    <motion.path
-                      d="M 0 50 Q 250 10, 500 50 T 1000 50"
-                      stroke="url(#pipeline-gradient-light)"
-                      strokeWidth="0.5"
-                      strokeDasharray="10 10"
-                      initial={{ pathLength: 0, opacity: 0 }}
-                      whileInView={{ pathLength: 1, opacity: 0.3 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 2, ease: "easeInOut" }}
-                    />
-                    <defs>
-                      <linearGradient id="pipeline-gradient-light" x1="0" y1="0" x2="1000" y2="0" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#2563eb" stopOpacity="0" />
-                        <stop offset="0.5" stopColor="#2563eb" />
-                        <stop offset="1" stopColor="#2563eb" stopOpacity="0" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                </div>
 
                 <div className="grid grid-cols-4 gap-2 sm:gap-6 md:gap-12">
                   {stepData.map((item, i) => (
