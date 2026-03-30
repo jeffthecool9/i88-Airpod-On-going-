@@ -871,7 +871,7 @@ export default function App() {
         </section>
 
         {/* STEPS - CREATIVE PIPELINE */}
-        <section id="steps-to-claim" className="relative px-6 pt-16 pb-40 overflow-visible bg-gradient-to-br from-brand-deep-blue via-brand-vibrant-blue/40 to-brand-deep-blue z-10">
+        <section id="steps-to-claim" className="relative px-6 pt-16 pb-12 overflow-visible bg-gradient-to-br from-brand-deep-blue via-brand-vibrant-blue/40 to-brand-deep-blue z-10">
           {/* Abstract Background Lines */}
           {/* Animated Background Elements */}
           <div className="absolute left-0 top-0 h-full w-full pointer-events-none">
@@ -890,7 +890,7 @@ export default function App() {
               <div className="relative flex-1">
                 {/* Desktop Connecting Line (SVG Path) */}
 
-           <div className="grid grid-cols-4 gap-2 sm:gap-6 md:gap-12">
+        <div className="grid grid-cols-4 gap-2 sm:gap-6 md:gap-12">
   {stepData.map((item, i) => (
     <motion.div
       key={i}
@@ -902,7 +902,7 @@ export default function App() {
     >
       <div className="flex flex-col items-center">
         {/* Step Node */}
-        <div className="relative mb-2 sm:mb-4">
+        <div className="relative mb-1 sm:mb-2">
           {/* Glow Effect */}
           <div className="absolute inset-0 rounded-full bg-blue-400/10 blur-2xl opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
 
@@ -921,11 +921,11 @@ export default function App() {
         </div>
 
         {/* Content */}
-        <div className="space-y-0.5 text-center sm:space-y-1">
+        <div className="text-center space-y-0">
           <h3 className="text-xs font-bold tracking-tight text-white transition-colors group-hover:text-cyan-200 sm:text-xl md:text-3xl">
             {item.title}
           </h3>
-          <p className="mx-auto max-w-[180px] text-[10px] font-semibold leading-snug text-blue-100 transition-colors group-hover:text-white sm:max-w-[200px] sm:text-sm md:text-base">
+          <p className="mx-auto max-w-[180px] text-[10px] font-semibold leading-tight text-blue-100 transition-colors group-hover:text-white sm:max-w-[200px] sm:text-sm md:text-base">
             {item.desc}
           </p>
         </div>
