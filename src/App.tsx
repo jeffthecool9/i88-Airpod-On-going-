@@ -610,124 +610,28 @@ const CardKeyword = ({ children }: { children: ReactNode }) => (
   </span>
 );
 
-const WaveDivider = ({ 
-  className = "", 
-  color = "stroke-white/20",
-  opacity = "opacity-100",
+const WaveDivider = ({
+  className = "",
   inverted = false,
-  children,
-  coinPosition = "center"
-}: { 
-  className?: string, 
-  color?: string,
-  opacity?: string,
-  inverted?: boolean,
-  children?: ReactNode,
-  coinPosition?: "center" | "right"
+}: {
+  className?: string;
+  inverted?: boolean;
 }) => (
-  <div className={`absolute left-0 w-full leading-[0] pointer-events-none z-[100] ${className} ${opacity}`}>
-    <div className="relative w-full">
-      {children && (
-        <div className={`absolute top-1/2 -translate-y-1/2 pointer-events-auto z-[9999] ${
-          coinPosition === "right" ? "right-[10%] sm:right-[15%]" : "left-1/2 -translate-x-1/2"
-        }`}>
-          {children}
-        </div>
-      )}
-      <motion.svg 
-        className="relative block w-[120%] -left-[10%] h-[60px] md:h-[100px]" 
-        viewBox="0 0 1200 120" 
-        preserveAspectRatio="none"
-      >
-        {/* Abstract Luxury Lines - A bundle of elegant curves */}
-        {[0, 1, 2, 3, 4, 5].map((i) => (
-          <motion.path 
-            key={i}
-            d={inverted 
-              ? `M0,${20 + i * 6} Q600,${100 - i * 3} 1200,${20 + i * 6}` 
-              : `M0,${100 - i * 6} Q600,${20 + i * 3} 1200,${100 - i * 6}`
-            } 
-            fill="none"
-            strokeWidth={0.2 + i * 0.1}
-            className={color}
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ 
-              pathLength: 1, 
-              opacity: [0.03, 0.15, 0.03],
-            }}
-            transition={{ 
-              pathLength: { duration: 4, ease: "circOut", delay: i * 0.4 },
-              opacity: { duration: 6 + i, repeat: Infinity, ease: "easeInOut" }
-            }}
-          />
-        ))}
-        
-        {/* Subtle Atmospheric Glow - Adds depth and premium feel */}
-        <motion.path 
-          d={inverted 
-            ? "M0,20 Q600,100 1200,20" 
-            : "M0,100 Q600,20 1200,100"
-          } 
-          fill="none"
-          strokeWidth="16"
-          className={color}
-          style={{ filter: "blur(30px)" }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: [0.05, 0.12, 0.05] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-
-        {/* The "Signature" Sharp Line - The high-quality focal point */}
-        <motion.path 
-          d={inverted 
-            ? "M0,20 Q600,100 1200,20" 
-            : "M0,100 Q600,20 1200,100"
-          } 
-          fill="none"
-          strokeWidth="0.6"
-          className="stroke-white/30"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 0.5 }}
-          transition={{ duration: 3, ease: "circOut" }}
-        />
-
-        {/* Light Streak - Moving light along the curve for 'premium' feel */}
-        <motion.path 
-          d={inverted 
-            ? "M0,20 Q600,100 1200,20" 
-            : "M0,100 Q600,20 1200,100"
-          } 
-          fill="none"
-          strokeWidth="1.2"
-          className="stroke-white/40"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ 
-            pathLength: [0, 1],
-            opacity: [0, 0.4, 0],
-          }}
-          transition={{ 
-            duration: 4, 
-            repeat: Infinity, 
-            ease: "easeInOut",
-            repeatDelay: 3
-          }}
-        />
-
-        {/* Inner Highlight for 'Polished' effect */}
-        <motion.path 
-          d={inverted 
-            ? "M0,22 Q600,102 1200,22" 
-            : "M0,98 Q600,18 1200,98"
-          } 
-          fill="none"
-          strokeWidth="0.15"
-          className="stroke-white/15"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 0.3 }}
-          transition={{ duration: 4, delay: 0.8, ease: "circOut" }}
-        />
-      </motion.svg>
-    </div>
+  <div
+    className={`absolute left-0 w-full leading-[0] pointer-events-none z-20 overflow-hidden ${
+      inverted ? "top-[-1px] rotate-180" : "bottom-[-1px]"
+    } ${className}`}
+  >
+    <svg
+      viewBox="0 0 1440 160"
+      className="block w-full h-[72px] md:h-[118px]"
+      preserveAspectRatio="none"
+    >
+      <path
+        d="M0,0 L0,130 C300,95 550,75 720,72 C930,70 1180,90 1440,130 L1440,0 Z"
+        fill="#020814"
+      />
+    </svg>
   </div>
 );
 
