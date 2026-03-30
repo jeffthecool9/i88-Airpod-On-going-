@@ -4,6 +4,7 @@
  */
 import colaImg from "./assets/cola2.png";
 import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
+import { UserPlus, Wallet, Gamepad2, Gift } from "lucide-react";
 import {
   ChevronRight,
   Zap,
