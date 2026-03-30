@@ -377,13 +377,13 @@ const SectionSeam = ({ className = "", flip = false }: { className?: string; fli
         d="M0,0 C480,100 720,100 1200,0"
         fill="none"
         stroke="url(#line-gradient)"
-        strokeWidth="2"
+        strokeWidth="3"
       />
       
       <defs>
         <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="#3b82f6" stopOpacity="0" />
-          <stop offset="50%" stopColor="#22d3ee" stopOpacity="1" />
+          <stop offset="50%" stopColor="#38bdf8" stopOpacity="1" />
           <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
         </linearGradient>
       </defs>
@@ -940,7 +940,7 @@ export default function App() {
     </div>
   </div>
 
-  <SectionSeam className="bottom-0" />
+  <SectionSeam className="top-[-40px]" flip />
 </section>
         
      <RegistrationForm />
