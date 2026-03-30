@@ -1015,6 +1015,7 @@ const FloatingGirl = () => {
   const prefersReducedMotion = useReducedMotion();
   const { scrollY } = useScroll();
   const [viewport, setViewport] = useState({ width: 1440, height: 900 });
+  const [showOnMobile, setShowOnMobile] = useState(false);
 
   useEffect(() => {
     const updateViewport = () =>
@@ -1028,26 +1029,55 @@ const FloatingGirl = () => {
     return () => window.removeEventListener("resize", updateViewport);
   }, []);
 
+  useEffect(() => {
+    if (viewport.width >= 768) return;
+
+    const stepsSection = document.getElementById("steps-to-claim");
+    if (!stepsSection) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowOnMobile(entry.isIntersecting && entry.intersectionRatio > 0.28);
+      },
+      {
+        threshold: [0, 0.15, 0.28, 0.4, 0.6],
+        rootMargin: "0px 0px -8% 0px",
+      }
+    );
+
+    observer.observe(stepsSection);
+    return () => observer.disconnect();
+  }, [viewport.width]);
+
   const isMobile = viewport.width < 768;
 
-  // Mobile: reveal right as user reaches Steps to Claim, not after.
-  // Desktop: still reveal after hero ends.
-  const revealStart = isMobile ? viewport.height * 0.82 : viewport.height * 0.82;
-  const revealEnd = isMobile ? viewport.height * 0.98 : viewport.height * 1.02;
-
-  const opacity = useTransform(scrollY, [0, revealStart, revealEnd], [0, 0, 1]);
-  const y = useTransform(scrollY, [0, revealStart, revealEnd], [52, 24, 0]);
-  const scale = useTransform(scrollY, [0, revealStart, revealEnd], [0.92, 0.97, 1]);
+  // Desktop keeps scroll-based reveal after hero.
+  const desktopOpacity = useTransform(scrollY, [0, viewport.height * 0.82, viewport.height * 1.02], [0, 0, 1]);
+  const desktopY = useTransform(scrollY, [0, viewport.height * 0.82, viewport.height * 1.02], [52, 24, 0]);
+  const desktopScale = useTransform(scrollY, [0, viewport.height * 0.82, viewport.height * 1.02], [0.92, 0.97, 1]);
 
   return (
     <motion.div
       aria-hidden="true"
-      style={
-        prefersReducedMotion
-          ? { opacity: 1 }
-          : { opacity, y, scale, willChange: "transform, opacity" }
-      }
       className="pointer-events-none fixed bottom-[-10px] right-[-40px] z-[25] select-none"
+      style={
+        !isMobile && !prefersReducedMotion
+          ? { opacity: desktopOpacity, y: desktopY, scale: desktopScale, willChange: "transform, opacity" }
+          : undefined
+      }
+      animate={
+        isMobile
+          ? {
+              opacity: showOnMobile ? 1 : 0,
+              y: showOnMobile ? 0 : 26,
+              scale: showOnMobile ? 1 : 0.94,
+            }
+          : undefined
+      }
+      transition={{
+        duration: 0.42,
+        ease: [0.22, 1, 0.36, 1],
+      }}
     >
       <motion.img
         src={colaImg}
@@ -1237,7 +1267,7 @@ export default function App() {
           <WaveDivider className="bottom-0" color="stroke-brand-blue-start" opacity="opacity-100" inverted={false} />
         </section>
 
-        <section className="relative z-10 overflow-visible bg-gradient-to-br from-brand-deep-blue via-brand-vibrant-blue/40 to-brand-deep-blue px-6 pb-40 pt-16">
+        <section id="steps-to-claim" className="relative z-10 overflow-visible bg-gradient-to-br from-brand-deep-blue via-brand-vibrant-blue/40 to-brand-deep-blue px-6 pb-40 pt-16">
           <div className="pointer-events-none absolute left-0 top-0 h-full w-full">
             <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-white/5 blur-[120px] animate-pulse" />
             <div className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-cyan-400/5 blur-[120px] animate-pulse delay-1000" />
