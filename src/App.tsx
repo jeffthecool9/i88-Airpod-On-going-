@@ -42,128 +42,12 @@ const HeroWord = ({
               "0 1px 0 rgba(255,255,255,0.10), 0 2px 0 rgba(59,130,246,0.10), 0 10px 28px rgba(2,6,23,0.55)",
           }
         : {
-            textShadow: "0 4px 12px rgba(0,0,0,0.1)",
+            textShadow: "0 4px 12px rgba(0,0,0,0.3)",
           }
     }
   >
     {children}
   </span>
-);
-
-const GradientWord = ({
-  children,
-  className = "",
-  light = false,
-}: {
-  children: ReactNode;
-  className?: string;
-  light?: boolean;
-}) => (
-  <span
-    className={`relative inline-block bg-gradient-to-b ${
-      light ? "from-white via-cyan-100 to-blue-200" : "from-white via-cyan-200 to-blue-300"
-    } bg-clip-text text-transparent font-semibold tracking-[-0.02em] ${className}`}
-    style={
-      !light
-        ? {
-            filter: "drop-shadow(0 6px 20px rgba(34,211,238,0.16))",
-            textShadow: "0 10px 24px rgba(2,6,23,0.45)",
-          }
-        : {
-            filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.1))",
-          }
-    }
-  >
-    {children}
-  </span>
-);
-
-const MoneyWord = ({
-  children,
-  className = "",
-  light = false,
-}: {
-  children: ReactNode;
-  className?: string;
-  light?: boolean;
-}) => (
-  <span
-    className={`relative inline-block font-semibold tracking-[-0.03em] ${light ? "text-slate-900" : "text-white"} ${className}`}
-    style={
-      !light
-        ? {
-            textShadow:
-              "0 1px 0 rgba(255,255,255,0.18), 0 2px 0 rgba(125,211,252,0.12), 0 10px 24px rgba(2,6,23,0.58)",
-          }
-        : {}
-    }
-  >
-    {children}
-  </span>
-);
-
-const GoldParticles = () => (
-  <div className="absolute inset-0 pointer-events-none z-0">
-    {[...Array(40)].map((_, i) => (
-      <motion.div
-        key={i}
-        initial={{ opacity: 0, scale: 0, x: 0, y: 0 }}
-        animate={{
-          opacity: [0, 1, 0.8, 0],
-          scale: [0, 1.6, 1.2, 0],
-          x: (Math.random() - 0.5) * 300,
-          y: (Math.random() - 0.5) * 300,
-          rotate: [0, 1440],
-        }}
-        transition={{
-          duration: 3 + Math.random() * 6,
-          repeat: Infinity,
-          delay: Math.random() * 12,
-          ease: "circOut",
-        }}
-        className="absolute left-1/2 top-1/2 h-2.5 w-2.5 rounded-full bg-gradient-to-br from-[#F9D423] via-[#FFF9E5] to-transparent shadow-[0_0_20px_rgba(249,212,35,1)]"
-      />
-    ))}
-
-    {[...Array(12)].map((_, i) => (
-      <motion.div
-        key={`streak-${i}`}
-        initial={{ opacity: 0, width: 0 }}
-        animate={{
-          opacity: [0, 0.8, 0],
-          width: [0, 180, 0],
-          rotate: [0, 720],
-          x: (Math.random() - 0.5) * 400,
-          y: (Math.random() - 0.5) * 400,
-        }}
-        transition={{
-          duration: 4 + Math.random() * 6,
-          repeat: Infinity,
-          delay: Math.random() * 18,
-        }}
-        className="absolute left-1/2 top-1/2 h-[1.5px] bg-gradient-to-r from-transparent via-[#F9D423] to-transparent blur-[1.5px]"
-      />
-    ))}
-
-    {[...Array(30)].map((_, i) => (
-      <motion.div
-        key={`dust-${i}`}
-        animate={{
-          opacity: [0.1, 0.8, 0.1],
-          scale: [0.5, 2, 0.5],
-          y: [0, -100, 0],
-          x: (Math.random() - 0.5) * 40,
-        }}
-        transition={{
-          duration: 5 + Math.random() * 8,
-          repeat: Infinity,
-          delay: Math.random() * 15,
-        }}
-        className="absolute h-1.5 w-1.5 rounded-full bg-white/60 blur-[2px]"
-        style={{ left: `${Math.random() * 100}%`, top: `${Math.random() * 100}%` }}
-      />
-    ))}
-  </div>
 );
 
 const GoldConfetti = () => {
@@ -251,8 +135,8 @@ const GoldConfetti = () => {
 
 const RealisticBackground = () => (
   <div className="pointer-events-none absolute inset-0 z-0">
-    {/* Base Hero Navy Background */}
-    <div className="absolute inset-0 bg-[#020f6a]" />
+    {/* Base Image 2 Navy Gradient */}
+    <div className="absolute inset-0 bg-gradient-to-b from-[#0a1580] via-[#0b49b8] to-[#041a6b]" />
     
     {/* sunlight: God Rays and Sun Glow */}
     <div className="absolute -right-20 -top-20 h-[600px] w-[600px]">
@@ -275,32 +159,19 @@ const RealisticBackground = () => (
       />
     </div>
 
-    {/* Note: All white cloud layers at the bottom are removed to keep the girl visible */}
+    {/* Subtle Overlay */}
     <div className="absolute inset-0 opacity-15 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
   </div>
 );
 
-const SectionKicker = ({ children }: { children: ReactNode }) => (
-  <span className="text-[11px] font-semibold uppercase tracking-[0.32em] text-cyan-200/75">
-    {children}
-  </span>
-);
-
-const CardKeyword = ({ children }: { children: ReactNode }) => (
-  <span className="font-bold tracking-[-0.02em] text-white [text-shadow:0_4px_16px_rgba(2,6,23,0.4)]">
-    {children}
-  </span>
-);
-
-const SectionSeam = ({ className = "", flip = false }: { className?: string; flip?: boolean }) => (
+// Updated to accept fillColor to perfectly match the next section
+const SectionSeam = ({ className = "", flip = false, fillColor = "#020f6a" }: { className?: string; flip?: boolean; fillColor?: string }) => (
   <div className={`absolute left-0 w-full overflow-hidden leading-[0] z-20 ${className} ${flip ? "rotate-180" : ""}`}>
     <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="block w-full h-[76px] sm:h-[120px]">
-      {/* Liquid Curve - Matches Brand Navy #020f6a */}
       <path
         d="M0,0 C480,100 720,100 1200,0 L1200,120 L0,120 Z"
-        fill="#020f6a"
+        fill={fillColor}
       />
-      {/* Connectivity Glow Line */}
       <path
         d="M0,0 C480,100 720,100 1200,0"
         fill="none"
@@ -317,47 +188,6 @@ const SectionSeam = ({ className = "", flip = false }: { className?: string; fli
     </svg>
   </div>
 );
-
-const SectionHeading = ({
-  children,
-  subtitle,
-  light = false,
-}: {
-  children: ReactNode;
-  subtitle?: string;
-  light?: boolean;
-}) => (
-  <div className="mb-12 text-center">
-    {subtitle && (
-      <motion.span
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className={`mb-3 block text-[11px] font-bold uppercase tracking-[0.32em] ${
-          light ? "text-blue-600/70" : "text-cyan-200/75"
-        }`}
-      >
-        {subtitle}
-      </motion.span>
-    )}
-
-    <motion.h2
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="text-3xl md:text-5xl leading-[0.92]"
-    >
-      <HeroWord light={light}>{children}</HeroWord>
-    </motion.h2>
-  </div>
-);
-
-interface FAQItemProps {
-  key?: React.Key;
-  question: string;
-  answer: string;
-  light?: boolean;
-}
 
 const RegistrationForm = () => {
   const [step, setStep] = useState(1);
@@ -388,7 +218,7 @@ const RegistrationForm = () => {
   return (
     <section
       id="registration-form"
-      className="relative z-10 overflow-hidden bg-gradient-to-br from-brand-blue-start/80 via-brand-navy/90 to-brand-navy px-6 py-24"
+      className="relative z-10 overflow-hidden bg-gradient-to-b from-[#020f6a] to-[#01083a] px-6 py-24"
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/10 blur-[120px]" />
@@ -576,7 +406,6 @@ const RegistrationForm = () => {
           </AnimatePresence>
         </motion.div>
       </div>
-      <SectionSeam className="bottom-0" />
     </section>
   );
 };
@@ -653,31 +482,14 @@ const FloatingGirl = () => {
 /* ----------------------------- App ----------------------------- */
 
 export default function App() {
-  const { scrollYProgress } = useScroll();
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [viewport, setViewport] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
-    const updateViewport = () => {
-      setViewport({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
-
     const handleMouseMove = (e: MouseEvent) => {
       setMousePos({ x: e.clientX, y: e.clientY });
     };
-
-    updateViewport();
-    window.addEventListener("resize", updateViewport);
     window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      window.removeEventListener("resize", updateViewport);
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   const stepData = [
@@ -689,113 +501,44 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-brand-navy/70 font-sans text-slate-200 selection:bg-blue-500/30">
+      
+      {/* Global Mouse Follower */}
       <div
         className="pointer-events-none fixed inset-0 z-30 opacity-40 transition-opacity duration-300"
         style={{
           background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(59, 130, 246, 0.08), transparent 80%)`,
         }}
       />
-
       <div className="pointer-events-none fixed inset-0 z-[100] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
-      <motion.div style={{ y: backgroundY }} className="pointer-events-none fixed inset-0 z-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.08)_0%,#020f6a_60%,#000a14_100%)]" />
-
-        <motion.div
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -50, 0],
-            scale: [1, 1.2, 1],
-          }}
-          style={{
-            translateX: (mousePos.x - viewport.width / 2) * 0.02,
-            translateY: (mousePos.y - viewport.height / 2) * 0.02,
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute left-[-10%] top-[-10%] h-[60vw] w-[60vw] rounded-full bg-brand-vibrant-blue/10 blur-[120px]"
-        />
-
-        <motion.div
-          animate={{
-            x: [0, -100, 0],
-            y: [0, 50, 0],
-            scale: [1.2, 1, 1.2],
-          }}
-          style={{
-            translateX: (mousePos.x - viewport.width / 2) * -0.02,
-            translateY: (mousePos.y - viewport.height / 2) * -0.02,
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-[-10%] right-[-10%] h-[50vw] w-[50vw] rounded-full bg-brand-deep-blue/10 blur-[120px]"
-        />
-
-        <motion.div
-          animate={{
-            x: [0, 50, 0],
-            y: [0, 100, 0],
-            opacity: [0.1, 0.3, 0.1],
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute right-[20%] top-[10%] h-[30vw] w-[30vw] rounded-full bg-blue-200/5 blur-[100px]"
-        />
-
-        <motion.div
-          animate={{
-            scale: [1, 1.5, 1],
-            opacity: [0.05, 0.15, 0.05],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute left-[30%] bottom-[20%] h-[20vw] w-[20vw] rounded-full bg-cyan-200/5 blur-[80px]"
-        />
-
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{
-              opacity: [0, 0.3, 0.1],
-              scale: [0, 1, 0.5],
-              x: [Math.random() * 100 + "%", Math.random() * 100 + "%"],
-              y: [Math.random() * 100 + "%", Math.random() * 100 + "%"],
-            }}
-            transition={{
-              duration: 20 + Math.random() * 20,
-              repeat: Infinity,
-              ease: "linear",
-              delay: Math.random() * 5,
-            }}
-            className="absolute h-1 w-1 rounded-full bg-blue-400/30"
-          />
-        ))}
-      </motion.div>
-
       <main className="relative z-10">
-        <section className="relative flex min-h-screen items-center overflow-hidden px-6 pb-0 pt-16 bg-[#0a1580]">
+        {/* NEW UNIFIED HERO SECTION (Steps to Claim) */}
+        <section
+          id="steps-to-claim"
+          className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pt-24 pb-32"
+        >
           <RealisticBackground />
           <GoldConfetti />
 
-          <div className="relative z-10 mx-auto w-full max-w-6xl">
-            {/* Hero content removed as requested */}
-          </div>
+          {/* SWEEPING LIGHT EFFECT: 2s sweep, 6s delay (Total 8s loop) */}
+          <motion.div
+            animate={{ left: ["-100%", "200%"] }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              repeatDelay: 6,
+              ease: "easeInOut",
+            }}
+            className="pointer-events-none absolute inset-y-0 w-[50%] skew-x-[-30deg] bg-gradient-to-r from-transparent via-white/20 to-transparent z-[25]"
+          />
 
-          <SectionSeam className="bottom-[-2px]" flip />
-        </section>
-
-        <section
-          id="steps-to-claim"
-          className="relative z-10 bg-gradient-to-b from-[#0b49b8] via-[#0a3d9d] to-[#082b78] px-6 py-5 sm:py-6"
-        >
-          <div className="pointer-events-none absolute left-0 top-0 h-full w-full">
-            <div className="absolute left-1/4 top-1/4 h-72 w-72 rounded-full bg-white/5 blur-[100px] animate-pulse" />
-            <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-cyan-400/5 blur-[100px] animate-pulse delay-1000" />
-          </div>
-
-          <div className="relative z-10 mx-auto max-w-4xl rounded-[28px] border border-white/10 bg-white/5 px-4 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:px-6 sm:py-6">
-            <div className="mb-4 text-center sm:mb-5">
-              <h2 className="text-3xl font-bold tracking-tight leading-[0.95] sm:text-4xl md:text-5xl">
+          <div className="relative z-10 mx-auto w-full max-w-5xl rounded-[28px] border border-white/10 bg-white/5 px-6 py-10 shadow-[0_10px_40px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:px-12 sm:py-16">
+            
+            <div className="mb-10 text-center sm:mb-16">
+              <h2 className="text-4xl font-bold tracking-tight leading-[0.95] sm:text-5xl md:text-6xl">
                 <HeroWord light>Steps to Claim</HeroWord>
               </h2>
-              <p className="mt-2 text-xs font-medium text-blue-100/75 sm:text-sm">
+              <p className="mt-4 text-sm font-medium text-blue-100/75 sm:text-lg">
                 A quick guide to unlock your reward
               </p>
             </div>
@@ -812,21 +555,18 @@ export default function App() {
                     className="group relative"
                   >
                     <div className="flex flex-col items-center">
-                      <div className="relative mb-1 sm:mb-2">
+                      <div className="relative mb-2 sm:mb-4">
                         <div className="absolute inset-0 rounded-full bg-blue-400/10 blur-2xl opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
-
                         <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl border border-slate-200 bg-white backdrop-blur-2xl transition-all duration-500 group-hover:-translate-y-2 group-hover:border-blue-400/50 group-hover:shadow-[0_20px_40px_rgba(59,130,246,0.1)] sm:h-20 sm:w-20 sm:rounded-[2.5rem] md:h-24 md:w-24">
                           <item.icon className="h-6 w-6 text-blue-600 transition-transform duration-500 group-hover:scale-110 sm:h-8 sm:w-8 md:h-10 md:w-10" />
-
                           <div className="absolute -left-2 -top-2 flex h-8 w-8 items-center justify-center rounded-lg border border-blue-200 bg-white text-xs font-bold text-blue-600 shadow-[0_4px_12px_rgba(59,130,246,0.15)] transition-all duration-300 group-hover:border-blue-400 group-hover:text-blue-700 sm:-left-4 sm:-top-4 sm:h-12 sm:w-12 sm:rounded-2xl sm:text-xl">
                             {item.step}
                           </div>
-
                           <div className="absolute inset-0 rounded-2xl border border-blue-400/0 opacity-0 group-hover:animate-ping group-hover:border-blue-400/50 group-hover:opacity-20 sm:rounded-[2.5rem]" />
                         </div>
                       </div>
 
-                      <div className="text-center space-y-0">
+                      <div className="text-center space-y-1 sm:space-y-2">
                         <h3 className="text-xs font-bold tracking-tight text-white transition-colors group-hover:text-cyan-200 sm:text-xl md:text-3xl">
                           {item.title}
                         </h3>
@@ -841,7 +581,8 @@ export default function App() {
             </div>
           </div>
 
-          <SectionSeam className="bottom-0" />
+          {/* Fill explicitly set to `#020f6a` to completely seamlessly pair with the Registration form */}
+          <SectionSeam className="bottom-[-1px]" fillColor="#020f6a" />
         </section>
 
         <RegistrationForm />
