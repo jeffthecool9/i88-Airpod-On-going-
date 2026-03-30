@@ -639,51 +639,53 @@ const RealisticBackground = ({ isMobile = false }: { isMobile?: boolean }) => {
 
 /* ----------------------------- Small Components ----------------------------- */
 
-const SectionKicker = ({ children }: { children: ReactNode }) => (
-  <span className="text-[11px] font-semibold uppercase tracking-[0.32em] text-cyan-200/75">{children}</span>
-);
-
-const CardKeyword = ({ children }: { children: ReactNode }) => (
-  <span className="font-bold tracking-[-0.02em] text-white [text-shadow:0_4px_16px_rgba(2,6,23,0.4)]">
-    {children}
-  </span>
-);
-
-/**
- * Updated WaveDivider to be a Smooth Shape Divider
- * Using fill instead of stroke to mask sections.
- */
-/**
- * Divider only updated:
- * large smooth band like the reference screenshot
- * no extra glow / strokes / motion
- * does not change other content
- */
 const WaveDivider = ({
+  className = "",
+  color = "stroke-white/20",
+  opacity = "opacity-100",
   inverted = false,
+  children,
+  coinPosition = "center",
 }: {
+  className?: string;
+  color?: string;
+  opacity?: string;
   inverted?: boolean;
-}) => {
-  return (
-    <div
-      className={`absolute left-0 w-full leading-[0] pointer-events-none z-20 overflow-hidden ${
-        inverted ? "top-[-1px] rotate-180" : "bottom-[-1px]"
-      }`}
-    >
+  children?: ReactNode;
+  coinPosition?: "center" | "right";
+}) => (
+  <div className={`absolute left-0 w-full leading-[0] pointer-events-none z-[40] overflow-hidden ${className} ${opacity}`}>
+    <div className="relative w-full">
+      {children && (
+        <div
+          className={`absolute top-1/2 -translate-y-1/2 pointer-events-auto z-[9999] ${
+            coinPosition === "right" ? "right-[10%] sm:right-[15%]" : "left-1/2 -translate-x-1/2"
+          }`}
+        >
+          {children}
+        </div>
+      )}
+
       <svg
+        className="relative block h-[68px] w-full md:h-[118px]"
         viewBox="0 0 1440 160"
-        className="block w-full h-[70px] md:h-[120px]"
         preserveAspectRatio="none"
       >
-        {/* CLEAN DARK CURVE (NO GLOW / NO LINES) */}
-        <path
-          d="M0,0 L0,130 C300,95 550,75 720,72 C930,70 1180,90 1440,130 L1440,0 Z"
-          fill="#020814"
-        />
+        {inverted ? (
+          <path
+            d="M0,0 C260,30 520,64 720,68 C930,72 1180,52 1440,18 L1440,160 L0,160 Z"
+            fill="#020814"
+          />
+        ) : (
+          <path
+            d="M0,0 L0,126 C280,98 540,78 720,76 C930,74 1180,92 1440,128 L1440,0 Z"
+            fill="#020814"
+          />
+        )}
       </svg>
     </div>
-  );
-};
+  </div>
+);
   const paths = {
     // broad smooth arc for bottom separators
     wave: "M0,0 L0,130 C260,96 520,74 720,70 C940,66 1180,84 1440,130 L1440,0 Z",
