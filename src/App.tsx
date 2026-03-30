@@ -251,33 +251,21 @@ const GoldConfetti = () => {
 
 const RealisticBackground = () => (
   <div className="pointer-events-none absolute inset-0 z-0">
-    <motion.div
-      animate={{
-        background: [
-          "linear-gradient(to bottom, #020f6a, #1696f9, #020f6a)",
-          "linear-gradient(to bottom, #020f6a, #1696f9, #020f6a)",
-          "linear-gradient(to bottom, #020f6a, #1696f9, #020f6a)",
-        ],
-      }}
-      transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-      className="absolute inset-0"
-    />
+    {/* Base hero surface */}
+    <div className="absolute inset-0 bg-[#0a1580]" />
 
-    <motion.div
-      animate={{ x: ["-100%", "200%"] }}
-      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      className="absolute inset-0 w-full skew-x-[45deg] bg-gradient-to-r from-transparent via-white/40 to-transparent blur-[100px]"
-    />
+    {/* Soft top light only */}
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-10%,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.08)_22%,transparent_58%)]" />
 
-   <div className="absolute inset-0">
-  <div className="absolute bottom-0 left-0 w-full h-[200px] bg-gradient-to-t from-[#020f6a] to-transparent" />
-</div>
-    
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(143,177,233,0.4)_0%,transparent_60%)]" />
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_100%,rgba(92,138,230,0.3)_0%,transparent_60%)]" />
-    <div className="absolute inset-0 opacity-15 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
-    <div className="absolute inset-0 shadow-[inset_0_0_250px_rgba(0,0,0,0.04)]" />
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,transparent_60%,rgba(45,89,200,0.05)_100%)]" />
+    {/* Very subtle side depth */}
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_30%,rgba(56,189,248,0.08)_0%,transparent_35%)]" />
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_35%,rgba(56,189,248,0.06)_0%,transparent_35%)]" />
+
+    {/* Bottom dark blend so the seam feels embedded */}
+    <div className="absolute inset-x-0 bottom-0 h-[220px] bg-gradient-to-t from-[#040b3f] via-[#061058] to-transparent" />
+
+    {/* Tiny texture only */}
+    <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
   </div>
 );
 
@@ -293,44 +281,38 @@ const CardKeyword = ({ children }: { children: ReactNode }) => (
   </span>
 );
 
-const SectionSeam = ({ className = "", flip = false }: { className?: string; flip?: boolean }) => {
-  return (
-    <div
-      className={`absolute left-0 w-full overflow-hidden leading-[0] z-20 ${className} ${
-        flip ? "rotate-180" : ""
-      }`}
+const SectionSeam = ({ className = "", flip = false }: { className?: string; flip?: boolean }) => (
+  <div className={`absolute left-0 w-full overflow-hidden leading-[0] z-20 ${className} ${flip ? "rotate-180" : ""}`}>
+    <svg
+      viewBox="0 0 1200 120"
+      preserveAspectRatio="none"
+      className="block w-full h-[70px] sm:h-[110px]"
       aria-hidden="true"
     >
-      <svg
-        viewBox="0 0 1200 120"
-        preserveAspectRatio="none"
-        className="block w-full h-[60px] sm:h-[100px]"
-      >
-        {/* Main curve */}
-        <path
-          d="M0,0 C480,100 720,100 1200,0 L1200,120 L0,120 Z"
-          fill="#020f6a"
-        />
+      {/* Main curve body - darker, like image 2 concept */}
+      <path
+        d="M0,0 C480,100 720,100 1200,0 L1200,120 L0,120 Z"
+        fill="#020817"
+      />
 
-        {/* Neon line */}
-        <path
-          d="M0,0 C480,100 720,100 1200,0"
-          fill="none"
-          stroke="url(#seamGradient)"
-          strokeWidth="2"
-        />
+      {/* Thin neon edge */}
+      <path
+        d="M0,0 C480,100 720,100 1200,0"
+        fill="none"
+        stroke="url(#sectionSeamLine)"
+        strokeWidth="2"
+      />
 
-        <defs>
-          <linearGradient id="seamGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#22d3ee" stopOpacity="0" />
-            <stop offset="50%" stopColor="#22d3ee" stopOpacity="1" />
-            <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-      </svg>
-    </div>
-  );
-};
+      <defs>
+        <linearGradient id="sectionSeamLine" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#22d3ee" stopOpacity="0" />
+          <stop offset="50%" stopColor="#22d3ee" stopOpacity="0.95" />
+          <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+);
 const SectionHeading = ({
   children,
   subtitle,
@@ -783,7 +765,7 @@ export default function App() {
       </motion.div>
 
       <main className="relative z-10">
-        <section className="relative flex min-h-screen items-center overflow-hidden px-6 pb-16 pt-16">
+        <section className="relative flex min-h-screen items-center overflow-hidden px-6 pb-0 pt-16 bg-[#0a1580]">
           <RealisticBackground />
           <GoldConfetti />
 
@@ -796,7 +778,7 @@ export default function App() {
 
         <section
           id="steps-to-claim"
-          className="relative z-10 bg-gradient-to-br from-brand-deep-blue via-brand-vibrant-blue/40 to-brand-deep-blue px-6 py-5 sm:py-6"
+        className="relative z-10 bg-gradient-to-b from-[#0b49b8] via-[#0a3d9d] to-[#082b78] px-6 py-5 sm:py-6"
         >
           <div className="pointer-events-none absolute left-0 top-0 h-full w-full">
             <div className="absolute left-1/4 top-1/4 h-72 w-72 rounded-full bg-white/5 blur-[100px] animate-pulse" />
@@ -854,7 +836,7 @@ export default function App() {
             </div>
           </div>
 
-          <SectionSeam className="bottom-0" />
+         <SectionSeam className="bottom-[-1px]" flip />
         </section>
 
         <RegistrationForm />
