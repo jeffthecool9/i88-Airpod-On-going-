@@ -133,12 +133,11 @@ const GoldConfetti = () => {
   );
 };
 
+// Cleaned up RealisticBackground with NO white clouds at the bottom
 const RealisticBackground = () => (
   <div className="pointer-events-none absolute inset-0 z-0">
-    {/* Base Image 2 Navy Gradient */}
-    <div className="absolute inset-0 bg-gradient-to-b from-[#0a1580] via-[#0b49b8] to-[#041a6b]" />
+    <div className="absolute inset-0 bg-[#0a1580]" />
     
-    {/* sunlight: God Rays and Sun Glow */}
     <div className="absolute -right-20 -top-20 h-[600px] w-[600px]">
       {[...Array(6)].map((_, i) => (
         <motion.div
@@ -159,14 +158,13 @@ const RealisticBackground = () => (
       />
     </div>
 
-    {/* Subtle Overlay */}
     <div className="absolute inset-0 opacity-15 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
   </div>
 );
 
-// Updated to accept fillColor to perfectly match the next section
+// Added pointer-events-none to ensure it never blocks clicks on text
 const SectionSeam = ({ className = "", flip = false, fillColor = "#020f6a" }: { className?: string; flip?: boolean; fillColor?: string }) => (
-  <div className={`absolute left-0 w-full overflow-hidden leading-[0] z-20 ${className} ${flip ? "rotate-180" : ""}`}>
+  <div className={`absolute left-0 w-full overflow-hidden leading-[0] z-20 pointer-events-none ${className} ${flip ? "rotate-180" : ""}`}>
     <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="block w-full h-[76px] sm:h-[120px]">
       <path
         d="M0,0 C480,100 720,100 1200,0 L1200,120 L0,120 Z"
@@ -218,7 +216,7 @@ const RegistrationForm = () => {
   return (
     <section
       id="registration-form"
-      className="relative z-10 overflow-hidden bg-gradient-to-b from-[#020f6a] to-[#01083a] px-6 py-24"
+      className="relative z-10 overflow-hidden bg-gradient-to-br from-[#020f6a] to-[#01083a] px-6 py-24 sm:py-32"
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/10 blur-[120px]" />
@@ -502,7 +500,7 @@ export default function App() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-brand-navy/70 font-sans text-slate-200 selection:bg-blue-500/30">
       
-      {/* Global Mouse Follower */}
+      {/* Global Backgrounds */}
       <div
         className="pointer-events-none fixed inset-0 z-30 opacity-40 transition-opacity duration-300"
         style={{
@@ -512,15 +510,26 @@ export default function App() {
       <div className="pointer-events-none fixed inset-0 z-[100] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
       <main className="relative z-10">
-        {/* NEW UNIFIED HERO SECTION (Steps to Claim) */}
-        <section
-          id="steps-to-claim"
-          className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pt-24 pb-32"
-        >
+        
+        {/* SECTION 1: EMPTY HERO */}
+        <section className="relative flex min-h-screen items-center overflow-hidden px-6 pb-0 pt-16 bg-[#0a1580]">
           <RealisticBackground />
           <GoldConfetti />
+          
+          <div className="relative z-10 mx-auto w-full max-w-6xl">
+            {/* Kept empty exactly as requested */}
+          </div>
 
-          {/* SWEEPING LIGHT EFFECT: 2s sweep, 6s delay (Total 8s loop) */}
+          {/* Curve fill precisely matches the top of the next "Steps to Claim" section (#0b49b8) */}
+          <SectionSeam className="bottom-[-1px]" flip fillColor="#0b49b8" />
+        </section>
+
+        {/* SECTION 2: STEPS TO CLAIM */}
+        <section
+          id="steps-to-claim"
+          className="relative z-10 overflow-hidden bg-gradient-to-b from-[#0b49b8] via-[#0a3d9d] to-[#082b78] px-6 pt-16 pb-32 sm:pt-24 sm:pb-40"
+        >
+          {/* Sweeping Light Effect (2s duration, 6s wait) passing OVER the section */}
           <motion.div
             animate={{ left: ["-100%", "200%"] }}
             transition={{
@@ -529,16 +538,21 @@ export default function App() {
               repeatDelay: 6,
               ease: "easeInOut",
             }}
-            className="pointer-events-none absolute inset-y-0 w-[50%] skew-x-[-30deg] bg-gradient-to-r from-transparent via-white/20 to-transparent z-[25]"
+            className="pointer-events-none absolute inset-y-0 w-[50%] skew-x-[-30deg] bg-gradient-to-r from-transparent via-white/10 to-transparent z-[25]"
           />
 
-          <div className="relative z-10 mx-auto w-full max-w-5xl rounded-[28px] border border-white/10 bg-white/5 px-6 py-10 shadow-[0_10px_40px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:px-12 sm:py-16">
+          <div className="pointer-events-none absolute left-0 top-0 h-full w-full">
+            <div className="absolute left-1/4 top-1/4 h-72 w-72 rounded-full bg-white/5 blur-[100px] animate-pulse" />
+            <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-cyan-400/5 blur-[100px] animate-pulse delay-1000" />
+          </div>
+
+          <div className="relative z-10 mx-auto max-w-4xl rounded-[28px] border border-white/10 bg-white/5 px-4 py-8 shadow-[0_10px_40px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:px-10 sm:py-12">
             
-            <div className="mb-10 text-center sm:mb-16">
-              <h2 className="text-4xl font-bold tracking-tight leading-[0.95] sm:text-5xl md:text-6xl">
+            <div className="mb-6 text-center sm:mb-10">
+              <h2 className="text-3xl font-bold tracking-tight leading-[0.95] sm:text-4xl md:text-5xl">
                 <HeroWord light>Steps to Claim</HeroWord>
               </h2>
-              <p className="mt-4 text-sm font-medium text-blue-100/75 sm:text-lg">
+              <p className="mt-2 text-xs font-medium text-blue-100/75 sm:text-sm">
                 A quick guide to unlock your reward
               </p>
             </div>
@@ -581,11 +595,13 @@ export default function App() {
             </div>
           </div>
 
-          {/* Fill explicitly set to `#020f6a` to completely seamlessly pair with the Registration form */}
+          {/* Curve fill precisely matches the top of the Registration Section (#020f6a) */}
           <SectionSeam className="bottom-[-1px]" fillColor="#020f6a" />
         </section>
 
+        {/* SECTION 3: REGISTRATION */}
         <RegistrationForm />
+        
         <FloatingGirl />
       </main>
     </div>
