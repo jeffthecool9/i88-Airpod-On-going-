@@ -870,7 +870,7 @@ export default function App() {
           <SectionSeam className="bottom-0" />
         </section>
 
-    {/* STEPS - CREATIVE PIPELINE */}
+{/* STEPS - CREATIVE PIPELINE */}
 <section
   id="steps-to-claim"
   className="relative px-6 py-5 sm:py-6 bg-gradient-to-br from-brand-deep-blue via-brand-vibrant-blue/40 to-brand-deep-blue z-10"
@@ -894,55 +894,54 @@ export default function App() {
     <div className="relative">
       {/* Desktop Connecting Line (SVG Path) */}
 
-        <div className="grid grid-cols-4 gap-2 sm:gap-6 md:gap-12">
-  {stepData.map((item, i) => (
-    <motion.div
-      key={i}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: i * 0.15 }}
-      className="group relative"
-    >
-      <div className="flex flex-col items-center">
-        {/* Step Node */}
-        <div className="relative mb-1 sm:mb-2">
-          {/* Glow Effect */}
-          <div className="absolute inset-0 rounded-full bg-blue-400/10 blur-2xl opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
+      <div className="grid grid-cols-4 gap-2 sm:gap-6 md:gap-12">
+        {stepData.map((item, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: i * 0.15 }}
+            className="group relative"
+          >
+            <div className="flex flex-col items-center">
+              {/* Step Node */}
+              <div className="relative mb-1 sm:mb-2">
+                {/* Glow Effect */}
+                <div className="absolute inset-0 rounded-full bg-blue-400/10 blur-2xl opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
 
-          {/* Node Circle */}
-          <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl border border-slate-200 bg-white backdrop-blur-2xl transition-all duration-500 group-hover:-translate-y-2 group-hover:border-blue-400/50 group-hover:shadow-[0_20px_40px_rgba(59,130,246,0.1)] sm:h-20 sm:w-20 sm:rounded-[2.5rem] md:h-24 md:w-24">
-            <item.icon className="h-6 w-6 text-blue-600 transition-transform duration-500 group-hover:scale-110 sm:h-8 sm:w-8 md:h-10 md:w-10" />
+                {/* Node Circle */}
+                <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl border border-slate-200 bg-white backdrop-blur-2xl transition-all duration-500 group-hover:-translate-y-2 group-hover:border-blue-400/50 group-hover:shadow-[0_20px_40px_rgba(59,130,246,0.1)] sm:h-20 sm:w-20 sm:rounded-[2.5rem] md:h-24 md:w-24">
+                  <item.icon className="h-6 w-6 text-blue-600 transition-transform duration-500 group-hover:scale-110 sm:h-8 sm:w-8 md:h-10 md:w-10" />
 
-            {/* Step Number Floating */}
-            <div className="absolute -left-2 -top-2 flex h-8 w-8 items-center justify-center rounded-lg border border-blue-200 bg-white text-xs font-bold text-blue-600 shadow-[0_4px_12px_rgba(59,130,246,0.15)] transition-all duration-300 group-hover:border-blue-400 group-hover:text-blue-700 sm:-left-4 sm:-top-4 sm:h-12 sm:w-12 sm:rounded-2xl sm:text-xl">
-              {item.step}
+                  {/* Step Number Floating */}
+                  <div className="absolute -left-2 -top-2 flex h-8 w-8 items-center justify-center rounded-lg border border-blue-200 bg-white text-xs font-bold text-blue-600 shadow-[0_4px_12px_rgba(59,130,246,0.15)] transition-all duration-300 group-hover:border-blue-400 group-hover:text-blue-700 sm:-left-4 sm:-top-4 sm:h-12 sm:w-12 sm:rounded-2xl sm:text-xl">
+                    {item.step}
+                  </div>
+
+                  {/* Pulsing Ring */}
+                  <div className="absolute inset-0 rounded-2xl border border-blue-400/0 opacity-0 group-hover:animate-ping group-hover:border-blue-400/50 group-hover:opacity-20 sm:rounded-[2.5rem]" />
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="text-center space-y-0">
+                <h3 className="text-xs font-bold tracking-tight text-white transition-colors group-hover:text-cyan-200 sm:text-xl md:text-3xl">
+                  {item.title}
+                </h3>
+                <p className="mx-auto max-w-[180px] text-[10px] font-semibold leading-tight text-blue-100 transition-colors group-hover:text-white sm:max-w-[200px] sm:text-sm md:text-base">
+                  {item.desc}
+                </p>
+              </div>
             </div>
-
-            {/* Pulsing Ring */}
-            <div className="absolute inset-0 rounded-2xl border border-blue-400/0 opacity-0 group-hover:animate-ping group-hover:border-blue-400/50 group-hover:opacity-20 sm:rounded-[2.5rem]" />
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="text-center space-y-0">
-          <h3 className="text-xs font-bold tracking-tight text-white transition-colors group-hover:text-cyan-200 sm:text-xl md:text-3xl">
-            {item.title}
-          </h3>
-          <p className="mx-auto max-w-[180px] text-[10px] font-semibold leading-tight text-blue-100 transition-colors group-hover:text-white sm:max-w-[200px] sm:text-sm md:text-base">
-            {item.desc}
-          </p>
-        </div>
+          </motion.div>
+        ))}
       </div>
-    </motion.div>
-  ))}
-</div>
-          </div>
-          </div>
-        </div>
+    </div>
+  </div>
 
-        <SectionSeam className="bottom-0" />
-      </section>
+  <SectionSeam className="bottom-0" />
+</section>
         
      <RegistrationForm />
         <FloatingGirl />
