@@ -291,24 +291,24 @@ const SectionSeam = ({ className = "", flip = false }: { className?: string; fli
       className="block w-full h-[76px] sm:h-[120px]"
       aria-hidden="true"
     >
-      {/* Dark curved band */}
+      {/* The main liquid curve - matches your brand navy #020f6a */}
       <path
         d="M0,0 C480,100 720,100 1200,0 L1200,120 L0,120 Z"
-        fill="#020817"
+        fill="#020f6a"
       />
 
-      {/* Cyan connectivity line */}
+      {/* The glowing connectivity line following the edge */}
       <path
         d="M0,0 C480,100 720,100 1200,0"
         fill="none"
         stroke="url(#sectionSeamLine)"
-        strokeWidth="2"
+        strokeWidth="3"
       />
 
       <defs>
         <linearGradient id="sectionSeamLine" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="#22d3ee" stopOpacity="0" />
-          <stop offset="50%" stopColor="#22d3ee" stopOpacity="0.95" />
+          <stop offset="50%" stopColor="#22d3ee" stopOpacity="1" />
           <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
         </linearGradient>
       </defs>
