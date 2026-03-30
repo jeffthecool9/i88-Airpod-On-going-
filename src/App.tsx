@@ -1030,14 +1030,14 @@ const FloatingGirl = () => {
 
   const isMobile = viewport.width < 768;
 
-  // Desktop: reveal after hero
-  // Mobile: reveal when entering Steps to Claim section
-  const revealStart = isMobile ? viewport.height * 0.92 : viewport.height * 0.72;
-  const revealEnd = isMobile ? viewport.height * 1.28 : viewport.height * 1.08;
+  // Desktop: reveal slightly after hero ends
+  // Mobile: reveal only after user is already inside Steps to Claim
+  const revealStart = isMobile ? viewport.height * 1.18 : viewport.height * 0.82;
+  const revealEnd = isMobile ? viewport.height * 1.48 : viewport.height * 1.12;
 
   const opacity = useTransform(scrollY, [0, revealStart, revealEnd], [0, 0, 1]);
-  const y = useTransform(scrollY, [0, revealStart, revealEnd], [72, 52, 0]);
-  const scale = useTransform(scrollY, [0, revealStart, revealEnd], [0.88, 0.93, 1]);
+  const y = useTransform(scrollY, [0, revealStart, revealEnd], [84, 56, 0]);
+  const scale = useTransform(scrollY, [0, revealStart, revealEnd], [0.84, 0.92, 1]);
 
   return (
     <motion.div
@@ -1097,7 +1097,6 @@ const FloatingGirl = () => {
     </motion.div>
   );
 };
-
 
 /* ----------------------------- App ----------------------------- */
 
