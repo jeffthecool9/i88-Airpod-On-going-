@@ -1012,9 +1012,34 @@ const RegistrationForm = () => {
 };
 
 const FloatingGirl = () => {
+  const prefersReducedMotion = useReducedMotion();
+  const { scrollY } = useScroll();
+  const [viewportHeight, setViewportHeight] = useState(900);
+
+  useEffect(() => {
+    const updateViewportHeight = () => setViewportHeight(window.innerHeight || 900);
+    updateViewportHeight();
+    window.addEventListener("resize", updateViewportHeight);
+    return () => window.removeEventListener("resize", updateViewportHeight);
+  }, []);
+
+  const revealStart = viewportHeight * 0.72;
+  const revealEnd = viewportHeight * 1.08;
+
+  const opacity = useTransform(scrollY, [0, revealStart, revealEnd], [0, 0, 1]);
+  const y = useTransform(scrollY, [0, revealStart, revealEnd], [56, 40, 0]);
+  const scale = useTransform(scrollY, [0, revealStart, revealEnd], [0.9, 0.94, 1]);
+
   return (
-    <div className="pointer-events-none fixed bottom-[-10px] right-[-40px] z-[25] select-none">
-      {/* body-outline glow layer */}
+    <motion.div
+      aria-hidden="true"
+      style={
+        prefersReducedMotion
+          ? { opacity: 1 }
+          : { opacity, y, scale, willChange: "transform, opacity" }
+      }
+      className="pointer-events-none fixed bottom-[-10px] right-[-40px] z-[25] select-none"
+    >
       <motion.img
         src={colaImg}
         alt=""
@@ -1030,26 +1055,21 @@ const FloatingGirl = () => {
           object-contain
           opacity-90
         "
-        animate={{
-          opacity: [0.45, 0.9, 0.45],
-        }}
-        transition={{
-          duration: 2.8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        style={{
-          filter: `
-            brightness(1.15)
-         drop-shadow(0 0 8px rgba(125,211,252,1))
-drop-shadow(0 0 16px rgba(56,189,248,0.95))
-drop-shadow(0 0 28px rgba(59,130,246,0.85))
-drop-shadow(0 0 46px rgba(34,211,238,0.65))
-          `,
-        }}
+        animate={
+          prefersReducedMotion
+            ? undefined
+            : {
+                opacity: [0.4, 0.78, 0.4],
+                filter: [
+                  "brightness(1.1) drop-shadow(0 0 6px rgba(125,211,252,0.75)) drop-shadow(0 0 12px rgba(56,189,248,0.65)) drop-shadow(0 0 22px rgba(59,130,246,0.5))",
+                  "brightness(1.18) drop-shadow(0 0 10px rgba(125,211,252,0.95)) drop-shadow(0 0 18px rgba(56,189,248,0.82)) drop-shadow(0 0 30px rgba(59,130,246,0.62))",
+                  "brightness(1.1) drop-shadow(0 0 6px rgba(125,211,252,0.75)) drop-shadow(0 0 12px rgba(56,189,248,0.65)) drop-shadow(0 0 22px rgba(59,130,246,0.5))",
+                ],
+              }
+        }
+        transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* main girl image */}
       <img
         src={colaImg}
         alt=""
@@ -1065,9 +1085,10 @@ drop-shadow(0 0 46px rgba(34,211,238,0.65))
           drop-shadow-[0_25px_60px_rgba(0,0,0,0.35)]
         "
       />
-    </div>
+    </motion.div>
   );
 };
+
 /* ----------------------------- App ----------------------------- */
 
 export default function App() {
