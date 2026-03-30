@@ -2,7 +2,7 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
-
+import colaImg from "./assets/cola2.png";
 import { motion, useScroll, useTransform, AnimatePresence, useReducedMotion } from "motion/react";
 import {
   ChevronRight,
@@ -736,7 +736,7 @@ const RegistrationForm = () => {
   return (
     <section
       id="registration-form"
-      className="relative z-10 overflow-hidden bg-gradient-to-br from-brand-blue-start/80 via-brand-navy/90 to-brand-navy px-6 pt-28 pb-24"
+      className="relative z-10 overflow-hidden bg-gradient-to-br from-brand-blue-start/80 via-brand-navy/90 to-brand-navy px-6 py-24"
     >
       <DividerImage className="top-0" inverted={true} />
       <div className="pointer-events-none absolute inset-0">
@@ -832,7 +832,7 @@ const RegistrationForm = () => {
                     !isStep1Valid ? "cursor-not-allowed opacity-40 grayscale-[0.5]" : "hover:shadow-blue-500/40"
                   }`}
                 >
-                  Join Now
+                  Next
                   <ChevronRight className={`h-5 w-5 transition-transform ${isStep1Valid ? "group-hover:translate-x-1" : ""}`} />
                 </motion.button>
               </motion.div>
@@ -925,7 +925,63 @@ const RegistrationForm = () => {
     </section>
   );
 };
+const FloatingGirl = () => {
+  return (
+    <div className="pointer-events-none fixed bottom-[-10px] right-[-40px] z-[25] select-none">
+      {/* body-outline glow layer */}
+      <motion.img
+        src={colaImg}
+        alt=""
+        aria-hidden="true"
+        className="
+          absolute inset-0
+          h-auto
+          w-[280px]
+          sm:w-[360px]
+          md:w-[480px]
+          lg:w-[560px]
+          xl:w-[640px]
+          object-contain
+          opacity-90
+        "
+        animate={{
+          opacity: [0.45, 0.9, 0.45],
+        }}
+        transition={{
+          duration: 2.8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        style={{
+          filter: `
+            brightness(1.15)
+         drop-shadow(0 0 8px rgba(125,211,252,1))
+drop-shadow(0 0 16px rgba(56,189,248,0.95))
+drop-shadow(0 0 28px rgba(59,130,246,0.85))
+drop-shadow(0 0 46px rgba(34,211,238,0.65))
+          `,
+        }}
+      />
 
+      {/* main girl image */}
+      <img
+        src={colaImg}
+        alt=""
+        className="
+          relative
+          h-auto
+          w-[280px]
+          sm:w-[360px]
+          md:w-[480px]
+          lg:w-[560px]
+          xl:w-[640px]
+          object-contain
+          drop-shadow-[0_25px_60px_rgba(0,0,0,0.35)]
+        "
+      />
+    </div>
+  );
+};
 /* ----------------------------- App ----------------------------- */
 
 export default function App() {
@@ -1065,8 +1121,7 @@ export default function App() {
           <DividerImage className="bottom-0" />
         </section>
 
-        <section className="relative z-10 overflow-visible bg-gradient-to-br from-brand-deep-blue via-brand-vibrant-blue/40 to-brand-deep-blue px-6 pb-40 pt-24">
-          <DividerImage className="top-0" inverted={true} />
+        <section className="relative z-10 overflow-visible bg-gradient-to-br from-brand-deep-blue via-brand-vibrant-blue/40 to-brand-deep-blue px-6 pb-40 pt-16">
           <div className="pointer-events-none absolute inset-0 opacity-20">
             {[...Array(10)].map((_, i) => (
               <motion.div
@@ -1162,6 +1217,8 @@ export default function App() {
 
         <RegistrationForm />
       </main>
+
+      <FloatingGirl />
     </div>
   );
 }
