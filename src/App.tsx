@@ -489,7 +489,7 @@ const FloatingGirl = () => {
         ease: [0.22, 1, 0.36, 1],
       }}
     >
-      {/* 💬 Mobile Optimized Chat Bubble */}
+      {/* 💬 Correctly positioned Chat Bubble (Up and to the Left) */}
       <AnimatePresence>
         {isUserActive && showFromSteps && (
           <motion.div
@@ -497,7 +497,7 @@ const FloatingGirl = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.8, filter: "blur(5px)" }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            className="pointer-events-auto absolute bottom-[80%] right-[30%] z-30 w-max max-w-[220px] sm:bottom-auto sm:right-auto sm:-top-[15%] sm:left-[10%] md:left-[20%] sm:max-w-none"
+            className="pointer-events-auto absolute bottom-[90%] right-[55%] z-30 w-max max-w-[200px] sm:bottom-[85%] sm:right-[60%] md:bottom-[80%] md:right-[65%] sm:max-w-none"
           >
             <div
               onClick={handleInteract}
@@ -521,8 +521,8 @@ const FloatingGirl = () => {
                 </motion.div>
               </AnimatePresence>
 
-              {/* Dynamic Tail (points right-down on mobile, left-down on desktop) */}
-              <div className="absolute -bottom-2 right-[25%] sm:right-10 h-4 w-4 rotate-45 border-b border-r border-cyan-400/60 bg-cyan-950/85 transition-colors duration-300 group-hover:bg-cyan-900/95" />
+              {/* Chat Bubble Tail adjusted to point from bottom-right towards her head */}
+              <div className="absolute -bottom-[7px] right-8 h-4 w-4 rotate-45 border-b border-r border-cyan-400/60 bg-cyan-950/85 transition-colors duration-300 group-hover:bg-cyan-900/95" />
             </div>
           </motion.div>
         )}
@@ -649,10 +649,6 @@ export default function App() {
               </div>
 
               <div className="relative">
-                {/* MOBILE FIX:
-                  Changed grid-cols-4 to grid-cols-2 for mobile screens. 
-                  Expands back to 4 columns on 'sm' breakpoint.
-                */}
                 <div className="grid grid-cols-2 gap-y-8 gap-x-4 sm:grid-cols-4 sm:gap-6 md:gap-12">
                   {stepData.map((item, i) => (
                     <motion.div
@@ -676,11 +672,9 @@ export default function App() {
                         </div>
 
                         <div className="text-center space-y-1 sm:space-y-2">
-                          {/* Increased mobile title from text-xs to text-base */}
                           <h3 className="text-base font-bold tracking-tight text-white transition-colors group-hover:text-cyan-200 sm:text-xl md:text-3xl drop-shadow-sm">
                             {item.title}
                           </h3>
-                          {/* Increased mobile description from text-[10px] to text-xs */}
                           <p className="mx-auto max-w-[140px] sm:max-w-[200px] text-xs font-semibold leading-tight text-white/80 transition-colors group-hover:text-cyan-100 sm:text-sm md:text-base">
                             {item.desc}
                           </p>
