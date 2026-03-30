@@ -250,19 +250,10 @@ const GoldConfetti = () => {
 };
 const RealisticBackground = () => (
   <div className="pointer-events-none absolute inset-0 z-0">
-    <motion.div 
-      animate={{ 
-        background: [
-          "linear-gradient(to bottom, #020f6a, #1696f9, #020f6a)",
-          "linear-gradient(to bottom, #020f6a, #1696f9, #020f6a)",
-          "linear-gradient(to bottom, #020f6a, #1696f9, #020f6a)"
-        ]
-      }}
-      transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-      className="absolute inset-0" 
-    />
+    {/* Base Gradient */}
+    <div className="absolute inset-0 bg-gradient-to-b from-[#020f6a] via-[#1696f9] to-[#020f6a]" />
     
-    {/* Sun & God Rays (The Sunlight Effect) */}
+    {/* Sunlight System: God Rays & Sun Glow */}
     <div className="absolute -right-20 -top-20 h-[600px] w-[600px]">
       {[...Array(6)].map((_, i) => (
         <motion.div
@@ -271,21 +262,20 @@ const RealisticBackground = () => (
           transition={{ duration: 8 + i, repeat: Infinity, ease: "easeInOut" }}
           className="absolute inset-0 origin-center"
           style={{
-            background: `conic-gradient(from ${i * 60}deg at 50% 50%, transparent 0%, rgba(255,255,255,0.15) 10%, transparent 20%)`,
-            filter: "blur(20px)"
+            background: `conic-gradient(from ${i * 60}deg at 50% 50%, transparent 0%, rgba(255,255,255,0.2) 10%, transparent 20%)`,
+            filter: "blur(25px)"
           }}
         />
       ))}
       <motion.div
-        animate={{ scale: [1, 1.1, 1], opacity: [0.7, 0.9, 0.7] }}
+        animate={{ scale: [1, 1.1, 1], opacity: [0.8, 1, 0.8] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,1)_0%,rgba(255,250,220,0.9)_20%,rgba(255,244,180,0.6)_40%,rgba(143,177,233,0)_75%)] blur-[40px]"
+        className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,1)_0%,rgba(255,250,220,0.9)_20%,rgba(143,177,233,0)_75%)] blur-[50px]"
       />
     </div>
 
-    {/* Note: All Cloud layers have been removed to stop the white blocking effect */}
-
-    <div className="absolute inset-0 opacity-15 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
+    {/* Subtle Surface Texture */}
+    <div className="absolute inset-0 opacity-10 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
   </div>
 );
 const SectionKicker = ({ children }: { children: ReactNode }) => (
@@ -302,28 +292,21 @@ const CardKeyword = ({ children }: { children: ReactNode }) => (
 
 const SectionSeam = ({ className = "", flip = false }: { className?: string; flip?: boolean }) => (
   <div className={`absolute left-0 w-full overflow-hidden leading-[0] z-20 ${className} ${flip ? "rotate-180" : ""}`}>
-    <svg
-      viewBox="0 0 1200 120"
-      preserveAspectRatio="none"
-      className="block w-full h-[76px] sm:h-[120px]"
-      aria-hidden="true"
-    >
-      {/* Liquid Curve - Now matches brand navy #020f6a */}
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="block w-full h-[80px] sm:h-[120px]">
+      {/* Curve fill matches brand navy #020f6a */}
       <path
         d="M0,0 C480,100 720,100 1200,0 L1200,120 L0,120 Z"
         fill="#020f6a"
       />
-
-      {/* Connectivity Glow Line */}
+      {/* Cyan Connectivity Glow */}
       <path
         d="M0,0 C480,100 720,100 1200,0"
         fill="none"
-        stroke="url(#sectionSeamLine)"
+        stroke="url(#glow-line)"
         strokeWidth="3"
       />
-
       <defs>
-        <linearGradient id="sectionSeamLine" x1="0%" y1="0%" x2="100%" y2="0%">
+        <linearGradient id="glow-line" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="#22d3ee" stopOpacity="0" />
           <stop offset="50%" stopColor="#22d3ee" stopOpacity="1" />
           <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
@@ -850,17 +833,18 @@ export default function App() {
                       </div>
                     </div>
                   </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
+               ))}
+              </div> 
+            </div> 
+          </div> 
+        </div> 
 
-         <SectionSeam className="bottom-[-1px]" flip />
-        </section>
+        <SectionSeam className="bottom-0" />
+      </section>
 
-        <RegistrationForm />
-        <FloatingGirl />
-      </main>
+      <RegistrationForm />
+      <FloatingGirl />
+    </main>
     </div>
   );
 }
