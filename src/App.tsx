@@ -570,22 +570,22 @@ const SectionSeam = ({ className = "", flip = false }: { className?: string; fli
       preserveAspectRatio="none"
       className="relative block w-full h-[60px] sm:h-[100px]"
     >
-      {/* The main curve - fill matches your brand-navy background */}
+      {/* Curve fill matches your dark background */}
       <path
         d="M0,0 C480,100 720,100 1200,0 L1200,120 L0,120 Z"
         fill="#020f6a" 
       ></path>
       
-      {/* The glowing line curve following the edge */}
+      {/* The "Connectivity" Line Curve */}
       <path
         d="M0,0 C480,100 720,100 1200,0"
         fill="none"
-        stroke="url(#gradient-line)"
+        stroke="url(#line-gradient)"
         strokeWidth="2"
       />
       
       <defs>
-        <linearGradient id="gradient-line" x1="0%" y1="0%" x2="100%" y2="0%">
+        <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="#3b82f6" stopOpacity="0" />
           <stop offset="50%" stopColor="#22d3ee" stopOpacity="1" />
           <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
@@ -1108,9 +1108,9 @@ export default function App() {
         </div>
 
      <SectionSeam className="bottom-0" />
-        <RegistrationForm />
-            <FloatingGirl />
-    </main>
+     <RegistrationForm />
+        <FloatingGirl />
+      </main>
     </div>
   );
 }
