@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 import colaImg from "./assets/cola2.png";
+import colaImg from "./assets/divider.png";
 import { motion, useScroll, useTransform, AnimatePresence, useReducedMotion } from "motion/react";
 import {
   ChevronRight,
@@ -659,7 +660,7 @@ const DividerImage = ({
 }) => (
   <div className={`pointer-events-none absolute inset-x-0 z-[100] overflow-hidden ${className} ${opacity}`}>
     <img
-      src="/divider.png"
+     src={dividerImg}
       alt=""
       className={`block w-full h-[48px] object-cover md:h-[82px] ${inverted ? "rotate-180" : ""}`}
     />
