@@ -489,7 +489,6 @@ const FloatingGirl = () => {
         ease: [0.22, 1, 0.36, 1],
       }}
     >
-      {/* 💬 Correctly positioned Chat Bubble (Up and to the Left) */}
       <AnimatePresence>
         {isUserActive && showFromSteps && (
           <motion.div
@@ -521,8 +520,8 @@ const FloatingGirl = () => {
                 </motion.div>
               </AnimatePresence>
 
-              {/* Chat Bubble Tail adjusted to point from bottom-right towards her head */}
-              <div className="absolute -bottom-[7px] right-8 h-4 w-4 rotate-45 border-b border-r border-cyan-400/60 bg-cyan-950/85 transition-colors duration-300 group-hover:bg-cyan-900/95" />
+              {/* Chat Bubble Tail adjusted to point DIRECTLY at the lady (right side edge) */}
+              <div className="absolute bottom-[20%] -right-[7px] h-4 w-4 rotate-45 border-t border-r border-cyan-400/60 bg-[#061d33] transition-colors duration-300 group-hover:bg-[#07243e] sm:bottom-3 sm:h-[14px] sm:w-[14px]" />
             </div>
           </motion.div>
         )}
