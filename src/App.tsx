@@ -161,7 +161,6 @@ const RealisticBackground = () => (
   </div>
 );
 
-// UPDATED: Now supports "dome" (upward arch) or "dip" (downward U-shape)
 const SectionSeam = ({ 
   className = "", 
   fillColor = "#020f6a",
@@ -175,13 +174,11 @@ const SectionSeam = ({
     <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="block w-full h-[76px] sm:h-[120px]">
       {shape === "dome" ? (
         <>
-          {/* Upward Arch (Dome) Shape */}
           <path d="M0,120 L0,100 C480,0 720,0 1200,100 L1200,120 Z" fill={fillColor} />
           <path d="M0,100 C480,0 720,0 1200,100" fill="none" stroke="url(#line-glow)" strokeWidth="3" />
         </>
       ) : (
         <>
-          {/* Downward Curve (Dip/U-Shape) */}
           <path d="M0,0 C480,100 720,100 1200,0 L1200,120 L0,120 Z" fill={fillColor} />
           <path d="M0,0 C480,100 720,100 1200,0" fill="none" stroke="url(#line-glow)" strokeWidth="3" />
         </>
@@ -530,7 +527,7 @@ export default function App() {
             {/* Kept empty as requested */}
           </div>
 
-          {/* REMAINS A DOME: Hero section keeps the upward arch */}
+          {/* REMAINS A DOME */}
           <SectionSeam className="bottom-[-1px]" fillColor="#0b49b8" shape="dome" />
         </section>
 
@@ -555,56 +552,68 @@ export default function App() {
             <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-cyan-400/5 blur-[100px] animate-pulse delay-1000" />
           </div>
 
-          <div className="relative z-10 mx-auto max-w-4xl rounded-[28px] border border-white/10 bg-white/5 px-4 py-8 shadow-[0_10px_40px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:px-10 sm:py-12">
+          {/* --- NEW GLOSSY GLASS TRANSPARENT BOX --- */}
+          <div className="relative z-10 mx-auto max-w-4xl rounded-[32px] border border-white/20 bg-gradient-to-br from-white/30 via-white/5 to-white/5 px-4 py-8 shadow-[0_30px_60px_rgba(0,0,0,0.4)] backdrop-blur-[32px] sm:px-10 sm:py-12 overflow-hidden">
             
-            <div className="mb-6 text-center sm:mb-10">
-              <h2 className="text-3xl font-bold tracking-tight leading-[0.95] sm:text-4xl md:text-5xl">
-                <HeroWord light>Steps to Claim</HeroWord>
-              </h2>
-              <p className="mt-2 text-xs font-medium text-blue-100/75 sm:text-sm">
-                A quick guide to unlock your reward
-              </p>
-            </div>
+            {/* Glass Highlight Top Overlay */}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-transparent opacity-50" />
+            
+            {/* Glass Edge Glow Light */}
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-white/50 to-transparent" />
 
-            <div className="relative">
-              <div className="grid grid-cols-4 gap-2 sm:gap-6 md:gap-12">
-                {stepData.map((item, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: i * 0.15 }}
-                    className="group relative"
-                  >
-                    <div className="flex flex-col items-center">
-                      <div className="relative mb-2 sm:mb-4">
-                        <div className="absolute inset-0 rounded-full bg-blue-400/10 blur-2xl opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
-                        <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl border border-slate-200 bg-white backdrop-blur-2xl transition-all duration-500 group-hover:-translate-y-2 group-hover:border-blue-400/50 group-hover:shadow-[0_20px_40px_rgba(59,130,246,0.1)] sm:h-20 sm:w-20 sm:rounded-[2.5rem] md:h-24 md:w-24">
-                          <item.icon className="h-6 w-6 text-blue-600 transition-transform duration-500 group-hover:scale-110 sm:h-8 sm:w-8 md:h-10 md:w-10" />
-                          <div className="absolute -left-2 -top-2 flex h-8 w-8 items-center justify-center rounded-lg border border-blue-200 bg-white text-xs font-bold text-blue-600 shadow-[0_4px_12px_rgba(59,130,246,0.15)] transition-all duration-300 group-hover:border-blue-400 group-hover:text-blue-700 sm:-left-4 sm:-top-4 sm:h-12 sm:w-12 sm:rounded-2xl sm:text-xl">
-                            {item.step}
+            {/* Inner Content Wrapper */}
+            <div className="relative z-10">
+              <div className="mb-6 text-center sm:mb-10">
+                <h2 className="text-3xl font-bold tracking-tight leading-[0.95] sm:text-4xl md:text-5xl">
+                  <HeroWord light>Steps to Claim</HeroWord>
+                </h2>
+                <p className="mt-2 text-xs font-medium text-blue-100/90 sm:text-sm">
+                  A quick guide to unlock your reward
+                </p>
+              </div>
+
+              <div className="relative">
+                <div className="grid grid-cols-4 gap-2 sm:gap-6 md:gap-12">
+                  {stepData.map((item, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: i * 0.15 }}
+                      className="group relative"
+                    >
+                      <div className="flex flex-col items-center">
+                        <div className="relative mb-2 sm:mb-4">
+                          <div className="absolute inset-0 rounded-full bg-blue-400/10 blur-2xl opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
+                          <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl border border-white/40 bg-white/20 backdrop-blur-3xl transition-all duration-500 group-hover:-translate-y-2 group-hover:border-white/60 group-hover:bg-white/30 group-hover:shadow-[0_20px_40px_rgba(255,255,255,0.15)] sm:h-20 sm:w-20 sm:rounded-[2.5rem] md:h-24 md:w-24">
+                            <item.icon className="h-6 w-6 text-white transition-transform duration-500 group-hover:scale-110 sm:h-8 sm:w-8 md:h-10 md:w-10 drop-shadow-md" />
+                            <div className="absolute -left-2 -top-2 flex h-8 w-8 items-center justify-center rounded-lg border border-white/50 bg-white/30 backdrop-blur-md text-xs font-bold text-white shadow-[0_4px_12px_rgba(255,255,255,0.2)] transition-all duration-300 group-hover:border-white group-hover:bg-white/50 sm:-left-4 sm:-top-4 sm:h-12 sm:w-12 sm:rounded-2xl sm:text-xl">
+                              {item.step}
+                            </div>
+                            <div className="absolute inset-0 rounded-2xl border border-white/0 opacity-0 group-hover:animate-ping group-hover:border-white/50 group-hover:opacity-30 sm:rounded-[2.5rem]" />
                           </div>
-                          <div className="absolute inset-0 rounded-2xl border border-blue-400/0 opacity-0 group-hover:animate-ping group-hover:border-blue-400/50 group-hover:opacity-20 sm:rounded-[2.5rem]" />
+                        </div>
+
+                        <div className="text-center space-y-1 sm:space-y-2">
+                          <h3 className="text-xs font-bold tracking-tight text-white transition-colors group-hover:text-cyan-100 sm:text-xl md:text-3xl drop-shadow-sm">
+                            {item.title}
+                          </h3>
+                          <p className="mx-auto max-w-[180px] text-[10px] font-semibold leading-tight text-white/80 transition-colors group-hover:text-white sm:max-w-[200px] sm:text-sm md:text-base">
+                            {item.desc}
+                          </p>
                         </div>
                       </div>
-
-                      <div className="text-center space-y-1 sm:space-y-2">
-                        <h3 className="text-xs font-bold tracking-tight text-white transition-colors group-hover:text-cyan-200 sm:text-xl md:text-3xl">
-                          {item.title}
-                        </h3>
-                        <p className="mx-auto max-w-[180px] text-[10px] font-semibold leading-tight text-blue-100 transition-colors group-hover:text-white sm:max-w-[200px] sm:text-sm md:text-base">
-                          {item.desc}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
+          {/* --- END GLOSSY GLASS BOX --- */}
 
-          {/* DIPS DOWN: Steps section curves downward into the Registration Form */}
+          {/* DIPS DOWN */}
           <SectionSeam className="bottom-[-1px]" fillColor="#020f6a" shape="dip" />
         </section>
 
