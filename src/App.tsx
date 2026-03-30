@@ -2,6 +2,7 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
+import { motion, useScroll } from "framer-motion";
 import colaImg from "./assets/cola2.png";
 import { motion, useScroll, useTransform, AnimatePresence, useReducedMotion } from "motion/react";
 import {
@@ -658,21 +659,31 @@ const CardKeyword = ({ children }: { children: ReactNode }) => (
  * no extra glow / strokes / motion
  * does not change other content
  */
-const SmoothShapeDivider = ({
-  fillColor = "#020814",
-  type = "curve",
+const WaveDivider = ({
   inverted = false,
-  className = "",
-  children,
-  coinPosition = "center"
 }: {
-  fillColor: string;
-  type?: "wave" | "curve" | "concave";
   inverted?: boolean;
-  className?: string;
-  children?: ReactNode;
-  coinPosition?: "center" | "right";
 }) => {
+  return (
+    <div
+      className={`absolute left-0 w-full leading-[0] pointer-events-none z-20 overflow-hidden ${
+        inverted ? "top-[-1px] rotate-180" : "bottom-[-1px]"
+      }`}
+    >
+      <svg
+        viewBox="0 0 1440 160"
+        className="block w-full h-[70px] md:h-[120px]"
+        preserveAspectRatio="none"
+      >
+        {/* CLEAN DARK CURVE (NO GLOW / NO LINES) */}
+        <path
+          d="M0,0 L0,130 C300,95 550,75 720,72 C930,70 1180,90 1440,130 L1440,0 Z"
+          fill="#020814"
+        />
+      </svg>
+    </div>
+  );
+};
   const paths = {
     // broad smooth arc for bottom separators
     wave: "M0,0 L0,130 C260,96 520,74 720,70 C940,66 1180,84 1440,130 L1440,0 Z",
@@ -1285,7 +1296,7 @@ export default function App() {
             coinPosition="right" 
           >
              <GoldCoin />
-          </SmoothShapeDivider>
+         <WaveDivider />
         </section>
 
         <RegistrationForm />
