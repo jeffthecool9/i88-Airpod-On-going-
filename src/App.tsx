@@ -2,7 +2,7 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
-import colaImg from "./assets/cola2.png";
+
 import { motion, useScroll, useTransform, AnimatePresence, useReducedMotion } from "motion/react";
 import {
   ChevronRight,
@@ -539,32 +539,32 @@ const RealisticBackground = ({ isMobile = false }: { isMobile?: boolean }) => {
         />
       )}
 
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          animate={prefersReducedMotion ? undefined : { x: [-20, 20, -20] }}
-          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-          className={`absolute left-1/2 -translate-x-1/2 opacity-35 mix-blend-soft-light ${
-            isMobile ? "bottom-[-30px] h-[110px] w-[170%]" : "bottom-[-40px] h-[180px] w-[150%]"
-          }`}
-          style={{
-            background:
-              "radial-gradient(ellipse at center, rgba(180,220,255,0.22) 0%, rgba(160,210,255,0.12) 45%, transparent 78%)",
-            filter: isMobile ? "blur(26px)" : "blur(36px)",
-          }}
-        />
+     <div className="absolute inset-0 overflow-hidden">
+  <motion.div
+    animate={prefersReducedMotion ? undefined : { x: [-20, 20, -20] }}
+    transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+    className={`absolute left-1/2 -translate-x-1/2 opacity-35 mix-blend-soft-light ${
+      isMobile ? "bottom-[-30px] h-[110px] w-[170%]" : "bottom-[-40px] h-[180px] w-[150%]"
+    }`}
+    style={{
+      background:
+        "radial-gradient(ellipse at center, rgba(180,220,255,0.22) 0%, rgba(160,210,255,0.12) 45%, transparent 78%)",
+      filter: isMobile ? "blur(26px)" : "blur(36px)",
+    }}
+  />
 
-        <motion.div
-          animate={prefersReducedMotion ? undefined : { x: [16, -16, 16] }}
-          transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
-          className={`absolute left-1/2 -translate-x-1/2 opacity-18 mix-blend-soft-light ${
-            isMobile ? "bottom-[-50px] h-[140px] w-[190%]" : "bottom-[-70px] h-[220px] w-[170%]"
-          }`}
-          style={{
-            background:
-              "radial-gradient(ellipse at center, rgba(140,200,255,0.14) 0%, rgba(140,200,255,0.08) 50%, transparent 85%)",
-            filter: isMobile ? "blur(34px)" : "blur(50px)",
-          }}
-        />
+  <motion.div
+    animate={prefersReducedMotion ? undefined : { x: [16, -16, 16] }}
+    transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
+    className={`absolute left-1/2 -translate-x-1/2 opacity-18 mix-blend-soft-light ${
+      isMobile ? "bottom-[-50px] h-[140px] w-[190%]" : "bottom-[-70px] h-[220px] w-[170%]"
+    }`}
+    style={{
+      background:
+        "radial-gradient(ellipse at center, rgba(140,200,255,0.14) 0%, rgba(140,200,255,0.08) 50%, transparent 85%)",
+      filter: isMobile ? "blur(34px)" : "blur(50px)",
+    }}
+  />
         {!isMobile && (
           <motion.div
             animate={prefersReducedMotion ? undefined : { x: [-15, 15, -15] }}
@@ -728,6 +728,33 @@ const WaveDivider = ({
   </div>
 );
 
+const TopWaveDivider = ({
+  className = "",
+  opacity = "opacity-100",
+  upperFillClass = "fill-[#061b7f]",
+  lowerFillClass = "fill-[#0b2f9d]",
+  accentStrokeClass = "stroke-white/12",
+}: {
+  className?: string;
+  opacity?: string;
+  upperFillClass?: string;
+  lowerFillClass?: string;
+  accentStrokeClass?: string;
+}) => (
+  <div className={`absolute inset-x-0 top-0 w-full pointer-events-none z-[90] overflow-hidden ${className} ${opacity}`}>
+    <div className="relative w-full rotate-180 origin-center">
+      <WaveDivider
+        className="top-0"
+        opacity="opacity-100"
+        inverted={false}
+        upperFillClass={upperFillClass}
+        lowerFillClass={lowerFillClass}
+        accentStrokeClass={accentStrokeClass}
+      />
+    </div>
+  </div>
+);
+
 const SectionHeading = ({
   children,
   subtitle,
@@ -798,8 +825,13 @@ const RegistrationForm = () => {
   return (
     <section
       id="registration-form"
-      className="relative z-10 overflow-hidden bg-gradient-to-br from-brand-blue-start/80 via-brand-navy/90 to-brand-navy px-6 py-24"
+      className="relative z-10 overflow-hidden bg-gradient-to-br from-brand-blue-start/80 via-brand-navy/90 to-brand-navy px-6 pt-28 pb-24"
     >
+      <TopWaveDivider
+        upperFillClass="fill-[#081f73]"
+        lowerFillClass="fill-[#08172f]"
+        accentStrokeClass="stroke-white/10"
+      />
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/10 blur-[120px]" />
       </div>
@@ -987,63 +1019,6 @@ const RegistrationForm = () => {
   );
 };
 
-const FloatingGirl = () => {
-  return (
-    <div className="pointer-events-none fixed bottom-[-10px] right-[-40px] z-[25] select-none">
-      {/* body-outline glow layer */}
-      <motion.img
-        src={colaImg}
-        alt=""
-        aria-hidden="true"
-        className="
-          absolute inset-0
-          h-auto
-          w-[280px]
-          sm:w-[360px]
-          md:w-[480px]
-          lg:w-[560px]
-          xl:w-[640px]
-          object-contain
-          opacity-90
-        "
-        animate={{
-          opacity: [0.45, 0.9, 0.45],
-        }}
-        transition={{
-          duration: 2.8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        style={{
-          filter: `
-            brightness(1.15)
-         drop-shadow(0 0 8px rgba(125,211,252,1))
-drop-shadow(0 0 16px rgba(56,189,248,0.95))
-drop-shadow(0 0 28px rgba(59,130,246,0.85))
-drop-shadow(0 0 46px rgba(34,211,238,0.65))
-          `,
-        }}
-      />
-
-      {/* main girl image */}
-      <img
-        src={colaImg}
-        alt=""
-        className="
-          relative
-          h-auto
-          w-[280px]
-          sm:w-[360px]
-          md:w-[480px]
-          lg:w-[560px]
-          xl:w-[640px]
-          object-contain
-          drop-shadow-[0_25px_60px_rgba(0,0,0,0.35)]
-        "
-      />
-    </div>
-  );
-};
 /* ----------------------------- App ----------------------------- */
 
 export default function App() {
@@ -1183,7 +1158,25 @@ export default function App() {
           <WaveDivider className="bottom-0" opacity="opacity-100" inverted={false} upperFillClass="fill-[#0b2f9d]" lowerFillClass="fill-[#081f73]" accentStrokeClass="stroke-white/14" />
         </section>
 
-        <section className="relative z-10 overflow-visible bg-gradient-to-br from-brand-deep-blue via-brand-vibrant-blue/40 to-brand-deep-blue px-6 pb-40 pt-16">
+        <section className="relative z-10 overflow-visible bg-gradient-to-br from-brand-deep-blue via-brand-vibrant-blue/40 to-brand-deep-blue px-6 pb-40 pt-24">
+          <TopWaveDivider
+            upperFillClass="fill-[#061b7f]"
+            lowerFillClass="fill-[#081f73]"
+            accentStrokeClass="stroke-white/12"
+          />
+          <div className="pointer-events-none absolute inset-0 opacity-20">
+            {[...Array(10)].map((_, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -100 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 2, delay: i * 0.2 }}
+                className="absolute h-px w-full bg-gradient-to-r from-transparent via-blue-400 to-transparent"
+                style={{ top: `${i * 10}%`, transform: `rotate(${i * 2 - 10}deg)` }}
+              />
+            ))}
+          </div>
+
           <div className="pointer-events-none absolute left-0 top-0 h-full w-full">
             <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-white/5 blur-[120px] animate-pulse" />
             <div className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-cyan-400/5 blur-[120px] animate-pulse delay-1000" />
@@ -1198,6 +1191,28 @@ export default function App() {
               </div>
 
               <div className="relative flex-1">
+                <div className="absolute left-0 top-1/2 hidden h-px w-full -translate-y-1/2 lg:block">
+                  <svg className="h-20 w-full -translate-y-1/2 overflow-visible" viewBox="0 0 1000 100" fill="none">
+                    <motion.path
+                      d="M 0 50 Q 250 10, 500 50 T 1000 50"
+                      stroke="url(#pipeline-gradient-light)"
+                      strokeWidth="0.5"
+                      strokeDasharray="10 10"
+                      initial={{ pathLength: 0, opacity: 0 }}
+                      whileInView={{ pathLength: 1, opacity: 0.3 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 2, ease: "easeInOut" }}
+                    />
+                    <defs>
+                      <linearGradient id="pipeline-gradient-light" x1="0" y1="0" x2="1000" y2="0" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#2563eb" stopOpacity="0" />
+                        <stop offset="0.5" stopColor="#2563eb" />
+                        <stop offset="1" stopColor="#2563eb" stopOpacity="0" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+
                 <div className="grid grid-cols-4 gap-2 sm:gap-6 md:gap-12">
                   {stepData.map((item, i) => (
                     <motion.div
@@ -1243,7 +1258,6 @@ export default function App() {
         </section>
 
         <RegistrationForm />
-        <FloatingGirl />
       </main>
     </div>
   );
