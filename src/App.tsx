@@ -248,27 +248,44 @@ const GoldConfetti = () => {
     </motion.div>
   );
 };
-
 const RealisticBackground = () => (
   <div className="pointer-events-none absolute inset-0 z-0">
-    {/* Base hero blue */}
-    <div className="absolute inset-0 bg-[#0a1580]" />
+    <motion.div 
+      animate={{ 
+        background: [
+          "linear-gradient(to bottom, #020f6a, #1696f9, #020f6a)",
+          "linear-gradient(to bottom, #020f6a, #1696f9, #020f6a)",
+          "linear-gradient(to bottom, #020f6a, #1696f9, #020f6a)"
+        ]
+      }}
+      transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+      className="absolute inset-0" 
+    />
+    
+    {/* Sun & God Rays (The Sunlight Effect) */}
+    <div className="absolute -right-20 -top-20 h-[600px] w-[600px]">
+      {[...Array(6)].map((_, i) => (
+        <motion.div
+          key={`ray-${i}`}
+          animate={{ opacity: [0.1, 0.2, 0.1], rotate: [i * 15, i * 15 + 5, i * 15] }}
+          transition={{ duration: 8 + i, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute inset-0 origin-center"
+          style={{
+            background: `conic-gradient(from ${i * 60}deg at 50% 50%, transparent 0%, rgba(255,255,255,0.15) 10%, transparent 20%)`,
+            filter: "blur(20px)"
+          }}
+        />
+      ))}
+      <motion.div
+        animate={{ scale: [1, 1.1, 1], opacity: [0.7, 0.9, 0.7] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,1)_0%,rgba(255,250,220,0.9)_20%,rgba(255,244,180,0.6)_40%,rgba(143,177,233,0)_75%)] blur-[40px]"
+      />
+    </div>
 
-    {/* Sun glow from top center */}
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-12%,rgba(255,255,255,0.24)_0%,rgba(255,255,255,0.12)_18%,rgba(125,211,252,0.08)_32%,transparent_52%)]" />
+    {/* Note: All Cloud layers have been removed to stop the white blocking effect */}
 
-    {/* Soft blue atmosphere, very subtle */}
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_22%,rgba(34,211,238,0.10)_0%,transparent_38%)]" />
-
-    {/* Mild side depth only */}
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_30%,rgba(59,130,246,0.08)_0%,transparent_32%)]" />
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_30%,rgba(59,130,246,0.06)_0%,transparent_32%)]" />
-
-    {/* Very light texture */}
-    <div className="absolute inset-0 opacity-[0.04] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-
-    {/* Slight inner depth */}
-    <div className="absolute inset-0 shadow-[inset_0_0_180px_rgba(0,0,0,0.08)]" />
+    <div className="absolute inset-0 opacity-15 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
   </div>
 );
 const SectionKicker = ({ children }: { children: ReactNode }) => (
@@ -291,13 +308,13 @@ const SectionSeam = ({ className = "", flip = false }: { className?: string; fli
       className="block w-full h-[76px] sm:h-[120px]"
       aria-hidden="true"
     >
-      {/* The main liquid curve - matches your brand navy #020f6a */}
+      {/* Liquid Curve - Now matches brand navy #020f6a */}
       <path
         d="M0,0 C480,100 720,100 1200,0 L1200,120 L0,120 Z"
         fill="#020f6a"
       />
 
-      {/* The glowing connectivity line following the edge */}
+      {/* Connectivity Glow Line */}
       <path
         d="M0,0 C480,100 720,100 1200,0"
         fill="none"
