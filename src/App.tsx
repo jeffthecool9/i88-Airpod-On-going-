@@ -764,7 +764,7 @@ export default function App() {
   const stepData = [
     { step: "1", title: "Register", desc: "Create account", icon: UserPlus },
     { step: "2", title: "Deposit", desc: "Start from $50", icon: Wallet },
-    { step: "3", title: "Play", desc: "Reach requirement", icon: Gamepad2 },
+    { step: "3", title: "Play", desc: "Unlock Reward", icon: Gamepad2 },
     { step: "4", title: "Claim", desc: "Get AirPods", icon: Gift },
   ];
 
