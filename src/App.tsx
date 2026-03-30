@@ -660,7 +660,7 @@ const DividerImage = ({
 }) => (
  <div class="relative w-full h-[120px] overflow-hidden">
 
-  <!-- flare -->
+ {/* flare */}
   <img 
     src="/divider2.png"
     class="
