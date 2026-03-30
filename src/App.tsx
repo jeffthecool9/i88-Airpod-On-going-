@@ -153,174 +153,6 @@ const GoldParticles = () => (
   </div>
 );
 
-const GoldCoin = () => (
-  <div className="relative flex items-center justify-center group/coin z-[9999]">
-    {/* Hyper-Realistic Multi-Layered Dynamic Shadow (Grounded on Surface) */}
-    <div className="absolute -bottom-12 flex items-center justify-center pointer-events-none">
-      <motion.div
-        animate={{ 
-          scale: [1.2, 2, 1.2],
-          opacity: [0.8, 0.3, 0.8],
-          filter: ["blur(20px)", "blur(40px)", "blur(20px)"],
-          rotateX: [70, 80, 70]
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="h-14 w-64 rounded-[100%] bg-black/80 blur-3xl"
-      />
-      <motion.div
-        animate={{ 
-          scale: [1, 1.5, 1], 
-          opacity: [1, 0.5, 1],
-          filter: ["blur(10px)", "blur(18px)", "blur(10px)"]
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute h-8 w-40 rounded-[100%] bg-black blur-xl"
-      />
-      <motion.div
-        animate={{ 
-          scale: [1, 1.3, 1], 
-          opacity: [1, 0.7, 1],
-          filter: ["blur(3px)", "blur(6px)", "blur(3px)"]
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute h-4 w-20 rounded-[100%] bg-black blur-sm"
-      />
-    </div>
-
-    {/* Particle System (Hyper-Realistic Gold Dust & Sparks) */}
-    <GoldParticles />
-
-    {/* Supernova Pulsing Bloom Glow */}
-    <motion.div
-      animate={{ 
-        opacity: [0.4, 0.8, 0.4], 
-        scale: [1, 1.3, 1],
-        filter: ["blur(60px)", "blur(100px)", "blur(60px)"]
-      }}
-      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-      className="absolute h-64 w-64 rounded-full bg-[#F9D423]/40 pointer-events-none"
-    />
-
-    <motion.div
-      animate={{ 
-        rotateY: [0, 360],
-        y: [0, -30, 0],
-        rotateX: [25, -25, 25],
-        rotateZ: [-12, 12, -12]
-      }}
-      transition={{ 
-        rotateY: { duration: 18, repeat: Infinity, ease: "linear" },
-        y: { duration: 8, repeat: Infinity, ease: "easeInOut" },
-        rotateX: { duration: 12, repeat: Infinity, ease: "easeInOut" },
-        rotateZ: { duration: 13, repeat: Infinity, ease: "easeInOut" }
-      }}
-      style={{ perspective: "3000px", transformStyle: "preserve-3d" }}
-      className="relative h-36 w-36 sm:h-44 sm:w-44"
-    >
-      {/* 3D Coin Edge/Thickness (Ultra-High Density 24 Layers) */}
-      {[...Array(24)].map((_, i) => (
-        <div
-          key={i}
-          style={{ transform: `translateZ(${-i * 0.4}px)` }}
-          className="absolute inset-0 rounded-full border-[0.2px] border-[#8A6D3B]/70 bg-gradient-to-br from-[#D4AF37] via-[#F9D423] to-[#5C4033] shadow-[0_0_2px_rgba(0,0,0,0.3)]"
-        />
-      ))}
-
-      {/* Main Front Face */}
-      <div 
-        style={{ transform: "translateZ(1px)" }}
-        className="absolute inset-0 rounded-full bg-gradient-to-br from-[#FFF9E5] via-[#D4AF37] to-[#5C4033] shadow-[inset_0_8px_20px_rgba(255,255,255,1),inset_0_-8px_20px_rgba(0,0,0,0.8),0_50px_100px_rgba(0,0,0,0.9)] border-[2.5px] border-[#F9D423] flex items-center justify-center overflow-hidden"
-      >
-        {/* Ultra HD Silky Rim (Triple Bevel with Polished Finish) */}
-        <div className="absolute inset-0 rounded-full border-[14px] border-transparent bg-gradient-to-br from-[#FFE7A0] via-[#F9D423] to-[#8A6D3B] [mask-image:linear-gradient(white,white),linear-gradient(white,white)] [mask-clip:content-box,padding-box] [mask-composite:exclude]" />
-        <div className="absolute inset-[3px] rounded-full border-[1.5px] border-white/40 pointer-events-none" />
-        <div className="absolute inset-[11px] rounded-full border-[1px] border-black/20 pointer-events-none" />
-        
-        {/* Inner Decorative Rings (Quad-Layered) */}
-        <div className="absolute inset-[16px] border-[5px] border-[#8A6D3B]/60 rounded-full shadow-[inset_0_5px_10px_rgba(0,0,0,0.6)]" />
-        <div className="absolute inset-[24px] border-[2.5px] border-[#FFF9E5]/60 rounded-full" />
-        <div className="absolute inset-[30px] border-[1.5px] border-[#8A6D3B]/30 rounded-full" />
-        <div className="absolute inset-[34px] border-[1px] border-white/10 rounded-full" />
-        
-        {/* 88 Logo with Hyper-Realistic Gold Foil Embossing */}
-        <div className="relative flex items-center justify-center scale-110">
-          {/* Deepest Shadow */}
-          <span className="absolute translate-y-[5px] translate-x-[4px] text-7xl sm:text-8xl font-black text-black/80 select-none italic tracking-tighter blur-[3px]">
-            88
-          </span>
-          {/* Main Text with Gold Foil Texture */}
-          <span className="relative text-7xl sm:text-8xl font-black text-[#3D2B1F] drop-shadow-[0_4px_0_rgba(255,255,255,0.8)] select-none italic tracking-tighter bg-gradient-to-b from-[#3D2B1F] via-[#5C4033] to-[#000000] bg-clip-text">
-            88
-          </span>
-          {/* Logo Highlight Overlay */}
-          <span className="absolute text-7xl sm:text-8xl font-black text-transparent select-none italic tracking-tighter bg-gradient-to-br from-white/40 via-transparent to-transparent bg-clip-text pointer-events-none">
-            88
-          </span>
-          
-          {/* Branded Detail: Star/Zap with Supernova Glow */}
-          <div className="absolute -right-5 -top-5">
-            <motion.div
-              animate={{ 
-                scale: [1, 1.4, 1],
-                filter: ["brightness(1) drop-shadow(0 0 8px #F9D423)", "brightness(2) drop-shadow(0 0 25px #F9D423)", "brightness(1) drop-shadow(0 0 8px #F9D423)"]
-              }}
-              transition={{ duration: 1.2, repeat: Infinity }}
-            >
-              <Zap className="h-8 w-8 fill-[#F9D423] text-[#F9D423]" />
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Dynamic Triple-Point Lights */}
-        <motion.div 
-          animate={{ x: ["-150%", "150%"], y: ["-150%", "150%"] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.6),transparent_70%)] blur-3xl"
-        />
-        <motion.div 
-          animate={{ x: ["150%", "-150%"], y: ["150%", "-150%"] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,212,35,0.4),transparent_70%)] blur-3xl"
-        />
-        <motion.div 
-          animate={{ rotate: [0, 360] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.3),transparent_50%)]"
-        />
-
-        {/* Silky Anisotropic Reflections (Mirror Finish) */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_40%,rgba(255,255,255,1),transparent_35%)]" />
-        <div className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent,rgba(255,255,255,0.5),transparent_60deg,rgba(255,255,255,0.5),transparent_120deg,rgba(255,255,255,0.5),transparent_180deg,rgba(255,255,255,0.5),transparent_240deg,rgba(255,255,255,0.5),transparent_300deg)] animate-[spin_25s_linear_infinite]" />
-        
-        {/* High-Speed Shine Sweep (Triple Sweep with Motion Blur) */}
-        <motion.div 
-          animate={{ x: ["-500%", "600%"] }}
-          transition={{ duration: 2, repeat: Infinity, repeatDelay: 6 }}
-          className="absolute inset-0 w-2/3 bg-gradient-to-r from-transparent via-white/95 to-transparent skew-x-[55deg] blur-[6px]"
-        />
-        
-        {/* Ultra HD Hyper-Realistic Textures & Pixel Detail */}
-        <div className="absolute inset-0 opacity-[0.2] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/brushed-alum.png')] mix-blend-overlay" />
-        <div className="absolute inset-0 opacity-[0.12] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] mix-blend-screen" />
-        <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] mix-blend-multiply" />
-        <div className="absolute inset-0 opacity-[0.1] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')] mix-blend-overlay" />
-        
-        {/* Silky Corner Highlight (Supernova Glow) */}
-        <div className="absolute inset-0 rounded-full shadow-[inset_0_0_60px_rgba(255,255,255,0.7)]" />
-      </div>
-
-      {/* Back Face (Hyper-Realistic Mirror Side) */}
-      <div 
-        style={{ transform: "translateZ(-15px) rotateY(180deg)" }}
-        className="absolute inset-0 rounded-full bg-gradient-to-br from-[#5C4033] via-[#8A6D3B] to-[#000000] border-[8px] border-[#8A6D3B] flex items-center justify-center shadow-[inset_0_8px_16px_rgba(0,0,0,0.9)]"
-      >
-        <div className="h-20 w-20 rounded-full border-[4px] border-[#D4AF37]/60 flex items-center justify-center bg-[#3D2B1F]/50 shadow-[inset_0_4px_8px_rgba(0,0,0,0.6)]">
-           <Zap className="h-12 w-12 fill-[#D4AF37] text-[#D4AF37] drop-shadow-[0_0_20px_rgba(212,175,55,0.6)]" />
-        </div>
-      </div>
-    </motion.div>
-  </div>
-);
 
 const GoldConfetti = () => {
   const { scrollY } = useScroll();
@@ -1103,11 +935,13 @@ export default function App() {
                   </motion.div>
                 ))}
               </div>
-            </div>
+          </div>
           </div>
         </div>
 
-     <SectionSeam className="bottom-0" />
+        <SectionSeam className="bottom-0" />
+      </section>
+        
      <RegistrationForm />
         <FloatingGirl />
       </main>
