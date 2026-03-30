@@ -1113,7 +1113,7 @@ export default function App() {
                         <h3 className="text-xs sm:text-xl md:text-3xl font-bold tracking-tight text-white group-hover:text-cyan-200 transition-colors">
                           {item.title}
                         </h3>
-                        <p className="hidden sm:block mx-auto max-w-[200px] text-sm sm:text-base font-semibold leading-relaxed text-blue-100 group-hover:text-white transition-colors">
+                        <p className="mx-auto max-w-[200px] text-[11px] sm:text-base font-semibold leading-relaxed text-blue-100 group-hover:text-white transition-colors">
                           {item.desc}
                         </p>
                       </div>
@@ -1129,6 +1129,7 @@ export default function App() {
         </section>
 
         <RegistrationForm />
+        <FloatingGirl />
 
       </main>
     </div>
