@@ -658,24 +658,23 @@ const DividerImage = ({
   inverted?: boolean;
   opacity?: string;
 }) => (
- <div class="relative w-full h-[120px] overflow-hidden">
-
- {/* flare */}
-  <img 
+<div className="relative w-full h-[120px] overflow-hidden">
+  {/* flare */}
+  <img
     src="/divider2.png"
-    class="
-      absolute 
-      left-1/2 
+    alt="divider flare"
+    className="
+      absolute
+      left-1/2
       bottom-0
       -translate-x-1/2
-      w-[160%] 
+      w-[160%]
       max-w-none
-      mix-blend-screen 
+      mix-blend-screen
       opacity-90
       pointer-events-none
     "
   />
-
 </div>
 );
 
