@@ -658,13 +658,25 @@ const DividerImage = ({
   inverted?: boolean;
   opacity?: string;
 }) => (
-  <div className={`pointer-events-none absolute inset-x-0 z-[100] overflow-hidden ${className} ${opacity}`}>
-    <img
-     src={dividerImg}
-      alt=""
-      className={`block w-full h-[48px] object-cover md:h-[82px] ${inverted ? "rotate-180" : ""}`}
-    />
-  </div>
+ <div class="relative w-full h-[120px] overflow-hidden">
+
+  <!-- flare -->
+  <img 
+    src="/divider2.png"
+    class="
+      absolute 
+      left-1/2 
+      bottom-0
+      -translate-x-1/2
+      w-[160%] 
+      max-w-none
+      mix-blend-screen 
+      opacity-90
+      pointer-events-none
+    "
+  />
+
+</div>
 );
 
 const SectionHeading = ({
