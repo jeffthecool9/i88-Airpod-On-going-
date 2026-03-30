@@ -944,7 +944,7 @@ export default function App() {
         
      <RegistrationForm />
         <FloatingGirl />
-      </main>
+  </main>
     </div>
   );
 }
