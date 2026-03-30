@@ -563,17 +563,17 @@ const CardKeyword = ({ children }: { children: ReactNode }) => (
   </span>
 );
 
-const SectionCurveDivider = ({ className = "", flip = false }: { className?: string; flip?: boolean }) => (
+const SectionSeam = ({ className = "", flip = false }: { className?: string; flip?: boolean }) => (
   <div className={`absolute left-0 w-full overflow-hidden leading-[0] z-20 ${className} ${flip ? 'rotate-180' : ''}`}>
     <svg
       viewBox="0 0 1200 120"
       preserveAspectRatio="none"
       className="relative block w-full h-[60px] sm:h-[100px]"
     >
-      {/* The main curve - matches your blue/cyan theme */}
+      {/* The main curve - fill matches your brand-navy background */}
       <path
         d="M0,0 C480,100 720,100 1200,0 L1200,120 L0,120 Z"
-        className="fill-[#0f172a]" // Matches your dark section background
+        fill="#020f6a" 
       ></path>
       
       {/* The glowing line curve following the edge */}
@@ -1107,11 +1107,8 @@ export default function App() {
           </div>
         </div>
 
-        <SectionSeam className="bottom-0" />
-        </section>
-
+     <SectionSeam className="bottom-0" />
         <RegistrationForm />
-
             <FloatingGirl />
     </main>
     </div>
