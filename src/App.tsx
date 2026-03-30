@@ -251,40 +251,23 @@ const GoldConfetti = () => {
 
 const RealisticBackground = () => (
   <div className="pointer-events-none absolute inset-0 z-0">
-    <motion.div
-      animate={{
-        background: [
-          "linear-gradient(to bottom, #020f6a, #1696f9, #020f6a)",
-          "linear-gradient(to bottom, #020f6a, #1696f9, #020f6a)",
-          "linear-gradient(to bottom, #020f6a, #1696f9, #020f6a)",
-        ],
-      }}
-      transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-      className="absolute inset-0"
-    />
-
+    <div className="absolute inset-0 bg-[#020f6a]" />
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.05)_0%,transparent_60%)]" />
     <motion.div
       animate={{ x: ["-100%", "200%"] }}
-      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      className="absolute inset-0 w-full skew-x-[45deg] bg-gradient-to-r from-transparent via-white/40 to-transparent blur-[100px]"
+      transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      className="absolute inset-0 w-full skew-x-[45deg] bg-gradient-to-r from-transparent via-white/15 to-transparent blur-[120px]"
     />
-
-   <div className="absolute inset-0">
-  <div className="absolute bottom-0 left-0 w-full h-[200px] bg-gradient-to-t from-[#020f6a] to-transparent" />
-</div>
-    
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(143,177,233,0.4)_0%,transparent_60%)]" />
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_100%,rgba(92,138,230,0.3)_0%,transparent_60%)]" />
-    <div className="absolute inset-0 opacity-15 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
-    <div className="absolute inset-0 shadow-[inset_0_0_250px_rgba(0,0,0,0.04)]" />
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,transparent_60%,rgba(45,89,200,0.05)_100%)]" />
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(143,177,233,0.18)_0%,transparent_55%)]" />
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_100%,rgba(92,138,230,0.14)_0%,transparent_55%)]" />
+    <div className="absolute inset-x-0 bottom-0 h-[180px] bg-gradient-to-t from-[#020f6a] via-[#020f6a]/80 to-transparent" />
+    <div className="absolute inset-0 opacity-10 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
+    <div className="absolute inset-0 shadow-[inset_0_0_250px_rgba(0,0,0,0.08)]" />
   </div>
 );
 
 const SectionKicker = ({ children }: { children: ReactNode }) => (
-  <span className="text-[11px] font-semibold uppercase tracking-[0.32em] text-cyan-200/75">
-    {children}
-  </span>
+  <span className="text-[11px] font-semibold uppercase tracking-[0.32em] text-cyan-200/75">{children}</span>
 );
 
 const CardKeyword = ({ children }: { children: ReactNode }) => (
@@ -296,11 +279,7 @@ const CardKeyword = ({ children }: { children: ReactNode }) => (
 const SectionSeam = ({ className = "", flip = false }: { className?: string; flip?: boolean }) => (
   <div className={`absolute left-0 w-full overflow-hidden leading-[0] z-20 ${className} ${flip ? "rotate-180" : ""}`}>
     <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-[60px] sm:h-[100px]">
-      <path
-        d="M0,0 C480,100 720,100 1200,0 L1200,120 L0,120 Z"
-        fill="#0b3d91"
-      ></path>
-
+      <path d="M0,0 C480,100 720,100 1200,0 L1200,120 L0,120 Z" fill="#0b3d91"></path>
       <path
         d="M0,0 C480,100 720,100 1200,0"
         fill="none"
@@ -308,7 +287,6 @@ const SectionSeam = ({ className = "", flip = false }: { className?: string; fli
         strokeWidth="2.5"
         className="drop-shadow-[0_0_6px_rgba(56,189,248,0.55)]"
       />
-
       <defs>
         <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="#38bdf8" stopOpacity="0" />
@@ -319,6 +297,7 @@ const SectionSeam = ({ className = "", flip = false }: { className?: string; fli
     </svg>
   </div>
 );
+
 const SectionHeading = ({
   children,
   subtitle,
@@ -771,7 +750,7 @@ export default function App() {
       </motion.div>
 
       <main className="relative z-10">
-        <section className="relative flex min-h-screen items-center overflow-hidden px-6 pb-16 pt-16">
+        <section className="relative flex min-h-screen items-center overflow-hidden px-6 pb-16 pt-16 bg-[#020f6a]">
           <RealisticBackground />
           <GoldConfetti />
 
