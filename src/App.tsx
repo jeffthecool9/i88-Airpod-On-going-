@@ -648,94 +648,59 @@ const CardKeyword = ({ children }: { children: ReactNode }) => (
   </span>
 );
 
-const WaveDivider = ({
-  className = "",
-  color = "stroke-white/20",
-  opacity = "opacity-100",
+/**
+ * Updated WaveDivider to be a Smooth Shape Divider
+ * Using fill instead of stroke to mask sections.
+ */
+const SmoothShapeDivider = ({
+  fillColor = "#020f6a",
+  type = "wave",
   inverted = false,
+  className = "",
   children,
-  coinPosition = "center",
+  coinPosition = "center"
 }: {
-  className?: string;
-  color?: string;
-  opacity?: string;
+  fillColor: string;
+  type?: "wave" | "curve" | "concave";
   inverted?: boolean;
+  className?: string;
   children?: ReactNode;
   coinPosition?: "center" | "right";
-}) => (
-  <div className={`absolute left-0 w-full leading-[0] pointer-events-none z-[100] overflow-hidden ${className} ${opacity}`}>
-    <div className="relative w-full">
-      {children && (
-        <div
-          className={`absolute top-1/2 -translate-y-1/2 pointer-events-auto z-[9999] ${
-            coinPosition === "right" ? "right-[10%] sm:right-[15%]" : "left-1/2 -translate-x-1/2"
-          }`}
-        >
-          {children}
-        </div>
-      )}
+}) => {
+  const { scrollYProgress } = useScroll();
+  const yTranslate = useTransform(scrollYProgress, [0, 1], [0, inverted ? 30 : -30]);
 
-      <svg
-        className="relative block h-[92px] w-full md:h-[150px]"
-        viewBox="0 0 1440 160"
-        preserveAspectRatio="none"
-      >
-        {inverted ? (
-          <>
-            {/* thick filled divider like reference, flipped upward */}
-            <path
-              d="M0,0 C220,22 420,70 720,64 C1010,58 1200,18 1440,34 L1440,160 L0,160 Z"
-              fill="#0A168F"
-            />
-            <path
-              d="M0,22 C240,42 430,82 720,76 C1010,70 1208,34 1440,46"
-              fill="none"
-              stroke="rgba(255,255,255,0.10)"
-              strokeWidth="1.4"
-            />
-            <path
-              d="M0,10 C240,24 430,60 720,54 C1010,48 1200,18 1440,28"
-              fill="none"
-              stroke="rgba(96,165,250,0.12)"
-              strokeWidth="18"
-              strokeLinecap="round"
-              filter="url(#dividerGlow)"
-            />
-          </>
-        ) : (
-          <>
-            {/* thick filled divider like reference */}
-            <path
-              d="M0,0 L0,126 C240,146 430,120 720,116 C1010,112 1210,140 1440,126 L1440,0 Z"
-              fill="#0A168F"
-            />
-            <path
-              d="M0,124 C240,144 430,118 720,114 C1010,110 1210,138 1440,124"
-              fill="none"
-              stroke="rgba(255,255,255,0.10)"
-              strokeWidth="1.4"
-            />
-            <path
-              d="M0,112 C240,130 430,106 720,102 C1010,98 1210,126 1440,112"
-              fill="none"
-              stroke="rgba(96,165,250,0.12)"
-              strokeWidth="18"
-              strokeLinecap="round"
-              filter="url(#dividerGlow)"
-            />
-          </>
+  // Unique SVG paths for variety
+  const paths = {
+    wave: "M0,160 C320,300,420,0,1440,160 L1440,320 L0,320 Z",
+    curve: "M0,320 Q720,0 1440,320 L0,320 Z",
+    concave: "M0,0 Q720,280 1440,0 L1440,320 L0,320 Z"
+  };
+
+  return (
+    <div className={`absolute left-0 w-full leading-[0] z-20 pointer-events-none ${className} ${inverted ? "top-[-1px] rotate-180" : "bottom-[-1px]"}`}>
+      <div className="relative w-full">
+         {children && (
+          <div
+            className={`absolute top-0 -translate-y-1/2 pointer-events-auto z-[30] ${
+              coinPosition === "right" ? "right-[10%] sm:right-[15%]" : "left-1/2 -translate-x-1/2"
+            }`}
+          >
+            {children}
+          </div>
         )}
-
-        <defs>
-          <filter id="dividerGlow" x="-20%" y="-80%" width="140%" height="260%">
-            <feGaussianBlur stdDeviation="10" />
-          </filter>
-        </defs>
-      </svg>
+        <motion.svg 
+          style={{ y: yTranslate }}
+          viewBox="0 0 1440 320" 
+          className="w-full h-[60px] md:h-[120px]" 
+          preserveAspectRatio="none"
+        >
+          <path fill={fillColor} d={paths[type]} />
+        </motion.svg>
+      </div>
     </div>
-  </div>
-);
-
+  );
+};
 
 const SectionHeading = ({
   children,
@@ -771,13 +736,6 @@ const SectionHeading = ({
   </div>
 );
 
-interface FAQItemProps {
-  key?: React.Key;
-  question: string;
-  answer: string;
-  light?: boolean;
-}
-
 /* ----------------------------- Registration Form ----------------------------- */
 
 const RegistrationForm = () => {
@@ -807,8 +765,11 @@ const RegistrationForm = () => {
   return (
     <section
       id="registration-form"
-      className="relative z-10 overflow-hidden bg-gradient-to-br from-brand-blue-start/80 via-brand-navy/90 to-brand-navy px-6 py-24"
+      className="relative z-10 overflow-visible bg-brand-navy px-6 py-40"
     >
+      {/* Curved Top Transition (Biting into the previous section) */}
+      <SmoothShapeDivider type="concave" fillColor="#01081a" inverted={true} className="top-0" />
+
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/10 blur-[120px]" />
       </div>
@@ -990,8 +951,6 @@ const RegistrationForm = () => {
           </AnimatePresence>
         </motion.div>
       </div>
-
-      <WaveDivider className="bottom-0" color="stroke-brand-blue-start" opacity="opacity-100" inverted={false} />
     </section>
   );
 };
@@ -1241,18 +1200,19 @@ export default function App() {
       </motion.div>
 
       <main className="relative z-10">
-        <section className="relative flex min-h-[100svh] items-center overflow-hidden px-0 pb-0 pt-0 sm:px-6 sm:pb-16 sm:pt-16">
+        <section className="relative flex min-h-[100svh] items-center overflow-visible px-0 pb-0 pt-0 sm:px-6 sm:pb-16 sm:pt-16">
           <RealisticBackground isMobile={isMobile} />
           <GoldConfetti isMobile={isMobile} />
 
           <div className="relative z-10 mx-auto w-full max-w-6xl">
-            {/* Hero content removed as requested */}
+            {/* Content remains exactly the same as your code */}
           </div>
 
-          <WaveDivider className="bottom-0" color="stroke-brand-blue-start" opacity="opacity-100" inverted={false} />
+          {/* Smooth Curve Transition into Steps Section */}
+          <SmoothShapeDivider type="curve" fillColor="#01081a" />
         </section>
 
-        <section id="steps-to-claim" className="relative z-10 overflow-visible bg-gradient-to-br from-brand-deep-blue via-brand-vibrant-blue/40 to-brand-deep-blue px-6 pb-40 pt-16">
+        <section id="steps-to-claim" className="relative z-10 overflow-visible bg-[#01081a] px-6 pb-40 pt-16">
           <div className="pointer-events-none absolute left-0 top-0 h-full w-full">
             <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-white/5 blur-[120px] animate-pulse" />
             <div className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-cyan-400/5 blur-[120px] animate-pulse delay-1000" />
@@ -1308,7 +1268,14 @@ export default function App() {
             </div>
           </div>
 
-          <WaveDivider className="bottom-0" color="stroke-brand-navy" opacity="opacity-100" inverted={true} coinPosition="right" />
+          {/* Liquid Wave Transition into Registration Section */}
+          <SmoothShapeDivider 
+            type="wave" 
+            fillColor="#020617" 
+            coinPosition="right" 
+          >
+             <GoldCoin />
+          </SmoothShapeDivider>
         </section>
 
         <RegistrationForm />
