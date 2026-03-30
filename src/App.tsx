@@ -648,110 +648,21 @@ const CardKeyword = ({ children }: { children: ReactNode }) => (
   </span>
 );
 
-const WaveDivider = ({
+const DividerImage = ({
   className = "",
-  opacity = "opacity-100",
   inverted = false,
-  children,
-  coinPosition = "center",
-  upperFillClass = "fill-[#061b7f]",
-  lowerFillClass = "fill-[#0b2f9d]",
-  accentStrokeClass = "stroke-white/18",
-}: {
-  className?: string;
-  opacity?: string;
-  inverted?: boolean;
-  children?: ReactNode;
-  coinPosition?: "center" | "right";
-  upperFillClass?: string;
-  lowerFillClass?: string;
-  accentStrokeClass?: string;
-}) => (
-  <div className={`absolute inset-x-0 w-full leading-[0] pointer-events-none z-[100] overflow-hidden ${className} ${opacity}`}>
-    <div className="relative w-full">
-      {children && (
-        <div
-          className={`absolute top-1/2 -translate-y-1/2 pointer-events-auto z-[9999] ${
-            coinPosition === "right" ? "right-[10%] sm:right-[15%]" : "left-1/2 -translate-x-1/2"
-          }`}
-        >
-          {children}
-        </div>
-      )}
-
-      <svg
-        className="relative block h-[52px] w-full md:h-[88px]"
-        viewBox="0 0 1440 120"
-        preserveAspectRatio="none"
-      >
-        {inverted ? (
-          <>
-            <path
-              d="M0,0 C240,12 340,78 540,76 C740,74 800,24 960,20 C1130,16 1260,58 1440,54 L1440,120 L0,120 Z"
-              className={upperFillClass}
-            />
-            <path
-              d="M0,0 C240,12 340,78 540,76 C740,74 800,24 960,20 C1130,16 1260,58 1440,54"
-              fill="none"
-              className={accentStrokeClass}
-              strokeWidth="1.5"
-            />
-            <path
-              d="M0,6 C240,18 340,84 540,82 C740,80 800,30 960,26 C1130,22 1260,64 1440,60"
-              fill="none"
-              className="stroke-white/8"
-              strokeWidth="1"
-            />
-          </>
-        ) : (
-          <>
-            <path
-              d="M0,120 C230,116 340,42 540,44 C740,46 810,98 980,102 C1160,106 1270,76 1440,68 L1440,0 L0,0 Z"
-              className={lowerFillClass}
-            />
-            <path
-              d="M0,120 C230,116 340,42 540,44 C740,46 810,98 980,102 C1160,106 1270,76 1440,68"
-              fill="none"
-              className={accentStrokeClass}
-              strokeWidth="1.5"
-            />
-            <path
-              d="M0,114 C230,110 340,36 540,38 C740,40 810,92 980,96 C1160,100 1270,70 1440,62"
-              fill="none"
-              className="stroke-white/8"
-              strokeWidth="1"
-            />
-          </>
-        )}
-      </svg>
-    </div>
-  </div>
-);
-
-const TopWaveDivider = ({
-  className = "",
   opacity = "opacity-100",
-  upperFillClass = "fill-[#061b7f]",
-  lowerFillClass = "fill-[#0b2f9d]",
-  accentStrokeClass = "stroke-white/12",
 }: {
   className?: string;
+  inverted?: boolean;
   opacity?: string;
-  upperFillClass?: string;
-  lowerFillClass?: string;
-  accentStrokeClass?: string;
 }) => (
-  <div className={`absolute inset-x-0 top-0 w-full pointer-events-none z-[90] overflow-hidden ${className} ${opacity}`}>
-    <div className="relative w-full rotate-180 origin-center">
-      <WaveDivider
-        className="top-0"
-        opacity="opacity-100"
-        inverted={false}
-        upperFillClass={upperFillClass}
-        lowerFillClass={lowerFillClass}
-        accentStrokeClass={accentStrokeClass}
-      />
-    </div>
+  <div className={`pointer-events-none absolute inset-x-0 z-[100] overflow-hidden ${className} ${opacity}`}>
+    <img
+      src="/divider.png"
+      alt=""
+      className={`block w-full h-[48px] object-cover md:h-[82px] ${inverted ? "rotate-180" : ""}`}
+    />
   </div>
 );
 
@@ -827,11 +738,7 @@ const RegistrationForm = () => {
       id="registration-form"
       className="relative z-10 overflow-hidden bg-gradient-to-br from-brand-blue-start/80 via-brand-navy/90 to-brand-navy px-6 pt-28 pb-24"
     >
-      <TopWaveDivider
-        upperFillClass="fill-[#081f73]"
-        lowerFillClass="fill-[#08172f]"
-        accentStrokeClass="stroke-white/10"
-      />
+      <DividerImage className="top-0" inverted={true} />
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/10 blur-[120px]" />
       </div>
@@ -1014,7 +921,7 @@ const RegistrationForm = () => {
         </motion.div>
       </div>
 
-      <WaveDivider className="bottom-0" opacity="opacity-100" inverted={false} upperFillClass="fill-[#0b2f9d]" lowerFillClass="fill-[#081f73]" accentStrokeClass="stroke-white/14" />
+      <DividerImage className="bottom-0" />
     </section>
   );
 };
@@ -1155,15 +1062,11 @@ export default function App() {
             {/* Hero content removed as requested */}
           </div>
 
-          <WaveDivider className="bottom-0" opacity="opacity-100" inverted={false} upperFillClass="fill-[#0b2f9d]" lowerFillClass="fill-[#081f73]" accentStrokeClass="stroke-white/14" />
+          <DividerImage className="bottom-0" />
         </section>
 
         <section className="relative z-10 overflow-visible bg-gradient-to-br from-brand-deep-blue via-brand-vibrant-blue/40 to-brand-deep-blue px-6 pb-40 pt-24">
-          <TopWaveDivider
-            upperFillClass="fill-[#061b7f]"
-            lowerFillClass="fill-[#081f73]"
-            accentStrokeClass="stroke-white/12"
-          />
+          <DividerImage className="top-0" inverted={true} />
           <div className="pointer-events-none absolute inset-0 opacity-20">
             {[...Array(10)].map((_, i) => (
               <motion.div
@@ -1254,7 +1157,7 @@ export default function App() {
             </div>
           </div>
 
-          <WaveDivider className="bottom-0" opacity="opacity-100" inverted={true} coinPosition="right" upperFillClass="fill-[#081f73]" lowerFillClass="fill-[#08172f]" accentStrokeClass="stroke-white/12" />
+          <DividerImage className="bottom-0" />
         </section>
 
         <RegistrationForm />
