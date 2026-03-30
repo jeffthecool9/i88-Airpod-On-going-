@@ -274,7 +274,7 @@ const RealisticBackground = () => (
       />
     </div>
 
-    {/* Note: All white cloud layers at the bottom have been removed */}
+    {/* Note: All white cloud layers at the bottom are removed to keep the girl visible */}
     <div className="absolute inset-0 opacity-15 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
   </div>
 );
@@ -293,7 +293,7 @@ const CardKeyword = ({ children }: { children: ReactNode }) => (
 const SectionSeam = ({ className = "", flip = false }: { className?: string; flip?: boolean }) => (
   <div className={`absolute left-0 w-full overflow-hidden leading-[0] z-20 ${className} ${flip ? "rotate-180" : ""}`}>
     <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="block w-full h-[76px] sm:h-[120px]">
-      {/* Liquid Curve - Now matches Brand Navy #020f6a */}
+      {/* Liquid Curve - Matches Brand Navy #020f6a */}
       <path
         d="M0,0 C480,100 720,100 1200,0 L1200,120 L0,120 Z"
         fill="#020f6a"
@@ -833,14 +833,12 @@ export default function App() {
                       </div>
                     </div>
                   </motion.div>
-              ))}
               </div> {/* Closes Grid */}
-            </div> {/* Closes Flex-1 */}
-          </div> {/* Closes Flex-Col */}
-        </div> {/* Closes Max-W-6xl */}
+              </div> {/* Closes Relative (Div B) */}
+            </div> {/* Closes Max-W-4xl (Div A) */}
 
-        <SectionSeam className="bottom-0" />
-      </section>
+          <SectionSeam className="bottom-0" />
+        </section>
 
       <RegistrationForm />
       <FloatingGirl />
