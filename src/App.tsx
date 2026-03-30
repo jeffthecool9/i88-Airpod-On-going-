@@ -161,22 +161,31 @@ const RealisticBackground = () => (
   </div>
 );
 
-// CHANGED: SVG path now explicitly curves UPWARD into a dome/arch shape
-const SectionSeam = ({ className = "", fillColor = "#020f6a" }: { className?: string; fillColor?: string }) => (
+// UPDATED: Now supports "dome" (upward arch) or "dip" (downward U-shape)
+const SectionSeam = ({ 
+  className = "", 
+  fillColor = "#020f6a",
+  shape = "dip" 
+}: { 
+  className?: string; 
+  fillColor?: string;
+  shape?: "dome" | "dip";
+}) => (
   <div className={`absolute left-0 w-full overflow-hidden leading-[0] z-20 pointer-events-none ${className}`}>
     <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="block w-full h-[76px] sm:h-[120px]">
-      {/* Upward Arch (Dome) Shape */}
-      <path
-        d="M0,120 L0,100 C480,0 720,0 1200,100 L1200,120 Z"
-        fill={fillColor}
-      />
-      {/* Cyan Glow Line tracing the top of the Arch */}
-      <path
-        d="M0,100 C480,0 720,0 1200,100"
-        fill="none"
-        stroke="url(#line-glow)"
-        strokeWidth="3"
-      />
+      {shape === "dome" ? (
+        <>
+          {/* Upward Arch (Dome) Shape */}
+          <path d="M0,120 L0,100 C480,0 720,0 1200,100 L1200,120 Z" fill={fillColor} />
+          <path d="M0,100 C480,0 720,0 1200,100" fill="none" stroke="url(#line-glow)" strokeWidth="3" />
+        </>
+      ) : (
+        <>
+          {/* Downward Curve (Dip/U-Shape) */}
+          <path d="M0,0 C480,100 720,100 1200,0 L1200,120 L0,120 Z" fill={fillColor} />
+          <path d="M0,0 C480,100 720,100 1200,0" fill="none" stroke="url(#line-glow)" strokeWidth="3" />
+        </>
+      )}
       <defs>
         <linearGradient id="line-glow" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="#22d3ee" stopOpacity="0" />
@@ -521,7 +530,8 @@ export default function App() {
             {/* Kept empty as requested */}
           </div>
 
-          <SectionSeam className="bottom-[-1px]" fillColor="#0b49b8" />
+          {/* REMAINS A DOME: Hero section keeps the upward arch */}
+          <SectionSeam className="bottom-[-1px]" fillColor="#0b49b8" shape="dome" />
         </section>
 
         {/* SECTION 2: STEPS TO CLAIM */}
@@ -529,7 +539,6 @@ export default function App() {
           id="steps-to-claim"
           className="relative z-10 overflow-hidden bg-gradient-to-b from-[#0b49b8] via-[#0a3d9d] to-[#082b78] px-6 pt-16 pb-32 sm:pt-24 sm:pb-40"
         >
-          {/* Sweeping Light Effect */}
           <motion.div
             animate={{ left: ["-100%", "200%"] }}
             transition={{
@@ -595,7 +604,8 @@ export default function App() {
             </div>
           </div>
 
-          <SectionSeam className="bottom-[-1px]" fillColor="#020f6a" />
+          {/* DIPS DOWN: Steps section curves downward into the Registration Form */}
+          <SectionSeam className="bottom-[-1px]" fillColor="#020f6a" shape="dip" />
         </section>
 
         {/* SECTION 3: REGISTRATION */}
