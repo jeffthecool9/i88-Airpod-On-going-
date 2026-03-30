@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 import colaImg from "./assets/cola2.png";
-import dividerImg from "./assets/divider.png";
+import dividerImg from "./assets/divider2.png";
 import { motion, useScroll, useTransform, AnimatePresence, useReducedMotion } from "motion/react";
 import {
   ChevronRight,
