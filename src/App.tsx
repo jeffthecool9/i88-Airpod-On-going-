@@ -570,13 +570,17 @@ const SectionSeam = ({
   className?: string;
   soft?: boolean;
 }) => (
-  <div className={`pointer-events-none absolute inset-x-0 z-[50] overflow-hidden ${className}`}>
-    <div className={`relative w-full ${soft ? "h-[64px] md:h-[88px]" : "h-[84px] md:h-[120px]"}`}>
-      <div className="absolute inset-x-0 top-0 h-full bg-gradient-to-b from-white/10 via-blue-300/6 to-transparent blur-[2px]" />
-      <div className="absolute inset-x-0 top-[18%] h-[1px] bg-gradient-to-r from-transparent via-white/16 to-transparent" />
-      <div className="absolute inset-x-[-8%] top-[30%] h-[56px] rounded-[100%] bg-[radial-gradient(ellipse_at_center,rgba(120,190,255,0.16)_0%,rgba(120,190,255,0.08)_38%,transparent_72%)] blur-[16px]" />
-      <div className="absolute inset-x-0 bottom-0 h-[42px] bg-gradient-to-b from-transparent via-blue-200/5 to-blue-900/12" />
-    </div>
+  <div className={`pointer-events-none absolute inset-x-0 z-[30] overflow-hidden ${className}`}>
+    <svg
+      viewBox="0 0 1440 160"
+      className={`block w-full ${soft ? "h-[58px] md:h-[90px]" : "h-[74px] md:h-[122px]"}`}
+      preserveAspectRatio="none"
+    >
+      <path
+        d="M0,0 L0,132 C290,96 545,78 720,74 C930,70 1185,90 1440,132 L1440,0 Z"
+        fill="#020814"
+      />
+    </svg>
   </div>
 );
 
@@ -1028,18 +1032,6 @@ export default function App() {
         {/* STEPS - CREATIVE PIPELINE */}
         <section className="relative px-6 pt-16 pb-40 overflow-visible bg-gradient-to-br from-brand-deep-blue via-brand-vibrant-blue/40 to-brand-deep-blue z-10">
           {/* Abstract Background Lines */}
-          <div className="absolute inset-0 pointer-events-none opacity-20">
-            {[...Array(10)].map((_, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -100 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 2, delay: i * 0.2 }}
-                className="absolute h-px w-full bg-gradient-to-r from-transparent via-blue-400 to-transparent"
-                style={{ top: `${i * 10}%`, transform: `rotate(${i * 2 - 10}deg)` }}
-              />
-            ))}
-          </div>
           {/* Animated Background Elements */}
           <div className="absolute left-0 top-0 h-full w-full pointer-events-none">
             <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-[120px] animate-pulse" />
@@ -1056,27 +1048,6 @@ export default function App() {
 
               <div className="relative flex-1">
                 {/* Desktop Connecting Line (SVG Path) */}
-                <div className="absolute top-1/2 left-0 w-full h-px -translate-y-1/2 hidden lg:block">
-                <svg className="w-full h-20 -translate-y-1/2 overflow-visible" viewBox="0 0 1000 100" fill="none">
-                  <motion.path
-                    d="M 0 50 Q 250 10, 500 50 T 1000 50"
-                    stroke="url(#pipeline-gradient-light)"
-                    strokeWidth="0.5"
-                    strokeDasharray="10 10"
-                    initial={{ pathLength: 0, opacity: 0 }}
-                    whileInView={{ pathLength: 1, opacity: 0.3 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 2, ease: "easeInOut" }}
-                  />
-                  <defs>
-                    <linearGradient id="pipeline-gradient-light" x1="0" y1="0" x2="1000" y2="0" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#2563eb" stopOpacity="0" />
-                      <stop offset="0.5" stopColor="#2563eb" />
-                      <stop offset="1" stopColor="#2563eb" stopOpacity="0" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
 
               <div className="grid grid-cols-4 gap-2 sm:gap-6 md:gap-12">
                 {stepData.map((item, i) => (
@@ -1129,9 +1100,9 @@ export default function App() {
         </section>
 
         <RegistrationForm />
-        <FloatingGirl />
 
-      </main>
+            <FloatingGirl />
+    </main>
     </div>
   );
 }
