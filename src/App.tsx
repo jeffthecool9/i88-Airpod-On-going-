@@ -563,23 +563,34 @@ const CardKeyword = ({ children }: { children: ReactNode }) => (
   </span>
 );
 
-const SectionSeam = ({
-  className = "",
-  soft = false,
-}: {
-  className?: string;
-  soft?: boolean;
-}) => (
-  <div className={`pointer-events-none absolute inset-x-0 z-[30] overflow-hidden ${className}`}>
+const SectionCurveDivider = ({ className = "", flip = false }: { className?: string; flip?: boolean }) => (
+  <div className={`absolute left-0 w-full overflow-hidden leading-[0] z-20 ${className} ${flip ? 'rotate-180' : ''}`}>
     <svg
-      viewBox="0 0 1440 160"
-      className={`block w-full ${soft ? "h-[58px] md:h-[90px]" : "h-[74px] md:h-[122px]"}`}
+      viewBox="0 0 1200 120"
       preserveAspectRatio="none"
+      className="relative block w-full h-[60px] sm:h-[100px]"
     >
+      {/* The main curve - matches your blue/cyan theme */}
       <path
-        d="M0,0 L0,132 C290,96 545,78 720,74 C930,70 1185,90 1440,132 L1440,0 Z"
-        fill="#020814"
+        d="M0,0 C480,100 720,100 1200,0 L1200,120 L0,120 Z"
+        className="fill-[#0f172a]" // Matches your dark section background
+      ></path>
+      
+      {/* The glowing line curve following the edge */}
+      <path
+        d="M0,0 C480,100 720,100 1200,0"
+        fill="none"
+        stroke="url(#gradient-line)"
+        strokeWidth="2"
       />
+      
+      <defs>
+        <linearGradient id="gradient-line" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#3b82f6" stopOpacity="0" />
+          <stop offset="50%" stopColor="#22d3ee" stopOpacity="1" />
+          <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
+        </linearGradient>
+      </defs>
     </svg>
   </div>
 );
