@@ -248,6 +248,7 @@ const GoldConfetti = () => {
     </motion.div>
   );
 };
+
 const RealisticBackground = () => (
   <div className="pointer-events-none absolute inset-0 z-0">
     {/* Base Hero Navy Background */}
@@ -278,6 +279,7 @@ const RealisticBackground = () => (
     <div className="absolute inset-0 opacity-15 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
   </div>
 );
+
 const SectionKicker = ({ children }: { children: ReactNode }) => (
   <span className="text-[11px] font-semibold uppercase tracking-[0.32em] text-cyan-200/75">
     {children}
@@ -315,6 +317,7 @@ const SectionSeam = ({ className = "", flip = false }: { className?: string; fli
     </svg>
   </div>
 );
+
 const SectionHeading = ({
   children,
   subtitle,
@@ -780,7 +783,7 @@ export default function App() {
 
         <section
           id="steps-to-claim"
-        className="relative z-10 bg-gradient-to-b from-[#0b49b8] via-[#0a3d9d] to-[#082b78] px-6 py-5 sm:py-6"
+          className="relative z-10 bg-gradient-to-b from-[#0b49b8] via-[#0a3d9d] to-[#082b78] px-6 py-5 sm:py-6"
         >
           <div className="pointer-events-none absolute left-0 top-0 h-full w-full">
             <div className="absolute left-1/4 top-1/4 h-72 w-72 rounded-full bg-white/5 blur-[100px] animate-pulse" />
@@ -833,16 +836,17 @@ export default function App() {
                       </div>
                     </div>
                   </motion.div>
-              </div> {/* Closes Grid */}
-              </div> {/* Closes Relative (Div B) */}
-            </div> {/* Closes Max-W-4xl (Div A) */}
+                ))}
+              </div>
+            </div>
+          </div>
 
           <SectionSeam className="bottom-0" />
         </section>
 
-      <RegistrationForm />
-      <FloatingGirl />
-    </main>
+        <RegistrationForm />
+        <FloatingGirl />
+      </main>
     </div>
   );
 }
