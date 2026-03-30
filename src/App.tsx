@@ -870,25 +870,29 @@ export default function App() {
           <SectionSeam className="bottom-0" />
         </section>
 
-        {/* STEPS - CREATIVE PIPELINE */}
-      <section id="steps-to-claim" className="relative px-6 py-16 min-h-[420px] flex flex-col justify-center bg-gradient-to-br from-brand-deep-blue via-brand-vibrant-blue/40 to-brand-deep-blue z-10">
-          {/* Abstract Background Lines */}
-          {/* Animated Background Elements */}
-          <div className="absolute left-0 top-0 h-full w-full pointer-events-none">
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-[120px] animate-pulse" />
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-400/5 rounded-full blur-[120px] animate-pulse delay-1000" />
-          </div>
+    {/* STEPS - CREATIVE PIPELINE */}
+<section
+  id="steps-to-claim"
+  className="relative px-6 py-5 sm:py-6 bg-gradient-to-br from-brand-deep-blue via-brand-vibrant-blue/40 to-brand-deep-blue z-10"
+>
+  {/* Animated Background Elements */}
+  <div className="pointer-events-none absolute left-0 top-0 h-full w-full">
+    <div className="absolute left-1/4 top-1/4 h-72 w-72 rounded-full bg-white/5 blur-[100px] animate-pulse" />
+    <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-cyan-400/5 blur-[100px] animate-pulse delay-1000" />
+  </div>
 
-          <div className="relative z-10 mx-auto max-w-6xl">
-            <div className="flex flex-col lg:flex-row lg:items-start gap-10 lg:gap-16 mb-4">
-              <div className="text-left shrink-0 lg:pt-0">
-                <h2 className="text-4xl md:text-6xl font-bold tracking-tight leading-[0.9]">
-                  <HeroWord light>Steps to Claim</HeroWord>
-                </h2>
-              </div>
+  <div className="relative z-10 mx-auto max-w-4xl rounded-[28px] border border-white/10 bg-white/5 px-4 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:px-6 sm:py-6">
+    <div className="mb-4 text-center sm:mb-5">
+      <h2 className="text-3xl font-bold tracking-tight leading-[0.95] sm:text-4xl md:text-5xl">
+        <HeroWord light>Steps to Claim</HeroWord>
+      </h2>
+      <p className="mt-2 text-xs font-medium text-blue-100/75 sm:text-sm">
+        A quick guide to unlock your reward
+      </p>
+    </div>
 
-              <div className="relative flex-1">
-                {/* Desktop Connecting Line (SVG Path) */}
+    <div className="relative">
+      {/* Desktop Connecting Line (SVG Path) */}
 
         <div className="grid grid-cols-4 gap-2 sm:gap-6 md:gap-12">
   {stepData.map((item, i) => (
