@@ -871,7 +871,7 @@ export default function App() {
         </section>
 
         {/* STEPS - CREATIVE PIPELINE */}
-        <section id="steps-to-claim" className="relative px-6 pt-16 pb-12 overflow-visible bg-gradient-to-br from-brand-deep-blue via-brand-vibrant-blue/40 to-brand-deep-blue z-10">
+      <section id="steps-to-claim" className="relative px-6 py-16 min-h-[420px] flex flex-col justify-center bg-gradient-to-br from-brand-deep-blue via-brand-vibrant-blue/40 to-brand-deep-blue z-10">
           {/* Abstract Background Lines */}
           {/* Animated Background Elements */}
           <div className="absolute left-0 top-0 h-full w-full pointer-events-none">
