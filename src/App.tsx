@@ -172,6 +172,7 @@ const GoldParticles = () => (
   </div>
 );
 
+
 const GoldCoin = () => (
   <div className="relative z-[9999] flex items-center justify-center group/coin">
     <div className="pointer-events-none absolute -bottom-12 flex items-center justify-center">
@@ -459,7 +460,7 @@ const GoldConfetti = ({ isMobile = false }: { isMobile?: boolean }) => {
 
 /* ----------------------------- Background ----------------------------- */
 
-const RealisticBackground = ({ isMobile = false }: { isMobile?: boolean }) => {
+const RealisticBackground = ({ isMobile = false }: { isMobile?: boolean }) => (
   const prefersReducedMotion = useReducedMotion();
 
   return (
@@ -641,49 +642,26 @@ const RealisticBackground = ({ isMobile = false }: { isMobile?: boolean }) => {
 
 const WaveDivider = ({
   className = "",
-  color = "stroke-white/20",
-  opacity = "opacity-100",
   inverted = false,
-  children,
-  coinPosition = "center",
 }: {
   className?: string;
-  color?: string;
-  opacity?: string;
   inverted?: boolean;
-  children?: ReactNode;
-  coinPosition?: "center" | "right";
 }) => (
-  <div className={`absolute left-0 w-full leading-[0] pointer-events-none z-[40] overflow-hidden ${className} ${opacity}`}>
-    <div className="relative w-full">
-      {children && (
-        <div
-          className={`absolute top-1/2 -translate-y-1/2 pointer-events-auto z-[9999] ${
-            coinPosition === "right" ? "right-[10%] sm:right-[15%]" : "left-1/2 -translate-x-1/2"
-          }`}
-        >
-          {children}
-        </div>
-      )}
-
-      <svg
-        className="relative block h-[68px] w-full md:h-[118px]"
-        viewBox="0 0 1440 160"
-        preserveAspectRatio="none"
-      >
-        {inverted ? (
-          <path
-            d="M0,0 C260,30 520,64 720,68 C930,72 1180,52 1440,18 L1440,160 L0,160 Z"
-            fill="#020814"
-          />
-        ) : (
-          <path
-            d="M0,0 L0,126 C280,98 540,78 720,76 C930,74 1180,92 1440,128 L1440,0 Z"
-            fill="#020814"
-          />
-        )}
-      </svg>
-    </div>
+  <div
+    className={`absolute left-0 w-full leading-[0] pointer-events-none z-20 overflow-hidden ${
+      inverted ? "top-[-1px] rotate-180" : "bottom-[-1px]"
+    } ${className}`}
+  >
+    <svg
+      viewBox="0 0 1440 160"
+      className="block w-full h-[72px] md:h-[118px]"
+      preserveAspectRatio="none"
+    >
+      <path
+        d="M0,0 L0,130 C300,95 550,75 720,72 C930,70 1180,90 1440,130 L1440,0 Z"
+        fill="#020814"
+      />
+    </svg>
   </div>
 );
 
@@ -1241,7 +1219,7 @@ export default function App() {
                           <h3 className="text-xs font-bold tracking-tight text-white transition-colors group-hover:text-cyan-200 sm:text-xl md:text-3xl">
                             {item.title}
                           </h3>
-                          <p className="mx-auto hidden max-w-[200px] text-sm font-semibold leading-relaxed text-blue-100 transition-colors group-hover:text-white sm:block sm:text-base">
+                          <p className="mx-auto max-w-[200px] text-[11px] font-semibold leading-relaxed text-blue-100 transition-colors group-hover:text-white sm:text-base">
                             {item.desc}
                           </p>
                         </div>
