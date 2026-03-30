@@ -761,185 +761,141 @@ export default function App() {
     };
   }, []);
 
-  const stepData = [
-    { step: "1", title: "Register", desc: "Create account", icon: UserPlus },
-    { step: "2", title: "Deposit", desc: "Start from $50", icon: Wallet },
-    { step: "3", title: "Play", desc: "Unlock Reward", icon: Gamepad2 },
-    { step: "4", title: "Claim", desc: "Get AirPods", icon: Gift },
-  ];
+ import { motion } from "framer-motion";
+import { UserPlus, Wallet, Gamepad2, Gift } from "lucide-react";
 
+const steps = [
+  {
+    number: "1",
+    icon: UserPlus,
+    title: "Register",
+    desc: "Create your account and get started",
+    tag: "Quick setup",
+  },
+  {
+    number: "2",
+    icon: Wallet,
+    title: "Deposit",
+    desc: "Start from $50 to activate your journey",
+    tag: "Easy entry",
+  },
+  {
+    number: "3",
+    icon: Gamepad2,
+    title: "Play",
+    desc: "Complete required play amount",
+    tag: "Build progress",
+  },
+  {
+    number: "4",
+    icon: Gift,
+    title: "Claim",
+    desc: "Unlock your AirPods after completion",
+    tag: "Reward ready",
+    highlight: true,
+  },
+];
+
+export default function ClaimStepsSection() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-brand-navy/70 font-sans text-slate-200 selection:bg-blue-500/30">
-      {/* Spotlight */}
-      <div
-        className="pointer-events-none fixed inset-0 z-30 opacity-40 transition-opacity duration-300"
-        style={{
-          background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(59, 130, 246, 0.08), transparent 80%)`,
-        }}
-      />
+    <section className="relative overflow-hidden bg-[#031B4E] py-20 sm:py-24">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.22),transparent_40%),radial-gradient(circle_at_bottom,rgba(37,99,235,0.18),transparent_35%)]" />
+      <div className="absolute inset-x-0 top-0 h-24 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.14),transparent)]" />
+      <div className="absolute inset-x-0 bottom-0 h-28 bg-[linear-gradient(to_top,rgba(0,0,0,0.18),transparent)]" />
 
-      {/* Grain */}
-      <div className="pointer-events-none fixed inset-0 z-[100] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-
-      {/* Fixed Background */}
-      <motion.div style={{ y: backgroundY }} className="pointer-events-none fixed inset-0 z-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.08)_0%,#020f6a_60%,#000a14_100%)]" />
-
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -50, 0],
-            scale: [1, 1.2, 1],
-          }}
-          style={{
-            translateX: (mousePos.x - viewport.width / 2) * 0.02,
-            translateY: (mousePos.y - viewport.height / 2) * 0.02,
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute left-[-10%] top-[-10%] h-[60vw] w-[60vw] rounded-full bg-brand-vibrant-blue/10 blur-[120px]"
-        />
-
-        <motion.div
-          animate={{
-            x: [0, -100, 0],
-            y: [0, 50, 0],
-            scale: [1.2, 1, 1.2],
-          }}
-          style={{
-            translateX: (mousePos.x - viewport.width / 2) * -0.02,
-            translateY: (mousePos.y - viewport.height / 2) * -0.02,
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-[-10%] right-[-10%] h-[50vw] w-[50vw] rounded-full bg-brand-deep-blue/10 blur-[120px]"
-        />
-
-        {/* White Fresh Glows */}
-        <motion.div
-          animate={{
-            x: [0, 50, 0],
-            y: [0, 100, 0],
-            opacity: [0.1, 0.3, 0.1],
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute right-[20%] top-[10%] h-[30vw] w-[30vw] rounded-full bg-blue-200/5 blur-[100px]"
-        />
-
-        <motion.div
-          animate={{
-            scale: [1, 1.5, 1],
-            opacity: [0.05, 0.15, 0.05],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute left-[30%] bottom-[20%] h-[20vw] w-[20vw] rounded-full bg-cyan-200/5 blur-[80px]"
-        />
-
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{
-              opacity: [0, 0.3, 0.1],
-              scale: [0, 1, 0.5],
-              x: [Math.random() * 100 + "%", Math.random() * 100 + "%"],
-              y: [Math.random() * 100 + "%", Math.random() * 100 + "%"],
-            }}
-            transition={{
-              duration: 20 + Math.random() * 20,
-              repeat: Infinity,
-              ease: "linear",
-              delay: Math.random() * 5,
-            }}
-            className="absolute h-1 w-1 rounded-full bg-blue-400/30"
-          />
-        ))}
-      </motion.div>
-
-      <main className="relative z-10">
-        {/* HERO */}
-        <section className="relative flex min-h-screen items-center overflow-hidden px-6 pb-16 pt-16">
-          {/* Ultra HD Realistic Background Shader */}
-          <RealisticBackground />
-
-          {/* Falling Gold Confetti */}
-          <GoldConfetti />
-
-          <div className="relative z-10 mx-auto w-full max-w-6xl">
-            {/* Hero content removed as requested */}
+          initial={{ opacity: 0, y: 26 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.7 }}
+          className="mx-auto mb-14 max-w-3xl text-center"
+        >
+          <div className="mb-4 inline-flex items-center rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-sm font-medium text-blue-100 backdrop-blur-md">
+            Simple Journey • Premium Reward
           </div>
 
-          <SectionSeam className="bottom-0" />
-        </section>
+          <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            Claim Your AirPods in 4 Simple Steps
+          </h2>
+        </motion.div>
 
-        {/* STEPS - CREATIVE PIPELINE */}
-        <section id="steps-to-claim" className="relative px-6 pt-16 pb-40 overflow-visible bg-gradient-to-br from-brand-deep-blue via-brand-vibrant-blue/40 to-brand-deep-blue z-10">
-          {/* Abstract Background Lines */}
-          {/* Animated Background Elements */}
-          <div className="absolute left-0 top-0 h-full w-full pointer-events-none">
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-[120px] animate-pulse" />
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-400/5 rounded-full blur-[120px] animate-pulse delay-1000" />
+        <div className="relative mx-auto max-w-5xl">
+          <div className="absolute left-[10%] right-[10%] top-16 hidden h-[2px] bg-white/15 sm:block">
+            <motion.div
+              className="h-full w-1/3 bg-[linear-gradient(to_right,transparent,rgba(96,165,250,0.95),transparent)]"
+              animate={{ x: ["-20%", "220%"] }}
+              transition={{ duration: 3.2, repeat: Infinity, ease: "linear" }}
+            />
           </div>
 
-          <div className="relative z-10 mx-auto max-w-6xl">
-            <div className="flex flex-col lg:flex-row lg:items-start gap-10 lg:gap-16 mb-4">
-              <div className="text-left shrink-0 lg:pt-0">
-                <h2 className="text-4xl md:text-6xl font-bold tracking-tight leading-[0.9]">
-                  <HeroWord light>Steps to Claim</HeroWord>
-                </h2>
-              </div>
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4">
+            {steps.map((step, index) => {
+              const Icon = step.icon;
+              return (
+                <motion.div
+                  key={step.number}
+                  initial={{ opacity: 0, y: 32 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.35 }}
+                  transition={{ duration: 0.55, delay: index * 0.12 }}
+                  whileHover={{ y: -6, scale: 1.01 }}
+                  className={`group relative rounded-[28px] border p-5 backdrop-blur-xl transition-all duration-300 ${
+                    step.highlight
+                      ? "border-blue-300/40 bg-white/16 shadow-[0_0_40px_rgba(96,165,250,0.22)]"
+                      : "border-white/12 bg-white/10"
+                  }`}
+                >
+                  <div className="absolute -top-3 left-5 inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-blue-200/40 bg-white text-lg font-bold text-blue-700 shadow-lg">
+                    {step.number}
+                  </div>
 
-              <div className="relative flex-1">
-                {/* Desktop Connecting Line (SVG Path) */}
-
-              <div className="grid grid-cols-4 gap-2 sm:gap-6 md:gap-12">
-                {stepData.map((item, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: i * 0.15 }}
-                    className="group relative"
-                  >
-                    <div className="flex flex-col items-center">
-                      {/* Step Node */}
-                      <div className="relative mb-4 sm:mb-10">
-                        {/* Glow Effect */}
-                        <div className="absolute inset-0 rounded-full bg-blue-400/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                        
-                        {/* Node Circle */}
-                        <div className="relative flex h-14 w-14 sm:h-20 sm:w-20 md:h-24 md:w-24 items-center justify-center rounded-2xl sm:rounded-[2.5rem] border border-slate-200 bg-white backdrop-blur-2xl transition-all duration-500 group-hover:border-blue-400/50 group-hover:-translate-y-2 group-hover:shadow-[0_20px_40px_rgba(59,130,246,0.1)]">
-                          <item.icon className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 text-blue-600 group-hover:scale-110 transition-transform duration-500" />
-                          
-                          {/* Step Number Floating */}
-                          <div className="absolute -left-2 -top-2 sm:-left-4 sm:-top-4 flex h-8 w-8 sm:h-12 sm:w-12 items-center justify-center rounded-lg sm:rounded-2xl border border-blue-200 bg-white text-xs sm:text-xl font-bold text-blue-600 shadow-[0_4px_12px_rgba(59,130,246,0.15)] group-hover:border-blue-400 group-hover:text-blue-700 transition-all duration-300">
-                            {item.step}
-                          </div>
-
-                          {/* Pulsing Ring */}
-                          <div className="absolute inset-0 rounded-2xl sm:rounded-[2.5rem] border border-blue-400/0 group-hover:border-blue-400/50 group-hover:animate-ping opacity-0 group-hover:opacity-20" />
-                        </div>
-                      </div>
-
-                      {/* Content */}
-                      <div className="text-center space-y-1 sm:space-y-3">
-                        <h3 className="text-xs sm:text-xl md:text-3xl font-bold tracking-tight text-white group-hover:text-cyan-200 transition-colors">
-                          {item.title}
-                        </h3>
-                        <p className="mx-auto max-w-[200px] text-[11px] sm:text-base font-semibold leading-relaxed text-blue-100 group-hover:text-white transition-colors">
-                          {item.desc}
-                        </p>
-                      </div>
+                  <div className="pt-8">
+                    <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-[24px] bg-white text-blue-600 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] transition-transform duration-300 group-hover:scale-105">
+                      <Icon className="h-9 w-9" strokeWidth={2.2} />
                     </div>
-                  </motion.div>
-                ))}
-              </div>
-          </div>
+
+                    <div className="mb-3 inline-flex rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs font-medium text-blue-100">
+                      {step.tag}
+                    </div>
+
+                    <h3 className="text-2xl font-bold text-white">
+                      {step.title}
+                    </h3>
+
+                    <p className="mt-2 text-sm leading-6 text-blue-100/82">
+                      {step.desc}
+                    </p>
+
+                    {step.highlight && (
+                      <div className="mt-4 rounded-2xl border border-blue-200/20 bg-blue-400/10 px-4 py-3 text-sm text-blue-50">
+                        Guaranteed reward upon successful completion
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
 
-        <SectionSeam className="bottom-0" />
-      </section>
-        
+        <motion.div
+          initial={{ opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.7, delay: 0.25 }}
+          className="mt-12 text-center"
+        >
+          <button className="rounded-full bg-white px-8 py-4 text-base font-semibold text-[#0A2E78] shadow-[0_10px_40px_rgba(255,255,255,0.2)] transition-transform duration-300 hover:scale-[1.03]">
+            Start Your Journey
+          </button>
+          <p className="mt-4 text-sm text-blue-100/75">
+            Simple steps. Clear progress. Premium reward.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+      
      <RegistrationForm />
         <FloatingGirl />
   </main>
