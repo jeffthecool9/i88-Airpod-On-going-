@@ -420,7 +420,6 @@ const FloatingGirl = () => {
   const [bubbleState, setBubbleState] = useState(0);
   const [isUserActive, setIsUserActive] = useState(true);
 
-  // Intersection Observer to show girl when scrolling down
   useEffect(() => {
     const stepsSection = document.getElementById("steps-to-claim");
     if (!stepsSection) return;
@@ -439,23 +438,21 @@ const FloatingGirl = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Inactivity Timer (10 seconds)
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
     const resetTimer = () => {
       setIsUserActive(true);
       clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => setIsUserActive(false), 10000); // Hide after 10s
+      timeoutId = setTimeout(() => setIsUserActive(false), 10000); 
     };
 
-    // Listen to user interactions to keep bubble alive
     window.addEventListener("mousemove", resetTimer);
     window.addEventListener("scroll", resetTimer);
     window.addEventListener("keydown", resetTimer);
     window.addEventListener("touchstart", resetTimer);
     window.addEventListener("click", resetTimer);
 
-    resetTimer(); // Start timer immediately
+    resetTimer(); 
 
     return () => {
       clearTimeout(timeoutId);
@@ -467,16 +464,13 @@ const FloatingGirl = () => {
     };
   }, []);
 
-  // Click Interaction Logic
   const handleInteract = () => {
     if (bubbleState === 0) {
-      // 1st Click -> Scroll to Hero
       window.scrollTo({ top: 0, behavior: "smooth" });
-      setBubbleState(1); // Update Text
+      setBubbleState(1); 
     } else {
-      // 2nd Click -> Scroll to Form
       document.getElementById("registration-form")?.scrollIntoView({ behavior: "smooth" });
-      setBubbleState(0); // Reset Text
+      setBubbleState(0); 
     }
   };
 
@@ -495,7 +489,7 @@ const FloatingGirl = () => {
         ease: [0.22, 1, 0.36, 1],
       }}
     >
-      {/* 💬 The Chat Bubble */}
+      {/* 💬 Mobile Optimized Chat Bubble */}
       <AnimatePresence>
         {isUserActive && showFromSteps && (
           <motion.div
@@ -503,11 +497,11 @@ const FloatingGirl = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.8, filter: "blur(5px)" }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            className="pointer-events-auto absolute -top-[10%] left-[-15%] z-30 sm:-top-[15%] sm:left-[10%] md:left-[20%]"
+            className="pointer-events-auto absolute bottom-[80%] right-[30%] z-30 w-max max-w-[220px] sm:bottom-auto sm:right-auto sm:-top-[15%] sm:left-[10%] md:left-[20%] sm:max-w-none"
           >
             <div
               onClick={handleInteract}
-              className="group relative cursor-pointer rounded-[20px] border border-cyan-400/60 bg-cyan-950/85 px-5 py-3.5 shadow-[0_0_20px_rgba(34,211,238,0.3)] backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:bg-cyan-900/95 hover:shadow-[0_0_30px_rgba(34,211,238,0.6)]"
+              className="group relative cursor-pointer rounded-[20px] border border-cyan-400/60 bg-cyan-950/85 px-4 py-3 sm:px-5 sm:py-3.5 shadow-[0_0_20px_rgba(34,211,238,0.3)] backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:bg-cyan-900/95 hover:shadow-[0_0_30px_rgba(34,211,238,0.6)] text-center sm:text-left"
             >
               <AnimatePresence mode="wait">
                 <motion.div
@@ -516,10 +510,10 @@ const FloatingGirl = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -5 }}
                   transition={{ duration: 0.2 }}
-                  className="flex items-center gap-2.5"
+                  className="flex items-center justify-center gap-2 sm:gap-2.5"
                 >
-                  <div className="h-2 w-2 animate-pulse rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
-                  <p className="whitespace-nowrap text-xs font-bold text-white tracking-wide sm:text-sm">
+                  <div className="h-2 w-2 shrink-0 animate-pulse rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
+                  <p className="text-[11px] font-bold text-white tracking-wide sm:whitespace-nowrap sm:text-sm leading-tight">
                     {bubbleState === 0
                       ? "Still new to i88? Join & explore now!"
                       : "Click here to register!"}
@@ -527,14 +521,13 @@ const FloatingGirl = () => {
                 </motion.div>
               </AnimatePresence>
 
-              {/* Chat Bubble Tail */}
-              <div className="absolute -bottom-2 right-10 h-4 w-4 rotate-45 border-b border-r border-cyan-400/60 bg-cyan-950/85 transition-colors duration-300 group-hover:bg-cyan-900/95" />
+              {/* Dynamic Tail (points right-down on mobile, left-down on desktop) */}
+              <div className="absolute -bottom-2 right-[25%] sm:right-10 h-4 w-4 rotate-45 border-b border-r border-cyan-400/60 bg-cyan-950/85 transition-colors duration-300 group-hover:bg-cyan-900/95" />
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* 👧 The Girl (Clickable Area) */}
       <div 
         className="pointer-events-auto relative cursor-pointer transition-transform duration-300 hover:scale-[1.02]" 
         onClick={handleInteract}
@@ -596,7 +589,6 @@ export default function App() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-brand-navy/70 font-sans text-slate-200 selection:bg-blue-500/30">
       
-      {/* Global Cursor Glow */}
       <div
         className="pointer-events-none fixed inset-0 z-30 opacity-40 transition-opacity duration-300"
         style={{
@@ -607,23 +599,20 @@ export default function App() {
 
       <main className="relative z-10">
         
-        {/* SECTION 1: EMPTY HERO */}
         <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-[#0a1580]">
           <RealisticBackground />
           <GoldConfetti />
           
           <div className="relative z-10 mx-auto w-full max-w-6xl">
-            {/* Kept empty as requested */}
+            {/* Kept empty */}
           </div>
 
-          {/* DIPS DOWN (U-Shape) */}
           <SectionSeam className="bottom-[-1px]" fillColor="#0b49b8" shape="dip" />
         </section>
 
-        {/* SECTION 2: STEPS TO CLAIM */}
         <section
           id="steps-to-claim"
-          className="relative z-10 overflow-hidden bg-gradient-to-b from-[#0b49b8] via-[#0a3d9d] to-[#082b78] px-6 pt-16 pb-32 sm:pt-24 sm:pb-40"
+          className="relative z-10 overflow-hidden bg-gradient-to-b from-[#0b49b8] via-[#0a3d9d] to-[#082b78] px-4 pt-16 pb-32 sm:px-6 sm:pt-24 sm:pb-40"
         >
           <motion.div
             animate={{ left: ["-100%", "200%"] }}
@@ -641,19 +630,16 @@ export default function App() {
             <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-cyan-400/5 blur-[100px] animate-pulse delay-1000" />
           </div>
 
-          {/* Glossy Glass Box WITH NEON BLUE BORDER */}
-          <div className="relative z-10 mx-auto max-w-4xl rounded-[32px] border border-cyan-400/60 bg-gradient-to-br from-cyan-900/30 via-white/5 to-white/5 px-4 py-8 shadow-[0_0_20px_rgba(34,211,238,0.3),0_30px_60px_rgba(0,0,0,0.5)] backdrop-blur-[32px] sm:px-10 sm:py-12 overflow-hidden">
+          <div className="relative z-10 mx-auto max-w-4xl rounded-[24px] sm:rounded-[32px] border border-cyan-400/60 bg-gradient-to-br from-cyan-900/30 via-white/5 to-white/5 px-4 py-8 shadow-[0_0_20px_rgba(34,211,238,0.3),0_30px_60px_rgba(0,0,0,0.5)] backdrop-blur-[32px] sm:px-10 sm:py-12 overflow-hidden">
             
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-cyan-400/10 via-transparent to-transparent opacity-50" />
-            
-            {/* Inner Neon Lines */}
             <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-300/80 to-transparent" />
             <div className="pointer-events-none absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-cyan-400/50 to-transparent" />
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
             <div className="pointer-events-none absolute inset-y-0 right-0 w-[1px] bg-gradient-to-b from-cyan-400/20 to-transparent" />
 
             <div className="relative z-10">
-              <div className="mb-6 text-center sm:mb-10">
+              <div className="mb-8 text-center sm:mb-10">
                 <h2 className="text-3xl font-bold tracking-tight leading-[0.95] sm:text-4xl md:text-5xl">
                   <HeroWord light>Steps to Claim</HeroWord>
                 </h2>
@@ -663,7 +649,11 @@ export default function App() {
               </div>
 
               <div className="relative">
-                <div className="grid grid-cols-4 gap-2 sm:gap-6 md:gap-12">
+                {/* MOBILE FIX:
+                  Changed grid-cols-4 to grid-cols-2 for mobile screens. 
+                  Expands back to 4 columns on 'sm' breakpoint.
+                */}
+                <div className="grid grid-cols-2 gap-y-8 gap-x-4 sm:grid-cols-4 sm:gap-6 md:gap-12">
                   {stepData.map((item, i) => (
                     <motion.div
                       key={i}
@@ -674,22 +664,24 @@ export default function App() {
                       className="group relative"
                     >
                       <div className="flex flex-col items-center">
-                        <div className="relative mb-2 sm:mb-4">
+                        <div className="relative mb-3 sm:mb-4">
                           <div className="absolute inset-0 rounded-full bg-cyan-400/20 blur-2xl opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
-                          <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl border border-cyan-400/40 bg-white/10 backdrop-blur-3xl transition-all duration-500 group-hover:-translate-y-2 group-hover:border-cyan-300/80 group-hover:bg-cyan-500/20 group-hover:shadow-[0_20px_40px_rgba(34,211,238,0.25)] sm:h-20 sm:w-20 sm:rounded-[2.5rem] md:h-24 md:w-24">
-                            <item.icon className="h-6 w-6 text-white transition-transform duration-500 group-hover:scale-110 sm:h-8 sm:w-8 md:h-10 md:w-10 drop-shadow-md" />
-                            <div className="absolute -left-2 -top-2 flex h-8 w-8 items-center justify-center rounded-lg border border-cyan-400/50 bg-cyan-950/50 backdrop-blur-md text-xs font-bold text-cyan-300 shadow-[0_4px_12px_rgba(34,211,238,0.3)] transition-all duration-300 group-hover:border-cyan-300 group-hover:bg-cyan-500/50 group-hover:text-white sm:-left-4 sm:-top-4 sm:h-12 sm:w-12 sm:rounded-2xl sm:text-xl">
+                          <div className="relative flex h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 items-center justify-center rounded-[1.25rem] sm:rounded-[2.5rem] border border-cyan-400/40 bg-white/10 backdrop-blur-3xl transition-all duration-500 group-hover:-translate-y-2 group-hover:border-cyan-300/80 group-hover:bg-cyan-500/20 group-hover:shadow-[0_20px_40px_rgba(34,211,238,0.25)]">
+                            <item.icon className="h-7 w-7 sm:h-8 sm:w-8 md:h-10 md:w-10 text-white transition-transform duration-500 group-hover:scale-110 drop-shadow-md" />
+                            <div className="absolute -left-2 -top-2 flex h-8 w-8 sm:h-12 sm:w-12 items-center justify-center rounded-lg sm:rounded-2xl border border-cyan-400/50 bg-cyan-950/50 backdrop-blur-md text-xs sm:text-xl font-bold text-cyan-300 shadow-[0_4px_12px_rgba(34,211,238,0.3)] transition-all duration-300 group-hover:border-cyan-300 group-hover:bg-cyan-500/50 group-hover:text-white">
                               {item.step}
                             </div>
-                            <div className="absolute inset-0 rounded-2xl border border-cyan-400/0 opacity-0 group-hover:animate-ping group-hover:border-cyan-400/60 group-hover:opacity-40 sm:rounded-[2.5rem]" />
+                            <div className="absolute inset-0 rounded-[1.25rem] sm:rounded-[2.5rem] border border-cyan-400/0 opacity-0 group-hover:animate-ping group-hover:border-cyan-400/60 group-hover:opacity-40" />
                           </div>
                         </div>
 
                         <div className="text-center space-y-1 sm:space-y-2">
-                          <h3 className="text-xs font-bold tracking-tight text-white transition-colors group-hover:text-cyan-200 sm:text-xl md:text-3xl drop-shadow-sm">
+                          {/* Increased mobile title from text-xs to text-base */}
+                          <h3 className="text-base font-bold tracking-tight text-white transition-colors group-hover:text-cyan-200 sm:text-xl md:text-3xl drop-shadow-sm">
                             {item.title}
                           </h3>
-                          <p className="mx-auto max-w-[180px] text-[10px] font-semibold leading-tight text-white/80 transition-colors group-hover:text-cyan-100 sm:max-w-[200px] sm:text-sm md:text-base">
+                          {/* Increased mobile description from text-[10px] to text-xs */}
+                          <p className="mx-auto max-w-[140px] sm:max-w-[200px] text-xs font-semibold leading-tight text-white/80 transition-colors group-hover:text-cyan-100 sm:text-sm md:text-base">
                             {item.desc}
                           </p>
                         </div>
@@ -701,11 +693,9 @@ export default function App() {
             </div>
           </div>
 
-          {/* DIPS DOWN (U-Shape) */}
           <SectionSeam className="bottom-[-1px]" fillColor="#020f6a" shape="dip" />
         </section>
 
-        {/* SECTION 3: REGISTRATION */}
         <RegistrationForm />
         
         <FloatingGirl />
