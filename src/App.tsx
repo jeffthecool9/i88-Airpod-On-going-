@@ -269,79 +269,10 @@ const RealisticBackground = () => (
       className="absolute inset-0 w-full skew-x-[45deg] bg-gradient-to-r from-transparent via-white/40 to-transparent blur-[100px]"
     />
 
-    <div className="absolute inset-0 overflow-hidden">
-      <motion.div
-        animate={{ x: [-30, 30, -30] }}
-        transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -bottom-10 left-1/2 h-[350px] w-[160%] -translate-x-1/2 opacity-95 mix-blend-lighten"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(255,255,255,0.9) 30%, rgba(240,245,255,0.6) 60%, transparent 80%)",
-          filter: "blur(35px)",
-        }}
-      />
-      <motion.div
-        animate={{ x: [30, -30, 30] }}
-        transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -bottom-24 left-1/2 h-[450px] w-[180%] -translate-x-1/2 opacity-80 mix-blend-lighten"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 40%, rgba(232,240,254,0.4) 70%, transparent 90%)",
-          filter: "blur(50px)",
-        }}
-      />
-      <motion.div
-        animate={{ x: [-15, 15, -15] }}
-        transition={{ duration: 35, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -bottom-40 left-1/2 h-[550px] w-[200%] -translate-x-1/2 opacity-60 mix-blend-lighten"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.5) 50%, transparent 95%)",
-          filter: "blur(70px)",
-        }}
-      />
-
-      <motion.div
-        animate={{ y: [-15, 15, -15], x: [-5, 5, -5] }}
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -left-48 top-1/3 h-[700px] w-[500px] -translate-y-1/2 opacity-40 mix-blend-lighten"
-        style={{
-          background:
-            "radial-gradient(circle at center, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.4) 50%, transparent 80%)",
-          filter: "blur(60px)",
-        }}
-      />
-      <motion.div
-        animate={{ y: [15, -15, 15] }}
-        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -left-32 bottom-1/4 h-[500px] w-[400px] opacity-30 mix-blend-lighten"
-        style={{
-          background: "radial-gradient(circle at center, rgba(255,255,255,0.8) 0%, transparent 70%)",
-          filter: "blur(80px)",
-        }}
-      />
-
-      <motion.div
-        animate={{ y: [15, -15, 15], x: [5, -5, 5] }}
-        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -right-48 top-1/4 h-[700px] w-[500px] -translate-y-1/2 opacity-40 mix-blend-lighten"
-        style={{
-          background:
-            "radial-gradient(circle at center, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.4) 50%, transparent 80%)",
-          filter: "blur(60px)",
-        }}
-      />
-      <motion.div
-        animate={{ y: [-15, 15, -15] }}
-        transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -right-32 bottom-1/3 h-[500px] w-[400px] opacity-30 mix-blend-lighten"
-        style={{
-          background: "radial-gradient(circle at center, rgba(255,255,255,0.8) 0%, transparent 70%)",
-          filter: "blur(80px)",
-        }}
-      />
-    </div>
-
+   <div className="absolute inset-0">
+  <div className="absolute bottom-0 left-0 w-full h-[200px] bg-gradient-to-t from-[#020f6a] to-transparent" />
+</div>
+    
     <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(143,177,233,0.4)_0%,transparent_60%)]" />
     <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_100%,rgba(92,138,230,0.3)_0%,transparent_60%)]" />
     <div className="absolute inset-0 opacity-15 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
