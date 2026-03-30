@@ -365,23 +365,20 @@ const CardKeyword = ({ children }: { children: ReactNode }) => (
 const SectionSeam = ({ className = "", flip = false }: { className?: string; flip?: boolean }) => (
   <div className={`absolute left-0 w-full overflow-hidden leading-[0] z-20 ${className} ${flip ? "rotate-180" : ""}`}>
     <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-[60px] sm:h-[100px]">
-      <path d="M0,0 C480,100 720,100 1200,0 L1200,120 L0,120 Z" fill="url(#seam-gradient)"></path>
+      <path
+        d="M0,0 C480,100 720,100 1200,0 L1200,120 L0,120 Z"
+        fill="#0b3d91"
+      ></path>
 
       <path
         d="M0,0 C480,100 720,100 1200,0"
         fill="none"
         stroke="url(#line-gradient)"
         strokeWidth="2.5"
-        className="drop-shadow-[0_0_6px_rgba(56,189,248,0.8)]"
+        className="drop-shadow-[0_0_6px_rgba(56,189,248,0.55)]"
       />
 
       <defs>
-        <linearGradient id="seam-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#1e40af" />
-          <stop offset="40%" stopColor="#1d4ed8" />
-          <stop offset="100%" stopColor="#020f6a" />
-        </linearGradient>
-
         <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="#38bdf8" stopOpacity="0" />
           <stop offset="50%" stopColor="#22d3ee" stopOpacity="1" />
@@ -389,11 +386,8 @@ const SectionSeam = ({ className = "", flip = false }: { className?: string; fli
         </linearGradient>
       </defs>
     </svg>
-
-    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-blue-500/10 to-transparent blur-xl" />
   </div>
 );
-
 const SectionHeading = ({
   children,
   subtitle,
