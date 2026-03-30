@@ -650,20 +650,24 @@ const CardKeyword = ({ children }: { children: ReactNode }) => (
 
 const WaveDivider = ({
   className = "",
-  color = "stroke-white/20",
   opacity = "opacity-100",
   inverted = false,
   children,
   coinPosition = "center",
+  upperFillClass = "fill-[#061b7f]",
+  lowerFillClass = "fill-[#0b2f9d]",
+  accentStrokeClass = "stroke-white/18",
 }: {
   className?: string;
-  color?: string;
   opacity?: string;
   inverted?: boolean;
   children?: ReactNode;
   coinPosition?: "center" | "right";
+  upperFillClass?: string;
+  lowerFillClass?: string;
+  accentStrokeClass?: string;
 }) => (
-  <div className={`absolute left-0 w-full leading-[0] pointer-events-none z-[100] ${className} ${opacity}`}>
+  <div className={`absolute inset-x-0 w-full leading-[0] pointer-events-none z-[100] overflow-hidden ${className} ${opacity}`}>
     <div className="relative w-full">
       {children && (
         <div
@@ -675,79 +679,51 @@ const WaveDivider = ({
         </div>
       )}
 
-      <motion.svg className="relative block h-[60px] w-[120%] -left-[10%] md:h-[100px]" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        {[0, 1, 2, 3, 4, 5].map((i) => (
-          <motion.path
-            key={i}
-            d={
-              inverted
-                ? `M0,${20 + i * 6} Q600,${100 - i * 3} 1200,${20 + i * 6}`
-                : `M0,${100 - i * 6} Q600,${20 + i * 3} 1200,${100 - i * 6}`
-            }
-            fill="none"
-            strokeWidth={0.2 + i * 0.1}
-            className={color}
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{
-              pathLength: 1,
-              opacity: [0.03, 0.15, 0.03],
-            }}
-            transition={{
-              pathLength: { duration: 4, ease: "circOut", delay: i * 0.4 },
-              opacity: { duration: 6 + i, repeat: Infinity, ease: "easeInOut" },
-            }}
-          />
-        ))}
-
-        <motion.path
-          d={inverted ? "M0,20 Q600,100 1200,20" : "M0,100 Q600,20 1200,100"}
-          fill="none"
-          strokeWidth="16"
-          className={color}
-          style={{ filter: "blur(30px)" }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: [0.05, 0.12, 0.05] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-
-        <motion.path
-          d={inverted ? "M0,20 Q600,100 1200,20" : "M0,100 Q600,20 1200,100"}
-          fill="none"
-          strokeWidth="0.6"
-          className="stroke-white/30"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 0.5 }}
-          transition={{ duration: 3, ease: "circOut" }}
-        />
-
-        <motion.path
-          d={inverted ? "M0,20 Q600,100 1200,20" : "M0,100 Q600,20 1200,100"}
-          fill="none"
-          strokeWidth="1.2"
-          className="stroke-white/40"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{
-            pathLength: [0, 1],
-            opacity: [0, 0.4, 0],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-            repeatDelay: 3,
-          }}
-        />
-
-        <motion.path
-          d={inverted ? "M0,22 Q600,102 1200,22" : "M0,98 Q600,18 1200,98"}
-          fill="none"
-          strokeWidth="0.15"
-          className="stroke-white/15"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 0.3 }}
-          transition={{ duration: 4, delay: 0.8, ease: "circOut" }}
-        />
-      </motion.svg>
+      <svg
+        className="relative block h-[52px] w-full md:h-[88px]"
+        viewBox="0 0 1440 120"
+        preserveAspectRatio="none"
+      >
+        {inverted ? (
+          <>
+            <path
+              d="M0,0 C240,12 340,78 540,76 C740,74 800,24 960,20 C1130,16 1260,58 1440,54 L1440,120 L0,120 Z"
+              className={upperFillClass}
+            />
+            <path
+              d="M0,0 C240,12 340,78 540,76 C740,74 800,24 960,20 C1130,16 1260,58 1440,54"
+              fill="none"
+              className={accentStrokeClass}
+              strokeWidth="1.5"
+            />
+            <path
+              d="M0,6 C240,18 340,84 540,82 C740,80 800,30 960,26 C1130,22 1260,64 1440,60"
+              fill="none"
+              className="stroke-white/8"
+              strokeWidth="1"
+            />
+          </>
+        ) : (
+          <>
+            <path
+              d="M0,120 C230,116 340,42 540,44 C740,46 810,98 980,102 C1160,106 1270,76 1440,68 L1440,0 L0,0 Z"
+              className={lowerFillClass}
+            />
+            <path
+              d="M0,120 C230,116 340,42 540,44 C740,46 810,98 980,102 C1160,106 1270,76 1440,68"
+              fill="none"
+              className={accentStrokeClass}
+              strokeWidth="1.5"
+            />
+            <path
+              d="M0,114 C230,110 340,36 540,38 C740,40 810,92 980,96 C1160,100 1270,70 1440,62"
+              fill="none"
+              className="stroke-white/8"
+              strokeWidth="1"
+            />
+          </>
+        )}
+      </svg>
     </div>
   </div>
 );
@@ -1006,7 +982,7 @@ const RegistrationForm = () => {
         </motion.div>
       </div>
 
-      <WaveDivider className="bottom-0" color="stroke-brand-blue-start" opacity="opacity-100" inverted={false} />
+      <WaveDivider className="bottom-0" opacity="opacity-100" inverted={false} upperFillClass="fill-[#0b2f9d]" lowerFillClass="fill-[#081f73]" accentStrokeClass="stroke-white/14" />
     </section>
   );
 };
@@ -1204,7 +1180,7 @@ export default function App() {
             {/* Hero content removed as requested */}
           </div>
 
-          <WaveDivider className="bottom-0" color="stroke-brand-blue-start" opacity="opacity-100" inverted={false} />
+          <WaveDivider className="bottom-0" opacity="opacity-100" inverted={false} upperFillClass="fill-[#0b2f9d]" lowerFillClass="fill-[#081f73]" accentStrokeClass="stroke-white/14" />
         </section>
 
         <section className="relative z-10 overflow-visible bg-gradient-to-br from-brand-deep-blue via-brand-vibrant-blue/40 to-brand-deep-blue px-6 pb-40 pt-16">
@@ -1263,7 +1239,7 @@ export default function App() {
             </div>
           </div>
 
-          <WaveDivider className="bottom-0" color="stroke-brand-navy" opacity="opacity-100" inverted={true} coinPosition="right" />
+          <WaveDivider className="bottom-0" opacity="opacity-100" inverted={true} coinPosition="right" upperFillClass="fill-[#081f73]" lowerFillClass="fill-[#08172f]" accentStrokeClass="stroke-white/12" />
         </section>
 
         <RegistrationForm />
