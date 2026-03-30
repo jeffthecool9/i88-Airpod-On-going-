@@ -133,12 +133,10 @@ const GoldConfetti = () => {
   );
 };
 
-// Adjusted to center the God Rays and perfectly match your reference Image
 const RealisticBackground = () => (
   <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
     <div className="absolute inset-0 bg-[#0a1580]" />
     
-    {/* Centered Sunlight: God Rays and Sun Glow */}
     <div className="absolute top-1/2 left-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2">
       {[...Array(8)].map((_, i) => (
         <motion.div
@@ -163,18 +161,18 @@ const RealisticBackground = () => (
   </div>
 );
 
-// Flipped properly to point downwards and match Next-Section color
+// CHANGED: SVG path now explicitly curves UPWARD into a dome/arch shape
 const SectionSeam = ({ className = "", fillColor = "#020f6a" }: { className?: string; fillColor?: string }) => (
   <div className={`absolute left-0 w-full overflow-hidden leading-[0] z-20 pointer-events-none ${className}`}>
     <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="block w-full h-[76px] sm:h-[120px]">
-      {/* Creates the perfect "U" shape curve */}
+      {/* Upward Arch (Dome) Shape */}
       <path
-        d="M0,0 C480,100 720,100 1200,0 L1200,120 L0,120 Z"
+        d="M0,120 L0,100 C480,0 720,0 1200,100 L1200,120 Z"
         fill={fillColor}
       />
-      {/* Cyan Glow Line tracking the curve */}
+      {/* Cyan Glow Line tracing the top of the Arch */}
       <path
-        d="M0,0 C480,100 720,100 1200,0"
+        d="M0,100 C480,0 720,0 1200,100"
         fill="none"
         stroke="url(#line-glow)"
         strokeWidth="3"
@@ -514,7 +512,7 @@ export default function App() {
 
       <main className="relative z-10">
         
-        {/* SECTION 1: EMPTY HERO (Matches Reference Image) */}
+        {/* SECTION 1: EMPTY HERO */}
         <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-[#0a1580]">
           <RealisticBackground />
           <GoldConfetti />
@@ -523,7 +521,6 @@ export default function App() {
             {/* Kept empty as requested */}
           </div>
 
-          {/* NO FLIP: Curve points down. Filled with #0b49b8 to perfectly blend into the top of the Steps Section */}
           <SectionSeam className="bottom-[-1px]" fillColor="#0b49b8" />
         </section>
 
@@ -532,7 +529,7 @@ export default function App() {
           id="steps-to-claim"
           className="relative z-10 overflow-hidden bg-gradient-to-b from-[#0b49b8] via-[#0a3d9d] to-[#082b78] px-6 pt-16 pb-32 sm:pt-24 sm:pb-40"
         >
-          {/* Sweeping Light Effect (2s sweep, 6s delay) */}
+          {/* Sweeping Light Effect */}
           <motion.div
             animate={{ left: ["-100%", "200%"] }}
             transition={{
@@ -598,7 +595,6 @@ export default function App() {
             </div>
           </div>
 
-          {/* NO FLIP: Curve points down. Filled with #020f6a to seamlessly merge into Registration Section */}
           <SectionSeam className="bottom-[-1px]" fillColor="#020f6a" />
         </section>
 
