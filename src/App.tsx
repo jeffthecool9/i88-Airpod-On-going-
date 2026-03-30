@@ -1030,13 +1030,14 @@ const FloatingGirl = () => {
 
   const isMobile = viewport.width < 768;
 
-  // Make the reveal start later on mobile, but finish much faster once section 2 is reached
-  const revealStart = isMobile ? viewport.height * 1.18 : viewport.height * 0.82;
-  const revealEnd = isMobile ? viewport.height * 1.28 : viewport.height * 1.02;
+  // Mobile: reveal right as user reaches Steps to Claim, not after.
+  // Desktop: still reveal after hero ends.
+  const revealStart = isMobile ? viewport.height * 0.82 : viewport.height * 0.82;
+  const revealEnd = isMobile ? viewport.height * 0.98 : viewport.height * 1.02;
 
   const opacity = useTransform(scrollY, [0, revealStart, revealEnd], [0, 0, 1]);
-  const y = useTransform(scrollY, [0, revealStart, revealEnd], [72, 36, 0]);
-  const scale = useTransform(scrollY, [0, revealStart, revealEnd], [0.88, 0.95, 1]);
+  const y = useTransform(scrollY, [0, revealStart, revealEnd], [52, 24, 0]);
+  const scale = useTransform(scrollY, [0, revealStart, revealEnd], [0.92, 0.97, 1]);
 
   return (
     <motion.div
@@ -1067,7 +1068,7 @@ const FloatingGirl = () => {
           prefersReducedMotion
             ? undefined
             : {
-                opacity: [0.4, 0.78, 0.4],
+                opacity: [0.45, 0.82, 0.45],
                 filter: [
                   "brightness(1.1) drop-shadow(0 0 6px rgba(125,211,252,0.75)) drop-shadow(0 0 12px rgba(56,189,248,0.65)) drop-shadow(0 0 22px rgba(59,130,246,0.5))",
                   "brightness(1.18) drop-shadow(0 0 10px rgba(125,211,252,0.95)) drop-shadow(0 0 18px rgba(56,189,248,0.82)) drop-shadow(0 0 30px rgba(59,130,246,0.62))",
@@ -1075,7 +1076,7 @@ const FloatingGirl = () => {
                 ],
               }
         }
-        transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <img
@@ -1096,7 +1097,6 @@ const FloatingGirl = () => {
     </motion.div>
   );
 };
-
 
 /* ----------------------------- App ----------------------------- */
 
