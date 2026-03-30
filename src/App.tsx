@@ -527,8 +527,8 @@ export default function App() {
             {/* Kept empty as requested */}
           </div>
 
-          {/* REMAINS A DOME */}
-          <SectionSeam className="bottom-[-1px]" fillColor="#0b49b8" shape="dome" />
+          {/* DIPS DOWN (U-Shape) */}
+          <SectionSeam className="bottom-[-1px]" fillColor="#0b49b8" shape="dip" />
         </section>
 
         {/* SECTION 2: STEPS TO CLAIM */}
@@ -552,17 +552,13 @@ export default function App() {
             <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-cyan-400/5 blur-[100px] animate-pulse delay-1000" />
           </div>
 
-          {/* --- NEW GLOSSY GLASS TRANSPARENT BOX --- */}
+          {/* Glossy Glass Box */}
           <div className="relative z-10 mx-auto max-w-4xl rounded-[32px] border border-white/20 bg-gradient-to-br from-white/30 via-white/5 to-white/5 px-4 py-8 shadow-[0_30px_60px_rgba(0,0,0,0.4)] backdrop-blur-[32px] sm:px-10 sm:py-12 overflow-hidden">
             
-            {/* Glass Highlight Top Overlay */}
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-transparent opacity-50" />
-            
-            {/* Glass Edge Glow Light */}
             <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent" />
             <div className="pointer-events-none absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-white/50 to-transparent" />
 
-            {/* Inner Content Wrapper */}
             <div className="relative z-10">
               <div className="mb-6 text-center sm:mb-10">
                 <h2 className="text-3xl font-bold tracking-tight leading-[0.95] sm:text-4xl md:text-5xl">
@@ -611,9 +607,8 @@ export default function App() {
               </div>
             </div>
           </div>
-          {/* --- END GLOSSY GLASS BOX --- */}
 
-          {/* DIPS DOWN */}
+          {/* DIPS DOWN (U-Shape) */}
           <SectionSeam className="bottom-[-1px]" fillColor="#020f6a" shape="dip" />
         </section>
 
