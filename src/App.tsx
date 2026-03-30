@@ -133,28 +133,29 @@ const GoldConfetti = () => {
   );
 };
 
-// Cleaned up RealisticBackground with NO white clouds at the bottom
+// Adjusted to center the God Rays and perfectly match your reference Image
 const RealisticBackground = () => (
-  <div className="pointer-events-none absolute inset-0 z-0">
+  <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
     <div className="absolute inset-0 bg-[#0a1580]" />
     
-    <div className="absolute -right-20 -top-20 h-[600px] w-[600px]">
-      {[...Array(6)].map((_, i) => (
+    {/* Centered Sunlight: God Rays and Sun Glow */}
+    <div className="absolute top-1/2 left-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2">
+      {[...Array(8)].map((_, i) => (
         <motion.div
           key={`ray-${i}`}
-          animate={{ opacity: [0.1, 0.2, 0.1], rotate: [i * 15, i * 15 + 5, i * 15] }}
+          animate={{ opacity: [0.15, 0.3, 0.15], rotate: [i * 45, i * 45 + 10, i * 45] }}
           transition={{ duration: 8 + i, repeat: Infinity, ease: "easeInOut" }}
           className="absolute inset-0 origin-center"
           style={{
-            background: `conic-gradient(from ${i * 60}deg at 50% 50%, transparent 0%, rgba(255,255,255,0.15) 10%, transparent 20%)`,
-            filter: "blur(20px)"
+            background: `conic-gradient(from ${i * 45}deg at 50% 50%, transparent 0%, rgba(34,211,238,0.2) 5%, transparent 15%)`,
+            filter: "blur(15px)"
           }}
         />
       ))}
       <motion.div
-        animate={{ scale: [1, 1.1, 1], opacity: [0.7, 0.9, 0.7] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,1)_0%,rgba(255,250,220,0.9)_20%,rgba(255,244,180,0.6)_40%,rgba(143,177,233,0)_75%)] blur-[40px]"
+        animate={{ scale: [1, 1.1, 1], opacity: [0.7, 1, 0.7] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.8)_0%,rgba(125,211,252,0.4)_20%,rgba(143,177,233,0)_60%)] blur-[40px]"
       />
     </div>
 
@@ -162,14 +163,16 @@ const RealisticBackground = () => (
   </div>
 );
 
-// Added pointer-events-none to ensure it never blocks clicks on text
-const SectionSeam = ({ className = "", flip = false, fillColor = "#020f6a" }: { className?: string; flip?: boolean; fillColor?: string }) => (
-  <div className={`absolute left-0 w-full overflow-hidden leading-[0] z-20 pointer-events-none ${className} ${flip ? "rotate-180" : ""}`}>
+// Flipped properly to point downwards and match Next-Section color
+const SectionSeam = ({ className = "", fillColor = "#020f6a" }: { className?: string; fillColor?: string }) => (
+  <div className={`absolute left-0 w-full overflow-hidden leading-[0] z-20 pointer-events-none ${className}`}>
     <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="block w-full h-[76px] sm:h-[120px]">
+      {/* Creates the perfect "U" shape curve */}
       <path
         d="M0,0 C480,100 720,100 1200,0 L1200,120 L0,120 Z"
         fill={fillColor}
       />
+      {/* Cyan Glow Line tracking the curve */}
       <path
         d="M0,0 C480,100 720,100 1200,0"
         fill="none"
@@ -500,7 +503,7 @@ export default function App() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-brand-navy/70 font-sans text-slate-200 selection:bg-blue-500/30">
       
-      {/* Global Backgrounds */}
+      {/* Global Cursor Glow */}
       <div
         className="pointer-events-none fixed inset-0 z-30 opacity-40 transition-opacity duration-300"
         style={{
@@ -511,17 +514,17 @@ export default function App() {
 
       <main className="relative z-10">
         
-        {/* SECTION 1: EMPTY HERO */}
-        <section className="relative flex min-h-screen items-center overflow-hidden px-6 pb-0 pt-16 bg-[#0a1580]">
+        {/* SECTION 1: EMPTY HERO (Matches Reference Image) */}
+        <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-[#0a1580]">
           <RealisticBackground />
           <GoldConfetti />
           
           <div className="relative z-10 mx-auto w-full max-w-6xl">
-            {/* Kept empty exactly as requested */}
+            {/* Kept empty as requested */}
           </div>
 
-          {/* Curve fill precisely matches the top of the next "Steps to Claim" section (#0b49b8) */}
-          <SectionSeam className="bottom-[-1px]" flip fillColor="#0b49b8" />
+          {/* NO FLIP: Curve points down. Filled with #0b49b8 to perfectly blend into the top of the Steps Section */}
+          <SectionSeam className="bottom-[-1px]" fillColor="#0b49b8" />
         </section>
 
         {/* SECTION 2: STEPS TO CLAIM */}
@@ -529,7 +532,7 @@ export default function App() {
           id="steps-to-claim"
           className="relative z-10 overflow-hidden bg-gradient-to-b from-[#0b49b8] via-[#0a3d9d] to-[#082b78] px-6 pt-16 pb-32 sm:pt-24 sm:pb-40"
         >
-          {/* Sweeping Light Effect (2s duration, 6s wait) passing OVER the section */}
+          {/* Sweeping Light Effect (2s sweep, 6s delay) */}
           <motion.div
             animate={{ left: ["-100%", "200%"] }}
             transition={{
@@ -595,7 +598,7 @@ export default function App() {
             </div>
           </div>
 
-          {/* Curve fill precisely matches the top of the Registration Section (#020f6a) */}
+          {/* NO FLIP: Curve points down. Filled with #020f6a to seamlessly merge into Registration Section */}
           <SectionSeam className="bottom-[-1px]" fillColor="#020f6a" />
         </section>
 
