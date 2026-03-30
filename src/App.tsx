@@ -417,7 +417,10 @@ const RegistrationForm = () => {
 
 const FloatingGirl = () => {
   const [showFromSteps, setShowFromSteps] = useState(false);
+  const [bubbleState, setBubbleState] = useState(0);
+  const [isUserActive, setIsUserActive] = useState(true);
 
+  // Intersection Observer to show girl when scrolling down
   useEffect(() => {
     const stepsSection = document.getElementById("steps-to-claim");
     if (!stepsSection) return;
@@ -436,6 +439,47 @@ const FloatingGirl = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Inactivity Timer (10 seconds)
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+    const resetTimer = () => {
+      setIsUserActive(true);
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => setIsUserActive(false), 10000); // Hide after 10s
+    };
+
+    // Listen to user interactions to keep bubble alive
+    window.addEventListener("mousemove", resetTimer);
+    window.addEventListener("scroll", resetTimer);
+    window.addEventListener("keydown", resetTimer);
+    window.addEventListener("touchstart", resetTimer);
+    window.addEventListener("click", resetTimer);
+
+    resetTimer(); // Start timer immediately
+
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener("mousemove", resetTimer);
+      window.removeEventListener("scroll", resetTimer);
+      window.removeEventListener("keydown", resetTimer);
+      window.removeEventListener("touchstart", resetTimer);
+      window.removeEventListener("click", resetTimer);
+    };
+  }, []);
+
+  // Click Interaction Logic
+  const handleInteract = () => {
+    if (bubbleState === 0) {
+      // 1st Click -> Scroll to Hero
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setBubbleState(1); // Update Text
+    } else {
+      // 2nd Click -> Scroll to Form
+      document.getElementById("registration-form")?.scrollIntoView({ behavior: "smooth" });
+      setBubbleState(0); // Reset Text
+    }
+  };
+
   return (
     <motion.div
       aria-hidden="true"
@@ -451,35 +495,80 @@ const FloatingGirl = () => {
         ease: [0.22, 1, 0.36, 1],
       }}
     >
-      <motion.img
-        src={colaImg}
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 h-auto w-[280px] object-contain opacity-90 sm:w-[360px] md:w-[480px] lg:w-[560px] xl:w-[640px]"
-        animate={{
-          opacity: showFromSteps ? [0.45, 0.9, 0.45] : 0,
-        }}
-        transition={{
-          duration: 2.8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        style={{
-          filter: `
-            brightness(1.15)
-            drop-shadow(0 0 8px rgba(125,211,252,1))
-            drop-shadow(0 0 16px rgba(56,189,248,0.95))
-            drop-shadow(0 0 28px rgba(59,130,246,0.85))
-            drop-shadow(0 0 46px rgba(34,211,238,0.65))
-          `,
-        }}
-      />
+      {/* 💬 The Chat Bubble */}
+      <AnimatePresence>
+        {isUserActive && showFromSteps && (
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.8, filter: "blur(5px)" }}
+            transition={{ type: "spring", stiffness: 200, damping: 20 }}
+            className="pointer-events-auto absolute -top-[10%] left-[-15%] z-30 sm:-top-[15%] sm:left-[10%] md:left-[20%]"
+          >
+            <div
+              onClick={handleInteract}
+              className="group relative cursor-pointer rounded-[20px] border border-cyan-400/60 bg-cyan-950/85 px-5 py-3.5 shadow-[0_0_20px_rgba(34,211,238,0.3)] backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:bg-cyan-900/95 hover:shadow-[0_0_30px_rgba(34,211,238,0.6)]"
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={bubbleState}
+                  initial={{ opacity: 0, y: 5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -5 }}
+                  transition={{ duration: 0.2 }}
+                  className="flex items-center gap-2.5"
+                >
+                  <div className="h-2 w-2 animate-pulse rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
+                  <p className="whitespace-nowrap text-xs font-bold text-white tracking-wide sm:text-sm">
+                    {bubbleState === 0
+                      ? "Still new to i88? Join & explore now!"
+                      : "Click here to register!"}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
 
-      <img
-        src={colaImg}
-        alt=""
-        className="relative h-auto w-[280px] object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.35)] sm:w-[360px] md:w-[480px] lg:w-[560px] xl:w-[640px]"
-      />
+              {/* Chat Bubble Tail */}
+              <div className="absolute -bottom-2 right-10 h-4 w-4 rotate-45 border-b border-r border-cyan-400/60 bg-cyan-950/85 transition-colors duration-300 group-hover:bg-cyan-900/95" />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* 👧 The Girl (Clickable Area) */}
+      <div 
+        className="pointer-events-auto relative cursor-pointer transition-transform duration-300 hover:scale-[1.02]" 
+        onClick={handleInteract}
+      >
+        <motion.img
+          src={colaImg}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-auto w-[280px] object-contain opacity-90 sm:w-[360px] md:w-[480px] lg:w-[560px] xl:w-[640px]"
+          animate={{
+            opacity: showFromSteps ? [0.45, 0.9, 0.45] : 0,
+          }}
+          transition={{
+            duration: 2.8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          style={{
+            filter: `
+              brightness(1.15)
+              drop-shadow(0 0 8px rgba(125,211,252,1))
+              drop-shadow(0 0 16px rgba(56,189,248,0.95))
+              drop-shadow(0 0 28px rgba(59,130,246,0.85))
+              drop-shadow(0 0 46px rgba(34,211,238,0.65))
+            `,
+          }}
+        />
+
+        <img
+          src={colaImg}
+          alt=""
+          className="relative h-auto w-[280px] object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.35)] sm:w-[360px] md:w-[480px] lg:w-[560px] xl:w-[640px]"
+        />
+      </div>
     </motion.div>
   );
 };
