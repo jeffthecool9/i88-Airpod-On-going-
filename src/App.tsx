@@ -1014,21 +1014,30 @@ const RegistrationForm = () => {
 const FloatingGirl = () => {
   const prefersReducedMotion = useReducedMotion();
   const { scrollY } = useScroll();
-  const [viewportHeight, setViewportHeight] = useState(900);
+  const [viewport, setViewport] = useState({ width: 1440, height: 900 });
 
   useEffect(() => {
-    const updateViewportHeight = () => setViewportHeight(window.innerHeight || 900);
-    updateViewportHeight();
-    window.addEventListener("resize", updateViewportHeight);
-    return () => window.removeEventListener("resize", updateViewportHeight);
+    const updateViewport = () =>
+      setViewport({
+        width: window.innerWidth || 1440,
+        height: window.innerHeight || 900,
+      });
+
+    updateViewport();
+    window.addEventListener("resize", updateViewport);
+    return () => window.removeEventListener("resize", updateViewport);
   }, []);
 
-  const revealStart = viewportHeight * 0.72;
-  const revealEnd = viewportHeight * 1.08;
+  const isMobile = viewport.width < 768;
+
+  // Desktop: reveal after hero
+  // Mobile: reveal when entering Steps to Claim section
+  const revealStart = isMobile ? viewport.height * 0.92 : viewport.height * 0.72;
+  const revealEnd = isMobile ? viewport.height * 1.28 : viewport.height * 1.08;
 
   const opacity = useTransform(scrollY, [0, revealStart, revealEnd], [0, 0, 1]);
-  const y = useTransform(scrollY, [0, revealStart, revealEnd], [56, 40, 0]);
-  const scale = useTransform(scrollY, [0, revealStart, revealEnd], [0.9, 0.94, 1]);
+  const y = useTransform(scrollY, [0, revealStart, revealEnd], [72, 52, 0]);
+  const scale = useTransform(scrollY, [0, revealStart, revealEnd], [0.88, 0.93, 1]);
 
   return (
     <motion.div
@@ -1088,6 +1097,7 @@ const FloatingGirl = () => {
     </motion.div>
   );
 };
+
 
 /* ----------------------------- App ----------------------------- */
 
