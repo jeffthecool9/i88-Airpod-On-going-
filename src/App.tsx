@@ -270,13 +270,13 @@ const RegistrationForm = () => {
   className="relative z-10 space-y-6"
 >
   <div className="space-y-2">
-  <label className="ml-1 text-sm font-medium text-blue-100">Name</label>
+  <label className="ml-1 text-sm font-medium text-blue-92">Name</label>
   <div className="relative">
-    <User className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white/85" />
+    <User className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white" />
     <input
       type="text"
       placeholder="Your login id"
-      className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
+      className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm font-medium leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
       value={formData.name}
       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
     />
@@ -284,13 +284,13 @@ const RegistrationForm = () => {
 </div>
 
  <div className="space-y-2">
-  <label className="ml-1 text-sm font-medium text-blue-100">Email Address</label>
+  <label className="ml-1 text-sm font-medium text-blue-92">Email Address</label>
   <div className="relative">
-    <Mail className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white/85" />
+    <Mail className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white" />
     <input
       type="email"
       placeholder="youremail@example.com"
-      className={`w-full rounded-2xl border py-4 pl-12 pr-4 text-sm leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18 ${
+     className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm font-medium leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
         formData.email && !emailRegex.test(formData.email)
           ? "border-red-500/50 ring-1 ring-red-500/20 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
           : "border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
@@ -305,13 +305,13 @@ const RegistrationForm = () => {
 </div>
 
  <div className="space-y-2">
-  <label className="ml-1 text-sm font-medium text-blue-100">Password</label>
+  <label className="ml-1 text-sm font-medium text-blue-92">Password</label>
   <div className="relative">
-    <Lock className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white/85" />
+    <Lock className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white" />
     <input
       type="password"
       placeholder="••••••••"
-      className={`w-full rounded-2xl border py-4 pl-12 pr-4 text-sm leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18 ${
+      className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm font-medium leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
         formData.password && !passwordRegex.test(formData.password)
           ? "border-red-500/50 ring-1 ring-red-500/20 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
           : "border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
@@ -354,9 +354,9 @@ const RegistrationForm = () => {
                 className="relative z-10 space-y-6"
               >
                 <div className="space-y-2">
-                  <label className="ml-1 text-sm font-medium text-blue-100">Full Name</label>
+                  <label className="ml-1 text-sm font-medium text-blue-92">Full Name</label>
                   <div className="relative">
-                    <UserPlus className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white/85" />
+                    <UserPlus className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white" />
                     <input
                       type="text"
                       placeholder="John Doe"
@@ -378,9 +378,9 @@ const RegistrationForm = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="ml-1 text-sm font-medium text-blue-100">Phone Number</label>
+                  <label className="ml-1 text-sm font-medium text-blue-92">Phone Number</label>
                   <div className="relative">
-                    <Phone className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white/85" />
+                    <Phone className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white" />
                     <input
                       type="tel"
                       placeholder="+65 8000 0000"
