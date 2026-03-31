@@ -272,11 +272,11 @@ const RegistrationForm = () => {
                 <div className="space-y-2">
                   <label className="ml-1 text-sm font-medium text-blue-100">Name</label>
                   <div className="relative">
-                    <User className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-cyan-300" />
+                    <User className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white/85" />
                     <input
                       type="text"
                       placeholder="Your login id"
-                      className="w-full rounded-2xl border border-cyan-200/15 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] py-4 pl-12 pr-4 text-sm text-white placeholder:text-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_10px_24px_rgba(0,0,0,0.16)] transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400/35"
+                     className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white/85"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     />
@@ -286,7 +286,7 @@ const RegistrationForm = () => {
                 <div className="space-y-2">
                   <label className="ml-1 text-sm font-medium text-blue-100">Email Address</label>
                   <div className="relative">
-                    <Mail className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-cyan-300" />
+                    <Mail className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white/85" />
                     <input
                       type="email"
                       placeholder="youremail@example.com"
@@ -307,7 +307,7 @@ const RegistrationForm = () => {
                 <div className="space-y-2">
                   <label className="ml-1 text-sm font-medium text-blue-100">Password</label>
                   <div className="relative">
-                    <Lock className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-cyan-300" />
+                    <Lock className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white/85" />
                     <input
                       type="password"
                       placeholder="••••••••"
@@ -354,7 +354,7 @@ const RegistrationForm = () => {
                 <div className="space-y-2">
                   <label className="ml-1 text-sm font-medium text-blue-100">Full Name</label>
                   <div className="relative">
-                    <UserPlus className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-cyan-300" />
+                    <UserPlus className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white/85" />
                     <input
                       type="text"
                       placeholder="John Doe"
@@ -378,7 +378,7 @@ const RegistrationForm = () => {
                 <div className="space-y-2">
                   <label className="ml-1 text-sm font-medium text-blue-100">Phone Number</label>
                   <div className="relative">
-                    <Phone className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-cyan-300" />
+                    <Phone className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white/85" />
                     <input
                       type="tel"
                       placeholder="+65 8000 0000"
