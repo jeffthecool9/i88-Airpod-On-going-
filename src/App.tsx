@@ -225,14 +225,36 @@ const RegistrationForm = () => {
       id="registration-form"
       className="relative z-10 overflow-hidden px-6 py-24 sm:py-32 bg-[radial-gradient(circle_at_12%_18%,rgba(34,211,238,0.22),transparent_24%),radial-gradient(circle_at_85%_22%,rgba(59,130,246,0.28),transparent_28%),radial-gradient(circle_at_50%_85%,rgba(56,189,248,0.12),transparent_30%),linear-gradient(180deg,#0B49B8_0%,#0A3D9D_35%,#082B78_72%,#03143E_100%)]"
     >
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-[4%] top-[10%] h-[260px] w-[260px] rounded-full bg-cyan-300/20 blur-[120px]" />
-        <div className="absolute right-[4%] top-[15%] h-[320px] w-[320px] rounded-full bg-blue-400/20 blur-[140px]" />
-        <div className="absolute left-1/2 top-[45%] h-[260px] w-[260px] -translate-x-1/2 rounded-full bg-white/6 blur-[110px]" />
-        <div className="absolute bottom-[8%] left-1/2 h-[280px] w-[280px] -translate-x-1/2 rounded-full bg-cyan-300/12 blur-[120px]" />
-        <div className="absolute inset-0 opacity-[0.08] mix-blend-screen bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_20%,transparent_70%,rgba(34,211,238,0.06))]" />
-      </div>
+             <<div className="pointer-events-none absolute inset-0 rounded-[2.5rem]">
+  {/* subtle full border */}
+  <div className="absolute inset-0 rounded-[2.5rem] border border-cyan-300/18" />
+
+  {/* base glass highlight */}
+  <div className="absolute inset-0 rounded-[2.5rem] bg-[radial-gradient(circle_at_25%_18%,rgba(255,255,255,0.10),transparent_26%),radial-gradient(circle_at_80%_22%,rgba(34,211,238,0.10),transparent_30%)]" />
+
+  {/* top edge soft line */}
+  <div className="absolute inset-x-[14%] top-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-200/70 to-transparent" />
+
+  {/* bottom edge soft line */}
+  <div className="absolute inset-x-[16%] bottom-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-300/35 to-transparent" />
+
+  {/* left edge soft line */}
+  <div className="absolute left-0 top-[14%] h-[72%] w-[1px] bg-gradient-to-b from-transparent via-cyan-300/22 to-transparent" />
+
+  {/* right edge soft line */}
+  <div className="absolute right-0 top-[14%] h-[72%] w-[1px] bg-gradient-to-b from-transparent via-cyan-300/22 to-transparent" />
+
+  {/* corner lights */}
+  <motion.div
+    className="absolute left-[-8px] top-[-8px] h-[54px] w-[54px] rounded-full"
+    animate={{ opacity: [0.45, 1, 0.45], scale: [0.96, 1.06, 0.96] }}
+    transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+    style={{
+      background:
+        "radial-gradient(circle, rgba(255,245,190,0.95) 0%, rgba(255,214,90,0.72) 28%, rgba(255,200,60,0.22) 56%, transparent 78%)",
+      filter: "blur(6px)",
+    }}
+  />
 <img
   src={coinImg}
   alt=""
@@ -270,36 +292,6 @@ const RegistrationForm = () => {
           className="relative overflow-hidden rounded-[2.5rem] border border-cyan-300/25 bg-[linear-gradient(180deg,rgba(24,79,192,0.42)_0%,rgba(15,53,143,0.46)_28%,rgba(9,35,109,0.58)_100%)] p-8 shadow-[0_35px_90px_rgba(0,0,0,0.40),0_0_0_1px_rgba(255,255,255,0.04),0_0_35px_rgba(34,211,238,0.16)] backdrop-blur-[28px] md:p-12"
         >
           
-          <<div className="pointer-events-none absolute inset-0 rounded-[2.5rem]">
-  {/* subtle full border */}
-  <div className="absolute inset-0 rounded-[2.5rem] border border-cyan-300/18" />
-
-  {/* base glass highlight */}
-  <div className="absolute inset-0 rounded-[2.5rem] bg-[radial-gradient(circle_at_25%_18%,rgba(255,255,255,0.10),transparent_26%),radial-gradient(circle_at_80%_22%,rgba(34,211,238,0.10),transparent_30%)]" />
-
-  {/* top edge soft line */}
-  <div className="absolute inset-x-[14%] top-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-200/70 to-transparent" />
-
-  {/* bottom edge soft line */}
-  <div className="absolute inset-x-[16%] bottom-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-300/35 to-transparent" />
-
-  {/* left edge soft line */}
-  <div className="absolute left-0 top-[14%] h-[72%] w-[1px] bg-gradient-to-b from-transparent via-cyan-300/22 to-transparent" />
-
-  {/* right edge soft line */}
-  <div className="absolute right-0 top-[14%] h-[72%] w-[1px] bg-gradient-to-b from-transparent via-cyan-300/22 to-transparent" />
-
-  {/* corner lights */}
-  <motion.div
-    className="absolute left-[-8px] top-[-8px] h-[54px] w-[54px] rounded-full"
-    animate={{ opacity: [0.45, 1, 0.45], scale: [0.96, 1.06, 0.96] }}
-    transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-    style={{
-      background:
-        "radial-gradient(circle, rgba(255,245,190,0.95) 0%, rgba(255,214,90,0.72) 28%, rgba(255,200,60,0.22) 56%, transparent 78%)",
-      filter: "blur(6px)",
-    }}
-  />
   <motion.div
     className="absolute right-[-8px] top-[-8px] h-[54px] w-[54px] rounded-full"
     animate={{ opacity: [1, 0.45, 1], scale: [1.06, 0.96, 1.06] }}
