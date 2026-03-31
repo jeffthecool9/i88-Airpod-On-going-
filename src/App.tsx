@@ -224,19 +224,18 @@ const RegistrationForm = () => {
   return (
     <section
       id="registration-form"
-      className="relative z-10 overflow-hidden px-6 py-24 sm:py-32 bg-[radial-gradient(circle_at_12%_18%,rgba(34,211,238,0.22),transparent_24%),radial-gradient(circle_at_85%_22%,rgba(59,130,246,0.28),transparent_28%),radial-gradient(circle_at_50%_85%,rgba(56,189,248,0.12),transparent_30%),linear-gradient(180deg,#0B49B8_0%,#0A3D9D_35%,#082B78_72%,#03143E_100%)]"
+      className="relative z-10 overflow-hidden px-6 py-24 sm:py-32 bg-[radial-gradient(circle_at_12%_18%,rgba(34,211,238,0.16),transparent_24%),radial-gradient(circle_at_85%_22%,rgba(59,130,246,0.20),transparent_28%),radial-gradient(circle_at_50%_85%,rgba(56,189,248,0.08),transparent_30%),linear-gradient(180deg,#0B49B8_0%,#0A3D9D_35%,#082B78_72%,#03143E_100%)]"
     >
-      {/* Section background */}
+      {/* section background */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-[4%] top-[10%] h-[260px] w-[260px] rounded-full bg-cyan-300/20 blur-[120px]" />
-        <div className="absolute right-[4%] top-[15%] h-[320px] w-[320px] rounded-full bg-blue-400/20 blur-[140px]" />
-        <div className="absolute left-1/2 top-[45%] h-[260px] w-[260px] -translate-x-1/2 rounded-full bg-white/6 blur-[110px]" />
-        <div className="absolute bottom-[8%] left-1/2 h-[280px] w-[280px] -translate-x-1/2 rounded-full bg-cyan-300/12 blur-[120px]" />
-        <div className="absolute inset-0 opacity-[0.08] mix-blend-screen bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_20%,transparent_70%,rgba(34,211,238,0.06))]" />
+        <div className="absolute left-[4%] top-[10%] h-[260px] w-[260px] rounded-full bg-cyan-300/12 blur-[120px]" />
+        <div className="absolute right-[4%] top-[15%] h-[320px] w-[320px] rounded-full bg-blue-400/12 blur-[140px]" />
+        <div className="absolute left-1/2 top-[45%] h-[260px] w-[260px] -translate-x-1/2 rounded-full bg-white/5 blur-[110px]" />
+        <div className="absolute bottom-[8%] left-1/2 h-[280px] w-[280px] -translate-x-1/2 rounded-full bg-cyan-300/8 blur-[120px]" />
+        <div className="absolute inset-0 opacity-[0.05] mix-blend-screen bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
       </div>
 
-      {/* Background coins only */}
+      {/* background coins */}
       <img
         src={coinTiltImg}
         alt=""
@@ -261,63 +260,89 @@ const RegistrationForm = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="relative overflow-hidden rounded-[2.5rem] border border-cyan-300/25 bg-[linear-gradient(180deg,rgba(24,79,192,0.42)_0%,rgba(15,53,143,0.46)_28%,rgba(9,35,109,0.58)_100%)] p-8 shadow-[0_35px_90px_rgba(0,0,0,0.40),0_0_0_1px_rgba(255,255,255,0.04),0_0_35px_rgba(34,211,238,0.16)] backdrop-blur-[28px] md:p-12"
+          className="relative overflow-hidden rounded-[2.5rem] bg-[linear-gradient(180deg,rgba(19,73,180,0.52)_0%,rgba(14,53,143,0.58)_30%,rgba(9,35,109,0.70)_100%)] p-8 shadow-[0_35px_90px_rgba(0,0,0,0.42),0_0_0_1px_rgba(255,255,255,0.03)] backdrop-blur-[28px] md:p-12"
         >
-          {/* Border light overlay only inside card */}
+          {/* ultra silky static glossy border */}
           <div className="pointer-events-none absolute inset-0 rounded-[2.5rem]">
-            <div className="absolute inset-0 rounded-[2.5rem] border border-cyan-300/18" />
-            <div className="absolute inset-0 rounded-[2.5rem] bg-[radial-gradient(circle_at_25%_18%,rgba(255,255,255,0.10),transparent_26%),radial-gradient(circle_at_80%_22%,rgba(34,211,238,0.10),transparent_30%)]" />
+            {/* outer border */}
+            <div className="absolute inset-0 rounded-[2.5rem] border border-[#5fd7ff]/22" />
 
-            <div className="absolute inset-x-[14%] top-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-200/70 to-transparent" />
-            <div className="absolute inset-x-[16%] bottom-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-300/35 to-transparent" />
-            <div className="absolute left-0 top-[14%] h-[72%] w-[1px] bg-gradient-to-b from-transparent via-cyan-300/22 to-transparent" />
-            <div className="absolute right-0 top-[14%] h-[72%] w-[1px] bg-gradient-to-b from-transparent via-cyan-300/22 to-transparent" />
+            {/* inner silk highlight ring */}
+            <div className="absolute inset-[1px] rounded-[2.45rem] border border-white/6" />
 
-            <motion.div
-              className="absolute left-[-8px] top-[-8px] h-[54px] w-[54px] rounded-full"
-              animate={{ opacity: [0.45, 1, 0.45], scale: [0.96, 1.06, 0.96] }}
-              transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+            {/* top silky gloss */}
+            <div
+              className="absolute inset-x-[2px] top-[2px] h-[120px] rounded-t-[2.35rem]"
               style={{
                 background:
-                  "radial-gradient(circle, rgba(255,245,190,0.95) 0%, rgba(255,214,90,0.72) 28%, rgba(255,200,60,0.22) 56%, transparent 78%)",
-                filter: "blur(6px)",
-              }}
-            />
-            <motion.div
-              className="absolute right-[-8px] top-[-8px] h-[54px] w-[54px] rounded-full"
-              animate={{ opacity: [1, 0.45, 1], scale: [1.06, 0.96, 1.06] }}
-              transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
-              style={{
-                background:
-                  "radial-gradient(circle, rgba(255,245,190,0.95) 0%, rgba(255,214,90,0.72) 28%, rgba(255,200,60,0.22) 56%, transparent 78%)",
-                filter: "blur(6px)",
-              }}
-            />
-            <motion.div
-              className="absolute left-[-8px] bottom-[-8px] h-[54px] w-[54px] rounded-full"
-              animate={{ opacity: [0.4, 0.95, 0.4], scale: [0.95, 1.05, 0.95] }}
-              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
-              style={{
-                background:
-                  "radial-gradient(circle, rgba(255,245,190,0.90) 0%, rgba(255,214,90,0.68) 28%, rgba(255,200,60,0.20) 56%, transparent 78%)",
-                filter: "blur(6px)",
-              }}
-            />
-            <motion.div
-              className="absolute right-[-8px] bottom-[-8px] h-[54px] w-[54px] rounded-full"
-              animate={{ opacity: [0.95, 0.42, 0.95], scale: [1.05, 0.95, 1.05] }}
-              transition={{ duration: 2.7, repeat: Infinity, ease: "easeInOut", delay: 0.1 }}
-              style={{
-                background:
-                  "radial-gradient(circle, rgba(255,245,190,0.90) 0%, rgba(255,214,90,0.68) 28%, rgba(255,200,60,0.20) 56%, transparent 78%)",
-                filter: "blur(6px)",
+                  "linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 28%, rgba(255,255,255,0.00) 100%)",
+                filter: "blur(0.2px)",
               }}
             />
 
-            <div className="absolute left-[6px] top-[6px] h-[26px] w-[26px] rounded-tl-[20px] border-l border-t border-[#ffcc4d]/70" />
-            <div className="absolute right-[6px] top-[6px] h-[26px] w-[26px] rounded-tr-[20px] border-r border-t border-[#ffcc4d]/70" />
-            <div className="absolute left-[6px] bottom-[6px] h-[26px] w-[26px] rounded-bl-[20px] border-b border-l border-[#ffcc4d]/55" />
-            <div className="absolute right-[6px] bottom-[6px] h-[26px] w-[26px] rounded-br-[20px] border-b border-r border-[#ffcc4d]/55" />
+            {/* left vertical silk sheen */}
+            <div
+              className="absolute bottom-[26px] left-[1px] top-[22px] w-[24px] rounded-l-[2.2rem]"
+              style={{
+                background:
+                  "linear-gradient(90deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.07) 38%, rgba(255,255,255,0.00) 100%)",
+                filter: "blur(1.2px)",
+              }}
+            />
+
+            {/* right upper silk gloss */}
+            <div
+              className="absolute right-[6px] top-[8px] h-[92px] w-[92px] rounded-full"
+              style={{
+                background:
+                  "radial-gradient(circle at 30% 30%, rgba(255,255,255,0.24) 0%, rgba(255,255,255,0.10) 30%, rgba(255,255,255,0.00) 70%)",
+                filter: "blur(10px)",
+              }}
+            />
+
+            {/* bottom subtle reflective edge */}
+            <div
+              className="absolute bottom-[2px] left-[18px] right-[18px] h-[20px]"
+              style={{
+                background:
+                  "linear-gradient(180deg, rgba(255,255,255,0.00) 0%, rgba(255,255,255,0.08) 100%)",
+                filter: "blur(2px)",
+              }}
+            />
+
+            {/* corner silk speculars */}
+            <div
+              className="absolute left-[6px] top-[6px] h-[54px] w-[54px] rounded-full"
+              style={{
+                background:
+                  "radial-gradient(circle at 35% 35%, rgba(255,248,220,0.75) 0%, rgba(255,240,170,0.32) 24%, rgba(255,230,140,0.0) 72%)",
+                filter: "blur(7px)",
+              }}
+            />
+            <div
+              className="absolute right-[6px] top-[6px] h-[54px] w-[54px] rounded-full"
+              style={{
+                background:
+                  "radial-gradient(circle at 65% 35%, rgba(255,248,220,0.75) 0%, rgba(255,240,170,0.32) 24%, rgba(255,230,140,0.0) 72%)",
+                filter: "blur(7px)",
+              }}
+            />
+            <div
+              className="absolute left-[6px] bottom-[6px] h-[46px] w-[46px] rounded-full"
+              style={{
+                background:
+                  "radial-gradient(circle at 35% 65%, rgba(255,248,220,0.42) 0%, rgba(255,240,170,0.18) 25%, rgba(255,230,140,0.0) 72%)",
+                filter: "blur(8px)",
+              }}
+            />
+            <div
+              className="absolute right-[6px] bottom-[6px] h-[46px] w-[46px] rounded-full"
+              style={{
+                background:
+                  "radial-gradient(circle at 65% 65%, rgba(255,248,220,0.42) 0%, rgba(255,240,170,0.18) 25%, rgba(255,230,140,0.0) 72%)",
+                filter: "blur(8px)",
+              }}
+            />
           </div>
 
           <div className="relative z-10 mb-8 text-center">
