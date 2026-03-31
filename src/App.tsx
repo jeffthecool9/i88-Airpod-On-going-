@@ -2,23 +2,17 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
-import coinImg from "./assets/1.png";
 import coinFrontImg from "./assets/3.png";
 import coinTiltImg from "./assets/4.png";
 import registerImg from "./assets/register.png";
 import depositImg from "./assets/deposit.png";
 import playImg from "./assets/play.png";
 import colaImg from "./assets/cola2.png";
-import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import {
   ChevronRight,
-  Zap,
   CheckCircle2,
-  Globe,
   UserPlus,
-  Wallet,
-  Gamepad2,
-  Gift,
   Mail,
   Lock,
   User,
@@ -55,6 +49,8 @@ const HeroWord = ({
     {children}
   </span>
 );
+
+/* ----------------------------- Hero Confetti ----------------------------- */
 
 const GoldConfetti = () => {
   const pieces = React.useMemo(
@@ -134,11 +130,13 @@ const GoldConfetti = () => {
   );
 };
 
+/* ----------------------------- Background ----------------------------- */
+
 const RealisticBackground = () => (
   <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
     <div className="absolute inset-0 bg-[#0a1580]" />
-    
-    <div className="absolute top-1/2 left-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2">
+
+    <div className="absolute left-1/2 top-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2">
       {[...Array(8)].map((_, i) => (
         <motion.div
           key={`ray-${i}`}
@@ -147,7 +145,7 @@ const RealisticBackground = () => (
           className="absolute inset-0 origin-center"
           style={{
             background: `conic-gradient(from ${i * 45}deg at 50% 50%, transparent 0%, rgba(34,211,238,0.2) 5%, transparent 15%)`,
-            filter: "blur(15px)"
+            filter: "blur(15px)",
           }}
         />
       ))}
@@ -162,12 +160,14 @@ const RealisticBackground = () => (
   </div>
 );
 
-const SectionSeam = ({ 
-  className = "", 
+/* ----------------------------- Section Divider ----------------------------- */
+
+const SectionSeam = ({
+  className = "",
   fillColor = "#020f6a",
-  shape = "dip" 
-}: { 
-  className?: string; 
+  shape = "dip",
+}: {
+  className?: string;
   fillColor?: string;
   shape?: "dome" | "dip";
 }) => (
@@ -195,6 +195,8 @@ const SectionSeam = ({
   </div>
 );
 
+/* ----------------------------- Registration Form ----------------------------- */
+
 const RegistrationForm = () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -206,156 +208,210 @@ const RegistrationForm = () => {
     agreedToTerms: false,
   });
 
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const passwordRegex = /^(?=.*[0-9]).{6,}$/;
+
   const handleNext = () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const passwordRegex = /^(?=.*[0-9]).{6,}$/;
     if (formData.name && emailRegex.test(formData.email) && passwordRegex.test(formData.password)) {
       setStep(2);
     }
   };
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const passwordRegex = /^(?=.*[0-9]).{6,}$/;
   const isStep1Valid =
     formData.name && emailRegex.test(formData.email) && passwordRegex.test(formData.password);
   const isStep2Valid = formData.fullName && formData.phone && formData.agreedToTerms;
 
- return (
-  <section
-    id="registration-form"
-    className="relative z-10 overflow-hidden px-6 py-24 sm:py-32 bg-[radial-gradient(circle_at_12%_18%,rgba(34,211,238,0.22),transparent_24%),radial-gradient(circle_at_85%_22%,rgba(59,130,246,0.28),transparent_28%),radial-gradient(circle_at_50%_85%,rgba(56,189,248,0.12),transparent_30%),linear-gradient(180deg,#0B49B8_0%,#0A3D9D_35%,#082B78_72%,#03143E_100%)]"
-  >
-    <div className="pointer-events-none absolute inset-0">
-      <div className="absolute left-[4%] top-[10%] h-[260px] w-[260px] rounded-full bg-cyan-300/20 blur-[120px]" />
-      <div className="absolute right-[4%] top-[15%] h-[320px] w-[320px] rounded-full bg-blue-400/20 blur-[140px]" />
-      <div className="absolute left-1/2 top-[45%] h-[260px] w-[260px] -translate-x-1/2 rounded-full bg-white/6 blur-[110px]" />
-      <div className="absolute bottom-[8%] left-1/2 h-[280px] w-[280px] -translate-x-1/2 rounded-full bg-cyan-300/12 blur-[120px]" />
-      <div className="absolute inset-0 opacity-[0.08] mix-blend-screen bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
-      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_20%,transparent_70%,rgba(34,211,238,0.06))]" />
-    </div>
+  return (
+    <section
+      id="registration-form"
+      className="relative z-10 overflow-hidden px-6 py-24 sm:py-32 bg-[radial-gradient(circle_at_12%_18%,rgba(34,211,238,0.22),transparent_24%),radial-gradient(circle_at_85%_22%,rgba(59,130,246,0.28),transparent_28%),radial-gradient(circle_at_50%_85%,rgba(56,189,248,0.12),transparent_30%),linear-gradient(180deg,#0B49B8_0%,#0A3D9D_35%,#082B78_72%,#03143E_100%)]"
+    >
+      {/* Section background */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-[4%] top-[10%] h-[260px] w-[260px] rounded-full bg-cyan-300/20 blur-[120px]" />
+        <div className="absolute right-[4%] top-[15%] h-[320px] w-[320px] rounded-full bg-blue-400/20 blur-[140px]" />
+        <div className="absolute left-1/2 top-[45%] h-[260px] w-[260px] -translate-x-1/2 rounded-full bg-white/6 blur-[110px]" />
+        <div className="absolute bottom-[8%] left-1/2 h-[280px] w-[280px] -translate-x-1/2 rounded-full bg-cyan-300/12 blur-[120px]" />
+        <div className="absolute inset-0 opacity-[0.08] mix-blend-screen bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_20%,transparent_70%,rgba(34,211,238,0.06))]" />
+      </div>
 
-    {/* background coins only */}
-    <img
-      src={coinTiltImg}
-      alt=""
-      aria-hidden="true"
-      className="pointer-events-none absolute left-[22px] top-[58px] z-[1] w-[82px] -rotate-[22deg] object-contain opacity-95 drop-shadow-[0_12px_24px_rgba(0,0,0,0.20)] sm:left-[34px] sm:top-[68px] sm:w-[96px]"
-    />
-    <img
-      src={coinFrontImg}
-      alt=""
-      aria-hidden="true"
-      className="pointer-events-none absolute left-[-8px] top-[330px] z-[1] w-[118px] object-contain opacity-95 drop-shadow-[0_16px_30px_rgba(0,0,0,0.18)] sm:left-[0px] sm:top-[360px] sm:w-[132px]"
-    />
-    <img
-      src={coinTiltImg}
-      alt=""
-      aria-hidden="true"
-      className="pointer-events-none absolute bottom-[18px] right-[6px] z-[1] w-[150px] rotate-[22deg] object-contain opacity-95 drop-shadow-[0_18px_36px_rgba(0,0,0,0.20)] sm:bottom-[26px] sm:right-[18px] sm:w-[176px]"
-    />
+      {/* Background coins only */}
+      <img
+        src={coinTiltImg}
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute left-[22px] top-[58px] z-[1] w-[82px] -rotate-[22deg] object-contain opacity-95 drop-shadow-[0_12px_24px_rgba(0,0,0,0.20)] sm:left-[34px] sm:top-[68px] sm:w-[96px]"
+      />
+      <img
+        src={coinFrontImg}
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute left-[-8px] top-[330px] z-[1] w-[118px] object-contain opacity-95 drop-shadow-[0_16px_30px_rgba(0,0,0,0.18)] sm:left-[0px] sm:top-[360px] sm:w-[132px]"
+      />
+      <img
+        src={coinTiltImg}
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-[18px] right-[6px] z-[1] w-[150px] rotate-[22deg] object-contain opacity-95 drop-shadow-[0_18px_36px_rgba(0,0,0,0.20)] sm:bottom-[26px] sm:right-[18px] sm:w-[176px]"
+      />
 
-    <div className="relative z-10 mx-auto max-w-xl">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="relative overflow-hidden rounded-[2.5rem] border border-cyan-300/25 bg-[linear-gradient(180deg,rgba(24,79,192,0.42)_0%,rgba(15,53,143,0.46)_28%,rgba(9,35,109,0.58)_100%)] p-8 shadow-[0_35px_90px_rgba(0,0,0,0.40),0_0_0_1px_rgba(255,255,255,0.04),0_0_35px_rgba(34,211,238,0.16)] backdrop-blur-[28px] md:p-12"
-      >
+      <div className="relative z-10 mx-auto max-w-xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="relative overflow-hidden rounded-[2.5rem] border border-cyan-300/25 bg-[linear-gradient(180deg,rgba(24,79,192,0.42)_0%,rgba(15,53,143,0.46)_28%,rgba(9,35,109,0.58)_100%)] p-8 shadow-[0_35px_90px_rgba(0,0,0,0.40),0_0_0_1px_rgba(255,255,255,0.04),0_0_35px_rgba(34,211,238,0.16)] backdrop-blur-[28px] md:p-12"
+        >
+          {/* Border light overlay only inside card */}
+          <div className="pointer-events-none absolute inset-0 rounded-[2.5rem]">
+            <div className="absolute inset-0 rounded-[2.5rem] border border-cyan-300/18" />
+            <div className="absolute inset-0 rounded-[2.5rem] bg-[radial-gradient(circle_at_25%_18%,rgba(255,255,255,0.10),transparent_26%),radial-gradient(circle_at_80%_22%,rgba(34,211,238,0.10),transparent_30%)]" />
+
+            <div className="absolute inset-x-[14%] top-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-200/70 to-transparent" />
+            <div className="absolute inset-x-[16%] bottom-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-300/35 to-transparent" />
+            <div className="absolute left-0 top-[14%] h-[72%] w-[1px] bg-gradient-to-b from-transparent via-cyan-300/22 to-transparent" />
+            <div className="absolute right-0 top-[14%] h-[72%] w-[1px] bg-gradient-to-b from-transparent via-cyan-300/22 to-transparent" />
+
+            <motion.div
+              className="absolute left-[-8px] top-[-8px] h-[54px] w-[54px] rounded-full"
+              animate={{ opacity: [0.45, 1, 0.45], scale: [0.96, 1.06, 0.96] }}
+              transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(255,245,190,0.95) 0%, rgba(255,214,90,0.72) 28%, rgba(255,200,60,0.22) 56%, transparent 78%)",
+                filter: "blur(6px)",
+              }}
+            />
+            <motion.div
+              className="absolute right-[-8px] top-[-8px] h-[54px] w-[54px] rounded-full"
+              animate={{ opacity: [1, 0.45, 1], scale: [1.06, 0.96, 1.06] }}
+              transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(255,245,190,0.95) 0%, rgba(255,214,90,0.72) 28%, rgba(255,200,60,0.22) 56%, transparent 78%)",
+                filter: "blur(6px)",
+              }}
+            />
+            <motion.div
+              className="absolute left-[-8px] bottom-[-8px] h-[54px] w-[54px] rounded-full"
+              animate={{ opacity: [0.4, 0.95, 0.4], scale: [0.95, 1.05, 0.95] }}
+              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(255,245,190,0.90) 0%, rgba(255,214,90,0.68) 28%, rgba(255,200,60,0.20) 56%, transparent 78%)",
+                filter: "blur(6px)",
+              }}
+            />
+            <motion.div
+              className="absolute right-[-8px] bottom-[-8px] h-[54px] w-[54px] rounded-full"
+              animate={{ opacity: [0.95, 0.42, 0.95], scale: [1.05, 0.95, 1.05] }}
+              transition={{ duration: 2.7, repeat: Infinity, ease: "easeInOut", delay: 0.1 }}
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(255,245,190,0.90) 0%, rgba(255,214,90,0.68) 28%, rgba(255,200,60,0.20) 56%, transparent 78%)",
+                filter: "blur(6px)",
+              }}
+            />
+
+            <div className="absolute left-[6px] top-[6px] h-[26px] w-[26px] rounded-tl-[20px] border-l border-t border-[#ffcc4d]/70" />
+            <div className="absolute right-[6px] top-[6px] h-[26px] w-[26px] rounded-tr-[20px] border-r border-t border-[#ffcc4d]/70" />
+            <div className="absolute left-[6px] bottom-[6px] h-[26px] w-[26px] rounded-bl-[20px] border-b border-l border-[#ffcc4d]/55" />
+            <div className="absolute right-[6px] bottom-[6px] h-[26px] w-[26px] rounded-br-[20px] border-b border-r border-[#ffcc4d]/55" />
+          </div>
 
           <div className="relative z-10 mb-8 text-center">
             <h2 className="mb-2 text-3xl font-bold text-white sm:text-4xl">
               Create Your Account
             </h2>
-            <p className="text-blue-100/75">
-              Join the elite circle of high-rollers
-            </p>
+            <p className="text-blue-100/75">Join the elite circle of high-rollers</p>
           </div>
 
           <AnimatePresence mode="wait">
             {step === 1 ? (
-            <motion.div
-  key="step1"
-  initial={{ opacity: 0, x: -20 }}
-  animate={{ opacity: 1, x: 0 }}
-  exit={{ opacity: 0, x: 20 }}
-  transition={{ duration: 0.4, ease: "easeOut" }}
-  className="relative z-10 space-y-6"
->
-  <div className="space-y-2">
-    <label className="ml-1 text-sm font-medium text-white/92">Name</label>
-    <div className="relative">
-      <User className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white" />
-      <input
-        type="text"
-        placeholder="Your login id"
-        className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm font-medium leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
-        value={formData.name}
-        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-      />
-    </div>
-  </div>
+              <motion.div
+                key="step1"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="relative z-10 space-y-6"
+              >
+                <div className="space-y-2">
+                  <label className="ml-1 text-sm font-medium text-white/92">Name</label>
+                  <div className="relative">
+                    <User className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white" />
+                    <input
+                      type="text"
+                      placeholder="Your login id"
+                      className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm font-medium leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    />
+                  </div>
+                </div>
 
-  <div className="space-y-2">
-    <label className="ml-1 text-sm font-medium text-white/92">Email Address</label>
-    <div className="relative">
-      <Mail className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white" />
-      <input
-        type="email"
-        placeholder="youremail@example.com"
-        className={`w-full rounded-2xl border py-4 pl-12 pr-4 text-sm font-medium leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18 ${
-          formData.email && !emailRegex.test(formData.email)
-            ? "border-red-500/50 ring-1 ring-red-500/20 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
-            : "border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
-        }`}
-        value={formData.email}
-        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-      />
-    </div>
-    {formData.email && !emailRegex.test(formData.email) && (
-      <p className="ml-1 mt-1 text-xs text-red-400">Please enter a valid email address</p>
-    )}
-  </div>
+                <div className="space-y-2">
+                  <label className="ml-1 text-sm font-medium text-white/92">Email Address</label>
+                  <div className="relative">
+                    <Mail className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white" />
+                    <input
+                      type="email"
+                      placeholder="youremail@example.com"
+                      className={`w-full rounded-2xl border py-4 pl-12 pr-4 text-sm font-medium leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18 ${
+                        formData.email && !emailRegex.test(formData.email)
+                          ? "border-red-500/50 ring-1 ring-red-500/20 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
+                          : "border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
+                      }`}
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    />
+                  </div>
+                  {formData.email && !emailRegex.test(formData.email) && (
+                    <p className="ml-1 mt-1 text-xs text-red-400">Please enter a valid email address</p>
+                  )}
+                </div>
 
-  <div className="space-y-2">
-    <label className="ml-1 text-sm font-medium text-white/92">Password</label>
-    <div className="relative">
-      <Lock className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white" />
-      <input
-        type="password"
-        placeholder="••••••••"
-        className={`w-full rounded-2xl border py-4 pl-12 pr-4 text-sm font-medium leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18 ${
-          formData.password && !passwordRegex.test(formData.password)
-            ? "border-red-500/50 ring-1 ring-red-500/20 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
-            : "border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
-        }`}
-        value={formData.password}
-        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-      />
-    </div>
-    {formData.password && !passwordRegex.test(formData.password) && (
-      <p className="ml-1 mt-1 text-xs text-red-400">
-        Password must be at least 6 characters and contain a number
-      </p>
-    )}
-  </div>
+                <div className="space-y-2">
+                  <label className="ml-1 text-sm font-medium text-white/92">Password</label>
+                  <div className="relative">
+                    <Lock className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white" />
+                    <input
+                      type="password"
+                      placeholder="••••••••"
+                      className={`w-full rounded-2xl border py-4 pl-12 pr-4 text-sm font-medium leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18 ${
+                        formData.password && !passwordRegex.test(formData.password)
+                          ? "border-red-500/50 ring-1 ring-red-500/20 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
+                          : "border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
+                      }`}
+                      value={formData.password}
+                      onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                    />
+                  </div>
+                  {formData.password && !passwordRegex.test(formData.password) && (
+                    <p className="ml-1 mt-1 text-xs text-red-400">
+                      Password must be at least 6 characters and contain a number
+                    </p>
+                  )}
+                </div>
 
-  <motion.button
-    whileHover={isStep1Valid ? { scale: 1.02 } : {}}
-    whileTap={isStep1Valid ? { scale: 0.98 } : {}}
-    onClick={handleNext}
-    disabled={!isStep1Valid}
-    className={`group flex w-full items-center justify-center gap-2 rounded-2xl bg-[linear-gradient(90deg,#1D4ED8_0%,#2563EB_42%,#22D3EE_100%)] py-4 font-bold text-white shadow-[0_18px_40px_rgba(37,99,235,0.38)] transition-all ${
-      !isStep1Valid
-        ? "cursor-not-allowed opacity-40 grayscale-[0.5]"
-        : "hover:brightness-110 hover:shadow-[0_20px_50px_rgba(34,211,238,0.28)]"
-    }`}
-  >
-    Join Now
-    <ChevronRight
-      className={`h-5 w-5 transition-transform ${isStep1Valid ? "group-hover:translate-x-1" : ""}`}
-    />
-  </motion.button>
-</motion.div>
+                <motion.button
+                  whileHover={isStep1Valid ? { scale: 1.02 } : {}}
+                  whileTap={isStep1Valid ? { scale: 0.98 } : {}}
+                  onClick={handleNext}
+                  disabled={!isStep1Valid}
+                  className={`group flex w-full items-center justify-center gap-2 rounded-2xl bg-[linear-gradient(90deg,#1D4ED8_0%,#2563EB_42%,#22D3EE_100%)] py-4 font-bold text-white shadow-[0_18px_40px_rgba(37,99,235,0.38)] transition-all ${
+                    !isStep1Valid
+                      ? "cursor-not-allowed opacity-40 grayscale-[0.5]"
+                      : "hover:brightness-110 hover:shadow-[0_20px_50px_rgba(34,211,238,0.28)]"
+                  }`}
+                >
+                  Join Now
+                  <ChevronRight
+                    className={`h-5 w-5 transition-transform ${isStep1Valid ? "group-hover:translate-x-1" : ""}`}
+                  />
+                </motion.button>
+              </motion.div>
             ) : (
               <motion.div
                 key="step2"
@@ -396,7 +452,7 @@ const RegistrationForm = () => {
                     <input
                       type="tel"
                       placeholder="+65 8000 0000"
-                     className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
+                      className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     />
@@ -452,6 +508,9 @@ const RegistrationForm = () => {
     </section>
   );
 };
+
+/* ----------------------------- Floating Girl ----------------------------- */
+
 const FloatingGirl = () => {
   const [showFromSteps, setShowFromSteps] = useState(false);
   const [bubbleState, setBubbleState] = useState(0);
@@ -476,11 +535,12 @@ const FloatingGirl = () => {
   }, []);
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
+    let timeoutId: ReturnType<typeof setTimeout>;
+
     const resetTimer = () => {
       setIsUserActive(true);
       clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => setIsUserActive(false), 10000); 
+      timeoutId = setTimeout(() => setIsUserActive(false), 10000);
     };
 
     window.addEventListener("mousemove", resetTimer);
@@ -489,7 +549,7 @@ const FloatingGirl = () => {
     window.addEventListener("touchstart", resetTimer);
     window.addEventListener("click", resetTimer);
 
-    resetTimer(); 
+    resetTimer();
 
     return () => {
       clearTimeout(timeoutId);
@@ -504,10 +564,10 @@ const FloatingGirl = () => {
   const handleInteract = () => {
     if (bubbleState === 0) {
       window.scrollTo({ top: 0, behavior: "smooth" });
-      setBubbleState(1); 
+      setBubbleState(1);
     } else {
       document.getElementById("registration-form")?.scrollIntoView({ behavior: "smooth" });
-      setBubbleState(0); 
+      setBubbleState(0);
     }
   };
 
@@ -535,10 +595,9 @@ const FloatingGirl = () => {
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
             className="pointer-events-auto absolute bottom-[90%] right-[55%] z-30 w-max max-w-[200px] sm:bottom-[85%] sm:right-[60%] md:bottom-[80%] md:right-[65%] sm:max-w-none"
           >
-            {/* Box container WITHOUT the tail */}
             <div
               onClick={handleInteract}
-              className="group relative cursor-pointer rounded-[20px] border border-cyan-400/60 bg-cyan-950/85 px-4 py-3 sm:px-5 sm:py-3.5 shadow-[0_0_20px_rgba(34,211,238,0.3)] backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:bg-cyan-900/95 hover:shadow-[0_0_30px_rgba(34,211,238,0.6)] text-center sm:text-left"
+              className="group relative cursor-pointer rounded-[20px] border border-cyan-400/60 bg-cyan-950/85 px-4 py-3 text-center shadow-[0_0_20px_rgba(34,211,238,0.3)] backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:bg-cyan-900/95 hover:shadow-[0_0_30px_rgba(34,211,238,0.6)] sm:px-5 sm:py-3.5 sm:text-left"
             >
               <AnimatePresence mode="wait">
                 <motion.div
@@ -550,7 +609,7 @@ const FloatingGirl = () => {
                   className="flex items-center justify-center gap-2 sm:gap-2.5"
                 >
                   <div className="h-2 w-2 shrink-0 animate-pulse rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
-                  <p className="text-[11px] font-bold text-white tracking-wide sm:whitespace-nowrap sm:text-sm leading-tight">
+                  <p className="text-[11px] font-bold leading-tight tracking-wide text-white sm:whitespace-nowrap sm:text-sm">
                     {bubbleState === 0
                       ? "Still new to i88? Join & explore now!"
                       : "Click here to register!"}
@@ -562,8 +621,8 @@ const FloatingGirl = () => {
         )}
       </AnimatePresence>
 
-      <div 
-        className="pointer-events-auto relative cursor-pointer transition-transform duration-300 hover:scale-[1.02]" 
+      <div
+        className="pointer-events-auto relative cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
         onClick={handleInteract}
       >
         <motion.img
@@ -600,7 +659,6 @@ const FloatingGirl = () => {
   );
 };
 
-
 /* ----------------------------- App ----------------------------- */
 
 export default function App() {
@@ -614,15 +672,14 @@ export default function App() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
- const stepData = [
-  { title: "Register", desc: "Create account", image: registerImg },
-  { title: "Deposit", desc: "Start from $50", image: depositImg },
-  { title: "Play", desc: "Unlock Reward", image: playImg },
-];
+  const stepData = [
+    { title: "Register", desc: "Create account", image: registerImg },
+    { title: "Deposit", desc: "Start from $50", image: depositImg },
+    { title: "Play", desc: "Unlock Reward", image: playImg },
+  ];
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-brand-navy/70 font-sans text-slate-200 selection:bg-blue-500/30">
-      
       <div
         className="pointer-events-none fixed inset-0 z-30 opacity-40 transition-opacity duration-300"
         style={{
@@ -632,78 +689,74 @@ export default function App() {
       <div className="pointer-events-none fixed inset-0 z-[100] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
       <main className="relative z-10">
-        
         <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-[#0a1580]">
           <RealisticBackground />
           <GoldConfetti />
-          
-          <div className="relative z-10 mx-auto w-full max-w-6xl">
-            {/* Kept empty */}
-          </div>
+
+          <div className="relative z-10 mx-auto w-full max-w-6xl">{/* Kept empty */}</div>
 
           <SectionSeam className="bottom-[-1px]" fillColor="#0b49b8" shape="dip" />
         </section>
 
-       <section
-  id="steps-to-claim"
-  className="relative z-10 overflow-hidden bg-gradient-to-b from-[#0b49b8] via-[#0a3d9d] to-[#082b78] px-4 pt-16 pb-32 sm:px-6 sm:pt-24 sm:pb-40"
->
-  <div className="pointer-events-none absolute left-0 top-0 h-full w-full">
-    <div className="absolute left-1/4 top-1/4 h-72 w-72 rounded-full bg-white/5 blur-[100px] animate-pulse" />
-    <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-cyan-400/5 blur-[100px] animate-pulse delay-1000" />
-  </div>
+        <section
+          id="steps-to-claim"
+          className="relative z-10 overflow-hidden bg-gradient-to-b from-[#0b49b8] via-[#0a3d9d] to-[#082b78] px-4 pb-32 pt-16 sm:px-6 sm:pb-40 sm:pt-24"
+        >
+          <div className="pointer-events-none absolute left-0 top-0 h-full w-full">
+            <div className="absolute left-1/4 top-1/4 h-72 w-72 rounded-full bg-white/5 blur-[100px] animate-pulse" />
+            <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-cyan-400/5 blur-[100px] animate-pulse delay-1000" />
+          </div>
 
-  <div className="relative z-10 mx-auto max-w-6xl rounded-[24px] border border-cyan-400/60 bg-gradient-to-br from-cyan-900/30 via-white/5 to-white/5 px-4 py-8 shadow-[0_0_20px_rgba(34,211,238,0.3),0_30px_60px_rgba(0,0,0,0.5)] backdrop-blur-[32px] sm:rounded-[32px] sm:px-8 sm:py-10 md:px-10">
-    <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-cyan-400/10 via-transparent to-transparent opacity-50" />
-    <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-300/80 to-transparent" />
-    <div className="pointer-events-none absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-cyan-400/50 to-transparent" />
-    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
-    <div className="pointer-events-none absolute inset-y-0 right-0 w-[1px] bg-gradient-to-b from-cyan-400/20 to-transparent" />
+          <div className="relative z-10 mx-auto max-w-6xl rounded-[24px] border border-cyan-400/60 bg-gradient-to-br from-cyan-900/30 via-white/5 to-white/5 px-4 py-8 shadow-[0_0_20px_rgba(34,211,238,0.3),0_30px_60px_rgba(0,0,0,0.5)] backdrop-blur-[32px] sm:rounded-[32px] sm:px-8 sm:py-10 md:px-10">
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-cyan-400/10 via-transparent to-transparent opacity-50" />
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-300/80 to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-cyan-400/50 to-transparent" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-[1px] bg-gradient-to-b from-cyan-400/20 to-transparent" />
 
-    <div className="relative z-10">
-      <div className="mb-8 text-center sm:mb-10">
-        <h2 className="text-3xl font-bold tracking-tight leading-[0.95] sm:text-4xl md:text-5xl">
-          <HeroWord light>Steps to Claim</HeroWord>
-        </h2>
-      </div>
+            <div className="relative z-10">
+              <div className="mb-8 text-center sm:mb-10">
+                <h2 className="text-3xl font-bold tracking-tight leading-[0.95] sm:text-4xl md:text-5xl">
+                  <HeroWord light>Steps to Claim</HeroWord>
+                </h2>
+              </div>
 
-      <div className="grid grid-cols-3 gap-3 sm:gap-6 md:gap-10">
-        {stepData.map((item, i) => (
-          <motion.div
-            key={item.title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.45, delay: i * 0.12 }}
-            className="flex flex-col items-center text-center"
-          >
-            <div className="mb-3 flex h-[72px] w-[72px] items-center justify-center sm:h-[96px] sm:w-[96px] md:h-[112px] md:w-[112px]">
-              <img
-                src={item.image}
-                alt={item.title}
-                className="h-full w-full object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.25)]"
-              />
+              <div className="grid grid-cols-3 gap-3 sm:gap-6 md:gap-10">
+                {stepData.map((item, i) => (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.45, delay: i * 0.12 }}
+                    className="flex flex-col items-center text-center"
+                  >
+                    <div className="mb-3 flex h-[72px] w-[72px] items-center justify-center sm:h-[96px] sm:w-[96px] md:h-[112px] md:w-[112px]">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="h-full w-full object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.25)]"
+                      />
+                    </div>
+
+                    <h3 className="text-sm font-bold tracking-tight text-white sm:text-xl md:text-3xl">
+                      {item.title}
+                    </h3>
+                    <p className="mt-1 max-w-[140px] text-[11px] font-semibold leading-tight text-white/80 sm:max-w-[200px] sm:text-sm md:text-base">
+                      {item.desc}
+                    </p>
+                  </motion.div>
+                ))}
+
+                <div className="hidden sm:block" />
+              </div>
             </div>
+          </div>
 
-            <h3 className="text-sm font-bold tracking-tight text-white sm:text-xl md:text-3xl">
-              {item.title}
-            </h3>
-            <p className="mt-1 max-w-[140px] text-[11px] font-semibold leading-tight text-white/80 sm:max-w-[200px] sm:text-sm md:text-base">
-              {item.desc}
-            </p>
-          </motion.div>
-        ))}
-
-        <div className="hidden sm:block" />
-      </div>
-    </div>
-  </div>
-
-  <SectionSeam className="bottom-[-1px]" fillColor="#020f6a" shape="dip" />
-</section>
+          <SectionSeam className="bottom-[-1px]" fillColor="#020f6a" shape="dip" />
+        </section>
 
         <RegistrationForm />
-        
         <FloatingGirl />
       </main>
     </div>
