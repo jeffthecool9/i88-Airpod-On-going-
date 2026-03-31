@@ -2,6 +2,9 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
+import registerImg from "./assets/register.png";
+import depositImg from "./assets/deposit.png";
+import playImg from "./assets/play.png";
 import colaImg from "./assets/cola2.png";
 import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
 import {
@@ -576,12 +579,11 @@ export default function App() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  const stepData = [
-    { step: "1", title: "Register", desc: "Create account", icon: UserPlus },
-    { step: "2", title: "Deposit", desc: "Start from $50", icon: Wallet },
-    { step: "3", title: "Play", desc: "Unlock Reward", icon: Gamepad2 },
-    { step: "4", title: "Claim", desc: "Get AirPods", icon: Gift },
-  ];
+ const stepData = [
+  { title: "Register", desc: "Create account", image: registerImg },
+  { title: "Deposit", desc: "Start from $50", image: depositImg },
+  { title: "Play", desc: "Unlock Reward", image: playImg },
+];
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-brand-navy/70 font-sans text-slate-200 selection:bg-blue-500/30">
@@ -607,85 +609,66 @@ export default function App() {
           <SectionSeam className="bottom-[-1px]" fillColor="#0b49b8" shape="dip" />
         </section>
 
-        <section
-          id="steps-to-claim"
-          className="relative z-10 overflow-hidden bg-gradient-to-b from-[#0b49b8] via-[#0a3d9d] to-[#082b78] px-4 pt-16 pb-32 sm:px-6 sm:pt-24 sm:pb-40"
-        >
+       <section
+  id="steps-to-claim"
+  className="relative z-10 overflow-hidden bg-gradient-to-b from-[#0b49b8] via-[#0a3d9d] to-[#082b78] px-4 pt-16 pb-32 sm:px-6 sm:pt-24 sm:pb-40"
+>
+  <div className="pointer-events-none absolute left-0 top-0 h-full w-full">
+    <div className="absolute left-1/4 top-1/4 h-72 w-72 rounded-full bg-white/5 blur-[100px] animate-pulse" />
+    <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-cyan-400/5 blur-[100px] animate-pulse delay-1000" />
+  </div>
+
+  <div className="relative z-10 mx-auto max-w-6xl rounded-[24px] border border-cyan-400/60 bg-gradient-to-br from-cyan-900/30 via-white/5 to-white/5 px-4 py-8 shadow-[0_0_20px_rgba(34,211,238,0.3),0_30px_60px_rgba(0,0,0,0.5)] backdrop-blur-[32px] sm:rounded-[32px] sm:px-8 sm:py-10 md:px-10">
+    <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-cyan-400/10 via-transparent to-transparent opacity-50" />
+    <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-300/80 to-transparent" />
+    <div className="pointer-events-none absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-cyan-400/50 to-transparent" />
+    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
+    <div className="pointer-events-none absolute inset-y-0 right-0 w-[1px] bg-gradient-to-b from-cyan-400/20 to-transparent" />
+
+    <div className="relative z-10">
+      <div className="mb-8 text-center sm:mb-10">
+        <h2 className="text-3xl font-bold tracking-tight leading-[0.95] sm:text-4xl md:text-5xl">
+          <HeroWord light>Steps to Claim</HeroWord>
+        </h2>
+        <p className="mt-2 text-xs font-medium text-blue-100/90 sm:text-sm">
+          A quick guide to unlock your reward
+        </p>
+      </div>
+
+      <div className="grid grid-cols-3 gap-3 sm:gap-6 md:gap-10">
+        {stepData.map((item, i) => (
           <motion.div
-            animate={{ left: ["-100%", "200%"] }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              repeatDelay: 6,
-              ease: "easeInOut",
-            }}
-            className="pointer-events-none absolute inset-y-0 w-[50%] skew-x-[-30deg] bg-gradient-to-r from-transparent via-white/10 to-transparent z-[25]"
-          />
-
-          <div className="pointer-events-none absolute left-0 top-0 h-full w-full">
-            <div className="absolute left-1/4 top-1/4 h-72 w-72 rounded-full bg-white/5 blur-[100px] animate-pulse" />
-            <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-cyan-400/5 blur-[100px] animate-pulse delay-1000" />
-          </div>
-
-          <div className="relative z-10 mx-auto max-w-4xl rounded-[24px] sm:rounded-[32px] border border-cyan-400/60 bg-gradient-to-br from-cyan-900/30 via-white/5 to-white/5 px-4 py-8 shadow-[0_0_20px_rgba(34,211,238,0.3),0_30px_60px_rgba(0,0,0,0.5)] backdrop-blur-[32px] sm:px-10 sm:py-12 overflow-hidden">
-            
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-cyan-400/10 via-transparent to-transparent opacity-50" />
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-300/80 to-transparent" />
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-cyan-400/50 to-transparent" />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-[1px] bg-gradient-to-b from-cyan-400/20 to-transparent" />
-
-            <div className="relative z-10">
-              <div className="mb-8 text-center sm:mb-10">
-                <h2 className="text-3xl font-bold tracking-tight leading-[0.95] sm:text-4xl md:text-5xl">
-                  <HeroWord light>Steps to Claim</HeroWord>
-                </h2>
-                <p className="mt-2 text-xs font-medium text-blue-100/90 sm:text-sm">
-                  A quick guide to unlock your reward
-                </p>
-              </div>
-
-              <div className="relative">
-                <div className="grid grid-cols-2 gap-y-8 gap-x-4 sm:grid-cols-4 sm:gap-6 md:gap-12">
-                  {stepData.map((item, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: i * 0.15 }}
-                      className="group relative"
-                    >
-                      <div className="flex flex-col items-center">
-                        <div className="relative mb-3 sm:mb-4">
-                          <div className="absolute inset-0 rounded-full bg-cyan-400/20 blur-2xl opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
-                          <div className="relative flex h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 items-center justify-center rounded-[1.25rem] sm:rounded-[2.5rem] border border-cyan-400/40 bg-white/10 backdrop-blur-3xl transition-all duration-500 group-hover:-translate-y-2 group-hover:border-cyan-300/80 group-hover:bg-cyan-500/20 group-hover:shadow-[0_20px_40px_rgba(34,211,238,0.25)]">
-                            <item.icon className="h-7 w-7 sm:h-8 sm:w-8 md:h-10 md:w-10 text-white transition-transform duration-500 group-hover:scale-110 drop-shadow-md" />
-                            <div className="absolute -left-2 -top-2 flex h-8 w-8 sm:h-12 sm:w-12 items-center justify-center rounded-lg sm:rounded-2xl border border-cyan-400/50 bg-cyan-950/50 backdrop-blur-md text-xs sm:text-xl font-bold text-cyan-300 shadow-[0_4px_12px_rgba(34,211,238,0.3)] transition-all duration-300 group-hover:border-cyan-300 group-hover:bg-cyan-500/50 group-hover:text-white">
-                              {item.step}
-                            </div>
-                            <div className="absolute inset-0 rounded-[1.25rem] sm:rounded-[2.5rem] border border-cyan-400/0 opacity-0 group-hover:animate-ping group-hover:border-cyan-400/60 group-hover:opacity-40" />
-                          </div>
-                        </div>
-
-                        <div className="text-center space-y-1 sm:space-y-2">
-                          <h3 className="text-base font-bold tracking-tight text-white transition-colors group-hover:text-cyan-200 sm:text-xl md:text-3xl drop-shadow-sm">
-                            {item.title}
-                          </h3>
-                          <p className="mx-auto max-w-[140px] sm:max-w-[200px] text-xs font-semibold leading-tight text-white/80 transition-colors group-hover:text-cyan-100 sm:text-sm md:text-base">
-                            {item.desc}
-                          </p>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
+            key={item.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: i * 0.12 }}
+            className="flex flex-col items-center text-center"
+          >
+            <div className="mb-3 flex h-[72px] w-[72px] items-center justify-center sm:h-[96px] sm:w-[96px] md:h-[112px] md:w-[112px]">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="h-full w-full object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.25)]"
+              />
             </div>
-          </div>
 
-          <SectionSeam className="bottom-[-1px]" fillColor="#020f6a" shape="dip" />
-        </section>
+            <h3 className="text-sm font-bold tracking-tight text-white sm:text-xl md:text-3xl">
+              {item.title}
+            </h3>
+            <p className="mt-1 max-w-[140px] text-[11px] font-semibold leading-tight text-white/80 sm:max-w-[200px] sm:text-sm md:text-base">
+              {item.desc}
+            </p>
+          </motion.div>
+        ))}
+
+        <div className="hidden sm:block" />
+      </div>
+    </div>
+  </div>
+
+  <SectionSeam className="bottom-[-1px]" fillColor="#020f6a" shape="dip" />
+</section>
 
         <RegistrationForm />
         
