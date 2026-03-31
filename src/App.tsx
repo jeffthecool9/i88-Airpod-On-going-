@@ -56,14 +56,16 @@ const HeroWord = ({
 const GoldConfetti = () => {
   const pieces = React.useMemo(
     () =>
-      Array.from({ length: 22 }, (_, i) => {
+      Array.from({ length: 24 }, (_, i) => {
         const width = 10 + (i % 4) * 4;
         const height = 3 + (i % 3);
-        const left = (i * 4.7) % 100;
-        const delay = (i % 8) * 0.45;
-        const duration = 8 + (i % 5) * 1.1;
-        const drift = ((i % 6) - 3) * 18;
-        const rotate = (i % 2 === 0 ? 1 : -1) * (120 + i * 6);
+        const left = 2 + ((i * 4.15) % 96);
+        const delay = (i % 8) * 0.35;
+        const duration = 7.5 + (i % 5) * 0.9;
+        const drift = ((i % 6) - 3) * 22;
+        const rotate = (i % 2 === 0 ? 1 : -1) * (140 + i * 10);
+        const scale = 0.82 + (i % 4) * 0.08;
+        const opacity = 0.72 + (i % 3) * 0.08;
 
         const backgrounds = [
           "linear-gradient(135deg, #F9D423 0%, #FFD700 45%, #B8860B 100%)",
@@ -80,9 +82,9 @@ const GoldConfetti = () => {
           duration,
           drift,
           rotate,
+          scale,
+          opacity,
           bg: backgrounds[i % backgrounds.length],
-          opacity: 0.7 + (i % 3) * 0.08,
-          scale: 0.8 + (i % 4) * 0.08,
         };
       }),
     []
@@ -93,25 +95,6 @@ const GoldConfetti = () => {
       {pieces.map((piece) => (
         <motion.div
           key={piece.id}
-          initial={{
-            y: "-12%",
-            x: 0,
-            opacity: 0,
-            rotate: 0,
-            scale: piece.scale,
-          }}
-          animate={{
-            y: "112%",
-            x: [0, piece.drift, 0],
-            opacity: [0, piece.opacity, piece.opacity, 0],
-            rotate: [0, piece.rotate],
-          }}
-          transition={{
-            duration: piece.duration,
-            delay: piece.delay,
-            repeat: Infinity,
-            ease: "linear",
-          }}
           className="absolute top-0"
           style={{
             left: `${piece.left}%`,
@@ -121,6 +104,25 @@ const GoldConfetti = () => {
             background: piece.bg,
             boxShadow: "0 2px 8px rgba(0,0,0,0.18)",
             willChange: "transform, opacity",
+          }}
+          initial={{
+            y: -40,
+            x: 0,
+            opacity: 0,
+            rotate: 0,
+            scale: piece.scale,
+          }}
+          animate={{
+            y: ["0vh", "35vh", "70vh", "115vh"],
+            x: [0, piece.drift * 0.35, piece.drift, piece.drift * 0.2],
+            opacity: [0, piece.opacity, piece.opacity, 0],
+            rotate: [0, piece.rotate * 0.4, piece.rotate * 0.8, piece.rotate],
+          }}
+          transition={{
+            duration: piece.duration,
+            delay: piece.delay,
+            repeat: Infinity,
+            ease: "linear",
           }}
         />
       ))}
