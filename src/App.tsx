@@ -208,8 +208,6 @@ const RegistrationForm = () => {
     agreedToTerms: false,
   });
 
-  const nextStep = () => setStep(1.5);
-
   const handleNext = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const passwordRegex = /^(?=.*[0-9]).{6,}$/;
@@ -220,16 +218,22 @@ const RegistrationForm = () => {
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const passwordRegex = /^(?=.*[0-9]).{6,}$/;
-  const isStep1Valid = formData.name && emailRegex.test(formData.email) && passwordRegex.test(formData.password);
+  const isStep1Valid =
+    formData.name && emailRegex.test(formData.email) && passwordRegex.test(formData.password);
   const isStep2Valid = formData.fullName && formData.phone && formData.agreedToTerms;
 
   return (
     <section
       id="registration-form"
-      className="relative z-10 overflow-hidden bg-gradient-to-br from-[#020f6a] to-[#01083a] px-6 py-24 sm:py-32"
+      className="relative z-10 overflow-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.16),transparent_28%),radial-gradient(circle_at_80%_30%,rgba(59,130,246,0.22),transparent_30%),linear-gradient(180deg,#071A5A_0%,#082B78_45%,#03143E_100%)] px-6 py-24 sm:py-32"
     >
+      {/* Background effects */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/10 blur-[120px]" />
+        <div className="absolute left-[8%] top-[12%] h-[220px] w-[220px] rounded-full bg-cyan-400/20 blur-[90px]" />
+        <div className="absolute right-[6%] top-[18%] h-[260px] w-[260px] rounded-full bg-blue-500/20 blur-[110px]" />
+        <div className="absolute bottom-[8%] left-1/2 h-[260px] w-[260px] -translate-x-1/2 rounded-full bg-cyan-300/10 blur-[110px]" />
+        <div className="absolute inset-0 opacity-[0.08] mix-blend-screen bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.05),transparent_28%,transparent_72%,rgba(34,211,238,0.04))]" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-xl">
@@ -237,11 +241,19 @@ const RegistrationForm = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="rounded-[2.5rem] border border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur-3xl md:p-12"
+          className="relative rounded-[2.5rem] border border-cyan-300/20 bg-[linear-gradient(180deg,rgba(17,40,112,0.72)_0%,rgba(10,31,92,0.78)_100%)] p-8 shadow-[0_25px_80px_rgba(0,0,0,0.45),0_0_0_1px_rgba(255,255,255,0.03),0_0_30px_rgba(34,211,238,0.12)] backdrop-blur-[30px] md:p-12"
         >
-          <div className="mb-8 text-center">
-            <h2 className="mb-2 text-3xl font-bold text-white">Create Your Account</h2>
-            <p className="text-blue-200/70">Join the elite circle of high-rollers</p>
+          {/* Card glow / edge highlights */}
+          <div className="pointer-events-none absolute inset-0 rounded-[2.5rem]">
+            <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-200/60 to-transparent" />
+            <div className="absolute left-0 top-0 h-full w-[1px] bg-gradient-to-b from-cyan-300/30 to-transparent" />
+            <div className="absolute right-0 top-0 h-full w-[1px] bg-gradient-to-b from-white/10 to-transparent" />
+            <div className="absolute inset-0 rounded-[2.5rem] bg-[radial-gradient(circle_at_20%_15%,rgba(255,255,255,0.10),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(34,211,238,0.10),transparent_30%)]" />
+          </div>
+
+          <div className="relative z-10 mb-8 text-center">
+            <h2 className="mb-2 text-3xl font-bold text-white sm:text-4xl">Create Your Account</h2>
+            <p className="text-blue-100/75">Join the elite circle of high-rollers</p>
           </div>
 
           <AnimatePresence mode="wait">
@@ -252,16 +264,16 @@ const RegistrationForm = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
-                className="space-y-6"
+                className="relative z-10 space-y-6"
               >
                 <div className="space-y-2">
                   <label className="ml-1 text-sm font-medium text-blue-100">Name</label>
                   <div className="relative">
-                    <User className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-blue-400" />
+                    <User className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-cyan-300" />
                     <input
                       type="text"
                       placeholder="Your login id"
-                      className="w-full rounded-2xl border border-white/10 bg-white/5 py-4 pl-12 pr-4 text-sm text-white placeholder:text-white/20 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                      className="w-full rounded-2xl border border-cyan-200/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03))] py-4 pl-12 pr-4 text-sm text-white placeholder:text-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_8px_20px_rgba(0,0,0,0.16)] transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400/35"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     />
@@ -271,14 +283,14 @@ const RegistrationForm = () => {
                 <div className="space-y-2">
                   <label className="ml-1 text-sm font-medium text-blue-100">Email Address</label>
                   <div className="relative">
-                    <Mail className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-blue-400" />
+                    <Mail className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-cyan-300" />
                     <input
                       type="email"
                       placeholder="youremail@example.com"
-                      className={`w-full rounded-2xl border bg-white/5 py-4 pl-12 pr-4 text-sm text-white placeholder:text-white/20 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500/50 ${
+                      className={`w-full rounded-2xl border bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03))] py-4 pl-12 pr-4 text-sm text-white placeholder:text-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_8px_20px_rgba(0,0,0,0.16)] transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400/35 ${
                         formData.email && !emailRegex.test(formData.email)
                           ? "border-red-500/50 ring-1 ring-red-500/20"
-                          : "border-white/10"
+                          : "border-cyan-200/12"
                       }`}
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -292,14 +304,14 @@ const RegistrationForm = () => {
                 <div className="space-y-2">
                   <label className="ml-1 text-sm font-medium text-blue-100">Password</label>
                   <div className="relative">
-                    <Lock className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-blue-400" />
+                    <Lock className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-cyan-300" />
                     <input
                       type="password"
                       placeholder="••••••••"
-                      className={`w-full rounded-2xl border bg-white/5 py-4 pl-12 pr-4 text-sm text-white placeholder:text-white/20 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500/50 ${
+                      className={`w-full rounded-2xl border bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03))] py-4 pl-12 pr-4 text-sm text-white placeholder:text-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_8px_20px_rgba(0,0,0,0.16)] transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400/35 ${
                         formData.password && !passwordRegex.test(formData.password)
                           ? "border-red-500/50 ring-1 ring-red-500/20"
-                          : "border-white/10"
+                          : "border-cyan-200/12"
                       }`}
                       value={formData.password}
                       onChange={(e) => setFormData({ ...formData, password: e.target.value })}
@@ -317,8 +329,10 @@ const RegistrationForm = () => {
                   whileTap={isStep1Valid ? { scale: 0.98 } : {}}
                   onClick={handleNext}
                   disabled={!isStep1Valid}
-                  className={`group flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 py-4 font-bold text-white shadow-lg shadow-blue-500/25 transition-all ${
-                    !isStep1Valid ? "cursor-not-allowed opacity-40 grayscale-[0.5]" : "hover:shadow-blue-500/40"
+                  className={`group flex w-full items-center justify-center gap-2 rounded-2xl bg-[linear-gradient(90deg,#1D4ED8_0%,#2563EB_45%,#22D3EE_100%)] py-4 font-bold text-white shadow-[0_15px_35px_rgba(37,99,235,0.35)] transition-all ${
+                    !isStep1Valid
+                      ? "cursor-not-allowed opacity-40 grayscale-[0.5]"
+                      : "hover:brightness-110 hover:shadow-[0_18px_45px_rgba(34,211,238,0.30)]"
                   }`}
                 >
                   Join Now
@@ -332,16 +346,16 @@ const RegistrationForm = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
-                className="space-y-6"
+                className="relative z-10 space-y-6"
               >
                 <div className="space-y-2">
                   <label className="ml-1 text-sm font-medium text-blue-100">Full Name</label>
                   <div className="relative">
-                    <UserPlus className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-blue-400" />
+                    <UserPlus className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-cyan-300" />
                     <input
                       type="text"
                       placeholder="John Doe"
-                      className="w-full rounded-2xl border border-white/10 bg-white/5 py-4 pl-12 pr-4 text-white placeholder:text-white/20 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                      className="w-full rounded-2xl border border-cyan-200/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03))] py-4 pl-12 pr-4 text-white placeholder:text-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_8px_20px_rgba(0,0,0,0.16)] transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400/35"
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                     />
@@ -351,8 +365,8 @@ const RegistrationForm = () => {
                     animate={{ opacity: 1, y: 0 }}
                     className="flex items-start gap-2 px-1 py-1"
                   >
-                    <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-cyan-400" />
-                    <p className="text-[11px] italic leading-relaxed text-blue-200/60">
+                    <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-cyan-300" />
+                    <p className="text-[11px] italic leading-relaxed text-blue-100/70">
                       Reminder: Name must match your bank account name for faster withdrawal processing.
                     </p>
                   </motion.div>
@@ -361,11 +375,11 @@ const RegistrationForm = () => {
                 <div className="space-y-2">
                   <label className="ml-1 text-sm font-medium text-blue-100">Phone Number</label>
                   <div className="relative">
-                    <Phone className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-blue-400" />
+                    <Phone className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-cyan-300" />
                     <input
                       type="tel"
                       placeholder="+65 8000 0000"
-                      className="w-full rounded-2xl border border-white/10 bg-white/5 py-4 pl-12 pr-4 text-white placeholder:text-white/20 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                      className="w-full rounded-2xl border border-cyan-200/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03))] py-4 pl-12 pr-4 text-white placeholder:text-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_8px_20px_rgba(0,0,0,0.16)] transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400/35"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     />
@@ -377,12 +391,12 @@ const RegistrationForm = () => {
                     <input
                       id="terms"
                       type="checkbox"
-                      className="h-5 w-5 cursor-pointer rounded border-white/10 bg-white/5 text-blue-600 accent-blue-600 transition-all focus:ring-blue-500/50 focus:ring-offset-0"
+                      className="h-5 w-5 cursor-pointer rounded border-cyan-200/20 bg-white/5 text-blue-600 accent-blue-600 transition-all focus:ring-cyan-400/35 focus:ring-offset-0"
                       checked={formData.agreedToTerms}
                       onChange={(e) => setFormData({ ...formData, agreedToTerms: e.target.checked })}
                     />
                   </div>
-                  <label htmlFor="terms" className="cursor-pointer select-none text-xs leading-relaxed text-blue-200/70">
+                  <label htmlFor="terms" className="cursor-pointer select-none text-xs leading-relaxed text-blue-100/75">
                     I am over 21 years of age and have read and accepted the general terms and conditions. I agree to
                     receive information from your company. I can cancel this service in my account at any time.
                   </label>
@@ -392,8 +406,10 @@ const RegistrationForm = () => {
                   whileHover={isStep2Valid ? { scale: 1.02 } : {}}
                   whileTap={isStep2Valid ? { scale: 0.98 } : {}}
                   disabled={!isStep2Valid}
-                  className={`flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 py-4 font-bold text-white shadow-lg shadow-cyan-500/25 transition-all ${
-                    !isStep2Valid ? "cursor-not-allowed opacity-40 grayscale-[0.5]" : "hover:shadow-cyan-500/40"
+                  className={`flex w-full items-center justify-center gap-2 rounded-2xl bg-[linear-gradient(90deg,#1D4ED8_0%,#2563EB_45%,#22D3EE_100%)] py-4 font-bold text-white shadow-[0_15px_35px_rgba(37,99,235,0.35)] transition-all ${
+                    !isStep2Valid
+                      ? "cursor-not-allowed opacity-40 grayscale-[0.5]"
+                      : "hover:brightness-110 hover:shadow-[0_18px_45px_rgba(34,211,238,0.30)]"
                   }`}
                 >
                   Complete Registration
@@ -401,10 +417,10 @@ const RegistrationForm = () => {
                 </motion.button>
 
                 <motion.button
-                  whileHover={{ x: -5, scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
+                  whileHover={{ x: -5, scale: 1.06 }}
+                  whileTap={{ scale: 0.94 }}
                   onClick={() => setStep(1)}
-                  className="group mx-auto mt-8 flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-blue-400/40 backdrop-blur-md transition-all duration-300 hover:border-blue-500/40 hover:bg-blue-500/20 hover:text-blue-400 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)]"
+                  className="group mx-auto mt-8 flex h-12 w-12 items-center justify-center rounded-full border border-cyan-300/20 bg-white/5 text-cyan-300/60 backdrop-blur-md transition-all duration-300 hover:border-cyan-300/50 hover:bg-cyan-400/10 hover:text-cyan-200 hover:shadow-[0_0_20px_rgba(34,211,238,0.25)]"
                   title="Back to Step 1"
                 >
                   <ArrowLeft className="h-6 w-6 transition-transform duration-300 group-hover:-translate-x-1" />
@@ -414,10 +430,11 @@ const RegistrationForm = () => {
           </AnimatePresence>
         </motion.div>
       </div>
+
+      <SectionSeam className="bottom-0" />
     </section>
   );
 };
-
 const FloatingGirl = () => {
   const [showFromSteps, setShowFromSteps] = useState(false);
   const [bubbleState, setBubbleState] = useState(0);
