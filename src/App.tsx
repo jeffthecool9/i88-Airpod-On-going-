@@ -2,7 +2,7 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
-
+import coinImg from "./assets/1.png";
 import registerImg from "./assets/register.png";
 import depositImg from "./assets/deposit.png";
 import playImg from "./assets/play.png";
@@ -231,7 +231,12 @@ const RegistrationForm = () => {
         <div className="absolute inset-0 opacity-[0.08] mix-blend-screen bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
         <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_20%,transparent_70%,rgba(34,211,238,0.06))]" />
       </div>
-
+<img
+  src={coinImg}
+  alt=""
+  aria-hidden="true"
+  className="pointer-events-none absolute right-[-18px] top-[-16px] z-[6] w-[82px] rotate-[18deg] object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.22)] sm:right-[-22px] sm:top-[-20px] sm:w-[96px]"
+/>
       <div className="relative z-10 mx-auto max-w-xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
