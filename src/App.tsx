@@ -54,85 +54,77 @@ const HeroWord = ({
 );
 
 const GoldConfetti = () => {
-  const { scrollY } = useScroll();
-  const parallaxY = useTransform(scrollY, [0, 1000], [0, -250]);
+  const pieces = React.useMemo(
+    () =>
+      Array.from({ length: 22 }, (_, i) => {
+        const width = 10 + (i % 4) * 4;
+        const height = 3 + (i % 3);
+        const left = (i * 4.7) % 100;
+        const delay = (i % 8) * 0.45;
+        const duration = 8 + (i % 5) * 1.1;
+        const drift = ((i % 6) - 3) * 18;
+        const rotate = (i % 2 === 0 ? 1 : -1) * (120 + i * 6);
+
+        const backgrounds = [
+          "linear-gradient(135deg, #F9D423 0%, #FFD700 45%, #B8860B 100%)",
+          "linear-gradient(135deg, #E6BE8A 0%, #D4AF37 45%, #996515 100%)",
+          "linear-gradient(135deg, #CD7F32 0%, #A97142 45%, #7A4A1E 100%)",
+        ];
+
+        return {
+          id: i,
+          width,
+          height,
+          left,
+          delay,
+          duration,
+          drift,
+          rotate,
+          bg: backgrounds[i % backgrounds.length],
+          opacity: 0.7 + (i % 3) * 0.08,
+          scale: 0.8 + (i % 4) * 0.08,
+        };
+      }),
+    []
+  );
 
   return (
-    <motion.div style={{ y: parallaxY }} className="absolute inset-0 overflow-hidden pointer-events-none z-[5]">
-      {[...Array(50)].map((_, i) => {
-        const width = Math.random() * 20 + 15;
-        const height = width * (0.25 + Math.random() * 0.2);
-        const duration = Math.random() * 7 + 8;
-        const delay = Math.random() * 15;
-        const left = Math.random() * 100;
-        const depth = Math.random();
-
-        const colors = [
-          "conic-gradient(from 45deg, #CD7F32, #A57164, #804A00, #CD7F32)",
-          "conic-gradient(from 45deg, #F9D423, #FFD700, #D4AF37, #F9D423)",
-          "conic-gradient(from 45deg, #B87333, #8B4513, #CD7F32, #B87333)",
-          "conic-gradient(from 45deg, #E6BE8A, #D4AF37, #996515, #E6BE8A)",
-        ];
-        const bg = colors[i % colors.length];
-
-        return (
-          <motion.div
-            key={`confetti-${i}`}
-            initial={{
-              top: "-10%",
-              left: `${left}%`,
-              rotateX: Math.random() * 360,
-              rotateY: Math.random() * 360,
-              rotateZ: Math.random() * 360,
-              opacity: 0,
-              scale: 0.4 + depth * 0.6,
-            }}
-            animate={{
-              top: "110%",
-              left: `${left + (Math.random() - 0.5) * 40}%`,
-              rotateX: [0, 1080, 2160],
-              rotateY: [0, 720, 1440],
-              rotateZ: [0, 360, 720],
-              opacity: [0, 1, 1, 0],
-              x: [0, Math.sin(i) * 80, 0],
-            }}
-            transition={{
-              duration,
-              repeat: Infinity,
-              delay,
-              ease: "linear",
-            }}
-            className="absolute"
-            style={{
-              width,
-              height,
-              borderRadius: "1px",
-              background: bg,
-              boxShadow: `0 ${4 + depth * 8}px ${12 + depth * 16}px rgba(0, 0, 0, ${
-                0.1 + depth * 0.2
-              }), inset 0 0 4px rgba(255, 255, 255, 0.6)`,
-              filter: `brightness(1.1) contrast(1.1) blur(${depth < 0.2 ? "1.5px" : "0px"})`,
-              zIndex: Math.floor(depth * 10),
-              transformStyle: "preserve-3d",
-            }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-tr from-white/40 via-transparent to-black/30" />
-            <motion.div
-              animate={{
-                opacity: [0.1, 0.6, 0.1],
-                x: ["-100%", "100%"],
-              }}
-              transition={{
-                duration: 1.5 + Math.random(),
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="absolute inset-0 skew-x-12 bg-gradient-to-r from-transparent via-white/50 to-transparent"
-            />
-          </motion.div>
-        );
-      })}
-    </motion.div>
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-[5]">
+      {pieces.map((piece) => (
+        <motion.div
+          key={piece.id}
+          initial={{
+            y: "-12%",
+            x: 0,
+            opacity: 0,
+            rotate: 0,
+            scale: piece.scale,
+          }}
+          animate={{
+            y: "112%",
+            x: [0, piece.drift, 0],
+            opacity: [0, piece.opacity, piece.opacity, 0],
+            rotate: [0, piece.rotate],
+          }}
+          transition={{
+            duration: piece.duration,
+            delay: piece.delay,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="absolute top-0"
+          style={{
+            left: `${piece.left}%`,
+            width: `${piece.width}px`,
+            height: `${piece.height}px`,
+            borderRadius: "2px",
+            background: piece.bg,
+            boxShadow: "0 2px 8px rgba(0,0,0,0.18)",
+            willChange: "transform, opacity",
+          }}
+        />
+      ))}
+    </div>
   );
 };
 
