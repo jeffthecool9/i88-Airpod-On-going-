@@ -276,7 +276,7 @@ const RegistrationForm = () => {
       <input
         type="text"
         placeholder="Your login id"
-        className="w-full rounded-2xl border border-white/14 bg-[linear-gradient(180deg,rgba(210,220,235,0.22),rgba(165,175,190,0.18))] py-4 pl-12 pr-4 text-sm leading-none text-white placeholder:text-white/35 shadow-[inset_0_1px_0_rgba(255,255,255,0.10),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
+       className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm leading-none text-white placeholder:text-white/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
         value={formData.name}
         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
       />
@@ -290,7 +290,7 @@ const RegistrationForm = () => {
       <input
         type="email"
         placeholder="youremail@example.com"
-        className={`w-full rounded-2xl border py-4 pl-12 pr-4 text-sm leading-none text-white placeholder:text-white/35 shadow-[inset_0_1px_0_rgba(255,255,255,0.10),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18 ${
+        className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm leading-none text-white placeholder:text-white/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
           formData.email && !emailRegex.test(formData.email)
             ? "border-red-500/50 ring-1 ring-red-500/20 bg-[linear-gradient(180deg,rgba(210,220,235,0.22),rgba(165,175,190,0.18))]"
             : "border-white/14 bg-[linear-gradient(180deg,rgba(210,220,235,0.22),rgba(165,175,190,0.18))]"
@@ -311,7 +311,7 @@ const RegistrationForm = () => {
       <input
         type="password"
         placeholder="••••••••"
-        className={`w-full rounded-2xl border py-4 pl-12 pr-4 text-sm leading-none text-white placeholder:text-white/35 shadow-[inset_0_1px_0_rgba(255,255,255,0.10),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18 ${
+       className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm leading-none text-white placeholder:text-white/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
           formData.password && !passwordRegex.test(formData.password)
             ? "border-red-500/50 ring-1 ring-red-500/20 bg-[linear-gradient(180deg,rgba(210,220,235,0.22),rgba(165,175,190,0.18))]"
             : "border-white/14 bg-[linear-gradient(180deg,rgba(210,220,235,0.22),rgba(165,175,190,0.18))]"
@@ -332,8 +332,7 @@ const RegistrationForm = () => {
     whileTap={isStep1Valid ? { scale: 0.98 } : {}}
     onClick={handleNext}
     disabled={!isStep1Valid}
-    className={`group flex w-full items-center justify-center gap-2 rounded-2xl bg-[linear-gradient(90deg,#1D4ED8_0%,#2563EB_42%,#22D3EE_100%)] py-4 font-bold text-white shadow-[0_18px_40px_rgba(37,99,235,0.38)] transition-all ${
-      !isStep1Valid
+   className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm leading-none text-white placeholder:text-white/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
         ? "cursor-not-allowed opacity-40 grayscale-[0.5]"
         : "hover:brightness-110 hover:shadow-[0_20px_50px_rgba(34,211,238,0.28)]"
     }`}
@@ -358,7 +357,7 @@ const RegistrationForm = () => {
                     <input
                       type="text"
                       placeholder="John Doe"
-                      className="w-full rounded-2xl border border-cyan-200/15 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] py-4 pl-12 pr-4 text-white placeholder:text-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_10px_24px_rgba(0,0,0,0.16)] transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400/35"
+                      className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm leading-none text-white placeholder:text-white/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                     />
@@ -382,7 +381,7 @@ const RegistrationForm = () => {
                     <input
                       type="tel"
                       placeholder="+65 8000 0000"
-                      className="w-full rounded-2xl border border-cyan-200/15 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] py-4 pl-12 pr-4 text-white placeholder:text-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_10px_24px_rgba(0,0,0,0.16)] transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400/35"
+                     className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm leading-none text-white placeholder:text-white/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     />
