@@ -220,112 +220,47 @@ const RegistrationForm = () => {
     formData.name && emailRegex.test(formData.email) && passwordRegex.test(formData.password);
   const isStep2Valid = formData.fullName && formData.phone && formData.agreedToTerms;
 
-  return (
-    <section id="registration-form" className="relative z-10 overflow-hidden px-6 py-24 sm:py-32 bg-[radial-gradient(circle_at_12%_18%,rgba(34,211,238,0.22),transparent_24%),radial-gradient(circle_at_85%_22%,rgba(59,130,246,0.28),transparent_28%),radial-gradient(circle_at_50%_85%,rgba(56,189,248,0.12),transparent_30%),linear-gradient(180deg,#0B49B8_0%,#0A3D9D_35%,#082B78_72%,#03143E_100%)]">
-    <div className="pointer-events-none absolute inset-0 rounded-[2.5rem]">         
-  {/* subtle full border */}
-  <div className="absolute inset-0 rounded-[2.5rem] border border-cyan-300/18" />
+ return (
+  <section
+    id="registration-form"
+    className="relative z-10 overflow-hidden px-6 py-24 sm:py-32 bg-[radial-gradient(circle_at_12%_18%,rgba(34,211,238,0.22),transparent_24%),radial-gradient(circle_at_85%_22%,rgba(59,130,246,0.28),transparent_28%),radial-gradient(circle_at_50%_85%,rgba(56,189,248,0.12),transparent_30%),linear-gradient(180deg,#0B49B8_0%,#0A3D9D_35%,#082B78_72%,#03143E_100%)]"
+  >
+    <div className="pointer-events-none absolute inset-0">
+      <div className="absolute left-[4%] top-[10%] h-[260px] w-[260px] rounded-full bg-cyan-300/20 blur-[120px]" />
+      <div className="absolute right-[4%] top-[15%] h-[320px] w-[320px] rounded-full bg-blue-400/20 blur-[140px]" />
+      <div className="absolute left-1/2 top-[45%] h-[260px] w-[260px] -translate-x-1/2 rounded-full bg-white/6 blur-[110px]" />
+      <div className="absolute bottom-[8%] left-1/2 h-[280px] w-[280px] -translate-x-1/2 rounded-full bg-cyan-300/12 blur-[120px]" />
+      <div className="absolute inset-0 opacity-[0.08] mix-blend-screen bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_20%,transparent_70%,rgba(34,211,238,0.06))]" />
+    </div>
 
-  {/* base glass highlight */}
-  <div className="absolute inset-0 rounded-[2.5rem] bg-[radial-gradient(circle_at_25%_18%,rgba(255,255,255,0.10),transparent_26%),radial-gradient(circle_at_80%_22%,rgba(34,211,238,0.10),transparent_30%)]" />
+    {/* background coins only */}
+    <img
+      src={coinTiltImg}
+      alt=""
+      aria-hidden="true"
+      className="pointer-events-none absolute left-[22px] top-[58px] z-[1] w-[82px] -rotate-[22deg] object-contain opacity-95 drop-shadow-[0_12px_24px_rgba(0,0,0,0.20)] sm:left-[34px] sm:top-[68px] sm:w-[96px]"
+    />
+    <img
+      src={coinFrontImg}
+      alt=""
+      aria-hidden="true"
+      className="pointer-events-none absolute left-[-8px] top-[330px] z-[1] w-[118px] object-contain opacity-95 drop-shadow-[0_16px_30px_rgba(0,0,0,0.18)] sm:left-[0px] sm:top-[360px] sm:w-[132px]"
+    />
+    <img
+      src={coinTiltImg}
+      alt=""
+      aria-hidden="true"
+      className="pointer-events-none absolute bottom-[18px] right-[6px] z-[1] w-[150px] rotate-[22deg] object-contain opacity-95 drop-shadow-[0_18px_36px_rgba(0,0,0,0.20)] sm:bottom-[26px] sm:right-[18px] sm:w-[176px]"
+    />
 
-  {/* top edge soft line */}
-  <div className="absolute inset-x-[14%] top-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-200/70 to-transparent" />
-
-  {/* bottom edge soft line */}
-  <div className="absolute inset-x-[16%] bottom-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-300/35 to-transparent" />
-
-  {/* left edge soft line */}
-  <div className="absolute left-0 top-[14%] h-[72%] w-[1px] bg-gradient-to-b from-transparent via-cyan-300/22 to-transparent" />
-
-  {/* right edge soft line */}
-  <div className="absolute right-0 top-[14%] h-[72%] w-[1px] bg-gradient-to-b from-transparent via-cyan-300/22 to-transparent" />
-
-  {/* corner lights */}
-  <motion.div
-    className="absolute left-[-8px] top-[-8px] h-[54px] w-[54px] rounded-full"
-    animate={{ opacity: [0.45, 1, 0.45], scale: [0.96, 1.06, 0.96] }}
-    transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-    style={{
-      background:
-        "radial-gradient(circle, rgba(255,245,190,0.95) 0%, rgba(255,214,90,0.72) 28%, rgba(255,200,60,0.22) 56%, transparent 78%)",
-      filter: "blur(6px)",
-    }}
-  />
-<img
-  src={coinImg}
-  alt=""
-  aria-hidden="true"
-  className="pointer-events-none absolute right-[-18px] top-[-16px] z-[6] w-[82px] rotate-[18deg] object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.22)] sm:right-[-22px] sm:top-[-20px] sm:w-[96px]"
-/>
-      {/* top-left section coin, above the form card */}
-<img
-  src={coinTiltImg}
-  alt=""
-  aria-hidden="true"
-  className="pointer-events-none absolute left-[22px] top-[58px] z-[1] w-[82px] -rotate-[22deg] object-contain opacity-95 drop-shadow-[0_12px_24px_rgba(0,0,0,0.20)] sm:left-[34px] sm:top-[68px] sm:w-[96px]"
-/>
-
-{/* middle-left coin on background, beside Name area, outside form card */}
-<img
-  src={coinFrontImg}
-  alt=""
-  aria-hidden="true"
-  className="pointer-events-none absolute left-[-8px] top-[330px] z-[1] w-[118px] object-contain opacity-95 drop-shadow-[0_16px_30px_rgba(0,0,0,0.18)] sm:left-[0px] sm:top-[360px] sm:w-[132px]"
-/>
-
-{/* bottom-right coin on background, lower and slightly left, behind form card */}
-<img
-  src={coinTiltImg}
-  alt=""
-  aria-hidden="true"
-  className="pointer-events-none absolute bottom-[18px] right-[6px] z-[1] w-[150px] rotate-[22deg] object-contain opacity-95 drop-shadow-[0_18px_36px_rgba(0,0,0,0.20)] sm:bottom-[26px] sm:right-[18px] sm:w-[176px]"
-/>
-      <div className="relative z-10 mx-auto max-w-xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="relative overflow-hidden rounded-[2.5rem] border border-cyan-300/25 bg-[linear-gradient(180deg,rgba(24,79,192,0.42)_0%,rgba(15,53,143,0.46)_28%,rgba(9,35,109,0.58)_100%)] p-8 shadow-[0_35px_90px_rgba(0,0,0,0.40),0_0_0_1px_rgba(255,255,255,0.04),0_0_35px_rgba(34,211,238,0.16)] backdrop-blur-[28px] md:p-12"
-        >
-          
-  <motion.div
-    className="absolute right-[-8px] top-[-8px] h-[54px] w-[54px] rounded-full"
-    animate={{ opacity: [1, 0.45, 1], scale: [1.06, 0.96, 1.06] }}
-    transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
-    style={{
-      background:
-        "radial-gradient(circle, rgba(255,245,190,0.95) 0%, rgba(255,214,90,0.72) 28%, rgba(255,200,60,0.22) 56%, transparent 78%)",
-      filter: "blur(6px)",
-    }}
-  />
-  <motion.div
-    className="absolute left-[-8px] bottom-[-8px] h-[54px] w-[54px] rounded-full"
-    animate={{ opacity: [0.4, 0.95, 0.4], scale: [0.95, 1.05, 0.95] }}
-    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
-    style={{
-      background:
-        "radial-gradient(circle, rgba(255,245,190,0.90) 0%, rgba(255,214,90,0.68) 28%, rgba(255,200,60,0.20) 56%, transparent 78%)",
-      filter: "blur(6px)",
-    }}
-  />
-  <motion.div
-    className="absolute right-[-8px] bottom-[-8px] h-[54px] w-[54px] rounded-full"
-    animate={{ opacity: [0.95, 0.42, 0.95], scale: [1.05, 0.95, 1.05] }}
-    transition={{ duration: 2.7, repeat: Infinity, ease: "easeInOut", delay: 0.1 }}
-    style={{
-      background:
-        "radial-gradient(circle, rgba(255,245,190,0.90) 0%, rgba(255,214,90,0.68) 28%, rgba(255,200,60,0.20) 56%, transparent 78%)",
-      filter: "blur(6px)",
-    }}
-  />
-
-  {/* tiny border glints at corners */}
-  <div className="absolute left-[6px] top-[6px] h-[26px] w-[26px] rounded-tl-[20px] border-l border-t border-[#ffcc4d]/70" />
-  <div className="absolute right-[6px] top-[6px] h-[26px] w-[26px] rounded-tr-[20px] border-r border-t border-[#ffcc4d]/70" />
-  <div className="absolute left-[6px] bottom-[6px] h-[26px] w-[26px] rounded-bl-[20px] border-b border-l border-[#ffcc4d]/55" />
-  <div className="absolute right-[6px] bottom-[6px] h-[26px] w-[26px] rounded-br-[20px] border-b border-r border-[#ffcc4d]/55" />
-</div>
+    <div className="relative z-10 mx-auto max-w-xl">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="relative overflow-hidden rounded-[2.5rem] border border-cyan-300/25 bg-[linear-gradient(180deg,rgba(24,79,192,0.42)_0%,rgba(15,53,143,0.46)_28%,rgba(9,35,109,0.58)_100%)] p-8 shadow-[0_35px_90px_rgba(0,0,0,0.40),0_0_0_1px_rgba(255,255,255,0.04),0_0_35px_rgba(34,211,238,0.16)] backdrop-blur-[28px] md:p-12"
+      >
 
           <div className="relative z-10 mb-8 text-center">
             <h2 className="mb-2 text-3xl font-bold text-white sm:text-4xl">
