@@ -498,6 +498,7 @@ const FloatingGirl = () => {
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
             className="pointer-events-auto absolute bottom-[90%] right-[55%] z-30 w-max max-w-[200px] sm:bottom-[85%] sm:right-[60%] md:bottom-[80%] md:right-[65%] sm:max-w-none"
           >
+            {/* Box container WITHOUT the tail */}
             <div
               onClick={handleInteract}
               className="group relative cursor-pointer rounded-[20px] border border-cyan-400/60 bg-cyan-950/85 px-4 py-3 sm:px-5 sm:py-3.5 shadow-[0_0_20px_rgba(34,211,238,0.3)] backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:bg-cyan-900/95 hover:shadow-[0_0_30px_rgba(34,211,238,0.6)] text-center sm:text-left"
@@ -519,9 +520,6 @@ const FloatingGirl = () => {
                   </p>
                 </motion.div>
               </AnimatePresence>
-
-              {/* Chat Bubble Tail adjusted to point DIRECTLY at the lady (right side edge) */}
-              <div className="absolute bottom-[20%] -right-[7px] h-4 w-4 rotate-45 border-t border-r border-cyan-400/60 bg-[#061d33] transition-colors duration-300 group-hover:bg-[#07243e] sm:bottom-3 sm:h-[14px] sm:w-[14px]" />
             </div>
           </motion.div>
         )}
