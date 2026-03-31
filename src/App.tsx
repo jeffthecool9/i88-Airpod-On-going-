@@ -261,7 +261,7 @@ const RegistrationForm = () => {
 
           <AnimatePresence mode="wait">
             {step === 1 ? (
-             <motion.div
+            <motion.div
   key="step1"
   initial={{ opacity: 0, x: -20 }}
   animate={{ opacity: 1, x: 0 }}
@@ -270,79 +270,79 @@ const RegistrationForm = () => {
   className="relative z-10 space-y-6"
 >
   <div className="space-y-2">
-  <label className="ml-1 text-sm font-medium text-blue-92">Name</label>
-  <div className="relative">
-    <User className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white" />
-    <input
-      type="text"
-      placeholder="Your login id"
-      className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm font-medium leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
-      value={formData.name}
-      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-    />
+    <label className="ml-1 text-sm font-medium text-white/92">Name</label>
+    <div className="relative">
+      <User className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white" />
+      <input
+        type="text"
+        placeholder="Your login id"
+        className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm font-medium leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
+        value={formData.name}
+        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+      />
+    </div>
   </div>
-</div>
 
- <div className="space-y-2">
-  <label className="ml-1 text-sm font-medium text-blue-92">Email Address</label>
-  <div className="relative">
-    <Mail className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white" />
-    <input
-      type="email"
-      placeholder="youremail@example.com"
-     className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm font-medium leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
-        formData.email && !emailRegex.test(formData.email)
-          ? "border-red-500/50 ring-1 ring-red-500/20 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
-          : "border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
-      }`}
-      value={formData.email}
-      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-    />
+  <div className="space-y-2">
+    <label className="ml-1 text-sm font-medium text-white/92">Email Address</label>
+    <div className="relative">
+      <Mail className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white" />
+      <input
+        type="email"
+        placeholder="youremail@example.com"
+        className={`w-full rounded-2xl border py-4 pl-12 pr-4 text-sm font-medium leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18 ${
+          formData.email && !emailRegex.test(formData.email)
+            ? "border-red-500/50 ring-1 ring-red-500/20 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
+            : "border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
+        }`}
+        value={formData.email}
+        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+      />
+    </div>
+    {formData.email && !emailRegex.test(formData.email) && (
+      <p className="ml-1 mt-1 text-xs text-red-400">Please enter a valid email address</p>
+    )}
   </div>
-  {formData.email && !emailRegex.test(formData.email) && (
-    <p className="ml-1 mt-1 text-xs text-red-400">Please enter a valid email address</p>
-  )}
-</div>
 
- <div className="space-y-2">
-  <label className="ml-1 text-sm font-medium text-blue-92">Password</label>
-  <div className="relative">
-    <Lock className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white" />
-    <input
-      type="password"
-      placeholder="••••••••"
-      className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm font-medium leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
-        formData.password && !passwordRegex.test(formData.password)
-          ? "border-red-500/50 ring-1 ring-red-500/20 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
-          : "border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
-      }`}
-      value={formData.password}
-      onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-    />
+  <div className="space-y-2">
+    <label className="ml-1 text-sm font-medium text-white/92">Password</label>
+    <div className="relative">
+      <Lock className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white" />
+      <input
+        type="password"
+        placeholder="••••••••"
+        className={`w-full rounded-2xl border py-4 pl-12 pr-4 text-sm font-medium leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18 ${
+          formData.password && !passwordRegex.test(formData.password)
+            ? "border-red-500/50 ring-1 ring-red-500/20 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
+            : "border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
+        }`}
+        value={formData.password}
+        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+      />
+    </div>
+    {formData.password && !passwordRegex.test(formData.password) && (
+      <p className="ml-1 mt-1 text-xs text-red-400">
+        Password must be at least 6 characters and contain a number
+      </p>
+    )}
   </div>
-  {formData.password && !passwordRegex.test(formData.password) && (
-    <p className="ml-1 mt-1 text-xs text-red-400">
-      Password must be at least 6 characters and contain a number
-    </p>
-  )}
-</div>
 
- <motion.button
-  whileHover={isStep1Valid ? { scale: 1.02 } : {}}
-  whileTap={isStep1Valid ? { scale: 0.98 } : {}}
-  onClick={handleNext}
-  disabled={!isStep1Valid}
-  className={`group flex w-full items-center justify-center gap-2 rounded-2xl bg-[linear-gradient(90deg,#1D4ED8_0%,#2563EB_42%,#22D3EE_100%)] py-4 font-bold text-white shadow-[0_18px_40px_rgba(37,99,235,0.38)] transition-all ${
-    !isStep1Valid
-      ? "cursor-not-allowed opacity-40 grayscale-[0.5]"
-      : "hover:brightness-110 hover:shadow-[0_20px_50px_rgba(34,211,238,0.28)]"
-  }`}
->
-  Join Now
-  <ChevronRight
-    className={`h-5 w-5 transition-transform ${isStep1Valid ? "group-hover:translate-x-1" : ""}`}
-  />
-</motion.button>
+  <motion.button
+    whileHover={isStep1Valid ? { scale: 1.02 } : {}}
+    whileTap={isStep1Valid ? { scale: 0.98 } : {}}
+    onClick={handleNext}
+    disabled={!isStep1Valid}
+    className={`group flex w-full items-center justify-center gap-2 rounded-2xl bg-[linear-gradient(90deg,#1D4ED8_0%,#2563EB_42%,#22D3EE_100%)] py-4 font-bold text-white shadow-[0_18px_40px_rgba(37,99,235,0.38)] transition-all ${
+      !isStep1Valid
+        ? "cursor-not-allowed opacity-40 grayscale-[0.5]"
+        : "hover:brightness-110 hover:shadow-[0_20px_50px_rgba(34,211,238,0.28)]"
+    }`}
+  >
+    Join Now
+    <ChevronRight
+      className={`h-5 w-5 transition-transform ${isStep1Valid ? "group-hover:translate-x-1" : ""}`}
+    />
+  </motion.button>
 </motion.div>
             ) : (
               <motion.div
