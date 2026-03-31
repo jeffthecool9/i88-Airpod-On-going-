@@ -649,9 +649,6 @@ export default function App() {
         <h2 className="text-3xl font-bold tracking-tight leading-[0.95] sm:text-4xl md:text-5xl">
           <HeroWord light>Steps to Claim</HeroWord>
         </h2>
-        <p className="mt-2 text-xs font-medium text-blue-100/90 sm:text-sm">
-          A quick guide to unlock your reward
-        </p>
       </div>
 
       <div className="grid grid-cols-3 gap-3 sm:gap-6 md:gap-10">
