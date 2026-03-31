@@ -221,11 +221,8 @@ const RegistrationForm = () => {
   const isStep2Valid = formData.fullName && formData.phone && formData.agreedToTerms;
 
   return (
-    <section
-      id="registration-form"
-      className="relative z-10 overflow-hidden px-6 py-24 sm:py-32 bg-[radial-gradient(circle_at_12%_18%,rgba(34,211,238,0.22),transparent_24%),radial-gradient(circle_at_85%_22%,rgba(59,130,246,0.28),transparent_28%),radial-gradient(circle_at_50%_85%,rgba(56,189,248,0.12),transparent_30%),linear-gradient(180deg,#0B49B8_0%,#0A3D9D_35%,#082B78_72%,#03143E_100%)]"
-    >
-             <<div className="pointer-events-none absolute inset-0 rounded-[2.5rem]">
+    <section id="registration-form" className="relative z-10 overflow-hidden px-6 py-24 sm:py-32 bg-[radial-gradient(circle_at_12%_18%,rgba(34,211,238,0.22),transparent_24%),radial-gradient(circle_at_85%_22%,rgba(59,130,246,0.28),transparent_28%),radial-gradient(circle_at_50%_85%,rgba(56,189,248,0.12),transparent_30%),linear-gradient(180deg,#0B49B8_0%,#0A3D9D_35%,#082B78_72%,#03143E_100%)]">
+    <div className="pointer-events-none absolute inset-0 rounded-[2.5rem]">         
   {/* subtle full border */}
   <div className="absolute inset-0 rounded-[2.5rem] border border-cyan-300/18" />
 
@@ -434,7 +431,7 @@ const RegistrationForm = () => {
                 className="relative z-10 space-y-6"
               >
                 <div className="space-y-2">
-                  <label className="ml-1 text-sm font-medium text-blue-92">Full Name</label>
+                  <label className="ml-1 text-sm font-medium text-white/92">Full Name</label>
                   <div className="relative">
                     <UserPlus className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white" />
                     <input
@@ -458,7 +455,7 @@ const RegistrationForm = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="ml-1 text-sm font-medium text-blue-92">Phone Number</label>
+                  <label className="ml-1 text-sm font-medium text-white/92">Phone Number</label>
                   <div className="relative">
                     <Phone className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white" />
                     <input
