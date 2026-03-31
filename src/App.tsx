@@ -239,6 +239,29 @@ const RegistrationForm = () => {
   aria-hidden="true"
   className="pointer-events-none absolute right-[-18px] top-[-16px] z-[6] w-[82px] rotate-[18deg] object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.22)] sm:right-[-22px] sm:top-[-20px] sm:w-[96px]"
 />
+      {/* top-left section coin, above the form card */}
+<img
+  src={coinTiltImg}
+  alt=""
+  aria-hidden="true"
+  className="pointer-events-none absolute left-[22px] top-[58px] z-[1] w-[82px] -rotate-[22deg] object-contain opacity-95 drop-shadow-[0_12px_24px_rgba(0,0,0,0.20)] sm:left-[34px] sm:top-[68px] sm:w-[96px]"
+/>
+
+{/* middle-left coin on background, beside Name area, outside form card */}
+<img
+  src={coinFrontImg}
+  alt=""
+  aria-hidden="true"
+  className="pointer-events-none absolute left-[-8px] top-[330px] z-[1] w-[118px] object-contain opacity-95 drop-shadow-[0_16px_30px_rgba(0,0,0,0.18)] sm:left-[0px] sm:top-[360px] sm:w-[132px]"
+/>
+
+{/* bottom-right coin on background, lower and slightly left, behind form card */}
+<img
+  src={coinTiltImg}
+  alt=""
+  aria-hidden="true"
+  className="pointer-events-none absolute bottom-[18px] right-[6px] z-[1] w-[150px] rotate-[22deg] object-contain opacity-95 drop-shadow-[0_18px_36px_rgba(0,0,0,0.20)] sm:bottom-[26px] sm:right-[18px] sm:w-[176px]"
+/>
       <div className="relative z-10 mx-auto max-w-xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -246,29 +269,6 @@ const RegistrationForm = () => {
           viewport={{ once: true }}
           className="relative overflow-hidden rounded-[2.5rem] border border-cyan-300/25 bg-[linear-gradient(180deg,rgba(24,79,192,0.42)_0%,rgba(15,53,143,0.46)_28%,rgba(9,35,109,0.58)_100%)] p-8 shadow-[0_35px_90px_rgba(0,0,0,0.40),0_0_0_1px_rgba(255,255,255,0.04),0_0_35px_rgba(34,211,238,0.16)] backdrop-blur-[28px] md:p-12"
         >
-          {/* top-right coin above “Create” */}
-<img
-  src={coinTiltImg}
-  alt=""
-  aria-hidden="true"
-  className="pointer-events-none absolute right-[-18px] top-[20px] z-[6] w-[84px] rotate-[18deg] object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.22)] sm:right-[-22px] sm:top-[18px] sm:w-[96px]"
-/>
-
-{/* left-side big coin behind the Name area */}
-<img
-  src={coinFrontImg}
-  alt=""
-  aria-hidden="true"
-  className="pointer-events-none absolute left-[-46px] top-[255px] z-[1] w-[120px] object-contain opacity-95 drop-shadow-[0_18px_36px_rgba(0,0,0,0.18)] sm:left-[-56px] sm:top-[270px] sm:w-[138px]"
-/>
-
-{/* bottom-right big tilted coin behind form box, above divider */}
-<img
-  src={coinTiltImg}
-  alt=""
-  aria-hidden="true"
-  className="pointer-events-none absolute bottom-[34px] right-[-34px] z-[1] w-[145px] rotate-[22deg] object-contain opacity-95 drop-shadow-[0_20px_40px_rgba(0,0,0,0.22)] sm:bottom-[42px] sm:right-[-42px] sm:w-[170px]"
-/>
           
           <div className="pointer-events-none absolute inset-0 rounded-[2.5rem]">
             <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-200/70 to-transparent" />
