@@ -646,11 +646,11 @@ const HeroCTA = () => {
 
     setTimeout(() => {
       setShowExitSweep(false);
-    }, 950);
+    }, 1500);
   };
 
   return (
-    <div className="absolute bottom-8 left-1/2 z-[10] -translate-x-1/2">
+    <div className="absolute bottom-10 left-1/2 z-[10] -translate-x-1/2">
       <motion.button
         onClick={scrollToRegister}
         onMouseEnter={handleEnter}
@@ -659,48 +659,55 @@ const HeroCTA = () => {
         onTouchEnd={handleLeave}
         whileHover={{ scale: 1.03, y: -1 }}
         whileTap={{ scale: 0.985 }}
-        className="group pointer-events-auto relative isolate overflow-hidden rounded-[22px] border border-[#ffe7a3]/40 bg-[linear-gradient(180deg,#ffe08a_0%,#f7c948_28%,#d79a16_68%,#b8790b_100%)] px-10 py-3 text-base font-extrabold tracking-wide text-[#fff7d1] shadow-[0_20px_40px_rgba(0,0,0,0.30),inset_0_1px_0_rgba(255,255,255,0.46),inset_0_-10px_22px_rgba(120,70,0,0.24)] transition-all sm:px-12 sm:py-3 sm:text-lg"
+        className="group pointer-events-auto relative isolate overflow-hidden rounded-[20px] border border-[#ffe7a3]/40 bg-[linear-gradient(180deg,#ffe08a_0%,#f7c948_28%,#d79a16_68%,#b8790b_100%)] px-12 py-2.5 text-base font-extrabold tracking-wide text-[#fff7d1] shadow-[0_20px_40px_rgba(0,0,0,0.30),inset_0_1px_0_rgba(255,255,255,0.46),inset_0_-10px_22px_rgba(120,70,0,0.24)] transition-all sm:px-14 sm:py-3 sm:text-lg"
         style={{
           textShadow: "0 1px 2px rgba(120,70,0,0.35)",
         }}
       >
-        <div className="pointer-events-none absolute inset-x-[6%] top-[3px] h-[38%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.40),rgba(255,255,255,0.08),transparent)] blur-[1px]" />
-        <div className="pointer-events-none absolute inset-[1px] rounded-[21px] border border-white/10" />
-        <div className="pointer-events-none absolute -left-4 top-1/2 h-10 w-10 -translate-y-1/2 rounded-full bg-[#ffd76a]/22 blur-[14px]" />
-        <div className="pointer-events-none absolute -right-4 top-1/2 h-10 w-10 -translate-y-1/2 rounded-full bg-[#ffcf53]/18 blur-[14px]" />
+        {/* glossy top skin */}
+        <div className="pointer-events-none absolute inset-x-[4%] top-[3px] h-[42%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.38),rgba(255,255,255,0.08),transparent)] blur-[1px]" />
 
+        {/* inner frame */}
+        <div className="pointer-events-none absolute inset-[1px] rounded-[19px] border border-white/10" />
+
+        {/* soft side glow */}
+        <div className="pointer-events-none absolute -left-5 top-1/2 h-12 w-12 -translate-y-1/2 rounded-full bg-[#ffd76a]/20 blur-[16px]" />
+        <div className="pointer-events-none absolute -right-5 top-1/2 h-12 w-12 -translate-y-1/2 rounded-full bg-[#ffcf53]/16 blur-[16px]" />
+
+        {/* looping full-surface sweep while active */}
         <AnimatePresence>
           {isActive && (
             <motion.div
-              key="active-shine"
+              key="active-full-sweep"
               aria-hidden="true"
-              initial={{ x: "-140%", opacity: 0 }}
-              animate={{ x: ["-140%", "260%"], opacity: [0, 1, 1, 0] }}
+              initial={{ x: "-130%", opacity: 0 }}
+              animate={{ x: ["-130%", "180%"], opacity: [0, 0.95, 0.95, 0] }}
               exit={{ opacity: 0 }}
               transition={{
-                duration: 0.85,
+                duration: 1.45,
                 repeat: Infinity,
-                repeatDelay: 0.12,
-                ease: "easeInOut",
+                repeatDelay: 0.18,
+                ease: [0.22, 1, 0.36, 1],
               }}
-              className="pointer-events-none absolute inset-y-[-22%] left-[-30%] w-[28%] rotate-[18deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.14),rgba(255,255,255,0.72),rgba(255,255,255,0.14),transparent)] blur-[2px]"
+              className="pointer-events-none absolute inset-y-[-35%] left-[-45%] w-[60%] rotate-[16deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.08),rgba(255,255,255,0.30),rgba(255,255,255,0.78),rgba(255,255,255,0.30),rgba(255,255,255,0.08),transparent)] blur-[3px]"
             />
           )}
         </AnimatePresence>
 
+        {/* one last slower sweep after leave */}
         <AnimatePresence mode="wait">
           {!isActive && showExitSweep && (
             <motion.div
-              key={`exit-sweep-${exitSweepKey}`}
+              key={`exit-full-sweep-${exitSweepKey}`}
               aria-hidden="true"
-              initial={{ x: "-140%", opacity: 0 }}
-              animate={{ x: ["-140%", "260%"], opacity: [0, 1, 1, 0] }}
+              initial={{ x: "-130%", opacity: 0 }}
+              animate={{ x: ["-130%", "180%"], opacity: [0, 0.95, 0.95, 0] }}
               exit={{ opacity: 0 }}
               transition={{
-                duration: 0.9,
+                duration: 1.5,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="pointer-events-none absolute inset-y-[-22%] left-[-30%] w-[28%] rotate-[18deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.14),rgba(255,255,255,0.72),rgba(255,255,255,0.14),transparent)] blur-[2px]"
+              className="pointer-events-none absolute inset-y-[-35%] left-[-45%] w-[60%] rotate-[16deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.08),rgba(255,255,255,0.30),rgba(255,255,255,0.78),rgba(255,255,255,0.30),rgba(255,255,255,0.08),transparent)] blur-[3px]"
             />
           )}
         </AnimatePresence>
@@ -713,7 +720,6 @@ const HeroCTA = () => {
     </div>
   );
 };
-
 export default function App() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
