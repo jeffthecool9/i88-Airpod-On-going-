@@ -2,6 +2,7 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
+import i882Img from "./assets/i882.png";
 import airpodImg from "./assets/airpod.png";
 import coinFrontImg from "./assets/3.png";
 import coinTiltImg from "./assets/4.png";
@@ -719,7 +720,7 @@ export default function App() {
   <RealisticBackground />
   <GoldConfetti />
 <img
-  src="/i882.png"
+  src={i882Img}
   alt="i88"
   className="pointer-events-none absolute left-1/2 top-8 z-[9] w-[120px] -translate-x-1/2 object-contain sm:top-10 sm:w-[140px] md:top-12 md:w-[160px]"
 />
