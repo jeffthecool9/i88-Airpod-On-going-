@@ -488,7 +488,7 @@ const RegistrationForm = () => {
 };
 const FloatingGirl = () => {
   const [showFromSteps, setShowFromSteps] = useState(false);
-  const [hideAtRegistration, setHideAtRegistration] = useState(false);
+  const [hideBubbleAtRegistration, setHideBubbleAtRegistration] = useState(false);
   const [isUserActive, setIsUserActive] = useState(true);
 
   useEffect(() => {
@@ -509,7 +509,7 @@ const FloatingGirl = () => {
 
     const registrationObserver = new IntersectionObserver(
       ([entry]) => {
-        setHideAtRegistration(entry.isIntersecting && entry.intersectionRatio > 0.15);
+        setHideBubbleAtRegistration(entry.isIntersecting && entry.intersectionRatio > 0.15);
       },
       {
         threshold: [0, 0.08, 0.15, 0.25, 0.4],
@@ -557,7 +557,8 @@ const FloatingGirl = () => {
     document.getElementById("registration-form")?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const shouldShowGirl = showFromSteps && !hideAtRegistration;
+  const shouldShowGirl = showFromSteps;
+  const shouldShowBubble = showFromSteps && !hideBubbleAtRegistration && isUserActive;
 
   return (
     <motion.div
@@ -575,7 +576,7 @@ const FloatingGirl = () => {
       }}
     >
       <AnimatePresence>
-        {isUserActive && shouldShowGirl && (
+        {shouldShowBubble && (
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
