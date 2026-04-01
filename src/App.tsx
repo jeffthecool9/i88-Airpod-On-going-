@@ -722,7 +722,7 @@ export default function App() {
 <img
   src={i882Img}
   alt="i88"
-   className="pointer-events-none absolute left-1/2 top-0 z-[9] w-[120px] -translate-x-1/2 object-contain sm:w-[140px] md:w-[160px]"
+    className="pointer-events-none absolute left-1/2 top-0 z-[9] w-[120px] -translate-x-1/2 -translate-y-2 object-contain sm:w-[140px] sm:-translate-y-3 md:w-[160px] md:-translate-y-4"
 />
          
   <motion.img
