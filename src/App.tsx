@@ -750,36 +750,51 @@ export default function App() {
   />
 
   {/* bottom hero trust icons */}
-  <div className="pointer-events-none absolute bottom-20 left-1/2 z-[9] w-full max-w-4xl -translate-x-1/2 px-6">
-    <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-10">
-      <div className="flex flex-col items-center text-center">
-        <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/12 bg-white/8 backdrop-blur-md shadow-[0_12px_30px_rgba(0,0,0,0.18)] sm:h-16 sm:w-16">
-          <ShieldCheck className="h-7 w-7 text-white sm:h-8 sm:w-8" />
+ <div className="pointer-events-none absolute bottom-20 left-1/2 z-[9] w-full max-w-4xl -translate-x-1/2 px-6">
+  <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-10">
+    {/* 10 Years */}
+    <div className="flex flex-col items-center text-center">
+      <div className="relative mb-3 flex h-[64px] w-[64px] items-center justify-center rounded-[22px] border border-cyan-300/20 bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.05))] shadow-[0_16px_30px_rgba(0,0,0,0.18)] backdrop-blur-xl sm:h-[74px] sm:w-[74px]">
+        <div className="absolute inset-[1px] rounded-[21px] bg-[radial-gradient(circle_at_30%_25%,rgba(255,255,255,0.16),transparent_38%),linear-gradient(180deg,rgba(59,130,246,0.24),rgba(34,211,238,0.08))]" />
+        <div className="absolute -top-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full border border-cyan-200/20 bg-cyan-300/15 text-[9px] font-black text-white shadow-[0_0_16px_rgba(34,211,238,0.26)]">
+          10
         </div>
-        <p className="text-[11px] font-bold tracking-wide text-white sm:text-sm md:text-base">
-          10 Years of Operation
-        </p>
+        <ShieldCheck className="relative z-10 h-8 w-8 text-white sm:h-9 sm:w-9" />
       </div>
+      <p className="text-[11px] font-bold tracking-wide text-white sm:text-sm md:text-base">
+        10 Years Operation
+      </p>
+    </div>
 
-      <div className="flex flex-col items-center text-center">
-        <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/12 bg-white/8 backdrop-blur-md shadow-[0_12px_30px_rgba(0,0,0,0.18)] sm:h-16 sm:w-16">
-          <Users className="h-7 w-7 text-white sm:h-8 sm:w-8" />
+    {/* Active Players */}
+    <div className="flex flex-col items-center text-center">
+      <div className="relative mb-3 flex h-[64px] w-[64px] items-center justify-center rounded-[22px] border border-cyan-300/20 bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.05))] shadow-[0_16px_30px_rgba(0,0,0,0.18)] backdrop-blur-xl sm:h-[74px] sm:w-[74px]">
+        <div className="absolute inset-[1px] rounded-[21px] bg-[radial-gradient(circle_at_30%_25%,rgba(255,255,255,0.16),transparent_38%),linear-gradient(180deg,rgba(59,130,246,0.24),rgba(34,211,238,0.08))]" />
+        <div className="absolute -top-1 -right-2 rounded-full border border-cyan-200/20 bg-cyan-300/15 px-2 py-[2px] text-[9px] font-black text-white shadow-[0_0_16px_rgba(34,211,238,0.26)]">
+          5K+
         </div>
-        <p className="text-[11px] font-bold tracking-wide text-white sm:text-sm md:text-base">
-          5000+ Active Players
-        </p>
+        <Users className="relative z-10 h-8 w-8 text-white sm:h-9 sm:w-9" />
       </div>
+      <p className="text-[11px] font-bold tracking-wide text-white sm:text-sm md:text-base">
+        Active Players
+      </p>
+    </div>
 
-      <div className="flex flex-col items-center text-center">
-        <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/12 bg-white/8 backdrop-blur-md shadow-[0_12px_30px_rgba(0,0,0,0.18)] sm:h-16 sm:w-16">
-          <Banknote className="h-7 w-7 text-white sm:h-8 sm:w-8" />
+    {/* Fast Withdrawal */}
+    <div className="flex flex-col items-center text-center">
+      <div className="relative mb-3 flex h-[64px] w-[64px] items-center justify-center rounded-[22px] border border-cyan-300/20 bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.05))] shadow-[0_16px_30px_rgba(0,0,0,0.18)] backdrop-blur-xl sm:h-[74px] sm:w-[74px]">
+        <div className="absolute inset-[1px] rounded-[21px] bg-[radial-gradient(circle_at_30%_25%,rgba(255,255,255,0.16),transparent_38%),linear-gradient(180deg,rgba(59,130,246,0.24),rgba(34,211,238,0.08))]" />
+        <div className="absolute -bottom-1 right-1 rounded-full border border-cyan-200/20 bg-cyan-300/15 px-2 py-[2px] text-[9px] font-black text-white shadow-[0_0_16px_rgba(34,211,238,0.26)]">
+          FAST
         </div>
-        <p className="text-[11px] font-bold tracking-wide text-white sm:text-sm md:text-base">
-          Fast Withdrawal
-        </p>
+        <Banknote className="relative z-10 h-8 w-8 text-white sm:h-9 sm:w-9" />
       </div>
+      <p className="text-[11px] font-bold tracking-wide text-white sm:text-sm md:text-base">
+        Fast Withdrawal
+      </p>
     </div>
   </div>
+</div>
 
   <div className="relative z-10 mx-auto w-full max-w-6xl">
     {/* kept empty */}
