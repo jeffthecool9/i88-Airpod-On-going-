@@ -857,11 +857,11 @@ export default function App() {
                     transition={{ duration: 0.45, delay: i * 0.12 }}
                     className="flex flex-col items-center text-center"
                   >
-                    <div className="mb-3 flex h-[72px] w-[72px] items-center justify-center sm:h-[96px] sm:w-[96px] md:h-[112px] md:w-[112px]">
+                    <div className="mb-4 flex h-[96px] w-[96px] items-center justify-center sm:h-[120px] sm:w-[120px] md:h-[140px] md:w-[140px]">
                       <img
                         src={item.image}
                         alt={item.title}
-                        className="h-full w-full object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.25)]"
+                        className="h-full w-full scale-110 object-contain drop-shadow-[0_12px_30px_rgba(0,0,0,0.28)]"
                       />
                     </div>
 
