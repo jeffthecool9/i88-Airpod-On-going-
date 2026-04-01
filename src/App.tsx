@@ -16,6 +16,9 @@ import {
   CheckCircle2,
   UserPlus,
   Mail,
+  ShieldCheck,
+  Users,
+  Banknote,
   Lock,
   User,
   Phone,
@@ -719,12 +722,13 @@ export default function App() {
        <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-[#0a1580]">
   <RealisticBackground />
   <GoldConfetti />
-<img
-  src={i882Img}
-  alt="i88"
+
+  <img
+    src={i882Img}
+    alt="i88"
     className="pointer-events-none absolute left-1/2 top-0 z-[9] w-[120px] -translate-x-1/2 -translate-y-2 object-contain sm:w-[140px] sm:-translate-y-3 md:w-[160px] md:-translate-y-4"
-/>
-         
+  />
+
   <motion.img
     src={airpodImg}
     alt=""
@@ -745,8 +749,40 @@ export default function App() {
     }}
   />
 
+  {/* bottom hero trust icons */}
+  <div className="pointer-events-none absolute bottom-20 left-1/2 z-[9] w-full max-w-4xl -translate-x-1/2 px-6">
+    <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-10">
+      <div className="flex flex-col items-center text-center">
+        <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/12 bg-white/8 backdrop-blur-md shadow-[0_12px_30px_rgba(0,0,0,0.18)] sm:h-16 sm:w-16">
+          <ShieldCheck className="h-7 w-7 text-white sm:h-8 sm:w-8" />
+        </div>
+        <p className="text-[11px] font-bold tracking-wide text-white sm:text-sm md:text-base">
+          10 Years of Operation
+        </p>
+      </div>
+
+      <div className="flex flex-col items-center text-center">
+        <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/12 bg-white/8 backdrop-blur-md shadow-[0_12px_30px_rgba(0,0,0,0.18)] sm:h-16 sm:w-16">
+          <Users className="h-7 w-7 text-white sm:h-8 sm:w-8" />
+        </div>
+        <p className="text-[11px] font-bold tracking-wide text-white sm:text-sm md:text-base">
+          5000+ Active Players
+        </p>
+      </div>
+
+      <div className="flex flex-col items-center text-center">
+        <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/12 bg-white/8 backdrop-blur-md shadow-[0_12px_30px_rgba(0,0,0,0.18)] sm:h-16 sm:w-16">
+          <Banknote className="h-7 w-7 text-white sm:h-8 sm:w-8" />
+        </div>
+        <p className="text-[11px] font-bold tracking-wide text-white sm:text-sm md:text-base">
+          Fast Withdrawal
+        </p>
+      </div>
+    </div>
+  </div>
+
   <div className="relative z-10 mx-auto w-full max-w-6xl">
-    {/* Kept empty */}
+    {/* kept empty */}
   </div>
 
   <SectionSeam className="bottom-[-1px]" fillColor="#0b49b8" shape="dip" />
