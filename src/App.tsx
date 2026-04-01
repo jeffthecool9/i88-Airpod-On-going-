@@ -243,11 +243,11 @@ const RegistrationForm = () => {
         className="pointer-events-none absolute left-[22px] top-[58px] z-[1] w-[82px] -rotate-[22deg] object-contain opacity-95 drop-shadow-[0_12px_24px_rgba(0,0,0,0.20)] sm:left-[34px] sm:top-[68px] sm:w-[96px]"
       />
       <img
-        src={coinFrontImg}
-        alt=""
-        aria-hidden="true"
-        className="pointer-events-none absolute left-[-8px] top-[330px] z-[1] w-[118px] object-contain opacity-95 drop-shadow-[0_16px_30px_rgba(0,0,0,0.18)] sm:left-[0px] sm:top-[360px] sm:w-[132px]"
-      />
+  src={coinFrontImg}
+  alt=""
+  aria-hidden="true"
+  className="pointer-events-none absolute left-[-8px] top-[430px] z-[1] w-[118px] object-contain opacity-95 drop-shadow-[0_16px_30px_rgba(0,0,0,0.18)] sm:left-[0px] sm:top-[455px] sm:w-[132px]"
+/>
       <img
         src={coinTiltImg}
         alt=""
