@@ -781,7 +781,7 @@ export default function App() {
           <div className="pointer-events-none absolute bottom-28 left-1/2 z-[9] w-full max-w-5xl -translate-x-1/2 px-6">
             <div className="grid grid-cols-3 gap-5 sm:gap-8 md:gap-12">
               <div className="flex flex-col items-center text-center">
-                <div className="relative mb-4 flex h-[96px] w-[96px] items-center justify-center rounded-[30px] border border-[#ffe7a3]/28 bg-[linear-gradient(180deg,rgba(255,240,190,0.20),rgba(255,189,64,0.10))] shadow-[0_22px_50px_rgba(0,0,0,0.26)] backdrop-blur-xl sm:h-[108px] sm:w-[108px]">
+                <div className="relative mb-2 flex h-[96px] w-[96px] items-center justify-center rounded-[30px] border border-[#ffe7a3]/28 bg-[linear-gradient(180deg,rgba(255,240,190,0.20),rgba(255,189,64,0.10))] shadow-[0_22px_50px_rgba(0,0,0,0.26)] backdrop-blur-xl sm:h-[108px] sm:w-[108px]">
                   <div className="absolute inset-[1px] rounded-[29px] bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.34),transparent_36%),linear-gradient(180deg,rgba(255,215,90,0.28),rgba(255,179,0,0.08))]" />
                   <div className="absolute inset-x-[8px] top-[6px] h-[28px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.34),rgba(255,255,255,0.02))] blur-[1px]" />
                   <div className="absolute -top-2 -right-2 flex h-9 w-9 items-center justify-center rounded-full border border-[#fff1bf]/30 bg-[#ffd54a]/22 text-[11px] font-black text-white shadow-[0_0_20px_rgba(251,191,36,0.38)]">
@@ -797,7 +797,7 @@ export default function App() {
               </div>
 
               <div className="flex flex-col items-center text-center">
-                <div className="relative mb-4 flex h-[96px] w-[96px] items-center justify-center rounded-[30px] border border-[#b6ffe5]/28 bg-[linear-gradient(180deg,rgba(195,255,234,0.18),rgba(0,214,143,0.10))] shadow-[0_22px_50px_rgba(0,0,0,0.26)] backdrop-blur-xl sm:h-[108px] sm:w-[108px]">
+                <div className="relative mb-2 flex h-[96px] w-[96px] items-center justify-center rounded-[30px] border border-[#b6ffe5]/28 bg-[linear-gradient(180deg,rgba(195,255,234,0.18),rgba(0,214,143,0.10))] shadow-[0_22px_50px_rgba(0,0,0,0.26)] backdrop-blur-xl sm:h-[108px] sm:w-[108px]">
                   <div className="absolute inset-[1px] rounded-[29px] bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.30),transparent_36%),linear-gradient(180deg,rgba(110,255,210,0.22),rgba(0,200,120,0.08))]" />
                   <div className="absolute inset-x-[8px] top-[6px] h-[28px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.28),rgba(255,255,255,0.02))] blur-[1px]" />
                   <div className="absolute -top-2 -right-3 rounded-full border border-[#d3ffef]/30 bg-[#37e5a6]/22 px-3 py-[4px] text-[10px] font-black text-white shadow-[0_0_20px_rgba(16,185,129,0.34)]">
@@ -813,7 +813,7 @@ export default function App() {
               </div>
 
               <div className="flex flex-col items-center text-center">
-                <div className="relative mb-4 flex h-[96px] w-[96px] items-center justify-center rounded-[30px] border border-[#c5f3ff]/28 bg-[linear-gradient(180deg,rgba(215,247,255,0.18),rgba(0,196,255,0.10))] shadow-[0_22px_50px_rgba(0,0,0,0.26)] backdrop-blur-xl sm:h-[108px] sm:w-[108px]">
+                <div className="relative mb-2 flex h-[96px] w-[96px] items-center justify-center rounded-[30px] border border-[#c5f3ff]/28 bg-[linear-gradient(180deg,rgba(215,247,255,0.18),rgba(0,196,255,0.10))] shadow-[0_22px_50px_rgba(0,0,0,0.26)] backdrop-blur-xl sm:h-[108px] sm:w-[108px]">
                   <div className="absolute inset-[1px] rounded-[29px] bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.30),transparent_36%),linear-gradient(180deg,rgba(130,230,255,0.22),rgba(34,211,238,0.08))]" />
                   <div className="absolute inset-x-[8px] top-[6px] h-[28px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.28),rgba(255,255,255,0.02))] blur-[1px]" />
                   <div className="absolute -bottom-2 right-1 rounded-full border border-[#d9f8ff]/30 bg-[#5ad9ff]/20 px-3 py-[4px] text-[10px] font-black text-white shadow-[0_0_20px_rgba(34,211,238,0.34)]">
