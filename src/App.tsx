@@ -1,7 +1,3 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
 import i882Img from "./assets/i882.png";
 import airpodImg from "./assets/airpod.png";
 import coinFrontImg from "./assets/3.png";
@@ -27,8 +23,6 @@ import {
 } from "lucide-react";
 import React, { useState, useEffect, ReactNode } from "react";
 
-/* ----------------------------- Text System ----------------------------- */
-
 const HeroWord = ({
   children,
   className = "",
@@ -39,7 +33,7 @@ const HeroWord = ({
   light?: boolean;
 }) => (
   <span
-    className={`relative inline-block font-semibold tracking-[-0.02em] ${light ? "text-white" : "text-white"} ${className}`}
+    className={`relative inline-block font-semibold tracking-[-0.02em] text-white ${className}`}
     style={
       !light
         ? {
@@ -54,8 +48,6 @@ const HeroWord = ({
     {children}
   </span>
 );
-
-/* ----------------------------- Hero Confetti ----------------------------- */
 
 const GoldConfetti = () => {
   const pieces = React.useMemo(
@@ -135,8 +127,6 @@ const GoldConfetti = () => {
   );
 };
 
-/* ----------------------------- Background ----------------------------- */
-
 const RealisticBackground = () => (
   <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
     <div className="absolute inset-0 bg-[#0a1580]" />
@@ -164,8 +154,6 @@ const RealisticBackground = () => (
     <div className="absolute inset-0 opacity-15 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
   </div>
 );
-
-/* ----------------------------- Section Divider ----------------------------- */
 
 const SectionSeam = ({
   className = "",
@@ -200,8 +188,6 @@ const SectionSeam = ({
   </div>
 );
 
-/* ----------------------------- Registration Form ----------------------------- */
-
 const RegistrationForm = () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -231,7 +217,6 @@ const RegistrationForm = () => {
       id="registration-form"
       className="relative z-10 overflow-hidden px-6 py-24 sm:py-32 bg-[radial-gradient(circle_at_12%_18%,rgba(34,211,238,0.16),transparent_24%),radial-gradient(circle_at_85%_22%,rgba(59,130,246,0.20),transparent_28%),radial-gradient(circle_at_50%_85%,rgba(56,189,248,0.08),transparent_30%),linear-gradient(180deg,#0B49B8_0%,#0A3D9D_35%,#082B78_72%,#03143E_100%)]"
     >
-      {/* section background */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-[4%] top-[10%] h-[260px] w-[260px] rounded-full bg-cyan-300/12 blur-[120px]" />
         <div className="absolute right-[4%] top-[15%] h-[320px] w-[320px] rounded-full bg-blue-400/12 blur-[140px]" />
@@ -240,7 +225,6 @@ const RegistrationForm = () => {
         <div className="absolute inset-0 opacity-[0.05] mix-blend-screen bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
       </div>
 
-      {/* background coins */}
       <img
         src={coinTiltImg}
         alt=""
@@ -248,11 +232,11 @@ const RegistrationForm = () => {
         className="pointer-events-none absolute left-[22px] top-[58px] z-[1] w-[82px] -rotate-[22deg] object-contain opacity-95 drop-shadow-[0_12px_24px_rgba(0,0,0,0.20)] sm:left-[34px] sm:top-[68px] sm:w-[96px]"
       />
       <img
-  src={coinFrontImg}
-  alt=""
-  aria-hidden="true"
-  className="pointer-events-none absolute left-[-8px] top-[430px] z-[1] w-[118px] object-contain opacity-95 drop-shadow-[0_16px_30px_rgba(0,0,0,0.18)] sm:left-[0px] sm:top-[455px] sm:w-[132px]"
-/>
+        src={coinFrontImg}
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute left-[-8px] top-[430px] z-[1] w-[118px] object-contain opacity-95 drop-shadow-[0_16px_30px_rgba(0,0,0,0.18)] sm:left-[0px] sm:top-[455px] sm:w-[132px]"
+      />
       <img
         src={coinTiltImg}
         alt=""
@@ -267,15 +251,9 @@ const RegistrationForm = () => {
           viewport={{ once: true }}
           className="relative overflow-hidden rounded-[2.5rem] bg-[linear-gradient(180deg,rgba(19,73,180,0.52)_0%,rgba(14,53,143,0.58)_30%,rgba(9,35,109,0.70)_100%)] p-8 shadow-[0_35px_90px_rgba(0,0,0,0.42),0_0_0_1px_rgba(255,255,255,0.03)] backdrop-blur-[28px] md:p-12"
         >
-          {/* ultra silky static glossy border */}
           <div className="pointer-events-none absolute inset-0 rounded-[2.5rem]">
-            {/* outer border */}
             <div className="absolute inset-0 rounded-[2.5rem] border border-[#5fd7ff]/22" />
-
-            {/* inner silk highlight ring */}
             <div className="absolute inset-[1px] rounded-[2.45rem] border border-white/6" />
-
-            {/* top silky gloss */}
             <div
               className="absolute inset-x-[2px] top-[2px] h-[120px] rounded-t-[2.35rem]"
               style={{
@@ -284,8 +262,6 @@ const RegistrationForm = () => {
                 filter: "blur(0.2px)",
               }}
             />
-
-            {/* left vertical silk sheen */}
             <div
               className="absolute bottom-[26px] left-[1px] top-[22px] w-[24px] rounded-l-[2.2rem]"
               style={{
@@ -294,8 +270,6 @@ const RegistrationForm = () => {
                 filter: "blur(1.2px)",
               }}
             />
-
-            {/* right upper silk gloss */}
             <div
               className="absolute right-[6px] top-[8px] h-[92px] w-[92px] rounded-full"
               style={{
@@ -304,48 +278,12 @@ const RegistrationForm = () => {
                 filter: "blur(10px)",
               }}
             />
-
-            {/* bottom subtle reflective edge */}
             <div
               className="absolute bottom-[2px] left-[18px] right-[18px] h-[20px]"
               style={{
                 background:
                   "linear-gradient(180deg, rgba(255,255,255,0.00) 0%, rgba(255,255,255,0.08) 100%)",
                 filter: "blur(2px)",
-              }}
-            />
-
-            {/* corner silk speculars */}
-            <div
-              className="absolute left-[6px] top-[6px] h-[54px] w-[54px] rounded-full"
-              style={{
-                background:
-                  "radial-gradient(circle at 35% 35%, rgba(255,248,220,0.75) 0%, rgba(255,240,170,0.32) 24%, rgba(255,230,140,0.0) 72%)",
-                filter: "blur(7px)",
-              }}
-            />
-            <div
-              className="absolute right-[6px] top-[6px] h-[54px] w-[54px] rounded-full"
-              style={{
-                background:
-                  "radial-gradient(circle at 65% 35%, rgba(255,248,220,0.75) 0%, rgba(255,240,170,0.32) 24%, rgba(255,230,140,0.0) 72%)",
-                filter: "blur(7px)",
-              }}
-            />
-            <div
-              className="absolute left-[6px] bottom-[6px] h-[46px] w-[46px] rounded-full"
-              style={{
-                background:
-                  "radial-gradient(circle at 35% 65%, rgba(255,248,220,0.42) 0%, rgba(255,240,170,0.18) 25%, rgba(255,230,140,0.0) 72%)",
-                filter: "blur(8px)",
-              }}
-            />
-            <div
-              className="absolute right-[6px] bottom-[6px] h-[46px] w-[46px] rounded-full"
-              style={{
-                background:
-                  "radial-gradient(circle at 65% 65%, rgba(255,248,220,0.42) 0%, rgba(255,240,170,0.18) 25%, rgba(255,230,140,0.0) 72%)",
-                filter: "blur(8px)",
               }}
             />
           </div>
@@ -539,8 +477,6 @@ const RegistrationForm = () => {
   );
 };
 
-/* ----------------------------- Floating Girl ----------------------------- */
-
 const FloatingGirl = () => {
   const [showFromSteps, setShowFromSteps] = useState(false);
   const [bubbleState, setBubbleState] = useState(0);
@@ -723,7 +659,7 @@ const HeroCTA = () => {
         onTouchEnd={handleLeave}
         whileHover={{ scale: 1.03, y: -1 }}
         whileTap={{ scale: 0.985 }}
-        className="group pointer-events-auto relative isolate overflow-hidden rounded-[22px] border border-[#ffe7a3]/40 bg-[linear-gradient(180deg,#ffe08a_0%,#f7c948_28%,#d79a16_68%,#b8790b_100%)] px-9 py-4 text-base font-extrabold tracking-wide text-[#fff7d1] shadow-[0_20px_40px_rgba(0,0,0,0.30),inset_0_1px_0_rgba(255,255,255,0.46),inset_0_-10px_22px_rgba(120,70,0,0.24)] transition-all sm:px-11 sm:py-4 sm:text-lg"
+        className="group pointer-events-auto relative isolate overflow-hidden rounded-[22px] border border-[#ffe7a3]/40 bg-[linear-gradient(180deg,#ffe08a_0%,#f7c948_28%,#d79a16_68%,#b8790b_100%)] px-10 py-3 text-base font-extrabold tracking-wide text-[#fff7d1] shadow-[0_20px_40px_rgba(0,0,0,0.30),inset_0_1px_0_rgba(255,255,255,0.46),inset_0_-10px_22px_rgba(120,70,0,0.24)] transition-all sm:px-12 sm:py-3 sm:text-lg"
         style={{
           textShadow: "0 1px 2px rgba(120,70,0,0.35)",
         }}
@@ -769,7 +705,7 @@ const HeroCTA = () => {
           )}
         </AnimatePresence>
 
-        <span className="relative z-10 flex items-center gap-2">
+        <span className="relative z-10 flex items-center gap-2 whitespace-nowrap">
           Join Now
           <ChevronRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
         </span>
@@ -777,7 +713,6 @@ const HeroCTA = () => {
     </div>
   );
 };
-/* ----------------------------- App ----------------------------- */
 
 export default function App() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -807,101 +742,97 @@ export default function App() {
       <div className="pointer-events-none fixed inset-0 z-[100] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
       <main className="relative z-10">
-       <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-[#0a1580]">
-  <RealisticBackground />
-  <GoldConfetti />
+        <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-[#0a1580]">
+          <RealisticBackground />
+          <GoldConfetti />
 
-  <img
-    src={i882Img}
-    alt="i88"
-    className="pointer-events-none absolute left-1/2 top-0 z-[9] w-[120px] -translate-x-1/2 -translate-y-2 object-contain sm:w-[140px] sm:-translate-y-3 md:w-[160px] md:-translate-y-4"
-  />
+          <img
+            src={i882Img}
+            alt="i88"
+            className="pointer-events-none absolute left-1/2 top-0 z-[9] w-[120px] -translate-x-1/2 -translate-y-2 object-contain sm:w-[140px] sm:-translate-y-3 md:w-[160px] md:-translate-y-4"
+          />
 
-  <motion.img
-    src={airpodImg}
-    alt=""
-    aria-hidden="true"
-    className="pointer-events-none absolute right-[8%] top-[18%] z-[8] w-[180px] object-contain sm:right-[12%] sm:top-[16%] sm:w-[220px] md:right-[15%] md:top-[15%] md:w-[260px] lg:right-[18%] lg:top-[14%] lg:w-[300px]"
-    animate={{
-      y: [0, -12, 0],
-      rotate: [0, -2, 0],
-    }}
-    transition={{
-      duration: 4.2,
-      repeat: Infinity,
-      ease: "easeInOut",
-    }}
-    style={{
-      filter:
-        "drop-shadow(0 18px 30px rgba(0,0,0,0.28)) drop-shadow(0 10px 24px rgba(56,189,248,0.16))",
-    }}
-  />
+          <motion.img
+            src={airpodImg}
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute right-[8%] top-[18%] z-[8] w-[180px] object-contain sm:right-[12%] sm:top-[16%] sm:w-[220px] md:right-[15%] md:top-[15%] md:w-[260px] lg:right-[18%] lg:top-[14%] lg:w-[300px]"
+            animate={{
+              y: [0, -12, 0],
+              rotate: [0, -2, 0],
+            }}
+            transition={{
+              duration: 4.2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            style={{
+              filter:
+                "drop-shadow(0 18px 30px rgba(0,0,0,0.28)) drop-shadow(0 10px 24px rgba(56,189,248,0.16))",
+            }}
+          />
 
-  {/* bottom hero trust icons */}
-<div className="pointer-events-none absolute bottom-20 left-1/2 z-[9] w-full max-w-5xl -translate-x-1/2 px-6">
-  <div className="grid grid-cols-3 gap-5 sm:gap-8 md:gap-12">
-    {/* 10 Years */}
-    <div className="flex flex-col items-center text-center">
-      <div className="relative mb-4 flex h-[96px] w-[96px] items-center justify-center rounded-[30px] border border-[#ffe7a3]/28 bg-[linear-gradient(180deg,rgba(255,240,190,0.20),rgba(255,189,64,0.10))] shadow-[0_22px_50px_rgba(0,0,0,0.26)] backdrop-blur-xl sm:h-[108px] sm:w-[108px]">
-        <div className="absolute inset-[1px] rounded-[29px] bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.34),transparent_36%),linear-gradient(180deg,rgba(255,215,90,0.28),rgba(255,179,0,0.08))]" />
-        <div className="absolute inset-x-[8px] top-[6px] h-[28px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.34),rgba(255,255,255,0.02))] blur-[1px]" />
-        <div className="absolute -top-2 -right-2 flex h-9 w-9 items-center justify-center rounded-full border border-[#fff1bf]/30 bg-[#ffd54a]/22 text-[11px] font-black text-white shadow-[0_0_20px_rgba(251,191,36,0.38)]">
-          10
-        </div>
-        <div className="relative z-10 flex h-[58px] w-[58px] items-center justify-center rounded-[18px] bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.04))] shadow-[inset_0_1px_0_rgba(255,255,255,0.25)]">
-          <ShieldCheck className="h-9 w-9 text-[#fff0b3]" />
-        </div>
-      </div>
-      <p className="text-[13px] font-extrabold tracking-wide text-white sm:text-base md:text-lg">
-        10 Years Operation
-      </p>
-    </div>
+          <div className="pointer-events-none absolute bottom-20 left-1/2 z-[9] w-full max-w-5xl -translate-x-1/2 px-6">
+            <div className="grid grid-cols-3 gap-5 sm:gap-8 md:gap-12">
+              <div className="flex flex-col items-center text-center">
+                <div className="relative mb-4 flex h-[96px] w-[96px] items-center justify-center rounded-[30px] border border-[#ffe7a3]/28 bg-[linear-gradient(180deg,rgba(255,240,190,0.20),rgba(255,189,64,0.10))] shadow-[0_22px_50px_rgba(0,0,0,0.26)] backdrop-blur-xl sm:h-[108px] sm:w-[108px]">
+                  <div className="absolute inset-[1px] rounded-[29px] bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.34),transparent_36%),linear-gradient(180deg,rgba(255,215,90,0.28),rgba(255,179,0,0.08))]" />
+                  <div className="absolute inset-x-[8px] top-[6px] h-[28px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.34),rgba(255,255,255,0.02))] blur-[1px]" />
+                  <div className="absolute -top-2 -right-2 flex h-9 w-9 items-center justify-center rounded-full border border-[#fff1bf]/30 bg-[#ffd54a]/22 text-[11px] font-black text-white shadow-[0_0_20px_rgba(251,191,36,0.38)]">
+                    10
+                  </div>
+                  <div className="relative z-10 flex h-[58px] w-[58px] items-center justify-center rounded-[18px] bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.04))] shadow-[inset_0_1px_0_rgba(255,255,255,0.25)]">
+                    <ShieldCheck className="h-9 w-9 text-[#fff0b3]" />
+                  </div>
+                </div>
+                <p className="text-[13px] font-extrabold tracking-wide text-white sm:text-base md:text-lg">
+                  10 Years Operation
+                </p>
+              </div>
 
-    {/* Active Players */}
-    <div className="flex flex-col items-center text-center">
-      <div className="relative mb-4 flex h-[96px] w-[96px] items-center justify-center rounded-[30px] border border-[#b6ffe5]/28 bg-[linear-gradient(180deg,rgba(195,255,234,0.18),rgba(0,214,143,0.10))] shadow-[0_22px_50px_rgba(0,0,0,0.26)] backdrop-blur-xl sm:h-[108px] sm:w-[108px]">
-        <div className="absolute inset-[1px] rounded-[29px] bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.30),transparent_36%),linear-gradient(180deg,rgba(110,255,210,0.22),rgba(0,200,120,0.08))]" />
-        <div className="absolute inset-x-[8px] top-[6px] h-[28px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.28),rgba(255,255,255,0.02))] blur-[1px]" />
-        <div className="absolute -top-2 -right-3 rounded-full border border-[#d3ffef]/30 bg-[#37e5a6]/22 px-3 py-[4px] text-[10px] font-black text-white shadow-[0_0_20px_rgba(16,185,129,0.34)]">
-          5K+
-        </div>
-        <div className="relative z-10 flex h-[58px] w-[58px] items-center justify-center rounded-[18px] bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.04))] shadow-[inset_0_1px_0_rgba(255,255,255,0.22)]">
-          <Users className="h-9 w-9 text-[#d8fff0]" />
-        </div>
-      </div>
-      <p className="text-[13px] font-extrabold tracking-wide text-white sm:text-base md:text-lg">
-        5000+ Active Players
-      </p>
-    </div>
+              <div className="flex flex-col items-center text-center">
+                <div className="relative mb-4 flex h-[96px] w-[96px] items-center justify-center rounded-[30px] border border-[#b6ffe5]/28 bg-[linear-gradient(180deg,rgba(195,255,234,0.18),rgba(0,214,143,0.10))] shadow-[0_22px_50px_rgba(0,0,0,0.26)] backdrop-blur-xl sm:h-[108px] sm:w-[108px]">
+                  <div className="absolute inset-[1px] rounded-[29px] bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.30),transparent_36%),linear-gradient(180deg,rgba(110,255,210,0.22),rgba(0,200,120,0.08))]" />
+                  <div className="absolute inset-x-[8px] top-[6px] h-[28px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.28),rgba(255,255,255,0.02))] blur-[1px]" />
+                  <div className="absolute -top-2 -right-3 rounded-full border border-[#d3ffef]/30 bg-[#37e5a6]/22 px-3 py-[4px] text-[10px] font-black text-white shadow-[0_0_20px_rgba(16,185,129,0.34)]">
+                    5K+
+                  </div>
+                  <div className="relative z-10 flex h-[58px] w-[58px] items-center justify-center rounded-[18px] bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.04))] shadow-[inset_0_1px_0_rgba(255,255,255,0.22)]">
+                    <Users className="h-9 w-9 text-[#d8fff0]" />
+                  </div>
+                </div>
+                <p className="text-[13px] font-extrabold tracking-wide text-white sm:text-base md:text-lg">
+                  5000+ Active Players
+                </p>
+              </div>
 
-    {/* Fast Withdrawal */}
-    <div className="flex flex-col items-center text-center">
-      <div className="relative mb-4 flex h-[96px] w-[96px] items-center justify-center rounded-[30px] border border-[#c5f3ff]/28 bg-[linear-gradient(180deg,rgba(215,247,255,0.18),rgba(0,196,255,0.10))] shadow-[0_22px_50px_rgba(0,0,0,0.26)] backdrop-blur-xl sm:h-[108px] sm:w-[108px]">
-        <div className="absolute inset-[1px] rounded-[29px] bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.30),transparent_36%),linear-gradient(180deg,rgba(130,230,255,0.22),rgba(34,211,238,0.08))]" />
-        <div className="absolute inset-x-[8px] top-[6px] h-[28px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.28),rgba(255,255,255,0.02))] blur-[1px]" />
-        <div className="absolute -bottom-2 right-1 rounded-full border border-[#d9f8ff]/30 bg-[#5ad9ff]/20 px-3 py-[4px] text-[10px] font-black text-white shadow-[0_0_20px_rgba(34,211,238,0.34)]">
-          FAST
-        </div>
-        <div className="relative z-10 flex h-[58px] w-[58px] items-center justify-center rounded-[18px] bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.04))] shadow-[inset_0_1px_0_rgba(255,255,255,0.22)]">
-          <Banknote className="h-9 w-9 text-[#ddf8ff]" />
-        </div>
-      </div>
-      <p className="text-[13px] font-extrabold tracking-wide text-white sm:text-base md:text-lg">
-        Fast Withdrawal
-      </p>
-    </div>
-  </div>
-</div>  
-         
-  <HeroCTA />       
-         
-  <div className="relative z-10 mx-auto w-full max-w-6xl">
-    {/* kept empty */}
-  </div>
- 
-         
-  <SectionSeam className="bottom-[-1px]" fillColor="#0b49b8" shape="dip" />
-</section>
+              <div className="flex flex-col items-center text-center">
+                <div className="relative mb-4 flex h-[96px] w-[96px] items-center justify-center rounded-[30px] border border-[#c5f3ff]/28 bg-[linear-gradient(180deg,rgba(215,247,255,0.18),rgba(0,196,255,0.10))] shadow-[0_22px_50px_rgba(0,0,0,0.26)] backdrop-blur-xl sm:h-[108px] sm:w-[108px]">
+                  <div className="absolute inset-[1px] rounded-[29px] bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.30),transparent_36%),linear-gradient(180deg,rgba(130,230,255,0.22),rgba(34,211,238,0.08))]" />
+                  <div className="absolute inset-x-[8px] top-[6px] h-[28px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.28),rgba(255,255,255,0.02))] blur-[1px]" />
+                  <div className="absolute -bottom-2 right-1 rounded-full border border-[#d9f8ff]/30 bg-[#5ad9ff]/20 px-3 py-[4px] text-[10px] font-black text-white shadow-[0_0_20px_rgba(34,211,238,0.34)]">
+                    FAST
+                  </div>
+                  <div className="relative z-10 flex h-[58px] w-[58px] items-center justify-center rounded-[18px] bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.04))] shadow-[inset_0_1px_0_rgba(255,255,255,0.22)]">
+                    <Banknote className="h-9 w-9 text-[#ddf8ff]" />
+                  </div>
+                </div>
+                <p className="text-[13px] font-extrabold tracking-wide text-white sm:text-base md:text-lg">
+                  Fast Withdrawal
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <HeroCTA />
+
+          <div className="relative z-10 mx-auto w-full max-w-6xl">
+            {/* kept empty */}
+          </div>
+
+          <SectionSeam className="bottom-[-1px]" fillColor="#0b49b8" shape="dip" />
+        </section>
+
         <section
           id="steps-to-claim"
           className="relative z-10 overflow-hidden bg-gradient-to-b from-[#0b49b8] via-[#0a3d9d] to-[#082b78] px-4 pb-32 pt-16 sm:px-6 sm:pb-40 sm:pt-24"
