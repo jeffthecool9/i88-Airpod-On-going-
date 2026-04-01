@@ -488,13 +488,16 @@ const RegistrationForm = () => {
 };
 const FloatingGirl = () => {
   const [showFromSteps, setShowFromSteps] = useState(false);
+  const [hideAtRegistration, setHideAtRegistration] = useState(false);
   const [isUserActive, setIsUserActive] = useState(true);
 
   useEffect(() => {
     const stepsSection = document.getElementById("steps-to-claim");
-    if (!stepsSection) return;
+    const registrationSection = document.getElementById("registration-form");
 
-    const observer = new IntersectionObserver(
+    if (!stepsSection || !registrationSection) return;
+
+    const stepsObserver = new IntersectionObserver(
       ([entry]) => {
         setShowFromSteps(entry.isIntersecting && entry.intersectionRatio > 0.18);
       },
@@ -504,8 +507,23 @@ const FloatingGirl = () => {
       }
     );
 
-    observer.observe(stepsSection);
-    return () => observer.disconnect();
+    const registrationObserver = new IntersectionObserver(
+      ([entry]) => {
+        setHideAtRegistration(entry.isIntersecting && entry.intersectionRatio > 0.15);
+      },
+      {
+        threshold: [0, 0.08, 0.15, 0.25, 0.4],
+        rootMargin: "0px 0px -10% 0px",
+      }
+    );
+
+    stepsObserver.observe(stepsSection);
+    registrationObserver.observe(registrationSection);
+
+    return () => {
+      stepsObserver.disconnect();
+      registrationObserver.disconnect();
+    };
   }, []);
 
   useEffect(() => {
@@ -539,15 +557,17 @@ const FloatingGirl = () => {
     document.getElementById("registration-form")?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const shouldShowGirl = showFromSteps && !hideAtRegistration;
+
   return (
     <motion.div
       aria-hidden="true"
       className="pointer-events-none fixed bottom-[-10px] right-[-40px] z-[25] select-none"
       initial={{ opacity: 0, y: 30, scale: 0.96 }}
       animate={{
-        opacity: showFromSteps ? 1 : 0,
-        y: showFromSteps ? 0 : 30,
-        scale: showFromSteps ? 1 : 0.96,
+        opacity: shouldShowGirl ? 1 : 0,
+        y: shouldShowGirl ? 0 : 30,
+        scale: shouldShowGirl ? 1 : 0.96,
       }}
       transition={{
         duration: 0.45,
@@ -555,7 +575,7 @@ const FloatingGirl = () => {
       }}
     >
       <AnimatePresence>
-        {isUserActive && showFromSteps && (
+        {isUserActive && shouldShowGirl && (
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -593,7 +613,7 @@ const FloatingGirl = () => {
           aria-hidden="true"
           className="absolute inset-0 h-auto w-[280px] object-contain opacity-90 sm:w-[360px] md:w-[480px] lg:w-[560px] xl:w-[640px]"
           animate={{
-            opacity: showFromSteps ? [0.45, 0.9, 0.45] : 0,
+            opacity: shouldShowGirl ? [0.45, 0.9, 0.45] : 0,
           }}
           transition={{
             duration: 2.8,
