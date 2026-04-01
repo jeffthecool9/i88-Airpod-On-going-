@@ -479,7 +479,6 @@ const RegistrationForm = () => {
 
 const FloatingGirl = () => {
   const [showFromSteps, setShowFromSteps] = useState(false);
-  const [bubbleState, setBubbleState] = useState(0);
   const [isUserActive, setIsUserActive] = useState(true);
 
   useEffect(() => {
@@ -528,13 +527,7 @@ const FloatingGirl = () => {
   }, []);
 
   const handleInteract = () => {
-    if (bubbleState === 0) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      setBubbleState(1);
-    } else {
-      document.getElementById("registration-form")?.scrollIntoView({ behavior: "smooth" });
-      setBubbleState(0);
-    }
+    document.getElementById("registration-form")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -565,23 +558,17 @@ const FloatingGirl = () => {
               onClick={handleInteract}
               className="group relative cursor-pointer rounded-[20px] border border-cyan-400/60 bg-cyan-950/85 px-4 py-3 text-center shadow-[0_0_20px_rgba(34,211,238,0.3)] backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:bg-cyan-900/95 hover:shadow-[0_0_30px_rgba(34,211,238,0.6)] sm:px-5 sm:py-3.5 sm:text-left"
             >
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={bubbleState}
-                  initial={{ opacity: 0, y: 5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -5 }}
-                  transition={{ duration: 0.2 }}
-                  className="flex items-center justify-center gap-2 sm:gap-2.5"
-                >
-                  <div className="h-2 w-2 shrink-0 animate-pulse rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
-                  <p className="text-[11px] font-bold leading-tight tracking-wide text-white sm:whitespace-nowrap sm:text-sm">
-                    {bubbleState === 0
-                      ? "Still new to i88? Join & explore now!"
-                      : "Click here to register!"}
-                  </p>
-                </motion.div>
-              </AnimatePresence>
+              <motion.div
+                initial={{ opacity: 0, y: 5 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.2 }}
+                className="flex items-center justify-center gap-2 sm:gap-2.5"
+              >
+                <div className="h-2 w-2 shrink-0 animate-pulse rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
+                <p className="text-[11px] font-bold leading-tight tracking-wide text-white sm:whitespace-nowrap sm:text-sm">
+                  Click here to register
+                </p>
+              </motion.div>
             </div>
           </motion.div>
         )}
