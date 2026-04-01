@@ -646,7 +646,7 @@ const HeroCTA = () => {
 
     setTimeout(() => {
       setShowExitSweep(false);
-    }, 1500);
+    }, 3000);
   };
 
   return (
@@ -664,17 +664,11 @@ const HeroCTA = () => {
           textShadow: "0 1px 2px rgba(120,70,0,0.35)",
         }}
       >
-        {/* glossy top skin */}
         <div className="pointer-events-none absolute inset-x-[4%] top-[3px] h-[42%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.38),rgba(255,255,255,0.08),transparent)] blur-[1px]" />
-
-        {/* inner frame */}
         <div className="pointer-events-none absolute inset-[1px] rounded-[19px] border border-white/10" />
-
-        {/* soft side glow */}
         <div className="pointer-events-none absolute -left-5 top-1/2 h-12 w-12 -translate-y-1/2 rounded-full bg-[#ffd76a]/20 blur-[16px]" />
         <div className="pointer-events-none absolute -right-5 top-1/2 h-12 w-12 -translate-y-1/2 rounded-full bg-[#ffcf53]/16 blur-[16px]" />
 
-        {/* looping full-surface sweep while active */}
         <AnimatePresence>
           {isActive && (
             <motion.div
@@ -684,9 +678,9 @@ const HeroCTA = () => {
               animate={{ x: ["-130%", "180%"], opacity: [0, 0.95, 0.95, 0] }}
               exit={{ opacity: 0 }}
               transition={{
-                duration: 1.45,
+                duration: 3,
                 repeat: Infinity,
-                repeatDelay: 0.18,
+                repeatDelay: 0,
                 ease: [0.22, 1, 0.36, 1],
               }}
               className="pointer-events-none absolute inset-y-[-35%] left-[-45%] w-[60%] rotate-[16deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.08),rgba(255,255,255,0.30),rgba(255,255,255,0.78),rgba(255,255,255,0.30),rgba(255,255,255,0.08),transparent)] blur-[3px]"
@@ -694,7 +688,6 @@ const HeroCTA = () => {
           )}
         </AnimatePresence>
 
-        {/* one last slower sweep after leave */}
         <AnimatePresence mode="wait">
           {!isActive && showExitSweep && (
             <motion.div
@@ -704,7 +697,7 @@ const HeroCTA = () => {
               animate={{ x: ["-130%", "180%"], opacity: [0, 0.95, 0.95, 0] }}
               exit={{ opacity: 0 }}
               transition={{
-                duration: 1.5,
+                duration: 3,
                 ease: [0.22, 1, 0.36, 1],
               }}
               className="pointer-events-none absolute inset-y-[-35%] left-[-45%] w-[60%] rotate-[16deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.08),rgba(255,255,255,0.30),rgba(255,255,255,0.78),rgba(255,255,255,0.30),rgba(255,255,255,0.08),transparent)] blur-[3px]"
