@@ -718,7 +718,12 @@ export default function App() {
        <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-[#0a1580]">
   <RealisticBackground />
   <GoldConfetti />
-
+<img
+  src="/i882.png"
+  alt="i88"
+  className="pointer-events-none absolute left-1/2 top-8 z-[9] w-[120px] -translate-x-1/2 object-contain sm:top-10 sm:w-[140px] md:top-12 md:w-[160px]"
+/>
+         
   <motion.img
     src={airpodImg}
     alt=""
