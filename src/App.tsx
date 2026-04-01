@@ -750,46 +750,46 @@ export default function App() {
   />
 
   {/* bottom hero trust icons */}
- <div className="pointer-events-none absolute bottom-20 left-1/2 z-[9] w-full max-w-4xl -translate-x-1/2 px-6">
-  <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-10">
+<div className="pointer-events-none absolute bottom-20 left-1/2 z-[9] w-full max-w-5xl -translate-x-1/2 px-6">
+  <div className="grid grid-cols-3 gap-5 sm:gap-8 md:gap-12">
     {/* 10 Years */}
     <div className="flex flex-col items-center text-center">
-      <div className="relative mb-3 flex h-[64px] w-[64px] items-center justify-center rounded-[22px] border border-cyan-300/20 bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.05))] shadow-[0_16px_30px_rgba(0,0,0,0.18)] backdrop-blur-xl sm:h-[74px] sm:w-[74px]">
-        <div className="absolute inset-[1px] rounded-[21px] bg-[radial-gradient(circle_at_30%_25%,rgba(255,255,255,0.16),transparent_38%),linear-gradient(180deg,rgba(59,130,246,0.24),rgba(34,211,238,0.08))]" />
-        <div className="absolute -top-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full border border-cyan-200/20 bg-cyan-300/15 text-[9px] font-black text-white shadow-[0_0_16px_rgba(34,211,238,0.26)]">
+      <div className="relative mb-4 flex h-[84px] w-[84px] items-center justify-center rounded-[28px] border border-amber-200/20 bg-[linear-gradient(180deg,rgba(255,248,220,0.20),rgba(255,214,90,0.08))] shadow-[0_20px_40px_rgba(0,0,0,0.22)] backdrop-blur-xl sm:h-[96px] sm:w-[96px]">
+        <div className="absolute inset-[1px] rounded-[27px] bg-[radial-gradient(circle_at_30%_25%,rgba(255,255,255,0.24),transparent_38%),linear-gradient(180deg,rgba(251,191,36,0.26),rgba(245,158,11,0.10))]" />
+        <div className="absolute -top-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full border border-amber-100/20 bg-amber-300/20 text-[10px] font-black text-white shadow-[0_0_18px_rgba(251,191,36,0.30)]">
           10
         </div>
-        <ShieldCheck className="relative z-10 h-8 w-8 text-white sm:h-9 sm:w-9" />
+        <ShieldCheck className="relative z-10 h-10 w-10 text-amber-100 sm:h-11 sm:w-11" />
       </div>
-      <p className="text-[11px] font-bold tracking-wide text-white sm:text-sm md:text-base">
+      <p className="text-[12px] font-extrabold tracking-wide text-white sm:text-base md:text-lg">
         10 Years Operation
       </p>
     </div>
 
     {/* Active Players */}
     <div className="flex flex-col items-center text-center">
-      <div className="relative mb-3 flex h-[64px] w-[64px] items-center justify-center rounded-[22px] border border-cyan-300/20 bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.05))] shadow-[0_16px_30px_rgba(0,0,0,0.18)] backdrop-blur-xl sm:h-[74px] sm:w-[74px]">
-        <div className="absolute inset-[1px] rounded-[21px] bg-[radial-gradient(circle_at_30%_25%,rgba(255,255,255,0.16),transparent_38%),linear-gradient(180deg,rgba(59,130,246,0.24),rgba(34,211,238,0.08))]" />
-        <div className="absolute -top-1 -right-2 rounded-full border border-cyan-200/20 bg-cyan-300/15 px-2 py-[2px] text-[9px] font-black text-white shadow-[0_0_16px_rgba(34,211,238,0.26)]">
+      <div className="relative mb-4 flex h-[84px] w-[84px] items-center justify-center rounded-[28px] border border-emerald-200/20 bg-[linear-gradient(180deg,rgba(220,252,231,0.20),rgba(16,185,129,0.08))] shadow-[0_20px_40px_rgba(0,0,0,0.22)] backdrop-blur-xl sm:h-[96px] sm:w-[96px]">
+        <div className="absolute inset-[1px] rounded-[27px] bg-[radial-gradient(circle_at_30%_25%,rgba(255,255,255,0.24),transparent_38%),linear-gradient(180deg,rgba(52,211,153,0.26),rgba(16,185,129,0.10))]" />
+        <div className="absolute -top-2 -right-3 rounded-full border border-emerald-100/20 bg-emerald-300/20 px-3 py-[3px] text-[10px] font-black text-white shadow-[0_0_18px_rgba(16,185,129,0.28)]">
           5K+
         </div>
-        <Users className="relative z-10 h-8 w-8 text-white sm:h-9 sm:w-9" />
+        <Users className="relative z-10 h-10 w-10 text-emerald-100 sm:h-11 sm:w-11" />
       </div>
-      <p className="text-[11px] font-bold tracking-wide text-white sm:text-sm md:text-base">
-        Active Players
+      <p className="text-[12px] font-extrabold tracking-wide text-white sm:text-base md:text-lg">
+        5000+ Active Players
       </p>
     </div>
 
     {/* Fast Withdrawal */}
     <div className="flex flex-col items-center text-center">
-      <div className="relative mb-3 flex h-[64px] w-[64px] items-center justify-center rounded-[22px] border border-cyan-300/20 bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.05))] shadow-[0_16px_30px_rgba(0,0,0,0.18)] backdrop-blur-xl sm:h-[74px] sm:w-[74px]">
-        <div className="absolute inset-[1px] rounded-[21px] bg-[radial-gradient(circle_at_30%_25%,rgba(255,255,255,0.16),transparent_38%),linear-gradient(180deg,rgba(59,130,246,0.24),rgba(34,211,238,0.08))]" />
-        <div className="absolute -bottom-1 right-1 rounded-full border border-cyan-200/20 bg-cyan-300/15 px-2 py-[2px] text-[9px] font-black text-white shadow-[0_0_16px_rgba(34,211,238,0.26)]">
+      <div className="relative mb-4 flex h-[84px] w-[84px] items-center justify-center rounded-[28px] border border-cyan-200/20 bg-[linear-gradient(180deg,rgba(224,242,254,0.20),rgba(34,211,238,0.08))] shadow-[0_20px_40px_rgba(0,0,0,0.22)] backdrop-blur-xl sm:h-[96px] sm:w-[96px]">
+        <div className="absolute inset-[1px] rounded-[27px] bg-[radial-gradient(circle_at_30%_25%,rgba(255,255,255,0.24),transparent_38%),linear-gradient(180deg,rgba(103,232,249,0.24),rgba(34,211,238,0.10))]" />
+        <div className="absolute -bottom-2 right-1 rounded-full border border-cyan-100/20 bg-cyan-300/20 px-3 py-[3px] text-[10px] font-black text-white shadow-[0_0_18px_rgba(34,211,238,0.28)]">
           FAST
         </div>
-        <Banknote className="relative z-10 h-8 w-8 text-white sm:h-9 sm:w-9" />
+        <Banknote className="relative z-10 h-10 w-10 text-cyan-100 sm:h-11 sm:w-11" />
       </div>
-      <p className="text-[11px] font-bold tracking-wide text-white sm:text-sm md:text-base">
+      <p className="text-[12px] font-extrabold tracking-wide text-white sm:text-base md:text-lg">
         Fast Withdrawal
       </p>
     </div>
