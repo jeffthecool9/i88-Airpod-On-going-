@@ -306,7 +306,7 @@ const RegistrationForm = () => {
                 className="relative z-10 space-y-6"
               >
                 <div className="space-y-2">
-                  <label className="ml-1 text-sm font-medium text-white/92">Name</label>
+                  <label className="ml-1 text-sm font-medium text-white/92">Username</label>
                   <div className="relative">
                     <User className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white" />
                     <input
