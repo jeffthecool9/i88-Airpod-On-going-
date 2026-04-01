@@ -689,6 +689,94 @@ const FloatingGirl = () => {
   );
 };
 
+const HeroCTA = () => {
+  const [isActive, setIsActive] = useState(false);
+  const [exitSweepKey, setExitSweepKey] = useState(0);
+  const [showExitSweep, setShowExitSweep] = useState(false);
+
+  const scrollToRegister = () => {
+    document.getElementById("registration-form")?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleEnter = () => {
+    setShowExitSweep(false);
+    setIsActive(true);
+  };
+
+  const handleLeave = () => {
+    setIsActive(false);
+    setExitSweepKey((prev) => prev + 1);
+    setShowExitSweep(true);
+
+    setTimeout(() => {
+      setShowExitSweep(false);
+    }, 950);
+  };
+
+  return (
+    <div className="absolute bottom-8 left-1/2 z-[10] -translate-x-1/2">
+      <motion.button
+        onClick={scrollToRegister}
+        onMouseEnter={handleEnter}
+        onMouseLeave={handleLeave}
+        onTouchStart={handleEnter}
+        onTouchEnd={handleLeave}
+        whileHover={{ scale: 1.03, y: -1 }}
+        whileTap={{ scale: 0.985 }}
+        className="group pointer-events-auto relative isolate overflow-hidden rounded-[22px] border border-[#ffe7a3]/40 bg-[linear-gradient(180deg,#ffe08a_0%,#f7c948_28%,#d79a16_68%,#b8790b_100%)] px-9 py-4 text-base font-extrabold tracking-wide text-[#fff7d1] shadow-[0_20px_40px_rgba(0,0,0,0.30),inset_0_1px_0_rgba(255,255,255,0.46),inset_0_-10px_22px_rgba(120,70,0,0.24)] transition-all sm:px-11 sm:py-4 sm:text-lg"
+        style={{
+          textShadow: "0 1px 2px rgba(120,70,0,0.35)",
+        }}
+      >
+        <div className="pointer-events-none absolute inset-x-[6%] top-[3px] h-[38%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.40),rgba(255,255,255,0.08),transparent)] blur-[1px]" />
+        <div className="pointer-events-none absolute inset-[1px] rounded-[21px] border border-white/10" />
+        <div className="pointer-events-none absolute -left-4 top-1/2 h-10 w-10 -translate-y-1/2 rounded-full bg-[#ffd76a]/22 blur-[14px]" />
+        <div className="pointer-events-none absolute -right-4 top-1/2 h-10 w-10 -translate-y-1/2 rounded-full bg-[#ffcf53]/18 blur-[14px]" />
+
+        <AnimatePresence>
+          {isActive && (
+            <motion.div
+              key="active-shine"
+              aria-hidden="true"
+              initial={{ x: "-140%", opacity: 0 }}
+              animate={{ x: ["-140%", "260%"], opacity: [0, 1, 1, 0] }}
+              exit={{ opacity: 0 }}
+              transition={{
+                duration: 0.85,
+                repeat: Infinity,
+                repeatDelay: 0.12,
+                ease: "easeInOut",
+              }}
+              className="pointer-events-none absolute inset-y-[-22%] left-[-30%] w-[28%] rotate-[18deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.14),rgba(255,255,255,0.72),rgba(255,255,255,0.14),transparent)] blur-[2px]"
+            />
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence mode="wait">
+          {!isActive && showExitSweep && (
+            <motion.div
+              key={`exit-sweep-${exitSweepKey}`}
+              aria-hidden="true"
+              initial={{ x: "-140%", opacity: 0 }}
+              animate={{ x: ["-140%", "260%"], opacity: [0, 1, 1, 0] }}
+              exit={{ opacity: 0 }}
+              transition={{
+                duration: 0.9,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="pointer-events-none absolute inset-y-[-22%] left-[-30%] w-[28%] rotate-[18deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.14),rgba(255,255,255,0.72),rgba(255,255,255,0.14),transparent)] blur-[2px]"
+            />
+          )}
+        </AnimatePresence>
+
+        <span className="relative z-10 flex items-center gap-2">
+          Join Now
+          <ChevronRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+        </span>
+      </motion.button>
+    </div>
+  );
+};
 /* ----------------------------- App ----------------------------- */
 
 export default function App() {
@@ -803,12 +891,15 @@ export default function App() {
       </p>
     </div>
   </div>
-</div>
-
+</div>  
+         
+  <HeroCTA />       
+         
   <div className="relative z-10 mx-auto w-full max-w-6xl">
     {/* kept empty */}
   </div>
-
+ 
+         
   <SectionSeam className="bottom-[-1px]" fillColor="#0b49b8" shape="dip" />
 </section>
         <section
