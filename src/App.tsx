@@ -2,6 +2,7 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
+import airpodImg from "./assets/airpod.png";
 import coinFrontImg from "./assets/3.png";
 import coinTiltImg from "./assets/4.png";
 import registerImg from "./assets/register.png";
@@ -714,15 +715,36 @@ export default function App() {
       <div className="pointer-events-none fixed inset-0 z-[100] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
       <main className="relative z-10">
-        <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-[#0a1580]">
-          <RealisticBackground />
-          <GoldConfetti />
+       <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-[#0a1580]">
+  <RealisticBackground />
+  <GoldConfetti />
 
-          <div className="relative z-10 mx-auto w-full max-w-6xl">{/* Kept empty */}</div>
+  <motion.img
+    src={airpodImg}
+    alt=""
+    aria-hidden="true"
+    className="pointer-events-none absolute right-[8%] top-[18%] z-[8] w-[180px] object-contain sm:right-[12%] sm:top-[16%] sm:w-[220px] md:right-[15%] md:top-[15%] md:w-[260px] lg:right-[18%] lg:top-[14%] lg:w-[300px]"
+    animate={{
+      y: [0, -12, 0],
+      rotate: [0, -2, 0],
+    }}
+    transition={{
+      duration: 4.2,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+    style={{
+      filter:
+        "drop-shadow(0 18px 30px rgba(0,0,0,0.28)) drop-shadow(0 10px 24px rgba(56,189,248,0.16))",
+    }}
+  />
 
-          <SectionSeam className="bottom-[-1px]" fillColor="#0b49b8" shape="dip" />
-        </section>
+  <div className="relative z-10 mx-auto w-full max-w-6xl">
+    {/* Kept empty */}
+  </div>
 
+  <SectionSeam className="bottom-[-1px]" fillColor="#0b49b8" shape="dip" />
+</section>
         <section
           id="steps-to-claim"
           className="relative z-10 overflow-hidden bg-gradient-to-b from-[#0b49b8] via-[#0a3d9d] to-[#082b78] px-4 pb-32 pt-16 sm:px-6 sm:pb-40 sm:pt-24"
