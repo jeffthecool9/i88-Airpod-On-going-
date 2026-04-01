@@ -720,9 +720,9 @@ export default function App() {
   <RealisticBackground />
   <GoldConfetti />
 <img
-  src={i882Img}
+  src="/i882.png"
   alt="i88"
-  className="pointer-events-none absolute left-1/2 top-2 z-[9] w-[120px] -translate-x-1/2 object-contain sm:top-10 sm:w-[140px] md:top-2 md:w-[160px]"
+  className="pointer-events-none absolute left-1/2 top-3 z-[9] w-[120px] -translate-x-1/2 object-contain sm:top-4 sm:w-[140px] md:top-5 md:w-[160px]"
 />
          
   <motion.img
