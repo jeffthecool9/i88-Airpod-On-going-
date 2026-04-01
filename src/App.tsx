@@ -203,14 +203,18 @@ const RegistrationForm = () => {
   const passwordRegex = /^(?=.*[0-9]).{6,}$/;
 
   const handleNext = () => {
-    if (formData.name && emailRegex.test(formData.email) && passwordRegex.test(formData.password)) {
+    if (formData.name && passwordRegex.test(formData.password)) {
       setStep(2);
     }
   };
 
-  const isStep1Valid =
-    formData.name && emailRegex.test(formData.email) && passwordRegex.test(formData.password);
-  const isStep2Valid = formData.fullName && formData.phone && formData.agreedToTerms;
+  const isStep1Valid = formData.name && passwordRegex.test(formData.password);
+  const isStep2Valid =
+    formData.fullName &&
+    formData.email &&
+    emailRegex.test(formData.email) &&
+    formData.phone &&
+    formData.agreedToTerms;
 
   return (
     <section
@@ -293,6 +297,12 @@ const RegistrationForm = () => {
               Create Your Account
             </h2>
             <p className="text-blue-100/75">Join the elite circle of high-rollers</p>
+
+            {step === 2 && formData.name && (
+              <p className="mt-3 text-sm font-medium text-cyan-100/90">
+                Hi <span className="font-bold text-white">{formData.name}</span>, please fill in the form to start your journey
+              </p>
+            )}
           </div>
 
           <AnimatePresence mode="wait">
@@ -317,27 +327,6 @@ const RegistrationForm = () => {
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     />
                   </div>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="ml-1 text-sm font-medium text-white/92">Email Address</label>
-                  <div className="relative">
-                    <Mail className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white" />
-                    <input
-                      type="email"
-                      placeholder="youremail@example.com"
-                      className={`w-full rounded-2xl border py-4 pl-12 pr-4 text-sm font-medium leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18 ${
-                        formData.email && !emailRegex.test(formData.email)
-                          ? "border-red-500/50 ring-1 ring-red-500/20 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
-                          : "border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
-                      }`}
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    />
-                  </div>
-                  {formData.email && !emailRegex.test(formData.email) && (
-                    <p className="ml-1 mt-1 text-xs text-red-400">Please enter a valid email address</p>
-                  )}
                 </div>
 
                 <div className="space-y-2">
@@ -414,6 +403,27 @@ const RegistrationForm = () => {
                 </div>
 
                 <div className="space-y-2">
+                  <label className="ml-1 text-sm font-medium text-white/92">Email Address</label>
+                  <div className="relative">
+                    <Mail className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white" />
+                    <input
+                      type="email"
+                      placeholder="youremail@example.com"
+                      className={`w-full rounded-2xl border py-4 pl-12 pr-4 text-sm font-medium leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18 ${
+                        formData.email && !emailRegex.test(formData.email)
+                          ? "border-red-500/50 ring-1 ring-red-500/20 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
+                          : "border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
+                      }`}
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    />
+                  </div>
+                  {formData.email && !emailRegex.test(formData.email) && (
+                    <p className="ml-1 mt-1 text-xs text-red-400">Please enter a valid email address</p>
+                  )}
+                </div>
+
+                <div className="space-y-2">
                   <label className="ml-1 text-sm font-medium text-white/92">Phone Number</label>
                   <div className="relative">
                     <Phone className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white" />
@@ -476,7 +486,6 @@ const RegistrationForm = () => {
     </section>
   );
 };
-
 const FloatingGirl = () => {
   const [showFromSteps, setShowFromSteps] = useState(false);
   const [isUserActive, setIsUserActive] = useState(true);
