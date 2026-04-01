@@ -802,7 +802,7 @@ export default function App() {
                   </div>
                 </div>
                 <p className="text-[13px] font-extrabold tracking-wide text-white sm:text-base md:text-lg">
-                  10 Years Operation
+                  Trusted by 10 Years Operation
                 </p>
               </div>
 
@@ -834,7 +834,7 @@ export default function App() {
                   </div>
                 </div>
                 <p className="text-[13px] font-extrabold tracking-wide text-white sm:text-base md:text-lg">
-                  Fast Withdrawal
+                  Claim AirPods
                 </p>
               </div>
             </div>
