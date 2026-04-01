@@ -809,7 +809,7 @@ export default function App() {
 
     <div className="flex flex-col items-center text-center">
       <p className="text-[13px] font-extrabold leading-tight tracking-wide text-white sm:text-base md:text-lg">
-        Claim AirPods
+        Transparent Rewards & Prizes
       </p>
     </div>
   </div>
