@@ -673,7 +673,7 @@ const HeroCTA = () => {
   };
 
   return (
-    <div className="absolute bottom-4 left-1/2 z-[10] -translate-x-1/2 sm:bottom-4 md:bottom-8 lg:bottom-10">
+    <div className="absolute bottom-10 left-1/2 z-[10] -translate-x-1/2 sm:bottom-6 md:bottom-8 lg:bottom-10">
       <motion.button
         onClick={scrollToRegister}
         onMouseEnter={handleEnter}
@@ -853,7 +853,7 @@ export default function App() {
           </div>
 
           {/* TRUST BOXES */}
-         <div className="pointer-events-none absolute bottom-[108px] sm:bottom-[108px] md:bottom-[92px] lg:bottom-[98px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:px-6">
+         <div className="pointer-events-none absolute bottom-[135px] sm:bottom-[120px] md:bottom-[92px] lg:bottom-[98px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:px-6">
             <div className="grid grid-cols-3 gap-2 sm:gap-7 md:gap-9">
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
