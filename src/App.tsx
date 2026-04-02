@@ -793,25 +793,55 @@ export default function App() {
             }}
           />
 
-         <div className="pointer-events-none absolute bottom-32 left-1/2 z-[9] w-full max-w-5xl -translate-x-1/2 px-6">
-  <div className="grid grid-cols-3 gap-5 sm:gap-8 md:gap-12">
-    <div className="flex flex-col items-center text-center">
-      <p className="text-[13px] font-extrabold leading-tight tracking-wide text-white sm:text-base md:text-lg">
-        Trusted by 10 Years Operation
-      </p>
-    </div>
+        <div className="pointer-events-none absolute bottom-28 left-1/2 z-[9] w-full max-w-5xl -translate-x-1/2 px-6">
+  <div className="grid grid-cols-3 gap-6 sm:gap-8 md:gap-12">
+    <motion.div
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.45, delay: 0.05 }}
+      className="flex flex-col items-center text-center"
+    >
+      <div className="relative mb-3 flex h-[92px] w-[92px] items-center justify-center rounded-[28px] border border-white/14 bg-[linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0.06))] shadow-[0_18px_36px_rgba(0,0,0,0.22)] backdrop-blur-xl sm:h-[104px] sm:w-[104px]">
+        <div className="absolute inset-[1px] rounded-[27px] bg-[linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.02))]" />
+        <ShieldCheck className="relative z-10 h-10 w-10 text-[#f6e7a6] sm:h-11 sm:w-11" />
+      </div>
+      <h3 className="text-[15px] font-semibold tracking-[-0.02em] text-white sm:text-lg md:text-xl">
+        10+ Years Trusted
+      </h3>
+    </motion.div>
 
-    <div className="flex flex-col items-center text-center">
-      <p className="text-[13px] font-extrabold leading-tight tracking-wide text-white sm:text-base md:text-lg">
-        5000+ Active Players
-      </p>
-    </div>
+    <motion.div
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.45, delay: 0.12 }}
+      className="flex flex-col items-center text-center"
+    >
+      <div className="relative mb-3 flex h-[92px] w-[92px] items-center justify-center rounded-[28px] border border-white/14 bg-[linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0.06))] shadow-[0_18px_36px_rgba(0,0,0,0.22)] backdrop-blur-xl sm:h-[104px] sm:w-[104px]">
+        <div className="absolute inset-[1px] rounded-[27px] bg-[linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.02))]" />
+        <Users className="relative z-10 h-10 w-10 text-[#d9fff2] sm:h-11 sm:w-11" />
+      </div>
+      <h3 className="text-[15px] font-semibold tracking-[-0.02em] text-white sm:text-lg md:text-xl">
+        5,000+ Active Players
+      </h3>
+    </motion.div>
 
-    <div className="flex flex-col items-center text-center">
-      <p className="text-[13px] font-extrabold leading-tight tracking-wide text-white sm:text-base md:text-lg">
-        Transparent Rewards & Prizes
-      </p>
-    </div>
+    <motion.div
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.45, delay: 0.19 }}
+      className="flex flex-col items-center text-center"
+    >
+      <div className="relative mb-3 flex h-[92px] w-[92px] items-center justify-center rounded-[28px] border border-white/14 bg-[linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0.06))] shadow-[0_18px_36px_rgba(0,0,0,0.22)] backdrop-blur-xl sm:h-[104px] sm:w-[104px]">
+        <div className="absolute inset-[1px] rounded-[27px] bg-[linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.02))]" />
+        <Banknote className="relative z-10 h-10 w-10 text-[#dff5ff] sm:h-11 sm:w-11" />
+      </div>
+      <h3 className="text-[15px] font-semibold tracking-[-0.02em] text-white sm:text-lg md:text-xl">
+        Transparent Rewards
+      </h3>
+    </motion.div>
   </div>
 </div>
 
