@@ -749,7 +749,7 @@ export default function App() {
   const stepData = [
     { title: "Register", desc: "Create account", image: registerImg },
     { title: "Deposit", desc: "Start from $50 & Unlock more Rewards", image: depositImg },
-    { title: "Claim", desc: "Claim Your AirPods", image: playImg },
+    { title: "Unlock", desc: "Claim Your 188 FS", image: playImg },
   ];
 
   return (
