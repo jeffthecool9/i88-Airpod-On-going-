@@ -810,9 +810,6 @@ export default function App() {
         <div className="absolute inset-[1px] rounded-[17px] border border-white/10 sm:rounded-[27px]" />
         <div className="absolute inset-x-[10%] top-[2px] h-[38%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
         <div className="relative z-10">
-          <p className="text-[8px] font-semibold uppercase tracking-[0.18em] text-[#f5e6bc]/72 sm:text-[12px] sm:tracking-[0.24em]">
-            Reputation
-          </p>
           <h3 className="mt-1 text-[11px] font-semibold leading-[1.1] tracking-[-0.025em] text-[#fffaf0] sm:mt-3 sm:text-[24px] md:text-[28px]">
             Trusted Since 2014
           </h3>
@@ -831,9 +828,6 @@ export default function App() {
         <div className="absolute inset-[1px] rounded-[17px] border border-white/10 sm:rounded-[27px]" />
         <div className="absolute inset-x-[10%] top-[2px] h-[38%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
         <div className="relative z-10">
-          <p className="text-[8px] font-semibold uppercase tracking-[0.18em] text-[#def3ff]/72 sm:text-[12px] sm:tracking-[0.24em]">
-            Community
-          </p>
           <h3 className="mt-1 text-[11px] font-semibold leading-[1.1] tracking-[-0.025em] text-[#f8fcff] sm:mt-3 sm:text-[24px] md:text-[28px]">
             5,000+ Active Members
           </h3>
@@ -852,11 +846,8 @@ export default function App() {
         <div className="absolute inset-[1px] rounded-[17px] border border-white/10 sm:rounded-[27px]" />
         <div className="absolute inset-x-[10%] top-[2px] h-[38%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
         <div className="relative z-10">
-          <p className="text-[8px] font-semibold uppercase tracking-[0.18em] text-[#eee9ff]/72 sm:text-[12px] sm:tracking-[0.24em]">
-            Clarity
-          </p>
           <h3 className="mt-1 text-[11px] font-semibold leading-[1.1] tracking-[-0.025em] text-[#fcfbff] sm:mt-3 sm:text-[24px] md:text-[28px]">
-            Clear Rewards, No Surprises
+            Clear Rewards, Don't Forget to Claim it
           </h3>
         </div>
       </motion.div>
