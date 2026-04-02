@@ -894,7 +894,7 @@ export default function App() {
                    <h3 className="text-lg font-bold tracking-tight text-white sm:text-2xl md:text-4xl">
   {item.title}
 </h3>
-                    <p className="mt-2 max-w-[180px] text-[16px] font-semibold leading-tight text-white/85 sm:max-w-[240px] sm:text-lg md:text-2xl">
+<p className="mt-2 max-w-[180px] text-[16px] font-semibold leading-tight text-white/85 sm:max-w-[240px] sm:text-lg md:text-2xl">
   {item.desc}
 </p>
                   </motion.div>
