@@ -867,7 +867,7 @@ export default function App() {
                 <div className="absolute inset-[1px] rounded-[17px] border border-white/10 sm:rounded-[27px]" />
                 <div className="absolute inset-x-[10%] top-[2px] h-[38%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
                 <div className="relative z-10">
-                  <h3 className="mt-1 text-[11px] font-semibold leading-[1.1] tracking-[-0.025em] text-[#fffaf0] sm:mt-3 sm:text-[24px] md:text-[28px]">
+                  <h3 className="mt-1 text-[13px] font-bold leading-[1.05] tracking-[-0.02em] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] sm:mt-2 sm:text-[18px] md:text-[26px] lg:text-[30px]">
                     Trusted Since 2014
                   </h3>
                 </div>
@@ -885,7 +885,7 @@ export default function App() {
                 <div className="absolute inset-[1px] rounded-[17px] border border-white/10 sm:rounded-[27px]" />
                 <div className="absolute inset-x-[10%] top-[2px] h-[38%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
                 <div className="relative z-10">
-                  <h3 className="mt-1 text-[11px] font-semibold leading-[1.1] tracking-[-0.025em] text-[#f8fcff] sm:mt-3 sm:text-[24px] md:text-[28px]">
+                  <h3 className="mt-1 text-[13px] font-bold leading-[1.05] tracking-[-0.02em] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] sm:mt-2 sm:text-[18px] md:text-[26px] lg:text-[30px]">
                     5,000+ Active Members
                   </h3>
                 </div>
@@ -903,7 +903,7 @@ export default function App() {
                 <div className="absolute inset-[1px] rounded-[17px] border border-white/10 sm:rounded-[27px]" />
                 <div className="absolute inset-x-[10%] top-[2px] h-[38%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
                 <div className="relative z-10">
-                  <h3 className="mt-1 text-[11px] font-semibold leading-[1.1] tracking-[-0.025em] text-[#fcfbff] sm:mt-3 sm:text-[24px] md:text-[28px]">
+                  <h3 className="mt-1 text-[13px] font-bold leading-[1.05] tracking-[-0.02em] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] sm:mt-2 sm:text-[18px] md:text-[26px] lg:text-[30px]">
                     Clear Rewards, Don&apos;t Forget to Claim it
                   </h3>
                 </div>
