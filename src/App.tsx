@@ -673,6 +673,7 @@ const HeroCTA = () => {
   };
 
   return (
+    
     <div className="absolute bottom-11 left-1/2 z-[10] -translate-x-1/2 sm:bottom-16">
       <motion.button
         onClick={scrollToRegister}
@@ -691,7 +692,25 @@ const HeroCTA = () => {
         <div className="pointer-events-none absolute inset-[1px] rounded-[19px] border border-white/10" />
         <div className="pointer-events-none absolute -left-5 top-1/2 h-12 w-12 -translate-y-1/2 rounded-full bg-[#ffd76a]/20 blur-[16px]" />
         <div className="pointer-events-none absolute -right-5 top-1/2 h-12 w-12 -translate-y-1/2 rounded-full bg-[#ffcf53]/16 blur-[16px]" />
-
+<motion.img
+  src={airpodImg}
+  alt=""
+  aria-hidden="true"
+  className="pointer-events-none absolute right-[8%] top-[18%] z-[8] w-[180px] object-contain sm:right-[12%] sm:top-[16%] sm:w-[220px] md:right-[15%] md:top-[15%] md:w-[260px] lg:right-[18%] lg:top-[14%] lg:w-[300px]"
+  animate={{
+    y: [0, -12, 0],
+    rotate: [0, -2, 0],
+  }}
+  transition={{
+    duration: 4.2,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+  style={{
+    filter:
+      "drop-shadow(0 18px 30px rgba(0,0,0,0.28)) drop-shadow(0 10px 24px rgba(56,189,248,0.16))",
+  }}
+/>
         <AnimatePresence>
           {isActive && (
             <motion.div
