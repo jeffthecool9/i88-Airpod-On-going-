@@ -784,91 +784,111 @@ export default function App() {
       <div className="pointer-events-none fixed inset-0 z-[100] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
       <main className="relative z-10">
-        <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-[#0a1580]">
-          <RealisticBackground />
-          <GoldConfetti />
+       <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-[#0a1580]">
+  <RealisticBackground />
+  <GoldConfetti />
 
-          <img
-            src={i882Img}
-            alt="i88"
-            className="pointer-events-none absolute left-1/2 top-0 z-[9] w-[120px] -translate-x-1/2 -translate-y-2 object-contain sm:w-[140px] sm:-translate-y-3 md:w-[160px] md:-translate-y-4"
-          />
+  <img
+    src={i882Img}
+    alt="i88"
+    className="pointer-events-none absolute left-1/2 top-0 z-[9] w-[120px] -translate-x-1/2 -translate-y-2 object-contain sm:w-[140px] sm:-translate-y-3 md:w-[160px] md:-translate-y-4"
+  />
 
-          <div className="pointer-events-none absolute bottom-28 left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:px-6">
-            <div className="grid grid-cols-3 gap-2 sm:gap-7 md:gap-9">
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: 0.05 }}
-                className="group relative overflow-hidden rounded-[18px] px-2 py-3 text-center shadow-[0_10px_22px_rgba(0,0,0,0.14)] backdrop-blur-[16px] sm:rounded-[28px] sm:px-6 sm:py-7 sm:shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
-                style={{ fontFamily: "'Manrope', sans-serif" }}
-              >
-                <div className="absolute inset-0 rounded-[18px] bg-[linear-gradient(180deg,rgba(245,239,225,0.12),rgba(220,214,200,0.05))] sm:rounded-[28px]" />
-                <div className="absolute inset-[1px] rounded-[17px] border border-white/10 sm:rounded-[27px]" />
-                <div className="absolute inset-x-[10%] top-[2px] h-[38%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
-                <div className="relative z-10">
-                  <p className="text-[8px] font-semibold uppercase tracking-[0.18em] text-[#f5e6bc]/72 sm:text-[12px] sm:tracking-[0.24em]">
-                    Reputation
-                  </p>
-                  <h3 className="mt-1 text-[11px] font-semibold leading-[1.1] tracking-[-0.025em] text-[#fffaf0] sm:mt-3 sm:text-[24px] md:text-[28px]">
-                    Trusted Since 2014
-                  </h3>
-                </div>
-              </motion.div>
+  <motion.img
+    src={airpodImg}
+    alt=""
+    aria-hidden="true"
+    className="pointer-events-none absolute right-[6%] top-[8%] z-[8] w-[170px] object-contain sm:right-[10%] sm:top-[8%] sm:w-[210px] md:right-[12%] md:top-[7%] md:w-[250px] lg:right-[14%] lg:top-[6%] lg:w-[290px]"
+    animate={{
+      y: [0, -12, 0],
+      rotate: [0, -2, 0],
+    }}
+    transition={{
+      duration: 4.2,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+    style={{
+      filter:
+        "drop-shadow(0 18px 30px rgba(0,0,0,0.28)) drop-shadow(0 10px 24px rgba(56,189,248,0.16))",
+    }}
+  />
 
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: 0.12 }}
-                className="group relative overflow-hidden rounded-[18px] px-2 py-3 text-center shadow-[0_10px_22px_rgba(0,0,0,0.14)] backdrop-blur-[16px] sm:rounded-[28px] sm:px-6 sm:py-7 sm:shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
-                style={{ fontFamily: "'Manrope', sans-serif" }}
-              >
-                <div className="absolute inset-0 rounded-[18px] bg-[linear-gradient(180deg,rgba(224,236,243,0.12),rgba(190,204,214,0.05))] sm:rounded-[28px]" />
-                <div className="absolute inset-[1px] rounded-[17px] border border-white/10 sm:rounded-[27px]" />
-                <div className="absolute inset-x-[10%] top-[2px] h-[38%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
-                <div className="relative z-10">
-                  <p className="text-[8px] font-semibold uppercase tracking-[0.18em] text-[#def3ff]/72 sm:text-[12px] sm:tracking-[0.24em]">
-                    Community
-                  </p>
-                  <h3 className="mt-1 text-[11px] font-semibold leading-[1.1] tracking-[-0.025em] text-[#f8fcff] sm:mt-3 sm:text-[24px] md:text-[28px]">
-                    5,000+ Active Members
-                  </h3>
-                </div>
-              </motion.div>
+  <div className="pointer-events-none absolute bottom-28 left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:px-6">
+    <div className="grid grid-cols-3 gap-2 sm:gap-7 md:gap-9">
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.45, delay: 0.05 }}
+        className="group relative overflow-hidden rounded-[18px] px-2 py-3 text-center shadow-[0_10px_22px_rgba(0,0,0,0.14)] backdrop-blur-[16px] sm:rounded-[28px] sm:px-6 sm:py-7 sm:shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
+        style={{ fontFamily: "'Manrope', sans-serif" }}
+      >
+        <div className="absolute inset-0 rounded-[18px] bg-[linear-gradient(180deg,rgba(245,239,225,0.12),rgba(220,214,200,0.05))] sm:rounded-[28px]" />
+        <div className="absolute inset-[1px] rounded-[17px] border border-white/10 sm:rounded-[27px]" />
+        <div className="absolute inset-x-[10%] top-[2px] h-[38%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
+        <div className="relative z-10">
+          <p className="text-[8px] font-semibold uppercase tracking-[0.18em] text-[#f5e6bc]/72 sm:text-[12px] sm:tracking-[0.24em]">
+            Reputation
+          </p>
+          <h3 className="mt-1 text-[11px] font-semibold leading-[1.1] tracking-[-0.025em] text-[#fffaf0] sm:mt-3 sm:text-[24px] md:text-[28px]">
+            Trusted Since 2014
+          </h3>
+        </div>
+      </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: 0.19 }}
-                className="group relative overflow-hidden rounded-[18px] px-2 py-3 text-center shadow-[0_10px_22px_rgba(0,0,0,0.14)] backdrop-blur-[16px] sm:rounded-[28px] sm:px-6 sm:py-7 sm:shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
-                style={{ fontFamily: "'Manrope', sans-serif" }}
-              >
-                <div className="absolute inset-0 rounded-[18px] bg-[linear-gradient(180deg,rgba(235,233,243,0.12),rgba(204,200,216,0.05))] sm:rounded-[28px]" />
-                <div className="absolute inset-[1px] rounded-[17px] border border-white/10 sm:rounded-[27px]" />
-                <div className="absolute inset-x-[10%] top-[2px] h-[38%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
-                <div className="relative z-10">
-                  <p className="text-[8px] font-semibold uppercase tracking-[0.18em] text-[#eee9ff]/72 sm:text-[12px] sm:tracking-[0.24em]">
-                    Clarity
-                  </p>
-                  <h3 className="mt-1 text-[11px] font-semibold leading-[1.1] tracking-[-0.025em] text-[#fcfbff] sm:mt-3 sm:text-[24px] md:text-[28px]">
-                    Clear Rewards, No Surprises
-                  </h3>
-                </div>
-              </motion.div>
-            </div>
-          </div>
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.45, delay: 0.12 }}
+        className="group relative overflow-hidden rounded-[18px] px-2 py-3 text-center shadow-[0_10px_22px_rgba(0,0,0,0.14)] backdrop-blur-[16px] sm:rounded-[28px] sm:px-6 sm:py-7 sm:shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
+        style={{ fontFamily: "'Manrope', sans-serif" }}
+      >
+        <div className="absolute inset-0 rounded-[18px] bg-[linear-gradient(180deg,rgba(224,236,243,0.12),rgba(190,204,214,0.05))] sm:rounded-[28px]" />
+        <div className="absolute inset-[1px] rounded-[17px] border border-white/10 sm:rounded-[27px]" />
+        <div className="absolute inset-x-[10%] top-[2px] h-[38%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
+        <div className="relative z-10">
+          <p className="text-[8px] font-semibold uppercase tracking-[0.18em] text-[#def3ff]/72 sm:text-[12px] sm:tracking-[0.24em]">
+            Community
+          </p>
+          <h3 className="mt-1 text-[11px] font-semibold leading-[1.1] tracking-[-0.025em] text-[#f8fcff] sm:mt-3 sm:text-[24px] md:text-[28px]">
+            5,000+ Active Members
+          </h3>
+        </div>
+      </motion.div>
 
-          <HeroCTA />
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.45, delay: 0.19 }}
+        className="group relative overflow-hidden rounded-[18px] px-2 py-3 text-center shadow-[0_10px_22px_rgba(0,0,0,0.14)] backdrop-blur-[16px] sm:rounded-[28px] sm:px-6 sm:py-7 sm:shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
+        style={{ fontFamily: "'Manrope', sans-serif" }}
+      >
+        <div className="absolute inset-0 rounded-[18px] bg-[linear-gradient(180deg,rgba(235,233,243,0.12),rgba(204,200,216,0.05))] sm:rounded-[28px]" />
+        <div className="absolute inset-[1px] rounded-[17px] border border-white/10 sm:rounded-[27px]" />
+        <div className="absolute inset-x-[10%] top-[2px] h-[38%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
+        <div className="relative z-10">
+          <p className="text-[8px] font-semibold uppercase tracking-[0.18em] text-[#eee9ff]/72 sm:text-[12px] sm:tracking-[0.24em]">
+            Clarity
+          </p>
+          <h3 className="mt-1 text-[11px] font-semibold leading-[1.1] tracking-[-0.025em] text-[#fcfbff] sm:mt-3 sm:text-[24px] md:text-[28px]">
+            Clear Rewards, No Surprises
+          </h3>
+        </div>
+      </motion.div>
+    </div>
+  </div>
 
-          <div className="relative z-10 mx-auto w-full max-w-6xl">
-            {/* kept empty */}
-          </div>
+  <HeroCTA />
 
-          <SectionSeam className="bottom-[-1px]" fillColor="#0b49b8" shape="dip" />
-        </section>
+  <div className="relative z-10 mx-auto w-full max-w-6xl">
+    {/* kept empty */}
+  </div>
+
+  <SectionSeam className="bottom-[-1px]" fillColor="#0b49b8" shape="dip" />
+</section>
 
         <section
           id="steps-to-claim"
