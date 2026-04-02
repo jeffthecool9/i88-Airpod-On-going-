@@ -673,7 +673,7 @@ const HeroCTA = () => {
   };
 
   return (
-    <div className="absolute bottom-11 left-1/2 z-[10] -translate-x-1/2 sm:bottom-16">
+    <div className="absolute bottom-4 left-1/2 z-[10] -translate-x-1/2 sm:bottom-4 md:bottom-8 lg:bottom-10">
       <motion.button
         onClick={scrollToRegister}
         onMouseEnter={handleEnter}
@@ -765,7 +765,7 @@ export default function App() {
       <div className="pointer-events-none fixed inset-0 z-[100] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
       <main className="relative z-10">
-        <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-[#0a1580]">
+        <section className="relative flex min-h-[90vh] md:min-h-[105vh] lg:min-h-[110vh] items-center overflow-hidden bg-[#0a1580]">
           <RealisticBackground />
           <GoldConfetti />
 
@@ -796,7 +796,7 @@ export default function App() {
           />
 
           {/* SIMPLE HERO PROGRESS BAR */}
-         <div className="pointer-events-none absolute bottom-[225px] sm:bottom-[235px] md:bottom-[250px] lg:bottom-[255px] left-1/2 z-[9] w-full max-w-5xl -translate-x-1/2 px-4 sm:px-6">
+         <div className="pointer-events-none absolute bottom-[250px] sm:bottom-[250px] md:bottom-[255px] lg:bottom-[265px] left-1/2 z-[9] w-full max-w-5xl -translate-x-1/2 px-4 sm:px-6">
             <div className="mb-3 grid grid-cols-4 items-end gap-2 text-center sm:mb-4">
               {[
                 { top: "Register", level: "Level 1" },
@@ -853,7 +853,7 @@ export default function App() {
           </div>
 
           {/* TRUST BOXES */}
-         <div className="pointer-events-none absolute bottom-[92px] sm:bottom-[96px] md:bottom-[58px] lg:bottom-[60px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:px-6">
+         <div className="pointer-events-none absolute bottom-[108px] sm:bottom-[108px] md:bottom-[92px] lg:bottom-[98px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:px-6">
             <div className="grid grid-cols-3 gap-2 sm:gap-7 md:gap-9">
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
