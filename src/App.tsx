@@ -793,7 +793,7 @@ export default function App() {
             }}
           />
 
-    <div className="pointer-events-none absolute bottom-28 left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:px-6">
+   <div className="pointer-events-none absolute bottom-28 left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:px-6">
   <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-7 md:gap-9">
     <motion.div
       initial={{ opacity: 0, y: 18 }}
