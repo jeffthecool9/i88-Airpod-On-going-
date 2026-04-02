@@ -12,14 +12,14 @@ import {
   CheckCircle2,
   UserPlus,
   Mail,
+  ShieldCheck,
+  Users,
+  Banknote,
   Lock,
   User,
   Phone,
   AlertCircle,
   ArrowLeft,
-  Gift,
-  Sparkles,
-  Trophy,
 } from "lucide-react";
 import React, { useState, useEffect, ReactNode } from "react";
 
@@ -737,227 +737,6 @@ const HeroCTA = () => {
   );
 };
 
-const LuxuryProgressBar = () => {
-  const levels = [
-    {
-      id: 1,
-      title: "Level 1",
-      heading: "Register & Deposit",
-      desc: "Register and deposit the required amount to begin your guaranteed AirPods Pro 3 journey.",
-      icon: Gift,
-    },
-    {
-      id: 2,
-      title: "Level 2",
-      heading: "Unlock 188 FS",
-      desc: "Unlock the new onboarding promotion and enjoy 188 Free Spins as part of your welcome reward.",
-      icon: Sparkles,
-    },
-    {
-      id: 3,
-      title: "Level 3",
-      heading: "More Promotions",
-      desc: "Continue with us and unlock even more exclusive promotions along the journey.",
-      icon: Trophy,
-    },
-    {
-      id: 4,
-      title: "Level 4",
-      heading: "Claim AirPods Pro 3",
-      desc: "Guaranteed claim with x10 turnover only. Simple path, clear reward.",
-      icon: Gift,
-    },
-  ];
-
-  const progressPercent = 37.5;
-
-  return (
-    <section
-      id="steps-to-claim"
-      className="relative z-10 overflow-hidden bg-gradient-to-b from-[#0b49b8] via-[#0a3d9d] to-[#082b78] px-4 pb-32 pt-16 sm:px-6 sm:pb-40 sm:pt-24"
-    >
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-[8%] top-[12%] h-48 w-48 rounded-full bg-cyan-400/10 blur-3xl" />
-        <div className="absolute right-[10%] top-[18%] h-56 w-56 rounded-full bg-blue-300/10 blur-3xl" />
-        <div className="absolute bottom-[8%] left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-yellow-300/10 blur-3xl" />
-        <div className="absolute inset-0 opacity-[0.05] [background-image:radial-gradient(circle_at_center,white_1px,transparent_1px)] [background-size:22px_22px]" />
-      </div>
-
-      <div className="relative z-10 mx-auto max-w-7xl">
-        <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-14">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-white/5 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-cyan-100/80 backdrop-blur-xl sm:text-xs">
-            <Sparkles className="h-4 w-4" />
-            Guaranteed Reward Journey
-          </div>
-
-          <h2 className="text-3xl font-bold tracking-tight leading-[0.95] sm:text-4xl md:text-5xl">
-            <HeroWord light>Progress Toward AirPods Pro 3</HeroWord>
-          </h2>
-
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-blue-100/75 sm:text-base">
-            Start from Level 1, unlock more value as you go, and complete the guaranteed reward journey with a clean, premium progression path.
-          </p>
-        </div>
-
-        <div className="mb-8 grid grid-cols-1 gap-4 sm:mb-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-          {levels.map((level, index) => {
-            const Icon = level.icon;
-            const isFinal = index === 3;
-
-            return (
-              <motion.div
-                key={level.id}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                animate={
-                  isFinal
-                    ? {
-                        rotate: [0, -0.8, 0.8, -0.5, 0.5, 0],
-                        y: [0, -1.5, 0, -1, 0],
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: isFinal ? 1.8 : 0.45,
-                  delay: isFinal ? 0 : index * 0.08,
-                  repeat: isFinal ? Infinity : 0,
-                  repeatDelay: isFinal ? 2.2 : 0,
-                  ease: "easeInOut",
-                }}
-                className={`relative overflow-hidden rounded-[28px] border p-4 shadow-[0_20px_50px_rgba(0,0,0,0.28)] backdrop-blur-2xl sm:p-5 ${
-                  isFinal
-                    ? "border-yellow-300/35 bg-[linear-gradient(180deg,rgba(255,215,106,0.12),rgba(255,255,255,0.05))]"
-                    : "border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))]"
-                }`}
-              >
-                <div className="pointer-events-none absolute inset-x-[8%] top-0 h-24 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.20),rgba(255,255,255,0.05),transparent)] blur-xl" />
-
-                {isFinal && (
-                  <motion.div
-                    className="pointer-events-none absolute inset-0"
-                    animate={{ opacity: [0.35, 0.8, 0.35] }}
-                    transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-                    style={{
-                      boxShadow: "inset 0 0 40px rgba(255,215,106,0.12)",
-                    }}
-                  />
-                )}
-
-                <div className="relative z-10">
-                  <div className="mb-4 flex items-center justify-between">
-                    <div
-                      className={`rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] ${
-                        isFinal ? "bg-[#FFD76A]/15 text-[#FFE7A3]" : "bg-white/10 text-white/75"
-                      }`}
-                    >
-                      {level.title}
-                    </div>
-
-                    <div
-                      className={`flex h-11 w-11 items-center justify-center rounded-2xl border ${
-                        isFinal
-                          ? "border-yellow-300/30 bg-yellow-300/10 text-[#FFD76A]"
-                          : "border-cyan-200/10 bg-white/5 text-cyan-100/85"
-                      }`}
-                    >
-                      <Icon className="h-5 w-5" />
-                    </div>
-                  </div>
-
-                  <h3 className="text-lg font-bold text-white sm:text-xl">{level.heading}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-blue-100/72">{level.desc}</p>
-
-                  {isFinal && (
-                    <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-yellow-300/25 bg-yellow-300/10 px-3 py-1.5 text-xs font-semibold text-[#FFE7A3]">
-                      <Sparkles className="h-3.5 w-3.5" />
-                      Guaranteed Win Journey
-                    </div>
-                  )}
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.55, delay: 0.15 }}
-          className="relative rounded-[34px] border border-[#FFD76A]/25 bg-[linear-gradient(180deg,rgba(255,255,255,0.10),rgba(255,255,255,0.03))] p-4 shadow-[0_30px_70px_rgba(0,0,0,0.35)] backdrop-blur-2xl"
-        >
-          <div className="pointer-events-none absolute inset-x-[5%] top-0 h-20 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0.02),transparent)] blur-xl" />
-
-          <div className="mb-4 grid grid-cols-4 gap-2 text-center">
-            {levels.map((level) => (
-              <div key={level.id} className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#FFE7A3]/85 sm:text-sm">
-                {level.title}
-              </div>
-            ))}
-          </div>
-
-          <div className="relative h-16 overflow-hidden rounded-[22px] border border-[#FFD76A]/35 bg-[linear-gradient(180deg,#0B1F63_0%,#0A1A54_100%)] shadow-[inset_0_8px_24px_rgba(255,255,255,0.03),inset_0_-18px_24px_rgba(0,0,0,0.24)]">
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-[linear-gradient(180deg,rgba(255,255,255,0.10),transparent)]" />
-
-            <div className="pointer-events-none absolute inset-y-0 left-1/4 w-[2px] bg-[linear-gradient(180deg,rgba(255,215,106,0.15),rgba(255,215,106,0.85),rgba(255,215,106,0.15))]" />
-            <div className="pointer-events-none absolute inset-y-0 left-2/4 w-[2px] -translate-x-1/2 bg-[linear-gradient(180deg,rgba(255,215,106,0.15),rgba(255,215,106,0.85),rgba(255,215,106,0.15))]" />
-            <div className="pointer-events-none absolute inset-y-0 left-3/4 w-[2px] -translate-x-1/2 bg-[linear-gradient(180deg,rgba(255,215,106,0.15),rgba(255,215,106,0.85),rgba(255,215,106,0.15))]" />
-
-            <motion.div
-              initial={{ width: "25%" }}
-              animate={{ width: `${progressPercent}%` }}
-              transition={{ duration: 2.8, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute inset-y-0 left-0 rounded-l-[20px] bg-[linear-gradient(90deg,#C98A00_0%,#F7C948_25%,#FFF06A_55%,#FFD84D_78%,#E2A718_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_0_26px_rgba(255,215,106,0.25)]"
-            >
-              <motion.div
-                animate={{ x: ["-120%", "220%"] }}
-                transition={{ duration: 2.2, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-y-[-20%] left-0 w-[22%] rotate-[18deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.12),rgba(255,255,255,0.65),rgba(255,255,255,0.12),transparent)] blur-[3px]"
-              />
-              <div className="absolute inset-x-0 top-0 h-1/2 bg-[linear-gradient(180deg,rgba(255,255,255,0.24),transparent)]" />
-            </motion.div>
-
-            <motion.div
-              initial={{ left: "calc(25% - 24px)" }}
-              animate={{ left: `calc(${progressPercent}% - 24px)` }}
-              transition={{ duration: 2.8, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute top-1/2 z-20 -translate-y-1/2"
-            >
-              <motion.div
-                animate={{ y: [0, -3, 0], rotate: [0, -1.2, 1.2, 0] }}
-                transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
-                className="relative flex h-12 w-12 items-center justify-center rounded-2xl border border-[#FFE7A3]/45 bg-[linear-gradient(180deg,#FFE37D_0%,#F7C948_48%,#D89A12_100%)] shadow-[0_8px_20px_rgba(0,0,0,0.28),0_0_20px_rgba(255,215,106,0.28)]"
-              >
-                <Gift className="h-5 w-5 text-[#7A4B00]" />
-                <div className="pointer-events-none absolute inset-x-[15%] top-[2px] h-4 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.35),rgba(255,255,255,0.08),transparent)] blur-[1px]" />
-              </motion.div>
-            </motion.div>
-          </div>
-
-          <div className="mt-4 flex flex-col items-center justify-between gap-3 text-center sm:flex-row sm:text-left">
-            <div>
-              <p className="text-sm font-semibold text-white">
-                Current Progress: <span className="text-[#FFD76A]">Halfway through Level 2</span>
-              </p>
-              <p className="mt-1 text-xs text-blue-100/70 sm:text-sm">
-                Register, deposit, unlock 188 FS, and move forward toward your guaranteed reward path.
-              </p>
-            </div>
-
-            <div className="inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-white/5 px-4 py-2 text-xs font-semibold text-cyan-100/80 backdrop-blur-xl sm:text-sm">
-              Continue Journey
-              <ChevronRight className="h-4 w-4" />
-            </div>
-          </div>
-        </motion.div>
-      </div>
-
-      <SectionSeam className="bottom-[-1px]" fillColor="#020f6a" shape="dip" />
-    </section>
-  );
-};
-
 export default function App() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
@@ -968,6 +747,12 @@ export default function App() {
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
+
+  const stepData = [
+    { title: "Register", desc: "Create account", image: registerImg },
+    { title: "Deposit", desc: "Start from $50 & Unlock more Rewards", image: depositImg },
+    { title: "Unlock", desc: "Claim Your 188 FS", image: playImg },
+  ];
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-brand-navy/70 font-sans text-slate-200 selection:bg-blue-500/30">
@@ -1010,7 +795,65 @@ export default function App() {
             }}
           />
 
-          <div className="pointer-events-none absolute bottom-28 left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:px-6">
+          {/* SIMPLE HERO PROGRESS BAR */}
+          <div className="pointer-events-none absolute bottom-[220px] left-1/2 z-[9] w-full max-w-5xl -translate-x-1/2 px-4 sm:px-6">
+            <div className="mb-3 grid grid-cols-4 items-end gap-2 text-center sm:mb-4">
+              {[
+                { top: "Register", level: "Level 1" },
+                { top: "188 FS", level: "Level 2" },
+                { top: "More Reward", level: "Level 3" },
+                { top: "AirPods Pro 3", level: "Level 4" },
+              ].map((item, i) => (
+                <div key={i} className="flex flex-col items-center">
+                  <p className="text-[11px] font-semibold tracking-wide text-white/85 sm:text-sm">
+                    {item.top}
+                  </p>
+                  <p className="mt-1 text-[10px] font-medium uppercase tracking-[0.16em] text-[#FFD76A]/85 sm:text-[11px]">
+                    {item.level}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="relative h-10 overflow-hidden rounded-full border border-[#FFD76A]/30 bg-[#0A1A54]/75 shadow-[inset_0_8px_18px_rgba(0,0,0,0.30),0_10px_30px_rgba(0,0,0,0.18)] backdrop-blur-md sm:h-12">
+              <motion.div
+                initial={{ width: "25%" }}
+                animate={{ width: "37.5%" }}
+                transition={{ duration: 2.2, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute inset-y-0 left-0 rounded-full bg-[linear-gradient(90deg,#C98A00_0%,#F7C948_32%,#FFF06A_60%,#FFD84D_82%,#E2A718_100%)] shadow-[0_0_20px_rgba(255,215,106,0.28)]"
+              >
+                <div className="absolute inset-x-0 top-0 h-1/2 bg-[linear-gradient(180deg,rgba(255,255,255,0.24),transparent)]" />
+              </motion.div>
+
+              <motion.div
+                animate={{ x: ["-120%", "240%"] }}
+                transition={{ duration: 2.4, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-y-[-20%] left-0 w-[22%] rotate-[18deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.18),rgba(255,255,255,0.72),rgba(255,255,255,0.18),transparent)] blur-[3px]"
+              />
+
+              <div className="absolute inset-y-0 left-1/4 w-[2px] bg-white/18" />
+              <div className="absolute inset-y-0 left-2/4 w-[2px] -translate-x-1/2 bg-white/18" />
+              <div className="absolute inset-y-0 left-3/4 w-[2px] -translate-x-1/2 bg-white/18" />
+
+              <motion.div
+                initial={{ left: "calc(25% - 16px)" }}
+                animate={{ left: "calc(37.5% - 16px)" }}
+                transition={{ duration: 2.2, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute top-1/2 z-20 -translate-y-1/2"
+              >
+                <motion.div
+                  animate={{ y: [0, -2, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  className="flex h-8 w-8 items-center justify-center rounded-full border border-[#FFE7A3]/40 bg-[linear-gradient(180deg,#FFE37D_0%,#F7C948_48%,#D89A12_100%)] text-[15px] shadow-[0_0_14px_rgba(255,215,106,0.40)] sm:h-9 sm:w-9"
+                >
+                  🎁
+                </motion.div>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* TRUST BOXES */}
+          <div className="pointer-events-none absolute bottom-[110px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:px-6">
             <div className="grid grid-cols-3 gap-2 sm:gap-7 md:gap-9">
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
@@ -1061,7 +904,7 @@ export default function App() {
                 <div className="absolute inset-x-[10%] top-[2px] h-[38%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
                 <div className="relative z-10">
                   <h3 className="mt-1 text-[11px] font-semibold leading-[1.1] tracking-[-0.025em] text-[#fcfbff] sm:mt-3 sm:text-[24px] md:text-[28px]">
-                    Clear Rewards, Don't Forget to Claim it
+                    Clear Rewards, Don&apos;t Forget to Claim it
                   </h3>
                 </div>
               </motion.div>
@@ -1070,12 +913,70 @@ export default function App() {
 
           <HeroCTA />
 
-          <div className="relative z-10 mx-auto w-full max-w-6xl" />
+          <div className="relative z-10 mx-auto w-full max-w-6xl">
+            {/* kept empty */}
+          </div>
 
           <SectionSeam className="bottom-[-1px]" fillColor="#0b49b8" shape="dip" />
         </section>
 
-        <LuxuryProgressBar />
+        <section
+          id="steps-to-claim"
+          className="relative z-10 overflow-hidden bg-gradient-to-b from-[#0b49b8] via-[#0a3d9d] to-[#082b78] px-4 pb-32 pt-16 sm:px-6 sm:pb-40 sm:pt-24"
+        >
+          <div className="pointer-events-none absolute left-0 top-0 h-full w-full">
+            <div className="absolute left-1/4 top-1/4 h-72 w-72 rounded-full bg-white/5 blur-[100px] animate-pulse" />
+            <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-cyan-400/5 blur-[100px] animate-pulse delay-1000" />
+          </div>
+
+          <div className="relative z-10 mx-auto max-w-6xl rounded-[24px] border border-cyan-400/60 bg-gradient-to-br from-cyan-900/30 via-white/5 to-white/5 px-4 py-8 shadow-[0_0_20px_rgba(34,211,238,0.3),0_30px_60px_rgba(0,0,0,0.5)] backdrop-blur-[32px] sm:rounded-[32px] sm:px-8 sm:py-10 md:px-10">
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-cyan-400/10 via-transparent to-transparent opacity-50" />
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-300/80 to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-cyan-400/50 to-transparent" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-[1px] bg-gradient-to-b from-cyan-400/20 to-transparent" />
+
+            <div className="relative z-10">
+              <div className="mb-8 text-center sm:mb-10">
+                <h2 className="text-3xl font-bold tracking-tight leading-[0.95] sm:text-4xl md:text-5xl">
+                  <HeroWord light>Steps to Claim</HeroWord>
+                </h2>
+              </div>
+
+              <div className="grid grid-cols-3 gap-3 sm:gap-6 md:gap-10">
+                {stepData.map((item, i) => (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.45, delay: i * 0.12 }}
+                    className="flex flex-col items-center text-center"
+                  >
+                    <div className="mb-4 flex h-[96px] w-[96px] items-center justify-center sm:h-[120px] sm:w-[120px] md:h-[140px] md:w-[140px]">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="h-full w-full scale-110 object-contain drop-shadow-[0_12px_30px_rgba(0,0,0,0.28)]"
+                      />
+                    </div>
+
+                    <h3 className="text-lg font-bold tracking-tight text-white sm:text-2xl md:text-4xl">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 max-w-[180px] text-[16px] font-semibold leading-tight text-white/85 sm:max-w-[240px] sm:text-lg md:text-2xl">
+                      {item.desc}
+                    </p>
+                  </motion.div>
+                ))}
+
+                <div className="hidden sm:block" />
+              </div>
+            </div>
+          </div>
+
+          <SectionSeam className="bottom-[-1px]" fillColor="#020f6a" shape="dip" />
+        </section>
 
         <RegistrationForm />
         <FloatingGirl />
