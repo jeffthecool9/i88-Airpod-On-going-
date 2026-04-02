@@ -672,7 +672,7 @@ const HeroCTA = () => {
   };
 
   return (
-    <div className="absolute bottom-9 left-1/2 z-[10] -translate-x-1/2 sm:bottom-16">
+    <div className="absolute bottom-11 left-1/2 z-[10] -translate-x-1/2 sm:bottom-16">
       <motion.button
         onClick={scrollToRegister}
         onMouseEnter={handleEnter}
