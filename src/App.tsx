@@ -796,7 +796,7 @@ export default function App() {
           />
 
           {/* SIMPLE HERO PROGRESS BAR */}
-          <div className="pointer-events-none absolute bottom-[220px] left-1/2 z-[9] w-full max-w-5xl -translate-x-1/2 px-4 sm:px-6">
+         <div className="pointer-events-none absolute bottom-[210px] sm:bottom-[218px] md:bottom-[185px] lg:bottom-[190px] left-1/2 z-[9] w-full max-w-5xl -translate-x-1/2 px-4 sm:px-6">
             <div className="mb-3 grid grid-cols-4 items-end gap-2 text-center sm:mb-4">
               {[
                 { top: "Register", level: "Level 1" },
@@ -853,7 +853,7 @@ export default function App() {
           </div>
 
           {/* TRUST BOXES */}
-          <div className="pointer-events-none absolute bottom-[145px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:px-6">
+         <div className="pointer-events-none absolute bottom-[118px] sm:bottom-[122px] md:bottom-[88px] lg:bottom-[92px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:px-6">
             <div className="grid grid-cols-3 gap-2 sm:gap-7 md:gap-9">
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
