@@ -795,8 +795,7 @@ export default function App() {
             }}
           />
 
-          {/* SIMPLE HERO PROGRESS BAR */}
-         <div className="pointer-events-none absolute bottom-[250px] sm:bottom-[250px] md:bottom-[255px] lg:bottom-[265px] left-1/2 z-[9] w-full max-w-5xl -translate-x-1/2 px-4 sm:px-6">
+          <div className="pointer-events-none absolute bottom-[250px] sm:bottom-[250px] md:bottom-[255px] lg:bottom-[265px] left-1/2 z-[9] w-full max-w-5xl -translate-x-1/2 px-4 sm:px-6">
             <div className="mb-3 grid grid-cols-4 items-end gap-2 text-center sm:mb-4">
               {[
                 { top: "Register", level: "Level 1" },
@@ -852,8 +851,7 @@ export default function App() {
             </div>
           </div>
 
-          {/* TRUST BOXES */}
-         <div className="pointer-events-none absolute bottom-[135px] sm:bottom-[120px] md:bottom-[92px] lg:bottom-[98px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:px-6">
+          <div className="pointer-events-none absolute bottom-[135px] sm:bottom-[120px] md:bottom-[92px] lg:bottom-[98px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:px-6">
             <div className="grid grid-cols-3 gap-2 sm:gap-7 md:gap-9">
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
@@ -929,12 +927,9 @@ export default function App() {
             <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-cyan-400/5 blur-[100px] animate-pulse delay-1000" />
           </div>
 
-          <div className="relative z-10 mx-auto max-w-6xl rounded-[24px] border border-cyan-400/60 bg-gradient-to-br from-cyan-900/30 via-white/5 to-white/5 px-4 py-8 shadow-[0_0_20px_rgba(34,211,238,0.3),0_30px_60px_rgba(0,0,0,0.5)] backdrop-blur-[32px] sm:rounded-[32px] sm:px-8 sm:py-10 md:px-10">
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-cyan-400/10 via-transparent to-transparent opacity-50" />
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-300/80 to-transparent" />
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-cyan-400/50 to-transparent" />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-[1px] bg-gradient-to-b from-cyan-400/20 to-transparent" />
+          <div className="relative z-10 mx-auto max-w-6xl overflow-hidden rounded-[24px] bg-gradient-to-br from-cyan-900/30 via-white/5 to-white/5 px-4 py-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_0_20px_rgba(34,211,238,0.22),0_30px_60px_rgba(0,0,0,0.5)] backdrop-blur-[32px] sm:rounded-[32px] sm:px-8 sm:py-10 md:px-10">
+            <div className="pointer-events-none absolute inset-0 rounded-[24px] border border-cyan-300/30 sm:rounded-[32px]" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-cyan-400/8 via-transparent to-transparent opacity-50" />
 
             <div className="relative z-10">
               <div className="mb-8 text-center sm:mb-10">
@@ -961,10 +956,10 @@ export default function App() {
                       />
                     </div>
 
-                    <h3 className="text-lg font-bold tracking-tight text-white sm:text-2xl md:text-4xl">
+                    <h3 className="text-lg font-bold tracking-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] sm:text-2xl md:text-4xl">
                       {item.title}
                     </h3>
-                    <p className="mt-2 max-w-[180px] text-[16px] font-semibold leading-tight text-white/85 sm:max-w-[240px] sm:text-lg md:text-2xl">
+                    <p className="mt-2 max-w-[180px] text-[12px] font-bold leading-[1.05] tracking-[-0.02em] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] sm:max-w-[240px] sm:text-[14px] md:text-[16px]">
                       {item.desc}
                     </p>
                   </motion.div>
