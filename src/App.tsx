@@ -767,11 +767,16 @@ export default function App() {
           <RealisticBackground />
           <GoldConfetti />
 
-          <img
-            src={i882Img}
-            alt="i88"
-            className="pointer-events-none absolute left-1/2 top-0 z-[9] w-[120px] -translate-x-1/2 -translate-y-2 object-contain sm:w-[140px] sm:-translate-y-3 md:w-[160px] md:-translate-y-4"
-          />
+          <div className="relative mx-auto mb-5 flex h-[120px] w-[120px] items-center justify-center rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(220,228,245,0.14),rgba(120,150,210,0.08))] shadow-[0_16px_36px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-[16px]">
+  <div className="absolute inset-[1px] rounded-[27px] border border-[#d9e6ff]/10" />
+  <div className="absolute inset-x-[10%] top-[6px] h-[38%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.04),transparent)] blur-[1px]" />
+  <div className="absolute inset-0 rounded-[28px] bg-[radial-gradient(circle_at_50%_45%,rgba(255,255,255,0.10),transparent_58%)]" />
+  <img
+    src={playImg}
+    alt="188"
+    className="relative z-10 h-[84px] w-[84px] object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.25)]"
+  />
+</div>
 
           <motion.img
             src={airpodImg}
