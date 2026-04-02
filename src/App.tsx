@@ -853,7 +853,7 @@ export default function App() {
           </div>
 
           {/* TRUST BOXES */}
-          <div className="pointer-events-none absolute bottom-[110px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:px-6">
+          <div className="pointer-events-none absolute bottom-[145px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:px-6">
             <div className="grid grid-cols-3 gap-2 sm:gap-7 md:gap-9">
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
