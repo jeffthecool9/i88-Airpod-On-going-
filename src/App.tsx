@@ -793,58 +793,54 @@ export default function App() {
             }}
           />
 
-        <div className="pointer-events-none absolute bottom-28 left-1/2 z-[9] w-full max-w-5xl -translate-x-1/2 px-6">
-  <div className="grid grid-cols-3 gap-6 sm:gap-8 md:gap-12">
+      <div className="pointer-events-none absolute bottom-28 left-1/2 z-[9] w-full max-w-5xl -translate-x-1/2 px-6">
+  <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8">
     <motion.div
-      initial={{ opacity: 0, y: 18 }}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.45, delay: 0.05 }}
-      className="flex flex-col items-center text-center"
+      className="rounded-[22px] border border-white/10 bg-[linear-gradient(180deg,rgba(248,244,235,0.16),rgba(215,208,193,0.08))] px-4 py-4 text-center shadow-[0_14px_30px_rgba(0,0,0,0.16)] backdrop-blur-xl"
     >
-      <div className="relative mb-3 flex h-[92px] w-[92px] items-center justify-center rounded-[28px] border border-white/14 bg-[linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0.06))] shadow-[0_18px_36px_rgba(0,0,0,0.22)] backdrop-blur-xl sm:h-[104px] sm:w-[104px]">
-        <div className="absolute inset-[1px] rounded-[27px] bg-[linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.02))]" />
-        <ShieldCheck className="relative z-10 h-10 w-10 text-[#f6e7a6] sm:h-11 sm:w-11" />
-      </div>
-      <h3 className="text-[15px] font-semibold tracking-[-0.02em] text-white sm:text-lg md:text-xl">
-        10+ Years Trusted
+      <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#f7e8bf]/78 sm:text-xs">
+        Reputation
+      </p>
+      <h3 className="mt-2 text-[18px] font-semibold leading-[1.08] tracking-[-0.025em] text-[#fffaf0] sm:text-[20px] md:text-[22px]">
+        Trusted Since 2014
       </h3>
     </motion.div>
 
     <motion.div
-      initial={{ opacity: 0, y: 18 }}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.45, delay: 0.12 }}
-      className="flex flex-col items-center text-center"
+      className="rounded-[22px] border border-white/10 bg-[linear-gradient(180deg,rgba(220,233,238,0.16),rgba(176,196,205,0.08))] px-4 py-4 text-center shadow-[0_14px_30px_rgba(0,0,0,0.16)] backdrop-blur-xl"
     >
-      <div className="relative mb-3 flex h-[92px] w-[92px] items-center justify-center rounded-[28px] border border-white/14 bg-[linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0.06))] shadow-[0_18px_36px_rgba(0,0,0,0.22)] backdrop-blur-xl sm:h-[104px] sm:w-[104px]">
-        <div className="absolute inset-[1px] rounded-[27px] bg-[linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.02))]" />
-        <Users className="relative z-10 h-10 w-10 text-[#d9fff2] sm:h-11 sm:w-11" />
-      </div>
-      <h3 className="text-[15px] font-semibold tracking-[-0.02em] text-white sm:text-lg md:text-xl">
-        5,000+ Active Players
+      <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#dff6ff]/75 sm:text-xs">
+        Community
+      </p>
+      <h3 className="mt-2 text-[18px] font-semibold leading-[1.08] tracking-[-0.025em] text-[#f7fcff] sm:text-[20px] md:text-[22px]">
+        5,000+ Active Members
       </h3>
     </motion.div>
 
     <motion.div
-      initial={{ opacity: 0, y: 18 }}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.45, delay: 0.19 }}
-      className="flex flex-col items-center text-center"
+      className="rounded-[22px] border border-white/10 bg-[linear-gradient(180deg,rgba(236,235,245,0.16),rgba(196,193,214,0.08))] px-4 py-4 text-center shadow-[0_14px_30px_rgba(0,0,0,0.16)] backdrop-blur-xl"
     >
-      <div className="relative mb-3 flex h-[92px] w-[92px] items-center justify-center rounded-[28px] border border-white/14 bg-[linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0.06))] shadow-[0_18px_36px_rgba(0,0,0,0.22)] backdrop-blur-xl sm:h-[104px] sm:w-[104px]">
-        <div className="absolute inset-[1px] rounded-[27px] bg-[linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.02))]" />
-        <Banknote className="relative z-10 h-10 w-10 text-[#dff5ff] sm:h-11 sm:w-11" />
-      </div>
-      <h3 className="text-[15px] font-semibold tracking-[-0.02em] text-white sm:text-lg md:text-xl">
-        Transparent Rewards
+      <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#efeaff]/74 sm:text-xs">
+        Clarity
+      </p>
+      <h3 className="mt-2 text-[18px] font-semibold leading-[1.08] tracking-[-0.025em] text-[#fcfbff] sm:text-[20px] md:text-[22px]">
+        Clear Rewards, No Surprises
       </h3>
     </motion.div>
   </div>
 </div>
-
           <HeroCTA />
 
           <div className="relative z-10 mx-auto w-full max-w-6xl">
