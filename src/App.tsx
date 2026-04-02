@@ -793,49 +793,52 @@ export default function App() {
             }}
           />
 
-      <div className="pointer-events-none absolute bottom-28 left-1/2 z-[9] w-full max-w-5xl -translate-x-1/2 px-6">
-  <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+     <div className="pointer-events-none absolute bottom-28 left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-6">
+  <div className="grid grid-cols-3 gap-5 sm:gap-7 md:gap-9">
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.45, delay: 0.05 }}
-      className="rounded-[22px] border border-white/10 bg-[linear-gradient(180deg,rgba(248,244,235,0.16),rgba(215,208,193,0.08))] px-4 py-4 text-center shadow-[0_14px_30px_rgba(0,0,0,0.16)] backdrop-blur-xl"
+      className="rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,rgba(245,240,228,0.14),rgba(220,212,196,0.07))] px-5 py-6 text-center shadow-[0_16px_34px_rgba(0,0,0,0.18)] backdrop-blur-[20px]"
+      style={{ fontFamily: "'Manrope', sans-serif" }}
     >
-      <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#f7e8bf]/78 sm:text-xs">
+      <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#f4e7c1]/72">
         Reputation
       </p>
-      <h3 className="mt-2 text-[18px] font-semibold leading-[1.08] tracking-[-0.025em] text-[#fffaf0] sm:text-[20px] md:text-[22px]">
+      <h3 className="mt-3 text-[22px] font-semibold leading-[1.05] tracking-[-0.03em] text-[#fffaf0] sm:text-[24px] md:text-[28px]">
         Trusted Since 2014
       </h3>
     </motion.div>
 
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.45, delay: 0.12 }}
-      className="rounded-[22px] border border-white/10 bg-[linear-gradient(180deg,rgba(220,233,238,0.16),rgba(176,196,205,0.08))] px-4 py-4 text-center shadow-[0_14px_30px_rgba(0,0,0,0.16)] backdrop-blur-xl"
+      className="rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,rgba(225,236,242,0.14),rgba(188,202,212,0.07))] px-5 py-6 text-center shadow-[0_16px_34px_rgba(0,0,0,0.18)] backdrop-blur-[20px]"
+      style={{ fontFamily: "'Manrope', sans-serif" }}
     >
-      <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#dff6ff]/75 sm:text-xs">
+      <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#dff5ff]/72">
         Community
       </p>
-      <h3 className="mt-2 text-[18px] font-semibold leading-[1.08] tracking-[-0.025em] text-[#f7fcff] sm:text-[20px] md:text-[22px]">
+      <h3 className="mt-3 text-[22px] font-semibold leading-[1.05] tracking-[-0.03em] text-[#f7fcff] sm:text-[24px] md:text-[28px]">
         5,000+ Active Members
       </h3>
     </motion.div>
 
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.45, delay: 0.19 }}
-      className="rounded-[22px] border border-white/10 bg-[linear-gradient(180deg,rgba(236,235,245,0.16),rgba(196,193,214,0.08))] px-4 py-4 text-center shadow-[0_14px_30px_rgba(0,0,0,0.16)] backdrop-blur-xl"
+      className="rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,rgba(235,233,243,0.14),rgba(201,197,216,0.07))] px-5 py-6 text-center shadow-[0_16px_34px_rgba(0,0,0,0.18)] backdrop-blur-[20px]"
+      style={{ fontFamily: "'Manrope', sans-serif" }}
     >
-      <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#efeaff]/74 sm:text-xs">
+      <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#eee9ff]/72">
         Clarity
       </p>
-      <h3 className="mt-2 text-[18px] font-semibold leading-[1.08] tracking-[-0.025em] text-[#fcfbff] sm:text-[20px] md:text-[22px]">
+      <h3 className="mt-3 text-[22px] font-semibold leading-[1.05] tracking-[-0.03em] text-[#fcfbff] sm:text-[24px] md:text-[28px]">
         Clear Rewards, No Surprises
       </h3>
     </motion.div>
