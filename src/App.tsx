@@ -793,31 +793,31 @@ export default function App() {
             }}
           />
 
-    <div className="pointer-events-none absolute bottom-28 left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-6">
-  <div className="grid grid-cols-3 gap-5 sm:gap-7 md:gap-9">
+    <div className="pointer-events-none absolute bottom-28 left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:px-6">
+  <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-7 md:gap-9">
     <motion.div
       initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: 0.05 }}
-      className="group relative overflow-hidden rounded-[28px] px-6 py-7 text-center shadow-[0_18px_40px_rgba(0,0,0,0.18)] backdrop-blur-[22px]"
+      className="group relative overflow-hidden rounded-[24px] px-5 py-5 text-center shadow-[0_14px_30px_rgba(0,0,0,0.16)] backdrop-blur-[20px] sm:rounded-[28px] sm:px-6 sm:py-7 sm:shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
       style={{ fontFamily: "'Manrope', sans-serif" }}
     >
-      <div className="absolute inset-0 rounded-[28px] bg-[linear-gradient(180deg,rgba(245,239,225,0.14),rgba(220,214,200,0.05))]" />
-      <div className="absolute inset-[1px] rounded-[27px] border border-white/10" />
-      <div className="absolute inset-0 rounded-[28px] border border-[#f4e7bf]/12 shadow-[inset_0_1px_0_rgba(255,255,255,0.16)]" />
+      <div className="absolute inset-0 rounded-[24px] bg-[linear-gradient(180deg,rgba(245,239,225,0.14),rgba(220,214,200,0.05))] sm:rounded-[28px]" />
+      <div className="absolute inset-[1px] rounded-[23px] border border-white/10 sm:rounded-[27px]" />
+      <div className="absolute inset-0 rounded-[24px] border border-[#f4e7bf]/12 shadow-[inset_0_1px_0_rgba(255,255,255,0.16)] sm:rounded-[28px]" />
       <div className="absolute inset-x-[8%] top-[3px] h-[44%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.22),rgba(255,255,255,0.06),transparent)] blur-[1px]" />
       <motion.div
         aria-hidden="true"
-        className="absolute inset-y-[-18%] left-[-32%] w-[32%] rotate-[18deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.05),rgba(255,255,255,0.18),rgba(255,255,255,0.05),transparent)] blur-[3px]"
+        className="absolute inset-y-[-18%] left-[-32%] hidden w-[32%] rotate-[18deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.05),rgba(255,255,255,0.18),rgba(255,255,255,0.05),transparent)] blur-[3px] sm:block"
         animate={{ x: ["0%", "320%"] }}
         transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut", repeatDelay: 2.8 }}
       />
       <div className="relative z-10">
-        <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#f5e6bc]/76">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#f5e6bc]/76 sm:text-[12px] sm:tracking-[0.24em]">
           Reputation
         </p>
-        <h3 className="mt-3 text-[22px] font-semibold leading-[1.05] tracking-[-0.03em] text-[#fffaf0] sm:text-[24px] md:text-[28px]">
+        <h3 className="mt-2 text-[18px] font-semibold leading-[1.08] tracking-[-0.03em] text-[#fffaf0] sm:mt-3 sm:text-[24px] md:text-[28px]">
           Trusted Since 2014
         </h3>
       </div>
@@ -828,24 +828,24 @@ export default function App() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: 0.12 }}
-      className="group relative overflow-hidden rounded-[28px] px-6 py-7 text-center shadow-[0_18px_40px_rgba(0,0,0,0.18)] backdrop-blur-[22px]"
+      className="group relative overflow-hidden rounded-[24px] px-5 py-5 text-center shadow-[0_14px_30px_rgba(0,0,0,0.16)] backdrop-blur-[20px] sm:rounded-[28px] sm:px-6 sm:py-7 sm:shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
       style={{ fontFamily: "'Manrope', sans-serif" }}
     >
-      <div className="absolute inset-0 rounded-[28px] bg-[linear-gradient(180deg,rgba(224,236,243,0.14),rgba(190,204,214,0.05))]" />
-      <div className="absolute inset-[1px] rounded-[27px] border border-white/10" />
-      <div className="absolute inset-0 rounded-[28px] border border-[#dff4ff]/12 shadow-[inset_0_1px_0_rgba(255,255,255,0.16)]" />
+      <div className="absolute inset-0 rounded-[24px] bg-[linear-gradient(180deg,rgba(224,236,243,0.14),rgba(190,204,214,0.05))] sm:rounded-[28px]" />
+      <div className="absolute inset-[1px] rounded-[23px] border border-white/10 sm:rounded-[27px]" />
+      <div className="absolute inset-0 rounded-[24px] border border-[#dff4ff]/12 shadow-[inset_0_1px_0_rgba(255,255,255,0.16)] sm:rounded-[28px]" />
       <div className="absolute inset-x-[8%] top-[3px] h-[44%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.22),rgba(255,255,255,0.06),transparent)] blur-[1px]" />
       <motion.div
         aria-hidden="true"
-        className="absolute inset-y-[-18%] left-[-32%] w-[32%] rotate-[18deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.05),rgba(255,255,255,0.18),rgba(255,255,255,0.05),transparent)] blur-[3px]"
+        className="absolute inset-y-[-18%] left-[-32%] hidden w-[32%] rotate-[18deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.05),rgba(255,255,255,0.18),rgba(255,255,255,0.05),transparent)] blur-[3px] sm:block"
         animate={{ x: ["0%", "320%"] }}
         transition={{ duration: 6.7, repeat: Infinity, ease: "easeInOut", repeatDelay: 3.1 }}
       />
       <div className="relative z-10">
-        <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#def3ff]/76">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#def3ff]/76 sm:text-[12px] sm:tracking-[0.24em]">
           Community
         </p>
-        <h3 className="mt-3 text-[22px] font-semibold leading-[1.05] tracking-[-0.03em] text-[#f8fcff] sm:text-[24px] md:text-[28px]">
+        <h3 className="mt-2 text-[18px] font-semibold leading-[1.08] tracking-[-0.03em] text-[#f8fcff] sm:mt-3 sm:text-[24px] md:text-[28px]">
           5,000+ Active Members
         </h3>
       </div>
@@ -856,24 +856,24 @@ export default function App() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: 0.19 }}
-      className="group relative overflow-hidden rounded-[28px] px-6 py-7 text-center shadow-[0_18px_40px_rgba(0,0,0,0.18)] backdrop-blur-[22px]"
+      className="group relative overflow-hidden rounded-[24px] px-5 py-5 text-center shadow-[0_14px_30px_rgba(0,0,0,0.16)] backdrop-blur-[20px] sm:rounded-[28px] sm:px-6 sm:py-7 sm:shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
       style={{ fontFamily: "'Manrope', sans-serif" }}
     >
-      <div className="absolute inset-0 rounded-[28px] bg-[linear-gradient(180deg,rgba(235,233,243,0.14),rgba(204,200,216,0.05))]" />
-      <div className="absolute inset-[1px] rounded-[27px] border border-white/10" />
-      <div className="absolute inset-0 rounded-[28px] border border-[#ece8ff]/12 shadow-[inset_0_1px_0_rgba(255,255,255,0.16)]" />
+      <div className="absolute inset-0 rounded-[24px] bg-[linear-gradient(180deg,rgba(235,233,243,0.14),rgba(204,200,216,0.05))] sm:rounded-[28px]" />
+      <div className="absolute inset-[1px] rounded-[23px] border border-white/10 sm:rounded-[27px]" />
+      <div className="absolute inset-0 rounded-[24px] border border-[#ece8ff]/12 shadow-[inset_0_1px_0_rgba(255,255,255,0.16)] sm:rounded-[28px]" />
       <div className="absolute inset-x-[8%] top-[3px] h-[44%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.22),rgba(255,255,255,0.06),transparent)] blur-[1px]" />
       <motion.div
         aria-hidden="true"
-        className="absolute inset-y-[-18%] left-[-32%] w-[32%] rotate-[18deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.05),rgba(255,255,255,0.18),rgba(255,255,255,0.05),transparent)] blur-[3px]"
+        className="absolute inset-y-[-18%] left-[-32%] hidden w-[32%] rotate-[18deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.05),rgba(255,255,255,0.18),rgba(255,255,255,0.05),transparent)] blur-[3px] sm:block"
         animate={{ x: ["0%", "320%"] }}
         transition={{ duration: 6.9, repeat: Infinity, ease: "easeInOut", repeatDelay: 3.4 }}
       />
       <div className="relative z-10">
-        <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#eee9ff]/76">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#eee9ff]/76 sm:text-[12px] sm:tracking-[0.24em]">
           Clarity
         </p>
-        <h3 className="mt-3 text-[22px] font-semibold leading-[1.05] tracking-[-0.03em] text-[#fcfbff] sm:text-[24px] md:text-[28px]">
+        <h3 className="mt-2 text-[18px] font-semibold leading-[1.08] tracking-[-0.03em] text-[#fcfbff] sm:mt-3 sm:text-[24px] md:text-[28px]">
           Clear Rewards, No Surprises
         </h3>
       </div>
