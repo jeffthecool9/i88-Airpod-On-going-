@@ -12,9 +12,6 @@ import {
   CheckCircle2,
   UserPlus,
   Mail,
-  ShieldCheck,
-  Users,
-  Banknote,
   Lock,
   User,
   Phone,
@@ -109,31 +106,18 @@ const GoldConfetti = () => {
             rotate: 0,
             scale: piece.scale,
           }}
-          animate={
-  isFinalFloating
-    ? {
-        y: [0, -10, 0],
-        scale: [1, 1.09, 1],
-        rotate: [0, -1, 0, 1, 0],
-      }
-    : {
-        y: 0,
-        scale: 1,
-        rotate: 0,
-      }
-}
-transition={
-  isFinalFloating
-    ? {
-        duration: 2.2,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }
-    : {
-        duration: 0.35,
-        ease: "easeOut",
-      }
-}
+          animate={{
+            y: ["0vh", "28vh", "62vh", "108vh"],
+            x: [0, piece.drift * 0.4, piece.drift, piece.drift * 0.2],
+            rotate: [0, piece.rotateEnd * 0.45, piece.rotateEnd],
+            opacity: [0, piece.opacity, piece.opacity, 0],
+          }}
+          transition={{
+            duration: piece.duration,
+            delay: piece.delay,
+            repeat: Infinity,
+            ease: "linear",
+          }}
         />
       ))}
     </div>
@@ -148,8 +132,15 @@ const RealisticBackground = () => (
       {[...Array(8)].map((_, i) => (
         <motion.div
           key={`ray-${i}`}
-          animate={{ opacity: [0.15, 0.3, 0.15], rotate: [i * 45, i * 45 + 10, i * 45] }}
-          transition={{ duration: 8 + i, repeat: Infinity, ease: "easeInOut" }}
+          animate={{
+            opacity: [0.15, 0.3, 0.15],
+            rotate: [i * 45, i * 45 + 10, i * 45],
+          }}
+          transition={{
+            duration: 8 + i,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
           className="absolute inset-0 origin-center"
           style={{
             background: `conic-gradient(from ${i * 45}deg at 50% 50%, transparent 0%, rgba(34,211,238,0.2) 5%, transparent 15%)`,
@@ -177,17 +168,39 @@ const SectionSeam = ({
   fillColor?: string;
   shape?: "dome" | "dip";
 }) => (
-  <div className={`absolute left-0 w-full overflow-hidden leading-[0] z-20 pointer-events-none ${className}`}>
-    <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="block w-full h-[76px] sm:h-[120px]">
+  <div
+    className={`absolute left-0 w-full overflow-hidden leading-[0] z-20 pointer-events-none ${className}`}
+  >
+    <svg
+      viewBox="0 0 1200 120"
+      preserveAspectRatio="none"
+      className="block w-full h-[76px] sm:h-[120px]"
+    >
       {shape === "dome" ? (
         <>
-          <path d="M0,120 L0,100 C480,0 720,0 1200,100 L1200,120 Z" fill={fillColor} />
-          <path d="M0,100 C480,0 720,0 1200,100" fill="none" stroke="url(#line-glow)" strokeWidth="3" />
+          <path
+            d="M0,120 L0,100 C480,0 720,0 1200,100 L1200,120 Z"
+            fill={fillColor}
+          />
+          <path
+            d="M0,100 C480,0 720,0 1200,100"
+            fill="none"
+            stroke="url(#line-glow)"
+            strokeWidth="3"
+          />
         </>
       ) : (
         <>
-          <path d="M0,0 C480,100 720,100 1200,0 L1200,120 L0,120 Z" fill={fillColor} />
-          <path d="M0,0 C480,100 720,100 1200,0" fill="none" stroke="url(#line-glow)" strokeWidth="3" />
+          <path
+            d="M0,0 C480,100 720,100 1200,0 L1200,120 L0,120 Z"
+            fill={fillColor}
+          />
+          <path
+            d="M0,0 C480,100 720,100 1200,0"
+            fill="none"
+            stroke="url(#line-glow)"
+            strokeWidth="3"
+          />
         </>
       )}
       <defs>
@@ -239,6 +252,7 @@ const RegistrationForm = () => {
         alt="i88"
         className="pointer-events-none absolute left-1/2 top-0 z-[9] w-[90px] -translate-x-1/2 -translate-y-2 object-contain opacity-95 sm:w-[110px] sm:-translate-y-3 md:w-[125px] md:-translate-y-4"
       />
+
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-[4%] top-[10%] h-[260px] w-[260px] rounded-full bg-cyan-300/12 blur-[120px]" />
         <div className="absolute right-[4%] top-[15%] h-[320px] w-[320px] rounded-full bg-blue-400/12 blur-[140px]" />
@@ -314,11 +328,14 @@ const RegistrationForm = () => {
             <h2 className="mb-2 text-3xl font-bold text-white sm:text-4xl">
               Create Your Account
             </h2>
-            <p className="text-blue-100/75">Join the elite circle of high-rollers</p>
+            <p className="text-blue-100/75">
+              Join the elite circle of high-rollers
+            </p>
 
             {step === 2 && formData.name && (
               <p className="mt-3 text-sm font-medium text-cyan-100/90">
-                Hi <span className="font-bold text-white">{formData.name}</span>, please fill in the form to start your journey
+                Hi <span className="font-bold text-white">{formData.name}</span>,
+                please fill in the form to start your journey
               </p>
             )}
           </div>
@@ -334,7 +351,9 @@ const RegistrationForm = () => {
                 className="relative z-10 space-y-6"
               >
                 <div className="space-y-2">
-                  <label className="ml-1 text-sm font-medium text-white/92">Username</label>
+                  <label className="ml-1 text-sm font-medium text-white/92">
+                    Username
+                  </label>
                   <div className="relative">
                     <User className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white" />
                     <input
@@ -342,13 +361,17 @@ const RegistrationForm = () => {
                       placeholder="Your login id"
                       className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm font-medium leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
                       value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, name: e.target.value })
+                      }
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="ml-1 text-sm font-medium text-white/92">Password</label>
+                  <label className="ml-1 text-sm font-medium text-white/92">
+                    Password
+                  </label>
                   <div className="relative">
                     <Lock className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white" />
                     <input
@@ -360,7 +383,9 @@ const RegistrationForm = () => {
                           : "border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
                       }`}
                       value={formData.password}
-                      onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, password: e.target.value })
+                      }
                     />
                   </div>
                   {formData.password && !passwordRegex.test(formData.password) && (
@@ -383,7 +408,9 @@ const RegistrationForm = () => {
                 >
                   Join Now
                   <ChevronRight
-                    className={`h-5 w-5 transition-transform ${isStep1Valid ? "group-hover:translate-x-1" : ""}`}
+                    className={`h-5 w-5 transition-transform ${
+                      isStep1Valid ? "group-hover:translate-x-1" : ""
+                    }`}
                   />
                 </motion.button>
               </motion.div>
@@ -397,7 +424,9 @@ const RegistrationForm = () => {
                 className="relative z-10 space-y-6"
               >
                 <div className="space-y-2">
-                  <label className="ml-1 text-sm font-medium text-white/92">Full Name</label>
+                  <label className="ml-1 text-sm font-medium text-white/92">
+                    Full Name
+                  </label>
                   <div className="relative">
                     <UserPlus className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white" />
                     <input
@@ -405,7 +434,9 @@ const RegistrationForm = () => {
                       placeholder="John Doe"
                       className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
                       value={formData.fullName}
-                      onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, fullName: e.target.value })
+                      }
                     />
                   </div>
                   <motion.div
@@ -415,13 +446,16 @@ const RegistrationForm = () => {
                   >
                     <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-cyan-300" />
                     <p className="text-[11px] italic leading-relaxed text-blue-100/72">
-                      Reminder: Name must match your bank account name for faster withdrawal processing.
+                      Reminder: Name must match your bank account name for faster
+                      withdrawal processing.
                     </p>
                   </motion.div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="ml-1 text-sm font-medium text-white/92">Email Address</label>
+                  <label className="ml-1 text-sm font-medium text-white/92">
+                    Email Address
+                  </label>
                   <div className="relative">
                     <Mail className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white" />
                     <input
@@ -433,16 +467,22 @@ const RegistrationForm = () => {
                           : "border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
                       }`}
                       value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
                     />
                   </div>
                   {formData.email && !emailRegex.test(formData.email) && (
-                    <p className="ml-1 mt-1 text-xs text-red-400">Please enter a valid email address</p>
+                    <p className="ml-1 mt-1 text-xs text-red-400">
+                      Please enter a valid email address
+                    </p>
                   )}
                 </div>
 
                 <div className="space-y-2">
-                  <label className="ml-1 text-sm font-medium text-white/92">Phone Number</label>
+                  <label className="ml-1 text-sm font-medium text-white/92">
+                    Phone Number
+                  </label>
                   <div className="relative">
                     <Phone className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white" />
                     <input
@@ -450,7 +490,9 @@ const RegistrationForm = () => {
                       placeholder="+65 8000 0000"
                       className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
                       value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, phone: e.target.value })
+                      }
                     />
                   </div>
                 </div>
@@ -462,12 +504,22 @@ const RegistrationForm = () => {
                       type="checkbox"
                       className="h-5 w-5 cursor-pointer rounded border-cyan-200/20 bg-white/5 text-blue-600 accent-blue-600 transition-all focus:ring-cyan-400/35 focus:ring-offset-0"
                       checked={formData.agreedToTerms}
-                      onChange={(e) => setFormData({ ...formData, agreedToTerms: e.target.checked })}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          agreedToTerms: e.target.checked,
+                        })
+                      }
                     />
                   </div>
-                  <label htmlFor="terms" className="cursor-pointer select-none text-xs leading-relaxed text-blue-100/75">
-                    I am over 21 years of age and have read and accepted the general terms and conditions. I agree to
-                    receive information from your company. I can cancel this service in my account at any time.
+                  <label
+                    htmlFor="terms"
+                    className="cursor-pointer select-none text-xs leading-relaxed text-blue-100/75"
+                  >
+                    I am over 21 years of age and have read and accepted the
+                    general terms and conditions. I agree to receive information
+                    from your company. I can cancel this service in my account at
+                    any time.
                   </label>
                 </div>
 
@@ -507,7 +559,8 @@ const RegistrationForm = () => {
 
 const FloatingGirl = () => {
   const [showFromSteps, setShowFromSteps] = useState(false);
-  const [hideBubbleAtRegistration, setHideBubbleAtRegistration] = useState(false);
+  const [hideBubbleAtRegistration, setHideBubbleAtRegistration] =
+    useState(false);
   const [isUserActive, setIsUserActive] = useState(true);
 
   useEffect(() => {
@@ -528,7 +581,9 @@ const FloatingGirl = () => {
 
     const registrationObserver = new IntersectionObserver(
       ([entry]) => {
-        setHideBubbleAtRegistration(entry.isIntersecting && entry.intersectionRatio > 0.15);
+        setHideBubbleAtRegistration(
+          entry.isIntersecting && entry.intersectionRatio > 0.15
+        );
       },
       {
         threshold: [0, 0.08, 0.15, 0.25, 0.4],
@@ -573,7 +628,9 @@ const FloatingGirl = () => {
   }, []);
 
   const handleInteract = () => {
-    document.getElementById("registration-form")?.scrollIntoView({ behavior: "smooth" });
+    document
+      .getElementById("registration-form")
+      ?.scrollIntoView({ behavior: "smooth" });
   };
 
   const shouldShowGirl = showFromSteps;
@@ -667,7 +724,9 @@ const HeroCTA = () => {
   const [showExitSweep, setShowExitSweep] = useState(false);
 
   const scrollToRegister = () => {
-    document.getElementById("registration-form")?.scrollIntoView({ behavior: "smooth" });
+    document
+      .getElementById("registration-form")
+      ?.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleEnter = () => {
@@ -686,7 +745,7 @@ const HeroCTA = () => {
   };
 
   return (
-    <div className="absolute bottom-10 left-1/2 z-[10] -translate-x-1/2 sm:bottom-6 md:bottom-8 lg:bottom-10">
+    <div className="absolute bottom-6 left-1/2 z-[10] -translate-x-1/2 sm:bottom-5 md:bottom-6 lg:bottom-7">
       <motion.button
         onClick={scrollToRegister}
         onMouseEnter={handleEnter}
@@ -695,15 +754,15 @@ const HeroCTA = () => {
         onTouchEnd={handleLeave}
         whileHover={{ scale: 1.03, y: -1 }}
         whileTap={{ scale: 0.985 }}
-        className="group pointer-events-auto relative isolate overflow-hidden rounded-[20px] border border-[#ffe7a3]/40 bg-[linear-gradient(180deg,#ffe08a_0%,#f7c948_28%,#d79a16_68%,#b8790b_100%)] px-12 py-2.5 text-base font-extrabold tracking-wide text-[#fff7d1] shadow-[0_20px_40px_rgba(0,0,0,0.30),inset_0_1px_0_rgba(255,255,255,0.46),inset_0_-10px_22px_rgba(120,70,0,0.24)] transition-all sm:px-14 sm:py-3 sm:text-lg"
+        className="group pointer-events-auto relative isolate overflow-hidden rounded-[22px] border border-[#ffe7a3]/45 bg-[linear-gradient(180deg,#FFE08A_0%,#F7C948_30%,#D89A18_72%,#B9780C_100%)] px-12 py-3 text-lg font-extrabold tracking-wide text-[#fff7d1] shadow-[0_22px_44px_rgba(0,0,0,0.32),inset_0_1px_0_rgba(255,255,255,0.46),inset_0_-10px_22px_rgba(120,70,0,0.24)] transition-all sm:px-14 sm:py-3.5 sm:text-[22px]"
         style={{
           textShadow: "0 1px 2px rgba(120,70,0,0.35)",
         }}
       >
         <div className="pointer-events-none absolute inset-x-[4%] top-[3px] h-[42%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.38),rgba(255,255,255,0.08),transparent)] blur-[1px]" />
-        <div className="pointer-events-none absolute inset-[1px] rounded-[19px] border border-white/10" />
-        <div className="pointer-events-none absolute -left-5 top-1/2 h-12 w-12 -translate-y-1/2 rounded-full bg-[#ffd76a]/20 blur-[16px]" />
-        <div className="pointer-events-none absolute -right-5 top-1/2 h-12 w-12 -translate-y-1/2 rounded-full bg-[#ffcf53]/16 blur-[16px]" />
+        <div className="pointer-events-none absolute inset-[1px] rounded-[21px] border border-white/10" />
+        <div className="pointer-events-none absolute -left-5 top-1/2 h-14 w-14 -translate-y-1/2 rounded-full bg-[#ffd76a]/22 blur-[18px]" />
+        <div className="pointer-events-none absolute -right-5 top-1/2 h-14 w-14 -translate-y-1/2 rounded-full bg-[#ffcf53]/18 blur-[18px]" />
 
         <AnimatePresence>
           {isActive && (
@@ -716,7 +775,6 @@ const HeroCTA = () => {
               transition={{
                 duration: 3,
                 repeat: Infinity,
-                repeatDelay: 0,
                 ease: [0.22, 1, 0.36, 1],
               }}
               className="pointer-events-none absolute inset-y-[-35%] left-[-45%] w-[60%] rotate-[16deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.08),rgba(255,255,255,0.30),rgba(255,255,255,0.78),rgba(255,255,255,0.30),rgba(255,255,255,0.08),transparent)] blur-[3px]"
@@ -752,6 +810,7 @@ const HeroCTA = () => {
 
 export default function App() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [progressLevel, setProgressLevel] = useState(1);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -761,19 +820,21 @@ export default function App() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  const [progressLevel, setProgressLevel] = useState(1);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setProgressLevel((prev) => (prev < 4 ? prev + 1 : 4));
+    }, 2000);
 
-useEffect(() => {
-  const interval = setInterval(() => {
-    setProgressLevel((prev) => (prev < 4 ? prev + 1 : 4));
-  }, 2000);
+    return () => clearInterval(interval);
+  }, []);
 
-  return () => clearInterval(interval);
-}, []);
-  
   const stepData = [
     { title: "Register", desc: "Create account", image: registerImg },
-    { title: "Deposit", desc: "Start from $50 & Unlock more Rewards", image: depositImg },
+    {
+      title: "Deposit",
+      desc: "Start from $50 & Unlock more Rewards",
+      image: depositImg,
+    },
     { title: "Unlock", desc: "Claim Your 188 FS", image: playImg },
   ];
 
@@ -788,303 +849,323 @@ useEffect(() => {
       <div className="pointer-events-none fixed inset-0 z-[100] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
       <main className="relative z-10">
-       <section className="relative flex min-h-[108vh] sm:min-h-[112vh] md:min-h-[118vh] lg:min-h-[122vh] items-center overflow-hidden bg-[#0a1580]">
-  <RealisticBackground />
-  <GoldConfetti />
+        <section className="relative flex min-h-[108vh] sm:min-h-[112vh] md:min-h-[118vh] lg:min-h-[122vh] items-center overflow-hidden bg-[#0a1580]">
+          <RealisticBackground />
+          <GoldConfetti />
 
-  <img
-    src={i882Img}
-    alt="i88"
-    className="pointer-events-none absolute left-1/2 top-0 z-[9] w-[120px] -translate-x-1/2 -translate-y-2 object-contain sm:w-[140px] sm:-translate-y-3 md:w-[160px] md:-translate-y-4"
-  />
+          <img
+            src={i882Img}
+            alt="i88"
+            className="pointer-events-none absolute left-1/2 top-0 z-[9] w-[120px] -translate-x-1/2 -translate-y-2 object-contain sm:w-[140px] sm:-translate-y-3 md:w-[160px] md:-translate-y-4"
+          />
 
-  <motion.img
-    src={airpodImg}
-    alt=""
-    aria-hidden="true"
-    className="pointer-events-none absolute right-[6%] top-[8%] z-[8] w-[170px] object-contain sm:right-[10%] sm:top-[8%] sm:w-[210px] md:right-[12%] md:top-[7%] md:w-[250px] lg:right-[14%] lg:top-[6%] lg:w-[290px]"
-    animate={{
-      y: [0, -12, 0],
-      rotate: [0, -2, 0],
-    }}
-    transition={{
-      duration: 4.2,
-      repeat: Infinity,
-      ease: "easeInOut",
-    }}
-    style={{
-      filter:
-        "drop-shadow(0 18px 30px rgba(0,0,0,0.28)) drop-shadow(0 10px 24px rgba(56,189,248,0.16))",
-    }}
-  />
+          <motion.img
+            src={airpodImg}
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute right-[6%] top-[8%] z-[8] w-[170px] object-contain sm:right-[10%] sm:top-[8%] sm:w-[210px] md:right-[12%] md:top-[7%] md:w-[250px] lg:right-[14%] lg:top-[6%] lg:w-[290px]"
+            animate={{
+              y: [0, -12, 0],
+              rotate: [0, -2, 0],
+            }}
+            transition={{
+              duration: 4.2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            style={{
+              filter:
+                "drop-shadow(0 18px 30px rgba(0,0,0,0.28)) drop-shadow(0 10px 24px rgba(56,189,248,0.16))",
+            }}
+          />
 
-{/* Luxury Progress Tracker - Version B */}
-<div className="pointer-events-none absolute left-1/2 bottom-[255px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[270px] sm:px-6 md:bottom-[285px] lg:bottom-[300px]">
-  <div className="mx-auto max-w-5xl">
-    {/* Top stage boxes */}
-    <div className="mb-6 grid grid-cols-4 gap-3 sm:gap-4">
-      {[
-        { title: "REGISTER", level: "LEVEL 1" },
-        { title: "188 FS", level: "LEVEL 2" },
-        { title: "MORE REWARD", level: "LEVEL 3" },
-        { title: "AIRPODS PRO 3", level: "LEVEL 4" },
-      ].map((item, i) => {
-        const stageNumber = i + 1;
-        const isActive = progressLevel >= stageNumber;
-        const isFinalFloating = progressLevel === 4 && stageNumber === 4;
+          {/* Luxury Progress Tracker - Version B */}
+          <div className="pointer-events-none absolute left-1/2 bottom-[255px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[270px] sm:px-6 md:bottom-[285px] lg:bottom-[300px]">
+            <div className="mx-auto max-w-5xl">
+              <div className="mb-6 grid grid-cols-4 gap-3 sm:gap-4">
+                {[
+                  { title: "REGISTER", level: "LEVEL 1" },
+                  { title: "188 FS", level: "LEVEL 2" },
+                  { title: "MORE REWARD", level: "LEVEL 3" },
+                  { title: "AIRPODS PRO 3", level: "LEVEL 4" },
+                ].map((item, i) => {
+                  const stageNumber = i + 1;
+                  const isActive = progressLevel >= stageNumber;
+                  const isFinalFloating =
+                    progressLevel === 4 && stageNumber === 4;
 
-        return (
-          <motion.div
-            key={i}
-            className={`min-w-0 ${isFinalFloating ? "z-20" : ""}`}
-            animate={
-              isFinalFloating
-                ? {
-                    y: [0, -12, 0],
-                    scale: [1, 1.12, 1],
-                    rotate: [0, -1.2, 0, 1.2, 0],
-                  }
-                : {
-                    y: 0,
-                    scale: 1,
-                    rotate: 0,
-                  }
-            }
-            transition={
-              isFinalFloating
-                ? {
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }
-                : {
-                    duration: 0.35,
-                    ease: "easeOut",
-                  }
-            }
-          >
-            <div
-              className={`relative rounded-[22px] p-[2px] ${
-                isActive
-                  ? "bg-[linear-gradient(135deg,#FFE8A3_0%,#F7C948_25%,#C88A14_60%,#FFE08A_100%)]"
-                  : "bg-[linear-gradient(135deg,rgba(255,255,255,0.18),rgba(255,255,255,0.06))]"
-              } shadow-[0_14px_32px_rgba(0,0,0,0.28)]`}
-            >
-              <div
-                className={`relative flex h-[82px] sm:h-[86px] md:h-[92px] flex-col items-center justify-center overflow-hidden rounded-[20px] px-2 sm:px-3 md:px-4 ${
-                  isActive
-                    ? "bg-[linear-gradient(180deg,#173E9D_0%,#0B256E_52%,#071B54_100%)]"
-                    : "bg-[linear-gradient(180deg,#12307F_0%,#0A215F_52%,#071948_100%)]"
-                }`}
-              >
-                <div className="pointer-events-none absolute inset-x-[8%] top-[3px] h-[28px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),transparent)] blur-[1px]" />
-                <div className="pointer-events-none absolute inset-[1px] rounded-[19px] border border-white/8" />
-                <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-[36%] bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.14))]" />
-
-                {isFinalFloating && (
-                  <>
+                  return (
                     <motion.div
-                      className="absolute inset-0 rounded-[20px]"
-                      animate={{ opacity: [0.2, 0.5, 0.2] }}
-                      transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-                      style={{
-                        boxShadow:
-                          "0 0 36px rgba(255,215,106,0.45), inset 0 0 30px rgba(255,215,106,0.18)",
-                      }}
-                    />
-                    <motion.div
-                      className="absolute -inset-[3px] rounded-[23px]"
-                      animate={{
-                        opacity: [0.2, 0.6, 0.2],
-                        scale: [1, 1.04, 1],
-                      }}
-                      transition={{ duration: 1.7, repeat: Infinity, ease: "easeInOut" }}
-                      style={{
-                        boxShadow:
-                          "0 0 44px rgba(255,215,106,0.40), 0 0 74px rgba(255,215,106,0.18)",
-                      }}
-                    />
-                    <motion.div
-                      className="absolute -inset-[10px] rounded-[28px]"
-                      animate={{
-                        opacity: [0.08, 0.24, 0.08],
-                        scale: [0.98, 1.1, 0.98],
-                      }}
-                      transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-                      style={{
-                        boxShadow: "0 0 66px rgba(255,215,106,0.26)",
-                      }}
-                    />
-                  </>
-                )}
+                      key={i}
+                      className={`min-w-0 ${isFinalFloating ? "z-20" : ""}`}
+                      animate={
+                        isFinalFloating
+                          ? {
+                              y: [0, -12, 0],
+                              scale: [1, 1.12, 1],
+                              rotate: [0, -1.2, 0, 1.2, 0],
+                            }
+                          : {
+                              y: 0,
+                              scale: 1,
+                              rotate: 0,
+                            }
+                      }
+                      transition={
+                        isFinalFloating
+                          ? {
+                              duration: 2,
+                              repeat: Infinity,
+                              ease: "easeInOut",
+                            }
+                          : {
+                              duration: 0.35,
+                              ease: "easeOut",
+                            }
+                      }
+                    >
+                      <div
+                        className={`relative rounded-[22px] p-[2px] ${
+                          isActive
+                            ? "bg-[linear-gradient(135deg,#FFE8A3_0%,#F7C948_25%,#C88A14_60%,#FFE08A_100%)]"
+                            : "bg-[linear-gradient(135deg,rgba(255,255,255,0.18),rgba(255,255,255,0.06))]"
+                        } shadow-[0_14px_32px_rgba(0,0,0,0.28)]`}
+                      >
+                        <div
+                          className={`relative flex h-[82px] sm:h-[86px] md:h-[92px] flex-col items-center justify-center overflow-hidden rounded-[20px] px-2 sm:px-3 md:px-4 ${
+                            isActive
+                              ? "bg-[linear-gradient(180deg,#173E9D_0%,#0B256E_52%,#071B54_100%)]"
+                              : "bg-[linear-gradient(180deg,#12307F_0%,#0A215F_52%,#071948_100%)]"
+                          }`}
+                        >
+                          <div className="pointer-events-none absolute inset-x-[8%] top-[3px] h-[28px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),transparent)] blur-[1px]" />
+                          <div className="pointer-events-none absolute inset-[1px] rounded-[19px] border border-white/8" />
+                          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-[36%] bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.14))]" />
 
-                <p
-                  className={`relative z-10 text-center font-black uppercase leading-[0.95] ${
-                    item.title === "AIRPODS PRO 3"
-                      ? "text-[13px] sm:text-[15px] md:text-[17px] lg:text-[18px]"
-                      : item.title === "MORE REWARD"
-                      ? "text-[13px] sm:text-[15px] md:text-[17px] lg:text-[18px]"
-                      : "text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px]"
-                  } ${isActive ? "text-[#FFF4C8]" : "text-white"}`}
-                  style={{
-                    letterSpacing: "-0.03em",
-                    WebkitTextStroke: isActive
-                      ? "0.35px rgba(255,235,180,0.18)"
-                      : "0.2px rgba(255,255,255,0.08)",
-                    textShadow: isActive
-                      ? "0 1px 0 rgba(255,255,255,0.48), 0 2px 0 rgba(255,215,106,0.14), 0 8px 20px rgba(0,0,0,0.38), 0 0 12px rgba(255,215,106,0.16)"
-                      : "0 1px 0 rgba(255,255,255,0.16), 0 8px 18px rgba(0,0,0,0.28)",
-                  }}
+                          {isFinalFloating && (
+                            <>
+                              <motion.div
+                                className="absolute inset-0 rounded-[20px]"
+                                animate={{ opacity: [0.2, 0.5, 0.2] }}
+                                transition={{
+                                  duration: 1.6,
+                                  repeat: Infinity,
+                                  ease: "easeInOut",
+                                }}
+                                style={{
+                                  boxShadow:
+                                    "0 0 36px rgba(255,215,106,0.45), inset 0 0 30px rgba(255,215,106,0.18)",
+                                }}
+                              />
+                              <motion.div
+                                className="absolute -inset-[3px] rounded-[23px]"
+                                animate={{
+                                  opacity: [0.2, 0.6, 0.2],
+                                  scale: [1, 1.04, 1],
+                                }}
+                                transition={{
+                                  duration: 1.7,
+                                  repeat: Infinity,
+                                  ease: "easeInOut",
+                                }}
+                                style={{
+                                  boxShadow:
+                                    "0 0 44px rgba(255,215,106,0.40), 0 0 74px rgba(255,215,106,0.18)",
+                                }}
+                              />
+                              <motion.div
+                                className="absolute -inset-[10px] rounded-[28px]"
+                                animate={{
+                                  opacity: [0.08, 0.24, 0.08],
+                                  scale: [0.98, 1.1, 0.98],
+                                }}
+                                transition={{
+                                  duration: 2.2,
+                                  repeat: Infinity,
+                                  ease: "easeInOut",
+                                }}
+                                style={{
+                                  boxShadow:
+                                    "0 0 66px rgba(255,215,106,0.26)",
+                                }}
+                              />
+                            </>
+                          )}
+
+                          <p
+                            className={`relative z-10 text-center font-black uppercase leading-[0.95] ${
+                              item.title === "AIRPODS PRO 3"
+                                ? "text-[13px] sm:text-[15px] md:text-[17px] lg:text-[18px]"
+                                : item.title === "MORE REWARD"
+                                ? "text-[13px] sm:text-[15px] md:text-[17px] lg:text-[18px]"
+                                : "text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px]"
+                            } ${isActive ? "text-[#FFF4C8]" : "text-white"}`}
+                            style={{
+                              letterSpacing: "-0.03em",
+                              WebkitTextStroke: isActive
+                                ? "0.35px rgba(255,235,180,0.18)"
+                                : "0.2px rgba(255,255,255,0.08)",
+                              textShadow: isActive
+                                ? "0 1px 0 rgba(255,255,255,0.48), 0 2px 0 rgba(255,215,106,0.14), 0 8px 20px rgba(0,0,0,0.38), 0 0 12px rgba(255,215,106,0.16)"
+                                : "0 1px 0 rgba(255,255,255,0.16), 0 8px 18px rgba(0,0,0,0.28)",
+                            }}
+                          >
+                            {item.title}
+                          </p>
+
+                          <p
+                            className={`relative z-10 mt-2 text-center text-[9px] sm:text-[10px] md:text-[11px] font-extrabold tracking-[0.18em] sm:tracking-[0.22em] ${
+                              isActive ? "text-[#FFD76A]" : "text-cyan-100/75"
+                            }`}
+                            style={{
+                              textShadow: "0 4px 10px rgba(0,0,0,0.22)",
+                            }}
+                          >
+                            {item.level}
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+
+              <div className="relative h-[56px] sm:h-[60px] md:h-[64px] overflow-hidden rounded-full border border-white/10 bg-[linear-gradient(180deg,#0A225E_0%,#061948_55%,#041232_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.10),inset_0_-12px_24px_rgba(0,0,0,0.30),0_22px_42px_rgba(0,0,0,0.24)]">
+                <div className="absolute inset-x-0 top-0 h-1/2 bg-[linear-gradient(180deg,rgba(255,255,255,0.10),rgba(255,255,255,0.02),transparent)]" />
+
+                <div className="absolute inset-y-[10px] left-1/4 w-[2px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.20),rgba(255,255,255,0.06))]" />
+                <div className="absolute inset-y-[10px] left-2/4 w-[2px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.20),rgba(255,255,255,0.06))]" />
+                <div className="absolute inset-y-[10px] left-3/4 w-[2px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.20),rgba(255,255,255,0.06))]" />
+
+                <motion.div
+                  animate={{ width: `${progressLevel * 25}%` }}
+                  transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute inset-y-0 left-0 rounded-full bg-[linear-gradient(90deg,#FFF0B8_0%,#FFF8DE_20%,#FFD86A_52%,#F3BA24_100%)] shadow-[0_10px_24px_rgba(255,215,106,0.20),0_0_28px_rgba(255,215,106,0.12)]"
                 >
-                  {item.title}
-                </p>
+                  <div className="absolute inset-y-[7px] left-[10px] right-[10px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.24),rgba(255,255,255,0.05),transparent)]" />
 
-                <p
-                  className={`relative z-10 mt-2 text-center text-[9px] sm:text-[10px] md:text-[11px] font-extrabold tracking-[0.18em] sm:tracking-[0.22em] ${
-                    isActive ? "text-[#FFD76A]" : "text-cyan-100/75"
-                  }`}
-                  style={{
-                    textShadow: "0 4px 10px rgba(0,0,0,0.22)",
-                  }}
+                  <motion.div
+                    animate={{ x: ["-120%", "220%"] }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                    className="absolute inset-y-0 w-[28%] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.42),transparent)] blur-[7px]"
+                  />
+                </motion.div>
+
+                <motion.div
+                  animate={{ left: `calc(${progressLevel * 25}% - 24px)` }}
+                  transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute top-1/2 z-10 -translate-y-1/2"
                 >
-                  {item.level}
-                </p>
+                  <motion.div
+                    animate={{
+                      scale:
+                        progressLevel === 4 ? [1, 1.1, 1] : [1, 1.03, 1],
+                    }}
+                    transition={{
+                      duration: progressLevel === 4 ? 1.2 : 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="relative flex h-[50px] w-[50px] sm:h-[54px] sm:w-[54px] md:h-[58px] md:w-[58px] items-center justify-center rounded-full"
+                  >
+                    <div className="absolute inset-[-8px] rounded-full bg-yellow-300/20 blur-lg" />
+                    <div className="absolute inset-[-2px] rounded-full border border-[#FFE6A3]/45" />
+
+                    <div className="relative flex h-full w-full items-center justify-center rounded-full border border-white/26 bg-[linear-gradient(180deg,#FFE27B_0%,#F3BA24_100%)] shadow-[0_12px_24px_rgba(0,0,0,0.30),0_0_0_6px_rgba(255,216,77,0.12)]">
+                      <div className="absolute inset-[4px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.30),rgba(255,255,255,0.04))]" />
+                      <div className="absolute inset-x-[18%] top-[5px] h-[32%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.42),transparent)] blur-[1px]" />
+
+                      <span
+                        className="relative z-10 text-[16px] sm:text-[18px] font-black text-white"
+                        style={{
+                          textShadow:
+                            "0 1px 0 rgba(255,255,255,0.22), 0 4px 10px rgba(0,0,0,0.28)",
+                        }}
+                      >
+                        ✦
+                      </span>
+                    </div>
+                  </motion.div>
+                </motion.div>
               </div>
             </div>
-          </motion.div>
-        );
-      })}
-    </div>
-
-    {/* Progress bar */}
-    <div className="relative h-[56px] sm:h-[60px] md:h-[64px] overflow-hidden rounded-full border border-white/10 bg-[linear-gradient(180deg,#0A225E_0%,#061948_55%,#041232_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.10),inset_0_-12px_24px_rgba(0,0,0,0.30),0_22px_42px_rgba(0,0,0,0.24)]">
-      {/* top gloss */}
-      <div className="absolute inset-x-0 top-0 h-1/2 bg-[linear-gradient(180deg,rgba(255,255,255,0.10),rgba(255,255,255,0.02),transparent)]" />
-
-      {/* stage indicator lines */}
-      <div className="absolute inset-y-[10px] left-1/4 w-[2px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.20),rgba(255,255,255,0.06))]" />
-      <div className="absolute inset-y-[10px] left-2/4 w-[2px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.20),rgba(255,255,255,0.06))]" />
-      <div className="absolute inset-y-[10px] left-3/4 w-[2px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.20),rgba(255,255,255,0.06))]" />
-
-      {/* filled progress */}
-      <motion.div
-        animate={{ width: `${progressLevel * 25}%` }}
-        transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute inset-y-0 left-0 rounded-full bg-[linear-gradient(90deg,#FFF0B8_0%,#FFF8DE_20%,#FFD86A_52%,#F3BA24_100%)] shadow-[0_10px_24px_rgba(255,215,106,0.20),0_0_28px_rgba(255,215,106,0.12)]"
-      >
-        <div className="absolute inset-y-[7px] left-[10px] right-[10px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.24),rgba(255,255,255,0.05),transparent)]" />
-
-        <motion.div
-          animate={{ x: ["-120%", "220%"] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-y-0 w-[28%] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.42),transparent)] blur-[7px]"
-        />
-      </motion.div>
-
-      {/* enhanced head */}
-      <motion.div
-        animate={{ left: `calc(${progressLevel * 25}% - 24px)` }}
-        transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute top-1/2 z-10 -translate-y-1/2"
-      >
-        <motion.div
-          animate={{
-            scale: progressLevel === 4 ? [1, 1.1, 1] : [1, 1.03, 1],
-          }}
-          transition={{
-            duration: progressLevel === 4 ? 1.2 : 2,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="relative flex h-[50px] w-[50px] sm:h-[54px] sm:w-[54px] md:h-[58px] md:w-[58px] items-center justify-center rounded-full"
-        >
-          <div className="absolute inset-[-8px] rounded-full bg-yellow-300/20 blur-lg" />
-          <div className="absolute inset-[-2px] rounded-full border border-[#FFE6A3]/45" />
-
-          <div className="relative flex h-full w-full items-center justify-center rounded-full border border-white/26 bg-[linear-gradient(180deg,#FFE27B_0%,#F3BA24_100%)] shadow-[0_12px_24px_rgba(0,0,0,0.30),0_0_0_6px_rgba(255,216,77,0.12)]">
-            <div className="absolute inset-[4px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.30),rgba(255,255,255,0.04))]" />
-            <div className="absolute inset-x-[18%] top-[5px] h-[32%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.42),transparent)] blur-[1px]" />
-
-            <span
-              className="relative z-10 text-[16px] sm:text-[18px] font-black text-white"
-              style={{
-                textShadow: "0 1px 0 rgba(255,255,255,0.22), 0 4px 10px rgba(0,0,0,0.28)",
-              }}
-            >
-              ✦
-            </span>
           </div>
-        </motion.div>
-      </motion.div>
-    </div>
-  </div>
-</div>  {/* Trust cards */}
- <div className="pointer-events-none absolute bottom-[118px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[108px] sm:px-6 md:bottom-[88px] lg:bottom-[92px]">
-    <div className="grid grid-cols-3 gap-2 sm:gap-7 md:gap-9">
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.45, delay: 0.05 }}
-        className="group relative overflow-hidden rounded-[18px] px-2 py-3 text-center shadow-[0_10px_22px_rgba(0,0,0,0.14)] backdrop-blur-[16px] sm:rounded-[28px] sm:px-6 sm:py-7 sm:shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
-        style={{ fontFamily: "'Manrope', sans-serif" }}
-      >
-        <div className="absolute inset-0 rounded-[18px] bg-[linear-gradient(180deg,rgba(245,239,225,0.12),rgba(220,214,200,0.05))] sm:rounded-[28px]" />
-        <div className="absolute inset-[1px] rounded-[17px] border border-white/10 sm:rounded-[27px]" />
-        <div className="absolute inset-x-[10%] top-[2px] h-[38%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
-        <div className="relative z-10">
-          <h3 className="mt-1 text-[13px] font-bold leading-[1.05] tracking-[-0.02em] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] sm:mt-2 sm:text-[18px] md:text-[26px] lg:text-[30px]">
-            Trusted Since 2014
-          </h3>
-        </div>
-      </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.45, delay: 0.12 }}
-        className="group relative overflow-hidden rounded-[18px] px-2 py-3 text-center shadow-[0_10px_22px_rgba(0,0,0,0.14)] backdrop-blur-[16px] sm:rounded-[28px] sm:px-6 sm:py-7 sm:shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
-        style={{ fontFamily: "'Manrope', sans-serif" }}
-      >
-        <div className="absolute inset-0 rounded-[18px] bg-[linear-gradient(180deg,rgba(224,236,243,0.12),rgba(190,204,214,0.05))] sm:rounded-[28px]" />
-        <div className="absolute inset-[1px] rounded-[17px] border border-white/10 sm:rounded-[27px]" />
-        <div className="absolute inset-x-[10%] top-[2px] h-[38%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
-        <div className="relative z-10">
-          <h3 className="mt-1 text-[13px] font-bold leading-[1.05] tracking-[-0.02em] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] sm:mt-2 sm:text-[18px] md:text-[26px] lg:text-[30px]">
-            5,000+ Active Members
-          </h3>
-        </div>
-      </motion.div>
+          {/* Trust cards */}
+          <div className="pointer-events-none absolute bottom-[118px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[108px] sm:px-6 md:bottom-[88px] lg:bottom-[92px]">
+            <div className="grid grid-cols-3 gap-2 sm:gap-7 md:gap-9">
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: 0.05 }}
+                className="group relative overflow-hidden rounded-[18px] px-2 py-3 text-center shadow-[0_10px_22px_rgba(0,0,0,0.14)] backdrop-blur-[16px] sm:rounded-[28px] sm:px-6 sm:py-7 sm:shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
+                style={{ fontFamily: "'Manrope', sans-serif" }}
+              >
+                <div className="absolute inset-0 rounded-[18px] bg-[linear-gradient(180deg,rgba(245,239,225,0.12),rgba(220,214,200,0.05))] sm:rounded-[28px]" />
+                <div className="absolute inset-[1px] rounded-[17px] border border-white/10 sm:rounded-[27px]" />
+                <div className="absolute inset-x-[10%] top-[2px] h-[38%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
+                <div className="relative z-10">
+                  <h3 className="mt-1 text-[13px] font-bold leading-[1.05] tracking-[-0.02em] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] sm:mt-2 sm:text-[18px] md:text-[26px] lg:text-[30px]">
+                    Trusted Since 2014
+                  </h3>
+                </div>
+              </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.45, delay: 0.19 }}
-        className="group relative overflow-hidden rounded-[18px] px-2 py-3 text-center shadow-[0_10px_22px_rgba(0,0,0,0.14)] backdrop-blur-[16px] sm:rounded-[28px] sm:px-6 sm:py-7 sm:shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
-        style={{ fontFamily: "'Manrope', sans-serif" }}
-      >
-        <div className="absolute inset-0 rounded-[18px] bg-[linear-gradient(180deg,rgba(235,233,243,0.12),rgba(204,200,216,0.05))] sm:rounded-[28px]" />
-        <div className="absolute inset-[1px] rounded-[17px] border border-white/10 sm:rounded-[27px]" />
-        <div className="absolute inset-x-[10%] top-[2px] h-[38%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
-        <div className="relative z-10">
-          <h3 className="mt-1 text-[13px] font-bold leading-[1.05] tracking-[-0.02em] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] sm:mt-2 sm:text-[18px] md:text-[26px] lg:text-[30px]">
-            Clear Rewards, Don&apos;t Forget to Claim it
-          </h3>
-        </div>
-      </motion.div>
-    </div>
-  </div>
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: 0.12 }}
+                className="group relative overflow-hidden rounded-[18px] px-2 py-3 text-center shadow-[0_10px_22px_rgba(0,0,0,0.14)] backdrop-blur-[16px] sm:rounded-[28px] sm:px-6 sm:py-7 sm:shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
+                style={{ fontFamily: "'Manrope', sans-serif" }}
+              >
+                <div className="absolute inset-0 rounded-[18px] bg-[linear-gradient(180deg,rgba(224,236,243,0.12),rgba(190,204,214,0.05))] sm:rounded-[28px]" />
+                <div className="absolute inset-[1px] rounded-[17px] border border-white/10 sm:rounded-[27px]" />
+                <div className="absolute inset-x-[10%] top-[2px] h-[38%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
+                <div className="relative z-10">
+                  <h3 className="mt-1 text-[13px] font-bold leading-[1.05] tracking-[-0.02em] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] sm:mt-2 sm:text-[18px] md:text-[26px] lg:text-[30px]">
+                    5,000+ Active Members
+                  </h3>
+                </div>
+              </motion.div>
 
-  <HeroCTA />
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: 0.19 }}
+                className="group relative overflow-hidden rounded-[18px] px-2 py-3 text-center shadow-[0_10px_22px_rgba(0,0,0,0.14)] backdrop-blur-[16px] sm:rounded-[28px] sm:px-6 sm:py-7 sm:shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
+                style={{ fontFamily: "'Manrope', sans-serif" }}
+              >
+                <div className="absolute inset-0 rounded-[18px] bg-[linear-gradient(180deg,rgba(235,233,243,0.12),rgba(204,200,216,0.05))] sm:rounded-[28px]" />
+                <div className="absolute inset-[1px] rounded-[17px] border border-white/10 sm:rounded-[27px]" />
+                <div className="absolute inset-x-[10%] top-[2px] h-[38%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
+                <div className="relative z-10">
+                  <h3 className="mt-1 text-[13px] font-bold leading-[1.05] tracking-[-0.02em] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] sm:mt-2 sm:text-[18px] md:text-[26px] lg:text-[30px]">
+                    Clear Rewards, Don&apos;t Forget to Claim it
+                  </h3>
+                </div>
+              </motion.div>
+            </div>
+          </div>
 
-  <div className="relative z-10 mx-auto w-full max-w-6xl">
-    {/* kept empty */}
-  </div>
+          <HeroCTA />
 
-  <SectionSeam className="bottom-[-1px]" fillColor="#0b49b8" shape="dip" />
-</section>
+          <div className="relative z-10 mx-auto w-full max-w-6xl">
+            {/* kept empty */}
+          </div>
+
+          <SectionSeam
+            className="bottom-[-1px]"
+            fillColor="#0b49b8"
+            shape="dip"
+          />
+        </section>
 
         <section
           id="steps-to-claim"
@@ -1132,13 +1213,15 @@ useEffect(() => {
                     </p>
                   </motion.div>
                 ))}
-
-                <div className="hidden sm:block" />
               </div>
             </div>
           </div>
 
-          <SectionSeam className="bottom-[-1px]" fillColor="#020f6a" shape="dip" />
+          <SectionSeam
+            className="bottom-[-1px]"
+            fillColor="#020f6a"
+            shape="dip"
+          />
         </section>
 
         <RegistrationForm />
