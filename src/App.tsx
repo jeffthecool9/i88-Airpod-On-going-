@@ -746,7 +746,7 @@ const HeroCTA = () => {
   };
 
   return (
-    <div className="absolute bottom-16 left-1/2 z-[10] -translate-x-1/2 sm:bottom-14 md:bottom-16 lg:bottom-[72px]">
+   <div className="absolute bottom-6 left-1/2 z-[10] -translate-x-1/2 sm:bottom-6 md:bottom-7 lg:bottom-8">
       <motion.button
         onClick={scrollToRegister}
         onMouseEnter={handleEnter}
@@ -850,7 +850,7 @@ export default function App() {
       <div className="pointer-events-none fixed inset-0 z-[100] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
       <main className="relative z-10">
-        <section className="relative flex min-h-[108vh] sm:min-h-[112vh] md:min-h-[118vh] lg:min-h-[122vh] items-center overflow-hidden bg-[#0a1580]">
+        <section className="relative flex min-h-[118vh] sm:min-h-[122vh] md:min-h-[126vh] lg:min-h-[130vh] items-center overflow-hidden bg-[#0a1580]">
           <RealisticBackground />
           <GoldConfetti />
 
@@ -881,7 +881,7 @@ export default function App() {
           />
 
 {/* Luxury Progress Tracker - Version B */}
-<div className="pointer-events-none absolute left-1/2 bottom-[235px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[248px] sm:px-6 md:bottom-[262px] lg:bottom-[276px]">
+<div className="pointer-events-none absolute left-1/2 bottom-[285px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[300px] sm:px-6 md:bottom-[320px] lg:bottom-[335px]">
   <div className="mx-auto max-w-5xl">
     <div className="mb-6 grid grid-cols-4 gap-3 sm:gap-4">
       {[
@@ -1128,7 +1128,7 @@ export default function App() {
 </div>
 
           {/* Trust cards */}
-          <div className="pointer-events-none absolute bottom-[180px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[170px] sm:px-6 md:bottom-[150px] lg:bottom-[155px]">
+          <div className="pointer-events-none absolute bottom-[110px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[105px] sm:px-6 md:bottom-[95px] lg:bottom-[98px]">
             <div className="grid grid-cols-3 gap-2 sm:gap-7 md:gap-9">
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
