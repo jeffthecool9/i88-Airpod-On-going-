@@ -812,7 +812,7 @@ const HeroCTA = () => {
 
 export default function App() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
- const [progressLevel, setProgressLevel] = useState(1);
+const [progressLevel, setProgressLevel] = useState(1);
 
 useEffect(() => {
   setProgressLevel(1);
@@ -832,7 +832,7 @@ useEffect(() => {
 
   return () => clearInterval(interval);
 }, []);
-
+  
   const stepData = [
     { title: "Register", desc: "Create account", image: registerImg },
     {
@@ -896,137 +896,165 @@ useEffect(() => {
        {/* Luxury Progress Tracker - Version B */}
 <div className="pointer-events-none absolute left-1/2 bottom-[285px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[300px] sm:px-6 md:bottom-[320px] lg:bottom-[335px]">
   <div className="mx-auto max-w-5xl">
-    <div className="mb-6 grid grid-cols-4 gap-3 sm:gap-4">
-      {[
-        { title: "REGISTER", level: "LEVEL 1" },
-        { title: "188 FS", level: "LEVEL 2" },
-        { title: "MORE REWARD", level: "LEVEL 3" },
-        { title: "AIRPODS PRO 3", level: "LEVEL 4" },
-      ].map((item, i) => {
-        const stageNumber = i + 1;
-        const isReached = progressLevel >= stageNumber;
-        const isCurrent = progressLevel === stageNumber;
-        const isFinalFloating = progressLevel === 4 && stageNumber === 4;
+  <div className="mb-6 grid grid-cols-4 gap-3 sm:gap-4">
+  {[
+    { title: "REGISTER", level: "LEVEL 1", type: "text" },
+    { title: "188 FS", level: "LEVEL 2", type: "text" },
+    { title: "MORE REWARD", level: "LEVEL 3", type: "text" },
+    { title: "AIRPODS", level: "LEVEL 4", type: "airpod" },
+  ].map((item, i) => {
+    const stageNumber = i + 1;
+    const isReached = progressLevel >= stageNumber;
+    const isVisible = item.type === "airpod" ? true : isReached;
+    const isCurrent = progressLevel === stageNumber;
+    const isFinalFloating = progressLevel === 4 && stageNumber === 4;
 
-        return (
-          <motion.div
-            key={i}
-            className={`min-w-0 ${isFinalFloating ? "z-20" : ""}`}
-            initial={false}
-            animate={
-              isReached
-                ? isFinalFloating
-                  ? {
-                      opacity: 1,
-                      y: [0, -12, 0],
-                      scale: [1, 1.12, 1],
-                      rotate: [0, -1.2, 0, 1.2, 0],
-                    }
-                  : {
-                      opacity: 1,
-                      y: 0,
-                      scale: isCurrent ? [1, 1.04, 1] : 1,
-                      rotate: 0,
-                    }
-                : {
-                    opacity: 0,
-                    y: 14,
-                    scale: 0.92,
-                    rotate: 0,
-                  }
-            }
-            transition={
-              isFinalFloating
-                ? {
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }
-                : {
-                    duration: 0.4,
-                    ease: "easeOut",
-                  }
-            }
-          >
+    return (
+      <motion.div
+        key={i}
+        className={`min-w-0 ${isFinalFloating ? "z-20" : ""}`}
+        initial={false}
+        animate={
+          isVisible
+            ? isFinalFloating
+              ? {
+                  opacity: 1,
+                  y: [0, -12, 0],
+                  scale: [1, 1.12, 1],
+                  rotate: [0, -1.2, 0, 1.2, 0],
+                }
+              : {
+                  opacity: 1,
+                  y: 0,
+                  scale: isReached || isCurrent ? [1, 1.04, 1] : 1,
+                  rotate: 0,
+                }
+            : {
+                opacity: 0,
+                y: 14,
+                scale: 0.92,
+                rotate: 0,
+              }
+        }
+        transition={
+          isFinalFloating
+            ? {
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }
+            : {
+                duration: 0.4,
+                ease: "easeOut",
+              }
+        }
+      >
+        <div
+          className={`relative rounded-[22px] p-[2px] ${
+            isReached
+              ? "bg-[linear-gradient(135deg,#FFE8A3_0%,#F7C948_25%,#C88A14_60%,#FFE08A_100%)]"
+              : "bg-[linear-gradient(135deg,rgba(255,255,255,0.12),rgba(255,255,255,0.05))]"
+          } shadow-[0_14px_32px_rgba(0,0,0,0.28)]`}
+        >
+          <div className="relative h-[82px] sm:h-[86px] md:h-[92px] overflow-hidden rounded-[20px]">
+            <motion.div
+              className="absolute inset-0"
+              animate={{
+                scale: [1, 1.05, 1],
+                x: [0, -6, 0],
+                y: [0, -4, 0],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              style={{
+                backgroundImage: `url(${backgroundImg})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            />
+
             <div
-              className={`relative rounded-[22px] p-[2px] ${
+              className={`absolute inset-0 ${
                 isReached
-                  ? "bg-[linear-gradient(135deg,#FFE8A3_0%,#F7C948_25%,#C88A14_60%,#FFE08A_100%)]"
-                  : "bg-transparent"
-              } shadow-[0_14px_32px_rgba(0,0,0,0.28)]`}
-            >
-              <div className="relative h-[82px] sm:h-[86px] md:h-[92px] overflow-hidden rounded-[20px]">
+                  ? "bg-[linear-gradient(180deg,rgba(8,28,84,0.28)_0%,rgba(6,21,70,0.42)_100%)]"
+                  : "bg-[linear-gradient(180deg,rgba(8,28,84,0.42)_0%,rgba(6,21,70,0.58)_100%)]"
+              }`}
+            />
+
+            <div className="pointer-events-none absolute inset-[1px] rounded-[19px] border border-white/10" />
+            <div className="pointer-events-none absolute inset-x-[8%] top-[3px] h-[28px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.14),transparent)] blur-[1px]" />
+            <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-[36%] bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.18))]" />
+
+            {isFinalFloating && (
+              <>
                 <motion.div
-                  className="absolute inset-0"
-                  animate={{
-                    scale: [1, 1.05, 1],
-                    x: [0, -6, 0],
-                    y: [0, -4, 0],
-                  }}
+                  className="absolute inset-0 rounded-[20px]"
+                  animate={{ opacity: [0.2, 0.5, 0.2] }}
                   transition={{
-                    duration: 8,
+                    duration: 1.6,
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
                   style={{
-                    backgroundImage: `url(${backgroundImg})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
+                    boxShadow:
+                      "0 0 36px rgba(255,215,106,0.45), inset 0 0 30px rgba(255,215,106,0.18)",
                   }}
                 />
-
-                <div
-                  className={`absolute inset-0 ${
-                    isReached
-                      ? "bg-[linear-gradient(180deg,rgba(8,28,84,0.28)_0%,rgba(6,21,70,0.42)_100%)]"
-                      : "bg-transparent"
-                  }`}
+                <motion.div
+                  className="absolute -inset-[3px] rounded-[23px]"
+                  animate={{
+                    opacity: [0.2, 0.6, 0.2],
+                    scale: [1, 1.04, 1],
+                  }}
+                  transition={{
+                    duration: 1.7,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  style={{
+                    boxShadow:
+                      "0 0 44px rgba(255,215,106,0.40), 0 0 74px rgba(255,215,106,0.18)",
+                  }}
                 />
+              </>
+            )}
 
-                <div className="pointer-events-none absolute inset-[1px] rounded-[19px] border border-white/10" />
-                <div className="pointer-events-none absolute inset-x-[8%] top-[3px] h-[28px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.14),transparent)] blur-[1px]" />
-                <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-[36%] bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.18))]" />
-
-                {isFinalFloating && (
-                  <>
-                    <motion.div
-                      className="absolute inset-0 rounded-[20px]"
-                      animate={{ opacity: [0.2, 0.5, 0.2] }}
-                      transition={{
-                        duration: 1.6,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      }}
-                      style={{
-                        boxShadow:
-                          "0 0 36px rgba(255,215,106,0.45), inset 0 0 30px rgba(255,215,106,0.18)",
-                      }}
-                    />
-                    <motion.div
-                      className="absolute -inset-[3px] rounded-[23px]"
-                      animate={{
-                        opacity: [0.2, 0.6, 0.2],
-                        scale: [1, 1.04, 1],
-                      }}
-                      transition={{
-                        duration: 1.7,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      }}
-                      style={{
-                        boxShadow:
-                          "0 0 44px rgba(255,215,106,0.40), 0 0 74px rgba(255,215,106,0.18)",
-                      }}
-                    />
-                  </>
-                )}
-
-                <div className="relative z-10 flex h-full flex-col items-center justify-center px-2 sm:px-3 md:px-4">
+            <div className="relative z-10 flex h-full flex-col items-center justify-center px-2 sm:px-3 md:px-4">
+              {item.type === "airpod" ? (
+                <>
+                  <img
+                    src={airpodImg}
+                    alt="AirPods reward"
+                    className={`mx-auto mb-1 w-[34px] object-contain sm:w-[38px] md:w-[44px] ${
+                      isReached ? "opacity-100" : "opacity-80"
+                    }`}
+                    style={{
+                      filter: isReached
+                        ? "drop-shadow(0 6px 14px rgba(255,255,255,0.22))"
+                        : "drop-shadow(0 4px 10px rgba(255,255,255,0.10))",
+                    }}
+                  />
+                  <p
+                    className={`text-center text-[9px] sm:text-[10px] md:text-[11px] font-extrabold tracking-[0.18em] sm:tracking-[0.22em] ${
+                      isReached ? "text-[#FFD76A]" : "text-white/35"
+                    }`}
+                    style={{
+                      textShadow: isReached
+                        ? "0 4px 10px rgba(0,0,0,0.22)"
+                        : "none",
+                    }}
+                  >
+                    {item.level}
+                  </p>
+                </>
+              ) : (
+                <>
                   <p
                     className={`text-center font-black uppercase leading-[0.95] ${
-                      item.title === "AIRPODS PRO 3"
-                        ? "text-[13px] sm:text-[15px] md:text-[17px] lg:text-[18px]"
-                        : item.title === "MORE REWARD"
+                      item.title === "MORE REWARD"
                         ? "text-[13px] sm:text-[15px] md:text-[17px] lg:text-[18px]"
                         : "text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px]"
                     } ${isReached ? "text-[#FFF4C8]" : "text-transparent"}`}
@@ -1052,13 +1080,15 @@ useEffect(() => {
                   >
                     {item.level}
                   </p>
-                </div>
-              </div>
+                </>
+              )}
             </div>
-          </motion.div>
-        );
-      })}
-    </div>
+          </div>
+        </div>
+      </motion.div>
+    );
+  })}
+</div>
 
     <div className="relative h-[56px] sm:h-[60px] md:h-[64px] overflow-hidden rounded-full border border-white/10 bg-[linear-gradient(180deg,#0A225E_0%,#061948_55%,#041232_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.10),inset_0_-12px_24px_rgba(0,0,0,0.30),0_22px_42px_rgba(0,0,0,0.24)]">
       <div className="absolute inset-x-0 top-0 h-1/2 bg-[linear-gradient(180deg,rgba(255,255,255,0.10),rgba(255,255,255,0.02),transparent)]" />
