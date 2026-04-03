@@ -1194,9 +1194,9 @@ export default function App() {
           />
         </section>
 
-       <section
+      <section
   id="steps-to-claim"
-  className="relative z-10 overflow-hidden px-4 pt-10 pb-16 sm:px-6 sm:pt-14 sm:pb-20"
+  className="relative z-10 overflow-hidden px-4 pt-6 pb-16 sm:px-6 sm:pt-8 sm:pb-20"
   style={{
     background:
       "linear-gradient(180deg, #1E4FA3 0%, #1E4FA3 48%, #144FB9 78%, #144FB9 100%)",
@@ -1204,7 +1204,7 @@ export default function App() {
 >
   {/* TOP overlay inside Steps only */}
   <div
-    className="pointer-events-none absolute inset-x-0 top-0 h-[180px]"
+    className="pointer-events-none absolute inset-x-0 top-0 h-[140px]"
     style={{
       background: "linear-gradient(180deg, #1E4FA3 0%, #144FB9 100%)",
     }}
@@ -1221,49 +1221,48 @@ export default function App() {
     <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-cyan-400/5 blur-[100px] animate-pulse delay-1000" />
   </div>
 
- <div className="relative z-10 mx-auto max-w-5xl overflow-hidden rounded-[20px] bg-gradient-to-br from-cyan-900/30 via-white/5 to-white/5 px-4 py-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_0_20px_rgba(34,211,238,0.22),0_20px_40px_rgba(0,0,0,0.4)] backdrop-blur-[28px] sm:px-6 sm:py-7">
-    <div className="pointer-events-none absolute inset-0 rounded-[24px] border border-cyan-300/30 sm:rounded-[32px]" />
+  <div className="relative z-10 mx-auto max-w-5xl overflow-hidden rounded-[20px] bg-gradient-to-br from-cyan-900/30 via-white/5 to-white/5 px-4 pt-4 pb-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_0_20px_rgba(34,211,238,0.22),0_20px_40px_rgba(0,0,0,0.4)] backdrop-blur-[28px] sm:px-6 sm:pt-5 sm:pb-7">
+    <div className="pointer-events-none absolute inset-0 rounded-[20px] border border-cyan-300/30" />
     <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-cyan-400/8 via-transparent to-transparent opacity-50" />
 
     <div className="relative z-10">
-      <div className="mb-4 text-center sm:mb-5">
+      <div className="mb-2 text-center sm:mb-3">
         <h2 className="text-3xl font-bold tracking-tight leading-[0.95] sm:text-4xl md:text-5xl">
           <HeroWord light>Steps to Claim</HeroWord>
         </h2>
       </div>
 
       <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6">
-       {stepData.map((item, i) => (
-  <motion.div
-    key={item.title}
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.45, delay: i * 0.12 }}
-    className="flex flex-col items-center text-center"
-  >
-    <div className="mb-2 flex h-[70px] w-[70px] items-center justify-center sm:h-[90px] sm:w-[90px] md:h-[110px] md:w-[110px]">
-      <img
-        src={item.image}
-        alt={item.title}
-        className="h-full w-full object-contain drop-shadow-[0_8px_20px_rgba(0,0,0,0.25)]"
-      />
-    </div>
+        {stepData.map((item, i) => (
+          <motion.div
+            key={item.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: i * 0.12 }}
+            className="flex flex-col items-center text-center"
+          >
+            <div className="mb-2 flex h-[70px] w-[70px] items-center justify-center sm:h-[90px] sm:w-[90px] md:h-[110px] md:w-[110px]">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="h-full w-full object-contain drop-shadow-[0_8px_20px_rgba(0,0,0,0.25)]"
+              />
+            </div>
 
-    <h3 className="text-[14px] sm:text-[18px] md:text-[22px] font-bold text-white leading-tight">
-      {item.title}
-    </h3>
+            <h3 className="text-[14px] sm:text-[18px] md:text-[22px] font-bold text-white leading-tight">
+              {item.title}
+            </h3>
 
-    <p className="mt-1 text-[10px] sm:text-[12px] md:text-[13px] font-medium text-white/90 leading-tight">
-      {item.desc}
-    </p>
-  </motion.div>
-))}
+            <p className="mt-1 text-[10px] sm:text-[12px] md:text-[13px] font-medium text-white/90 leading-tight">
+              {item.desc}
+            </p>
+          </motion.div>
+        ))}
       </div>
     </div>
   </div>
 
-  {/* KEEP neon cyan line, but force divider fill to Registration blue */}
   <SectionSeam
     className="bottom-[-1px]"
     fillColor="#144FB9"
