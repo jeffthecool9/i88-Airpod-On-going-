@@ -864,7 +864,7 @@ export default function App() {
   src={cola1Img}
   alt=""
   aria-hidden="true"
-  className="pointer-events-none absolute left-[20%] top-[22%] z-[8] w-[500px] object-contain sm:left-[22%] sm:top-[23%] sm:w-[600px] md:left-[24%] md:top-[24%] md:w-[700px] lg:left-[26%] lg:top-[25%] lg:w-[800px]"
+  className="pointer-events-none absolute left-[8%] top-[26%] z-[8] w-[500px] object-contain sm:left-[10%] sm:top-[26%] sm:w-[600px] md:left-[12%] md:top-[27%] md:w-[700px] lg:left-[14%] lg:top-[28%] lg:w-[800px]"
   animate={{
     y: [0, -10, 0],
   }}
