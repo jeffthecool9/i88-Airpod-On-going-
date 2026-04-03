@@ -775,7 +775,7 @@ useEffect(() => {
       <div className="pointer-events-none fixed inset-0 z-[100] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
       <main className="relative z-10">
-       <section className="relative flex min-h-[90vh] md:min-h-[105vh] lg:min-h-[110vh] items-center overflow-hidden bg-[#0a1580]">
+       <section className="relative flex min-h-[108vh] sm:min-h-[112vh] md:min-h-[118vh] lg:min-h-[122vh] items-center overflow-hidden bg-[#0a1580]">
   <RealisticBackground />
   <GoldConfetti />
 
@@ -806,7 +806,7 @@ useEffect(() => {
   />
 
 {/* Premium Progress Tracker - Animated Level Up */}
-<div className="pointer-events-none absolute left-1/2 bottom-[170px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[180px] sm:px-6 md:bottom-[195px] lg:bottom-[205px]">
+<div className="pointer-events-none absolute left-1/2 bottom-[255px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[270px] sm:px-6 md:bottom-[285px] lg:bottom-[300px]">
   <div className="mx-auto max-w-5xl">
     {/* Top stage boxes */}
     <div className="mb-5 grid grid-cols-4 gap-2 sm:gap-3 md:gap-4">
@@ -965,7 +965,7 @@ useEffect(() => {
   </div>
 </div>
   {/* Trust cards */}
-  <div className="pointer-events-none absolute bottom-[135px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[120px] sm:px-6 md:bottom-[92px] lg:bottom-[98px]">
+ <div className="pointer-events-none absolute bottom-[118px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[108px] sm:px-6 md:bottom-[88px] lg:bottom-[92px]">
     <div className="grid grid-cols-3 gap-2 sm:gap-7 md:gap-9">
       <motion.div
         initial={{ opacity: 0, y: 12 }}
