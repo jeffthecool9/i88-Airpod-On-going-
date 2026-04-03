@@ -881,24 +881,24 @@ export default function App() {
   }}
 />
           <motion.img
-            src={airpodImg}
-            alt=""
-            aria-hidden="true"
-            className="pointer-events-none absolute right-[6%] top-[8%] z-[8] w-[170px] object-contain sm:right-[10%] sm:top-[8%] sm:w-[210px] md:right-[12%] md:top-[7%] md:w-[250px] lg:right-[14%] lg:top-[6%] lg:w-[290px]"
-            animate={{
-              y: [0, -12, 0],
-              rotate: [0, -2, 0],
-            }}
-            transition={{
-              duration: 4.2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            style={{
-              filter:
-                "drop-shadow(0 18px 30px rgba(0,0,0,0.28)) drop-shadow(0 10px 24px rgba(56,189,248,0.16))",
-            }}
-          />
+  src={airpodImg}
+  alt=""
+  aria-hidden="true"
+  className="pointer-events-none absolute right-[14%] top-[12%] z-[9] w-[170px] object-contain sm:right-[16%] sm:top-[12%] sm:w-[210px] md:right-[18%] md:top-[13%] md:w-[250px] lg:right-[20%] lg:top-[14%] lg:w-[300px]"
+  animate={{
+    y: [0, -12, 0],
+    rotate: [0, -2, 0],
+  }}
+  transition={{
+    duration: 4.2,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+  style={{
+    filter:
+      "drop-shadow(0 18px 30px rgba(0,0,0,0.28)) drop-shadow(0 10px 24px rgba(56,189,248,0.16))",
+  }}
+/>
 
           {/* Luxury Progress Tracker - Version B */}
           <div className="pointer-events-none absolute left-1/2 bottom-[285px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[300px] sm:px-6 md:bottom-[320px] lg:bottom-[335px]">
