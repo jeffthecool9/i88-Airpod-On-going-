@@ -864,7 +864,7 @@ export default function App() {
   src={cola1Img}
   alt=""
   aria-hidden="true"
-  className="pointer-events-none absolute left-[-18%] top-[14%] z-[8] w-[980px] object-contain sm:left-[-16%] sm:top-[13%] sm:w-[1080px] md:left-[-12%] md:top-[13%] md:w-[1120px] lg:left-[-10%] lg:top-[13%] lg:w-[1240px]"
+  className="pointer-events-none absolute left-[-20%] top-[24%] z-[8] w-[1120px] object-contain sm:left-[-18%] sm:top-[24%] sm:w-[1220px] md:left-[-14%] md:top-[25%] md:w-[1260px] lg:left-[-12%] lg:top-[25%] lg:w-[1380px]"
   style={{
     filter:
       "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
@@ -874,7 +874,7 @@ export default function App() {
   src={airpodImg}
   alt=""
   aria-hidden="true"
-  className="pointer-events-none absolute right-[14%] top-[12%] z-[9] w-[170px] object-contain sm:right-[16%] sm:top-[12%] sm:w-[210px] md:right-[18%] md:top-[13%] md:w-[250px] lg:right-[20%] lg:top-[14%] lg:w-[300px]"
+  className="pointer-events-none absolute right-[10%] top-[18%] z-[9] w-[170px] object-contain sm:right-[11%] sm:top-[18%] sm:w-[210px] md:right-[12%] md:top-[19%] md:w-[250px] lg:right-[13%] lg:top-[19%] lg:w-[290px]"
   animate={{
     y: [0, -12, 0],
     rotate: [0, -2, 0],
