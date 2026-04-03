@@ -795,61 +795,79 @@ export default function App() {
             }}
           />
 
-          <div className="pointer-events-none absolute bottom-[250px] sm:bottom-[250px] md:bottom-[255px] lg:bottom-[265px] left-1/2 z-[9] w-full max-w-5xl -translate-x-1/2 px-4 sm:px-6">
-            <div className="mb-3 grid grid-cols-4 items-end gap-2 text-center sm:mb-4">
-              {[
-                { top: "Register", level: "Level 1" },
-                { top: "188 FS", level: "Level 2" },
-                { top: "More Reward", level: "Level 3" },
-                { top: "AirPods Pro 3", level: "Level 4" },
-              ].map((item, i) => (
-                <div key={i} className="flex flex-col items-center">
-                  <p className="text-[11px] font-semibold tracking-wide text-white/85 sm:text-sm">
-                    {item.top}
-                  </p>
-                  <p className="mt-1 text-[10px] font-medium uppercase tracking-[0.16em] text-[#FFD76A]/85 sm:text-[11px]">
-                    {item.level}
-                  </p>
-                </div>
-              ))}
-            </div>
+         <div className="pointer-events-none absolute bottom-[250px] sm:bottom-[250px] md:bottom-[255px] lg:bottom-[265px] left-1/2 z-[9] w-full max-w-5xl -translate-x-1/2 px-4 sm:px-6">
 
-            <div className="relative h-10 overflow-hidden rounded-full border border-[#FFD76A]/30 bg-[#0A1A54]/75 shadow-[inset_0_8px_18px_rgba(0,0,0,0.30),0_10px_30px_rgba(0,0,0,0.18)] backdrop-blur-md sm:h-12">
-              <motion.div
-                initial={{ width: "25%" }}
-                animate={{ width: "37.5%" }}
-                transition={{ duration: 2.2, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute inset-y-0 left-0 rounded-full bg-[linear-gradient(90deg,#C98A00_0%,#F7C948_32%,#FFF06A_60%,#FFD84D_82%,#E2A718_100%)] shadow-[0_0_20px_rgba(255,215,106,0.28)]"
-              >
-                <div className="absolute inset-x-0 top-0 h-1/2 bg-[linear-gradient(180deg,rgba(255,255,255,0.24),transparent)]" />
-              </motion.div>
+  {/* ===== LEVEL LABELS (PLAYFUL STYLE) ===== */}
+  <div className="mb-4 grid grid-cols-4 text-center">
+    {[
+      { title: "Register", level: "LEVEL 1" },
+      { title: "188 FS", level: "LEVEL 2" },
+      { title: "More Reward", level: "LEVEL 3" },
+      { title: "AirPods Pro 3", level: "LEVEL 4" },
+    ].map((item, i) => (
+      <div key={i}>
+        <p className="text-[11px] font-bold text-white sm:text-sm md:text-[15px]">
+          {item.title}
+        </p>
+        <p className="mt-1 text-[9px] font-extrabold tracking-[0.2em] text-[#FFD76A] sm:text-[10px]">
+          {item.level}
+        </p>
+      </div>
+    ))}
+  </div>
 
-              <motion.div
-                animate={{ x: ["-120%", "240%"] }}
-                transition={{ duration: 2.4, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-y-[-20%] left-0 w-[22%] rotate-[18deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.18),rgba(255,255,255,0.72),rgba(255,255,255,0.18),transparent)] blur-[3px]"
-              />
+  {/* ===== MAIN BAR ===== */}
+  <div className="relative h-[56px] rounded-full bg-[#0A1B5E] shadow-[inset_0_6px_16px_rgba(0,0,0,0.35)] overflow-hidden">
 
-              <div className="absolute inset-y-0 left-1/4 w-[2px] bg-white/18" />
-              <div className="absolute inset-y-0 left-2/4 w-[2px] -translate-x-1/2 bg-white/18" />
-              <div className="absolute inset-y-0 left-3/4 w-[2px] -translate-x-1/2 bg-white/18" />
+    {/* subtle top gloss */}
+    <div className="absolute top-0 left-0 right-0 h-1/2 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),transparent)]" />
 
-              <motion.div
-                initial={{ left: "calc(25% - 16px)" }}
-                animate={{ left: "calc(37.5% - 16px)" }}
-                transition={{ duration: 2.2, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute top-1/2 z-20 -translate-y-1/2"
-              >
-                <motion.div
-                  animate={{ y: [0, -2, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  className="flex h-8 w-8 items-center justify-center rounded-full border border-[#FFE7A3]/40 bg-[linear-gradient(180deg,#FFE37D_0%,#F7C948_48%,#D89A12_100%)] text-[15px] shadow-[0_0_14px_rgba(255,215,106,0.40)] sm:h-9 sm:w-9"
-                >
-                  🎁
-                </motion.div>
-              </motion.div>
-            </div>
-          </div>
+    {/* segments */}
+    <div className="absolute inset-y-0 left-1/4 w-[2px] bg-white/20" />
+    <div className="absolute inset-y-0 left-2/4 w-[2px] bg-white/20 -translate-x-1/2" />
+    <div className="absolute inset-y-0 left-3/4 w-[2px] bg-white/20 -translate-x-1/2" />
+
+    {/* ===== PROGRESS FILL ===== */}
+    <motion.div
+      initial={{ width: "25%" }}
+      animate={{ width: "37.5%" }}
+      transition={{ duration: 2, ease: "easeOut" }}
+      className="absolute inset-y-0 left-0 rounded-full bg-[linear-gradient(90deg,#F4B400,#FFD84D,#FFF3A0,#FFD84D,#F4B400)] shadow-[0_0_20px_rgba(255,215,0,0.25)]"
+    >
+      {/* moving shine */}
+      <motion.div
+        animate={{ x: ["-100%", "200%"] }}
+        transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+        className="absolute inset-y-0 w-[30%] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.6),transparent)] blur-[6px]"
+      />
+    </motion.div>
+
+    {/* ===== GIFT MARKER ===== */}
+    <motion.div
+      initial={{ left: "calc(25% - 22px)" }}
+      animate={{ left: "calc(37.5% - 22px)" }}
+      transition={{ duration: 2, ease: "easeOut" }}
+      className="absolute top-1/2 -translate-y-1/2 z-10"
+    >
+      {/* glow */}
+      <motion.div
+        animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
+        transition={{ duration: 1.8, repeat: Infinity }}
+        className="absolute inset-[-6px] rounded-full bg-yellow-400/40 blur-md"
+      />
+
+      {/* main icon */}
+      <motion.div
+        animate={{ y: [0, -3, 0] }}
+        transition={{ duration: 1.6, repeat: Infinity }}
+        className="relative flex h-[44px] w-[44px] items-center justify-center rounded-full bg-gradient-to-b from-yellow-300 to-yellow-500 shadow-[0_6px_16px_rgba(0,0,0,0.3)] text-[18px]"
+      >
+        🎁
+      </motion.div>
+    </motion.div>
+
+  </div>
+</div>
 
           <div className="pointer-events-none absolute bottom-[135px] sm:bottom-[120px] md:bottom-[92px] lg:bottom-[98px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:px-6">
             <div className="grid grid-cols-3 gap-2 sm:gap-7 md:gap-9">
