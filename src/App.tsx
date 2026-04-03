@@ -795,60 +795,116 @@ export default function App() {
     }}
   />
 
-<div className="mb-6 grid grid-cols-4 gap-3 sm:gap-4 text-center">
-  {[
-    { title: "REGISTER", level: "LEVEL 1", active: true },
-    { title: "188 FS", level: "LEVEL 2" },
-    { title: "MORE REWARD", level: "LEVEL 3" },
-    { title: "AIRPODS PRO 3", level: "LEVEL 4" },
-  ].map((item, i) => (
-    <div key={i} className="min-w-0">
-      <div
-        className={`relative rounded-[22px] p-[2px] ${
-          item.active
-            ? "bg-[linear-gradient(135deg,#FFD76A,#F4B400,#FFD76A)]"
-            : "bg-[linear-gradient(135deg,rgba(255,255,255,0.18),rgba(255,255,255,0.06))]"
-        } shadow-[0_10px_30px_rgba(0,0,0,0.22)]`}
-      >
-        <div
-          className={`relative flex h-[86px] flex-col items-center justify-center rounded-[20px] px-2 sm:px-3 md:px-4 ${
-            item.active
-              ? "bg-[linear-gradient(180deg,#12348F_0%,#0A2168_100%)]"
-              : "bg-[linear-gradient(180deg,#102C7D_0%,#091D5C_100%)]"
-          }`}
-        >
-          <div className="pointer-events-none absolute inset-x-[10%] top-[2px] h-[26px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.14),transparent)] blur-[1px]" />
-
-          <p
-            className={`leading-none font-black uppercase ${
-              item.title === "AIRPODS PRO 3"
-                ? "text-[15px] sm:text-[16px] md:text-[18px]"
-                : "text-[16px] sm:text-[18px] md:text-[20px]"
-            } ${item.active ? "text-[#FFF4C8]" : "text-white"}`}
-            style={{
-              letterSpacing: "-0.03em",
-              textShadow: item.active
-                ? "0 1px 0 rgba(255,255,255,0.45), 0 8px 20px rgba(0,0,0,0.32), 0 0 10px rgba(255,215,106,0.16)"
-                : "0 1px 0 rgba(255,255,255,0.18), 0 8px 18px rgba(0,0,0,0.28)",
-            }}
+{/* Premium Progress Tracker - Full Fixed Version */}
+<div className="pointer-events-none absolute left-1/2 bottom-[215px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[220px] sm:px-6 md:bottom-[228px] lg:bottom-[238px]">
+  <div className="mx-auto max-w-5xl">
+    {/* Top stage boxes */}
+    <div className="mb-5 grid grid-cols-4 gap-2 sm:gap-3 md:gap-4">
+      {[
+        { title: "REGISTER", level: "LEVEL 1", active: true },
+        { title: "188 FS", level: "LEVEL 2", active: false },
+        { title: "MORE REWARD", level: "LEVEL 3", active: false },
+        { title: "AIRPODS PRO 3", level: "LEVEL 4", active: false },
+      ].map((item, i) => (
+        <div key={i} className="min-w-0">
+          <div
+            className={`relative rounded-[20px] p-[2px] ${
+              item.active
+                ? "bg-[linear-gradient(135deg,#FFD76A_0%,#F4B400_45%,#FFE8A3_100%)]"
+                : "bg-[linear-gradient(135deg,rgba(255,255,255,0.18),rgba(255,255,255,0.06))]"
+            } shadow-[0_12px_28px_rgba(0,0,0,0.22)]`}
           >
-            {item.title}
-          </p>
+            <div
+              className={`relative flex h-[78px] sm:h-[82px] md:h-[88px] flex-col items-center justify-center overflow-hidden rounded-[18px] px-2 sm:px-3 md:px-4 ${
+                item.active
+                  ? "bg-[linear-gradient(180deg,#12358F_0%,#0A2168_100%)]"
+                  : "bg-[linear-gradient(180deg,#102C7D_0%,#091D5C_100%)]"
+              }`}
+            >
+              <div className="pointer-events-none absolute inset-x-[8%] top-[3px] h-[26px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.14),transparent)] blur-[1px]" />
+              <div className="pointer-events-none absolute inset-[1px] rounded-[17px] border border-white/6" />
 
-          <p
-            className={`mt-2 text-[10px] sm:text-[11px] font-extrabold tracking-[0.22em] ${
-              item.active ? "text-[#FFD76A]" : "text-cyan-100/75"
-            }`}
-            style={{
-              textShadow: "0 4px 10px rgba(0,0,0,0.25)",
-            }}
-          >
-            {item.level}
-          </p>
+              <p
+                className={`relative z-10 text-center font-black uppercase leading-[0.95] ${
+                  item.title === "AIRPODS PRO 3"
+                    ? "text-[13px] sm:text-[15px] md:text-[17px] lg:text-[18px]"
+                    : item.title === "MORE REWARD"
+                    ? "text-[13px] sm:text-[15px] md:text-[17px] lg:text-[18px]"
+                    : "text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px]"
+                } ${item.active ? "text-[#FFF4C8]" : "text-white"}`}
+                style={{
+                  letterSpacing: "-0.03em",
+                  textShadow: item.active
+                    ? "0 1px 0 rgba(255,255,255,0.45), 0 8px 18px rgba(0,0,0,0.35), 0 0 12px rgba(255,215,106,0.18)"
+                    : "0 1px 0 rgba(255,255,255,0.18), 0 8px 18px rgba(0,0,0,0.28)",
+                }}
+              >
+                {item.title}
+              </p>
+
+              <p
+                className={`relative z-10 mt-2 text-center text-[9px] sm:text-[10px] md:text-[11px] font-extrabold tracking-[0.18em] sm:tracking-[0.22em] ${
+                  item.active ? "text-[#FFD76A]" : "text-cyan-100/75"
+                }`}
+                style={{
+                  textShadow: "0 4px 10px rgba(0,0,0,0.22)",
+                }}
+              >
+                {item.level}
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
+      ))}
     </div>
-  ))}
+
+    {/* Progress bar */}
+    <div className="relative h-[52px] sm:h-[56px] md:h-[60px] overflow-hidden rounded-full border border-white/10 bg-[linear-gradient(180deg,#0B236A_0%,#081C57_55%,#061446_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.10),inset_0_-10px_22px_rgba(0,0,0,0.28),0_18px_36px_rgba(0,0,0,0.22)]">
+      {/* gloss */}
+      <div className="absolute inset-x-0 top-0 h-1/2 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02),transparent)]" />
+
+      {/* segment lines */}
+      <div className="absolute inset-y-[8px] left-1/4 w-px bg-white/12" />
+      <div className="absolute inset-y-[8px] left-2/4 w-px -translate-x-1/2 bg-white/12" />
+      <div className="absolute inset-y-[8px] left-3/4 w-px -translate-x-1/2 bg-white/12" />
+
+      {/* filled progress */}
+      <motion.div
+        initial={{ width: "25%" }}
+        animate={{ width: "37.5%" }}
+        transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute inset-y-0 left-0 rounded-full bg-[linear-gradient(90deg,#FFE9A3_0%,#FFF3C7_20%,#FFD96E_55%,#F3BA24_100%)] shadow-[0_8px_20px_rgba(255,215,106,0.18),0_0_18px_rgba(255,215,106,0.10)]"
+      >
+        <div className="absolute inset-y-[6px] left-[10px] right-[10px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.22),rgba(255,255,255,0.04),transparent)]" />
+
+        <motion.div
+          animate={{ x: ["-120%", "220%"] }}
+          transition={{ duration: 3.2, repeat: Infinity, ease: "linear" }}
+          className="absolute inset-y-0 w-[28%] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.34),transparent)] blur-[7px]"
+        />
+      </motion.div>
+
+      {/* active progress head */}
+      <motion.div
+        initial={{ left: "calc(37.5% - 22px)" }}
+        animate={{ left: "calc(37.5% - 22px)" }}
+        transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute top-1/2 z-10 -translate-y-1/2"
+      >
+        <div className="relative flex h-[44px] w-[44px] sm:h-[46px] sm:w-[46px] md:h-[48px] md:w-[48px] items-center justify-center rounded-full border border-white/24 bg-[linear-gradient(180deg,#FFD84D_0%,#F3BB25_100%)] shadow-[0_8px_18px_rgba(0,0,0,0.26),0_0_0_6px_rgba(255,216,77,0.08)]">
+          <div className="absolute inset-[4px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.22),rgba(255,255,255,0.03))]" />
+          <span
+            className="relative z-10 text-[15px] sm:text-[16px] font-black text-white"
+            style={{
+              textShadow: "0 1px 0 rgba(255,255,255,0.22), 0 4px 10px rgba(0,0,0,0.28)",
+            }}
+          >
+            ✦
+          </span>
+        </div>
+      </motion.div>
+    </div>
+  </div>
 </div>
   {/* Trust cards */}
   <div className="pointer-events-none absolute bottom-[135px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[120px] sm:px-6 md:bottom-[92px] lg:bottom-[98px]">
