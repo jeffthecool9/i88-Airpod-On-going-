@@ -553,7 +553,6 @@ const RegistrationForm = () => {
         </motion.div>
       </div>
 
-      {/* Registration bottom seam stays dark */}
       <SectionSeam className="bottom-0" fillColor="#020f6a" shape="dip" />
     </section>
   );
@@ -636,8 +635,7 @@ const FloatingGirl = () => {
   };
 
   const shouldShowGirl = showFromSteps;
-  const shouldShowBubble =
-    showFromSteps && !hideBubbleAtRegistration && isUserActive;
+  const shouldShowBubble = showFromSteps && !hideBubbleAtRegistration && isUserActive;
 
   return (
     <motion.div
@@ -838,7 +836,7 @@ export default function App() {
       desc: "Start from $50 & Unlock more Rewards",
       image: depositImg,
     },
-    { title: "Rewards", desc: "Unlock up to 188 FS", image: playImg },
+    { title: "Unlock", desc: "Claim Your 188 FS", image: playImg },
   ];
 
   return (
@@ -1188,10 +1186,10 @@ export default function App() {
             {/* kept empty */}
           </div>
 
-          {/* Hero -> Steps seam uses Steps color */}
+          {/* Hero -> Steps: 2 replaced by 3, line 1 remains */}
           <SectionSeam
             className="bottom-[-1px]"
-            fillColor="#1B4694"
+            fillColor="#1E4FA3"
             shape="dip"
           />
         </section>
@@ -1200,6 +1198,7 @@ export default function App() {
           id="steps-to-claim"
           className="relative z-10 overflow-hidden bg-[linear-gradient(180deg,#1E4FA3_0%,#1E4FA3_55%,#1B4694_100%)] px-4 pb-32 pt-16 sm:px-6 sm:pb-40 sm:pt-24"
         >
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-[180px] bg-[linear-gradient(180deg,#1E4FA3_0%,#1B4694_100%)]" />
           <div className="pointer-events-none absolute left-0 top-0 h-full w-full">
             <div className="absolute left-1/4 top-1/4 h-72 w-72 rounded-full bg-white/5 blur-[100px] animate-pulse" />
             <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-cyan-400/5 blur-[100px] animate-pulse delay-1000" />
@@ -1246,7 +1245,7 @@ export default function App() {
             </div>
           </div>
 
-          {/* Steps -> Registration seam uses Registration color */}
+          {/* Steps -> Registration stays dark */}
           <SectionSeam
             className="bottom-[-1px]"
             fillColor="#020f6a"
