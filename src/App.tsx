@@ -254,25 +254,7 @@ const RegistrationForm = () => {
         alt="i88"
         className="pointer-events-none absolute left-1/2 top-0 z-[9] w-[90px] -translate-x-1/2 -translate-y-2 object-contain opacity-95 sm:w-[110px] sm:-translate-y-3 md:w-[125px] md:-translate-y-4"
       />
-<motion.img
-  src={cola1Img}
-  alt=""
-  aria-hidden="true"
-  className="pointer-events-none absolute left-[10%] top-[14%] z-[8] w-[220px] object-contain sm:left-[12%] sm:top-[15%] sm:w-[260px] md:left-[14%] md:top-[16%] md:w-[300px] lg:left-[15%] lg:top-[16%] lg:w-[340px]"
-  animate={{
-    y: [0, -10, 0],
-    rotate: [0, -1.5, 0],
-  }}
-  transition={{
-    duration: 4.5,
-    repeat: Infinity,
-    ease: "easeInOut",
-  }}
-  style={{
-    filter:
-      "drop-shadow(0 18px 30px rgba(0,0,0,0.28)) drop-shadow(0 10px 24px rgba(56,189,248,0.12))",
-  }}
-/>
+
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-[4%] top-[10%] h-[260px] w-[260px] rounded-full bg-cyan-300/12 blur-[120px]" />
         <div className="absolute right-[4%] top-[15%] h-[320px] w-[320px] rounded-full bg-blue-400/12 blur-[140px]" />
@@ -878,7 +860,25 @@ export default function App() {
             alt="i88"
             className="pointer-events-none absolute left-1/2 top-0 z-[9] w-[120px] -translate-x-1/2 -translate-y-2 object-contain sm:w-[140px] sm:-translate-y-3 md:w-[160px] md:-translate-y-4"
           />
-
+<motion.img
+  src={cola1Img}
+  alt=""
+  aria-hidden="true"
+  className="pointer-events-none absolute left-[9%] top-[12%] z-[8] w-[220px] object-contain sm:left-[10%] sm:top-[13%] sm:w-[250px] md:left-[11%] md:top-[14%] md:w-[290px] lg:left-[12%] lg:top-[14%] lg:w-[330px]"
+  animate={{
+    y: [0, -10, 0],
+    rotate: [0, -1.5, 0],
+  }}
+  transition={{
+    duration: 4.5,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+  style={{
+    filter:
+      "drop-shadow(0 18px 30px rgba(0,0,0,0.28)) drop-shadow(0 10px 24px rgba(56,189,248,0.12))",
+  }}
+/>
           <motion.img
             src={airpodImg}
             alt=""
