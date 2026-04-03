@@ -836,7 +836,7 @@ export default function App() {
       desc: "Start from $50 & Unlock more Rewards",
       image: depositImg,
     },
-    { title: "Unlock", desc: "Claim Your 188 FS", image: playImg },
+    { title: "Reward", desc: "Unlock up to 188 FS", image: playImg },
   ];
 
   return (
