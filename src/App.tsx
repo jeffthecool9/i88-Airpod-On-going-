@@ -864,10 +864,9 @@ export default function App() {
   src={cola1Img}
   alt=""
   aria-hidden="true"
-  className="pointer-events-none absolute left-[18%] top-[17%] z-[8] w-[220px] object-contain sm:left-[20%] sm:top-[18%] sm:w-[280px] md:left-[22%] md:top-[19%] md:w-[340px] lg:left-[24%] lg:top-[20%] lg:w-[420px]"
+  className="pointer-events-none absolute left-[20%] top-[22%] z-[8] w-[500px] object-contain sm:left-[22%] sm:top-[23%] sm:w-[600px] md:left-[24%] md:top-[24%] md:w-[700px] lg:left-[26%] lg:top-[25%] lg:w-[800px]"
   animate={{
     y: [0, -10, 0],
-    rotate: [0, -1.2, 0],
   }}
   transition={{
     duration: 4.5,
@@ -876,8 +875,7 @@ export default function App() {
   }}
   style={{
     filter:
-      "drop-shadow(0 18px 30px rgba(0,0,0,0.28)) drop-shadow(0 10px 24px rgba(56,189,248,0.12))",
-    transformOrigin: "center bottom",
+      "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
   }}
 />
           <motion.img
