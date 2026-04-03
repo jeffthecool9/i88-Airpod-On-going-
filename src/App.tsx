@@ -860,19 +860,11 @@ export default function App() {
             alt="i88"
             className="pointer-events-none absolute left-1/2 top-0 z-[9] w-[120px] -translate-x-1/2 -translate-y-2 object-contain sm:w-[140px] sm:-translate-y-3 md:w-[160px] md:-translate-y-4"
           />
-<motion.img
+<img
   src={cola1Img}
   alt=""
   aria-hidden="true"
-  className="pointer-events-none absolute left-[8%] top-[26%] z-[8] w-[500px] object-contain sm:left-[10%] sm:top-[26%] sm:w-[600px] md:left-[12%] md:top-[27%] md:w-[700px] lg:left-[14%] lg:top-[28%] lg:w-[800px]"
-  animate={{
-    y: [0, -10, 0],
-  }}
-  transition={{
-    duration: 4.5,
-    repeat: Infinity,
-    ease: "easeInOut",
-  }}
+  className="pointer-events-none absolute left-[-6%] top-[28%] z-[8] w-[500px] object-contain sm:left-[-4%] sm:top-[28%] sm:w-[600px] md:left-[-2%] md:top-[29%] md:w-[700px] lg:left-[0%] lg:top-[30%] lg:w-[800px]"
   style={{
     filter:
       "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
