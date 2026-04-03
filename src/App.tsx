@@ -795,66 +795,114 @@ export default function App() {
     }}
   />
 
- {/* Premium Progress Tracker */}
-<div className="pointer-events-none absolute bottom-[238px] left-1/2 z-[9] w-full max-w-5xl -translate-x-1/2 px-4 sm:bottom-[245px] sm:px-6 md:bottom-[250px] lg:bottom-[258px]">
-  <div className="mb-5 grid grid-cols-4 text-center">
+{/* Hero Progress Tracker - Redesigned */}
+<div className="pointer-events-none absolute bottom-[228px] left-1/2 z-[9] w-full max-w-5xl -translate-x-1/2 px-4 sm:bottom-[236px] sm:px-6 md:bottom-[242px] lg:bottom-[250px]">
+  {/* Labels */}
+  <div className="mb-5 grid grid-cols-4 gap-3 text-center">
     {[
-      { title: "Register", level: "LEVEL 1" },
+      { title: "Register", level: "LEVEL 1", active: true },
       { title: "188 FS", level: "LEVEL 2" },
       { title: "More Reward", level: "LEVEL 3" },
       { title: "AirPods Pro 3", level: "LEVEL 4" },
     ].map((item, i) => (
-      <div key={i} className="flex flex-col items-center gap-1">
-        <span className="text-[11px] font-semibold tracking-[-0.02em] text-white/95 sm:text-[13px] md:text-[15px]">
-          {item.title}
-        </span>
-        <span className="text-[8px] font-bold tracking-[0.22em] text-cyan-200/70 sm:text-[9px] md:text-[10px]">
-          {item.level}
-        </span>
+      <div key={i} className="relative flex flex-col items-center">
+        <div
+          className={`relative w-full rounded-[18px] px-2 py-3 sm:px-3 sm:py-3.5 ${
+            item.active
+              ? "bg-[linear-gradient(180deg,rgba(255,215,106,0.16),rgba(255,215,106,0.06))] shadow-[0_10px_30px_rgba(255,215,106,0.10)]"
+              : "bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))]"
+          }`}
+        >
+          <div
+            className={`absolute inset-0 rounded-[18px] ${
+              item.active ? "border border-[#FFD76A]/30" : "border border-white/8"
+            }`}
+          />
+          <div className="relative z-10">
+            <p
+              className={`text-[15px] font-black uppercase leading-none sm:text-[18px] md:text-[20px] lg:text-[22px] ${
+                item.active ? "text-[#FFF6D6]" : "text-white"
+              }`}
+              style={{
+                letterSpacing: "-0.02em",
+                textShadow: item.active
+                  ? `
+                    0 1px 0 rgba(255,255,255,0.45),
+                    0 2px 0 rgba(255,215,106,0.18),
+                    0 8px 20px rgba(0,0,0,0.32),
+                    0 0 10px rgba(255,215,106,0.18)
+                  `
+                  : `
+                    0 1px 0 rgba(255,255,255,0.18),
+                    0 6px 14px rgba(0,0,0,0.26)
+                  `,
+              }}
+            >
+              {item.title}
+            </p>
+
+            <p
+              className={`mt-2 text-[10px] font-extrabold sm:text-[11px] md:text-[12px] ${
+                item.active ? "text-[#FFD76A]" : "text-cyan-100/75"
+              }`}
+              style={{
+                letterSpacing: "0.22em",
+                textShadow:
+                  "0 1px 0 rgba(255,255,255,0.10), 0 4px 10px rgba(0,0,0,0.25)",
+              }}
+            >
+              {item.level}
+            </p>
+          </div>
+        </div>
       </div>
     ))}
   </div>
 
-  <div className="relative h-[50px] overflow-hidden rounded-full border border-white/10 bg-[linear-gradient(180deg,rgba(8,24,84,0.96)_0%,rgba(7,20,72,0.98)_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),inset_0_-8px_20px_rgba(0,0,0,0.28),0_18px_40px_rgba(0,0,0,0.18)] backdrop-blur-xl sm:h-[56px]">
-    
-    {/* soft top gloss */}
+  {/* Bar */}
+  <div className="relative h-[60px] overflow-hidden rounded-full border border-white/10 bg-[linear-gradient(180deg,#0C236D_0%,#081B59_55%,#061445_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.10),inset_0_-10px_24px_rgba(0,0,0,0.30),0_18px_40px_rgba(0,0,0,0.22)] sm:h-[66px]">
+    {/* top gloss */}
     <div className="absolute inset-x-0 top-0 h-1/2 bg-[linear-gradient(180deg,rgba(255,255,255,0.10),rgba(255,255,255,0.02),transparent)]" />
 
-    {/* segment dividers */}
-    <div className="absolute inset-y-[8px] left-1/4 w-px bg-white/10" />
-    <div className="absolute inset-y-[8px] left-2/4 w-px -translate-x-1/2 bg-white/10" />
-    <div className="absolute inset-y-[8px] left-3/4 w-px -translate-x-1/2 bg-white/10" />
+    {/* stage dividers */}
+    <div className="absolute inset-y-[10px] left-1/4 w-px bg-white/12" />
+    <div className="absolute inset-y-[10px] left-2/4 w-px -translate-x-1/2 bg-white/12" />
+    <div className="absolute inset-y-[10px] left-3/4 w-px -translate-x-1/2 bg-white/12" />
 
     {/* filled progress */}
     <motion.div
       initial={{ width: "25%" }}
       animate={{ width: "37.5%" }}
       transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
-      className="absolute inset-y-0 left-0 rounded-full bg-[linear-gradient(90deg,#F8E27A_0%,#FFF1B8_35%,#FFE173_60%,#F7C948_100%)] shadow-[0_0_18px_rgba(255,224,138,0.14)]"
+      className="absolute inset-y-0 left-0 rounded-full bg-[linear-gradient(90deg,#FFE89B_0%,#FFF3C3_22%,#FFD96B_52%,#F4BE2C_100%)] shadow-[0_8px_24px_rgba(255,215,106,0.18),0_0_22px_rgba(255,215,106,0.10)]"
     >
-      <div className="absolute inset-y-[6px] left-[10px] right-[10px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.25),rgba(255,255,255,0.04),transparent)]" />
+      <div className="absolute inset-y-[7px] left-[10px] right-[10px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.24),rgba(255,255,255,0.06),transparent)]" />
 
       <motion.div
         animate={{ x: ["-120%", "220%"] }}
-        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-        className="absolute inset-y-0 w-[26%] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.35),transparent)] blur-[6px]"
+        transition={{ duration: 3.2, repeat: Infinity, ease: "linear" }}
+        className="absolute inset-y-0 w-[28%] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.35),transparent)] blur-[7px]"
       />
     </motion.div>
 
-    {/* moving premium token */}
+    {/* active stage head */}
     <motion.div
-      initial={{ left: "calc(37.5% - 18px)" }}
-      animate={{ left: "calc(37.5% - 18px)" }}
+      initial={{ left: "calc(37.5% - 24px)" }}
+      animate={{ left: "calc(37.5% - 24px)" }}
       transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
       className="absolute top-1/2 z-10 -translate-y-1/2"
     >
-      <motion.div
-        animate={{ scale: [1, 1.06, 1] }}
-        transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-        className="relative flex h-9 w-9 items-center justify-center rounded-full border border-white/25 bg-[linear-gradient(180deg,#FFD84D_0%,#F3B90B_100%)] text-[14px] shadow-[0_10px_20px_rgba(0,0,0,0.24),0_0_0_4px_rgba(255,216,77,0.08)] sm:h-10 sm:w-10"
-      >
-        <span className="drop-shadow-[0_1px_2px_rgba(0,0,0,0.25)]">✦</span>
-      </motion.div>
+      <div className="relative flex h-[48px] w-[48px] items-center justify-center rounded-full border border-white/25 bg-[linear-gradient(180deg,#FFD84D_0%,#F4BE2C_100%)] shadow-[0_8px_18px_rgba(0,0,0,0.28),0_0_0_6px_rgba(255,216,77,0.08)] sm:h-[52px] sm:w-[52px]">
+        <div className="absolute inset-[5px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.24),rgba(255,255,255,0.02))]" />
+        <span
+          className="relative z-10 text-[16px] font-black text-white sm:text-[18px]"
+          style={{
+            textShadow: "0 1px 0 rgba(255,255,255,0.25), 0 4px 10px rgba(0,0,0,0.28)",
+          }}
+        >
+          ✦
+        </span>
+      </div>
     </motion.div>
   </div>
 </div>
