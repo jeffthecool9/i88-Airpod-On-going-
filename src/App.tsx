@@ -1056,7 +1056,12 @@ export default function App() {
                 </motion.div>
 
                 <motion.div
-                  animate={{ left: `calc(${progressLevel * 25}% - 24px)` }}
+                  animate={{
+  left:
+    progressLevel === 4
+      ? "calc(100% - 64px)"
+      : `calc(${progressLevel * 25}% - 24px)`,
+}}
                   transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
                   className="absolute top-1/2 z-10 -translate-y-1/2"
                 >
