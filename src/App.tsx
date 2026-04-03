@@ -1030,75 +1030,78 @@ export default function App() {
                 })}
               </div>
 
-              <div className="relative h-[56px] sm:h-[60px] md:h-[64px] overflow-hidden rounded-full border border-white/10 bg-[linear-gradient(180deg,#0A225E_0%,#061948_55%,#041232_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.10),inset_0_-12px_24px_rgba(0,0,0,0.30),0_22px_42px_rgba(0,0,0,0.24)]">
-                <div className="absolute inset-x-0 top-0 h-1/2 bg-[linear-gradient(180deg,rgba(255,255,255,0.10),rgba(255,255,255,0.02),transparent)]" />
+            {/* Progress bar */}
+<div className="relative h-[56px] sm:h-[60px] md:h-[64px] overflow-hidden rounded-full border border-white/10 bg-[linear-gradient(180deg,#0A225E_0%,#061948_55%,#041232_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.10),inset_0_-12px_24px_rgba(0,0,0,0.30),0_22px_42px_rgba(0,0,0,0.24)]">
+  {/* top gloss */}
+  <div className="absolute inset-x-0 top-0 h-1/2 bg-[linear-gradient(180deg,rgba(255,255,255,0.10),rgba(255,255,255,0.02),transparent)]" />
 
-                <div className="absolute inset-y-[10px] left-1/4 w-[2px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.20),rgba(255,255,255,0.06))]" />
-                <div className="absolute inset-y-[10px] left-2/4 w-[2px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.20),rgba(255,255,255,0.06))]" />
-                <div className="absolute inset-y-[10px] left-3/4 w-[2px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.20),rgba(255,255,255,0.06))]" />
+  {/* base stage indicator lines */}
+  <div className="absolute inset-y-[10px] left-1/4 w-[2px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.20),rgba(255,255,255,0.06))]" />
+  <div className="absolute inset-y-[10px] left-2/4 w-[2px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.20),rgba(255,255,255,0.06))]" />
+  <div className="absolute inset-y-[10px] left-3/4 w-[2px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.20),rgba(255,255,255,0.06))]" />
 
-                <motion.div
-                  animate={{ width: `${progressLevel * 25}%` }}
-                  transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute inset-y-0 left-0 rounded-full bg-[linear-gradient(90deg,#FFF0B8_0%,#FFF8DE_20%,#FFD86A_52%,#F3BA24_100%)] shadow-[0_10px_24px_rgba(255,215,106,0.20),0_0_28px_rgba(255,215,106,0.12)]"
-                >
-                  <div className="absolute inset-y-[7px] left-[10px] right-[10px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.24),rgba(255,255,255,0.05),transparent)]" />
+  {/* filled progress */}
+  <motion.div
+    animate={{ width: `${progressLevel * 25}%` }}
+    transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+    className="absolute inset-y-0 left-0 rounded-full bg-[linear-gradient(90deg,#FFF0B8_0%,#FFF8DE_20%,#FFD86A_52%,#F3BA24_100%)] shadow-[0_10px_24px_rgba(255,215,106,0.20),0_0_28px_rgba(255,215,106,0.12)] overflow-hidden"
+  >
+    <div className="absolute inset-y-[7px] left-[10px] right-[10px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.24),rgba(255,255,255,0.05),transparent)]" />
 
-                  <motion.div
-                    animate={{ x: ["-120%", "220%"] }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
-                    className="absolute inset-y-0 w-[28%] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.42),transparent)] blur-[7px]"
-                  />
-                </motion.div>
+    {/* filled stage indicator lines */}
+    <div className="absolute inset-y-[10px] left-1/4 w-[2px] rounded-full bg-[linear-gradient(180deg,rgba(173,110,0,0.26),rgba(255,255,255,0.18),rgba(173,110,0,0.22))]" />
+    <div className="absolute inset-y-[10px] left-2/4 w-[2px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,rgba(173,110,0,0.26),rgba(255,255,255,0.18),rgba(173,110,0,0.22))]" />
+    <div className="absolute inset-y-[10px] left-3/4 w-[2px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,rgba(173,110,0,0.26),rgba(255,255,255,0.18),rgba(173,110,0,0.22))]" />
 
-                <motion.div
-                  animate={{
-  left:
-    progressLevel === 4
-      ? "calc(100% - 64px)"
-      : `calc(${progressLevel * 25}% - 24px)`,
-}}
-                  transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute top-1/2 z-10 -translate-y-1/2"
-                >
-                  <motion.div
-                    animate={{
-                      scale:
-                        progressLevel === 4 ? [1, 1.1, 1] : [1, 1.03, 1],
-                    }}
-                    transition={{
-                      duration: progressLevel === 4 ? 1.2 : 2,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className="relative flex h-[50px] w-[50px] sm:h-[54px] sm:w-[54px] md:h-[58px] md:w-[58px] items-center justify-center rounded-full"
-                  >
-                    <div className="absolute inset-[-8px] rounded-full bg-yellow-300/20 blur-lg" />
-                    <div className="absolute inset-[-2px] rounded-full border border-[#FFE6A3]/45" />
+    <motion.div
+      animate={{ x: ["-120%", "220%"] }}
+      transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+      className="absolute inset-y-0 w-[28%] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.42),transparent)] blur-[7px]"
+    />
+  </motion.div>
 
-                    <div className="relative flex h-full w-full items-center justify-center rounded-full border border-white/26 bg-[linear-gradient(180deg,#FFE27B_0%,#F3BA24_100%)] shadow-[0_12px_24px_rgba(0,0,0,0.30),0_0_0_6px_rgba(255,216,77,0.12)]">
-                      <div className="absolute inset-[4px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.30),rgba(255,255,255,0.04))]" />
-                      <div className="absolute inset-x-[18%] top-[5px] h-[32%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.42),transparent)] blur-[1px]" />
+  {/* enhanced head */}
+  <motion.div
+    animate={{
+      left:
+        progressLevel === 4
+          ? "calc(100% - 64px)"
+          : `calc(${progressLevel * 25}% - 24px)`,
+    }}
+    transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+    className="absolute top-1/2 z-10 -translate-y-1/2"
+  >
+    <motion.div
+      animate={{
+        scale: progressLevel === 4 ? [1, 1.1, 1] : [1, 1.03, 1],
+      }}
+      transition={{
+        duration: progressLevel === 4 ? 1.2 : 2,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+      className="relative flex h-[50px] w-[50px] sm:h-[54px] sm:w-[54px] md:h-[58px] md:w-[58px] items-center justify-center rounded-full"
+    >
+      <div className="absolute inset-[-8px] rounded-full bg-yellow-300/20 blur-lg" />
+      <div className="absolute inset-[-2px] rounded-full border border-[#FFE6A3]/45" />
 
-                      <span
-                        className="relative z-10 text-[16px] sm:text-[18px] font-black text-white"
-                        style={{
-                          textShadow:
-                            "0 1px 0 rgba(255,255,255,0.22), 0 4px 10px rgba(0,0,0,0.28)",
-                        }}
-                      >
-                        ✦
-                      </span>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              </div>
-            </div>
-          </div>
+      <div className="relative flex h-full w-full items-center justify-center rounded-full border border-white/26 bg-[linear-gradient(180deg,#FFE27B_0%,#F3BA24_100%)] shadow-[0_12px_24px_rgba(0,0,0,0.30),0_0_0_6px_rgba(255,216,77,0.12)]">
+        <div className="absolute inset-[4px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.30),rgba(255,255,255,0.04))]" />
+        <div className="absolute inset-x-[18%] top-[5px] h-[32%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.42),transparent)] blur-[1px]" />
+
+        <span
+          className="relative z-10 text-[16px] sm:text-[18px] font-black text-white"
+          style={{
+            textShadow:
+              "0 1px 0 rgba(255,255,255,0.22), 0 4px 10px rgba(0,0,0,0.28)",
+          }}
+        >
+          ✦
+        </span>
+      </div>
+    </motion.div>
+  </motion.div>
+</div>
 
           {/* Trust cards */}
           <div className="pointer-events-none absolute bottom-[118px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[108px] sm:px-6 md:bottom-[88px] lg:bottom-[92px]">
