@@ -109,18 +109,31 @@ const GoldConfetti = () => {
             rotate: 0,
             scale: piece.scale,
           }}
-          animate={{
-            y: ["0vh", "28vh", "62vh", "108vh"],
-            x: [0, piece.drift * 0.4, piece.drift, piece.drift * 0.2],
-            rotate: [0, piece.rotateEnd * 0.45, piece.rotateEnd],
-            opacity: [0, piece.opacity, piece.opacity, 0],
-          }}
-          transition={{
-            duration: piece.duration,
-            delay: piece.delay,
-            repeat: Infinity,
-            ease: "linear",
-          }}
+          animate={
+  isFinalFloating
+    ? {
+        y: [0, -10, 0],
+        scale: [1, 1.09, 1],
+        rotate: [0, -1, 0, 1, 0],
+      }
+    : {
+        y: 0,
+        scale: 1,
+        rotate: 0,
+      }
+}
+transition={
+  isFinalFloating
+    ? {
+        duration: 2.2,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }
+    : {
+        duration: 0.35,
+        ease: "easeOut",
+      }
+}
         />
       ))}
     </div>
@@ -805,11 +818,11 @@ useEffect(() => {
     }}
   />
 
-{/* Premium Progress Tracker - Animated Level Up */}
+{/* Luxury Progress Tracker - Version B */}
 <div className="pointer-events-none absolute left-1/2 bottom-[255px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[270px] sm:px-6 md:bottom-[285px] lg:bottom-[300px]">
   <div className="mx-auto max-w-5xl">
     {/* Top stage boxes */}
-    <div className="mb-5 grid grid-cols-4 gap-2 sm:gap-3 md:gap-4">
+    <div className="mb-6 grid grid-cols-4 gap-3 sm:gap-4">
       {[
         { title: "REGISTER", level: "LEVEL 1" },
         { title: "188 FS", level: "LEVEL 2" },
@@ -823,22 +836,24 @@ useEffect(() => {
         return (
           <motion.div
             key={i}
-            className="min-w-0"
+            className={`min-w-0 ${isFinalFloating ? "z-20" : ""}`}
             animate={
               isFinalFloating
                 ? {
-                    y: [0, -6, 0],
-                    scale: [1, 1.035, 1],
+                    y: [0, -12, 0],
+                    scale: [1, 1.12, 1],
+                    rotate: [0, -1.2, 0, 1.2, 0],
                   }
                 : {
                     y: 0,
                     scale: 1,
+                    rotate: 0,
                   }
             }
             transition={
               isFinalFloating
                 ? {
-                    duration: 2.8,
+                    duration: 2,
                     repeat: Infinity,
                     ease: "easeInOut",
                   }
@@ -849,39 +864,55 @@ useEffect(() => {
             }
           >
             <div
-              className={`relative rounded-[20px] p-[2px] ${
+              className={`relative rounded-[22px] p-[2px] ${
                 isActive
-                  ? "bg-[linear-gradient(135deg,#FFD76A_0%,#F4B400_45%,#FFE8A3_100%)]"
+                  ? "bg-[linear-gradient(135deg,#FFE8A3_0%,#F7C948_25%,#C88A14_60%,#FFE08A_100%)]"
                   : "bg-[linear-gradient(135deg,rgba(255,255,255,0.18),rgba(255,255,255,0.06))]"
-              } shadow-[0_12px_28px_rgba(0,0,0,0.22)]`}
+              } shadow-[0_14px_32px_rgba(0,0,0,0.28)]`}
             >
               <div
-                className={`relative flex h-[78px] sm:h-[82px] md:h-[88px] flex-col items-center justify-center overflow-hidden rounded-[18px] px-2 sm:px-3 md:px-4 ${
+                className={`relative flex h-[82px] sm:h-[86px] md:h-[92px] flex-col items-center justify-center overflow-hidden rounded-[20px] px-2 sm:px-3 md:px-4 ${
                   isActive
-                    ? "bg-[linear-gradient(180deg,#12358F_0%,#0A2168_100%)]"
-                    : "bg-[linear-gradient(180deg,#102C7D_0%,#091D5C_100%)]"
+                    ? "bg-[linear-gradient(180deg,#173E9D_0%,#0B256E_52%,#071B54_100%)]"
+                    : "bg-[linear-gradient(180deg,#12307F_0%,#0A215F_52%,#071948_100%)]"
                 }`}
               >
-                <div className="pointer-events-none absolute inset-x-[8%] top-[3px] h-[26px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.14),transparent)] blur-[1px]" />
-                <div className="pointer-events-none absolute inset-[1px] rounded-[17px] border border-white/6" />
+                <div className="pointer-events-none absolute inset-x-[8%] top-[3px] h-[28px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),transparent)] blur-[1px]" />
+                <div className="pointer-events-none absolute inset-[1px] rounded-[19px] border border-white/8" />
+                <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-[36%] bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.14))]" />
 
                 {isFinalFloating && (
                   <>
                     <motion.div
-                      className="absolute inset-0 rounded-[18px]"
-                      animate={{ opacity: [0.15, 0.35, 0.15] }}
-                      transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+                      className="absolute inset-0 rounded-[20px]"
+                      animate={{ opacity: [0.2, 0.5, 0.2] }}
+                      transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
                       style={{
                         boxShadow:
-                          "0 0 28px rgba(255,215,106,0.32), inset 0 0 24px rgba(255,215,106,0.12)",
+                          "0 0 36px rgba(255,215,106,0.45), inset 0 0 30px rgba(255,215,106,0.18)",
                       }}
                     />
                     <motion.div
-                      className="absolute -inset-[2px] rounded-[20px]"
-                      animate={{ opacity: [0.15, 0.4, 0.15] }}
-                      transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+                      className="absolute -inset-[3px] rounded-[23px]"
+                      animate={{
+                        opacity: [0.2, 0.6, 0.2],
+                        scale: [1, 1.04, 1],
+                      }}
+                      transition={{ duration: 1.7, repeat: Infinity, ease: "easeInOut" }}
                       style={{
-                        boxShadow: "0 0 34px rgba(255,215,106,0.24)",
+                        boxShadow:
+                          "0 0 44px rgba(255,215,106,0.40), 0 0 74px rgba(255,215,106,0.18)",
+                      }}
+                    />
+                    <motion.div
+                      className="absolute -inset-[10px] rounded-[28px]"
+                      animate={{
+                        opacity: [0.08, 0.24, 0.08],
+                        scale: [0.98, 1.1, 0.98],
+                      }}
+                      transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+                      style={{
+                        boxShadow: "0 0 66px rgba(255,215,106,0.26)",
                       }}
                     />
                   </>
@@ -897,9 +928,12 @@ useEffect(() => {
                   } ${isActive ? "text-[#FFF4C8]" : "text-white"}`}
                   style={{
                     letterSpacing: "-0.03em",
+                    WebkitTextStroke: isActive
+                      ? "0.35px rgba(255,235,180,0.18)"
+                      : "0.2px rgba(255,255,255,0.08)",
                     textShadow: isActive
-                      ? "0 1px 0 rgba(255,255,255,0.45), 0 8px 18px rgba(0,0,0,0.35), 0 0 12px rgba(255,215,106,0.18)"
-                      : "0 1px 0 rgba(255,255,255,0.18), 0 8px 18px rgba(0,0,0,0.28)",
+                      ? "0 1px 0 rgba(255,255,255,0.48), 0 2px 0 rgba(255,215,106,0.14), 0 8px 20px rgba(0,0,0,0.38), 0 0 12px rgba(255,215,106,0.16)"
+                      : "0 1px 0 rgba(255,255,255,0.16), 0 8px 18px rgba(0,0,0,0.28)",
                   }}
                 >
                   {item.title}
@@ -923,48 +957,68 @@ useEffect(() => {
     </div>
 
     {/* Progress bar */}
-    <div className="relative h-[52px] sm:h-[56px] md:h-[60px] overflow-hidden rounded-full border border-white/10 bg-[linear-gradient(180deg,#0B236A_0%,#081C57_55%,#061446_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.10),inset_0_-10px_22px_rgba(0,0,0,0.28),0_18px_36px_rgba(0,0,0,0.22)]">
-      <div className="absolute inset-x-0 top-0 h-1/2 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02),transparent)]" />
+    <div className="relative h-[56px] sm:h-[60px] md:h-[64px] overflow-hidden rounded-full border border-white/10 bg-[linear-gradient(180deg,#0A225E_0%,#061948_55%,#041232_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.10),inset_0_-12px_24px_rgba(0,0,0,0.30),0_22px_42px_rgba(0,0,0,0.24)]">
+      {/* top gloss */}
+      <div className="absolute inset-x-0 top-0 h-1/2 bg-[linear-gradient(180deg,rgba(255,255,255,0.10),rgba(255,255,255,0.02),transparent)]" />
 
-      <div className="absolute inset-y-[8px] left-1/4 w-px bg-white/12" />
-      <div className="absolute inset-y-[8px] left-2/4 w-px -translate-x-1/2 bg-white/12" />
-      <div className="absolute inset-y-[8px] left-3/4 w-px -translate-x-1/2 bg-white/12" />
+      {/* stage indicator lines */}
+      <div className="absolute inset-y-[10px] left-1/4 w-[2px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.20),rgba(255,255,255,0.06))]" />
+      <div className="absolute inset-y-[10px] left-2/4 w-[2px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.20),rgba(255,255,255,0.06))]" />
+      <div className="absolute inset-y-[10px] left-3/4 w-[2px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.20),rgba(255,255,255,0.06))]" />
 
+      {/* filled progress */}
       <motion.div
         animate={{ width: `${progressLevel * 25}%` }}
         transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute inset-y-0 left-0 rounded-full bg-[linear-gradient(90deg,#FFE9A3_0%,#FFF3C7_20%,#FFD96E_55%,#F3BA24_100%)] shadow-[0_8px_20px_rgba(255,215,106,0.18),0_0_18px_rgba(255,215,106,0.10)]"
+        className="absolute inset-y-0 left-0 rounded-full bg-[linear-gradient(90deg,#FFF0B8_0%,#FFF8DE_20%,#FFD86A_52%,#F3BA24_100%)] shadow-[0_10px_24px_rgba(255,215,106,0.20),0_0_28px_rgba(255,215,106,0.12)]"
       >
-        <div className="absolute inset-y-[6px] left-[10px] right-[10px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.22),rgba(255,255,255,0.04),transparent)]" />
+        <div className="absolute inset-y-[7px] left-[10px] right-[10px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.24),rgba(255,255,255,0.05),transparent)]" />
 
         <motion.div
           animate={{ x: ["-120%", "220%"] }}
-          transition={{ duration: 3.2, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-y-0 w-[28%] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.34),transparent)] blur-[7px]"
+          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+          className="absolute inset-y-0 w-[28%] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.42),transparent)] blur-[7px]"
         />
       </motion.div>
 
+      {/* enhanced head */}
       <motion.div
-        animate={{ left: `calc(${progressLevel * 25}% - 22px)` }}
+        animate={{ left: `calc(${progressLevel * 25}% - 24px)` }}
         transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
         className="absolute top-1/2 z-10 -translate-y-1/2"
       >
-        <div className="relative flex h-[44px] w-[44px] sm:h-[46px] sm:w-[46px] md:h-[48px] md:w-[48px] items-center justify-center rounded-full border border-white/24 bg-[linear-gradient(180deg,#FFD84D_0%,#F3BB25_100%)] shadow-[0_8px_18px_rgba(0,0,0,0.26),0_0_0_6px_rgba(255,216,77,0.08)]">
-          <div className="absolute inset-[4px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.22),rgba(255,255,255,0.03))]" />
-          <span
-            className="relative z-10 text-[15px] sm:text-[16px] font-black text-white"
-            style={{
-              textShadow: "0 1px 0 rgba(255,255,255,0.22), 0 4px 10px rgba(0,0,0,0.28)",
-            }}
-          >
-            ✦
-          </span>
-        </div>
+        <motion.div
+          animate={{
+            scale: progressLevel === 4 ? [1, 1.1, 1] : [1, 1.03, 1],
+          }}
+          transition={{
+            duration: progressLevel === 4 ? 1.2 : 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="relative flex h-[50px] w-[50px] sm:h-[54px] sm:w-[54px] md:h-[58px] md:w-[58px] items-center justify-center rounded-full"
+        >
+          <div className="absolute inset-[-8px] rounded-full bg-yellow-300/20 blur-lg" />
+          <div className="absolute inset-[-2px] rounded-full border border-[#FFE6A3]/45" />
+
+          <div className="relative flex h-full w-full items-center justify-center rounded-full border border-white/26 bg-[linear-gradient(180deg,#FFE27B_0%,#F3BA24_100%)] shadow-[0_12px_24px_rgba(0,0,0,0.30),0_0_0_6px_rgba(255,216,77,0.12)]">
+            <div className="absolute inset-[4px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.30),rgba(255,255,255,0.04))]" />
+            <div className="absolute inset-x-[18%] top-[5px] h-[32%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.42),transparent)] blur-[1px]" />
+
+            <span
+              className="relative z-10 text-[16px] sm:text-[18px] font-black text-white"
+              style={{
+                textShadow: "0 1px 0 rgba(255,255,255,0.22), 0 4px 10px rgba(0,0,0,0.28)",
+              }}
+            >
+              ✦
+            </span>
+          </div>
+        </motion.div>
       </motion.div>
     </div>
   </div>
-</div>
-  {/* Trust cards */}
+</div>  {/* Trust cards */}
  <div className="pointer-events-none absolute bottom-[118px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[108px] sm:px-6 md:bottom-[88px] lg:bottom-[92px]">
     <div className="grid grid-cols-3 gap-2 sm:gap-7 md:gap-9">
       <motion.div
