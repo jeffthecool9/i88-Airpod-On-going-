@@ -822,13 +822,24 @@ export default function App() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setProgressLevel((prev) => (prev < 4 ? prev + 1 : 4));
-    }, 2000);
+ useEffect(() => {
+  setProgressLevel(1);
 
-    return () => clearInterval(interval);
-  }, []);
+  const steps = [1, 2, 3, 4];
+  let index = 0;
+
+  const interval = setInterval(() => {
+    index += 1;
+
+    if (index < steps.length) {
+      setProgressLevel(steps[index]);
+    } else {
+      clearInterval(interval);
+    }
+  }, 1600);
+
+  return () => clearInterval(interval);
+}, []);
 
   const stepData = [
     { title: "Register", desc: "Create account", image: registerImg },
