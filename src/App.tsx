@@ -874,7 +874,7 @@ export default function App() {
   src={airpodImg}
   alt=""
   aria-hidden="true"
-  className="pointer-events-none absolute right-[10%] top-[18%] z-[9] w-[170px] object-contain sm:right-[11%] sm:top-[18%] sm:w-[210px] md:right-[12%] md:top-[19%] md:w-[250px] lg:right-[13%] lg:top-[19%] lg:w-[290px]"
+  className="pointer-events-none absolute right-[10%] top-[16%] z-[9] w-[170px] object-contain sm:right-[11%] sm:top-[18%] sm:w-[210px] md:right-[12%] md:top-[19%] md:w-[250px] lg:right-[13%] lg:top-[19%] lg:w-[290px]"
   animate={{
     y: [0, -12, 0],
     rotate: [0, -2, 0],
