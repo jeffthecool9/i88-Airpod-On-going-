@@ -1194,12 +1194,29 @@ export default function App() {
           />
         </section>
 
-        <section
+       <section
   id="steps-to-claim"
-  className="relative z-10 overflow-hidden bg-[linear-gradient(180deg,#1E4FA3_0%,#1E4FA3_55%,#1B4694_100%)] px-4 pb-32 pt-16 sm:px-6 sm:pb-40 sm:pt-24"
+  className="relative z-10 overflow-hidden px-4 pb-32 pt-16 sm:px-6 sm:pb-40 sm:pt-24"
+  style={{
+    background:
+      "linear-gradient(180deg, #1E4FA3 0%, #1E4FA3 48%, #144FB9 78%, #144FB9 100%)",
+  }}
 >
-  <div className="pointer-events-none absolute inset-x-0 top-0 h-[180px] bg-[linear-gradient(180deg,#1E4FA3_0%,#1B4694_100%)]" />
-  <div className="pointer-events-none absolute left-0 top-0 h-full w-full">
+  {/* TOP overlay inside Steps only */}
+  <div
+    className="pointer-events-none absolute inset-x-0 top-0 h-[180px]"
+    style={{
+      background: "linear-gradient(180deg, #1E4FA3 0%, #144FB9 100%)",
+    }}
+  />
+
+  {/* HARD lock the bottom transition color so no dark layer survives */}
+  <div
+    className="pointer-events-none absolute inset-x-0 bottom-0 h-[220px] z-0"
+    style={{ background: "#144FB9" }}
+  />
+
+  <div className="pointer-events-none absolute left-0 top-0 h-full w-full z-[1]">
     <div className="absolute left-1/4 top-1/4 h-72 w-72 rounded-full bg-white/5 blur-[100px] animate-pulse" />
     <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-cyan-400/5 blur-[100px] animate-pulse delay-1000" />
   </div>
@@ -1245,10 +1262,10 @@ export default function App() {
     </div>
   </div>
 
-  {/* keep line 1, replace dark 2 with blue 3 */}
+  {/* KEEP neon cyan line, but force divider fill to Registration blue */}
   <SectionSeam
     className="bottom-[-1px]"
-    fillColor="#1E4FA3"
+    fillColor="#144FB9"
     shape="dip"
   />
 </section>
