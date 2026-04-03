@@ -795,69 +795,69 @@ export default function App() {
     }}
   />
 
-  {/* Progress tracker */}
-  <div className="pointer-events-none absolute bottom-[250px] left-1/2 z-[9] w-full max-w-5xl -translate-x-1/2 px-4 sm:bottom-[250px] sm:px-6 md:bottom-[255px] lg:bottom-[265px]">
-    <div className="mb-4 grid grid-cols-4 text-center">
-      {[
-        { title: "Register", level: "LEVEL 1" },
-        { title: "188 FS", level: "LEVEL 2" },
-        { title: "More Reward", level: "LEVEL 3" },
-        { title: "AirPods Pro 3", level: "LEVEL 4" },
-      ].map((item, i) => (
-        <div key={i}>
-          <p className="text-[11px] font-bold text-white sm:text-sm md:text-[15px]">
-            {item.title}
-          </p>
-          <p className="mt-1 text-[9px] font-extrabold tracking-[0.2em] text-[#FFD76A] sm:text-[10px]">
-            {item.level}
-          </p>
-        </div>
-      ))}
-    </div>
-
-    <div className="relative h-[56px] overflow-hidden rounded-full border border-[#FFD76A]/20 bg-[#0A1B5E] shadow-[inset_0_6px_16px_rgba(0,0,0,0.35),0_12px_30px_rgba(0,0,0,0.18)]">
-      <div className="absolute left-0 right-0 top-0 h-1/2 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),transparent)]" />
-
-      <div className="absolute inset-y-0 left-1/4 w-[2px] bg-white/20" />
-      <div className="absolute inset-y-0 left-2/4 w-[2px] -translate-x-1/2 bg-white/20" />
-      <div className="absolute inset-y-0 left-3/4 w-[2px] -translate-x-1/2 bg-white/20" />
-
-      <motion.div
-        initial={{ width: "25%" }}
-        animate={{ width: "37.5%" }}
-        transition={{ duration: 2, ease: "easeOut" }}
-        className="absolute inset-y-0 left-0 rounded-full bg-[linear-gradient(90deg,#F4B400,#FFD84D,#FFF3A0,#FFD84D,#F4B400)] shadow-[0_0_22px_rgba(255,215,0,0.24)]"
-      >
-        <div className="absolute inset-x-0 top-0 h-1/2 bg-[linear-gradient(180deg,rgba(255,255,255,0.22),transparent)]" />
-
-        <motion.div
-          animate={{ x: ["-100%", "220%"] }}
-          transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-y-0 w-[30%] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.58),transparent)] blur-[6px]"
-        />
-      </motion.div>
-
-      <motion.div
-        initial={{ left: "calc(25% - 22px)" }}
-        animate={{ left: "calc(37.5% - 22px)" }}
-        transition={{ duration: 2, ease: "easeOut" }}
-        className="absolute top-1/2 z-10 -translate-y-1/2"
-      >
-        <motion.div
-          animate={{ scale: [1, 1.08, 1], opacity: [0.45, 0.75, 0.45] }}
-          transition={{ duration: 1.8, repeat: Infinity }}
-          className="absolute inset-[-6px] rounded-full bg-yellow-400/40 blur-md"
-        />
-        <motion.div
-          animate={{ y: [0, -3, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity }}
-          className="relative flex h-[44px] w-[44px] items-center justify-center rounded-full bg-gradient-to-b from-yellow-300 to-yellow-500 text-[18px] shadow-[0_6px_16px_rgba(0,0,0,0.3)]"
-        >
-          🎁
-        </motion.div>
-      </motion.div>
-    </div>
+ {/* Premium Progress Tracker */}
+<div className="pointer-events-none absolute bottom-[238px] left-1/2 z-[9] w-full max-w-5xl -translate-x-1/2 px-4 sm:bottom-[245px] sm:px-6 md:bottom-[250px] lg:bottom-[258px]">
+  <div className="mb-5 grid grid-cols-4 text-center">
+    {[
+      { title: "Register", level: "LEVEL 1" },
+      { title: "188 FS", level: "LEVEL 2" },
+      { title: "More Reward", level: "LEVEL 3" },
+      { title: "AirPods Pro 3", level: "LEVEL 4" },
+    ].map((item, i) => (
+      <div key={i} className="flex flex-col items-center gap-1">
+        <span className="text-[11px] font-semibold tracking-[-0.02em] text-white/95 sm:text-[13px] md:text-[15px]">
+          {item.title}
+        </span>
+        <span className="text-[8px] font-bold tracking-[0.22em] text-cyan-200/70 sm:text-[9px] md:text-[10px]">
+          {item.level}
+        </span>
+      </div>
+    ))}
   </div>
+
+  <div className="relative h-[50px] overflow-hidden rounded-full border border-white/10 bg-[linear-gradient(180deg,rgba(8,24,84,0.96)_0%,rgba(7,20,72,0.98)_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),inset_0_-8px_20px_rgba(0,0,0,0.28),0_18px_40px_rgba(0,0,0,0.18)] backdrop-blur-xl sm:h-[56px]">
+    
+    {/* soft top gloss */}
+    <div className="absolute inset-x-0 top-0 h-1/2 bg-[linear-gradient(180deg,rgba(255,255,255,0.10),rgba(255,255,255,0.02),transparent)]" />
+
+    {/* segment dividers */}
+    <div className="absolute inset-y-[8px] left-1/4 w-px bg-white/10" />
+    <div className="absolute inset-y-[8px] left-2/4 w-px -translate-x-1/2 bg-white/10" />
+    <div className="absolute inset-y-[8px] left-3/4 w-px -translate-x-1/2 bg-white/10" />
+
+    {/* filled progress */}
+    <motion.div
+      initial={{ width: "25%" }}
+      animate={{ width: "37.5%" }}
+      transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
+      className="absolute inset-y-0 left-0 rounded-full bg-[linear-gradient(90deg,#F8E27A_0%,#FFF1B8_35%,#FFE173_60%,#F7C948_100%)] shadow-[0_0_18px_rgba(255,224,138,0.14)]"
+    >
+      <div className="absolute inset-y-[6px] left-[10px] right-[10px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.25),rgba(255,255,255,0.04),transparent)]" />
+
+      <motion.div
+        animate={{ x: ["-120%", "220%"] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+        className="absolute inset-y-0 w-[26%] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.35),transparent)] blur-[6px]"
+      />
+    </motion.div>
+
+    {/* moving premium token */}
+    <motion.div
+      initial={{ left: "calc(37.5% - 18px)" }}
+      animate={{ left: "calc(37.5% - 18px)" }}
+      transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
+      className="absolute top-1/2 z-10 -translate-y-1/2"
+    >
+      <motion.div
+        animate={{ scale: [1, 1.06, 1] }}
+        transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+        className="relative flex h-9 w-9 items-center justify-center rounded-full border border-white/25 bg-[linear-gradient(180deg,#FFD84D_0%,#F3B90B_100%)] text-[14px] shadow-[0_10px_20px_rgba(0,0,0,0.24),0_0_0_4px_rgba(255,216,77,0.08)] sm:h-10 sm:w-10"
+      >
+        <span className="drop-shadow-[0_1px_2px_rgba(0,0,0,0.25)]">✦</span>
+      </motion.div>
+    </motion.div>
+  </div>
+</div>
 
   {/* Trust cards */}
   <div className="pointer-events-none absolute bottom-[135px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[120px] sm:px-6 md:bottom-[92px] lg:bottom-[98px]">
