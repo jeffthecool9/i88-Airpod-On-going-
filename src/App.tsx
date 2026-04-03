@@ -746,7 +746,7 @@ const HeroCTA = () => {
   };
 
   return (
-   <div className="absolute bottom-6 left-1/2 z-[10] -translate-x-1/2 sm:bottom-6 md:bottom-7 lg:bottom-8">
+  <div className="absolute bottom-20 left-1/2 z-[10] -translate-x-1/2 sm:bottom-20 md:bottom-24 lg:bottom-24">
       <motion.button
         onClick={scrollToRegister}
         onMouseEnter={handleEnter}
@@ -850,7 +850,7 @@ export default function App() {
       <div className="pointer-events-none fixed inset-0 z-[100] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
       <main className="relative z-10">
-        <section className="relative flex min-h-[118vh] sm:min-h-[122vh] md:min-h-[126vh] lg:min-h-[130vh] items-center overflow-hidden bg-[#0a1580]">
+        <section className="relative flex min-h-[124vh] sm:min-h-[128vh] md:min-h-[132vh] lg:min-h-[136vh] items-center overflow-hidden bg-[#0a1580]">
           <RealisticBackground />
           <GoldConfetti />
 
@@ -1128,7 +1128,7 @@ export default function App() {
 </div>
 
           {/* Trust cards */}
-          <div className="pointer-events-none absolute bottom-[110px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[105px] sm:px-6 md:bottom-[95px] lg:bottom-[98px]">
+          <div className="pointer-events-none absolute bottom-[165px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[160px] sm:px-6 md:bottom-[145px] lg:bottom-[150px]">
             <div className="grid grid-cols-3 gap-2 sm:gap-7 md:gap-9">
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
