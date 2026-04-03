@@ -127,42 +127,99 @@ const GoldConfetti = () => {
 
 const RealisticBackground = () => (
   <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
-    <div className="absolute inset-0 bg-[#0a1580]" />
+    {/* base = color 3, replace old dark blue */}
+    <div className="absolute inset-0 bg-[linear-gradient(180deg,#1E4FA3_0%,#1B4694_55%,#183E85_100%)]" />
 
-    <div className="absolute left-1/2 top-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2">
-      {[...Array(8)].map((_, i) => (
+    {/* soft moving light field */}
+    <div className="absolute inset-0">
+      <motion.div
+        animate={{
+          x: [0, -18, 0],
+          y: [0, -12, 0],
+          opacity: [0.32, 0.48, 0.32],
+          scale: [1, 1.05, 1],
+        }}
+        transition={{
+          duration: 9,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute inset-0 bg-[radial-gradient(circle_at_50%_12%,rgba(255,255,255,0.30)_0%,rgba(125,211,252,0.20)_18%,rgba(143,177,233,0.00)_52%)]"
+      />
+
+      <motion.div
+        animate={{
+          x: [0, 22, 0],
+          y: [0, 14, 0],
+          opacity: [0.14, 0.24, 0.14],
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute inset-0 bg-[radial-gradient(circle_at_18%_85%,rgba(255,255,255,0.12)_0%,rgba(56,189,248,0.10)_20%,transparent_50%)]"
+      />
+    </div>
+
+    {/* keep color 1 as accent */}
+    <div className="absolute left-1/2 top-1/2 h-[820px] w-[820px] -translate-x-1/2 -translate-y-1/2">
+      {[...Array(6)].map((_, i) => (
         <motion.div
           key={`ray-${i}`}
           animate={{
-            opacity: [0.15, 0.3, 0.15],
-            rotate: [i * 45, i * 45 + 10, i * 45],
+            opacity: [0.08, 0.18, 0.08],
+            rotate: [i * 60, i * 60 + 8, i * 60],
+            scale: [1, 1.03, 1],
           }}
           transition={{
-            duration: 8 + i,
+            duration: 10 + i,
             repeat: Infinity,
             ease: "easeInOut",
           }}
           className="absolute inset-0 origin-center"
           style={{
-            background: `conic-gradient(from ${i * 45}deg at 50% 50%, transparent 0%, rgba(34,211,238,0.2) 5%, transparent 15%)`,
-            filter: "blur(15px)",
+            background: `conic-gradient(from ${i * 60}deg at 50% 50%, transparent 0%, rgba(34,211,238,0.18) 5%, transparent 14%)`,
+            filter: "blur(16px)",
           }}
         />
       ))}
+
       <motion.div
-        animate={{ scale: [1, 1.1, 1], opacity: [0.7, 1, 0.7] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.8)_0%,rgba(125,211,252,0.4)_20%,rgba(143,177,233,0)_60%)] blur-[40px]"
+        animate={{
+          scale: [1, 1.08, 1],
+          opacity: [0.45, 0.68, 0.45],
+        }}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.52)_0%,rgba(125,211,252,0.22)_20%,rgba(143,177,233,0)_60%)] blur-[46px]"
       />
     </div>
 
-    <div className="absolute inset-0 opacity-15 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
+    {/* subtle diagonal premium layer */}
+    <motion.div
+      animate={{
+        x: [0, -12, 0],
+        opacity: [0.12, 0.18, 0.12],
+      }}
+      transition={{
+        duration: 11,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+      className="absolute -right-[10%] top-[-10%] h-[140%] w-[55%] rotate-[28deg] bg-[linear-gradient(180deg,rgba(5,27,76,0.16),rgba(5,27,76,0.32),rgba(5,27,76,0.10))]"
+    />
+
+    <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
   </div>
 );
 
 const SectionSeam = ({
   className = "",
-  fillColor = "#020f6a",
+  fillColor = "#1B4694",
   shape = "dip",
 }: {
   className?: string;
