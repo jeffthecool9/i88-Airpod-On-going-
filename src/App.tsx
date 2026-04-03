@@ -610,7 +610,7 @@ const RegistrationForm = () => {
         </motion.div>
       </div>
 
-      <SectionSeam className="bottom-0" fillColor="#020f6a" shape="dip" />
+      <SectionSeam className="bottom-0" fillColor="#1B4694" shape="dip" />
     </section>
   );
 };
