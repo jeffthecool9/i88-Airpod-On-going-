@@ -872,7 +872,8 @@ useEffect(() => {
                       animate={{ opacity: [0.15, 0.35, 0.15] }}
                       transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
                       style={{
-                        boxShadow: "0 0 28px rgba(255,215,106,0.32), inset 0 0 24px rgba(255,215,106,0.12)",
+                        boxShadow:
+                          "0 0 28px rgba(255,215,106,0.32), inset 0 0 24px rgba(255,215,106,0.12)",
                       }}
                     />
                     <motion.div
@@ -943,59 +944,9 @@ useEffect(() => {
         />
       </motion.div>
 
-      {/* Progress head */}
       <motion.div
         animate={{ left: `calc(${progressLevel * 25}% - 22px)` }}
         transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute top-1/2 z-10 -translate-y-1/2"
-      >
-        <div className="relative flex h-[44px] w-[44px] sm:h-[46px] sm:w-[46px] md:h-[48px] md:w-[48px] items-center justify-center rounded-full border border-white/24 bg-[linear-gradient(180deg,#FFD84D_0%,#F3BB25_100%)] shadow-[0_8px_18px_rgba(0,0,0,0.26),0_0_0_6px_rgba(255,216,77,0.08)]">
-          <div className="absolute inset-[4px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.22),rgba(255,255,255,0.03))]" />
-          <span
-            className="relative z-10 text-[15px] sm:text-[16px] font-black text-white"
-            style={{
-              textShadow: "0 1px 0 rgba(255,255,255,0.22), 0 4px 10px rgba(0,0,0,0.28)",
-            }}
-          >
-            ✦
-          </span>
-        </div>
-      </motion.div>
-    </div>
-  </div>
-</div>
-
-    {/* Progress bar */}
-    <div className="relative h-[52px] sm:h-[56px] md:h-[60px] overflow-hidden rounded-full border border-white/10 bg-[linear-gradient(180deg,#0B236A_0%,#081C57_55%,#061446_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.10),inset_0_-10px_22px_rgba(0,0,0,0.28),0_18px_36px_rgba(0,0,0,0.22)]">
-      {/* gloss */}
-      <div className="absolute inset-x-0 top-0 h-1/2 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02),transparent)]" />
-
-      {/* segment lines */}
-      <div className="absolute inset-y-[8px] left-1/4 w-px bg-white/12" />
-      <div className="absolute inset-y-[8px] left-2/4 w-px -translate-x-1/2 bg-white/12" />
-      <div className="absolute inset-y-[8px] left-3/4 w-px -translate-x-1/2 bg-white/12" />
-
-      {/* filled progress */}
-      <motion.div
-        initial={{ width: "25%" }}
-        animate={{ width: "37.5%" }}
-        transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute inset-y-0 left-0 rounded-full bg-[linear-gradient(90deg,#FFE9A3_0%,#FFF3C7_20%,#FFD96E_55%,#F3BA24_100%)] shadow-[0_8px_20px_rgba(255,215,106,0.18),0_0_18px_rgba(255,215,106,0.10)]"
-      >
-        <div className="absolute inset-y-[6px] left-[10px] right-[10px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.22),rgba(255,255,255,0.04),transparent)]" />
-
-        <motion.div
-          animate={{ x: ["-120%", "220%"] }}
-          transition={{ duration: 3.2, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-y-0 w-[28%] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.34),transparent)] blur-[7px]"
-        />
-      </motion.div>
-
-      {/* active progress head */}
-      <motion.div
-        initial={{ left: "calc(37.5% - 22px)" }}
-        animate={{ left: "calc(37.5% - 22px)" }}
-        transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
         className="absolute top-1/2 z-10 -translate-y-1/2"
       >
         <div className="relative flex h-[44px] w-[44px] sm:h-[46px] sm:w-[46px] md:h-[48px] md:w-[48px] items-center justify-center rounded-full border border-white/24 bg-[linear-gradient(180deg,#FFD84D_0%,#F3BB25_100%)] shadow-[0_8px_18px_rgba(0,0,0,0.26),0_0_0_6px_rgba(255,216,77,0.08)]">
