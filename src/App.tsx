@@ -864,7 +864,7 @@ export default function App() {
   src={cola1Img}
   alt=""
   aria-hidden="true"
-  className="pointer-events-none absolute left-[-20%] top-[24%] z-[8] w-[1120px] object-contain sm:left-[-18%] sm:top-[24%] sm:w-[1220px] md:left-[-14%] md:top-[25%] md:w-[1260px] lg:left-[-12%] lg:top-[25%] lg:w-[1380px]"
+  className="pointer-events-none absolute left-[-20%] top-[24%] z-[8] w-[1600px] object-contain sm:left-[-18%] sm:top-[24%] sm:w-[1700px] md:left-[-14%] md:top-[25%] md:w-[1800px] lg:left-[-12%] lg:top-[25%] lg:w-[2000px]"
   style={{
     filter:
       "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
