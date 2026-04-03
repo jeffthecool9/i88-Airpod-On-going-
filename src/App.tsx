@@ -1195,64 +1195,64 @@ export default function App() {
         </section>
 
         <section
-          id="steps-to-claim"
-          className="relative z-10 overflow-hidden bg-[linear-gradient(180deg,#1E4FA3_0%,#1E4FA3_55%,#1B4694_100%)] px-4 pb-32 pt-16 sm:px-6 sm:pb-40 sm:pt-24"
-        >
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-[180px] bg-[linear-gradient(180deg,#1E4FA3_0%,#1B4694_100%)]" />
-          <div className="pointer-events-none absolute left-0 top-0 h-full w-full">
-            <div className="absolute left-1/4 top-1/4 h-72 w-72 rounded-full bg-white/5 blur-[100px] animate-pulse" />
-            <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-cyan-400/5 blur-[100px] animate-pulse delay-1000" />
-          </div>
+  id="steps-to-claim"
+  className="relative z-10 overflow-hidden bg-[linear-gradient(180deg,#1E4FA3_0%,#1E4FA3_55%,#1B4694_100%)] px-4 pb-32 pt-16 sm:px-6 sm:pb-40 sm:pt-24"
+>
+  <div className="pointer-events-none absolute inset-x-0 top-0 h-[180px] bg-[linear-gradient(180deg,#1E4FA3_0%,#1B4694_100%)]" />
+  <div className="pointer-events-none absolute left-0 top-0 h-full w-full">
+    <div className="absolute left-1/4 top-1/4 h-72 w-72 rounded-full bg-white/5 blur-[100px] animate-pulse" />
+    <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-cyan-400/5 blur-[100px] animate-pulse delay-1000" />
+  </div>
 
-          <div className="relative z-10 mx-auto max-w-6xl overflow-hidden rounded-[24px] bg-gradient-to-br from-cyan-900/30 via-white/5 to-white/5 px-4 py-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_0_20px_rgba(34,211,238,0.22),0_30px_60px_rgba(0,0,0,0.5)] backdrop-blur-[32px] sm:rounded-[32px] sm:px-8 sm:py-10 md:px-10">
-            <div className="pointer-events-none absolute inset-0 rounded-[24px] border border-cyan-300/30 sm:rounded-[32px]" />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-cyan-400/8 via-transparent to-transparent opacity-50" />
+  <div className="relative z-10 mx-auto max-w-6xl overflow-hidden rounded-[24px] bg-gradient-to-br from-cyan-900/30 via-white/5 to-white/5 px-4 py-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_0_20px_rgba(34,211,238,0.22),0_30px_60px_rgba(0,0,0,0.5)] backdrop-blur-[32px] sm:rounded-[32px] sm:px-8 sm:py-10 md:px-10">
+    <div className="pointer-events-none absolute inset-0 rounded-[24px] border border-cyan-300/30 sm:rounded-[32px]" />
+    <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-cyan-400/8 via-transparent to-transparent opacity-50" />
 
-            <div className="relative z-10">
-              <div className="mb-8 text-center sm:mb-10">
-                <h2 className="text-3xl font-bold tracking-tight leading-[0.95] sm:text-4xl md:text-5xl">
-                  <HeroWord light>Steps to Claim</HeroWord>
-                </h2>
-              </div>
+    <div className="relative z-10">
+      <div className="mb-8 text-center sm:mb-10">
+        <h2 className="text-3xl font-bold tracking-tight leading-[0.95] sm:text-4xl md:text-5xl">
+          <HeroWord light>Steps to Claim</HeroWord>
+        </h2>
+      </div>
 
-              <div className="grid grid-cols-3 gap-3 sm:gap-6 md:gap-10">
-                {stepData.map((item, i) => (
-                  <motion.div
-                    key={item.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.45, delay: i * 0.12 }}
-                    className="flex flex-col items-center text-center"
-                  >
-                    <div className="mb-4 flex h-[96px] w-[96px] items-center justify-center sm:h-[120px] sm:w-[120px] md:h-[140px] md:w-[140px]">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="h-full w-full scale-110 object-contain drop-shadow-[0_12px_30px_rgba(0,0,0,0.28)]"
-                      />
-                    </div>
-
-                    <h3 className="text-lg font-bold tracking-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] sm:text-2xl md:text-4xl">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 max-w-[180px] text-[12px] font-bold leading-[1.05] tracking-[-0.02em] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] sm:max-w-[240px] sm:text-[14px] md:text-[16px]">
-                      {item.desc}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
+      <div className="grid grid-cols-3 gap-3 sm:gap-6 md:gap-10">
+        {stepData.map((item, i) => (
+          <motion.div
+            key={item.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: i * 0.12 }}
+            className="flex flex-col items-center text-center"
+          >
+            <div className="mb-4 flex h-[96px] w-[96px] items-center justify-center sm:h-[120px] sm:w-[120px] md:h-[140px] md:w-[140px]">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="h-full w-full scale-110 object-contain drop-shadow-[0_12px_30px_rgba(0,0,0,0.28)]"
+              />
             </div>
-          </div>
 
-          {/* Steps -> Registration stays dark */}
-          <SectionSeam
-            className="bottom-[-1px]"
-            fillColor="#020f6a"
-            shape="dip"
-          />
-        </section>
+            <h3 className="text-lg font-bold tracking-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] sm:text-2xl md:text-4xl">
+              {item.title}
+            </h3>
+            <p className="mt-2 max-w-[180px] text-[12px] font-bold leading-[1.05] tracking-[-0.02em] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] sm:max-w-[240px] sm:text-[14px] md:text-[16px]">
+              {item.desc}
+            </p>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  </div>
 
+  {/* keep line 1, replace dark 2 with blue 3 */}
+  <SectionSeam
+    className="bottom-[-1px]"
+    fillColor="#1E4FA3"
+    shape="dip"
+  />
+</section>
+        
         <RegistrationForm />
         <FloatingGirl />
       </main>
