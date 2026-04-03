@@ -795,73 +795,61 @@ export default function App() {
     }}
   />
 
-<div className="mb-5 grid grid-cols-4 gap-4 text-center">
+<div className="mb-6 grid grid-cols-4 gap-3 sm:gap-4 text-center">
   {[
     { title: "REGISTER", level: "LEVEL 1", active: true },
     { title: "188 FS", level: "LEVEL 2" },
     { title: "MORE REWARD", level: "LEVEL 3" },
     { title: "AIRPODS PRO 3", level: "LEVEL 4" },
   ].map((item, i) => (
-    <div key={i} className="relative">
-      
-      {/* OUTER FRAME */}
+    <div key={i} className="min-w-0">
       <div
-        className={`relative rounded-[20px] p-[2px] ${
+        className={`relative rounded-[22px] p-[2px] ${
           item.active
             ? "bg-[linear-gradient(135deg,#FFD76A,#F4B400,#FFD76A)]"
-            : "bg-[linear-gradient(135deg,rgba(255,255,255,0.18),rgba(255,255,255,0.05))]"
-        }`}
+            : "bg-[linear-gradient(135deg,rgba(255,255,255,0.18),rgba(255,255,255,0.06))]"
+        } shadow-[0_10px_30px_rgba(0,0,0,0.22)]`}
       >
-        {/* INNER BOX */}
         <div
-          className={`rounded-[18px] px-4 py-4 ${
+          className={`relative flex h-[86px] flex-col items-center justify-center rounded-[20px] px-2 sm:px-3 md:px-4 ${
             item.active
-              ? "bg-[linear-gradient(180deg,#0E2A7A,#071B55)]"
-              : "bg-[linear-gradient(180deg,#0B1F66,#061544)]"
-          } shadow-[0_12px_30px_rgba(0,0,0,0.35)]`}
+              ? "bg-[linear-gradient(180deg,#12348F_0%,#0A2168_100%)]"
+              : "bg-[linear-gradient(180deg,#102C7D_0%,#091D5C_100%)]"
+          }`}
         >
-          {/* subtle top highlight */}
-          <div className="absolute inset-x-[10%] top-[2px] h-[30%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.12),transparent)] blur-[1px]" />
+          <div className="pointer-events-none absolute inset-x-[10%] top-[2px] h-[26px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.14),transparent)] blur-[1px]" />
 
-          {/* TEXT */}
-          <div className="relative z-10">
-            <p
-              className={`text-[16px] font-black sm:text-[18px] md:text-[20px] lg:text-[22px] ${
-                item.active ? "text-[#FFF4C6]" : "text-white"
-              }`}
-              style={{
-                letterSpacing: "-0.02em",
-                textShadow: item.active
-                  ? `
-                    0 1px 0 rgba(255,255,255,0.5),
-                    0 2px 0 rgba(255,215,106,0.25),
-                    0 8px 20px rgba(0,0,0,0.4),
-                    0 0 10px rgba(255,215,106,0.2)
-                  `
-                  : `
-                    0 1px 0 rgba(255,255,255,0.2),
-                    0 6px 14px rgba(0,0,0,0.35)
-                  `,
-              }}
-            >
-              {item.title}
-            </p>
+          <p
+            className={`leading-none font-black uppercase ${
+              item.title === "AIRPODS PRO 3"
+                ? "text-[15px] sm:text-[16px] md:text-[18px]"
+                : "text-[16px] sm:text-[18px] md:text-[20px]"
+            } ${item.active ? "text-[#FFF4C8]" : "text-white"}`}
+            style={{
+              letterSpacing: "-0.03em",
+              textShadow: item.active
+                ? "0 1px 0 rgba(255,255,255,0.45), 0 8px 20px rgba(0,0,0,0.32), 0 0 10px rgba(255,215,106,0.16)"
+                : "0 1px 0 rgba(255,255,255,0.18), 0 8px 18px rgba(0,0,0,0.28)",
+            }}
+          >
+            {item.title}
+          </p>
 
-            <p
-              className={`mt-2 text-[11px] font-extrabold tracking-[0.25em] ${
-                item.active ? "text-[#FFD76A]" : "text-cyan-100/70"
-              }`}
-            >
-              {item.level}
-            </p>
-          </div>
+          <p
+            className={`mt-2 text-[10px] sm:text-[11px] font-extrabold tracking-[0.22em] ${
+              item.active ? "text-[#FFD76A]" : "text-cyan-100/75"
+            }`}
+            style={{
+              textShadow: "0 4px 10px rgba(0,0,0,0.25)",
+            }}
+          >
+            {item.level}
+          </p>
         </div>
       </div>
-
     </div>
   ))}
 </div>
-
   {/* Trust cards */}
   <div className="pointer-events-none absolute bottom-[135px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[120px] sm:px-6 md:bottom-[92px] lg:bottom-[98px]">
     <div className="grid grid-cols-3 gap-2 sm:gap-7 md:gap-9">
