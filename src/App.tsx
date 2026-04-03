@@ -1103,7 +1103,7 @@ export default function App() {
   </motion.div>
 </div>
 
-          {/* Trust cards */}
+                   {/* Trust cards */}
           <div className="pointer-events-none absolute bottom-[118px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[108px] sm:px-6 md:bottom-[88px] lg:bottom-[92px]">
             <div className="grid grid-cols-3 gap-2 sm:gap-7 md:gap-9">
               <motion.div
