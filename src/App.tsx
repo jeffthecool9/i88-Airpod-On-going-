@@ -552,7 +552,7 @@ const RegistrationForm = () => {
         </motion.div>
       </div>
 
-      <SectionSeam className="bottom-0" fillColor="#1B4694" shape="dip" />
+      <SectionSeam className="bottom-0" fillColor="#1E4FA3" shape="dip" />
     </section>
   );
 };
@@ -1191,11 +1191,7 @@ export default function App() {
             {/* kept empty */}
           </div>
 
-          <SectionSeam
-  className="bottom-[-1px]"
-  fillColor="#1B4694"
-  shape="dip"
-/>
+      <SectionSeam className="bottom-[-1px]" fillColor="#020f6a" shape="dip" />
         </section>
 
         <section
