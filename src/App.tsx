@@ -838,7 +838,7 @@ export default function App() {
       desc: "Start from $50 & Unlock more Rewards",
       image: depositImg,
     },
-    { title: "Unlock", desc: "Claim Your 188 FS", image: playImg },
+    { title: "Rewards", desc: "Unlock up to 188 FS", image: playImg },
   ];
 
   return (
@@ -1198,7 +1198,7 @@ export default function App() {
 
         <section
           id="steps-to-claim"
-          className="relative z-10 overflow-hidden bg-[linear-gradient(180deg,#1E4FA3_0%,#1B4694_55%,#183E85_100%)] px-4 pb-32 pt-16 sm:px-6 sm:pb-40 sm:pt-24"
+          className="relative z-10 overflow-hidden bg-[linear-gradient(180deg,#1E4FA3_0%,#1E4FA3_55%,#1B4694_100%)] px-4 pb-32 pt-16 sm:px-6 sm:pb-40 sm:pt-24"
         >
           <div className="pointer-events-none absolute left-0 top-0 h-full w-full">
             <div className="absolute left-1/4 top-1/4 h-72 w-72 rounded-full bg-white/5 blur-[100px] animate-pulse" />
