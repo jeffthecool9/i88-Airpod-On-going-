@@ -393,11 +393,11 @@ const RegistrationForm = () => {
                     <span className="font-bold text-cyan-200"> i88</span>.
                   </p>
 
-                  <p className="mt-4 text-sm leading-relaxed text-blue-100/75 sm:text-base">
-                    We will redirect you to our official home page in{" "}
-                    <span className="font-bold text-white">{countdown}</span>{" "}
-                    seconds.
-                  </p>
+                 <p className="mt-4 text-sm leading-relaxed text-blue-100/75 sm:text-base">
+  We will redirect you to our official home page in{" "}
+  <span className="font-bold text-white">{countdown}</span>{" "}
+  seconds.
+</p>
 
                   <div className="mt-8 h-2 w-full overflow-hidden rounded-full bg-white/10">
                     <motion.div
