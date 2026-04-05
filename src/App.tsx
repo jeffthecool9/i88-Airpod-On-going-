@@ -219,7 +219,7 @@ const SectionSeam = ({
 const RegistrationForm = () => {
   const [step, setStep] = useState(1);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [countdown, setCountdown] = useState(7);
+  const [countdown, setCountdown] = useState(8);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -262,25 +262,29 @@ const RegistrationForm = () => {
 
     // show success state
     setIsSuccess(true);
-    setCountdown(7);
+    setCountdown(8);
   };
 
-  useEffect(() => {
-    if (!isSuccess) return;
+ useEffect(() => {
+  if (!isSuccess) return;
 
-    if (countdown <= 0) {
-      // LATER: replace this with your real redirect
-      // window.location.href = "https://your-official-home-page.com";
-
-      return;
-    }
-
+  if (countdown <= 1) {
     const timer = setTimeout(() => {
-      setCountdown((prev) => prev - 1);
+      setCountdown(0);
+
+      // LATER: replace this with real redirect
+      // window.location.href = "https://your-official-home-page.com";
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [isSuccess, countdown]);
+  }
+
+  const timer = setTimeout(() => {
+    setCountdown((prev) => prev - 1);
+  }, 1000);
+
+  return () => clearTimeout(timer);
+}, [isSuccess, countdown]);
 
   return (
     <section
