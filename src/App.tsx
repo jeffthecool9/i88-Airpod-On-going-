@@ -905,225 +905,210 @@ export default function App() {
           <div className="pointer-events-none absolute left-1/2 bottom-[285px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[300px] sm:px-6 md:bottom-[320px] lg:bottom-[335px]">
             <div className="mx-auto max-w-5xl">
               <div className="mb-6 grid grid-cols-4 items-end gap-3 sm:gap-4">
-                {[
-                  { title: "REGISTER", level: "LEVEL 1", type: "text" },
-                  { title: "188 FS", level: "LEVEL 2", type: "text" },
-                  { title: "MORE REWARD", level: "LEVEL 3", type: "text" },
-                  { title: "", level: "", type: "airpod" },
-                ].map((item, i) => {
-                  const stageNumber = i + 1;
-                  const isReached = progressLevel >= stageNumber;
-                  const isVisible =
-  item.type === "airpod" ? progressLevel >= 4 : isReached;
-                  const isCurrent = progressLevel === stageNumber;
-                  const isFinalFloating =
-                    progressLevel === 4 && stageNumber === 4;
+               {[
+  { title: "REGISTER", level: "LEVEL 1", type: "text" },
+  { title: "188 FS", level: "LEVEL 2", type: "text" },
+  { title: "MORE REWARD", level: "LEVEL 3", type: "text" },
+  { title: "", level: "", type: "airpod" },
+].map((item, i) => {
+  const stageNumber = i + 1;
+  const isReached = progressLevel >= stageNumber;
+  const isCurrent = progressLevel === stageNumber;
+  const isFinalFloating = progressLevel === 4 && stageNumber === 4;
 
-                  if (item.type === "airpod") {
-                    return (
-                      <motion.div
-                        key={i}
-                        className="relative flex min-w-0 items-end justify-center"
-                        initial={false}
-                        animate={
-                          isVisible
-                            ? isFinalFloating
-                              ? {
-                                  opacity: 1,
-                                  y: [0, -14, 0],
-                                  scale: [1, 1.1, 1],
-                                  rotate: [0, -2, 0, 2, 0],
-                                }
-                              : {
-                                  opacity: 1,
-                                  y: 0,
-                                  scale: isReached || isCurrent ? [1, 1.03, 1] : 1,
-                                  rotate: 0,
-                                }
-                            : {
-                                opacity: 0,
-                                y: 14,
-                                scale: 0.92,
-                                rotate: 0,
-                              }
-                        }
-                        transition={
-                          isFinalFloating
-                            ? {
-                                duration: 2.2,
-                                repeat: Infinity,
-                                ease: "easeInOut",
-                              }
-                            : {
-                                duration: 0.4,
-                                ease: "easeOut",
-                              }
-                        }
-                      >
-                        <div className="relative flex h-[82px] sm:h-[86px] md:h-[92px] w-full items-end justify-center">
-                          {isFinalFloating && (
-                            <>
-                              <motion.div
-                                className="absolute bottom-[6px] h-[76px] w-[76px] rounded-full sm:h-[90px] sm:w-[90px] md:h-[104px] md:w-[104px]"
-                                animate={{ opacity: [0.2, 0.55, 0.2], scale: [1, 1.08, 1] }}
-                                transition={{
-                                  duration: 1.6,
-                                  repeat: Infinity,
-                                  ease: "easeInOut",
-                                }}
-                                style={{
-                                  background:
-                                    "radial-gradient(circle, rgba(255,222,120,0.45) 0%, rgba(255,222,120,0.18) 38%, rgba(255,222,120,0.00) 72%)",
-                                  filter: "blur(8px)",
-                                }}
-                              />
-                              <motion.div
-                                className="absolute bottom-[0px] h-[88px] w-[88px] rounded-full sm:h-[108px] sm:w-[108px] md:h-[124px] md:w-[124px]"
-                                animate={{ opacity: [0.16, 0.4, 0.16], scale: [1, 1.1, 1] }}
-                                transition={{
-                                  duration: 1.9,
-                                  repeat: Infinity,
-                                  ease: "easeInOut",
-                                }}
-                                style={{
-                                  boxShadow:
-                                    "0 0 40px rgba(255,215,106,0.42), 0 0 70px rgba(255,215,106,0.18)",
-                                }}
-                              />
-                            </>
-                          )}
+  if (item.type === "airpod") {
+    return (
+      <motion.div
+        key={i}
+        className="relative flex min-w-0 items-end justify-center"
+        initial={{ opacity: 0, scale: 0.88, y: 10 }}
+        animate={
+          progressLevel >= 4
+            ? {
+                opacity: 1,
+                scale: 1,
+                y: 0,
+              }
+            : {
+                opacity: 0,
+                scale: 0.88,
+                y: 10,
+              }
+        }
+        transition={{
+          duration: 0.45,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+      >
+        <div className="relative flex h-[82px] sm:h-[86px] md:h-[92px] w-full items-end justify-center">
+          {progressLevel >= 4 && (
+            <>
+              <motion.div
+                className="absolute bottom-[6px] h-[76px] w-[76px] rounded-full sm:h-[90px] sm:w-[90px] md:h-[104px] md:w-[104px]"
+                animate={{
+                  opacity: [0.22, 0.42, 0.22],
+                  scale: [1, 1.05, 1],
+                }}
+                transition={{
+                  duration: 2.4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                style={{
+                  background:
+                    "radial-gradient(circle, rgba(255,222,120,0.38) 0%, rgba(255,222,120,0.15) 40%, rgba(255,222,120,0.00) 74%)",
+                  filter: "blur(9px)",
+                }}
+              />
+              <motion.div
+                className="absolute bottom-[0px] h-[88px] w-[88px] rounded-full sm:h-[108px] sm:w-[108px] md:h-[124px] md:w-[124px]"
+                animate={{
+                  opacity: [0.14, 0.28, 0.14],
+                  scale: [1, 1.08, 1],
+                }}
+                transition={{
+                  duration: 2.8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                style={{
+                  boxShadow:
+                    "0 0 34px rgba(255,215,106,0.34), 0 0 64px rgba(255,215,106,0.12)",
+                }}
+              />
+            </>
+          )}
 
-                          <img
-                            src={airpodImg}
-                            alt="Grand prize AirPods"
-                            className={`relative z-10 object-contain ${
-                              isReached ? "opacity-100" : "opacity-88"
-                            } w-[72px] sm:w-[88px] md:w-[102px] lg:w-[112px]`}
-                            style={{
-                              filter: isReached
-                                ? "drop-shadow(0 14px 28px rgba(0,0,0,0.34)) drop-shadow(0 0 20px rgba(255,215,106,0.28))"
-                                : "drop-shadow(0 12px 24px rgba(0,0,0,0.28))",
-                            }}
-                          />
-                        </div>
-                      </motion.div>
-                    );
+          <motion.img
+            src={airpodImg}
+            alt="Grand prize AirPods"
+            className="relative z-10 w-[72px] object-contain sm:w-[88px] md:w-[102px] lg:w-[112px]"
+            animate={
+              progressLevel >= 4
+                ? {
+                    y: [0, -6, 0],
+                    scale: [1, 1.035, 1],
+                    rotate: [0, -1.2, 0, 1.2, 0],
                   }
+                : {}
+            }
+            transition={{
+              duration: 2.6,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            style={{
+              filter:
+                progressLevel >= 4
+                  ? "drop-shadow(0 14px 28px rgba(0,0,0,0.34)) drop-shadow(0 0 20px rgba(255,215,106,0.24))"
+                  : "drop-shadow(0 12px 24px rgba(0,0,0,0.28))",
+              opacity: progressLevel >= 4 ? 1 : 0,
+            }}
+          />
+        </div>
+      </motion.div>
+    );
+  }
 
-                  return (
-                    <motion.div
-                      key={i}
-                      className={`min-w-0 ${isFinalFloating ? "z-20" : ""}`}
-                      initial={false}
-                      animate={
-                        isVisible
-                          ? isFinalFloating
-                            ? {
-                                opacity: 1,
-                                y: [0, -12, 0],
-                                scale: [1, 1.12, 1],
-                                rotate: [0, -1.2, 0, 1.2, 0],
-                              }
-                            : {
-                                opacity: 1,
-                                y: 0,
-                                scale: isReached || isCurrent ? [1, 1.04, 1] : 1,
-                                rotate: 0,
-                              }
-                          : {
-                              opacity: 0,
-                              y: 14,
-                              scale: 0.92,
-                              rotate: 0,
-                            }
-                      }
-                      transition={
-                        isFinalFloating
-                          ? {
-                              duration: 2,
-                              repeat: Infinity,
-                              ease: "easeInOut",
-                            }
-                          : {
-                              duration: 0.4,
-                              ease: "easeOut",
-                            }
-                      }
-                    >
-                      <div
-                        className={`relative rounded-[22px] p-[2px] ${
-                          isReached
-                            ? "bg-[linear-gradient(135deg,#FFE8A3_0%,#F7C948_25%,#C88A14_60%,#FFE08A_100%)]"
-                            : "bg-[linear-gradient(135deg,rgba(255,255,255,0.12),rgba(255,255,255,0.05))]"
-                        } shadow-[0_14px_32px_rgba(0,0,0,0.28)]`}
-                      >
-                        <div className="relative h-[82px] sm:h-[86px] md:h-[92px] overflow-hidden rounded-[20px]">
-                          <motion.div
-                            className="absolute inset-0"
-                            animate={{
-                              scale: [1, 1.05, 1],
-                              x: [0, -6, 0],
-                              y: [0, -4, 0],
-                            }}
-                            transition={{
-                              duration: 8,
-                              repeat: Infinity,
-                              ease: "easeInOut",
-                            }}
-                            style={{
-                              backgroundImage: `url(${backgroundImg})`,
-                              backgroundSize: "cover",
-                              backgroundPosition: "center",
-                            }}
-                          />
+  return (
+    <motion.div
+      key={i}
+      className="min-w-0"
+      initial={false}
+      animate={
+        isReached
+          ? {
+              opacity: 1,
+              y: 0,
+              scale: isReached || isCurrent ? [1, 1.04, 1] : 1,
+              rotate: 0,
+            }
+          : {
+              opacity: 0,
+              y: 14,
+              scale: 0.92,
+              rotate: 0,
+            }
+      }
+      transition={{
+        duration: 0.4,
+        ease: "easeOut",
+      }}
+    >
+      <div
+        className={`relative rounded-[22px] p-[2px] ${
+          isReached
+            ? "bg-[linear-gradient(135deg,#FFE8A3_0%,#F7C948_25%,#C88A14_60%,#FFE08A_100%)]"
+            : "bg-[linear-gradient(135deg,rgba(255,255,255,0.12),rgba(255,255,255,0.05))]"
+        } shadow-[0_14px_32px_rgba(0,0,0,0.28)]`}
+      >
+        <div className="relative h-[82px] overflow-hidden rounded-[20px] sm:h-[86px] md:h-[92px]">
+          <motion.div
+            className="absolute inset-0"
+            animate={{
+              scale: [1, 1.05, 1],
+              x: [0, -6, 0],
+              y: [0, -4, 0],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            style={{
+              backgroundImage: `url(${backgroundImg})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          />
 
-                          <div
-                            className={`absolute inset-0 ${
-                              isReached
-                                ? "bg-[linear-gradient(180deg,rgba(8,28,84,0.28)_0%,rgba(6,21,70,0.42)_100%)]"
-                                : "bg-[linear-gradient(180deg,rgba(8,28,84,0.42)_0%,rgba(6,21,70,0.58)_100%)]"
-                            }`}
-                          />
+          <div
+            className={`absolute inset-0 ${
+              isReached
+                ? "bg-[linear-gradient(180deg,rgba(8,28,84,0.28)_0%,rgba(6,21,70,0.42)_100%)]"
+                : "bg-[linear-gradient(180deg,rgba(8,28,84,0.42)_0%,rgba(6,21,70,0.58)_100%)]"
+            }`}
+          />
 
-                          <div className="pointer-events-none absolute inset-[1px] rounded-[19px] border border-white/10" />
-                          <div className="pointer-events-none absolute inset-x-[8%] top-[3px] h-[28px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.14),transparent)] blur-[1px]" />
-                          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-[36%] bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.18))]" />
+          <div className="pointer-events-none absolute inset-[1px] rounded-[19px] border border-white/10" />
+          <div className="pointer-events-none absolute inset-x-[8%] top-[3px] h-[28px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.14),transparent)] blur-[1px]" />
+          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-[36%] bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.18))]" />
 
-                          <div className="relative z-10 flex h-full flex-col items-center justify-center px-2 sm:px-3 md:px-4">
-                            <p
-                              className={`text-center font-black uppercase leading-[0.95] ${
-                                item.title === "MORE REWARD"
-                                  ? "text-[13px] sm:text-[15px] md:text-[17px] lg:text-[18px]"
-                                  : "text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px]"
-                              } ${isReached ? "text-[#FFF4C8]" : "text-transparent"}`}
-                              style={{
-                                letterSpacing: "-0.03em",
-                                textShadow: isReached
-                                  ? "0 1px 0 rgba(255,255,255,0.48), 0 2px 0 rgba(255,215,106,0.14), 0 8px 20px rgba(0,0,0,0.38), 0 0 12px rgba(255,215,106,0.16)"
-                                  : "none",
-                              }}
-                            >
-                              {item.title}
-                            </p>
+          <div className="relative z-10 flex h-full flex-col items-center justify-center px-2 sm:px-3 md:px-4">
+            <p
+              className={`text-center font-black uppercase leading-[0.95] ${
+                item.title === "MORE REWARD"
+                  ? "text-[13px] sm:text-[15px] md:text-[17px] lg:text-[18px]"
+                  : "text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px]"
+              } ${isReached ? "text-[#FFF4C8]" : "text-transparent"}`}
+              style={{
+                letterSpacing: "-0.03em",
+                textShadow: isReached
+                  ? "0 1px 0 rgba(255,255,255,0.48), 0 2px 0 rgba(255,215,106,0.14), 0 8px 20px rgba(0,0,0,0.38), 0 0 12px rgba(255,215,106,0.16)"
+                  : "none",
+              }}
+            >
+              {item.title}
+            </p>
 
-                            <p
-                              className={`mt-2 text-center text-[9px] sm:text-[10px] md:text-[11px] font-extrabold tracking-[0.18em] sm:tracking-[0.22em] ${
-                                isReached ? "text-[#FFD76A]" : "text-transparent"
-                              }`}
-                              style={{
-                                textShadow: isReached
-                                  ? "0 4px 10px rgba(0,0,0,0.22)"
-                                  : "none",
-                              }}
-                            >
-                              {item.level}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  );
-                })}
+            <p
+              className={`mt-2 text-center text-[9px] font-extrabold tracking-[0.18em] sm:text-[10px] sm:tracking-[0.22em] md:text-[11px] ${
+                isReached ? "text-[#FFD76A]" : "text-transparent"
+              }`}
+              style={{
+                textShadow: isReached
+                  ? "0 4px 10px rgba(0,0,0,0.22)"
+                  : "none",
+              }}
+            >
+              {item.level}
+            </p>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+})}
               </div>
 
               <div className="relative h-[56px] sm:h-[60px] md:h-[64px] overflow-hidden rounded-full border border-white/10 bg-[linear-gradient(180deg,#0A225E_0%,#061948_55%,#041232_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.10),inset_0_-12px_24px_rgba(0,0,0,0.30),0_22px_42px_rgba(0,0,0,0.24)]">
@@ -1270,70 +1255,77 @@ export default function App() {
 
       <section
   id="steps-to-claim"
-  className="relative z-10 -mt-8 overflow-hidden px-4 pt-4 pb-24 sm:-mt-10 sm:px-6 sm:pt-5 sm:pb-28 md:-mt-12"
+  className="relative z-10 -mt-2 overflow-hidden px-4 pt-10 pb-24 sm:px-6 sm:pt-12 sm:pb-28 md:pt-14"
   style={{
     background:
-      "linear-gradient(180deg, #1E4FA3 0%, #1B4DAE 42%, #144FB9 76%, #144FB9 100%)",
+      "linear-gradient(180deg, #1E4FA3 0%, #1B4DAE 38%, #1650B6 72%, #144FB9 100%)",
   }}
 >
-  {/* Top fill */}
+  {/* soft top fill to blend from previous divider */}
   <div
-    className="pointer-events-none absolute inset-x-0 top-0 h-[150px]"
+    className="pointer-events-none absolute inset-x-0 top-0 h-[120px]"
     style={{
-      background: "linear-gradient(180deg, #1E4FA3 0%, #1A4DAC 100%)",
+      background:
+        "linear-gradient(180deg, rgba(30,79,163,0.96) 0%, rgba(27,77,174,0.78) 60%, rgba(27,77,174,0) 100%)",
     }}
   />
 
-  {/* Bottom fill */}
+  {/* soft bottom fill */}
   <div
-    className="pointer-events-none absolute inset-x-0 bottom-0 h-[240px] z-0"
-    style={{ background: "#144FB9" }}
+    className="pointer-events-none absolute inset-x-0 bottom-0 h-[180px] z-0"
+    style={{
+      background:
+        "linear-gradient(180deg, rgba(20,79,185,0) 0%, rgba(20,79,185,0.92) 100%)",
+    }}
   />
 
-  {/* ambient glow */}
-  <div className="pointer-events-none absolute left-0 top-0 h-full w-full z-[1]">
-    <div className="absolute left-1/4 top-1/4 h-72 w-72 rounded-full bg-white/5 blur-[100px] animate-pulse" />
-    <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-cyan-400/5 blur-[100px] animate-pulse delay-1000" />
+  {/* background ambient */}
+  <div className="pointer-events-none absolute inset-0 z-[1]">
+    <div className="absolute left-[18%] top-[16%] h-72 w-72 rounded-full bg-white/5 blur-[100px]" />
+    <div className="absolute right-[14%] bottom-[18%] h-72 w-72 rounded-full bg-cyan-300/10 blur-[110px]" />
   </div>
 
-  <div className="relative z-10 mx-auto max-w-5xl translate-y-[-6px] overflow-hidden rounded-[20px] bg-gradient-to-br from-cyan-900/30 via-white/5 to-white/5 px-4 pt-5 pb-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_0_20px_rgba(34,211,238,0.22),0_20px_40px_rgba(0,0,0,0.4)] backdrop-blur-[28px] sm:px-6 sm:pt-6 sm:pb-9">
-    <div className="pointer-events-none absolute inset-0 rounded-[20px] border border-cyan-300/30" />
-    <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-cyan-400/8 via-transparent to-transparent opacity-50" />
+  <div className="relative z-10 mx-auto max-w-5xl">
+    <div className="relative overflow-hidden rounded-[24px] bg-[linear-gradient(180deg,rgba(58,128,255,0.26)_0%,rgba(41,101,220,0.24)_38%,rgba(31,78,182,0.26)_100%)] px-4 pt-6 pb-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.16),0_16px_44px_rgba(0,0,0,0.22),0_0_0_1px_rgba(255,255,255,0.08)] backdrop-blur-[26px] sm:px-6 sm:pt-7 sm:pb-9 md:px-8 md:pt-8 md:pb-10">
+      <div className="pointer-events-none absolute inset-0 rounded-[24px] border border-cyan-200/20" />
+      <div className="pointer-events-none absolute inset-x-[8%] top-[2px] h-[46px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[32%] bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.10))]" />
 
-    <div className="relative z-10">
-      <div className="mb-4 text-center sm:mb-5">
-        <h2 className="text-3xl font-bold tracking-tight leading-[0.95] sm:text-4xl md:text-5xl">
-          <HeroWord light>Steps to Claim</HeroWord>
-        </h2>
-      </div>
+      <div className="relative z-10">
+        <div className="mb-5 text-center sm:mb-6">
+          <h2 className="text-[34px] font-bold leading-[0.95] tracking-tight text-white sm:text-[42px] md:text-[50px]">
+            Steps to Claim
+          </h2>
+        </div>
 
-      <div className="grid grid-cols-3 gap-3 sm:gap-5 md:gap-6">
-        {stepData.map((item, i) => (
-          <motion.div
-            key={item.title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.45, delay: i * 0.12 }}
-            className="flex flex-col items-center text-center"
-          >
-            <div className="mb-2 flex h-[74px] w-[74px] items-center justify-center sm:mb-3 sm:h-[96px] sm:w-[96px] md:h-[112px] md:w-[112px]">
-              <img
-                src={item.image}
-                alt={item.title}
-                className="h-full w-full object-contain drop-shadow-[0_8px_20px_rgba(0,0,0,0.25)]"
-              />
-            </div>
+        <div className="grid grid-cols-3 gap-3 sm:gap-5 md:gap-8">
+          {stepData.map((item, i) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: i * 0.12 }}
+              className="flex flex-col items-center text-center"
+            >
+              <div className="mb-3 flex h-[76px] w-[76px] items-center justify-center sm:h-[96px] sm:w-[96px] md:h-[116px] md:w-[116px]">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="h-full w-full object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.24)]"
+                />
+              </div>
 
-            <h3 className="text-[14px] sm:text-[18px] md:text-[22px] font-bold text-white leading-tight">
-              {item.title}
-            </h3>
+              <h3 className="text-[14px] font-bold leading-tight text-white sm:text-[20px] md:text-[24px]">
+                {item.title}
+              </h3>
 
-            <p className="mt-1 text-[10px] sm:text-[12px] md:text-[13px] font-medium text-white/90 leading-tight max-w-[150px] sm:max-w-[180px]">
-              {item.desc}
-            </p>
-          </motion.div>
-        ))}
+              <p className="mt-1 max-w-[150px] text-[10px] font-medium leading-tight text-white/92 sm:max-w-[190px] sm:text-[12px] md:max-w-[220px] md:text-[14px]">
+                {item.desc}
+              </p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </div>
   </div>
