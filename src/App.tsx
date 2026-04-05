@@ -235,7 +235,23 @@ const RegistrationForm = () => {
       setStep(2);
     }
   };
+const handleFinalCTA = () => {
+  if (!isStep2Valid) return;
 
+  // Fire Meta Lead event
+  window.trackCTA?.("final_complete_registration");
+
+  // optional: if you also want a custom event for your own audience naming
+  window.trackCustomEvent?.("Final_CTA_Click", {
+    button_name: "Complete Registration",
+    step: 2,
+  });
+
+  // then continue your normal submit / redirect logic here
+  // example:
+  // submitForm();
+  // or redirectToMainSite();
+};
   const isStep1Valid = formData.name && passwordRegex.test(formData.password);
   const isStep2Valid =
     formData.fullName &&
@@ -528,6 +544,7 @@ const RegistrationForm = () => {
                 <motion.button
                   whileHover={isStep2Valid ? { scale: 1.02 } : {}}
                   whileTap={isStep2Valid ? { scale: 0.98 } : {}}
+                  onClick={handleFinalCTA}
                   disabled={!isStep2Valid}
                   className={`flex w-full items-center justify-center gap-2 rounded-2xl bg-[linear-gradient(90deg,#1D4ED8_0%,#2563EB_42%,#22D3EE_100%)] py-4 font-bold text-white shadow-[0_18px_40px_rgba(37,99,235,0.38)] transition-all ${
                     !isStep2Valid
