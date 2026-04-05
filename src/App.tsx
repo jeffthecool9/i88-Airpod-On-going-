@@ -913,7 +913,8 @@ export default function App() {
                 ].map((item, i) => {
                   const stageNumber = i + 1;
                   const isReached = progressLevel >= stageNumber;
-                  const isVisible = item.type === "airpod" ? true : isReached;
+                  const isVisible =
+  item.type === "airpod" ? progressLevel >= 4 : isReached;
                   const isCurrent = progressLevel === stageNumber;
                   const isFinalFloating =
                     progressLevel === 4 && stageNumber === 4;
@@ -1267,77 +1268,82 @@ export default function App() {
           />
         </section>
 
-       <section
+      <section
   id="steps-to-claim"
-  className="relative z-10 -mt-10 overflow-hidden px-4 pt-2 pb-16 sm:-mt-12 sm:px-6 sm:pt-3 sm:pb-20 md:-mt-14"
-        >
-          <div
-            className="pointer-events-none absolute inset-x-0 top-0 h-[140px]"
-            style={{
-              background: "linear-gradient(180deg, #1E4FA3 0%, #144FB9 100%)",
-            }}
-          />
-
-          <div
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-[220px] z-0"
-            style={{ background: "#144FB9" }}
-          />
-
-          <div className="pointer-events-none absolute left-0 top-0 h-full w-full z-[1]">
-            <div className="absolute left-1/4 top-1/4 h-72 w-72 rounded-full bg-white/5 blur-[100px] animate-pulse" />
-            <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-cyan-400/5 blur-[100px] animate-pulse delay-1000" />
-          </div>
-
-         <div className="relative z-10 mx-auto max-w-5xl overflow-hidden rounded-[20px] bg-gradient-to-br from-cyan-900/30 via-white/5 to-white/5 px-4 pt-4 pb-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_0_20px_rgba(34,211,238,0.22),0_20px_40px_rgba(0,0,0,0.4)] backdrop-blur-[28px] sm:px-6 sm:pt-5 sm:pb-7"
-  style={{ transform: "translateY(-6px)" }}
+  className="relative z-10 -mt-8 overflow-hidden px-4 pt-4 pb-24 sm:-mt-10 sm:px-6 sm:pt-5 sm:pb-28 md:-mt-12"
+  style={{
+    background:
+      "linear-gradient(180deg, #1E4FA3 0%, #1B4DAE 42%, #144FB9 76%, #144FB9 100%)",
+  }}
 >
-            <div className="pointer-events-none absolute inset-0 rounded-[20px] border border-cyan-300/30" />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-cyan-400/8 via-transparent to-transparent opacity-50" />
+  {/* Top fill */}
+  <div
+    className="pointer-events-none absolute inset-x-0 top-0 h-[150px]"
+    style={{
+      background: "linear-gradient(180deg, #1E4FA3 0%, #1A4DAC 100%)",
+    }}
+  />
 
-            <div className="relative z-10">
-              <div className="mb-2 text-center sm:mb-3">
-                <h2 className="text-3xl font-bold tracking-tight leading-[0.95] sm:text-4xl md:text-5xl">
-                  <HeroWord light>Steps to Claim</HeroWord>
-                </h2>
-              </div>
+  {/* Bottom fill */}
+  <div
+    className="pointer-events-none absolute inset-x-0 bottom-0 h-[240px] z-0"
+    style={{ background: "#144FB9" }}
+  />
 
-              <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6">
-                {stepData.map((item, i) => (
-                  <motion.div
-                    key={item.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.45, delay: i * 0.12 }}
-                    className="flex flex-col items-center text-center"
-                  >
-                    <div className="mb-2 flex h-[70px] w-[70px] items-center justify-center sm:h-[90px] sm:w-[90px] md:h-[110px] md:w-[110px]">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="h-full w-full object-contain drop-shadow-[0_8px_20px_rgba(0,0,0,0.25)]"
-                      />
-                    </div>
+  {/* ambient glow */}
+  <div className="pointer-events-none absolute left-0 top-0 h-full w-full z-[1]">
+    <div className="absolute left-1/4 top-1/4 h-72 w-72 rounded-full bg-white/5 blur-[100px] animate-pulse" />
+    <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-cyan-400/5 blur-[100px] animate-pulse delay-1000" />
+  </div>
 
-                    <h3 className="text-[14px] sm:text-[18px] md:text-[22px] font-bold text-white leading-tight">
-                      {item.title}
-                    </h3>
+  <div className="relative z-10 mx-auto max-w-5xl translate-y-[-6px] overflow-hidden rounded-[20px] bg-gradient-to-br from-cyan-900/30 via-white/5 to-white/5 px-4 pt-5 pb-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_0_20px_rgba(34,211,238,0.22),0_20px_40px_rgba(0,0,0,0.4)] backdrop-blur-[28px] sm:px-6 sm:pt-6 sm:pb-9">
+    <div className="pointer-events-none absolute inset-0 rounded-[20px] border border-cyan-300/30" />
+    <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-cyan-400/8 via-transparent to-transparent opacity-50" />
 
-                    <p className="mt-1 text-[10px] sm:text-[12px] md:text-[13px] font-medium text-white/90 leading-tight">
-                      {item.desc}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
+    <div className="relative z-10">
+      <div className="mb-4 text-center sm:mb-5">
+        <h2 className="text-3xl font-bold tracking-tight leading-[0.95] sm:text-4xl md:text-5xl">
+          <HeroWord light>Steps to Claim</HeroWord>
+        </h2>
+      </div>
+
+      <div className="grid grid-cols-3 gap-3 sm:gap-5 md:gap-6">
+        {stepData.map((item, i) => (
+          <motion.div
+            key={item.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: i * 0.12 }}
+            className="flex flex-col items-center text-center"
+          >
+            <div className="mb-2 flex h-[74px] w-[74px] items-center justify-center sm:mb-3 sm:h-[96px] sm:w-[96px] md:h-[112px] md:w-[112px]">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="h-full w-full object-contain drop-shadow-[0_8px_20px_rgba(0,0,0,0.25)]"
+              />
             </div>
-          </div>
 
-          <SectionSeam
-            className="bottom-[-1px]"
-            fillColor="#144FB9"
-            shape="dip"
-          />
-        </section>
+            <h3 className="text-[14px] sm:text-[18px] md:text-[22px] font-bold text-white leading-tight">
+              {item.title}
+            </h3>
+
+            <p className="mt-1 text-[10px] sm:text-[12px] md:text-[13px] font-medium text-white/90 leading-tight max-w-[150px] sm:max-w-[180px]">
+              {item.desc}
+            </p>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <SectionSeam
+    className="bottom-[-1px]"
+    fillColor="#144FB9"
+    shape="dip"
+  />
+</section>
 
         <RegistrationForm />
         <FloatingGirl />
