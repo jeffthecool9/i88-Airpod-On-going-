@@ -1,16 +1,133 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;
+      n.push=n;
+      n.loaded=!0;
+      n.version='2.0';
+      n.queue=[];
+      t=b.createElement(e);
+      t.async=!0;
+      t.src=v;
+      s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+
+      fbq('init', '1442409451238595');
+      fbq('track', 'PageView');
+
+      // Prevent duplicate firing for scroll/time events
+      window.__metaEventsFired = {
+        engaged30s: false,
+        scroll50: false,
+        scroll75: false
+      };
+
+      // Global tracking helpers for your React app
+      window.trackCTA = function(label = 'default_cta') {
+        if (typeof fbq !== 'undefined') {
+          fbq('track', 'Lead');
+          fbq('trackCustom', 'CTA_Click', {
+            cta_label: label
+          });
+        }
+      };
+
+      window.trackStep1Complete = function() {
+        if (typeof fbq !== 'undefined') {
+          fbq('trackCustom', 'Step1_Complete');
+        }
+      };
+
+      window.trackCompleteRegistration = function() {
+        if (typeof fbq !== 'undefined') {
+          fbq('track', 'CompleteRegistration');
+        }
+      };
+
+      window.trackViewContent = function(contentName = 'landing_page') {
+        if (typeof fbq !== 'undefined') {
+          fbq('track', 'ViewContent', {
+            content_name: contentName
+          });
+        }
+      };
+
+      window.trackCustomEvent = function(eventName, params = {}) {
+        if (typeof fbq !== 'undefined') {
+          fbq('trackCustom', eventName, params);
+        }
+      };
+
+      // Track 30-second engaged users
+      setTimeout(function () {
+        if (!window.__metaEventsFired.engaged30s && typeof fbq !== 'undefined') {
+          fbq('trackCustom', 'Engaged_30s');
+          window.__metaEventsFired.engaged30s = true;
+        }
+      }, 30000);
+
+      // Track scroll depth
+      window.addEventListener('scroll', function() {
+        var scrollTop = window.scrollY || window.pageYOffset;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+        if (docHeight <= 0) return;
+
+        var scrollPercent = (scrollTop / docHeight) * 100;
+
+        if (scrollPercent >= 50 && !window.__metaEventsFired.scroll50) {
+          if (typeof fbq !== 'undefined') {
+            fbq('trackCustom', 'Scroll_50');
+          }
+          window.__metaEventsFired.scroll50 = true;
+        }
+
+        if (scrollPercent >= 75 && !window.__metaEventsFired.scroll75) {
+          if (typeof fbq !== 'undefined') {
+            fbq('trackCustom', 'Scroll_75');
+          }
+          window.__metaEventsFired.scroll75 = true;
+        }
+      });
+
+      // Optional: track initial content view
+      window.addEventListener('load', function() {
+        if (typeof fbq !== 'undefined') {
+          window.trackViewContent('main_landing_page');
+        }
+      });
+    </script>
+
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display:none"
+        src="https://www.facebook.com/tr?id=1442409451238595&ev=PageView&noscript=1"
+      />
+    </noscript>
+    <!-- End Meta Pixel Code -->
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Google AI Studio App</title>
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-
