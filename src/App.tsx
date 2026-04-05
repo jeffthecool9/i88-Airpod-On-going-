@@ -906,9 +906,9 @@ export default function App() {
             <div className="mx-auto max-w-5xl">
               <div className="mb-6 grid grid-cols-4 items-end gap-3 sm:gap-4">
                {[
-  { title: "REGISTER", level: "LEVEL 1", type: "text" },
-  { title: "188 FS", level: "LEVEL 2", type: "text" },
-  { title: "MORE REWARD", level: "LEVEL 3", type: "text" },
+  { title: "REGISTER", level: "JOIN NOW &", type: "text" },
+  { title: "188 FS", level: "DEPOSIT TO GET", type: "text" },
+  { title: "MORE REWARD", level: "UNLOCK", type: "text" },
   { title: "", level: "", type: "airpod" },
 ].map((item, i) => {
   const stageNumber = i + 1;
@@ -1075,22 +1075,34 @@ export default function App() {
           <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-[36%] bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.18))]" />
 
           <div className="relative z-10 flex h-full flex-col items-center justify-center px-2 sm:px-3 md:px-4">
-            <p
-              className={`text-center font-black uppercase leading-[0.95] ${
-                item.title === "MORE REWARD"
-                  ? "text-[13px] sm:text-[15px] md:text-[17px] lg:text-[18px]"
-                  : "text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px]"
-              } ${isReached ? "text-[#FFF4C8]" : "text-transparent"}`}
-              style={{
-                letterSpacing: "-0.03em",
-                textShadow: isReached
-                  ? "0 1px 0 rgba(255,255,255,0.48), 0 2px 0 rgba(255,215,106,0.14), 0 8px 20px rgba(0,0,0,0.38), 0 0 12px rgba(255,215,106,0.16)"
-                  : "none",
-              }}
-            >
-              {item.title}
-            </p>
+          <p
+  className={`text-center text-[9px] font-extrabold tracking-[0.18em] sm:text-[10px] sm:tracking-[0.22em] md:text-[11px] ${
+    isReached ? "text-[#FFD76A]" : "text-transparent"
+  }`}
+  style={{
+    textShadow: isReached
+      ? "0 4px 10px rgba(0,0,0,0.22)"
+      : "none",
+  }}
+>
+  {item.level}
+</p>
 
+<p
+  className={`mt-2 text-center font-black uppercase leading-[0.95] ${
+    item.title === "MORE REWARD"
+      ? "text-[13px] sm:text-[15px] md:text-[17px] lg:text-[18px]"
+      : "text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px]"
+  } ${isReached ? "text-[#FFF4C8]" : "text-transparent"}`}
+  style={{
+    letterSpacing: "-0.03em",
+    textShadow: isReached
+      ? "0 1px 0 rgba(255,255,255,0.48), 0 2px 0 rgba(255,215,106,0.14), 0 8px 20px rgba(0,0,0,0.38), 0 0 12px rgba(255,215,106,0.16)"
+      : "none",
+  }}
+>
+  {item.title}
+</p>
             <p
               className={`mt-2 text-center text-[9px] font-extrabold tracking-[0.18em] sm:text-[10px] sm:tracking-[0.22em] md:text-[11px] ${
                 isReached ? "text-[#FFD76A]" : "text-transparent"
