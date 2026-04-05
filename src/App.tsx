@@ -636,7 +636,8 @@ const FloatingGirl = () => {
   };
 
   const shouldShowGirl = showFromSteps;
-  const shouldShowBubble = showFromSteps && !hideBubbleAtRegistration && isUserActive;
+  const shouldShowBubble =
+    showFromSteps && !hideBubbleAtRegistration && isUserActive;
 
   return (
     <motion.div
@@ -853,10 +854,10 @@ export default function App() {
   ];
 
   const trackerItems = [
-    { title: "REGISTER", type: "text" as const },
-    { title: "188 FS", type: "text" as const },
-    { title: "MORE REWARD", type: "text" as const },
-    { title: "", type: "airpod" as const },
+    { title: "REGISTER", sub: "with us", type: "text" as const },
+    { title: "188 FS", sub: "Up to 188 FS", type: "text" as const },
+    { title: "MORE REWARD", sub: "Deposit Minimum $50", type: "text" as const },
+    { title: "", sub: "", type: "airpod" as const },
   ];
 
   return (
@@ -1069,7 +1070,7 @@ export default function App() {
                           <div className="pointer-events-none absolute inset-x-[8%] top-[3px] h-[28px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.14),transparent)] blur-[1px]" />
                           <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-[36%] bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.18))]" />
 
-                          <div className="relative z-10 flex h-full items-center justify-center px-2 text-center sm:px-3 md:px-4">
+                          <div className="relative z-10 flex h-full flex-col items-center justify-center px-2 text-center sm:px-3 md:px-4">
                             <p
                               className={`font-black uppercase leading-[0.95] ${
                                 item.title === "MORE REWARD"
@@ -1085,6 +1086,21 @@ export default function App() {
                             >
                               {item.title}
                             </p>
+
+                            {item.sub && (
+                              <p
+                                className={`mt-1 text-center font-semibold leading-[1.05] text-[8px] sm:text-[9px] md:text-[10px] ${
+                                  isReached ? "text-[#FFD76A]" : "text-transparent"
+                                }`}
+                                style={{
+                                  textShadow: isReached
+                                    ? "0 2px 8px rgba(0,0,0,0.22)"
+                                    : "none",
+                                }}
+                              >
+                                {item.sub}
+                              </p>
+                            )}
                           </div>
                         </div>
                       </div>
@@ -1239,14 +1255,14 @@ export default function App() {
 
                   <div className="relative z-10 flex min-h-[62px] items-center justify-center px-3 py-4 text-center sm:min-h-[86px] sm:px-5 sm:py-6">
                     <p
-                      className={`font-extrabold leading-[1.02] tracking-[-0.03em] text-white ${
+                      className={`font-bold leading-[1.04] tracking-[-0.02em] text-white ${
                         i === 2
-                          ? "text-[11px] sm:text-[17px] md:text-[22px] lg:text-[24px]"
-                          : "text-[13px] sm:text-[18px] md:text-[24px] lg:text-[26px]"
+                          ? "text-[10px] sm:text-[15px] md:text-[19px] lg:text-[21px]"
+                          : "text-[12px] sm:text-[16px] md:text-[21px] lg:text-[23px]"
                       }`}
                       style={{
                         textShadow:
-                          "0 1px 0 rgba(255,255,255,0.18), 0 4px 12px rgba(0,0,0,0.30), 0 0 10px rgba(120,220,255,0.10)",
+                          "0 1px 0 rgba(255,255,255,0.10), 0 3px 8px rgba(0,0,0,0.22)",
                       }}
                     >
                       {i === 0 && (
