@@ -21,39 +21,11 @@
       fbq('init', '1442409451238595');
       fbq('track', 'PageView');
 
-      // Prevent duplicate firing for scroll/time events
-      window.__metaEventsFired = {
-        engaged30s: false,
-        scroll50: false,
-        scroll75: false
-      };
-
-      // Global tracking helpers for your React app
-      window.trackCTA = function(label = 'default_cta') {
+      window.trackCTA = function(label = 'final_complete_registration') {
         if (typeof fbq !== 'undefined') {
           fbq('track', 'Lead');
           fbq('trackCustom', 'CTA_Click', {
             cta_label: label
-          });
-        }
-      };
-
-      window.trackStep1Complete = function() {
-        if (typeof fbq !== 'undefined') {
-          fbq('trackCustom', 'Step1_Complete');
-        }
-      };
-
-      window.trackCompleteRegistration = function() {
-        if (typeof fbq !== 'undefined') {
-          fbq('track', 'CompleteRegistration');
-        }
-      };
-
-      window.trackViewContent = function(contentName = 'landing_page') {
-        if (typeof fbq !== 'undefined') {
-          fbq('track', 'ViewContent', {
-            content_name: contentName
           });
         }
       };
@@ -63,55 +35,7 @@
           fbq('trackCustom', eventName, params);
         }
       };
-
-      // Track 30-second engaged users
-      setTimeout(function () {
-        if (!window.__metaEventsFired.engaged30s && typeof fbq !== 'undefined') {
-          fbq('trackCustom', 'Engaged_30s');
-          window.__metaEventsFired.engaged30s = true;
-        }
-      }, 30000);
-
-      // Track scroll depth
-      window.addEventListener('scroll', function() {
-        var scrollTop = window.scrollY || window.pageYOffset;
-        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-
-        if (docHeight <= 0) return;
-
-        var scrollPercent = (scrollTop / docHeight) * 100;
-
-        if (scrollPercent >= 50 && !window.__metaEventsFired.scroll50) {
-          if (typeof fbq !== 'undefined') {
-            fbq('trackCustom', 'Scroll_50');
-          }
-          window.__metaEventsFired.scroll50 = true;
-        }
-
-        if (scrollPercent >= 75 && !window.__metaEventsFired.scroll75) {
-          if (typeof fbq !== 'undefined') {
-            fbq('trackCustom', 'Scroll_75');
-          }
-          window.__metaEventsFired.scroll75 = true;
-        }
-      });
-
-      // Optional: track initial content view
-      window.addEventListener('load', function() {
-        if (typeof fbq !== 'undefined') {
-          window.trackViewContent('main_landing_page');
-        }
-      });
     </script>
-
-    <noscript>
-      <img
-        height="1"
-        width="1"
-        style="display:none"
-        src="https://www.facebook.com/tr?id=1442409451238595&ev=PageView&noscript=1"
-      />
-    </noscript>
     <!-- End Meta Pixel Code -->
 
     <meta charset="UTF-8" />
@@ -127,6 +51,16 @@
   </head>
 
   <body>
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display:none"
+        src="https://www.facebook.com/tr?id=1442409451238595&ev=PageView&noscript=1"
+        alt=""
+      />
+    </noscript>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
