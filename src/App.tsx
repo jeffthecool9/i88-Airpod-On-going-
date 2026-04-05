@@ -399,15 +399,16 @@ const RegistrationForm = () => {
   seconds.
 </p>
 
-                  <div className="mt-8 h-2 w-full overflow-hidden rounded-full bg-white/10">
-                    <motion.div
-                      key={countdown}
-                      initial={{ width: "100%" }}
-                      animate={{ width: `${(countdown / 7) * 100}%` }}
-                      transition={{ duration: 0.9, ease: "linear" }}
-                      className="h-full rounded-full bg-[linear-gradient(90deg,#22D3EE_0%,#2563EB_100%)]"
-                    />
-                  </div>
+                 <div className="mt-8 h-2.5 w-full overflow-hidden rounded-full bg-white/10 shadow-[inset_0_1px_2px_rgba(255,255,255,0.06)]">
+  <motion.div
+    initial={{ width: "100%" }}
+    animate={{ width: isSuccess ? "0%" : "100%" }}
+    transition={{ duration: 8, ease: "linear" }}
+    className="relative h-full rounded-full bg-[linear-gradient(90deg,#22D3EE_0%,#38BDF8_35%,#2563EB_100%)] shadow-[0_0_12px_rgba(34,211,238,0.35)]"
+  >
+    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.22),rgba(255,255,255,0.04),transparent)]" />
+  </motion.div>
+</div>
 
                   <p className="mt-5 text-xs text-blue-100/55 sm:text-sm">
                     Official redirect will be connected after backend integration is ready.
