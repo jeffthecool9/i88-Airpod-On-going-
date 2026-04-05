@@ -1184,64 +1184,129 @@ export default function App() {
             </div>
           </div>
 
-          <div className="pointer-events-none absolute bottom-[165px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[160px] sm:px-6 md:bottom-[145px] lg:bottom-[150px]">
-            <div className="grid grid-cols-3 gap-2 sm:gap-7 md:gap-9">
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: 0.05 }}
-                className="group relative overflow-hidden rounded-[18px] px-2 py-3 text-center shadow-[0_10px_22px_rgba(0,0,0,0.14)] backdrop-blur-[16px] sm:rounded-[28px] sm:px-6 sm:py-7 sm:shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
-                style={{ fontFamily: "'Manrope', sans-serif" }}
-              >
-                <div className="absolute inset-0 rounded-[18px] bg-[linear-gradient(180deg,rgba(245,239,225,0.12),rgba(220,214,200,0.05))] sm:rounded-[28px]" />
-                <div className="absolute inset-[1px] rounded-[17px] border border-white/10 sm:rounded-[27px]" />
-                <div className="absolute inset-x-[10%] top-[2px] h-[38%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
-                <div className="relative z-10">
-                  <h3 className="mt-1 text-[13px] font-bold leading-[1.05] tracking-[-0.02em] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] sm:mt-2 sm:text-[18px] md:text-[26px] lg:text-[30px]">
-                    Trusted Since 2014
-                  </h3>
-                </div>
-              </motion.div>
+         <div className="pointer-events-none absolute bottom-[168px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[164px] sm:px-6 md:bottom-[150px] lg:bottom-[154px]">
+  <div className="grid grid-cols-3 gap-3 sm:gap-7 md:gap-9">
+    {[
+      "Trusted Since 2014",
+      "5,000+ Active Members",
+      "Clear Rewards, Don't Forget to Claim it",
+    ].map((text, i) => (
+      <motion.div
+        key={text}
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.45, delay: 0.06 + i * 0.07 }}
+        className="group relative overflow-hidden rounded-[20px] sm:rounded-[26px]"
+      >
+        {/* outer gold-blue premium rim */}
+        <div className="absolute inset-0 rounded-[20px] bg-[linear-gradient(135deg,rgba(130,205,255,0.28)_0%,rgba(80,150,255,0.16)_22%,rgba(255,220,120,0.18)_52%,rgba(35,115,255,0.14)_78%,rgba(140,225,255,0.18)_100%)] p-[1.5px] sm:rounded-[26px] shadow-[0_16px_34px_rgba(0,0,0,0.22),0_0_18px_rgba(71,190,255,0.10)]">
+          <div className="h-full w-full rounded-[19px] sm:rounded-[25px] bg-[linear-gradient(180deg,rgba(46,92,215,0.95)_0%,rgba(33,67,180,0.97)_32%,rgba(25,43,141,0.98)_72%,rgba(18,29,110,0.99)_100%)]" />
+        </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: 0.12 }}
-                className="group relative overflow-hidden rounded-[18px] px-2 py-3 text-center shadow-[0_10px_22px_rgba(0,0,0,0.14)] backdrop-blur-[16px] sm:rounded-[28px] sm:px-6 sm:py-7 sm:shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
-                style={{ fontFamily: "'Manrope', sans-serif" }}
-              >
-                <div className="absolute inset-0 rounded-[18px] bg-[linear-gradient(180deg,rgba(224,236,243,0.12),rgba(190,204,214,0.05))] sm:rounded-[28px]" />
-                <div className="absolute inset-[1px] rounded-[17px] border border-white/10 sm:rounded-[27px]" />
-                <div className="absolute inset-x-[10%] top-[2px] h-[38%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
-                <div className="relative z-10">
-                  <h3 className="mt-1 text-[13px] font-bold leading-[1.05] tracking-[-0.02em] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] sm:mt-2 sm:text-[18px] md:text-[26px] lg:text-[30px]">
-                    5,000+ Active Members
-                  </h3>
-                </div>
-              </motion.div>
+        {/* silky moving texture */}
+        <motion.div
+          className="absolute inset-[1px] rounded-[19px] sm:rounded-[25px]"
+          animate={{
+            backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+          }}
+          transition={{
+            duration: 9,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          style={{
+            backgroundImage: `
+              linear-gradient(135deg,
+                rgba(255,255,255,0.11) 0%,
+                rgba(255,255,255,0.03) 18%,
+                rgba(90,190,255,0.08) 32%,
+                rgba(255,255,255,0.02) 46%,
+                rgba(255,215,106,0.08) 62%,
+                rgba(255,255,255,0.03) 78%,
+                rgba(255,255,255,0.10) 100%
+              )
+            `,
+            backgroundSize: "220% 220%",
+            mixBlendMode: "screen",
+          }}
+        />
 
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: 0.19 }}
-                className="group relative overflow-hidden rounded-[18px] px-2 py-3 text-center shadow-[0_10px_22px_rgba(0,0,0,0.14)] backdrop-blur-[16px] sm:rounded-[28px] sm:px-6 sm:py-7 sm:shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
-                style={{ fontFamily: "'Manrope', sans-serif" }}
-              >
-                <div className="absolute inset-0 rounded-[18px] bg-[linear-gradient(180deg,rgba(235,233,243,0.12),rgba(204,200,216,0.05))] sm:rounded-[28px]" />
-                <div className="absolute inset-[1px] rounded-[17px] border border-white/10 sm:rounded-[27px]" />
-                <div className="absolute inset-x-[10%] top-[2px] h-[38%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
-                <div className="relative z-10">
-                  <h3 className="mt-1 text-[13px] font-bold leading-[1.05] tracking-[-0.02em] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] sm:mt-2 sm:text-[18px] md:text-[26px] lg:text-[30px]">
-                    Clear Rewards, Don&apos;t Forget to Claim it
-                  </h3>
-                </div>
-              </motion.div>
-            </div>
-          </div>
+        {/* glossy top highlight */}
+        <div className="pointer-events-none absolute inset-x-[10%] top-[3px] h-[40%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.28),rgba(255,255,255,0.08),transparent)] blur-[1px]" />
 
+        {/* side glow */}
+        <div className="pointer-events-none absolute -left-4 top-1/2 h-14 w-8 -translate-y-1/2 rounded-full bg-cyan-200/12 blur-[14px]" />
+        <div className="pointer-events-none absolute -right-4 top-1/2 h-14 w-8 -translate-y-1/2 rounded-full bg-blue-200/10 blur-[14px]" />
+
+        {/* bottom inner depth */}
+        <div className="pointer-events-none absolute inset-x-[6%] bottom-[4px] h-[34%] rounded-b-[18px] bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.22))]" />
+
+        {/* tiny decorative spark */}
+        <motion.div
+          className="pointer-events-none absolute right-[12px] top-[10px] h-[18px] w-[18px] rounded-full"
+          animate={{
+            opacity: [0.25, 0.7, 0.25],
+            scale: [1, 1.12, 1],
+          }}
+          transition={{
+            duration: 2.2,
+            repeat: Infinity,
+            delay: i * 0.35,
+            ease: "easeInOut",
+          }}
+          style={{
+            background:
+              "radial-gradient(circle, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.22) 35%, rgba(255,255,255,0) 72%)",
+            filter: "blur(0.4px)",
+          }}
+        />
+
+        {/* border inner line */}
+        <div className="pointer-events-none absolute inset-[1px] rounded-[19px] border border-white/10 sm:rounded-[25px]" />
+
+        {/* content */}
+        <div className="relative z-10 flex min-h-[62px] items-center justify-center px-3 py-4 text-center sm:min-h-[86px] sm:px-5 sm:py-6">
+          <p
+            className={`font-extrabold leading-[1.02] tracking-[-0.03em] text-white ${
+              i === 2
+                ? "text-[11px] sm:text-[17px] md:text-[22px] lg:text-[24px]"
+                : "text-[13px] sm:text-[18px] md:text-[24px] lg:text-[26px]"
+            }`}
+            style={{
+              textShadow:
+                "0 1px 0 rgba(255,255,255,0.18), 0 4px 12px rgba(0,0,0,0.30), 0 0 10px rgba(120,220,255,0.10)",
+            }}
+          >
+            {i === 0 && (
+              <>
+                Trusted Since
+                <br />
+                2014
+              </>
+            )}
+            {i === 1 && (
+              <>
+                5,000+ Active
+                <br />
+                Members
+              </>
+            )}
+            {i === 2 && (
+              <>
+                Clear Rewards,
+                <br />
+                Don&apos;t Forget to
+                <br />
+                Claim it
+              </>
+            )}
+          </p>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</div>
           <HeroCTA />
 
           <div className="relative z-10 mx-auto w-full max-w-6xl"></div>
