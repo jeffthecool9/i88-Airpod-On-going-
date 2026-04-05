@@ -854,9 +854,9 @@ export default function App() {
   ];
 
   const trackerItems = [
-    { title: "REGISTER", sub: "with us", type: "text" as const },
-    { title: "188 FS", sub: "Up to 188 FS", type: "text" as const },
-    { title: "MORE REWARD", sub: "Deposit Minimum $50", type: "text" as const },
+    { title: "REGISTER", type: "text" as const },
+    { title: "UP TO 188 FS", type: "text" as const },
+    { title: "MORE REWARD", sub: "TO UNLOCK", type: "text" as const },
     { title: "", sub: "", type: "airpod" as const },
   ];
 
