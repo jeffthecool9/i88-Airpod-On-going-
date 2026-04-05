@@ -247,44 +247,54 @@ const RegistrationForm = () => {
     formData.phone &&
     formData.agreedToTerms;
 
-  const handleFinalCTA = () => {
-    if (!isStep2Valid) return;
+ const handleFinalCTA = () => {
+  if (!isStep2Valid) return;
 
-    // fire Meta Lead event
-    window.trackCTA?.("final_complete_registration");
+  window.trackCTA?.("final_complete_registration");
 
-    // optional custom event
-    window.trackCustomEvent?.("Final_CTA_Click", {
-      button_name: "Complete Registration",
-      step: 2,
-      username: formData.name,
-    });
+  window.trackCustomEvent?.("Final_CTA_Click", {
+    button_name: "Complete Registration",
+    step: 2,
+    username: formData.name,
+  });
 
-    // show success state
-    setIsSuccess(true);
-    setCountdown(8);
-  };
+  setIsSuccess(true);
+  setCountdown(8);
+  setProgress(0);
+};
 
- useEffect(() => {
+useEffect(() => {
   if (!isSuccess) return;
 
-  if (countdown <= 1) {
-    const timer = setTimeout(() => {
-      setCountdown(0);
+  const totalDuration = 8000; // 8 seconds
+  const startTime = Date.now();
 
-      // LATER: replace this with real redirect
-      // window.location.href = "https://your-official-home-page.com";
-    }, 1000);
+  const progressTimer = setInterval(() => {
+    const elapsed = Date.now() - startTime;
+    const nextProgress = Math.min((elapsed / totalDuration) * 100, 100);
+    setProgress(nextProgress);
+  }, 50);
 
-    return () => clearTimeout(timer);
-  }
+  const countdownTimer = setInterval(() => {
+    setCountdown((prev) => {
+      if (prev <= 1) {
+        clearInterval(countdownTimer);
+        clearInterval(progressTimer);
 
-  const timer = setTimeout(() => {
-    setCountdown((prev) => prev - 1);
+        // LATER: replace this with real redirect
+        // window.location.href = "https://your-official-home-page.com";
+
+        return 0;
+      }
+      return prev - 1;
+    });
   }, 1000);
 
-  return () => clearTimeout(timer);
-}, [isSuccess, countdown]);
+  return () => {
+    clearInterval(progressTimer);
+    clearInterval(countdownTimer);
+  };
+}, [isSuccess]);
 
   return (
     <section
@@ -911,7 +921,10 @@ const HeroCTA = () => {
 
 export default function App() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [progressLevel, setProgressLevel] = useState(1);
+ const [step, setStep] = useState(1);
+const [isSuccess, setIsSuccess] = useState(false);
+const [countdown, setCountdown] = useState(8);
+const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     setProgressLevel(1);
