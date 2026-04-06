@@ -963,11 +963,11 @@ export default function App() {
   ];
 
   const trackerItems = [
-    { title: "REGISTER", sub: "with us", type: "text" as const },
-    { title: "188 FS", sub: "Up to 188 FS", type: "text" as const },
-    { title: "MORE REWARD", sub: "Deposit Minimum $50", type: "text" as const },
-    { title: "", sub: "", type: "airpod" as const },
-  ];
+  { title: "REGISTER", sub: "With Us", type: "text" as const },
+  { title: "188 FS", sub: "Up to 188 FS", type: "text" as const },
+  { title: "MORE REWARD", sub: "Deposit Minimum $50", type: "text" as const },
+  { title: "", sub: "", type: "airpod" as const },
+];
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-brand-navy/70 font-sans text-slate-200 selection:bg-blue-500/30">
@@ -1196,20 +1196,20 @@ export default function App() {
                               {item.title}
                             </p>
 
-                            {item.sub && (
-                              <p
-                                className={`mt-1 text-center font-semibold leading-[1.05] text-[8px] sm:text-[9px] md:text-[10px] ${
-                                  isReached ? "text-[#FFD76A]" : "text-transparent"
-                                }`}
-                                style={{
-                                  textShadow: isReached
-                                    ? "0 2px 8px rgba(0,0,0,0.22)"
-                                    : "none",
-                                }}
-                              >
-                                {item.sub}
-                              </p>
-                            )}
+                         {item.sub && (
+  <p
+    className={`mt-2 text-center font-bold leading-[1.08] text-[11px] sm:text-[12px] md:text-[13px] lg:text-[14px] ${
+      isReached ? "text-[#FFD76A]" : "text-transparent"
+    }`}
+    style={{
+      textShadow: isReached
+        ? "0 2px 8px rgba(0,0,0,0.22)"
+        : "none",
+    }}
+  >
+    {item.sub}
+  </p>
+)}
                           </div>
                         </div>
                       </div>
