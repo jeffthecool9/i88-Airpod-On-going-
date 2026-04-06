@@ -1068,10 +1068,10 @@ useEffect(() => {
 >
   <ChevronDown
     className="h-5 w-5 sm:h-6 sm:w-6"
-    style={{
-      color: "rgba(255,255,255,0.42)",
-      filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.18))",
-    }}
+  style={{
+  color: "rgba(255,215,106,0.5)",
+  filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.22))",
+}}
   />
 </motion.div>
           
