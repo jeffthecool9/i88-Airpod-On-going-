@@ -8,6 +8,7 @@ import depositImg from "./assets/deposit.png";
 import playImg from "./assets/play.png";
 import colaImg from "./assets/cola2.png";
 import heroTextBoxImg from "./assets/hero-textbox.png";
+import HeroRewardTracker from "./HeroRewardTracker";
 import cola1Img from "./assets/cola1.png";
 import { motion, AnimatePresence } from "motion/react";
 import {
@@ -1000,34 +1001,42 @@ useEffect(() => {
                 "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
             }}
           />
-<p
-  className="relative z-10 font-black uppercase text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px]"
-  style={{
-    letterSpacing: "-0.03em",
-    fontFamily: "'Arial Black', Inter, sans-serif",
+<div className="pointer-events-none absolute left-1/2 top-[46%] z-[9] w-[82%] max-w-[560px] -translate-x-1/2 sm:top-[47%] sm:w-[78%] sm:max-w-[600px] md:top-[48%] md:w-[74%] md:max-w-[640px] lg:top-[48.5%] lg:w-[70%] lg:max-w-[680px]">
+  <img
+    src={heroTextBoxImg}
+    alt=""
+    className="w-full object-contain"
+  />
 
-    // GOLD TEXT EFFECT (matches frame)
-    background:
-      "linear-gradient(180deg, #FFF6C2 0%, #FFD76A 40%, #E6B84D 70%, #C8921F 100%)",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-
-    // 3D + DEPTH
-    textShadow: `
-      0 1px 0 #FFF3B0,
-      0 2px 0 #E6B84D,
-      0 3px 0 #C8921F,
-      0 6px 12px rgba(0,0,0,0.45),
-      0 0 8px rgba(255,215,106,0.35)
-    `,
-  }}
->
-  99% TO CLAIM AIRPODS PRO 3,
-  <br />
-  1% IS YOUR ACTION
-</p>
-
-    </div>
+  <div className="absolute inset-0 flex items-center justify-center px-6 text-center sm:px-8 md:px-10">
+    <p
+      className="font-black uppercase leading-[1.08] text-white text-[20px] sm:text-[26px] md:text-[32px] lg:text-[36px]"
+      style={{
+        letterSpacing: "-0.03em",
+        fontFamily: "Inter, system-ui, sans-serif",
+        textShadow: `
+          0 1px 0 rgba(255,255,255,0.95),
+          0 2px 0 rgba(220,235,255,0.85),
+          0 3px 0 rgba(130,170,255,0.55),
+          0 8px 18px rgba(0,0,0,0.35),
+          0 0 14px rgba(255,255,255,0.18)
+        `,
+        filter: "drop-shadow(0 4px 10px rgba(0,0,0,0.22))",
+      }}
+    >
+      <span
+        style={{
+          background:
+            "linear-gradient(180deg, #FFFFFF 0%, #F4F8FF 45%, #DCEBFF 100%)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        }}
+      >
+        99% to Claim AirPods Pro 3,
+        <br />
+        1% Is Your Action
+      </span>
+    </p>
   </div>
 </div>
           
@@ -1121,7 +1130,7 @@ if (item.type === "airpod") {
             textShadow: "0 2px 8px rgba(0,0,0,0.28)",
           }}
         >
-          Deposit &amp; Play To Unlock
+          Deposit &amp; Play With Us
         </p>
       </motion.div>
     </motion.div>
