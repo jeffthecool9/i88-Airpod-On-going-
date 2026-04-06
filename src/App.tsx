@@ -1132,7 +1132,7 @@ if (item.type === "airpod") {
             textShadow: "0 2px 8px rgba(0,0,0,0.28)",
           }}
         >
-          Deposit &amp; Play With Us
+          Deposit &amp; Play To Unlock
         </p>
       </motion.div>
     </motion.div>
