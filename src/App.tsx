@@ -926,9 +926,9 @@ export default function App() {
   const [progressLevel, setProgressLevel] = useState(1);
 
   useEffect(() => {
-    setProgressLevel(0);
+    setProgressLevel(1);
 
-    const levels = [1, 2, 3];
+    const levels = [2, 3];
     let index = 0;
 
     const interval = setInterval(() => {
