@@ -1000,31 +1000,32 @@ export default function App() {
           />
 
           <div className="relative z-[11] mx-auto flex max-w-[1440px] flex-col items-center px-4 pt-[360px] sm:px-6 sm:pt-[430px] md:pt-[500px] lg:px-8 lg:pt-[330px] xl:pt-[350px] 2xl:pt-[370px]">
-            <div className="pointer-events-none relative w-[82%] max-w-[560px] sm:w-[78%] sm:max-w-[600px] md:w-[74%] md:max-w-[640px] lg:w-[48%] lg:max-w-[760px] xl:w-[45%] xl:max-w-[820px] 2xl:w-[43%] 2xl:max-w-[860px]">
-              <img
-                src={heroTextBoxImg}
-                alt=""
-                className="w-full object-contain"
-              />
+<div className="pointer-events-none absolute left-1/2 top-[46%] z-[9] w-[82%] max-w-[560px] -translate-x-1/2 sm:top-[47%] sm:w-[78%] sm:max-w-[600px] md:top-[48%] md:w-[74%] md:max-w-[640px] lg:top-[48.5%] lg:w-[70%] lg:max-w-[680px]">
+  <img
+    src={heroTextBoxImg}
+    alt=""
+    className="w-full object-contain"
+  />
 
-              <div className="absolute inset-0 flex items-center justify-center px-5 text-center sm:px-8 md:px-10">
-                <p
-                  className="relative z-10 font-extrabold uppercase text-white text-[18px] sm:text-[22px] md:text-[26px] lg:text-[34px] xl:text-[38px]"
-                  style={{
-                    letterSpacing: "0.01em",
-                    fontFamily: "'Poppins', 'Inter', sans-serif",
-                    textShadow: `
-                      0 2px 6px rgba(0,0,0,0.35),
-                      0 4px 12px rgba(0,0,0,0.25)
-                    `,
-                  }}
-                >
-                  YOUR AIRPODS AWAITS
-                  <br />
-                  COMPLETE THE FINAL 1%
-                </p>
-              </div>
-            </div>
+  <div className="absolute inset-0 flex items-center justify-center px-6 text-center sm:px-8 md:px-10">
+    <p
+      className="relative z-10 font-extrabold uppercase text-white text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px]"
+      style={{
+        letterSpacing: "0.02em",
+        fontFamily: "'Poppins', 'Inter', sans-serif",
+        WebkitTextStroke: "0px",
+        textShadow: `
+          0 2px 6px rgba(0,0,0,0.35),
+          0 4px 12px rgba(0,0,0,0.25)
+        `,
+      }}
+    >
+      YOUR AIRPODS AWAITS
+      <br />
+      COMPLETE THE FINAL 1%
+    </p>
+  </div>
+</div>
 
             <motion.div
               aria-hidden="true"
