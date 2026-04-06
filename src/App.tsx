@@ -1351,7 +1351,7 @@ const trackerFillWidth =
               {[
                 "Trusted Since 2016",
                 "5,000+ Active Members",
-                "Clear Rewards, Don't Forget to Claim it",
+                "10+ Rewards For You",
               ].map((text, i) => (
                 <motion.div
                   key={text}
