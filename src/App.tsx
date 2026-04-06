@@ -549,8 +549,8 @@ const RegistrationForm = () => {
                         className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
                         value={formData.fullName}
                         onChange={(e) =>
-                          setFormData({ ...formData, fullName: e.target.value })
-                        }
+  setFormData({ ...formData, fullName: e.target.value })
+}
                       />
                     </div>
                     <motion.div
@@ -581,9 +581,9 @@ const RegistrationForm = () => {
                             : "border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
                         }`}
                         value={formData.email}
-                        onChange={(e) =>
-                          setFormData({ ...formData, email: e.target.value })
-                        }
+                      onChange={(e) =>
+  setFormData({ ...formData, email: e.target.value })
+}
                       />
                     </div>
                     {formData.email && !emailRegex.test(formData.email) && (
@@ -604,9 +604,9 @@ const RegistrationForm = () => {
                         placeholder="+65 8000 0000"
                         className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
                         value={formData.phone}
-                        onChange={(e) =>
-                          setFormData({ ...formData, phone: e.target.value })
-                        }
+                       onChange={(e) =>
+  setFormData({ ...formData, phone: e.target.value })
+}
                       />
                     </div>
                   </div>
@@ -618,12 +618,12 @@ const RegistrationForm = () => {
                         type="checkbox"
                         className="h-5 w-5 cursor-pointer rounded border-cyan-200/20 bg-white/5 text-blue-600 accent-blue-600 transition-all focus:ring-cyan-400/35 focus:ring-offset-0"
                         checked={formData.agreedToTerms}
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            agreedToTerms: e.target.checked,
-                          })
-                        }
+                       onChange={(e) =>
+  setFormData({
+    ...formData,
+    agreedToTerms: e.target.checked,
+  })
+}
                       />
                     </div>
                     <label
