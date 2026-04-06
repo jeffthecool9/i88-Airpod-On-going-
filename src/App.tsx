@@ -968,7 +968,7 @@ useEffect(() => {
   const trackerItems = [
   { title: "REGISTER", sub: "With Us", type: "text" as const },
   { title: "188 FS", sub: "Deposit & Get FS", type: "text" as const },
-  { title: "MORE REWARD", sub: "Deposit $50+", type: "text" as const },
+  { title: "MORE REWARD AWAITS", type: "text" as const },
   { title: "", sub: "", type: "airpod" as const },
 ];
 
@@ -1238,7 +1238,7 @@ const trackerFillWidth =
                           <div className="relative z-10 flex h-full flex-col items-center justify-center px-2 text-center sm:px-3 md:px-4">
                             <p
                               className={`font-black uppercase leading-[0.95] ${
-                                item.title === "MORE REWARD"
+                                item.title === "MORE REWARD AWAITS"
                                   ? "text-[13px] sm:text-[15px] md:text-[17px] lg:text-[18px]"
                                   : "text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px]"
                               } ${isReached ? "text-[#FFF4C8]" : "text-transparent"}`}
