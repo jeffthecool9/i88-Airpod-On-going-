@@ -1008,23 +1008,24 @@ useEffect(() => {
     className="w-full object-contain"
   />
 
-  <div className="absolute inset-0 flex items-center justify-center px-6 text-center sm:px-8 md:px-10">
-   className="relative z-10 font-black uppercase text-white text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px]"
-  style={{
-    letterSpacing: "-0.03em",
-    fontFamily: "'Arial Black', Inter, sans-serif",
-
-    // 🔵 BLUE OUTLINE (KEY FIX)
-    WebkitTextStroke: "2px #1E40AF", // deep blue (matches hero)
-
-    // 💡 3D + DEPTH
-    textShadow: `
-      0 2px 4px rgba(0,0,0,0.4),
-      0 6px 12px rgba(0,0,0,0.35),
-      0 0 6px rgba(30,64,175,0.4)
-    `,
-  }}
-  </div>
+<div className="absolute inset-0 flex items-center justify-center px-6 text-center sm:px-8 md:px-10">
+  <p
+    className="relative z-10 font-black uppercase text-white text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px]"
+    style={{
+      letterSpacing: "-0.03em",
+      fontFamily: "'Arial Black', Inter, sans-serif",
+      WebkitTextStroke: "2px #1E40AF",
+      textShadow: `
+        0 2px 4px rgba(0,0,0,0.4),
+        0 6px 12px rgba(0,0,0,0.35),
+        0 0 6px rgba(30,64,175,0.4)
+      `,
+    }}
+  >
+    YOUR AIRPODS PRO 3 AWAITS
+    <br />
+    COMPLETE THE FINAL 1%
+  </p>
 </div>
           
           <motion.img
