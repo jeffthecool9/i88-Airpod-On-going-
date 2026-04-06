@@ -19,6 +19,7 @@ import {
   Lock,
   User,
   Phone,
+  ChevronDown,
   AlertCircle,
   ArrowLeft,
 } from "lucide-react";
@@ -1052,6 +1053,30 @@ useEffect(() => {
             }}
           />
 
+          <motion.div
+  aria-hidden="true"
+  className="pointer-events-none absolute left-1/2 bottom-[365px] z-[9] -translate-x-1/2 sm:bottom-[382px] md:bottom-[405px] lg:bottom-[420px]"
+  animate={{
+    y: [0, 6, 0],
+    opacity: [0.18, 0.32, 0.18],
+  }}
+  transition={{
+    duration: 2.2,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+>
+  <div className="flex flex-col items-center">
+    <ChevronDown
+      className="h-6 w-6 sm:h-7 sm:w-7"
+      style={{
+        color: "rgba(255, 215, 106, 0.55)",
+        filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.18))",
+      }}
+    />
+  </div>
+</motion.div>
+          
           <div className="pointer-events-none absolute left-1/2 bottom-[285px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[300px] sm:px-6 md:bottom-[320px] lg:bottom-[335px]">
             <div className="mx-auto max-w-5xl">
               <div className="mb-6 grid grid-cols-4 items-end gap-3 sm:gap-4">
