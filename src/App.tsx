@@ -964,8 +964,8 @@ useEffect(() => {
 
   const trackerItems = [
   { title: "REGISTER", sub: "With Us", type: "text" as const },
-  { title: "188 FS", sub: "Up to 188 FS", type: "text" as const },
-  { title: "MORE REWARD", sub: "Deposit Minimum $50", type: "text" as const },
+  { title: "188 FS", sub: "Deposit & Get FS", type: "text" as const },
+  { title: "MORE REWARD", sub: "Deposit $50+", type: "text" as const },
   { title: "", sub: "", type: "airpod" as const },
 ];
 
