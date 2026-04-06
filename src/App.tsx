@@ -1001,16 +1001,41 @@ useEffect(() => {
                 "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
             }}
           />
-<div className="pointer-events-none absolute left-[49%] top-[39%] z-[9] w-[470px] -translate-x-1/2 sm:left-[48%] sm:top-[40%] sm:w-[560px] md:left-[47%] md:top-[41%] md:w-[640px] lg:left-[46%] lg:top-[42%] lg:w-[700px]">
+<div className="pointer-events-none absolute left-1/2 top-[46%] z-[9] w-[82%] max-w-[560px] -translate-x-1/2 sm:top-[47%] sm:w-[78%] sm:max-w-[600px] md:top-[48%] md:w-[74%] md:max-w-[640px] lg:top-[48.5%] lg:w-[70%] lg:max-w-[680px]">
   <img
     src={heroTextBoxImg}
     alt=""
     className="w-full object-contain"
   />
 
-  <div className="absolute inset-0 flex items-center justify-center px-8 text-center">
-    <p className="text-white text-lg font-bold md:text-2xl">
-      99% to Claim AirPods Pro 3, 1% is Your Action
+  <div className="absolute inset-0 flex items-center justify-center px-6 text-center sm:px-8 md:px-10">
+    <p
+      className="font-black uppercase leading-[1.08] text-white text-[20px] sm:text-[26px] md:text-[32px] lg:text-[36px]"
+      style={{
+        letterSpacing: "-0.03em",
+        fontFamily: "Inter, system-ui, sans-serif",
+        textShadow: `
+          0 1px 0 rgba(255,255,255,0.95),
+          0 2px 0 rgba(220,235,255,0.85),
+          0 3px 0 rgba(130,170,255,0.55),
+          0 8px 18px rgba(0,0,0,0.35),
+          0 0 14px rgba(255,255,255,0.18)
+        `,
+        filter: "drop-shadow(0 4px 10px rgba(0,0,0,0.22))",
+      }}
+    >
+      <span
+        style={{
+          background:
+            "linear-gradient(180deg, #FFFFFF 0%, #F4F8FF 45%, #DCEBFF 100%)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        }}
+      >
+        99% to Claim AirPods Pro 3,
+        <br />
+        1% Is Your Action
+      </span>
     </p>
   </div>
 </div>
