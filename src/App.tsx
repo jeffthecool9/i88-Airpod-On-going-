@@ -23,7 +23,7 @@ import depositImg from "./assets/deposit.png";
 import playImg from "./assets/play.png";
 import colaImg from "./assets/cola2.png";
 import rewardEventImg from "./assets/reward-event.png";
-import heroTextBoxImg from "./assets/hero-textbox.png";
+import BoxImg from "./assets/hero-textbox.png";
 import heroFinalTextImg from "./assets/text.png";
 import cola1Img from "./assets/cola1.png";
 
@@ -1019,7 +1019,7 @@ export default function App() {
                 className="relative z-10 translate-y-[10px] font-bold italic text-white text-[18px] sm:translate-y-[12px] sm:text-[22px] md:translate-y-[14px] md:text-[26px] lg:translate-y-[16px] lg:text-[30px]"
                 style={{
                   letterSpacing: "0.03em",
-                  fontFamily: "'Futura PT', 'Poppins', sans-serif",
+                  fontFamily: "'Futura PT', 'Bold', 'Oblique",
                   textShadow: `
                     0 2px 6px rgba(0,0,0,0.35),
                     0 4px 12px rgba(0,0,0,0.25)
