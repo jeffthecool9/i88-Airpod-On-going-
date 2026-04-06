@@ -982,7 +982,7 @@ useEffect(() => {
       <div className="pointer-events-none fixed inset-0 z-[100] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
       <main className="relative z-10">
-        <section className="relative flex min-h-[124vh] items-center overflow-hidden bg-[#0a1580] sm:min-h-[128vh] md:min-h-[132vh] lg:min-h-[136vh]">
+        <section className="relative flex min-h-[124vh] items-center overflow-hidden bg-[#0a1580] sm:min-h-[128vh] md:min-h-[132vh] lg:min-h-[150vh] xl:min-h-[152vh] 2xl:min-h-[156vh]">
           <RealisticBackground />
           <GoldConfetti />
 
@@ -996,7 +996,7 @@ useEffect(() => {
   src={cola1Img}
   alt=""
   aria-hidden="true"
-  className="pointer-events-none absolute left-[-12%] top-[20%] z-[8] w-[1100px] object-contain sm:left-[-10%] sm:top-[20%] sm:w-[1200px] md:left-[-8%] md:top-[21%] md:w-[1300px] lg:left-1/2 lg:top-[14%] lg:w-[760px] lg:-translate-x-1/2 xl:top-[12%] xl:w-[860px] 2xl:top-[10%] 2xl:w-[940px]"
+  className="pointer-events-none absolute left-[-12%] top-[20%] z-[8] w-[1100px] object-contain sm:left-[-10%] sm:top-[20%] sm:w-[1200px] md:left-[-8%] md:top-[21%] md:w-[1300px] lg:left-1/2 lg:top-[10%] lg:w-[620px] lg:-translate-x-1/2 xl:top-[8%] xl:w-[700px] 2xl:top-[7%] 2xl:w-[760px]"
   style={{
     filter:
       "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
@@ -1006,7 +1006,7 @@ useEffect(() => {
   <img
     src={heroTextBoxImg}
     alt=""
-    className="w-full object-contain"
+    className="pointer-events-none absolute left-1/2 top-[46%] z-[9] w-[82%] max-w-[560px] -translate-x-1/2 sm:top-[47%] sm:w-[78%] sm:max-w-[600px] md:top-[48%] md:w-[74%] md:max-w-[640px] lg:top-[36%] lg:w-[52%] lg:max-w-[760px] xl:top-[35%] xl:w-[48%] xl:max-w-[820px] 2xl:top-[34%] 2xl:w-[46%] 2xl:max-w-[860px]"
   />
 
   <div className="absolute inset-0 flex items-center justify-center px-6 text-center sm:px-8 md:px-10">
@@ -1037,7 +1037,7 @@ useEffect(() => {
             src={airpodImg}
             alt=""
             aria-hidden="true"
-            className="pointer-events-none absolute right-[10%] top-[16%] z-[9] w-[170px] object-contain sm:right-[11%] sm:top-[18%] sm:w-[210px] md:right-[12%] md:top-[19%] md:w-[250px] lg:right-[13%] lg:top-[19%] lg:w-[290px]"
+           className="pointer-events-none absolute right-[10%] top-[16%] z-[9] w-[170px] object-contain sm:right-[11%] sm:top-[18%] sm:w-[210px] md:right-[12%] md:top-[19%] md:w-[250px] lg:right-[9%] lg:top-[10%] lg:w-[260px] xl:right-[8%] xl:top-[8%] xl:w-[300px] 2xl:right-[7%] 2xl:top-[7%] 2xl:w-[330px]"
             animate={{
               y: [0, -12, 0],
               rotate: [0, -2, 0],
@@ -1055,7 +1055,7 @@ useEffect(() => {
 
        <motion.div
   aria-hidden="true"
-  className="pointer-events-none absolute left-1/2 top-[62%] z-[12] -translate-x-1/2"
+ className="pointer-events-none absolute left-1/2 top-[62%] z-[12] -translate-x-1/2 lg:top-[49%] xl:top-[48%] 2xl:top-[47%]"
   animate={{
     y: [0, 5, 0],
     opacity: [0.16, 0.3, 0.16],
@@ -1193,7 +1193,7 @@ const trackerFillWidth =
                             : "bg-[linear-gradient(135deg,rgba(255,255,255,0.12),rgba(255,255,255,0.05))]"
                         } shadow-[0_14px_32px_rgba(0,0,0,0.28)]`}
                       >
-                        <div className="relative h-[82px] overflow-hidden rounded-[20px] sm:h-[86px] md:h-[92px] lg:h-[118px] xl:h-[126px] 2xl:h-[132px]">
+                        <div className="relative h-[82px] overflow-hidden rounded-[20px] sm:h-[86px] md:h-[92px] lg:h-[92px] xl:h-[98px] 2xl:h-[104px]">
                           <motion.div
                             className="absolute inset-0"
                             animate={{
