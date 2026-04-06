@@ -1028,12 +1028,59 @@ useEffect(() => {
                   const stageNumber = i + 1;
                   const isReached = progressLevel >= stageNumber;
                   const isCurrent = progressLevel === stageNumber;
-
+const trackerFillWidth =
+  progressLevel === 1
+    ? "33%"
+    : progressLevel === 2
+    ? "66%"
+    : "75%";
+      
                  // 3) inside your trackerItems.map(...) replace ONLY the airpod block with this
-
 if (item.type === "airpod") {
-  const isUnlockedStage = progressLevel >= 3;
+  const showText = progressLevel >= 3;
 
+  return (
+    <motion.div
+      key={i}
+      className="relative flex min-w-0 flex-col items-center justify-end"
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45 }}
+    >
+      <div className="relative flex h-[82px] w-full items-end justify-center">
+        <img
+          src={airpodImg}
+          className="w-[90px]"
+          style={{
+            filter:
+              "grayscale(1) opacity(0.55) drop-shadow(0 12px 24px rgba(0,0,0,0.28))",
+          }}
+        />
+
+        <div className="absolute top-0 right-[20%] flex h-7 w-7 items-center justify-center rounded-full bg-black/70 border border-yellow-300/30">
+          <Lock className="w-3 h-3 text-yellow-400" />
+        </div>
+      </div>
+
+      {/* ✅ SINGLE CLEAN TEXT BLOCK */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: showText ? 1 : 0 }}
+        transition={{ duration: 0.4 }}
+        className="mt-2 text-center"
+      >
+        <p className="text-[11px] font-bold text-yellow-300">
+          Deposit & Play With Us
+        </p>
+
+        <p className="text-[10px] text-white/80 mt-1">
+          Unlock Your AirPods Now
+        </p>
+      </motion.div>
+    </motion.div>
+  );
+}
+  
   return (
     <motion.div
       key={i}
@@ -1098,15 +1145,7 @@ if (item.type === "airpod") {
   );
 }
 
-      // 4) add this helper const above your return inside App()
-const trackerFillWidth =
-  progressLevel <= 0
-    ? "0%"
-    : progressLevel === 1
-    ? "33.333%"
-    : progressLevel === 2
-    ? "66.666%"
-    : "75%";
+    
                   return (
                     <motion.div
                       key={i}
