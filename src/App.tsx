@@ -10,6 +10,7 @@ import colaImg from "./assets/cola2.png";
 import rewardEventImg from "./assets/reward-event.png";
 import heroTextBoxImg from "./assets/hero-textbox.png";
 import HeroRewardTracker from "./HeroRewardTracker";
+import heroFinalTextImg from "./assets/text.png";
 import cola1Img from "./assets/cola1.png";
 import { motion, AnimatePresence } from "motion/react";
 import {
@@ -1024,9 +1025,9 @@ useEffect(() => {
     className="w-full object-contain"
   />
 
-  <div className="absolute inset-0 flex items-center justify-center px-6 text-center sm:px-8 md:px-10">
+  <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center sm:px-8 md:px-10">
     <p
-      className="relative z-10 -translate-y-[10px] font-extrabold uppercase text-white text-[18px] sm:-translate-y-[12px] sm:text-[22px] md:-translate-y-[14px] md:text-[26px] lg:-translate-y-[16px] lg:text-[30px]"
+      className="relative z-10 -translate-y-[6px] font-extrabold uppercase text-white text-[18px] sm:-translate-y-[8px] sm:text-[22px] md:-translate-y-[10px] md:text-[26px] lg:-translate-y-[12px] lg:text-[30px]"
       style={{
         letterSpacing: "0.02em",
         fontFamily: "'Poppins', 'Inter', sans-serif",
@@ -1037,9 +1038,13 @@ useEffect(() => {
       }}
     >
       YOUR AIRPODS AWAITS
-      <br />
-      COMPLETE THE FINAL 1%
     </p>
+
+    <img
+      src={heroFinalTextImg}
+      alt="Complete the final 1%"
+      className="relative z-10 mt-1 w-[88%] max-w-[300px] object-contain sm:mt-1.5 sm:max-w-[340px] md:max-w-[390px] lg:mt-2 lg:max-w-[440px]"
+    />
   </div>
 </div>
           
