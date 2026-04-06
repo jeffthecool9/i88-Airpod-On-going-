@@ -8,7 +8,6 @@ import depositImg from "./assets/deposit.png";
 import playImg from "./assets/play.png";
 import colaImg from "./assets/cola2.png";
 import heroTextBoxImg from "./assets/hero-textbox.png";
-import HeroRewardTracker from "./HeroRewardTracker";
 import cola1Img from "./assets/cola1.png";
 import { motion, AnimatePresence } from "motion/react";
 import {
@@ -1001,42 +1000,32 @@ useEffect(() => {
                 "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
             }}
           />
-<div className="pointer-events-none absolute left-1/2 top-[46%] z-[9] w-[82%] max-w-[560px] -translate-x-1/2">
-  
-  {/* GOLD FRAME */}
-  <div className="relative rounded-[40px] p-[4px] 
-    bg-[linear-gradient(135deg,#FFF3B0_0%,#FFD76A_20%,#E6B84D_45%,#C8921F_70%,#FFF3B0_100%)]
-    shadow-[0_10px_25px_rgba(0,0,0,0.4),0_0_12px_rgba(255,215,106,0.35)]
-  ">
-    
-    {/* INNER BLUE BOX */}
-    <div className="relative rounded-[36px] bg-[linear-gradient(180deg,#1D4ED8_0%,#1E40AF_60%,#1E3A8A_100%)] py-4 px-6 text-center overflow-hidden">
-      
-      {/* TOP GLOSS LIGHT */}
-      <div className="absolute inset-x-[8%] top-[2px] h-[35%] rounded-full 
-        bg-[linear-gradient(180deg,rgba(255,255,255,0.35),rgba(255,255,255,0.08),transparent)] blur-[2px]" 
-      />
+<p
+  className="relative z-10 font-black uppercase text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px]"
+  style={{
+    letterSpacing: "-0.03em",
+    fontFamily: "'Arial Black', Inter, sans-serif",
 
-      {/* INNER BORDER LIGHT */}
-      <div className="absolute inset-[1px] rounded-[35px] border border-white/10" />
+    // GOLD TEXT EFFECT (matches frame)
+    background:
+      "linear-gradient(180deg, #FFF6C2 0%, #FFD76A 40%, #E6B84D 70%, #C8921F 100%)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
 
-      {/* TEXT */}
-      <p
-        className="relative z-10 font-black uppercase text-white 
-        text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px]"
-        style={{
-          letterSpacing: "-0.03em",
-          textShadow: `
-            0 1px 0 rgba(255,255,255,0.9),
-            0 2px 0 rgba(200,220,255,0.7),
-            0 4px 10px rgba(0,0,0,0.4)
-          `,
-        }}
-      >
-        99% TO CLAIM AIRPODS PRO 3
-        <br />
-        1% IS YOUR ACTION
-      </p>
+    // 3D + DEPTH
+    textShadow: `
+      0 1px 0 #FFF3B0,
+      0 2px 0 #E6B84D,
+      0 3px 0 #C8921F,
+      0 6px 12px rgba(0,0,0,0.45),
+      0 0 8px rgba(255,215,106,0.35)
+    `,
+  }}
+>
+  99% TO CLAIM AIRPODS PRO 3,
+  <br />
+  1% IS YOUR ACTION
+</p>
 
     </div>
   </div>
