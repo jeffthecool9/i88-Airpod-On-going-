@@ -14,7 +14,6 @@ import {
 } from "lucide-react";
 
 import i882Img from "./assets/i882.png";
-import heroTopTextImg from "./assets/text-2.png";
 import backgroundImg from "./assets/background.png";
 import airpodImg from "./assets/airpod.png";
 import coinFrontImg from "./assets/3.png";
@@ -1015,21 +1014,27 @@ export default function App() {
           <div className="pointer-events-none absolute left-1/2 top-[48%] z-[9] w-[82%] max-w-[560px] -translate-x-1/2 sm:top-[49%] sm:w-[78%] sm:max-w-[600px] md:top-[50%] md:w-[74%] md:max-w-[640px] lg:top-[45%] lg:w-[44%] lg:max-w-[760px] xl:top-[44%] xl:w-[42%] xl:max-w-[820px] 2xl:top-[43%] 2xl:w-[40%] 2xl:max-w-[860px]">
             <img src={heroTextBoxImg} alt="" className="w-full object-contain" />
 
-           <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
+            <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center sm:px-8 md:px-10">
+              <p
+                className="relative z-10 translate-y-[10px] font-bold italic text-white text-[18px] sm:translate-y-[12px] sm:text-[22px] md:translate-y-[14px] md:text-[26px] lg:translate-y-[16px] lg:text-[30px]"
+                style={{
+                  letterSpacing: "0.03em",
+                  fontFamily: "'Futura PT', 'Poppins', sans-serif",
+                  textShadow: `
+                    0 2px 6px rgba(0,0,0,0.35),
+                    0 4px 12px rgba(0,0,0,0.25)
+                  `,
+                }}
+              >
+                YOUR AIRPODS AWAITS
+              </p>
 
-  <img
-    src={heroTopTextImg}
-    alt="Your AirPods Awaits"
-    className="relative z-10 w-[85%] max-w-[320px] object-contain"
-  />
-
-  <img
-    src={heroFinalTextImg}
-    alt="Complete the final 1%"
-    className="relative z-10 mt-2 w-[88%] max-w-[340px] object-contain"
-  />
-
-</div>
+              <img
+                src={heroFinalTextImg}
+                alt="Complete the final 1%"
+                className="relative z-10 mt-2 w-[88%] max-w-[300px] object-contain sm:mt-2.5 sm:max-w-[340px] md:max-w-[390px] lg:mt-3 lg:max-w-[440px]"
+              />
+            </div>
           </div>
 
           <motion.img
