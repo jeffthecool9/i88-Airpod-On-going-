@@ -1024,166 +1024,143 @@ export default function App() {
 <div className="pointer-events-none absolute left-1/2 bottom-[285px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[300px] sm:px-6 md:bottom-[320px] lg:bottom-[335px]">
   <div className="mx-auto max-w-5xl">
     <div className="mb-6 grid grid-cols-4 items-end gap-3 sm:gap-4">
-    {trackerItems.map((item, i) => {
+   {trackerItems.map((item, i) => {
   const stageNumber = i + 1;
   const isReached = progressLevel >= stageNumber;
   const isCurrent = progressLevel === stageNumber;
 
   if (item.type === "airpod") {
     return (
-      <div key={i} className="flex justify-center items-end">
-        <div className="relative flex flex-col items-center">
-          <img
-            src={airpodImg}
-            alt="Locked"
-            className="w-[80px] opacity-50 grayscale"
-          />
-          <span className="text-xs text-white/50 mt-1">🔒 Locked</span>
+      <div key={i} className="relative flex min-w-0 items-end justify-center">
+        <div className="relative flex h-[82px] w-full items-end justify-center sm:h-[86px] md:h-[92px]">
+          <div className="relative flex flex-col items-center justify-center">
+            <div className="absolute inset-0 rounded-full bg-white/8 blur-xl opacity-30" />
+
+            <img
+              src={airpodImg}
+              alt="Locked AirPods reward"
+              className="relative z-10 w-[72px] object-contain sm:w-[88px] md:w-[102px] lg:w-[112px]"
+              style={{
+                filter:
+                  "grayscale(1) brightness(0.85) contrast(0.9) drop-shadow(0 12px 24px rgba(0,0,0,0.24))",
+                opacity: 0.52,
+              }}
+            />
+
+            <div className="absolute -right-1 top-0 z-20 flex h-5 w-5 items-center justify-center rounded-full border border-white/10 bg-white/10 text-[10px] text-white/70 backdrop-blur-md sm:h-6 sm:w-6 sm:text-[11px]">
+              🔒
+            </div>
+
+            <p className="mt-1.5 text-center text-[9px] font-semibold leading-[1.05] text-white/50 sm:text-[10px] md:text-[11px]">
+              Locked Reward
+            </p>
+          </div>
         </div>
       </div>
     );
   }
 
   return (
-    <motion.div key={i} className="text-center">
+    <motion.div
+      key={i}
+      className="min-w-0"
+      initial={false}
+      animate={
+        isReached
+          ? {
+              opacity: 1,
+              y: 0,
+              scale: isReached || isCurrent ? [1, 1.04, 1] : 1,
+              rotate: 0,
+            }
+          : {
+              opacity: 0,
+              y: 14,
+              scale: 0.92,
+              rotate: 0,
+            }
+      }
+      transition={{
+        duration: 0.4,
+        ease: "easeOut",
+      }}
+    >
       <div
-        className={`rounded-xl p-3 ${
-          isReached ? "bg-yellow-400/20" : "bg-white/5"
-        }`}
+        className={`relative rounded-[22px] p-[2px] ${
+          isReached
+            ? "bg-[linear-gradient(135deg,#FFE8A3_0%,#F7C948_25%,#C88A14_60%,#FFE08A_100%)]"
+            : "bg-[linear-gradient(135deg,rgba(255,255,255,0.12),rgba(255,255,255,0.05))]"
+        } shadow-[0_14px_32px_rgba(0,0,0,0.28)]`}
       >
-        <p className="font-bold text-white">{item.title}</p>
-        <p className="text-xs text-yellow-300">{item.sub}</p>
+        <div className="relative h-[82px] overflow-hidden rounded-[20px] sm:h-[86px] md:h-[92px]">
+          <motion.div
+            className="absolute inset-0"
+            animate={{
+              scale: [1, 1.05, 1],
+              x: [0, -6, 0],
+              y: [0, -4, 0],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            style={{
+              backgroundImage: `url(${backgroundImg})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          />
+
+          <div
+            className={`absolute inset-0 ${
+              isReached
+                ? "bg-[linear-gradient(180deg,rgba(8,28,84,0.28)_0%,rgba(6,21,70,0.42)_100%)]"
+                : "bg-[linear-gradient(180deg,rgba(8,28,84,0.42)_0%,rgba(6,21,70,0.58)_100%)]"
+            }`}
+          />
+
+          <div className="pointer-events-none absolute inset-[1px] rounded-[19px] border border-white/10" />
+          <div className="pointer-events-none absolute inset-x-[8%] top-[3px] h-[28px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.14),transparent)] blur-[1px]" />
+          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-[36%] bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.18))]" />
+
+          <div className="relative z-10 flex h-full flex-col items-center justify-center px-2 text-center sm:px-3 md:px-4">
+            <p
+              className={`font-black uppercase leading-[0.95] ${
+                item.title === "MORE REWARD"
+                  ? "text-[13px] sm:text-[15px] md:text-[17px] lg:text-[18px]"
+                  : "text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px]"
+              } ${isReached ? "text-[#FFF4C8]" : "text-transparent"}`}
+              style={{
+                letterSpacing: "-0.03em",
+                textShadow: isReached
+                  ? "0 1px 0 rgba(255,255,255,0.48), 0 2px 0 rgba(255,215,106,0.14), 0 8px 20px rgba(0,0,0,0.38), 0 0 12px rgba(255,215,106,0.16)"
+                  : "none",
+              }}
+            >
+              {item.title}
+            </p>
+
+            {item.sub && (
+              <p
+                className={`mt-2 text-center font-bold leading-[1.08] text-[11px] sm:text-[12px] md:text-[13px] lg:text-[14px] ${
+                  isReached ? "text-[#FFD76A]" : "text-transparent"
+                }`}
+                style={{
+                  textShadow: isReached
+                    ? "0 2px 8px rgba(0,0,0,0.22)"
+                    : "none",
+                }}
+              >
+                {item.sub}
+              </p>
+            )}
+          </div>
+        </div>
       </div>
     </motion.div>
   );
 })}
-
-                  <img
-                    src={airpodImg}
-                    alt="Locked AirPods reward"
-                    className="relative z-10 w-[72px] object-contain sm:w-[88px] md:w-[102px] lg:w-[112px]"
-                    style={{
-                      filter:
-                        "grayscale(1) brightness(0.85) contrast(0.9) drop-shadow(0 12px 24px rgba(0,0,0,0.24))",
-                      opacity: 0.52,
-                    }}
-                  />
-
-                  <div className="absolute -right-1 top-0 z-20 flex h-5 w-5 items-center justify-center rounded-full border border-white/10 bg-white/10 text-[10px] text-white/70 backdrop-blur-md sm:h-6 sm:w-6 sm:text-[11px]">
-                    🔒
-                  </div>
-
-                  <p className="mt-1.5 text-center text-[9px] font-semibold leading-[1.05] text-white/50 sm:text-[10px] md:text-[11px]">
-                    Locked Reward
-                  </p>
-                </div>
-              </div>
-            </div>
-          );
-        }
-
-        return (
-          <motion.div
-            key={i}
-            className="min-w-0"
-            initial={false}
-            animate={
-              isReached
-                ? {
-                    opacity: 1,
-                    y: 0,
-                    scale: isReached || isCurrent ? [1, 1.04, 1] : 1,
-                    rotate: 0,
-                  }
-                : {
-                    opacity: 0,
-                    y: 14,
-                    scale: 0.92,
-                    rotate: 0,
-                  }
-            }
-            transition={{
-              duration: 0.4,
-              ease: "easeOut",
-            }}
-          >
-            <div
-              className={`relative rounded-[22px] p-[2px] ${
-                isReached
-                  ? "bg-[linear-gradient(135deg,#FFE8A3_0%,#F7C948_25%,#C88A14_60%,#FFE08A_100%)]"
-                  : "bg-[linear-gradient(135deg,rgba(255,255,255,0.12),rgba(255,255,255,0.05))]"
-              } shadow-[0_14px_32px_rgba(0,0,0,0.28)]`}
-            >
-              <div className="relative h-[82px] overflow-hidden rounded-[20px] sm:h-[86px] md:h-[92px]">
-                <motion.div
-                  className="absolute inset-0"
-                  animate={{
-                    scale: [1, 1.05, 1],
-                    x: [0, -6, 0],
-                    y: [0, -4, 0],
-                  }}
-                  transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  style={{
-                    backgroundImage: `url(${backgroundImg})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
-                />
-
-                <div
-                  className={`absolute inset-0 ${
-                    isReached
-                      ? "bg-[linear-gradient(180deg,rgba(8,28,84,0.28)_0%,rgba(6,21,70,0.42)_100%)]"
-                      : "bg-[linear-gradient(180deg,rgba(8,28,84,0.42)_0%,rgba(6,21,70,0.58)_100%)]"
-                  }`}
-                />
-
-                <div className="pointer-events-none absolute inset-[1px] rounded-[19px] border border-white/10" />
-                <div className="pointer-events-none absolute inset-x-[8%] top-[3px] h-[28px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.14),transparent)] blur-[1px]" />
-                <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-[36%] bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.18))]" />
-
-                <div className="relative z-10 flex h-full flex-col items-center justify-center px-2 text-center sm:px-3 md:px-4">
-                  <p
-                    className={`font-black uppercase leading-[0.95] ${
-                      item.title === "MORE REWARD"
-                        ? "text-[13px] sm:text-[15px] md:text-[17px] lg:text-[18px]"
-                        : "text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px]"
-                    } ${isReached ? "text-[#FFF4C8]" : "text-transparent"}`}
-                    style={{
-                      letterSpacing: "-0.03em",
-                      textShadow: isReached
-                        ? "0 1px 0 rgba(255,255,255,0.48), 0 2px 0 rgba(255,215,106,0.14), 0 8px 20px rgba(0,0,0,0.38), 0 0 12px rgba(255,215,106,0.16)"
-                        : "none",
-                    }}
-                  >
-                    {item.title}
-                  </p>
-
-                  {item.sub && (
-                    <p
-                      className={`mt-2 text-center font-bold leading-[1.08] text-[11px] sm:text-[12px] md:text-[13px] lg:text-[14px] ${
-                        isReached ? "text-[#FFD76A]" : "text-transparent"
-                      }`}
-                      style={{
-                        textShadow: isReached
-                          ? "0 2px 8px rgba(0,0,0,0.22)"
-                          : "none",
-                      }}
-                    >
-                      {item.sub}
-                    </p>
-                  )}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        );
-      })}
-    </div>
 
     <div className="relative h-[56px] overflow-hidden rounded-full border border-white/10 bg-[linear-gradient(180deg,#0A225E_0%,#061948_55%,#041232_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.10),inset_0_-12px_24px_rgba(0,0,0,0.30),0_22px_42px_rgba(0,0,0,0.24)] sm:h-[60px] md:h-[64px]">
       <div className="absolute inset-x-0 top-0 h-1/2 bg-[linear-gradient(180deg,rgba(255,255,255,0.10),rgba(255,255,255,0.02),transparent)]" />
