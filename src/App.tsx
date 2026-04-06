@@ -1024,20 +1024,39 @@ export default function App() {
 <div className="pointer-events-none absolute left-1/2 bottom-[285px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[300px] sm:px-6 md:bottom-[320px] lg:bottom-[335px]">
   <div className="mx-auto max-w-5xl">
     <div className="mb-6 grid grid-cols-4 items-end gap-3 sm:gap-4">
-      {trackerItems.map((item, i) => {
-        const stageNumber = i + 1;
-        const isReached = progressLevel >= stageNumber;
-        const isCurrent = progressLevel === stageNumber;
+    {trackerItems.map((item, i) => {
+  const stageNumber = i + 1;
+  const isReached = progressLevel >= stageNumber;
+  const isCurrent = progressLevel === stageNumber;
 
-        if (item.type === "airpod") {
-          return (
-            <div
-              key={i}
-              className="relative flex min-w-0 items-end justify-center"
-            >
-              <div className="relative flex h-[82px] w-full items-end justify-center sm:h-[86px] md:h-[92px]">
-                <div className="relative flex flex-col items-center justify-center">
-                  <div className="absolute inset-0 rounded-full bg-white/8 blur-xl opacity-30" />
+  if (item.type === "airpod") {
+    return (
+      <div key={i} className="flex justify-center items-end">
+        <div className="relative flex flex-col items-center">
+          <img
+            src={airpodImg}
+            alt="Locked"
+            className="w-[80px] opacity-50 grayscale"
+          />
+          <span className="text-xs text-white/50 mt-1">🔒 Locked</span>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <motion.div key={i} className="text-center">
+      <div
+        className={`rounded-xl p-3 ${
+          isReached ? "bg-yellow-400/20" : "bg-white/5"
+        }`}
+      >
+        <p className="font-bold text-white">{item.title}</p>
+        <p className="text-xs text-yellow-300">{item.sub}</p>
+      </div>
+    </motion.div>
+  );
+})}
 
                   <img
                     src={airpodImg}
