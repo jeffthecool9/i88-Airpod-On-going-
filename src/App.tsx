@@ -995,7 +995,16 @@ useEffect(() => {
 <img
   src={rewardEventImg}
   alt="AirPods Pro Reward Event"
-  className="pointer-events-none absolute left-1/2 top-[58px] z-[10] w-[300px] -translate-x-1/2 object-contain sm:top-[68px] sm:w-[340px] md:top-[78px] md:w-[380px] lg:top-[70px] lg:w-[520px] xl:top-[74px] xl:w-[620px]"
+  className="
+    pointer-events-none absolute left-1/2 -translate-x-1/2 object-contain z-[10]
+
+    top-[90px] w-[240px]        /* default mobile */
+    sm:top-[100px] sm:w-[260px]
+
+    md:top-[72px] md:w-[340px]  /* tablet */
+    lg:top-[54px] lg:w-[430px]  /* desktop */
+    xl:top-[56px] xl:w-[500px]
+  "
 />
           
          <img
