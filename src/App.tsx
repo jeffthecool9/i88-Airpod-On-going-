@@ -992,16 +992,16 @@ useEffect(() => {
             className="pointer-events-none absolute left-1/2 top-0 z-[9] w-[120px] -translate-x-1/2 -translate-y-2 object-contain sm:w-[140px] sm:-translate-y-3 md:w-[160px] md:-translate-y-4"
           />
 
-          <img
-            src={cola1Img}
-            alt=""
-            aria-hidden="true"
-            className="pointer-events-none absolute left-[-12%] top-[20%] z-[8] w-[1100px] object-contain sm:left-[-10%] sm:top-[20%] sm:w-[1200px] md:left-[-8%] md:top-[21%] md:w-[1300px] lg:left-[-6%] lg:top-[21%] lg:w-[1400px]"
-            style={{
-              filter:
-                "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
-            }}
-          />
+         <img
+  src={cola1Img}
+  alt=""
+  aria-hidden="true"
+  className="pointer-events-none absolute left-[-12%] top-[20%] z-[8] w-[1100px] object-contain sm:left-[-10%] sm:top-[20%] sm:w-[1200px] md:left-[-8%] md:top-[21%] md:w-[1300px] lg:left-1/2 lg:top-[14%] lg:w-[760px] lg:-translate-x-1/2 xl:top-[12%] xl:w-[860px] 2xl:top-[10%] 2xl:w-[940px]"
+  style={{
+    filter:
+      "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
+  }}
+/>
 <div className="pointer-events-none absolute left-1/2 top-[46%] z-[9] w-[82%] max-w-[560px] -translate-x-1/2 sm:top-[47%] sm:w-[78%] sm:max-w-[600px] md:top-[48%] md:w-[74%] md:max-w-[640px] lg:top-[48.5%] lg:w-[70%] lg:max-w-[680px]">
   <img
     src={heroTextBoxImg}
@@ -1075,9 +1075,9 @@ useEffect(() => {
   />
 </motion.div>
           
-          <div className="pointer-events-none absolute left-1/2 bottom-[285px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[300px] sm:px-6 md:bottom-[320px] lg:bottom-[335px]">
+          <div className="pointer-events-none absolute left-1/2 bottom-[285px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[300px] sm:px-6 md:bottom-[320px] lg:bottom-[185px] lg:max-w-[1280px] lg:px-10 xl:bottom-[170px] xl:max-w-[1380px] 2xl:bottom-[155px] 2xl:max-w-[1480px]">
             <div className="mx-auto max-w-5xl">
-              <div className="mb-6 grid grid-cols-4 items-end gap-3 sm:gap-4">
+             <div className="mb-6 grid grid-cols-4 items-end gap-3 sm:gap-4 lg:gap-6 xl:gap-8 2xl:gap-10">
                 {trackerItems.map((item, i) => {
                   const stageNumber = i + 1;
                   const isReached = progressLevel >= stageNumber;
@@ -1193,7 +1193,7 @@ const trackerFillWidth =
                             : "bg-[linear-gradient(135deg,rgba(255,255,255,0.12),rgba(255,255,255,0.05))]"
                         } shadow-[0_14px_32px_rgba(0,0,0,0.28)]`}
                       >
-                        <div className="relative h-[82px] overflow-hidden rounded-[20px] sm:h-[86px] md:h-[92px]">
+                        <div className="relative h-[82px] overflow-hidden rounded-[20px] sm:h-[86px] md:h-[92px] lg:h-[118px] xl:h-[126px] 2xl:h-[132px]">
                           <motion.div
                             className="absolute inset-0"
                             animate={{
