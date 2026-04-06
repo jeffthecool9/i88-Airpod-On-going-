@@ -996,7 +996,7 @@ useEffect(() => {
   src={cola1Img}
   alt=""
   aria-hidden="true"
-  className="pointer-events-none absolute left-[-12%] top-[20%] z-[8] w-[1100px] object-contain sm:left-[-10%] sm:top-[20%] sm:w-[1200px] md:left-[-8%] md:top-[21%] md:w-[1300px] lg:left-1/2 lg:top-[10%] lg:w-[620px] lg:-translate-x-1/2 xl:top-[8%] xl:w-[700px] 2xl:top-[7%] 2xl:w-[760px]"
+ className="pointer-events-none absolute left-[-12%] top-[24%] z-[8] w-[1100px] object-contain sm:left-[-10%] sm:top-[24%] sm:w-[1200px] md:left-[-8%] md:top-[25%] md:w-[1300px] lg:left-1/2 lg:top-[13%] lg:w-[620px] lg:-translate-x-1/2 xl:top-[11%] xl:w-[700px] 2xl:top-[10%] 2xl:w-[760px]"
   style={{
     filter:
       "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
@@ -1011,7 +1011,7 @@ useEffect(() => {
 
   <div className="absolute inset-0 flex items-center justify-center px-6 text-center sm:px-8 md:px-10">
     <p
-      className="relative z-10 font-extrabold uppercase text-white text-[18px] sm:text-[22px] md:text-[26px] lg:text-[28px] xl:text-[30px]"
+      className="pointer-events-none absolute left-1/2 top-[53%] z-[9] w-[82%] max-w-[560px] -translate-x-1/2 sm:top-[54%] sm:w-[78%] sm:max-w-[600px] md:top-[55%] md:w-[74%] md:max-w-[640px] lg:top-[45%] lg:w-[44%] lg:max-w-[760px] xl:top-[44%] xl:w-[42%] xl:max-w-[820px] 2xl:top-[43%] 2xl:w-[40%] 2xl:max-w-[860px]"
       style={{
         letterSpacing: "0.02em",
         fontFamily: "'Poppins', 'Inter', sans-serif",
@@ -1033,7 +1033,7 @@ useEffect(() => {
             src={airpodImg}
             alt=""
             aria-hidden="true"
-           className="pointer-events-none absolute right-[10%] top-[16%] z-[9] w-[170px] object-contain sm:right-[11%] sm:top-[18%] sm:w-[210px] md:right-[12%] md:top-[19%] md:w-[250px] lg:right-[9%] lg:top-[10%] lg:w-[260px] xl:right-[8%] xl:top-[8%] xl:w-[300px] 2xl:right-[7%] 2xl:top-[7%] 2xl:w-[330px]"
+          className="pointer-events-none absolute right-[10%] top-[20%] z-[9] w-[170px] object-contain sm:right-[11%] sm:top-[22%] sm:w-[210px] md:right-[12%] md:top-[23%] md:w-[250px] lg:right-[9%] lg:top-[13%] lg:w-[260px] xl:right-[8%] xl:top-[11%] xl:w-[300px] 2xl:right-[7%] 2xl:top-[10%] 2xl:w-[330px]"
             animate={{
               y: [0, -12, 0],
               rotate: [0, -2, 0],
