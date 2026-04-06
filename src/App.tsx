@@ -1002,34 +1002,30 @@ useEffect(() => {
       "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
   }}
 />
-<div className="pointer-events-none absolute left-1/2 top-[46%] z-[9] w-[82%] max-w-[560px] -translate-x-1/2 sm:top-[47%] sm:w-[78%] sm:max-w-[600px] md:top-[48%] md:w-[74%] md:max-w-[640px] lg:top-[48.5%] lg:w-[70%] lg:max-w-[680px]">
+<div className="pointer-events-none absolute left-1/2 top-[46%] z-[9] w-[82%] max-w-[560px] -translate-x-1/2 sm:top-[47%] sm:w-[78%] sm:max-w-[600px] md:top-[48%] md:w-[74%] md:max-w-[640px] lg:top-[40%] lg:w-[44%] lg:max-w-[760px] xl:top-[39%] xl:w-[42%] xl:max-w-[820px] 2xl:top-[38%] 2xl:w-[40%] 2xl:max-w-[860px]">
   <img
     src={heroTextBoxImg}
     alt=""
-    className="pointer-events-none absolute left-1/2 top-[46%] z-[9] w-[82%] max-w-[560px] -translate-x-1/2 sm:top-[47%] sm:w-[78%] sm:max-w-[600px] md:top-[48%] md:w-[74%] md:max-w-[640px] lg:top-[36%] lg:w-[52%] lg:max-w-[760px] xl:top-[35%] xl:w-[48%] xl:max-w-[820px] 2xl:top-[34%] 2xl:w-[46%] 2xl:max-w-[860px]"
+    className="w-full object-contain"
   />
 
   <div className="absolute inset-0 flex items-center justify-center px-6 text-center sm:px-8 md:px-10">
-<p
-  className="relative z-10 font-extrabold uppercase text-white text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px]"
-  style={{
-    letterSpacing: "0.02em",
-    fontFamily: "'Poppins', 'Inter', sans-serif",
-
-    // ❌ remove outline
-    WebkitTextStroke: "0px",
-
-    // ✅ soft premium shadow
-    textShadow: `
-      0 2px 6px rgba(0,0,0,0.35),
-      0 4px 12px rgba(0,0,0,0.25)
-    `,
-  }}
->
-  YOUR AIRPODS AWAITS
-  <br />
-  COMPLETE THE FINAL 1%
-</p>
+    <p
+      className="relative z-10 font-extrabold uppercase text-white text-[18px] sm:text-[22px] md:text-[26px] lg:text-[28px] xl:text-[30px]"
+      style={{
+        letterSpacing: "0.02em",
+        fontFamily: "'Poppins', 'Inter', sans-serif",
+        WebkitTextStroke: "0px",
+        textShadow: `
+          0 2px 6px rgba(0,0,0,0.35),
+          0 4px 12px rgba(0,0,0,0.25)
+        `,
+      }}
+    >
+      YOUR AIRPODS AWAITS
+      <br />
+      COMPLETE THE FINAL 1%
+    </p>
   </div>
 </div>
           
