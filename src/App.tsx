@@ -7,6 +7,7 @@ import registerImg from "./assets/register.png";
 import depositImg from "./assets/deposit.png";
 import playImg from "./assets/play.png";
 import colaImg from "./assets/cola2.png";
+import heroTextBoxImg from "./assets/hero-textbox.png";
 import HeroRewardTracker from "./HeroRewardTracker";
 import cola1Img from "./assets/cola1.png";
 import { motion, AnimatePresence } from "motion/react";
