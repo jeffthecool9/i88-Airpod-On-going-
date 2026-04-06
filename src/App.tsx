@@ -1017,7 +1017,7 @@ useEffect(() => {
       "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
   }}
 />
-<div className="pointer-events-none absolute left-1/2 top-[53%] z-[9] w-[82%] max-w-[560px] -translate-x-1/2 sm:top-[54%] sm:w-[78%] sm:max-w-[600px] md:top-[55%] md:w-[74%] md:max-w-[640px] lg:top-[45%] lg:w-[44%] lg:max-w-[760px] xl:top-[44%] xl:w-[42%] xl:max-w-[820px] 2xl:top-[43%] 2xl:w-[40%] 2xl:max-w-[860px]">
+<div className="pointer-events-none absolute left-1/2 top-[48%] z-[9] w-[82%] max-w-[560px] -translate-x-1/2 sm:top-[49%] sm:w-[78%] sm:max-w-[600px] md:top-[50%] md:w-[74%] md:max-w-[640px] lg:top-[45%] lg:w-[44%] lg:max-w-[760px] xl:top-[44%] xl:w-[42%] xl:max-w-[820px] 2xl:top-[43%] 2xl:w-[40%] 2xl:max-w-[860px]">
   <img
     src={heroTextBoxImg}
     alt=""
@@ -1030,7 +1030,6 @@ useEffect(() => {
       style={{
         letterSpacing: "0.02em",
         fontFamily: "'Poppins', 'Inter', sans-serif",
-        WebkitTextStroke: "0px",
         textShadow: `
           0 2px 6px rgba(0,0,0,0.35),
           0 4px 12px rgba(0,0,0,0.25)
