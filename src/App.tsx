@@ -998,11 +998,11 @@ useEffect(() => {
   className="
     pointer-events-none absolute left-1/2 -translate-x-1/2 object-contain z-[10]
 
-    top-[90px] w-[240px]        /* default mobile */
-    sm:top-[100px] sm:w-[260px]
+    top-[140px] w-[320px]        /* MOBILE: bigger + lower */
+    sm:top-[150px] sm:w-[360px]
 
-    md:top-[72px] md:w-[340px]  /* tablet */
-    lg:top-[54px] lg:w-[430px]  /* desktop */
+    md:top-[72px] md:w-[340px]   /* keep tablet normal */
+    lg:top-[54px] lg:w-[430px]   /* keep desktop unchanged */
     xl:top-[56px] xl:w-[500px]
   "
 />
