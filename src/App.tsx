@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 
 import i882Img from "./assets/i882.png";
+import heroTopTextImg from "./assets/text-2.png";
 import backgroundImg from "./assets/background.png";
 import airpodImg from "./assets/airpod.png";
 import coinFrontImg from "./assets/3.png";
@@ -1015,25 +1016,17 @@ export default function App() {
             <img src={heroTextBoxImg} alt="" className="w-full object-contain" />
 
             <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center sm:px-8 md:px-10">
-              <p
-                className="relative z-10 translate-y-[10px] font-bold italic text-white text-[18px] sm:translate-y-[12px] sm:text-[22px] md:translate-y-[14px] md:text-[26px] lg:translate-y-[16px] lg:text-[30px]"
-                style={{
-                  letterSpacing: "0.03em",
-                  fontFamily: "Futura bold Oblique",
-                  textShadow: `
-                    0 2px 6px rgba(0,0,0,0.35),
-                    0 4px 12px rgba(0,0,0,0.25)
-                  `,
-                }}
-              >
-                YOUR AIRPODS AWAITS
-              </p>
+             <img
+  src={heroTopTextImg}
+  alt="Your AirPods Awaits"
+  className="relative z-10 w-[82%] max-w-[260px] object-contain sm:w-[84%] sm:max-w-[300px] md:max-w-[360px] lg:max-w-[400px]"
+/>
 
-              <img
-                src={heroFinalTextImg}
-                alt="Complete the final 1%"
-                className="relative z-10 mt-2 w-[88%] max-w-[300px] object-contain sm:mt-2.5 sm:max-w-[340px] md:max-w-[390px] lg:mt-3 lg:max-w-[440px]"
-              />
+             <img
+  src={heroFinalTextImg}
+  alt="Complete the final 1%"
+  className="relative z-10 mt-2 w-[88%] max-w-[300px] object-contain sm:mt-2.5 sm:max-w-[340px] md:max-w-[390px] lg:mt-3 lg:max-w-[440px]"
+/>
             </div>
           </div>
 
