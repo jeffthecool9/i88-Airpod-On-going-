@@ -1001,12 +1001,19 @@ useEffect(() => {
                 "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
             }}
           />
-<img
-  src={heroTextBoxImg}
-  alt=""
-  aria-hidden="true"
-  className="pointer-events-none absolute left-[49%] top-[50%] z-[9] w-[430px] -translate-x-1/2 object-contain sm:left-[48%] sm:top-[51%] sm:w-[520px] md:left-[47%] md:top-[52%] md:w-[600px] lg:left-[46%] lg:top-[53%] lg:w-[660px]"
-/>
+<div className="pointer-events-none absolute left-[49%] top-[39%] z-[9] w-[470px] -translate-x-1/2 sm:left-[48%] sm:top-[40%] sm:w-[560px] md:left-[47%] md:top-[41%] md:w-[640px] lg:left-[46%] lg:top-[42%] lg:w-[700px]">
+  <img
+    src={heroTextBoxImg}
+    alt=""
+    className="w-full object-contain"
+  />
+
+  <div className="absolute inset-0 flex items-center justify-center px-8 text-center">
+    <p className="text-white text-lg font-bold md:text-2xl">
+      99% to Claim AirPods Pro 3, 1% is Your Action
+    </p>
+  </div>
+</div>
           
           <motion.img
             src={airpodImg}
