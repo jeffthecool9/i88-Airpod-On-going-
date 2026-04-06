@@ -1015,19 +1015,21 @@ export default function App() {
           <div className="pointer-events-none absolute left-1/2 top-[48%] z-[9] w-[82%] max-w-[560px] -translate-x-1/2 sm:top-[49%] sm:w-[78%] sm:max-w-[600px] md:top-[50%] md:w-[74%] md:max-w-[640px] lg:top-[45%] lg:w-[44%] lg:max-w-[760px] xl:top-[44%] xl:w-[42%] xl:max-w-[820px] 2xl:top-[43%] 2xl:w-[40%] 2xl:max-w-[860px]">
             <img src={heroTextBoxImg} alt="" className="w-full object-contain" />
 
-            <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center sm:px-8 md:px-10">
-             <img
-  src={heroTopTextImg}
-  alt="Your AirPods Awaits"
-  className="relative z-10 w-[82%] max-w-[260px] object-contain sm:w-[84%] sm:max-w-[300px] md:max-w-[360px] lg:max-w-[400px]"
-/>
+           <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
 
-             <img
-  src={heroFinalTextImg}
-  alt="Complete the final 1%"
-  className="relative z-10 mt-2 w-[88%] max-w-[300px] object-contain sm:mt-2.5 sm:max-w-[340px] md:max-w-[390px] lg:mt-3 lg:max-w-[440px]"
-/>
-            </div>
+  <img
+    src={heroTopTextImg}
+    alt="Your AirPods Awaits"
+    className="relative z-10 w-[85%] max-w-[320px] object-contain"
+  />
+
+  <img
+    src={heroFinalTextImg}
+    alt="Complete the final 1%"
+    className="relative z-10 mt-2 w-[88%] max-w-[340px] object-contain"
+  />
+
+</div>
           </div>
 
           <motion.img
