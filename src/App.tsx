@@ -1025,7 +1025,7 @@ useEffect(() => {
     `,
   }}
 >
-  YOUR AIRPODS PRO 3 AWAITS
+  YOUR AIRPODS AWAITS
   <br />
   COMPLETE THE FINAL 1%
 </p>
