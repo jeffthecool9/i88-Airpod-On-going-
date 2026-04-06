@@ -1001,7 +1001,13 @@ useEffect(() => {
                 "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
             }}
           />
-
+<img
+  src={heroTextBoxImg}
+  alt=""
+  aria-hidden="true"
+  className="pointer-events-none absolute left-[49%] top-[50%] z-[9] w-[430px] -translate-x-1/2 object-contain sm:left-[48%] sm:top-[51%] sm:w-[520px] md:left-[47%] md:top-[52%] md:w-[600px] lg:left-[46%] lg:top-[53%] lg:w-[660px]"
+/>
+          
           <motion.img
             src={airpodImg}
             alt=""
