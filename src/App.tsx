@@ -1009,34 +1009,21 @@ useEffect(() => {
   />
 
   <div className="absolute inset-0 flex items-center justify-center px-6 text-center sm:px-8 md:px-10">
-    <p
-      className="font-black uppercase leading-[1.08] text-white text-[20px] sm:text-[26px] md:text-[32px] lg:text-[36px]"
-      style={{
-        letterSpacing: "-0.03em",
-        fontFamily: "Inter, system-ui, sans-serif",
-        textShadow: `
-          0 1px 0 rgba(255,255,255,0.95),
-          0 2px 0 rgba(220,235,255,0.85),
-          0 3px 0 rgba(130,170,255,0.55),
-          0 8px 18px rgba(0,0,0,0.35),
-          0 0 14px rgba(255,255,255,0.18)
-        `,
-        filter: "drop-shadow(0 4px 10px rgba(0,0,0,0.22))",
-      }}
-    >
-      <span
-        style={{
-          background:
-            "linear-gradient(180deg, #FFFFFF 0%, #F4F8FF 45%, #DCEBFF 100%)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-        }}
-      >
-       Your AirPods Pro 3 Awaits
-        <br />
-        Complete the Final 1%
-      </span>
-    </p>
+   className="relative z-10 font-black uppercase text-white text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px]"
+  style={{
+    letterSpacing: "-0.03em",
+    fontFamily: "'Arial Black', Inter, sans-serif",
+
+    // 🔵 BLUE OUTLINE (KEY FIX)
+    WebkitTextStroke: "2px #1E40AF", // deep blue (matches hero)
+
+    // 💡 3D + DEPTH
+    textShadow: `
+      0 2px 4px rgba(0,0,0,0.4),
+      0 6px 12px rgba(0,0,0,0.35),
+      0 0 6px rgba(30,64,175,0.4)
+    `,
+  }}
   </div>
 </div>
           
