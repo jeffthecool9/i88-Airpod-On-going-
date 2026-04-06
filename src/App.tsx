@@ -948,7 +948,7 @@ const TrustCard = ({ children }: { children: React.ReactNode }) => {
       <div className="relative overflow-hidden rounded-[20px] px-4 py-5 text-center sm:px-5 sm:py-6">
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02),transparent)]" />
         <div className="absolute inset-x-[10%] top-2 h-8 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.03),transparent)] blur-[2px]" />
-        <div className="relative z-10 text-white text-[14px] font-black leading-[1.05] sm:text-[16px] md:text-[17px] lg:text-[18px]">
+        <div className="relative z-10 text-[14px] font-black leading-[1.05] text-white sm:text-[16px] md:text-[17px] lg:text-[18px]">
           {children}
         </div>
       </div>
