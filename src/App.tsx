@@ -944,11 +944,11 @@ const StepsToClaim = () => {
 
 const TrustCard = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="rounded-[28px] border border-white/14 bg-[linear-gradient(180deg,rgba(66,127,255,0.82)_0%,rgba(39,66,193,0.92)_55%,rgba(19,33,123,0.96)_100%)] p-[2px] shadow-[0_20px_40px_rgba(0,0,0,0.22)] backdrop-blur-xl">
-      <div className="relative overflow-hidden rounded-[26px] px-6 py-8 text-center">
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.10),rgba(255,255,255,0.02),transparent)]" />
-        <div className="absolute inset-x-[8%] top-2 h-12 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0.04),transparent)] blur-[2px]" />
-        <div className="relative z-10 text-[18px] font-black leading-[1.02] text-white sm:text-[20px] md:text-[22px] lg:text-[22px] xl:text-[24px]">
+    <div className="rounded-[22px] border border-white/12 bg-[linear-gradient(180deg,rgba(66,127,255,0.82)_0%,rgba(39,66,193,0.92)_55%,rgba(19,33,123,0.96)_100%)] p-[2px] shadow-[0_14px_30px_rgba(0,0,0,0.18)] backdrop-blur-xl">
+      <div className="relative overflow-hidden rounded-[20px] px-4 py-5 text-center sm:px-5 sm:py-6">
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02),transparent)]" />
+        <div className="absolute inset-x-[10%] top-2 h-8 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.03),transparent)] blur-[2px]" />
+        <div className="relative z-10 text-white text-[14px] font-black leading-[1.05] sm:text-[16px] md:text-[17px] lg:text-[18px]">
           {children}
         </div>
       </div>
@@ -1028,20 +1028,21 @@ export default function App() {
           <div className="pointer-events-none absolute left-1/2 top-[48%] z-[9] w-[82%] max-w-[560px] -translate-x-1/2 sm:top-[49%] sm:w-[78%] sm:max-w-[600px] md:top-[50%] md:w-[74%] md:max-w-[640px] lg:top-[45%] lg:w-[44%] lg:max-w-[760px] xl:top-[44%] xl:w-[42%] xl:max-w-[820px] 2xl:top-[43%] 2xl:w-[40%] 2xl:max-w-[860px]">
             <img src={heroTextBoxImg} alt="" className="w-full object-contain" />
 
-            <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center sm:px-8 md:px-10">
-             <img
-  src={heroTopTextImg}
-  alt="Your AirPods Awaits"
-  className="relative z-10 w-[84%] max-w-[280px] object-contain sm:max-w-[320px] md:max-w-[360px] lg:max-w-[400px]"
-/>
+           <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center sm:px-8 md:px-10">
+  <div className="flex w-full flex-col items-center justify-center">
+    <img
+      src={heroTopTextImg}
+      alt="Your AirPods Awaits"
+      className="relative z-10 block w-[78%] max-w-[270px] object-contain sm:max-w-[300px] md:max-w-[340px] lg:max-w-[380px]"
+    />
 
-              <img
-                src={heroFinalTextImg}
-                alt="Complete the final 1%"
-                className="relative z-10 mt-2 w-[88%] max-w-[300px] object-contain sm:mt-2.5 sm:max-w-[340px] md:max-w-[390px] lg:mt-3 lg:max-w-[440px]"
-              />
-            </div>
-          </div>
+    <img
+      src={heroFinalTextImg}
+      alt="Complete the final 1%"
+      className="relative z-10 mt-2 block w-[86%] max-w-[300px] object-contain sm:mt-2.5 sm:max-w-[330px] md:max-w-[370px] lg:max-w-[420px]"
+    />
+  </div>
+</div>
 
           <motion.img
             src={airpodImg}
@@ -1106,12 +1107,12 @@ export default function App() {
               </div>
             </div>
           </div>
-<div className="pointer-events-none absolute left-1/2 bottom-[105px] z-[8] w-full max-w-[1350px] -translate-x-1/2 px-4 sm:bottom-[110px] sm:px-6 md:bottom-[115px] lg:bottom-[95px] lg:px-10 xl:bottom-[90px]">
-  <div className="relative mx-auto w-full max-w-[1180px]">
-    <div className="absolute left-1/2 top-[52%] z-[1] h-[72px] w-[94%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[linear-gradient(90deg,#F5E6B5_0%,#F7D45F_44%,#E3B426_70%,#0A2A88_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_18px_40px_rgba(0,0,0,0.22)] sm:h-[78px] lg:h-[84px]" />
-    <div className="absolute left-1/2 top-[52%] z-[2] h-[66px] w-[90%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-[linear-gradient(90deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))] sm:h-[72px] lg:h-[78px]" />
+<div className="pointer-events-none absolute left-1/2 bottom-[120px] z-[8] w-full max-w-[1180px] -translate-x-1/2 px-4 sm:bottom-[125px] sm:px-6 md:bottom-[130px] lg:bottom-[92px] lg:px-8 xl:bottom-[88px]">
+  <div className="relative mx-auto max-w-[980px]">
+    <div className="absolute left-1/2 top-[50%] z-[1] h-[52px] w-[92%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[linear-gradient(90deg,#F5E6B5_0%,#F7D45F_44%,#E3B426_70%,#0A2A88_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_12px_26px_rgba(0,0,0,0.18)] sm:h-[58px] lg:h-[64px]" />
+    <div className="absolute left-1/2 top-[50%] z-[2] h-[46px] w-[88%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-[linear-gradient(90deg,rgba(255,255,255,0.06),rgba(255,255,255,0.01))] sm:h-[52px] lg:h-[58px]" />
 
-    <div className="relative z-[3] grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5 lg:gap-8">
+    <div className="relative z-[3] grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4 lg:gap-5">
       <TrustCard>
         Trusted Since
         <br />
@@ -1125,7 +1126,7 @@ export default function App() {
       </TrustCard>
 
       <TrustCard>
-       10+ Rewards
+        10+ Rewards
         <br />
         To Unlock
       </TrustCard>
