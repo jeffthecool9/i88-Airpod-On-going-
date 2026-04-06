@@ -24,7 +24,7 @@ import depositImg from "./assets/deposit.png";
 import playImg from "./assets/play.png";
 import colaImg from "./assets/cola2.png";
 import rewardEventImg from "./assets/reward-event.png";
-import BoxImg from "./assets/hero-textbox.png";
+import heroTextBoxImg from "./assets/hero-textbox.png";
 import heroFinalTextImg from "./assets/text.png";
 import cola1Img from "./assets/cola1.png";
 
