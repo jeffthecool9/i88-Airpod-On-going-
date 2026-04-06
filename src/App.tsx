@@ -218,9 +218,6 @@ const SectionSeam = ({
 
 const RegistrationForm = () => {
   const [step, setStep] = useState(1);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [countdown, setCountdown] = useState(8);
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -246,55 +243,6 @@ const RegistrationForm = () => {
     emailRegex.test(formData.email) &&
     formData.phone &&
     formData.agreedToTerms;
-
- const handleFinalCTA = () => {
-  if (!isStep2Valid) return;
-
-  window.trackCTA?.("final_complete_registration");
-
-  window.trackCustomEvent?.("Final_CTA_Click", {
-    button_name: "Complete Registration",
-    step: 2,
-    username: formData.name,
-  });
-
-  setIsSuccess(true);
-  setCountdown(8);
-  setProgress(0);
-};
-
-useEffect(() => {
-  if (!isSuccess) return;
-
-  const totalDuration = 8000; // 8 seconds
-  const startTime = Date.now();
-
-  const progressTimer = setInterval(() => {
-    const elapsed = Date.now() - startTime;
-    const nextProgress = Math.min((elapsed / totalDuration) * 100, 100);
-    setProgress(nextProgress);
-  }, 50);
-
-  const countdownTimer = setInterval(() => {
-    setCountdown((prev) => {
-      if (prev <= 1) {
-        clearInterval(countdownTimer);
-        clearInterval(progressTimer);
-
-        // LATER: replace this with real redirect
-        // window.location.href = "https://your-official-home-page.com";
-
-        return 0;
-      }
-      return prev - 1;
-    });
-  }, 1000);
-
-  return () => {
-    clearInterval(progressTimer);
-    clearInterval(countdownTimer);
-  };
-}, [isSuccess]);
 
   return (
     <section
@@ -378,287 +326,231 @@ useEffect(() => {
             />
           </div>
 
-          <div className="relative z-10">
-            <AnimatePresence mode="wait">
-              {isSuccess ? (
-                <motion.div
-                  key="success"
-                  initial={{ opacity: 0, scale: 0.96, y: 12 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.96, y: -12 }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="text-center"
-                >
-                  <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-[linear-gradient(180deg,#22D3EE_0%,#2563EB_100%)] shadow-[0_18px_40px_rgba(37,99,235,0.35)]">
-                    <CheckCircle2 className="h-10 w-10 text-white" />
-                  </div>
+          <div className="relative z-10 mb-8 text-center">
+            <h2 className="mb-2 text-3xl font-bold text-white sm:text-4xl">
+              Create Your Account
+            </h2>
+            <p className="text-blue-100/75">
+              Join the elite circle of high-rollers
+            </p>
 
-                  <h2 className="text-3xl font-bold text-white sm:text-4xl">
-                    Welcome to the Family
-                  </h2>
-
-                  <p className="mt-4 text-base leading-relaxed text-blue-100/85 sm:text-lg">
-                    You have successfully joined our family,
-                    <span className="font-bold text-white"> iClub88</span>, known as
-                    <span className="font-bold text-cyan-200"> i88</span>.
-                  </p>
-
-                 <p className="mt-4 text-sm leading-relaxed text-blue-100/75 sm:text-base">
-  We will redirect you to our official home page in{" "}
-  <span className="font-bold text-white">{countdown}</span>{" "}
-  seconds.
-</p>
-
-                 <div className="mt-8 h-2.5 w-full overflow-hidden rounded-full bg-white/10 shadow-[inset_0_1px_2px_rgba(255,255,255,0.06)]">
-  <motion.div
-    initial={{ width: "100%" }}
-    animate={{ width: isSuccess ? "0%" : "100%" }}
-    transition={{ duration: 8, ease: "linear" }}
-    className="relative h-full rounded-full bg-[linear-gradient(90deg,#22D3EE_0%,#38BDF8_35%,#2563EB_100%)] shadow-[0_0_12px_rgba(34,211,238,0.35)]"
-  >
-    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.22),rgba(255,255,255,0.04),transparent)]" />
-  </motion.div>
-</div>
-
-                  <p className="mt-5 text-xs text-blue-100/55 sm:text-sm">
-                    Official redirect will be connected after backend integration is ready.
-                  </p>
-                </motion.div>
-              ) : step === 1 ? (
-                <motion.div
-                  key="step1"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 20 }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="space-y-6"
-                >
-                  <div className="mb-8 text-center">
-                    <h2 className="mb-2 text-3xl font-bold text-white sm:text-4xl">
-                      Create Your Account
-                    </h2>
-                    <p className="text-blue-100/75">
-                      Join the elite circle of high-rollers
-                    </p>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="ml-1 text-sm font-medium text-white/92">
-                      Username
-                    </label>
-                    <div className="relative">
-                      <User className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white" />
-                      <input
-                        type="text"
-                        placeholder="Your login id"
-                        className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm font-medium leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
-                        value={formData.name}
-                        onChange={(e) =>
-                          setFormData({ ...formData, name: e.target.value })
-                        }
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="ml-1 text-sm font-medium text-white/92">
-                      Password
-                    </label>
-                    <div className="relative">
-                      <Lock className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white" />
-                      <input
-                        type="password"
-                        placeholder="••••••••"
-                        className={`w-full rounded-2xl border py-4 pl-12 pr-4 text-sm font-medium leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18 ${
-                          formData.password && !passwordRegex.test(formData.password)
-                            ? "border-red-500/50 ring-1 ring-red-500/20 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
-                            : "border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
-                        }`}
-                        value={formData.password}
-                        onChange={(e) =>
-                          setFormData({ ...formData, password: e.target.value })
-                        }
-                      />
-                    </div>
-                    {formData.password && !passwordRegex.test(formData.password) && (
-                      <p className="ml-1 mt-1 text-xs text-red-400">
-                        Password must be at least 6 characters and contain a number
-                      </p>
-                    )}
-                  </div>
-
-                  <motion.button
-                    whileHover={isStep1Valid ? { scale: 1.02 } : {}}
-                    whileTap={isStep1Valid ? { scale: 0.98 } : {}}
-                    onClick={handleNext}
-                    disabled={!isStep1Valid}
-                    className={`group flex w-full items-center justify-center gap-2 rounded-2xl bg-[linear-gradient(90deg,#1D4ED8_0%,#2563EB_42%,#22D3EE_100%)] py-4 font-bold text-white shadow-[0_18px_40px_rgba(37,99,235,0.38)] transition-all ${
-                      !isStep1Valid
-                        ? "cursor-not-allowed opacity-40 grayscale-[0.5]"
-                        : "hover:brightness-110 hover:shadow-[0_20px_50px_rgba(34,211,238,0.28)]"
-                    }`}
-                  >
-                    Join Now
-                    <ChevronRight
-                      className={`h-5 w-5 transition-transform ${
-                        isStep1Valid ? "group-hover:translate-x-1" : ""
-                      }`}
-                    />
-                  </motion.button>
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="step2"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="space-y-6"
-                >
-                  <div className="mb-8 text-center">
-                    <h2 className="mb-2 text-3xl font-bold text-white sm:text-4xl">
-                      Create Your Account
-                    </h2>
-                    <p className="text-blue-100/75">
-                      Join the elite circle of high-rollers
-                    </p>
-
-                    {formData.name && (
-                      <p className="mt-3 text-sm font-medium text-cyan-100/90">
-                        Hi <span className="font-bold text-white">{formData.name}</span>,
-                        please fill in the form to start your journey
-                      </p>
-                    )}
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="ml-1 text-sm font-medium text-white/92">
-                      Full Name
-                    </label>
-                    <div className="relative">
-                      <UserPlus className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white" />
-                      <input
-                        type="text"
-                        placeholder="John Doe"
-                        className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
-                        value={formData.fullName}
-                        onChange={(e) =>
-                          setFormData({ ...formData, fullName: e.target.value })
-                        }
-                      />
-                    </div>
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="flex items-start gap-2 px-1 py-1"
-                    >
-                      <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-cyan-300" />
-                      <p className="text-[11px] italic leading-relaxed text-blue-100/72">
-                        Reminder: Name must match your bank account name for faster
-                        withdrawal processing.
-                      </p>
-                    </motion.div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="ml-1 text-sm font-medium text-white/92">
-                      Email Address
-                    </label>
-                    <div className="relative">
-                      <Mail className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white" />
-                      <input
-                        type="email"
-                        placeholder="youremail@example.com"
-                        className={`w-full rounded-2xl border py-4 pl-12 pr-4 text-sm font-medium leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18 ${
-                          formData.email && !emailRegex.test(formData.email)
-                            ? "border-red-500/50 ring-1 ring-red-500/20 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
-                            : "border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
-                        }`}
-                        value={formData.email}
-                        onChange={(e) =>
-                          setFormData({ ...formData, email: e.target.value })
-                        }
-                      />
-                    </div>
-                    {formData.email && !emailRegex.test(formData.email) && (
-                      <p className="ml-1 mt-1 text-xs text-red-400">
-                        Please enter a valid email address
-                      </p>
-                    )}
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="ml-1 text-sm font-medium text-white/92">
-                      Phone Number
-                    </label>
-                    <div className="relative">
-                      <Phone className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white" />
-                      <input
-                        type="tel"
-                        placeholder="+65 8000 0000"
-                        className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
-                        value={formData.phone}
-                        onChange={(e) =>
-                          setFormData({ ...formData, phone: e.target.value })
-                        }
-                      />
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3 pt-2">
-                    <div className="relative flex h-5 items-center">
-                      <input
-                        id="terms"
-                        type="checkbox"
-                        className="h-5 w-5 cursor-pointer rounded border-cyan-200/20 bg-white/5 text-blue-600 accent-blue-600 transition-all focus:ring-cyan-400/35 focus:ring-offset-0"
-                        checked={formData.agreedToTerms}
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            agreedToTerms: e.target.checked,
-                          })
-                        }
-                      />
-                    </div>
-                    <label
-                      htmlFor="terms"
-                      className="cursor-pointer select-none text-xs leading-relaxed text-blue-100/75"
-                    >
-                      I am over 21 years of age and have read and accepted the
-                      general terms and conditions. I agree to receive information
-                      from your company. I can cancel this service in my account at
-                      any time.
-                    </label>
-                  </div>
-
-                  <motion.button
-                    whileHover={isStep2Valid ? { scale: 1.02 } : {}}
-                    whileTap={isStep2Valid ? { scale: 0.98 } : {}}
-                    onClick={handleFinalCTA}
-                    disabled={!isStep2Valid}
-                    className={`flex w-full items-center justify-center gap-2 rounded-2xl bg-[linear-gradient(90deg,#1D4ED8_0%,#2563EB_42%,#22D3EE_100%)] py-4 font-bold text-white shadow-[0_18px_40px_rgba(37,99,235,0.38)] transition-all ${
-                      !isStep2Valid
-                        ? "cursor-not-allowed opacity-40 grayscale-[0.5]"
-                        : "hover:brightness-110 hover:shadow-[0_20px_50px_rgba(34,211,238,0.28)]"
-                    }`}
-                  >
-                    Complete Registration
-                    <CheckCircle2 className="h-5 w-5" />
-                  </motion.button>
-
-                  <motion.button
-                    whileHover={{ x: -5, scale: 1.06 }}
-                    whileTap={{ scale: 0.94 }}
-                    onClick={() => setStep(1)}
-                    className="group mx-auto mt-8 flex h-12 w-12 items-center justify-center rounded-full border border-cyan-300/20 bg-white/5 text-cyan-300/60 backdrop-blur-md transition-all duration-300 hover:border-cyan-300/50 hover:bg-cyan-400/10 hover:text-cyan-200 hover:shadow-[0_0_20px_rgba(34,211,238,0.25)]"
-                    title="Back to Step 1"
-                  >
-                    <ArrowLeft className="h-6 w-6 transition-transform duration-300 group-hover:-translate-x-1" />
-                  </motion.button>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {step === 2 && formData.name && (
+              <p className="mt-3 text-sm font-medium text-cyan-100/90">
+                Hi <span className="font-bold text-white">{formData.name}</span>,
+                please fill in the form to start your journey
+              </p>
+            )}
           </div>
+
+          <AnimatePresence mode="wait">
+            {step === 1 ? (
+              <motion.div
+                key="step1"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="relative z-10 space-y-6"
+              >
+                <div className="space-y-2">
+                  <label className="ml-1 text-sm font-medium text-white/92">
+                    Username
+                  </label>
+                  <div className="relative">
+                    <User className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white" />
+                    <input
+                      type="text"
+                      placeholder="Your login id"
+                      className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm font-medium leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
+                      value={formData.name}
+                      onChange={(e) =>
+                        setFormData({ ...formData, name: e.target.value })
+                      }
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="ml-1 text-sm font-medium text-white/92">
+                    Password
+                  </label>
+                  <div className="relative">
+                    <Lock className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white" />
+                    <input
+                      type="password"
+                      placeholder="••••••••"
+                      className={`w-full rounded-2xl border py-4 pl-12 pr-4 text-sm font-medium leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18 ${
+                        formData.password && !passwordRegex.test(formData.password)
+                          ? "border-red-500/50 ring-1 ring-red-500/20 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
+                          : "border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
+                      }`}
+                      value={formData.password}
+                      onChange={(e) =>
+                        setFormData({ ...formData, password: e.target.value })
+                      }
+                    />
+                  </div>
+                  {formData.password && !passwordRegex.test(formData.password) && (
+                    <p className="ml-1 mt-1 text-xs text-red-400">
+                      Password must be at least 6 characters and contain a number
+                    </p>
+                  )}
+                </div>
+
+                <motion.button
+                  whileHover={isStep1Valid ? { scale: 1.02 } : {}}
+                  whileTap={isStep1Valid ? { scale: 0.98 } : {}}
+                  onClick={handleNext}
+                  disabled={!isStep1Valid}
+                  className={`group flex w-full items-center justify-center gap-2 rounded-2xl bg-[linear-gradient(90deg,#1D4ED8_0%,#2563EB_42%,#22D3EE_100%)] py-4 font-bold text-white shadow-[0_18px_40px_rgba(37,99,235,0.38)] transition-all ${
+                    !isStep1Valid
+                      ? "cursor-not-allowed opacity-40 grayscale-[0.5]"
+                      : "hover:brightness-110 hover:shadow-[0_20px_50px_rgba(34,211,238,0.28)]"
+                  }`}
+                >
+                  Join Now
+                  <ChevronRight
+                    className={`h-5 w-5 transition-transform ${
+                      isStep1Valid ? "group-hover:translate-x-1" : ""
+                    }`}
+                  />
+                </motion.button>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="step2"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="relative z-10 space-y-6"
+              >
+                <div className="space-y-2">
+                  <label className="ml-1 text-sm font-medium text-white/92">
+                    Full Name
+                  </label>
+                  <div className="relative">
+                    <UserPlus className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white" />
+                    <input
+                      type="text"
+                      placeholder="John Doe"
+                      className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
+                      value={formData.fullName}
+                      onChange={(e) =>
+                        setFormData({ ...formData, fullName: e.target.value })
+                      }
+                    />
+                  </div>
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex items-start gap-2 px-1 py-1"
+                  >
+                    <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-cyan-300" />
+                    <p className="text-[11px] italic leading-relaxed text-blue-100/72">
+                      Reminder: Name must match your bank account name for faster
+                      withdrawal processing.
+                    </p>
+                  </motion.div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="ml-1 text-sm font-medium text-white/92">
+                    Email Address
+                  </label>
+                  <div className="relative">
+                    <Mail className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-white" />
+                    <input
+                      type="email"
+                      placeholder="youremail@example.com"
+                      className={`w-full rounded-2xl border py-4 pl-12 pr-4 text-sm font-medium leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18 ${
+                        formData.email && !emailRegex.test(formData.email)
+                          ? "border-red-500/50 ring-1 ring-red-500/20 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
+                          : "border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
+                      }`}
+                      value={formData.email}
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
+                    />
+                  </div>
+                  {formData.email && !emailRegex.test(formData.email) && (
+                    <p className="ml-1 mt-1 text-xs text-red-400">
+                      Please enter a valid email address
+                    </p>
+                  )}
+                </div>
+
+                <div className="space-y-2">
+                  <label className="ml-1 text-sm font-medium text-white/92">
+                    Phone Number
+                  </label>
+                  <div className="relative">
+                    <Phone className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white" />
+                    <input
+                      type="tel"
+                      placeholder="+65 8000 0000"
+                      className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
+                      value={formData.phone}
+                      onChange={(e) =>
+                        setFormData({ ...formData, phone: e.target.value })
+                      }
+                    />
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 pt-2">
+                  <div className="relative flex h-5 items-center">
+                    <input
+                      id="terms"
+                      type="checkbox"
+                      className="h-5 w-5 cursor-pointer rounded border-cyan-200/20 bg-white/5 text-blue-600 accent-blue-600 transition-all focus:ring-cyan-400/35 focus:ring-offset-0"
+                      checked={formData.agreedToTerms}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          agreedToTerms: e.target.checked,
+                        })
+                      }
+                    />
+                  </div>
+                  <label
+                    htmlFor="terms"
+                    className="cursor-pointer select-none text-xs leading-relaxed text-blue-100/75"
+                  >
+                    I am over 21 years of age and have read and accepted the
+                    general terms and conditions. I agree to receive information
+                    from your company. I can cancel this service in my account at
+                    any time.
+                  </label>
+                </div>
+
+                <motion.button
+                  whileHover={isStep2Valid ? { scale: 1.02 } : {}}
+                  whileTap={isStep2Valid ? { scale: 0.98 } : {}}
+                  disabled={!isStep2Valid}
+                  className={`flex w-full items-center justify-center gap-2 rounded-2xl bg-[linear-gradient(90deg,#1D4ED8_0%,#2563EB_42%,#22D3EE_100%)] py-4 font-bold text-white shadow-[0_18px_40px_rgba(37,99,235,0.38)] transition-all ${
+                    !isStep2Valid
+                      ? "cursor-not-allowed opacity-40 grayscale-[0.5]"
+                      : "hover:brightness-110 hover:shadow-[0_20px_50px_rgba(34,211,238,0.28)]"
+                  }`}
+                >
+                  Complete Registration
+                  <CheckCircle2 className="h-5 w-5" />
+                </motion.button>
+
+                <motion.button
+                  whileHover={{ x: -5, scale: 1.06 }}
+                  whileTap={{ scale: 0.94 }}
+                  onClick={() => setStep(1)}
+                  className="group mx-auto mt-8 flex h-12 w-12 items-center justify-center rounded-full border border-cyan-300/20 bg-white/5 text-cyan-300/60 backdrop-blur-md transition-all duration-300 hover:border-cyan-300/50 hover:bg-cyan-400/10 hover:text-cyan-200 hover:shadow-[0_0_20px_rgba(34,211,238,0.25)]"
+                  title="Back to Step 1"
+                >
+                  <ArrowLeft className="h-6 w-6 transition-transform duration-300 group-hover:-translate-x-1" />
+                </motion.button>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
       </div>
 
@@ -921,10 +813,7 @@ const HeroCTA = () => {
 
 export default function App() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
- const [step, setStep] = useState(1);
-const [isSuccess, setIsSuccess] = useState(false);
-const [countdown, setCountdown] = useState(8);
-const [progress, setProgress] = useState(0);
+  const [progressLevel, setProgressLevel] = useState(1);
 
   useEffect(() => {
     setProgressLevel(1);
@@ -965,9 +854,9 @@ const [progress, setProgress] = useState(0);
   ];
 
   const trackerItems = [
-    { title: "REGISTER", type: "text" as const },
-    { title: "UP TO 188 FS", type: "text" as const },
-    { title: "MORE REWARD", sub: "TO UNLOCK", type: "text" as const },
+    { title: "REGISTER", sub: "with us", type: "text" as const },
+    { title: "188 FS", sub: "Up to 188 FS", type: "text" as const },
+    { title: "MORE REWARD", sub: "Deposit Minimum $50", type: "text" as const },
     { title: "", sub: "", type: "airpod" as const },
   ];
 
