@@ -942,6 +942,19 @@ const StepsToClaim = () => {
   );
 };
 
+const TrustCard = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div className="rounded-[28px] border border-white/14 bg-[linear-gradient(180deg,rgba(66,127,255,0.82)_0%,rgba(39,66,193,0.92)_55%,rgba(19,33,123,0.96)_100%)] p-[2px] shadow-[0_20px_40px_rgba(0,0,0,0.22)] backdrop-blur-xl">
+      <div className="relative overflow-hidden rounded-[26px] px-6 py-8 text-center">
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.10),rgba(255,255,255,0.02),transparent)]" />
+        <div className="absolute inset-x-[8%] top-2 h-12 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0.04),transparent)] blur-[2px]" />
+        <div className="relative z-10 text-[18px] font-black leading-[1.02] text-white sm:text-[20px] md:text-[22px] lg:text-[22px] xl:text-[24px]">
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+};
 export default function App() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [progressLevel, setProgressLevel] = useState(1);
@@ -1093,7 +1106,32 @@ export default function App() {
               </div>
             </div>
           </div>
+<div className="pointer-events-none absolute left-1/2 bottom-[105px] z-[8] w-full max-w-[1350px] -translate-x-1/2 px-4 sm:bottom-[110px] sm:px-6 md:bottom-[115px] lg:bottom-[95px] lg:px-10 xl:bottom-[90px]">
+  <div className="relative mx-auto w-full max-w-[1180px]">
+    <div className="absolute left-1/2 top-[52%] z-[1] h-[72px] w-[94%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[linear-gradient(90deg,#F5E6B5_0%,#F7D45F_44%,#E3B426_70%,#0A2A88_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_18px_40px_rgba(0,0,0,0.22)] sm:h-[78px] lg:h-[84px]" />
+    <div className="absolute left-1/2 top-[52%] z-[2] h-[66px] w-[90%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-[linear-gradient(90deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))] sm:h-[72px] lg:h-[78px]" />
 
+    <div className="relative z-[3] grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5 lg:gap-8">
+      <TrustCard>
+        Trusted Since
+        <br />
+        2016
+      </TrustCard>
+
+      <TrustCard>
+        5,000+ Active
+        <br />
+        Members
+      </TrustCard>
+
+      <TrustCard>
+       10+ Rewards
+        <br />
+        To Unlock
+      </TrustCard>
+    </div>
+  </div>
+</div>
           <HeroCTA />
           <SectionSeam className="bottom-0" fillColor="#144FB9" shape="dip" />
         </section>
