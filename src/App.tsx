@@ -924,25 +924,24 @@ const HeroCTA = () => {
 export default function App() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [progressLevel, setProgressLevel] = useState(1);
+useEffect(() => {
+  setProgressLevel(1);
 
-  useEffect(() => {
-    setProgressLevel(1);
+  const timeouts = [
+    { level: 2, delay: 2000 },
+    { level: 3, delay: 2000 },
+  ];
 
-    const levels = [2, 3];
-    let index = 0;
+  let totalDelay = 0;
 
-    const interval = setInterval(() => {
-      index += 1;
+  timeouts.forEach(({ level, delay }) => {
+    totalDelay += delay;
+    setTimeout(() => {
+      setProgressLevel(level);
+    }, totalDelay);
+  });
 
-      if (index < levels.length) {
-        setProgressLevel(levels[index]);
-      } else {
-        clearInterval(interval);
-      }
-    }, 1600);
-
-    return () => clearInterval(interval);
-  }, []);
+}, []);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
