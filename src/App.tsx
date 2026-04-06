@@ -1023,68 +1023,40 @@ export default function App() {
 
 <div className="pointer-events-none absolute left-1/2 bottom-[285px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[300px] sm:px-6 md:bottom-[320px] lg:bottom-[335px]">
   <div className="mx-auto max-w-5xl">
-    <div className="mb-6 grid grid-cols-4 items-end gap-3 sm:gap-4">
+ <div className="mb-6 grid grid-cols-4 items-end gap-3 sm:gap-4">
   {trackerItems.map((item, i) => {
-  const stageNumber = i + 1;
-  const isReached = progressLevel >= stageNumber;
-  const isCurrent = progressLevel === stageNumber;
+    const stageNumber = i + 1;
+    const isReached = progressLevel >= stageNumber;
 
-  if (item.type === "airpod") {
-    return (
-      <div key={i} className="relative flex min-w-0 items-end justify-center">
-        <div className="relative flex h-[82px] w-full items-end justify-center sm:h-[86px] md:h-[92px]">
-          <div className="relative flex flex-col items-center justify-center">
-            <div className="absolute inset-0 rounded-full bg-white/8 blur-xl opacity-30" />
-
+    if (item.type === "airpod") {
+      return (
+        <div key={i} className="flex justify-center items-end">
+          <div className="flex flex-col items-center">
             <img
               src={airpodImg}
-              alt="Locked AirPods reward"
-              className="relative z-10 w-[72px] object-contain sm:w-[88px] md:w-[102px] lg:w-[112px]"
-              style={{
-                filter:
-                  "grayscale(1) brightness(0.85) contrast(0.9) drop-shadow(0 12px 24px rgba(0,0,0,0.24))",
-                opacity: 0.52,
-              }}
+              className="w-[80px] opacity-50 grayscale"
             />
-
-            <div className="absolute -right-1 top-0 z-20 flex h-5 w-5 items-center justify-center rounded-full border border-white/10 bg-white/10 text-[10px] text-white/70 backdrop-blur-md sm:h-6 sm:w-6 sm:text-[11px]">
-              🔒
-            </div>
-
-            <p className="mt-1.5 text-center text-[9px] font-semibold leading-[1.05] text-white/50 sm:text-[10px] md:text-[11px]">
-              Locked Reward
-            </p>
+            <span className="text-xs text-white/50 mt-1">🔒 Locked</span>
           </div>
         </div>
-      </div>
-    );
-  }
+      );
+    }
 
-  return (
-    <motion.div
-      key={i}
-      className="min-w-0"
-      initial={false}
-      animate={
-        isReached
-          ? {
-              opacity: 1,
-              y: 0,
-              scale: isReached || isCurrent ? [1, 1.04, 1] : 1,
-              rotate: 0,
-            }
-          : {
-              opacity: 0,
-              y: 14,
-              scale: 0.92,
-              rotate: 0,
-            }
-      }
-      transition={{
-        duration: 0.4,
-        ease: "easeOut",
-      }}
-    >
+    return (
+      <motion.div key={i} className="text-center">
+        <div
+          className={`rounded-xl p-3 ${
+            isReached ? "bg-yellow-400/20" : "bg-white/5"
+          }`}
+        >
+          <p className="font-bold text-white">{item.title}</p>
+          <p className="text-xs text-yellow-300">{item.sub}</p>
+        </div>
+      </motion.div>
+    );
+  })}
+</div>
+    
       <div
         className={`relative rounded-[22px] p-[2px] ${
           isReached
