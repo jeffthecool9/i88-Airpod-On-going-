@@ -7,6 +7,7 @@ import registerImg from "./assets/register.png";
 import depositImg from "./assets/deposit.png";
 import playImg from "./assets/play.png";
 import colaImg from "./assets/cola2.png";
+import rewardEventImg from "./assets/reward-event.png";
 import heroTextBoxImg from "./assets/hero-textbox.png";
 import HeroRewardTracker from "./HeroRewardTracker";
 import cola1Img from "./assets/cola1.png";
@@ -310,7 +311,11 @@ const RegistrationForm = () => {
         alt="i88"
         className="pointer-events-none absolute left-1/2 top-0 z-[9] w-[90px] -translate-x-1/2 -translate-y-2 object-contain opacity-95 sm:w-[110px] sm:-translate-y-3 md:w-[125px] md:-translate-y-4"
       />
-
+<img
+  src={rewardEventImg}
+  alt="AirPods Pro Reward Event"
+  className="pointer-events-none absolute left-1/2 top-[58px] z-[10] w-[300px] -translate-x-1/2 object-contain sm:top-[68px] sm:w-[340px] md:top-[78px] md:w-[380px] lg:top-[70px] lg:w-[520px] xl:top-[74px] xl:w-[620px]"
+/>
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-[4%] top-[10%] h-[260px] w-[260px] rounded-full bg-cyan-300/12 blur-[120px]" />
         <div className="absolute right-[4%] top-[15%] h-[320px] w-[320px] rounded-full bg-blue-400/12 blur-[140px]" />
@@ -1002,7 +1007,7 @@ useEffect(() => {
       "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
   }}
 />
-<div className="pointer-events-none absolute left-1/2 top-[46%] z-[9] w-[82%] max-w-[560px] -translate-x-1/2 sm:top-[47%] sm:w-[78%] sm:max-w-[600px] md:top-[48%] md:w-[74%] md:max-w-[640px] lg:top-[40%] lg:w-[44%] lg:max-w-[760px] xl:top-[39%] xl:w-[42%] xl:max-w-[820px] 2xl:top-[38%] 2xl:w-[40%] 2xl:max-w-[860px]">
+<div className="pointer-events-none absolute left-1/2 top-[53%] z-[9] w-[82%] max-w-[560px] -translate-x-1/2 sm:top-[54%] sm:w-[78%] sm:max-w-[600px] md:top-[55%] md:w-[74%] md:max-w-[640px] lg:top-[45%] lg:w-[44%] lg:max-w-[760px] xl:top-[44%] xl:w-[42%] xl:max-w-[820px] 2xl:top-[43%] 2xl:w-[40%] 2xl:max-w-[860px]">
   <img
     src={heroTextBoxImg}
     alt=""
@@ -1011,7 +1016,7 @@ useEffect(() => {
 
   <div className="absolute inset-0 flex items-center justify-center px-6 text-center sm:px-8 md:px-10">
     <p
-      className="pointer-events-none absolute left-1/2 top-[53%] z-[9] w-[82%] max-w-[560px] -translate-x-1/2 sm:top-[54%] sm:w-[78%] sm:max-w-[600px] md:top-[55%] md:w-[74%] md:max-w-[640px] lg:top-[45%] lg:w-[44%] lg:max-w-[760px] xl:top-[44%] xl:w-[42%] xl:max-w-[820px] 2xl:top-[43%] 2xl:w-[40%] 2xl:max-w-[860px]"
+      className="relative z-10 -translate-y-[10px] font-extrabold uppercase text-white text-[18px] sm:-translate-y-[12px] sm:text-[22px] md:-translate-y-[14px] md:text-[26px] lg:-translate-y-[16px] lg:text-[30px]"
       style={{
         letterSpacing: "0.02em",
         fontFamily: "'Poppins', 'Inter', sans-serif",
