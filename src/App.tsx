@@ -1032,9 +1032,9 @@ useEffect(() => {
           WebkitTextFillColor: "transparent",
         }}
       >
-        99% to Claim AirPods Pro 3,
+       Your AirPods Pro 3 Awaits
         <br />
-        1% Is Your Action
+        Complete the Final 1%
       </span>
     </p>
   </div>
