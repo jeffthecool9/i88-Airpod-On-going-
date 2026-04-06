@@ -1053,28 +1053,26 @@ useEffect(() => {
             }}
           />
 
-          <motion.div
+       <motion.div
   aria-hidden="true"
-  className="pointer-events-none absolute left-1/2 bottom-[365px] z-[9] -translate-x-1/2 sm:bottom-[382px] md:bottom-[405px] lg:bottom-[420px]"
+  className="pointer-events-none absolute left-1/2 top-[62%] z-[12] -translate-x-1/2"
   animate={{
-    y: [0, 6, 0],
-    opacity: [0.18, 0.32, 0.18],
+    y: [0, 5, 0],
+    opacity: [0.16, 0.3, 0.16],
   }}
   transition={{
-    duration: 2.2,
+    duration: 2.4,
     repeat: Infinity,
     ease: "easeInOut",
   }}
 >
-  <div className="flex flex-col items-center">
-    <ChevronDown
-      className="h-6 w-6 sm:h-7 sm:w-7"
-      style={{
-        color: "rgba(255, 215, 106, 0.55)",
-        filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.18))",
-      }}
-    />
-  </div>
+  <ChevronDown
+    className="h-5 w-5 sm:h-6 sm:w-6"
+    style={{
+      color: "rgba(255,255,255,0.42)",
+      filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.18))",
+    }}
+  />
 </motion.div>
           
           <div className="pointer-events-none absolute left-1/2 bottom-[285px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[300px] sm:px-6 md:bottom-[320px] lg:bottom-[335px]">
