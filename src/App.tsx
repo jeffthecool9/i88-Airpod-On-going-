@@ -1027,25 +1027,20 @@ useEffect(() => {
                {trackerItems.map((item, i) => {
   const step = i + 1;
 
-  // ✅ AIRPOD
+  // AIRPOD
   if (item.type === "airpod") {
     const showText = progressLevel >= 3;
 
     return (
-      <motion.div
-        key={i}
-        className="flex flex-col items-center justify-end"
-      >
-        <div className="relative flex h-[82px] w-full items-end justify-center">
+      <div key={i} className="flex flex-col items-center">
+        <div className="relative">
           <img
             src={airpodImg}
             className="w-[90px]"
-            style={{
-              filter: "grayscale(1) opacity(0.5)",
-            }}
+            style={{ filter: "grayscale(1) opacity(0.5)" }}
           />
 
-          <div className="absolute top-0 right-[20%] h-6 w-6 rounded-full bg-black/70 flex items-center justify-center">
+          <div className="absolute top-0 right-0 h-6 w-6 bg-black/70 flex items-center justify-center rounded-full">
             <Lock className="w-3 h-3 text-yellow-400" />
           </div>
         </div>
@@ -1060,28 +1055,22 @@ useEffect(() => {
             </p>
           </div>
         )}
-      </motion.div>
+      </div>
     );
   }
 
-  // ✅ NORMAL STEPS
+  // NORMAL STEPS
   const isVisible = progressLevel >= step;
 
   return (
-    <motion.div
-      key={i}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: isVisible ? 1 : 0 }}
-      className="flex flex-col items-center"
-    >
+    <div key={i} className="flex flex-col items-center">
       <div className="px-4 py-3 rounded-xl bg-blue-900 border border-yellow-400">
-        <p className="text-sm font-bold">{item.title}</p>
-        <p className="text-xs">{item.sub}</p>
+        <p>{item.title}</p>
+        <p>{item.sub}</p>
       </div>
-    </motion.div>
+    </div>
   );
 })}
-
         <div className="pointer-events-none absolute right-[14%] top-[4px] z-20 flex h-7 w-7 items-center justify-center rounded-full border border-[#FFE08A]/30 bg-[linear-gradient(180deg,rgba(17,24,39,0.95)_0%,rgba(10,15,28,0.95)_100%)] shadow-[0_10px_20px_rgba(0,0,0,0.35)] sm:right-[18%] md:right-[20%]">
           <Lock className="h-3.5 w-3.5 text-[#FFD76A]" />
         </div>
