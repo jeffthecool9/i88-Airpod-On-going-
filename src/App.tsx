@@ -424,9 +424,6 @@ const RegistrationForm = () => {
                     </div>
                   </div>
 
-                  <p className="mt-5 text-xs text-blue-100/55 sm:text-sm">
-                    Official redirect will be connected after backend integration is ready.
-                  </p>
                 </motion.div>
               ) : step === 1 ? (
                 <motion.div
