@@ -1024,53 +1024,53 @@ useEffect(() => {
           <div className="pointer-events-none absolute left-1/2 bottom-[285px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[300px] sm:px-6 md:bottom-[320px] lg:bottom-[335px]">
             <div className="mx-auto max-w-5xl">
               <div className="mb-6 grid grid-cols-4 items-end gap-3 sm:gap-4">
-               {trackerItems.map((item, i) => {
-  const step = i + 1;
+                {trackerItems.map((item, i) => {
+                  const stageNumber = i + 1;
+                  const isReached = progressLevel >= stageNumber;
+                  const isCurrent = progressLevel === stageNumber;
 
-  // AIRPOD
-  if (item.type === "airpod") {
-    const showText = progressLevel >= 3;
+                 // 3) inside your trackerItems.map(...) replace ONLY the airpod block with this
 
-    return (
-      <div key={i} className="flex flex-col items-center">
-        <div className="relative">
-          <img
-            src={airpodImg}
-            className="w-[90px]"
-            style={{ filter: "grayscale(1) opacity(0.5)" }}
-          />
-
-          <div className="absolute top-0 right-0 h-6 w-6 bg-black/70 flex items-center justify-center rounded-full">
-            <Lock className="w-3 h-3 text-yellow-400" />
-          </div>
-        </div>
-
-        {showText && (
-          <div className="mt-2 text-center">
-            <p className="text-[11px] font-bold text-yellow-300">
-              Deposit & Play With Us
-            </p>
-            <p className="text-[10px] text-white/80">
-              Unlock Your AirPods Now
-            </p>
-          </div>
-        )}
-      </div>
-    );
-  }
-
-  // NORMAL STEPS
-  const isVisible = progressLevel >= step;
+if (item.type === "airpod") {
+  const isUnlockedStage = progressLevel >= 3;
 
   return (
-    <div key={i} className="flex flex-col items-center">
-      <div className="px-4 py-3 rounded-xl bg-blue-900 border border-yellow-400">
-        <p>{item.title}</p>
-        <p>{item.sub}</p>
-      </div>
-    </div>
-  );
-})}
+    <motion.div
+      key={i}
+      className="relative flex min-w-0 flex-col items-center justify-end"
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <div className="relative flex h-[82px] w-full items-end justify-center sm:h-[86px] md:h-[92px]">
+        <motion.div
+          className="absolute inset-0 flex items-end justify-center"
+          animate={
+            isUnlockedStage
+              ? {
+                  y: [0, -4, 0],
+                  scale: [1, 1.02, 1],
+                }
+              : {}
+          }
+          transition={{
+            duration: 2.6,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          <img
+            src={airpodImg}
+            alt="AirPods reward"
+            className="relative z-10 w-[72px] object-contain sm:w-[88px] md:w-[102px] lg:w-[112px]"
+            style={{
+              filter: isUnlockedStage
+                ? "grayscale(1) opacity(0.58) drop-shadow(0 12px 24px rgba(0,0,0,0.28))"
+                : "grayscale(1) opacity(0.58) drop-shadow(0 12px 24px rgba(0,0,0,0.28))",
+            }}
+          />
+        </motion.div>
+
         <div className="pointer-events-none absolute right-[14%] top-[4px] z-20 flex h-7 w-7 items-center justify-center rounded-full border border-[#FFE08A]/30 bg-[linear-gradient(180deg,rgba(17,24,39,0.95)_0%,rgba(10,15,28,0.95)_100%)] shadow-[0_10px_20px_rgba(0,0,0,0.35)] sm:right-[18%] md:right-[20%]">
           <Lock className="h-3.5 w-3.5 text-[#FFD76A]" />
         </div>
@@ -1098,7 +1098,15 @@ useEffect(() => {
   );
 }
 
-    
+      // 4) add this helper const above your return inside App()
+const trackerFillWidth =
+  progressLevel <= 0
+    ? "0%"
+    : progressLevel === 1
+    ? "33.333%"
+    : progressLevel === 2
+    ? "66.666%"
+    : "75%";
                   return (
                     <motion.div
                       key={i}
