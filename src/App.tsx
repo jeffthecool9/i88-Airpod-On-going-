@@ -1019,7 +1019,7 @@ export default function App() {
                 className="relative z-10 translate-y-[10px] font-bold italic text-white text-[18px] sm:translate-y-[12px] sm:text-[22px] md:translate-y-[14px] md:text-[26px] lg:translate-y-[16px] lg:text-[30px]"
                 style={{
                   letterSpacing: "0.03em",
-                  fontFamily: "'Futura PT', 'Bold', 'Oblique",
+                  fontFamily: "Futura bold Oblique",
                   textShadow: `
                     0 2px 6px rgba(0,0,0,0.35),
                     0 4px 12px rgba(0,0,0,0.25)
