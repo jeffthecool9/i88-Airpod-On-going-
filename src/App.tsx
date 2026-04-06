@@ -1001,42 +1001,44 @@ useEffect(() => {
                 "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
             }}
           />
-<div className="pointer-events-none absolute left-1/2 top-[46%] z-[9] w-[82%] max-w-[560px] -translate-x-1/2 sm:top-[47%] sm:w-[78%] sm:max-w-[600px] md:top-[48%] md:w-[74%] md:max-w-[640px] lg:top-[48.5%] lg:w-[70%] lg:max-w-[680px]">
-  <img
-    src={heroTextBoxImg}
-    alt=""
-    className="w-full object-contain"
-  />
+<div className="pointer-events-none absolute left-1/2 top-[46%] z-[9] w-[82%] max-w-[560px] -translate-x-1/2">
+  
+  {/* GOLD FRAME */}
+  <div className="relative rounded-[40px] p-[4px] 
+    bg-[linear-gradient(135deg,#FFF3B0_0%,#FFD76A_20%,#E6B84D_45%,#C8921F_70%,#FFF3B0_100%)]
+    shadow-[0_10px_25px_rgba(0,0,0,0.4),0_0_12px_rgba(255,215,106,0.35)]
+  ">
+    
+    {/* INNER BLUE BOX */}
+    <div className="relative rounded-[36px] bg-[linear-gradient(180deg,#1D4ED8_0%,#1E40AF_60%,#1E3A8A_100%)] py-4 px-6 text-center overflow-hidden">
+      
+      {/* TOP GLOSS LIGHT */}
+      <div className="absolute inset-x-[8%] top-[2px] h-[35%] rounded-full 
+        bg-[linear-gradient(180deg,rgba(255,255,255,0.35),rgba(255,255,255,0.08),transparent)] blur-[2px]" 
+      />
 
-  <div className="absolute inset-0 flex items-center justify-center px-6 text-center sm:px-8 md:px-10">
-    <p
-      className="font-black uppercase leading-[1.08] text-white text-[20px] sm:text-[26px] md:text-[32px] lg:text-[36px]"
-      style={{
-        letterSpacing: "-0.03em",
-        fontFamily: "Inter, system-ui, sans-serif",
-        textShadow: `
-          0 1px 0 rgba(255,255,255,0.95),
-          0 2px 0 rgba(220,235,255,0.85),
-          0 3px 0 rgba(130,170,255,0.55),
-          0 8px 18px rgba(0,0,0,0.35),
-          0 0 14px rgba(255,255,255,0.18)
-        `,
-        filter: "drop-shadow(0 4px 10px rgba(0,0,0,0.22))",
-      }}
-    >
-      <span
+      {/* INNER BORDER LIGHT */}
+      <div className="absolute inset-[1px] rounded-[35px] border border-white/10" />
+
+      {/* TEXT */}
+      <p
+        className="relative z-10 font-black uppercase text-white 
+        text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px]"
         style={{
-          background:
-            "linear-gradient(180deg, #FFFFFF 0%, #F4F8FF 45%, #DCEBFF 100%)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
+          letterSpacing: "-0.03em",
+          textShadow: `
+            0 1px 0 rgba(255,255,255,0.9),
+            0 2px 0 rgba(200,220,255,0.7),
+            0 4px 10px rgba(0,0,0,0.4)
+          `,
         }}
       >
-        99% to Claim AirPods Pro 3,
+        99% TO CLAIM AIRPODS PRO 3
         <br />
-        1% Is Your Action
-      </span>
-    </p>
+        1% IS YOUR ACTION
+      </p>
+
+    </div>
   </div>
 </div>
           
