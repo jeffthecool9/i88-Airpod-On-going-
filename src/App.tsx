@@ -1339,7 +1339,7 @@ const trackerFillWidth =
           <div className="pointer-events-none absolute bottom-[168px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[164px] sm:px-6 md:bottom-[150px] lg:bottom-[154px]">
             <div className="grid grid-cols-3 gap-3 sm:gap-7 md:gap-9">
               {[
-                "Trusted Since 2014",
+                "Trusted Since 2016",
                 "5,000+ Active Members",
                 "Clear Rewards, Don't Forget to Claim it",
               ].map((text, i) => (
