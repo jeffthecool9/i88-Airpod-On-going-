@@ -1025,27 +1025,30 @@ useEffect(() => {
     className="w-full object-contain"
   />
 
-  <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center sm:px-8 md:px-10">
-    <p
-      className="relative z-10 -translate-y-[6px] font-extrabold uppercase text-white text-[18px] sm:-translate-y-[8px] sm:text-[22px] md:-translate-y-[10px] md:text-[26px] lg:-translate-y-[12px] lg:text-[30px]"
-      style={{
-        letterSpacing: "0.02em",
-        fontFamily: "'Poppins', 'Inter', sans-serif",
-        textShadow: `
-          0 2px 6px rgba(0,0,0,0.35),
-          0 4px 12px rgba(0,0,0,0.25)
-        `,
-      }}
-    >
-      YOUR AIRPODS AWAITS
-    </p>
+<div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center sm:px-8 md:px-10">
+  
+  {/* TOP TEXT */}
+  <p
+    className="relative z-10 translate-y-[10px] font-bold italic text-white text-[18px] sm:translate-y-[12px] sm:text-[22px] md:translate-y-[14px] md:text-[26px] lg:translate-y-[16px] lg:text-[30px]"
+    style={{
+      letterSpacing: "0.03em",
+      fontFamily: "'Futura PT', 'Poppins', sans-serif",
+      textShadow: `
+        0 2px 6px rgba(0,0,0,0.35),
+        0 4px 12px rgba(0,0,0,0.25)
+      `,
+    }}
+  >
+    YOUR AIRPODS AWAITS
+  </p>
 
-    <img
-      src={heroFinalTextImg}
-      alt="Complete the final 1%"
-      className="relative z-10 mt-1 w-[88%] max-w-[300px] object-contain sm:mt-1.5 sm:max-w-[340px] md:max-w-[390px] lg:mt-2 lg:max-w-[440px]"
-    />
-  </div>
+  {/* IMAGE TEXT */}
+  <img
+    src={heroFinalTextImg}
+    alt="Complete the final 1%"
+    className="relative z-10 mt-2 w-[88%] max-w-[300px] object-contain sm:mt-2.5 sm:max-w-[340px] md:max-w-[390px] lg:mt-3 lg:max-w-[440px]"
+  />
+
 </div>
           
           <motion.img
