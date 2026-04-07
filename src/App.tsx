@@ -11,8 +11,8 @@ import rewardEventImg from "./assets/reward-event.png";
 import heroTextBoxImg from "./assets/hero-textbox.png";
 import HeroRewardTracker from "./HeroRewardTracker";
 import cola1Img from "./assets/cola1.png";
-import heroTopTextImg from "./assets/text.png";
-import heroFinalTextImg from "./assets/text-2.png";
+import heroTopTextImg from "./assets/text-2.png";
+import heroFinalTextImg from "./assets/text.png";
 import { motion, AnimatePresence } from "motion/react";
 import {
   ChevronRight,
@@ -1027,17 +1027,17 @@ useEffect(() => {
   />
 
   <div className="absolute inset-0 flex flex-col items-center justify-center px-4 pt-2 text-center sm:px-6 sm:pt-3 md:px-8 md:pt-3">
-    <img
-      src={heroTopTextImg}
-      alt="Your AirPods Awaits"
-      className="relative z-10 w-[92%] max-w-[400px] object-contain sm:max-w-[440px] md:max-w-[500px] lg:max-w-[560px]"
-    />
+  <img
+  src={heroTopTextImg}
+  alt="Your AirPods Awaits"
+  className="relative z-10 w-[95%] max-w-[420px] object-contain sm:max-w-[460px] md:max-w-[520px] lg:max-w-[580px]"
+/>
 
-    <img
-      src={heroFinalTextImg}
-      alt="Complete the final 1%"
-      className="relative z-10 -mt-1 w-[96%] max-w-[430px] object-contain sm:max-w-[470px] md:max-w-[530px] lg:max-w-[600px]"
-    />
+<img
+  src={heroFinalTextImg}
+  alt="Complete the final 1%"
+  className="relative z-10 -mt-3 w-[98%] max-w-[440px] object-contain sm:max-w-[480px] md:max-w-[540px] lg:max-w-[610px]"
+/>
   </div>
 </div>
           
