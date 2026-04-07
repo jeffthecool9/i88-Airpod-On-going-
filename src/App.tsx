@@ -871,6 +871,19 @@ const LockedRewardCard = () => {
     </div>
   );
 };
+const TrustCard = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div className="rounded-[20px] border border-white/12 bg-[linear-gradient(180deg,rgba(66,127,255,0.82)_0%,rgba(39,66,193,0.92)_55%,rgba(19,33,123,0.96)_100%)] p-[2px] shadow-[0_14px_30px_rgba(0,0,0,0.18)] backdrop-blur-xl">
+      <div className="relative overflow-hidden rounded-[18px] px-4 py-4 text-center sm:px-5 sm:py-5">
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02),transparent)]" />
+        <div className="absolute inset-x-[10%] top-2 h-8 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.03),transparent)] blur-[2px]" />
+        <div className="relative z-10 text-[13px] font-black leading-[1.05] text-white sm:text-[15px] md:text-[16px] lg:text-[17px]">
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const StepsToClaim = () => {
   const stepData = [
@@ -1107,29 +1120,36 @@ export default function App() {
               </div>
             </div>
           </div>
-<div className="pointer-events-none absolute left-1/2 bottom-[120px] z-[8] w-full max-w-[1180px] -translate-x-1/2 px-4 sm:bottom-[125px] sm:px-6 md:bottom-[130px] lg:bottom-[92px] lg:px-8 xl:bottom-[88px]">
-  <div className="relative mx-auto max-w-[980px]">
-    <div className="absolute left-1/2 top-[50%] z-[1] h-[52px] w-[92%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[linear-gradient(90deg,#F5E6B5_0%,#F7D45F_44%,#E3B426_70%,#0A2A88_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_12px_26px_rgba(0,0,0,0.18)] sm:h-[58px] lg:h-[64px]" />
-    <div className="absolute left-1/2 top-[50%] z-[2] h-[46px] w-[88%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-[linear-gradient(90deg,rgba(255,255,255,0.06),rgba(255,255,255,0.01))] sm:h-[52px] lg:h-[58px]" />
+<div className="pointer-events-none absolute left-1/2 bottom-[118px] z-[8] w-full max-w-[980px] -translate-x-1/2 px-4 sm:bottom-[122px] sm:px-6 md:bottom-[126px] lg:bottom-[88px] lg:px-8 xl:bottom-[84px]">
+  <div className="relative mx-auto max-w-[860px]">
+    <div className="absolute left-1/2 top-[50%] z-[1] h-[48px] w-[90%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[linear-gradient(90deg,#F5E6B5_0%,#F7D45F_44%,#E3B426_70%,#0A2A88_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_12px_26px_rgba(0,0,0,0.18)] sm:h-[54px] lg:h-[58px]" />
+    <div className="absolute left-1/2 top-[50%] z-[2] h-[42px] w-[86%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-[linear-gradient(90deg,rgba(255,255,255,0.06),rgba(255,255,255,0.01))] sm:h-[46px] lg:h-[50px]" />
 
-    <div className="relative z-[3] grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4 lg:gap-5">
-      <TrustCard>
-        Trusted Since
-        <br />
-        2016
-      </TrustCard>
+   <div className="relative z-[3] grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-5 lg:gap-6">
 
-      <TrustCard>
-        5,000+ Active
-        <br />
-        Members
-      </TrustCard>
+     <TrustCard>
+  Trusted Since
+  <br />
+  <span className="text-[18px] sm:text-[20px] md:text-[22px]">
+    2016
+  </span>
+</TrustCard>
 
-      <TrustCard>
-        10+ Rewards
-        <br />
-        To Unlock
-      </TrustCard>
+<TrustCard>
+  5,000+ Active
+  <br />
+  <span className="text-[18px] sm:text-[20px] md:text-[22px]">
+    Members
+  </span>
+</TrustCard>
+
+<TrustCard>
+  10+ Rewards
+  <br />
+  <span className="text-[18px] sm:text-[20px] md:text-[22px]">
+    To Unlock
+  </span>
+</TrustCard>
     </div>
   </div>
 </div>
