@@ -1563,12 +1563,15 @@ export default function App() {
             </div>
           </div>
 
-          <SectionSeam
-            className="bottom-[-1px]"
-            fillColor="#144FB9"
-            shape="dip"
-          />
+                                <SectionSeam
+              className="bottom-[-1px]"
+              fillColor="#1E4FA3"
+              shape="dip"
+            />
+          </div>
         </section>
+
+        <section
 
         <RegistrationForm />
         <FloatingGirl />
