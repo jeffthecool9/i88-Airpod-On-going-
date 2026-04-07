@@ -833,6 +833,16 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
   }}
 />
 
+                <img
+          src={colaImg}
+          alt=""
+          className="relative h-auto w-[280px] object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.35)] sm:w-[360px] md:w-[480px] lg:w-[560px] xl:w-[640px]"
+        />
+      </div>
+    </motion.div>
+  );
+};
+
 const HeroCTA = () => {
   const [isActive, setIsActive] = useState(false);
   const [exitSweepKey, setExitSweepKey] = useState(0);
