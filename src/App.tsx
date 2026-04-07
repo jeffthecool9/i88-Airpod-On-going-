@@ -1494,7 +1494,7 @@ export default function App() {
           </div>
         </section>
 
-        <section
+      <section
           id="steps-to-claim"
           className="relative z-10 -mt-2 overflow-hidden px-4 pt-10 pb-24 sm:px-6 sm:pt-12 sm:pb-28 md:pt-14"
           style={{
@@ -1573,7 +1573,7 @@ export default function App() {
 
         <section
 
-        <RegistrationForm />
+           <RegistrationForm />
         <FloatingGirl />
       </main>
     </div>
