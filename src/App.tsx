@@ -241,11 +241,11 @@ const RegistrationForm = () => {
       id="registration-form"
       className="relative z-10 overflow-hidden px-6 py-24 sm:py-32 bg-[radial-gradient(circle_at_12%_18%,rgba(34,211,238,0.16),transparent_24%),radial-gradient(circle_at_85%_22%,rgba(59,130,246,0.20),transparent_28%),radial-gradient(circle_at_50%_85%,rgba(56,189,248,0.08),transparent_30%),linear-gradient(180deg,#0B49B8_0%,#0A3D9D_35%,#082B78_72%,#03143E_100%)]"
     >
-      <img
-        src={i882Img}
-        alt="i88"
-        className="pointer-events-none absolute left-1/2 top-0 z-[9] w-[90px] -translate-x-1/2 -translate-y-2 object-contain opacity-95 sm:w-[110px] sm:-translate-y-3 md:w-[125px] md:-translate-y-4"
-      />
+   <img
+  src={i882Img}
+  alt="i88"
+  className="pointer-events-none absolute left-1/2 top-[1.2%] z-[22] w-[22%] max-w-[92px] -translate-x-1/2 object-contain"
+/>
 
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-[4%] top-[10%] h-[260px] w-[260px] rounded-full bg-cyan-300/12 blur-[120px]" />
@@ -971,10 +971,10 @@ export default function App() {
             />
 
             <img
-              src={rewardEventImg}
-              alt="AirPods Pro Reward Event"
-              className="pointer-events-none absolute left-1/2 top-[8%] z-[18] w-[78%] max-w-[320px] -translate-x-1/2 object-contain"
-            />
+  src={rewardEventImg}
+  alt="AirPods Pro Reward Event"
+  className="pointer-events-none absolute left-1/2 top-[5.8%] z-[18] w-[78%] max-w-[320px] -translate-x-1/2 object-contain"
+/>
 
             <img
               src={cola1Img}
@@ -1051,7 +1051,7 @@ export default function App() {
               />
             </motion.div>
 
-            <div className="pointer-events-none absolute left-1/2 bottom-[18%] z-[9] w-[92%] max-w-[400px] -translate-x-1/2 px-2">
+           <div className="pointer-events-none absolute left-1/2 bottom-[20%] z-[9] w-[92%] max-w-[400px] -translate-x-1/2 px-2">
               <div className="mx-auto w-full">
                 <div className="mb-4 grid grid-cols-4 items-end gap-2">
                   {trackerItems.map((item, i) => {
@@ -1235,8 +1235,8 @@ export default function App() {
                           </div>
                         </div>
 
-                        {i === 0 && (
-                          <div className="pointer-events-none absolute left-[70%] top-1/2 hidden h-[4px] w-[125%] -translate-y-1/2 rounded-full bg-white/10 sm:block">
+                       {i === 0 && (
+  <div className="pointer-events-none absolute left-[78%] top-1/2 h-[4px] w-[62%] -translate-y-1/2 rounded-full bg-white/10">
                             <motion.div
                               className="h-full rounded-full bg-[linear-gradient(90deg,#FFE08A_0%,#F7C948_55%,#FFD76A_100%)] shadow-[0_0_10px_rgba(247,201,72,0.4)]"
                               animate={{ width: trackerFillWidth }}
@@ -1245,8 +1245,8 @@ export default function App() {
                           </div>
                         )}
 
-                        {i === 1 && (
-                          <div className="pointer-events-none absolute left-[70%] top-1/2 hidden h-[4px] w-[125%] -translate-y-1/2 rounded-full bg-white/10 sm:block">
+                       {i === 1 && (
+  <div className="pointer-events-none absolute left-[78%] top-1/2 h-[4px] w-[62%] -translate-y-1/2 rounded-full bg-white/10">
                             <motion.div
                               className="h-full rounded-full bg-[linear-gradient(90deg,#FFE08A_0%,#F7C948_55%,#FFD76A_100%)] shadow-[0_0_10px_rgba(247,201,72,0.4)]"
                               animate={{
@@ -1263,7 +1263,7 @@ export default function App() {
               </div>
             </div>
 
-            <div className="absolute bottom-[7%] left-1/2 z-[15] -translate-x-1/2">
+            <div className="absolute bottom-[5.5%] left-1/2 z-[15] -translate-x-1/2">
               <HeroCTA />
             </div>
           </div>
