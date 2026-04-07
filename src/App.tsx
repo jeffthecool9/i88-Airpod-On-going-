@@ -54,10 +54,10 @@ const HeroWord = ({
   </span>
 );
 
-const GoldConfetti = () => {
+const GoldConfetti = ({ liteMode = false }: { liteMode?: boolean }) => {
   const pieces = React.useMemo(
     () =>
-      Array.from({ length: 26 }, (_, i) => {
+      Array.from({ length: liteMode ? 8 : 26 }, (_, i) => {
         const width = 8 + (i % 4) * 4;
         const height = 2 + (i % 3);
         const left = 3 + ((i * 3.9) % 94);
@@ -121,7 +121,7 @@ const GoldConfetti = () => {
             opacity: [0, piece.opacity, piece.opacity, 0],
           }}
           transition={{
-            duration: piece.duration,
+            duration: liteMode ? piece.duration * 1.6 : piece.duration,
             delay: piece.delay,
             repeat: Infinity,
             ease: "linear",
@@ -132,40 +132,49 @@ const GoldConfetti = () => {
   );
 };
 
-const RealisticBackground = () => (
-  <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
-    <div className="absolute inset-0 bg-[#0a1580]" />
+const RealisticBackground = ({ liteMode = false }: { liteMode?: boolean }) => (
+ <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
+  <div className="absolute inset-0 bg-[#0a1580]" />
 
-    <div className="absolute left-1/2 top-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2">
-      {[...Array(8)].map((_, i) => (
+  {liteMode ? (
+    <>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_38%,rgba(255,255,255,0.16)_0%,rgba(125,211,252,0.14)_18%,rgba(59,130,246,0.10)_32%,transparent_58%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(255,255,255,0.08),transparent_30%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),transparent_24%,transparent_72%,rgba(0,0,0,0.06))]" />
+    </>
+  ) : (
+    <>
+      <div className="absolute left-1/2 top-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2">
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={`ray-${i}`}
+            animate={{
+              opacity: [0.15, 0.3, 0.15],
+              rotate: [i * 45, i * 45 + 10, i * 45],
+            }}
+            transition={{
+              duration: 8 + i,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="absolute inset-0 origin-center"
+            style={{
+              background: `conic-gradient(from ${i * 45}deg at 50% 50%, transparent 0%, rgba(34,211,238,0.2) 5%, transparent 15%)`,
+              filter: "blur(15px)",
+            }}
+          />
+        ))}
         <motion.div
-          key={`ray-${i}`}
-          animate={{
-            opacity: [0.15, 0.3, 0.15],
-            rotate: [i * 45, i * 45 + 10, i * 45],
-          }}
-          transition={{
-            duration: 8 + i,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute inset-0 origin-center"
-          style={{
-            background: `conic-gradient(from ${i * 45}deg at 50% 50%, transparent 0%, rgba(34,211,238,0.2) 5%, transparent 15%)`,
-            filter: "blur(15px)",
-          }}
+          animate={{ scale: [1, 1.1, 1], opacity: [0.7, 1, 0.7] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.8)_0%,rgba(125,211,252,0.4)_20%,rgba(143,177,233,0)_60%)] blur-[40px]"
         />
-      ))}
-      <motion.div
-        animate={{ scale: [1, 1.1, 1], opacity: [0.7, 1, 0.7] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.8)_0%,rgba(125,211,252,0.4)_20%,rgba(143,177,233,0)_60%)] blur-[40px]"
-      />
-    </div>
+      </div>
 
-    <div className="absolute inset-0 opacity-15 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
-  </div>
-);
+      <div className="absolute inset-0 opacity-15 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
+    </>
+  )}
+</div>
 
 const SectionSeam = ({
   className = "",
@@ -674,7 +683,7 @@ const RegistrationForm = () => {
   );
 };
 
-const FloatingGirl = () => {
+const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
   const [showFromSteps, setShowFromSteps] = useState(false);
   const [hideBubbleAtRegistration, setHideBubbleAtRegistration] =
     useState(false);
@@ -723,7 +732,7 @@ const FloatingGirl = () => {
     const resetTimer = () => {
       setIsUserActive(true);
       clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => setIsUserActive(false), 10000);
+     timeoutId = setTimeout(() => setIsUserActive(false), liteMode ? 6000 : 10000);
     };
 
     window.addEventListener("mousemove", resetTimer);
@@ -764,10 +773,11 @@ const FloatingGirl = () => {
         y: shouldShowGirl ? 0 : 30,
         scale: shouldShowGirl ? 1 : 0.96,
       }}
-      transition={{
-        duration: 0.45,
-        ease: [0.22, 1, 0.36, 1],
-      }}
+   transition={{
+  duration: liteMode ? 4.2 : 2.8,
+  repeat: Infinity,
+  ease: "easeInOut",
+}}
     >
       <AnimatePresence>
         {shouldShowBubble && (
@@ -816,14 +826,16 @@ const FloatingGirl = () => {
             ease: "easeInOut",
           }}
           style={{
-            filter: `
-              brightness(1.15)
-              drop-shadow(0 0 8px rgba(125,211,252,1))
-              drop-shadow(0 0 16px rgba(56,189,248,0.95))
-              drop-shadow(0 0 28px rgba(59,130,246,0.85))
-              drop-shadow(0 0 46px rgba(34,211,238,0.65))
-            `,
-          }}
+  filter: liteMode
+    ? "brightness(1.05) drop-shadow(0 0 8px rgba(56,189,248,0.35))"
+    : `
+      brightness(1.15)
+      drop-shadow(0 0 8px rgba(125,211,252,1))
+      drop-shadow(0 0 16px rgba(56,189,248,0.95))
+      drop-shadow(0 0 28px rgba(59,130,246,0.85))
+      drop-shadow(0 0 46px rgba(34,211,238,0.65))
+    `,
+}}
         />
 
         <img
@@ -927,8 +939,9 @@ const HeroCTA = () => {
 };
 
 export default function App() {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [progressLevel, setProgressLevel] = useState(1);
+const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+const [progressLevel, setProgressLevel] = useState(1);
+const [liteMode, setLiteMode] = useState(false);
 useEffect(() => {
   setProgressLevel(1);
 
@@ -947,15 +960,51 @@ useEffect(() => {
   });
 
 }, []);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
+useEffect(() => {
+  const detectLiteMode = () => {
+    const nav = navigator as Navigator & {
+      deviceMemory?: number;
+      connection?: { saveData?: boolean; effectiveType?: string };
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+    const isSmallScreen = window.innerWidth < 768;
+    const lowMemory =
+      typeof nav.deviceMemory === "number" && nav.deviceMemory <= 4;
+    const lowCPU =
+      typeof navigator.hardwareConcurrency === "number" &&
+      navigator.hardwareConcurrency <= 4;
+    const saveData = !!nav.connection?.saveData;
+    const slowNetwork =
+      nav.connection?.effectiveType === "2g" ||
+      nav.connection?.effectiveType === "slow-2g";
+
+    setLiteMode(isSmallScreen || lowMemory || lowCPU || saveData || slowNetwork);
+  };
+
+  detectLiteMode();
+  window.addEventListener("resize", detectLiteMode);
+  return () => window.removeEventListener("resize", detectLiteMode);
+}, []);
+  
+ useEffect(() => {
+  if (liteMode) return;
+
+  let rafId = 0;
+
+  const handleMouseMove = (e: MouseEvent) => {
+    cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(() => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    });
+  };
+
+  window.addEventListener("mousemove", handleMouseMove, { passive: true });
+
+  return () => {
+    cancelAnimationFrame(rafId);
+    window.removeEventListener("mousemove", handleMouseMove);
+  };
+}, [liteMode]);
 
   const stepData = [
     { title: "Register", desc: "Create account", image: registerImg },
@@ -976,18 +1025,23 @@ useEffect(() => {
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-brand-navy/70 font-sans text-slate-200 selection:bg-blue-500/30">
-      <div
-        className="pointer-events-none fixed inset-0 z-30 opacity-40 transition-opacity duration-300"
-        style={{
-          background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(59, 130, 246, 0.08), transparent 80%)`,
-        }}
-      />
-      <div className="pointer-events-none fixed inset-0 z-[100] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+    {!liteMode && (
+  <div
+    className="pointer-events-none fixed inset-0 z-30 opacity-40 transition-opacity duration-300"
+    style={{
+      background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(59, 130, 246, 0.08), transparent 80%)`,
+    }}
+  />
+)}
+
+{!liteMode && (
+  <div className="pointer-events-none fixed inset-0 z-[100] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+)}
 
       <main className="relative z-10">
         <section className="relative flex min-h-[124vh] items-center overflow-hidden bg-[#0a1580] sm:min-h-[128vh] md:min-h-[132vh] lg:min-h-[150vh] xl:min-h-[152vh] 2xl:min-h-[156vh]">
-          <RealisticBackground />
-          <GoldConfetti />
+         <RealisticBackground liteMode={liteMode} />
+        <GoldConfetti liteMode={liteMode} />
 
           <img
             src={i882Img}
@@ -1160,15 +1214,12 @@ if (item.type === "airpod") {
   );
 }
 
-      // 4) add this helper const above your return inside App()
 const trackerFillWidth =
-  progressLevel <= 0
-    ? "0%"
-    : progressLevel === 1
-    ? "33.333%"
+  progressLevel <= 1
+    ? "25%"
     : progressLevel === 2
-    ? "66.666%"
-    : "75%";
+    ? "52%"
+    : "78%";
                   return (
                     <motion.div
                       key={i}
