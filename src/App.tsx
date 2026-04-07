@@ -1377,8 +1377,9 @@ export default function App() {
               </div>
             </div>
 
-            <div className="pointer-events-none absolute left-1/2 top-[76.2%] z-[9] w-[90%] max-w-[360px] -translate-x-1/2">
-              <div className="grid grid-cols-3 gap-2">
+            {/* LOWER HERO STACK */}
+<div className="pointer-events-none absolute left-1/2 top-[51.8%] z-[12] w-[88%] max-w-[372px] -translate-x-1/2">
+  <div className="space-y-4">
                 {[
                   "Trusted Since 2016",
                   "5,000+ Active Members",
@@ -1494,7 +1495,7 @@ export default function App() {
           </div>
         </section>
 
-      <section
+        <section
           id="steps-to-claim"
           className="relative z-10 -mt-2 overflow-hidden px-4 pt-10 pb-24 sm:px-6 sm:pt-12 sm:pb-28 md:pt-14"
           style={{
@@ -1563,17 +1564,14 @@ export default function App() {
             </div>
           </div>
 
-                                <SectionSeam
-              className="bottom-[-1px]"
-              fillColor="#1E4FA3"
-              shape="dip"
-            />
-          </div>
+          <SectionSeam
+            className="bottom-[-1px]"
+            fillColor="#144FB9"
+            shape="dip"
+          />
         </section>
 
-        <section
-
-           <RegistrationForm />
+        <RegistrationForm />
         <FloatingGirl />
       </main>
     </div>
