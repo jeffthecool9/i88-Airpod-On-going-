@@ -683,49 +683,53 @@ const RegistrationForm = () => {
     </section>
   );
 };
-const [showAtRegistration, setShowAtRegistration] = useState(false);
+};
+
+};
+
 const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
+  const [showAtRegistration, setShowAtRegistration] = useState(false);
   const [showFromSteps, setShowFromSteps] = useState(false);
   const [hideBubbleAtRegistration, setHideBubbleAtRegistration] =
     useState(false);
   const [isUserActive, setIsUserActive] = useState(true);
 
- useEffect(() => {
-  const stepsSection = document.getElementById("steps-to-claim");
-  const registrationSection = document.getElementById("registration-form");
+  useEffect(() => {
+    const stepsSection = document.getElementById("steps-to-claim");
+    const registrationSection = document.getElementById("registration-form");
 
-  if (!stepsSection || !registrationSection) return;
+    if (!stepsSection || !registrationSection) return;
 
-  const stepsObserver = new IntersectionObserver(
-    ([entry]) => {
-      setShowFromSteps(entry.isIntersecting && entry.intersectionRatio > 0.28);
-    },
-    {
-      threshold: [0, 0.15, 0.28, 0.4, 0.6],
-      rootMargin: "0px 0px -18% 0px",
-    }
-  );
+    const stepsObserver = new IntersectionObserver(
+      ([entry]) => {
+        setShowFromSteps(entry.isIntersecting && entry.intersectionRatio > 0.28);
+      },
+      {
+        threshold: [0, 0.15, 0.28, 0.4, 0.6],
+        rootMargin: "0px 0px -18% 0px",
+      }
+    );
 
-  const registrationObserver = new IntersectionObserver(
-    ([entry]) => {
-      const active = entry.isIntersecting && entry.intersectionRatio > 0.12;
-      setShowAtRegistration(active);
-      setHideBubbleAtRegistration(active);
-    },
-    {
-      threshold: [0, 0.08, 0.12, 0.2, 0.35],
-      rootMargin: "0px 0px -10% 0px",
-    }
-  );
+    const registrationObserver = new IntersectionObserver(
+      ([entry]) => {
+        const active = entry.isIntersecting && entry.intersectionRatio > 0.12;
+        setShowAtRegistration(active);
+        setHideBubbleAtRegistration(active);
+      },
+      {
+        threshold: [0, 0.08, 0.12, 0.2, 0.35],
+        rootMargin: "0px 0px -10% 0px",
+      }
+    );
 
-  stepsObserver.observe(stepsSection);
-  registrationObserver.observe(registrationSection);
+    stepsObserver.observe(stepsSection);
+    registrationObserver.observe(registrationSection);
 
-  return () => {
-    stepsObserver.disconnect();
-    registrationObserver.disconnect();
-  };
-}, []);
+    return () => {
+      stepsObserver.disconnect();
+      registrationObserver.disconnect();
+    };
+  }, []);
 
   useEffect(() => {
     let timeoutId: ReturnType<typeof setTimeout>;
@@ -733,7 +737,10 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
     const resetTimer = () => {
       setIsUserActive(true);
       clearTimeout(timeoutId);
-     timeoutId = setTimeout(() => setIsUserActive(false), liteMode ? 6000 : 10000);
+      timeoutId = setTimeout(
+        () => setIsUserActive(false),
+        liteMode ? 6000 : 10000
+      );
     };
 
     window.addEventListener("mousemove", resetTimer);
@@ -752,19 +759,19 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
       window.removeEventListener("touchstart", resetTimer);
       window.removeEventListener("click", resetTimer);
     };
-  }, []);
+  }, [liteMode]);
 
- const handleInteract = () => {
-  const el = document.getElementById("registration-form");
-  if (!el) return;
+  const handleInteract = () => {
+    const el = document.getElementById("registration-form");
+    if (!el) return;
 
-  requestAnimationFrame(() => {
-    el.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
+    requestAnimationFrame(() => {
+      el.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     });
-  });
-};
+  };
 
   const shouldShowGirl = showFromSteps || showAtRegistration;
   const shouldShowBubble =
@@ -772,19 +779,19 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
 
   return (
     <motion.div
-  aria-hidden="true"
-  className="pointer-events-none fixed bottom-[-10px] right-[-40px] z-[25] select-none"
-  initial={{ opacity: 0, y: 18, scale: 0.98 }}
-  animate={{
-    opacity: shouldShowGirl ? 1 : 0,
-    y: shouldShowGirl ? 0 : 18,
-    scale: shouldShowGirl ? 1 : 0.98,
-  }}
-  transition={{
-    duration: 0.32,
-    ease: [0.22, 1, 0.36, 1],
-  }}
->
+      aria-hidden="true"
+      className="pointer-events-none fixed bottom-[-10px] right-[-40px] z-[25] select-none"
+      initial={{ opacity: 0, y: 18, scale: 0.98 }}
+      animate={{
+        opacity: shouldShowGirl ? 1 : 0,
+        y: shouldShowGirl ? 0 : 18,
+        scale: shouldShowGirl ? 1 : 0.98,
+      }}
+      transition={{
+        duration: 0.32,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+    >
       <AnimatePresence>
         {shouldShowBubble && (
           <motion.div
@@ -818,27 +825,27 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
         className="pointer-events-auto relative cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
         onClick={handleInteract}
       >
-<img
-  src={colaImg}
-  alt=""
-  aria-hidden="true"
-  className={`absolute inset-0 h-auto w-[280px] object-contain sm:w-[360px] md:w-[480px] lg:w-[560px] xl:w-[640px] ${
-    shouldShowGirl ? "opacity-[0.78]" : "opacity-0"
-  }`}
-  style={{
-    transition: "opacity 180ms linear",
-    filter: liteMode
-      ? "brightness(1.05) drop-shadow(0 0 8px rgba(56,189,248,0.35))"
-      : `
-        brightness(1.15)
-        drop-shadow(0 0 8px rgba(125,211,252,1))
-        drop-shadow(0 0 16px rgba(56,189,248,0.95))
-        drop-shadow(0 0 28px rgba(59,130,246,0.85))
-        drop-shadow(0 0 46px rgba(34,211,238,0.65))
-      `,
-  }}
-/>
-                <img
+        <img
+          src={colaImg}
+          alt=""
+          aria-hidden="true"
+          className={`absolute inset-0 h-auto w-[280px] object-contain sm:w-[360px] md:w-[480px] lg:w-[560px] xl:w-[640px] ${
+            shouldShowGirl ? "opacity-[0.78]" : "opacity-0"
+          }`}
+          style={{
+            transition: "opacity 180ms linear",
+            filter: liteMode
+              ? "brightness(1.05) drop-shadow(0 0 8px rgba(56,189,248,0.35))"
+              : `
+                brightness(1.15)
+                drop-shadow(0 0 8px rgba(125,211,252,1))
+                drop-shadow(0 0 16px rgba(56,189,248,0.95))
+                drop-shadow(0 0 28px rgba(59,130,246,0.85))
+                drop-shadow(0 0 46px rgba(34,211,238,0.65))
+              `,
+          }}
+        />
+        <img
           src={colaImg}
           alt=""
           className="relative h-auto w-[280px] object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.35)] sm:w-[360px] md:w-[480px] lg:w-[560px] xl:w-[640px]"
