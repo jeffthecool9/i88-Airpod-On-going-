@@ -1020,34 +1020,29 @@ useEffect(() => {
   }}
 />
 <div className="pointer-events-none absolute left-1/2 top-[48%] z-[9] w-[82%] max-w-[560px] -translate-x-1/2 sm:top-[49%] sm:w-[78%] sm:max-w-[600px] md:top-[50%] md:w-[74%] md:max-w-[640px] lg:top-[45%] lg:w-[44%] lg:max-w-[760px] xl:top-[44%] xl:w-[42%] xl:max-w-[820px] 2xl:top-[43%] 2xl:w-[40%] 2xl:max-w-[860px]">
+  
+  {/* TEXTBOX BACKGROUND */}
   <img
     src={heroTextBoxImg}
     alt=""
     className="w-full object-contain"
   />
 
-  <div className="absolute inset-0 flex items-center justify-center px-6 text-center sm:px-8 md:px-10">
- <div className="pointer-events-none absolute left-1/2 top-[48%] z-[9] w-[82%] max-w-[560px] -translate-x-1/2 sm:top-[49%] sm:w-[78%] sm:max-w-[600px] md:top-[50%] md:w-[74%] md:max-w-[640px] lg:top-[45%] lg:w-[44%] lg:max-w-[760px] xl:top-[44%] xl:w-[42%] xl:max-w-[820px] 2xl:top-[43%] 2xl:w-[40%] 2xl:max-w-[860px]">
-  <img
-    src={heroTextBoxImg}
-    alt=""
-    className="w-full object-contain"
-  />
-
+  {/* TEXT IMAGES */}
   <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center sm:px-8 md:px-10">
-    <div className="flex w-full flex-col items-center justify-center">
-      <img
-        src={heroTopTextImg}
-        alt="Your AirPods Awaits"
-        className="relative z-10 block w-[78%] max-w-[270px] object-contain sm:max-w-[300px] md:max-w-[340px] lg:max-w-[380px]"
-      />
+    
+    <img
+      src={heroTopTextImg}
+      alt="Your AirPods Awaits"
+      className="w-[78%] max-w-[270px] object-contain sm:max-w-[300px] md:max-w-[340px] lg:max-w-[380px]"
+    />
 
-      <img
-        src={heroFinalTextImg}
-        alt="Complete the final 1%"
-        className="relative z-10 mt-2 block w-[86%] max-w-[300px] object-contain sm:mt-2.5 sm:max-w-[330px] md:max-w-[370px] lg:max-w-[420px]"
-      />
-    </div>
+    <img
+      src={heroFinalTextImg}
+      alt="Complete the final 1%"
+      className="mt-2 w-[86%] max-w-[300px] object-contain sm:mt-2.5 sm:max-w-[330px] md:max-w-[370px] lg:max-w-[420px]"
+    />
+
   </div>
 </div>
           
