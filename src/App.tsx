@@ -476,7 +476,7 @@ const RegistrationForm = () => {
                         className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
                         value={formData.fullName}
                         onChange={(e) =>
-                          setFormData({ ...formData, fullName: e.target.value })
+                          setFormData({...formData, fullName: e.target.value })
                         }
                       />
                     </div>
@@ -509,7 +509,7 @@ const RegistrationForm = () => {
                         }`}
                         value={formData.email}
                         onChange={(e) =>
-                          setFormData({ ...formData, email: e.target.value })
+                          setFormData({...formData, email: e.target.value })
                         }
                       />
                     </div>
@@ -532,7 +532,7 @@ const RegistrationForm = () => {
                         className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
                         value={formData.phone}
                         onChange={(e) =>
-                          setFormData({ ...formData, phone: e.target.value })
+                          setFormData({...formData, phone: e.target.value })
                         }
                       />
                     </div>
@@ -1016,8 +1016,6 @@ export default function App() {
               </div>
             </div>
 
-           <div className="pointer-events-none absolute left-1/2 top-[51.8%] z-[12] w-[88%] max-w-[372px] -translate-x-1/2">
-              <div className="grid grid-cols-4 items-end gap-2">
                {/* LOWER HERO STACK */}
 <div className="pointer-events-none absolute left-1/2 top-[53.5%] z-[12] w-[88%] max-w-[372px] -translate-x-1/2">
   <div className="space-y-4">
