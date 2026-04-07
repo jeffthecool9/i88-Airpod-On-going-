@@ -54,83 +54,6 @@ const HeroWord = ({
   </span>
 );
 
-const GoldConfetti = ({ liteMode = false }: { liteMode?: boolean }) => {
-  const pieces = React.useMemo(
-    () =>
-      Array.from({ length: liteMode ? 8 : 26 }, (_, i) => {
-        const width = 8 + (i % 4) * 4;
-        const height = 2 + (i % 3);
-        const left = 3 + ((i * 3.9) % 94);
-        const delay = (i % 9) * 0.35;
-        const duration = 7 + (i % 5) * 0.9;
-        const drift = ((i % 7) - 3) * 18;
-        const rotateEnd = (i % 2 === 0 ? 1 : -1) * (150 + i * 8);
-        const scale = 0.82 + (i % 4) * 0.08;
-        const opacity = 0.72 + (i % 3) * 0.08;
-
-        const bgList = [
-          "linear-gradient(135deg, #F8E27A 0%, #FFD84D 35%, #D4A72C 100%)",
-          "linear-gradient(135deg, #E7C35A 0%, #C9961A 40%, #8C6110 100%)",
-          "linear-gradient(135deg, #F2D98C 0%, #E1B94B 45%, #A36E1A 100%)",
-        ];
-
-        return {
-          id: i,
-          width,
-          height,
-          left,
-          delay,
-          duration,
-          drift,
-          rotateEnd,
-          scale,
-          opacity,
-          bg: bgList[i % bgList.length],
-        };
-      }),
-    []
-  );
-
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none z-[5]">
-      {pieces.map((piece) => (
-        <motion.div
-          key={piece.id}
-          className="absolute top-0"
-          style={{
-            left: `${piece.left}%`,
-            width: `${piece.width}px`,
-            height: `${piece.height}px`,
-            borderRadius: `${piece.height}px`,
-            background: piece.bg,
-            boxShadow:
-              "inset 0 1px 0 rgba(255,255,255,0.35), 0 2px 8px rgba(0,0,0,0.16)",
-            willChange: "transform, opacity",
-          }}
-          initial={{
-            y: -24,
-            x: 0,
-            opacity: 0,
-            rotate: 0,
-            scale: piece.scale,
-          }}
-          animate={{
-            y: ["0vh", "28vh", "62vh", "108vh"],
-            x: [0, piece.drift * 0.4, piece.drift, piece.drift * 0.2],
-            rotate: [0, piece.rotateEnd * 0.45, piece.rotateEnd],
-            opacity: [0, piece.opacity, piece.opacity, 0],
-          }}
-          transition={{
-            duration: liteMode ? piece.duration * 1.6 : piece.duration,
-            delay: piece.delay,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
-      ))}
-    </div>
-  );
-};
 
 const RealisticBackground = ({ liteMode = false }: { liteMode?: boolean }) => (
  <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
@@ -1048,7 +971,7 @@ useEffect(() => {
       <main className="relative z-10">
         <section className="relative flex min-h-[124vh] items-center overflow-hidden bg-[#0a1580] sm:min-h-[128vh] md:min-h-[132vh] lg:min-h-[150vh] xl:min-h-[152vh] 2xl:min-h-[156vh]">
          <RealisticBackground liteMode={liteMode} />
-        <GoldConfetti liteMode={liteMode} />
+      
 
           <img
             src={i882Img}
