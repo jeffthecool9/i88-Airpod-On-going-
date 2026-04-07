@@ -937,9 +937,10 @@ const HeroCTA = () => {
 
 
 export default function App() {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [progressLevel, setProgressLevel] = useState(1);
-  const [isMobile, setIsMobile] = useState(false);
+const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+const [progressLevel, setProgressLevel] = useState(1);
+const [isMobile, setIsMobile] = useState(false);
+
 useEffect(() => {
   const checkMobile = () => setIsMobile(window.innerWidth < 768);
   checkMobile();
@@ -1123,7 +1124,6 @@ useEffect(() => {
                   const isReached = progressLevel >= stageNumber;
                   const isCurrent = progressLevel === stageNumber;
 
-                 // 3) inside your trackerItems.map(...) replace ONLY the airpod block with this
 
 if (item.type === "airpod") {
   const isUnlockedStage = progressLevel >= 3;
@@ -1192,15 +1192,13 @@ if (item.type === "airpod") {
   );
 }
 
-      // 4) add this helper const above your return inside App()
+     
 const trackerFillWidth =
-  progressLevel <= 0
-    ? "0%"
-    : progressLevel === 1
-    ? "33.333%"
+  progressLevel <= 1
+    ? "25%"
     : progressLevel === 2
-    ? "66.666%"
-    : "75%";
+    ? "52%"
+    : "78%";
                   return (
                     <motion.div
                       key={i}
