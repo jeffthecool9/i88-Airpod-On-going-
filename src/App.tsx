@@ -24,8 +24,8 @@ import colaImg from "./assets/cola2.png";
 import rewardEventImg from "./assets/reward-event.png";
 import heroTextBoxImg from "./assets/hero-textbox.png";
 import cola1Img from "./assets/cola1.png";
-import heroTopTextImg from "./assets/text.png";
-import heroFinalTextImg from "./assets/text-2.png";
+import heroTopTextImg from "./assets/text-2.png";
+import heroFinalTextImg from "./assets/text.png";
 
 const GoldConfetti = ({ mobile = false }: { mobile?: boolean }) => {
   const pieces = useMemo(
@@ -917,17 +917,19 @@ const TrackerCard = ({
   </div>
 );
 
-const TrustCard = ({ children }: { children: React.ReactNode }) => (
-  <div className="rounded-[22px] border border-white/12 bg-[linear-gradient(180deg,rgba(66,127,255,0.82)_0%,rgba(39,66,193,0.92)_55%,rgba(19,33,123,0.96)_100%)] p-[2px] shadow-[0_14px_30px_rgba(0,0,0,0.18)] backdrop-blur-xl">
-    <div className="relative overflow-hidden rounded-[20px] px-4 py-5 text-center sm:px-5 sm:py-6">
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02),transparent)]" />
-      <div className="absolute inset-x-[10%] top-2 h-8 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.03),transparent)] blur-[2px]" />
-      <div className="relative z-10 text-[14px] font-black leading-[1.05] text-white sm:text-[16px] md:text-[17px] lg:text-[18px]">
-        {children}
+const TrustCard = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div className="rounded-[20px] border border-white/12 bg-[linear-gradient(180deg,rgba(66,127,255,0.82)_0%,rgba(39,66,193,0.92)_55%,rgba(19,33,123,0.96)_100%)] p-[2px] shadow-[0_14px_30px_rgba(0,0,0,0.18)] backdrop-blur-xl">
+      <div className="relative overflow-hidden rounded-[18px] px-4 py-4 text-center sm:px-5 sm:py-5">
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02),transparent)]" />
+        <div className="absolute inset-x-[10%] top-2 h-8 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.03),transparent)] blur-[2px]" />
+        <div className="relative z-10 text-[13px] font-black leading-[1.05] text-white sm:text-[15px] md:text-[16px] lg:text-[17px]">
+          {children}
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const StepsToClaim = ({
   stepData,
@@ -937,10 +939,10 @@ const StepsToClaim = ({
   return (
     <section
       id="steps-to-claim"
-      className="relative overflow-hidden bg-[linear-gradient(180deg,#144FB9_0%,#0C3E9B_50%,#07276D_100%)] px-4 pb-20 pt-16 sm:px-6 md:px-8"
+      className="relative overflow-hidden bg-[linear-gradient(180deg,#144FB9_0%,#0C3E9B_50%,#07276D_100%)] px-4 pt-16 pb-20 sm:px-6 md:px-8"
     >
       <div className="mx-auto max-w-6xl">
-        <div className="relative overflow-hidden rounded-[24px] bg-[linear-gradient(180deg,rgba(58,128,255,0.26)_0%,rgba(41,101,220,0.24)_38%,rgba(31,78,182,0.26)_100%)] px-4 pb-8 pt-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.16),0_16px_44px_rgba(0,0,0,0.22),0_0_0_1px_rgba(255,255,255,0.08)] backdrop-blur-[26px] sm:px-6 sm:pb-9 sm:pt-7 md:px-8 md:pb-10 md:pt-8">
+        <div className="relative overflow-hidden rounded-[24px] bg-[linear-gradient(180deg,rgba(58,128,255,0.26)_0%,rgba(41,101,220,0.24)_38%,rgba(31,78,182,0.26)_100%)] px-4 pt-6 pb-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.16),0_16px_44px_rgba(0,0,0,0.22),0_0_0_1px_rgba(255,255,255,0.08)] backdrop-blur-[26px] sm:px-6 sm:pt-7 sm:pb-9 md:px-8 md:pt-8 md:pb-10">
           <div className="pointer-events-none absolute inset-0 rounded-[24px] border border-cyan-200/20" />
           <div className="pointer-events-none absolute inset-x-[8%] top-[2px] h-[46px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[32%] bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.10))]" />
@@ -1010,7 +1012,13 @@ export default function App() {
 
     const first = setTimeout(() => setProgressLevel(2), 2000);
     const second = setTimeout(() => setProgressLevel(3), 4000);
-
+const trackerFillWidth =
+  progressLevel <= 1
+    ? "25%"
+    : progressLevel === 2
+    ? "52%"
+    : "78%";
+    
     return () => {
       clearTimeout(first);
       clearTimeout(second);
@@ -1097,22 +1105,27 @@ export default function App() {
             }}
           />
 
-          <div className="pointer-events-none absolute left-1/2 top-[48%] z-[9] w-[82%] max-w-[560px] -translate-x-1/2 sm:top-[49%] sm:w-[78%] sm:max-w-[600px] md:top-[50%] md:w-[74%] md:max-w-[640px] lg:top-[45%] lg:w-[44%] lg:max-w-[760px] xl:top-[44%] xl:w-[42%] xl:max-w-[820px] 2xl:top-[43%] 2xl:w-[40%] 2xl:max-w-[860px]">
-            <img src={heroTextBoxImg} alt="" className="w-full object-contain" />
+       <div className="pointer-events-none absolute left-1/2 top-[48%] z-[9] w-[82%] max-w-[560px] -translate-x-1/2 sm:top-[49%] sm:w-[78%] sm:max-w-[600px] md:top-[50%] md:w-[74%] md:max-w-[640px] lg:top-[45%] lg:w-[44%] lg:max-w-[760px] xl:top-[44%] xl:w-[42%] xl:max-w-[820px] 2xl:top-[43%] 2xl:w-[40%] 2xl:max-w-[860px]">
+  <img
+    src={heroTextBoxImg}
+    alt=""
+    className="w-full object-contain"
+  />
 
-            <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center sm:px-8 md:px-10">
-              <img
-                src={heroTopTextImg}
-                alt="Your AirPods Awaits"
-                className="w-[78%] max-w-[270px] object-contain sm:max-w-[300px] md:max-w-[340px] lg:max-w-[380px]"
-              />
-              <img
-                src={heroFinalTextImg}
-                alt="Complete the final 1%"
-                className="mt-2 w-[86%] max-w-[300px] object-contain sm:mt-2.5 sm:max-w-[330px] md:max-w-[370px] lg:max-w-[420px]"
-              />
-            </div>
-          </div>
+  <div className="absolute inset-0 flex flex-col items-center justify-center px-5 text-center sm:px-7 md:px-8">
+    <img
+      src={heroTopTextImg}
+      alt="Your AirPods Awaits"
+      className="relative z-10 w-[88%] max-w-[340px] object-contain sm:max-w-[390px] md:max-w-[430px] lg:max-w-[500px]"
+    />
+
+    <img
+      src={heroFinalTextImg}
+      alt="Complete the final 1%"
+      className="relative z-10 mt-1 w-[92%] max-w-[350px] object-contain sm:max-w-[400px] md:max-w-[440px] lg:max-w-[510px]"
+    />
+  </div>
+</div>
 
           <motion.img
             src={airpodImg}
@@ -1144,126 +1157,129 @@ export default function App() {
             />
           </motion.div>
 
-          <div className="pointer-events-none absolute left-1/2 bottom-[285px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[300px] sm:px-6 md:bottom-[320px] lg:bottom-[185px] lg:max-w-[1280px] lg:px-10 xl:bottom-[170px] xl:max-w-[1380px] 2xl:bottom-[155px] 2xl:max-w-[1480px]">
-            <div className="mx-auto max-w-5xl">
-              <div className="mb-6 grid grid-cols-4 items-end gap-3 sm:gap-4 lg:gap-6 xl:gap-8 2xl:gap-10">
-                {trackerItems.map((item, i) => {
-                  const stageNumber = i + 1;
-                  const isReached = progressLevel >= stageNumber;
+         <div className="pointer-events-none absolute left-1/2 bottom-[285px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[300px] sm:px-6 md:bottom-[320px] lg:bottom-[185px] lg:max-w-[1280px] lg:px-10 xl:bottom-[170px] xl:max-w-[1380px] 2xl:bottom-[155px] 2xl:max-w-[1480px]">
+  <div className="mx-auto max-w-5xl">
+    {/* progress bar */}
+    <div className="relative mx-auto mb-5 h-[10px] w-[86%] overflow-hidden rounded-full bg-white/10 shadow-[inset_0_2px_8px_rgba(0,0,0,0.22)] sm:h-[12px]">
+      <motion.div
+        className="h-full rounded-full bg-[linear-gradient(90deg,#FFE08A_0%,#F7C948_35%,#D89A18_72%,#B9780C_100%)] shadow-[0_0_18px_rgba(255,215,106,0.28)]"
+        animate={{ width: trackerFillWidth }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
+      />
+    </div>
 
-                  if (item.type === "airpod") {
-                    const isUnlockedStage = progressLevel >= 3;
+    <div className="grid grid-cols-4 items-end gap-3 sm:gap-4 lg:gap-6 xl:gap-8 2xl:gap-10">
+      {trackerItems.map((item, i) => {
+        const stageNumber = i + 1;
+        const isReached = progressLevel >= stageNumber;
 
-                    return (
-                      <motion.div
-                        key={i}
-                        className="relative flex min-w-0 flex-col items-center justify-end"
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                      >
-                        <div className="relative flex h-[82px] w-full items-end justify-center sm:h-[86px] md:h-[92px]">
-                          <motion.div
-                            className="absolute inset-0 flex items-end justify-center"
-                            animate={
-                              isUnlockedStage
-                                ? { y: [0, -4, 0], scale: [1, 1.02, 1] }
-                                : {}
-                            }
-                            transition={{
-                              duration: 2.6,
-                              repeat: Infinity,
-                              ease: "easeInOut",
-                            }}
-                          >
-                            <img
-                              src={airpodImg}
-                              alt="AirPods reward"
-                              className="relative z-10 w-[72px] object-contain sm:w-[88px] md:w-[102px] lg:w-[112px]"
-                              style={{
-                                filter:
-                                  "grayscale(1) opacity(0.58) drop-shadow(0 12px 24px rgba(0,0,0,0.28))",
-                              }}
-                            />
-                          </motion.div>
+        if (item.type === "airpod") {
+          const isUnlockedStage = progressLevel >= 3;
 
-                          <div className="pointer-events-none absolute right-[14%] top-[4px] z-20 flex h-7 w-7 items-center justify-center rounded-full border border-[#FFE08A]/30 bg-[linear-gradient(180deg,rgba(17,24,39,0.95)_0%,rgba(10,15,28,0.95)_100%)] shadow-[0_10px_20px_rgba(0,0,0,0.35)] sm:right-[18%] md:right-[20%]">
-                            <Lock className="h-3.5 w-3.5 text-[#FFD76A]" />
-                          </div>
-                        </div>
-
-                        <motion.div
-                          initial={false}
-                          animate={{
-                            opacity: isUnlockedStage ? 1 : 0,
-                            y: isUnlockedStage ? 0 : 6,
-                          }}
-                          transition={{ duration: 0.35, ease: "easeOut" }}
-                          className="mt-2 min-h-[20px] text-center"
-                        >
-                          <p
-                            className="text-[10px] font-bold leading-tight text-[#FFD76A] sm:text-[11px] md:text-[12px]"
-                            style={{ textShadow: "0 2px 8px rgba(0,0,0,0.28)" }}
-                          >
-                            Deposit &amp; Play To Unlock
-                          </p>
-                        </motion.div>
-                      </motion.div>
-                    );
+          return (
+            <motion.div
+              key={i}
+              className="relative flex min-w-0 flex-col items-center justify-end"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <div className="relative flex h-[82px] w-full items-end justify-center sm:h-[86px] md:h-[92px]">
+                <motion.div
+                  className="absolute inset-0 flex items-end justify-center"
+                  animate={
+                    isUnlockedStage
+                      ? { y: [0, -4, 0], scale: [1, 1.02, 1] }
+                      : {}
                   }
+                  transition={{
+                    duration: 2.6,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  <img
+                    src={airpodImg}
+                    alt="AirPods reward"
+                    className="relative z-10 w-[72px] object-contain sm:w-[88px] md:w-[102px] lg:w-[112px]"
+                    style={{
+                      filter:
+                        "grayscale(1) opacity(0.58) drop-shadow(0 12px 24px rgba(0,0,0,0.28))",
+                    }}
+                  />
+                </motion.div>
 
-                  return (
-                    <motion.div
-                      key={i}
-                      className="min-w-0"
-                      initial={false}
-                      animate={
-                        isReached
-                          ? { opacity: 1, y: 0, scale: [1, 1.04, 1], rotate: 0 }
-                          : { opacity: 0.78, y: 6, scale: 0.98, rotate: 0 }
-                      }
-                      transition={{ duration: 0.4, ease: "easeOut" }}
-                    >
-                      <TrackerCard title={item.title} sub={item.sub} />
-                    </motion.div>
-                  );
-                })}
+                <div className="pointer-events-none absolute right-[14%] top-[4px] z-20 flex h-7 w-7 items-center justify-center rounded-full border border-[#FFE08A]/30 bg-[linear-gradient(180deg,rgba(17,24,39,0.95)_0%,rgba(10,15,28,0.95)_100%)] shadow-[0_10px_20px_rgba(0,0,0,0.35)] sm:right-[18%] md:right-[20%]">
+                  <Lock className="h-3.5 w-3.5 text-[#FFD76A]" />
+                </div>
               </div>
-            </div>
-          </div>
+
+              <motion.div
+                initial={false}
+                animate={{
+                  opacity: isUnlockedStage ? 1 : 0,
+                  y: isUnlockedStage ? 0 : 6,
+                }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+                className="mt-2 min-h-[20px] text-center"
+              >
+                <p
+                  className="text-[10px] font-bold leading-tight text-[#FFD76A] sm:text-[11px] md:text-[12px]"
+                  style={{ textShadow: "0 2px 8px rgba(0,0,0,0.28)" }}
+                >
+                  Deposit &amp; Play To Unlock
+                </p>
+              </motion.div>
+            </motion.div>
+          );
+        }
+
+        return (
+          <motion.div
+            key={i}
+            className="min-w-0"
+            initial={false}
+            animate={
+              isReached
+                ? { opacity: 1, y: 0, scale: [1, 1.04, 1] }
+                : { opacity: 0.78, y: 6, scale: 0.98 }
+            }
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
+            <TrackerCard title={item.title} sub={item.sub} />
+          </motion.div>
+        );
+      })}
+    </div>
+  </div>
+</div>
 
           <div className="pointer-events-none absolute bottom-[118px] left-1/2 z-[8] w-full max-w-[980px] -translate-x-1/2 px-4 sm:bottom-[122px] sm:px-6 md:bottom-[126px] lg:bottom-[88px] lg:px-8 xl:bottom-[84px]">
-            <div className="relative mx-auto max-w-[860px]">
-              <div className="absolute left-1/2 top-[50%] z-[1] h-[48px] w-[90%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[linear-gradient(90deg,#F5E6B5_0%,#F7D45F_44%,#E3B426_70%,#0A2A88_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_12px_26px_rgba(0,0,0,0.18)] sm:h-[54px] lg:h-[58px]" />
-              <div className="absolute left-1/2 top-[50%] z-[2] h-[42px] w-[86%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-[linear-gradient(90deg,rgba(255,255,255,0.06),rgba(255,255,255,0.01))] sm:h-[46px] lg:h-[50px]" />
+  <div className="relative mx-auto max-w-[860px]">
+    <div className="absolute left-1/2 top-[50%] z-[1] h-[48px] w-[90%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[linear-gradient(90deg,#F5E6B5_0%,#F7D45F_44%,#E3B426_70%,#0A2A88_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_12px_26px_rgba(0,0,0,0.18)] sm:h-[54px] lg:h-[58px]" />
+    <div className="absolute left-1/2 top-[50%] z-[2] h-[42px] w-[86%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-[linear-gradient(90deg,rgba(255,255,255,0.06),rgba(255,255,255,0.01))] sm:h-[46px] lg:h-[50px]" />
 
-              <div className="relative z-[3] grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-5 lg:gap-6">
-                <TrustCard>
-                  Trusted Since
-                  <br />
-                  <span className="text-[18px] sm:text-[20px] md:text-[22px]">
-                    2016
-                  </span>
-                </TrustCard>
+    <div className="relative z-[3] grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-5 lg:gap-6">
+      <TrustCard>
+        Trusted Since
+        <br />
+        <span className="text-[18px] sm:text-[20px] md:text-[22px]">2016</span>
+      </TrustCard>
 
-                <TrustCard>
-                  5,000+ Active
-                  <br />
-                  <span className="text-[18px] sm:text-[20px] md:text-[22px]">
-                    Members
-                  </span>
-                </TrustCard>
+      <TrustCard>
+        5,000+ Active
+        <br />
+        <span className="text-[18px] sm:text-[20px] md:text-[22px]">Members</span>
+      </TrustCard>
 
-                <TrustCard>
-                  10+ Rewards
-                  <br />
-                  <span className="text-[18px] sm:text-[20px] md:text-[22px]">
-                    To Unlock
-                  </span>
-                </TrustCard>
-              </div>
-            </div>
-          </div>
+      <TrustCard>
+        10+ Rewards
+        <br />
+        <span className="text-[18px] sm:text-[20px] md:text-[22px]">To Unlock</span>
+      </TrustCard>
+    </div>
+  </div>
+</div>
 
           <HeroCTA />
           <SectionSeam className="bottom-0" fillColor="#144FB9" shape="dip" />
@@ -1271,7 +1287,7 @@ export default function App() {
 
         <StepsToClaim stepData={stepData} />
         <RegistrationForm />
-        {!isMobile && <FloatingGirl />}
+        <FloatingGirl />
       </main>
     </div>
   );
