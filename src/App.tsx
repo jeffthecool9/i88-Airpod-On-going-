@@ -683,49 +683,49 @@ const RegistrationForm = () => {
     </section>
   );
 };
-
+const [showAtRegistration, setShowAtRegistration] = useState(false);
 const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
   const [showFromSteps, setShowFromSteps] = useState(false);
   const [hideBubbleAtRegistration, setHideBubbleAtRegistration] =
     useState(false);
   const [isUserActive, setIsUserActive] = useState(true);
 
-  useEffect(() => {
-    const stepsSection = document.getElementById("steps-to-claim");
-    const registrationSection = document.getElementById("registration-form");
+ useEffect(() => {
+  const stepsSection = document.getElementById("steps-to-claim");
+  const registrationSection = document.getElementById("registration-form");
 
-    if (!stepsSection || !registrationSection) return;
+  if (!stepsSection || !registrationSection) return;
 
-    const stepsObserver = new IntersectionObserver(
-      ([entry]) => {
-        setShowFromSteps(entry.isIntersecting && entry.intersectionRatio > 0.18);
-      },
-      {
-        threshold: [0, 0.12, 0.18, 0.3, 0.5],
-        rootMargin: "0px 0px -6% 0px",
-      }
-    );
+  const stepsObserver = new IntersectionObserver(
+    ([entry]) => {
+      setShowFromSteps(entry.isIntersecting && entry.intersectionRatio > 0.28);
+    },
+    {
+      threshold: [0, 0.15, 0.28, 0.4, 0.6],
+      rootMargin: "0px 0px -18% 0px",
+    }
+  );
 
-    const registrationObserver = new IntersectionObserver(
-      ([entry]) => {
-        setHideBubbleAtRegistration(
-          entry.isIntersecting && entry.intersectionRatio > 0.15
-        );
-      },
-      {
-        threshold: [0, 0.08, 0.15, 0.25, 0.4],
-        rootMargin: "0px 0px -10% 0px",
-      }
-    );
+  const registrationObserver = new IntersectionObserver(
+    ([entry]) => {
+      const active = entry.isIntersecting && entry.intersectionRatio > 0.12;
+      setShowAtRegistration(active);
+      setHideBubbleAtRegistration(active);
+    },
+    {
+      threshold: [0, 0.08, 0.12, 0.2, 0.35],
+      rootMargin: "0px 0px -10% 0px",
+    }
+  );
 
-    stepsObserver.observe(stepsSection);
-    registrationObserver.observe(registrationSection);
+  stepsObserver.observe(stepsSection);
+  registrationObserver.observe(registrationSection);
 
-    return () => {
-      stepsObserver.disconnect();
-      registrationObserver.disconnect();
-    };
-  }, []);
+  return () => {
+    stepsObserver.disconnect();
+    registrationObserver.disconnect();
+  };
+}, []);
 
   useEffect(() => {
     let timeoutId: ReturnType<typeof setTimeout>;
@@ -754,32 +754,37 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
     };
   }, []);
 
-  const handleInteract = () => {
-    document
-      .getElementById("registration-form")
-      ?.scrollIntoView({ behavior: "smooth" });
-  };
+ const handleInteract = () => {
+  const el = document.getElementById("registration-form");
+  if (!el) return;
 
-  const shouldShowGirl = showFromSteps;
+  requestAnimationFrame(() => {
+    el.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  });
+};
+
+  const shouldShowGirl = showFromSteps || showAtRegistration;
   const shouldShowBubble =
     showFromSteps && !hideBubbleAtRegistration && isUserActive;
 
   return (
     <motion.div
-      aria-hidden="true"
-      className="pointer-events-none fixed bottom-[-10px] right-[-40px] z-[25] select-none"
-      initial={{ opacity: 0, y: 30, scale: 0.96 }}
-      animate={{
-        opacity: shouldShowGirl ? 1 : 0,
-        y: shouldShowGirl ? 0 : 30,
-        scale: shouldShowGirl ? 1 : 0.96,
-      }}
-   transition={{
-  duration: liteMode ? 4.2 : 2.8,
-  repeat: Infinity,
-  ease: "easeInOut",
-}}
-    >
+  aria-hidden="true"
+  className="pointer-events-none fixed bottom-[-10px] right-[-40px] z-[25] select-none"
+  initial={{ opacity: 0, y: 18, scale: 0.98 }}
+  animate={{
+    opacity: shouldShowGirl ? 1 : 0,
+    y: shouldShowGirl ? 0 : 18,
+    scale: shouldShowGirl ? 1 : 0.98,
+  }}
+  transition={{
+    duration: 0.32,
+    ease: [0.22, 1, 0.36, 1],
+  }}
+>
       <AnimatePresence>
         {shouldShowBubble && (
           <motion.div
@@ -813,14 +818,15 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
         className="pointer-events-auto relative cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
         onClick={handleInteract}
       >
-   <motion.img
+<img
   src={colaImg}
   alt=""
   aria-hidden="true"
-  className="absolute inset-0 h-auto w-[280px] object-contain sm:w-[360px] md:w-[480px] lg:w-[560px] xl:w-[640px]"
-  animate={{ opacity: shouldShowGirl ? 0.78 : 0 }}
-  transition={{ duration: 0.2, ease: "linear" }}
+  className={`absolute inset-0 h-auto w-[280px] object-contain sm:w-[360px] md:w-[480px] lg:w-[560px] xl:w-[640px] ${
+    shouldShowGirl ? "opacity-[0.78]" : "opacity-0"
+  }`}
   style={{
+    transition: "opacity 180ms linear",
     filter: liteMode
       ? "brightness(1.05) drop-shadow(0 0 8px rgba(56,189,248,0.35))"
       : `
@@ -832,7 +838,6 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
       `,
   }}
 />
-
                 <img
           src={colaImg}
           alt=""
