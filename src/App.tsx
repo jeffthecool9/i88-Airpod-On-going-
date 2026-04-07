@@ -175,6 +175,7 @@ const RealisticBackground = ({ liteMode = false }: { liteMode?: boolean }) => (
     </>
   )}
 </div>
+  );
 
 const SectionSeam = ({
   className = "",
@@ -1145,7 +1146,7 @@ useEffect(() => {
                   const isReached = progressLevel >= stageNumber;
                   const isCurrent = progressLevel === stageNumber;
 
-                 // 3) inside your trackerItems.map(...) replace ONLY the airpod block with this
+            
 
 if (item.type === "airpod") {
   const isUnlockedStage = progressLevel >= 3;
