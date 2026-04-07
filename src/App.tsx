@@ -1012,12 +1012,6 @@ export default function App() {
 
     const first = setTimeout(() => setProgressLevel(2), 2000);
     const second = setTimeout(() => setProgressLevel(3), 4000);
-const trackerFillWidth =
-  progressLevel <= 1
-    ? "25%"
-    : progressLevel === 2
-    ? "52%"
-    : "78%";
     
     return () => {
       clearTimeout(first);
@@ -1061,7 +1055,13 @@ const trackerFillWidth =
     { title: "MORE REWARD", sub: "AwaIts", type: "text" as const },
     { title: "", sub: "", type: "airpod" as const },
   ];
-
+const trackerFillWidth =
+  progressLevel <= 1
+    ? "25%"
+    : progressLevel === 2
+    ? "52%"
+    : "78%";
+  
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-brand-navy/70 font-sans text-slate-200 selection:bg-blue-500/30">
       {!isMobile && (
