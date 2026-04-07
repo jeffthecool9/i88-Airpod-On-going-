@@ -54,10 +54,10 @@ const HeroWord = ({
   </span>
 );
 
-const GoldConfetti = ({ mobile = false }: { mobile?: boolean }) => {
+const GoldConfetti = () => {
   const pieces = React.useMemo(
     () =>
-      Array.from({ length: mobile ? 8 : 26 }, (_, i) => {
+      Array.from({ length: 26 }, (_, i) => {
         const width = 8 + (i % 4) * 4;
         const height = 2 + (i % 3);
         const left = 3 + ((i * 3.9) % 94);
@@ -88,7 +88,7 @@ const GoldConfetti = ({ mobile = false }: { mobile?: boolean }) => {
           bg: bgList[i % bgList.length],
         };
       }),
-    [mobile]
+    []
   );
 
   return (
@@ -106,7 +106,6 @@ const GoldConfetti = ({ mobile = false }: { mobile?: boolean }) => {
             boxShadow:
               "inset 0 1px 0 rgba(255,255,255,0.35), 0 2px 8px rgba(0,0,0,0.16)",
             willChange: "transform, opacity",
-            transform: "translateZ(0)",
           }}
           initial={{
             y: -24,
@@ -122,7 +121,7 @@ const GoldConfetti = ({ mobile = false }: { mobile?: boolean }) => {
             opacity: [0, piece.opacity, piece.opacity, 0],
           }}
           transition={{
-            duration: mobile ? piece.duration * 1.6 : piece.duration,
+            duration: piece.duration,
             delay: piece.delay,
             repeat: Infinity,
             ease: "linear",
@@ -132,47 +131,39 @@ const GoldConfetti = ({ mobile = false }: { mobile?: boolean }) => {
     </div>
   );
 };
-const RealisticBackground = ({ mobile = false }: { mobile?: boolean }) => (
+
+const RealisticBackground = () => (
   <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
     <div className="absolute inset-0 bg-[#0a1580]" />
 
-    {mobile ? (
-      <>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(125,211,252,0.16),transparent_38%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),transparent_24%,transparent_72%,rgba(0,0,0,0.06))]" />
-      </>
-    ) : (
-      <>
-        <div className="absolute left-1/2 top-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2">
-          {[...Array(8)].map((_, i) => (
-            <motion.div
-              key={`ray-${i}`}
-              animate={{
-                opacity: [0.15, 0.3, 0.15],
-                rotate: [i * 45, i * 45 + 10, i * 45],
-              }}
-              transition={{
-                duration: 8 + i,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="absolute inset-0 origin-center"
-              style={{
-                background: `conic-gradient(from ${i * 45}deg at 50% 50%, transparent 0%, rgba(34,211,238,0.2) 5%, transparent 15%)`,
-                filter: "blur(15px)",
-              }}
-            />
-          ))}
-          <motion.div
-            animate={{ scale: [1, 1.1, 1], opacity: [0.7, 1, 0.7] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.8)_0%,rgba(125,211,252,0.4)_20%,rgba(143,177,233,0)_60%)] blur-[40px]"
-          />
-        </div>
+    <div className="absolute left-1/2 top-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2">
+      {[...Array(8)].map((_, i) => (
+        <motion.div
+          key={`ray-${i}`}
+          animate={{
+            opacity: [0.15, 0.3, 0.15],
+            rotate: [i * 45, i * 45 + 10, i * 45],
+          }}
+          transition={{
+            duration: 8 + i,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute inset-0 origin-center"
+          style={{
+            background: `conic-gradient(from ${i * 45}deg at 50% 50%, transparent 0%, rgba(34,211,238,0.2) 5%, transparent 15%)`,
+            filter: "blur(15px)",
+          }}
+        />
+      ))}
+      <motion.div
+        animate={{ scale: [1, 1.1, 1], opacity: [0.7, 1, 0.7] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.8)_0%,rgba(125,211,252,0.4)_20%,rgba(143,177,233,0)_60%)] blur-[40px]"
+      />
+    </div>
 
-        <div className="absolute inset-0 opacity-15 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
-      </>
-    )}
+    <div className="absolute inset-0 opacity-15 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
   </div>
 );
 
@@ -935,19 +926,9 @@ const HeroCTA = () => {
   );
 };
 
-
 export default function App() {
-const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-const [progressLevel, setProgressLevel] = useState(1);
-const [isMobile, setIsMobile] = useState(false);
-
-useEffect(() => {
-  const checkMobile = () => setIsMobile(window.innerWidth < 768);
-  checkMobile();
-  window.addEventListener("resize", checkMobile);
-  return () => window.removeEventListener("resize", checkMobile);
-}, []);
-  
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [progressLevel, setProgressLevel] = useState(1);
 useEffect(() => {
   setProgressLevel(1);
 
@@ -967,25 +948,14 @@ useEffect(() => {
 
 }, []);
 
- useEffect(() => {
-  if (isMobile) return;
-
-  let rafId = 0;
-
-  const handleMouseMove = (e: MouseEvent) => {
-    cancelAnimationFrame(rafId);
-    rafId = requestAnimationFrame(() => {
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
       setMousePos({ x: e.clientX, y: e.clientY });
-    });
-  };
+    };
 
-  window.addEventListener("mousemove", handleMouseMove, { passive: true });
-
-  return () => {
-    cancelAnimationFrame(rafId);
-    window.removeEventListener("mousemove", handleMouseMove);
-  };
-}, [isMobile]);
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   const stepData = [
     { title: "Register", desc: "Create account", image: registerImg },
@@ -1005,22 +975,19 @@ useEffect(() => {
 ];
 
   return (
- {!isMobile && (
-  <div
-    className="pointer-events-none fixed inset-0 z-30 opacity-40 transition-opacity duration-300"
-    style={{
-      background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(59, 130, 246, 0.08), transparent 80%)`,
-    }}
-  />
-)}
+    <div className="relative min-h-screen overflow-x-hidden bg-brand-navy/70 font-sans text-slate-200 selection:bg-blue-500/30">
+      <div
+        className="pointer-events-none fixed inset-0 z-30 opacity-40 transition-opacity duration-300"
+        style={{
+          background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(59, 130, 246, 0.08), transparent 80%)`,
+        }}
+      />
+      <div className="pointer-events-none fixed inset-0 z-[100] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
-{!isMobile && (
-  <div className="pointer-events-none fixed inset-0 z-[100] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-)}
       <main className="relative z-10">
         <section className="relative flex min-h-[124vh] items-center overflow-hidden bg-[#0a1580] sm:min-h-[128vh] md:min-h-[132vh] lg:min-h-[150vh] xl:min-h-[152vh] 2xl:min-h-[156vh]">
-        <RealisticBackground mobile={isMobile} />
-<GoldConfetti mobile={isMobile} />
+          <RealisticBackground />
+          <GoldConfetti />
 
           <img
             src={i882Img}
@@ -1124,6 +1091,7 @@ useEffect(() => {
                   const isReached = progressLevel >= stageNumber;
                   const isCurrent = progressLevel === stageNumber;
 
+                 // 3) inside your trackerItems.map(...) replace ONLY the airpod block with this
 
 if (item.type === "airpod") {
   const isUnlockedStage = progressLevel >= 3;
@@ -1192,13 +1160,15 @@ if (item.type === "airpod") {
   );
 }
 
-     
+      // 4) add this helper const above your return inside App()
 const trackerFillWidth =
-  progressLevel <= 1
-    ? "25%"
+  progressLevel <= 0
+    ? "0%"
+    : progressLevel === 1
+    ? "33.333%"
     : progressLevel === 2
-    ? "52%"
-    : "78%";
+    ? "66.666%"
+    : "75%";
                   return (
                     <motion.div
                       key={i}
