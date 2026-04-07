@@ -511,9 +511,9 @@ const RegistrationForm = () => {
                             : "border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))]"
                         }`}
                         value={formData.email}
-                        onChange={(e) =>
-                          setFormData({ ...formData, email: e.target.value })
-                        }
+                       onChange={(e) =>
+  setFormData({ ...formData, email: e.target.value })
+}
                       />
                     </div>
                     {formData.email && !emailRegex.test(formData.email) && (
@@ -535,8 +535,8 @@ const RegistrationForm = () => {
                         className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
                         value={formData.phone}
                         onChange={(e) =>
-                          setFormData({ ...formData, phone: e.target.value })
-                        }
+  setFormData({ ...formData, phone: e.target.value })
+}
                       />
                     </div>
                   </div>
@@ -548,12 +548,12 @@ const RegistrationForm = () => {
                         type="checkbox"
                         className="h-5 w-5 cursor-pointer rounded border-cyan-200/20 bg-white/5 text-blue-600 accent-blue-600 transition-all focus:ring-cyan-400/35 focus:ring-offset-0"
                         checked={formData.agreedToTerms}
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            agreedToTerms: e.target.checked,
-                          })
-                        }
+                      onChange={(e) =>
+  setFormData({
+    ...formData,
+    agreedToTerms: e.target.checked,
+  })
+}
                       />
                     </div>
                     <label
@@ -873,11 +873,11 @@ const LockedRewardCard = () => {
 };
 const TrustCard = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="rounded-[20px] border border-white/12 bg-[linear-gradient(180deg,rgba(66,127,255,0.82)_0%,rgba(39,66,193,0.92)_55%,rgba(19,33,123,0.96)_100%)] p-[2px] shadow-[0_14px_30px_rgba(0,0,0,0.18)] backdrop-blur-xl">
-      <div className="relative overflow-hidden rounded-[18px] px-4 py-4 text-center sm:px-5 sm:py-5">
+    <div className="rounded-[22px] border border-white/12 bg-[linear-gradient(180deg,rgba(66,127,255,0.82)_0%,rgba(39,66,193,0.92)_55%,rgba(19,33,123,0.96)_100%)] p-[2px] shadow-[0_14px_30px_rgba(0,0,0,0.18)] backdrop-blur-xl">
+      <div className="relative overflow-hidden rounded-[20px] px-4 py-5 text-center sm:px-5 sm:py-6">
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02),transparent)]" />
         <div className="absolute inset-x-[10%] top-2 h-8 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.03),transparent)] blur-[2px]" />
-        <div className="relative z-10 text-[13px] font-black leading-[1.05] text-white sm:text-[15px] md:text-[16px] lg:text-[17px]">
+        <div className="relative z-10 text-[14px] font-black leading-[1.05] text-white sm:text-[16px] md:text-[17px] lg:text-[18px]">
           {children}
         </div>
       </div>
