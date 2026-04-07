@@ -929,31 +929,6 @@ const HeroCTA = () => {
 export default function App() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [progressLevel, setProgressLevel] = useState(1);
-  const [liteMode, setLiteMode] = useState(false);
-
-  useEffect(() => {
-  const detectLiteMode = () => {
-    const nav = navigator as Navigator & {
-      deviceMemory?: number;
-      connection?: { saveData?: boolean; effectiveType?: string };
-    };
-
-    const isSmallScreen = window.innerWidth < 768;
-    const lowMemory = typeof nav.deviceMemory === "number" && nav.deviceMemory <= 4;
-    const lowCPU = typeof navigator.hardwareConcurrency === "number" && navigator.hardwareConcurrency <= 4;
-    const saveData = !!nav.connection?.saveData;
-    const slowNetwork =
-      nav.connection?.effectiveType === "2g" ||
-      nav.connection?.effectiveType === "slow-2g";
-
-    setLiteMode(isSmallScreen || lowMemory || lowCPU || saveData || slowNetwork);
-  };
-
-  detectLiteMode();
-  window.addEventListener("resize", detectLiteMode);
-  return () => window.removeEventListener("resize", detectLiteMode);
-}, []);
-  
 useEffect(() => {
   setProgressLevel(1);
 
@@ -973,25 +948,14 @@ useEffect(() => {
 
 }, []);
 
- useEffect(() => {
-  if (liteMode) return;
-
-  let rafId = 0;
-
-  const handleMouseMove = (e: MouseEvent) => {
-    cancelAnimationFrame(rafId);
-    rafId = requestAnimationFrame(() => {
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
       setMousePos({ x: e.clientX, y: e.clientY });
-    });
-  };
+    };
 
-  window.addEventListener("mousemove", handleMouseMove, { passive: true });
-
-  return () => {
-    cancelAnimationFrame(rafId);
-    window.removeEventListener("mousemove", handleMouseMove);
-  };
-}, [liteMode]);
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   const stepData = [
     { title: "Register", desc: "Create account", image: registerImg },
@@ -1011,47 +975,19 @@ useEffect(() => {
 ];
 
   return (
-   <div className={`relative min-h-screen overflow-x-hidden bg-brand-navy/70 font-sans text-slate-200 selection:bg-blue-500/30 ${liteMode ? "lite-mode" : ""}`}>
-      {liteMode && (
-  <style>{`
-    .lite-mode *,
-    .lite-mode *::before,
-    .lite-mode *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.12s !important;
-      scroll-behavior: auto !important;
-    }
-
-    .lite-mode .blur-\\[40px\\],
-    .lite-mode .blur-\\[120px\\],
-    .lite-mode .blur-\\[140px\\],
-    .lite-mode .backdrop-blur-\\[28px\\],
-    .lite-mode .backdrop-blur-xl,
-    .lite-mode .backdrop-blur-md {
-      filter: none !important;
-      backdrop-filter: none !important;
-    }
-  `}</style>
-)}
-      
-  {!liteMode && (
-  <div
-    className="pointer-events-none fixed inset-0 z-30 opacity-40 transition-opacity duration-300"
-    style={{
-      background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(59, 130, 246, 0.08), transparent 80%)`,
-    }}
-  />
-)}
-
-{!liteMode && (
-  <div className="pointer-events-none fixed inset-0 z-[100] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-)}
+    <div className="relative min-h-screen overflow-x-hidden bg-brand-navy/70 font-sans text-slate-200 selection:bg-blue-500/30">
+      <div
+        className="pointer-events-none fixed inset-0 z-30 opacity-40 transition-opacity duration-300"
+        style={{
+          background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(59, 130, 246, 0.08), transparent 80%)`,
+        }}
+      />
+      <div className="pointer-events-none fixed inset-0 z-[100] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
       <main className="relative z-10">
         <section className="relative flex min-h-[124vh] items-center overflow-hidden bg-[#0a1580] sm:min-h-[128vh] md:min-h-[132vh] lg:min-h-[150vh] xl:min-h-[152vh] 2xl:min-h-[156vh]">
-         {!liteMode && <RealisticBackground />}
-{!liteMode && <GoldConfetti />}
+          <RealisticBackground />
+          <GoldConfetti />
 
           <img
             src={i882Img}
@@ -1155,6 +1091,7 @@ useEffect(() => {
                   const isReached = progressLevel >= stageNumber;
                   const isCurrent = progressLevel === stageNumber;
 
+                 // 3) inside your trackerItems.map(...) replace ONLY the airpod block with this
 
 if (item.type === "airpod") {
   const isUnlockedStage = progressLevel >= 3;
@@ -1223,7 +1160,7 @@ if (item.type === "airpod") {
   );
 }
 
-    
+      // 4) add this helper const above your return inside App()
 const trackerFillWidth =
   progressLevel <= 0
     ? "0%"
@@ -1612,7 +1549,7 @@ const trackerFillWidth =
         </section>
 
         <RegistrationForm />
-        {!liteMode && <FloatingGirl />}
+        <FloatingGirl />
       </main>
     </div>
   );
