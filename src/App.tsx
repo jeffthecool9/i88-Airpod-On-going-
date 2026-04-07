@@ -1446,8 +1446,6 @@ const trackerFillWidth =
                         <>
                           10+ Rewards
                           <br />
-                          Don&apos;t Forget to
-                          <br />
                           To Unlock
                         </>
                       )}
