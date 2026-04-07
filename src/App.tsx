@@ -813,41 +813,25 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
         className="pointer-events-auto relative cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
         onClick={handleInteract}
       >
-        <motion.img
-          src={colaImg}
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 h-auto w-[280px] object-contain opacity-90 sm:w-[360px] md:w-[480px] lg:w-[560px] xl:w-[640px]"
-          animate={{
-            opacity: shouldShowGirl ? [0.45, 0.9, 0.45] : 0,
-          }}
-          transition={{
-            duration: 2.8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          style={{
-  filter: liteMode
-    ? "brightness(1.05) drop-shadow(0 0 8px rgba(56,189,248,0.35))"
-    : `
-      brightness(1.15)
-      drop-shadow(0 0 8px rgba(125,211,252,1))
-      drop-shadow(0 0 16px rgba(56,189,248,0.95))
-      drop-shadow(0 0 28px rgba(59,130,246,0.85))
-      drop-shadow(0 0 46px rgba(34,211,238,0.65))
-    `,
-}}
-        />
-
-        <img
-          src={colaImg}
-          alt=""
-          className="relative h-auto w-[280px] object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.35)] sm:w-[360px] md:w-[480px] lg:w-[560px] xl:w-[640px]"
-        />
-      </div>
-    </motion.div>
-  );
-};
+   <motion.img
+  src={colaImg}
+  alt=""
+  aria-hidden="true"
+  className="absolute inset-0 h-auto w-[280px] object-contain sm:w-[360px] md:w-[480px] lg:w-[560px] xl:w-[640px]"
+  animate={{ opacity: shouldShowGirl ? 0.78 : 0 }}
+  transition={{ duration: 0.2, ease: "linear" }}
+  style={{
+    filter: liteMode
+      ? "brightness(1.05) drop-shadow(0 0 8px rgba(56,189,248,0.35))"
+      : `
+        brightness(1.15)
+        drop-shadow(0 0 8px rgba(125,211,252,1))
+        drop-shadow(0 0 16px rgba(56,189,248,0.95))
+        drop-shadow(0 0 28px rgba(59,130,246,0.85))
+        drop-shadow(0 0 46px rgba(34,211,238,0.65))
+      `,
+  }}
+/>
 
 const HeroCTA = () => {
   const [isActive, setIsActive] = useState(false);
