@@ -1074,32 +1074,35 @@ useEffect(() => {
             alt="i88"
             className="pointer-events-none absolute left-1/2 top-0 z-[9] w-[120px] -translate-x-1/2 -translate-y-2 object-contain sm:w-[140px] sm:-translate-y-3 md:w-[160px] md:-translate-y-4"
           />
+          {/* UPDATED: top values reduced uniformly to shift block up */}
 <img
   src={rewardEventImg}
   alt="AirPods Pro Reward Event"
   className="
     pointer-events-none absolute left-1/2 -translate-x-1/2 object-contain z-[10]
 
-    top-[140px] w-[320px]        /* MOBILE: bigger + lower */
-    sm:top-[150px] sm:w-[360px]
+    top-[100px] w-[320px]        /* MOBILE: bigger + lower */
+    sm:top-[110px] sm:w-[360px]
 
-    md:top-[72px] md:w-[340px]   /* keep tablet normal */
-    lg:top-[54px] lg:w-[430px]   /* keep desktop unchanged */
-    xl:top-[56px] xl:w-[500px]
+    md:top-[42px] md:w-[340px]   /* keep tablet normal */
+    lg:top-[24px] lg:w-[430px]   /* keep desktop unchanged */
+    xl:top-[26px] xl:w-[500px]
   "
 />
           
+          {/* UPDATED: top percentages reduced by 5% */}
          <img
   src={cola1Img}
   alt=""
   aria-hidden="true"
- className="pointer-events-none absolute left-[-12%] top-[24%] z-[8] w-[1100px] object-contain sm:left-[-10%] sm:top-[24%] sm:w-[1200px] md:left-[-8%] md:top-[25%] md:w-[1300px] lg:left-1/2 lg:top-[13%] lg:w-[620px] lg:-translate-x-1/2 xl:top-[11%] xl:w-[700px] 2xl:top-[10%] 2xl:w-[760px]"
+ className="pointer-events-none absolute left-[-12%] top-[19%] z-[8] w-[1100px] object-contain sm:left-[-10%] sm:top-[19%] sm:w-[1200px] md:left-[-8%] md:top-[20%] md:w-[1300px] lg:left-1/2 lg:top-[8%] lg:w-[620px] lg:-translate-x-1/2 xl:top-[6%] xl:w-[700px] 2xl:top-[5%] 2xl:w-[760px]"
   style={{
     filter:
       "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
   }}
 />
-<div className="pointer-events-none absolute left-1/2 top-[48.5%] z-[9] w-[84%] max-w-[590px] -translate-x-1/2 sm:top-[49.5%] sm:w-[80%] sm:max-w-[640px] md:top-[50.5%] md:w-[76%] md:max-w-[690px] lg:top-[45.5%] lg:w-[46%] lg:max-w-[790px] xl:top-[44.5%] xl:w-[43%] xl:max-w-[850px] 2xl:top-[43.5%] 2xl:w-[41%] 2xl:max-w-[900px]">
+          {/* UPDATED: top percentages reduced by 5% */}
+<div className="pointer-events-none absolute left-1/2 top-[43.5%] z-[9] w-[84%] max-w-[590px] -translate-x-1/2 sm:top-[44.5%] sm:w-[80%] sm:max-w-[640px] md:top-[45.5%] md:w-[76%] md:max-w-[690px] lg:top-[40.5%] lg:w-[46%] lg:max-w-[790px] xl:top-[39.5%] xl:w-[43%] xl:max-w-[850px] 2xl:top-[38.5%] 2xl:w-[41%] 2xl:max-w-[900px]">
   <img
     src={heroTextBoxImg}
     alt=""
@@ -1121,11 +1124,12 @@ useEffect(() => {
  </div>
 </div>
           
+          {/* UPDATED: top percentages reduced by 5% */}
           <motion.img
             src={airpodImg}
             alt=""
             aria-hidden="true"
-          className="pointer-events-none absolute right-[10%] top-[20%] z-[9] w-[170px] object-contain sm:right-[11%] sm:top-[22%] sm:w-[210px] md:right-[12%] md:top-[23%] md:w-[250px] lg:right-[9%] lg:top-[13%] lg:w-[260px] xl:right-[8%] xl:top-[11%] xl:w-[300px] 2xl:right-[7%] 2xl:top-[10%] 2xl:w-[330px]"
+          className="pointer-events-none absolute right-[10%] top-[15%] z-[9] w-[170px] object-contain sm:right-[11%] sm:top-[17%] sm:w-[210px] md:right-[12%] md:top-[18%] md:w-[250px] lg:right-[9%] lg:top-[8%] lg:w-[260px] xl:right-[8%] xl:top-[6%] xl:w-[300px] 2xl:right-[7%] 2xl:top-[5%] 2xl:w-[330px]"
             animate={{
               y: [0, -12, 0],
               rotate: [0, -2, 0],
@@ -1421,7 +1425,8 @@ const trackerFillWidth =
             </div>
           </div>
 
-          <div className="pointer-events-none absolute bottom-[180px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[220px] sm:px-6 md:bottom-[240px] lg:bottom-[260px]">
+          {/* UPDATED: Increased bottom values by 30px to shift the 3 trust boxes upwards */}
+          <div className="pointer-events-none absolute bottom-[210px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[250px] sm:px-6 md:bottom-[270px] lg:bottom-[290px]">
             <div className="grid grid-cols-3 gap-3 sm:gap-7 md:gap-9">
               {[
                 "Trusted Since 2016",
