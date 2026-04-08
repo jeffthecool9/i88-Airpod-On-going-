@@ -897,7 +897,7 @@ const HeroCTA = () => {
   };
 
   return (
-   <div className="absolute bottom-[14px] left-1/2 z-[10] -translate-x-1/2 sm:bottom-[18px] md:bottom-[28px] lg:bottom-[78px]">
+   <div className="absolute bottom-[34px] left-1/2 z-[10] -translate-x-1/2 sm:bottom-[42px] md:bottom-[54px] lg:bottom-[104px]">
       <motion.button
         onClick={scrollToRegister}
         onMouseEnter={handleEnter}
@@ -1065,7 +1065,7 @@ useEffect(() => {
       <main className="relative z-10">
         <section
           id="hero-section"
-          className="relative flex min-h-[128vh] items-center overflow-hidden sm:min-h-[132vh] md:min-h-[136vh] lg:min-h-[144vh] xl:min-h-[146vh] 2xl:min-h-[150vh]"
+          className="relative flex min-h-[118vh] items-center overflow-hidden sm:min-h-[121vh] md:min-h-[124vh] lg:min-h-[136vh] xl:min-h-[140vh] 2xl:min-h-[144vh]"
           style={{
             backgroundImage: `url(${heroBackground1Img})`, 
             backgroundSize: "cover",
@@ -1108,7 +1108,7 @@ useEffect(() => {
       "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
   }}
 />
-<div className="pointer-events-none absolute left-1/2 top-[50.5%] z-[9] w-[84%] max-w-[590px] -translate-x-1/2 sm:top-[50.5%] sm:w-[80%] sm:max-w-[640px] md:top-[47.5%] md:w-[76%] md:max-w-[690px] lg:top-[42.8%] lg:w-[46%] lg:max-w-[790px] xl:top-[42%] xl:w-[43%] xl:max-w-[850px] 2xl:top-[41.2%] 2xl:w-[41%] 2xl:max-w-[900px]">
+<div className="pointer-events-none absolute left-1/2 top-[47.8%] z-[9] w-[84%] max-w-[590px] -translate-x-1/2 sm:top-[48.2%] sm:w-[80%] sm:max-w-[640px] md:top-[45.8%] md:w-[76%] md:max-w-[690px] lg:top-[41.5%] lg:w-[46%] lg:max-w-[790px] xl:top-[40.8%] xl:w-[43%] xl:max-w-[850px] 2xl:top-[40.2%] 2xl:w-[41%] 2xl:max-w-[900px]">
   <img
     src={heroTextBoxImg}
     alt=""
@@ -1136,13 +1136,13 @@ useEffect(() => {
   className="
     pointer-events-none absolute z-[15] object-contain
 
-    right-[10%] top-[21%] w-[170px]
-    sm:right-[11%] sm:top-[22.5%] sm:w-[210px]
-    md:right-[12%] md:top-[23.5%] md:w-[250px]
+    right-[10%] top-[19.5%] w-[170px]
+    sm:right-[11%] sm:top-[21%] sm:w-[210px]
+    md:right-[12%] md:top-[22%] md:w-[250px]
 
-    lg:left-[62%] lg:-translate-x-1/2 lg:top-[15%] lg:w-[135px]
-xl:left-[63%] xl:-translate-x-1/2 xl:top-[14.2%] xl:w-[150px]
-2xl:left-[63.5%] 2xl:-translate-x-1/2 2xl:top-[13.2%] 2xl:w-[165px]
+    lg:left-[62%] lg:-translate-x-1/2 lg:top-[13.8%] lg:w-[135px]
+xl:left-[63%] xl:-translate-x-1/2 xl:top-[13.2%] xl:w-[150px]
+2xl:left-[63.5%] 2xl:-translate-x-1/2 2xl:top-[12.4%] 2xl:w-[165px]
   "
   animate={{
     y: [0, -10, 0],
@@ -1161,7 +1161,7 @@ xl:left-[63%] xl:-translate-x-1/2 xl:top-[14.2%] xl:w-[150px]
 
        <motion.div
   aria-hidden="true"
- className="pointer-events-none absolute left-1/2 top-[61.5%] z-[12] -translate-x-1/2 lg:top-[49.5%] xl:top-[48.8%] 2xl:top-[48%]"
+ className="pointer-events-none absolute left-1/2 top-[56.2%] z-[12] -translate-x-1/2 lg:top-[47.2%] xl:top-[46.8%] 2xl:top-[46.2%]"
   animate={{
     y: [0, 5, 0],
     opacity: [0.16, 0.3, 0.16],
@@ -1181,9 +1181,9 @@ xl:left-[63%] xl:-translate-x-1/2 xl:top-[14.2%] xl:w-[150px]
   />
 </motion.div>
           
-          <div className="pointer-events-none absolute left-1/2 bottom-[138px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[150px] sm:px-6 md:bottom-[165px] lg:bottom-[285px] lg:max-w-[1280px] lg:px-10 xl:bottom-[300px] xl:max-w-[1380px] 2xl:bottom-[320px] 2xl:max-w-[1480px]">
+          <div className="pointer-events-none absolute left-1/2 bottom-[196px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[208px] sm:px-6 md:bottom-[224px] lg:bottom-[332px] lg:max-w-[1280px] lg:px-10 xl:bottom-[348px] xl:max-w-[1380px] 2xl:bottom-[368px] 2xl:max-w-[1480px]">
             <div className="mx-auto max-w-5xl">
-             <div className="mb-4 grid grid-cols-4 items-end gap-2.5 sm:gap-3 lg:gap-5 xl:gap-6 2xl:gap-8">
+             <div className="mb-3 grid grid-cols-4 items-end gap-2 sm:gap-2.5 lg:gap-4 xl:gap-5 2xl:gap-6">
                 {trackerItems.map((item, i) => {
                   const stageNumber = i + 1;
                   const isReached = progressLevel >= stageNumber;
@@ -1430,8 +1430,8 @@ if (item.type === "airpod") {
             </div>
           </div>
 
-          <div className="pointer-events-none absolute left-1/2 bottom-[48px] z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[58px] sm:px-6 md:bottom-[72px] lg:bottom-[145px]">
-            <div className="grid grid-cols-3 gap-2.5 sm:gap-5 md:gap-7">
+          <div className="pointer-events-none absolute left-1/2 bottom-[94px] z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[104px] sm:px-6 md:bottom-[116px] lg:bottom-[185px]">
+            <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6">
               {[
   "Trusted Since 2016",
   "5,000+ Active Members",
