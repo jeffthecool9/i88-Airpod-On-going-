@@ -1,6 +1,7 @@
 import i882Img from "./assets/i882.png";
 import backgroundImg from "./assets/background.png";
 import airpodImg from "./assets/airpod.png";
+import coin1Img from "./assets/1.png"; // Newly added!
 import coinFrontImg from "./assets/3.png";
 import coinTiltImg from "./assets/4.png";
 import registerImg from "./assets/register.png";
@@ -13,7 +14,6 @@ import HeroRewardTracker from "./HeroRewardTracker";
 import cola1Img from "./assets/cola1.png";
 import heroTopTextImg from "./assets/text-2.png";
 import heroFinalTextImg from "./assets/text.png";
-import coinsImg from "./assets/coins.png"; // Added for background floating coins
 
 import { motion, AnimatePresence } from "motion/react";
 import {
@@ -56,9 +56,12 @@ const FloatingHeroCoins = ({ mousePos, liteMode }: { mousePos: { x: number; y: n
     return liteMode ? coinInstances.slice(3, 7) : coinInstances;
   }, [liteMode]);
 
+  // Mixes your three specific coin images for realistic variety
+  const coinAssets = [coin1Img, coinFrontImg, coinTiltImg];
+
   return (
     <div className="absolute inset-0 z-[5] pointer-events-none overflow-hidden">
-      {visibleCoins.map((coin) => (
+      {visibleCoins.map((coin, index) => (
         <motion.div
           key={coin.id}
           className="absolute"
@@ -83,7 +86,7 @@ const FloatingHeroCoins = ({ mousePos, liteMode }: { mousePos: { x: number; y: n
             mass: 1,
           }}
         >
-          <img src={coinsImg} alt="" className="w-full h-auto object-contain" />
+          <img src={coinAssets[index % coinAssets.length]} alt="" className="w-full h-auto object-contain" />
         </motion.div>
       ))}
     </div>
@@ -1085,7 +1088,7 @@ useEffect(() => {
          <RealisticBackground liteMode={liteMode} />
         <GoldConfetti liteMode={liteMode} />
         
-        {/* INJECTED: The high-quality floating background coins from previous command */}
+        {/* INJECTED: Mixes your 1.png, 3.png, and 4.png for depth! */}
         <FloatingHeroCoins mousePos={mousePos} liteMode={liteMode} />
 
           <img
