@@ -165,9 +165,9 @@ const HeroFullWidthDivider = ({
   <div
     className={`absolute bottom-0 left-0 right-0 z-20 pointer-events-none overflow-hidden leading-none ${className}`}
   >
-    {/* edge fill shifted to kill side gaps without top-overlap */}
+    {/* Edge fill shifted to the TOP to ensure the filled circle connects seamlessly to the section above without a 1px gap */}
     <div 
-      className="absolute inset-x-0 bottom-[-4px] h-[10px]" 
+      className="absolute inset-x-0 top-[-4px] h-[10px]" 
       style={{ backgroundColor: fillColor }}
     />
 
@@ -176,13 +176,15 @@ const HeroFullWidthDivider = ({
       preserveAspectRatio="none"
       className="relative block h-[58px] w-full sm:h-[68px]"
     >
-      {/* Changed path: Perfectly balanced cubic bezier for a smooth half-circle dip */}
+      {/* Path 1: Fills the INSIDE of the circle/bowl */}
       <path
-        d="M0,0 C400,100 800,100 1200,0 L1200,120 L0,120 Z"
+        d="M0,0 C350,120 850,120 1200,0 L0,0 Z"
         fill={fillColor}
       />
+      
+      {/* Path 2: The Neon Glow Stroke matching the curve */}
       <path
-        d="M0,0 C400,100 800,100 1200,0"
+        d="M0,0 C350,120 850,120 1200,0"
         fill="none"
         stroke="url(#hero-divider-glow)"
         strokeWidth="3"
