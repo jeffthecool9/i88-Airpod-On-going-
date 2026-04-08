@@ -113,21 +113,21 @@ const SectionSeam = ({
     <svg
       viewBox="0 0 1200 120"
       preserveAspectRatio="none"
-      className="block w-full h-[44px] sm:h-[56px] md:h-[68px]"
+       className="block w-full h-[58px] sm:h-[62px] md:h-[68px]"
     >
       {shape === "dome" ? (
-        <>
-          <path
-            d="M0,120 L0,96 C220,56 420,28 600,28 C780,28 980,56 1200,96 L1200,120 Z"
-            fill={fillColor}
-          />
-          <path
-            d="M0,96 C220,56 420,28 600,28 C780,28 980,56 1200,96"
-            fill="none"
-            stroke="url(#line-glow)"
-            strokeWidth="2"
-          />
-        </>
+       <>
+  <path
+    d="M0,0 C180,30 360,78 600,88 C840,78 1020,30 1200,0 L1200,120 L0,120 Z"
+    fill={fillColor}
+  />
+  <path
+    d="M0,0 C180,30 360,78 600,88 C840,78 1020,30 1200,0"
+    fill="none"
+    stroke="url(#line-glow)"
+    strokeWidth="2.2"
+  />
+</>
       ) : (
         <>
           <path
@@ -952,10 +952,10 @@ export default function App() {
   <div className="relative mx-auto w-full max-w-[420px] min-h-[840px] overflow-hidden">
     <RealisticBackground liteMode={liteMode} />
 
-  <img
+ <img
   src={i882Img}
   alt="i88"
-  className="pointer-events-none absolute left-1/2 top-[3.8%] z-[24] w-[72px] -translate-x-1/2 object-contain sm:w-[82px]"
+  className="pointer-events-none absolute left-1/2 top-[0.8%] z-[24] w-[86px] -translate-x-1/2 object-contain sm:w-[96px]"
 />
     <img
       src={rewardEventImg}
@@ -1340,7 +1340,7 @@ export default function App() {
 
         <section
           id="steps-to-claim"
-          className="relative z-10 -mt-2 overflow-hidden px-4 pt-10 pb-24 sm:px-6 sm:pt-12 sm:pb-28 md:pt-14"
+          className="relative z-10 overflow-hidden px-4 pt-12 pb-24 sm:px-6 sm:pt-14 sm:pb-28 md:pt-16"
           style={{
             background:
               "linear-gradient(180deg, #1E4FA3 0%, #1B4DAE 38%, #1650B6 72%, #144FB9 100%)",
