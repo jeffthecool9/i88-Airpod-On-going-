@@ -237,10 +237,10 @@ const RegistrationForm = () => {
       className="relative z-10 overflow-hidden px-6 py-24 sm:py-32 bg-[radial-gradient(circle_at_12%_18%,rgba(34,211,238,0.16),transparent_24%),radial-gradient(circle_at_85%_22%,rgba(59,130,246,0.20),transparent_28%),radial-gradient(circle_at_50%_85%,rgba(56,189,248,0.08),transparent_30%),linear-gradient(180deg,#0B49B8_0%,#0A3D9D_35%,#082B78_72%,#03143E_100%)]"
     >
       <img
-        src={i882Img}
-        alt="i88"
-        className="pointer-events-none absolute left-1/2 top-0 z-[9] w-[90px] -translate-x-1/2 -translate-y-2 object-contain opacity-95 sm:w-[110px] sm:-translate-y-3 md:w-[125px] md:-translate-y-4"
-      />
+  src={i882Img}
+  alt="i88"
+  className="pointer-events-none absolute left-1/2 top-[4px] z-[30] w-[128px] -translate-x-1/2 object-contain sm:w-[144px]"
+/>
 
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-[4%] top-[10%] h-[260px] w-[260px] rounded-full bg-cyan-300/12 blur-[120px]" />
@@ -1329,25 +1329,24 @@ export default function App() {
 </div>
 
 <div className="pointer-events-none absolute bottom-0 left-0 z-[20] w-full overflow-hidden leading-none">
-              <svg
-                viewBox="0 0 420 72"
-                preserveAspectRatio="none"
-                className="block h-[52px] w-full"
-              >
-                <path
-                  d="M0,18 C90,46 150,60 210,60 C270,60 330,46 420,18 L420,72 L0,72 Z"
-                  fill="#1E4FA3"
-                />
-                <path
-                  d="M0,18 C90,46 150,60 210,60 C270,60 330,46 420,18"
-                  fill="none"
-                  stroke="#1ecbff"
-                  strokeWidth="1.8"
-                  strokeOpacity="0.9"
-                />
-              </svg>
-            </div>
-          </div>
+  <svg
+    viewBox="0 0 420 96"
+    preserveAspectRatio="none"
+    className="block h-[74px] w-full"
+  >
+    <path
+      d="M0,26 C70,42 130,58 210,62 C290,58 350,42 420,26 L420,96 L0,96 Z"
+      fill="#1E4FA3"
+    />
+    <path
+      d="M0,26 C70,42 130,58 210,62 C290,58 350,42 420,26"
+      fill="none"
+      stroke="#19d4ff"
+      strokeWidth="2"
+      strokeOpacity="0.95"
+    />
+  </svg>
+</div>
         </section>
 
         <section
