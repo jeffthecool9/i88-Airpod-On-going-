@@ -13,7 +13,7 @@ import heroTextBoxImg from "./assets/hero-textbox.png";
 import cola1Img from "./assets/cola1.png";
 import heroTopTextImg from "./assets/text-2.png";
 import heroFinalTextImg from "./assets/text.png";
-import heroBackground1Img from "./assets/background1.png"; // Import the new hero background
+import heroBackground1Img from "./assets/background1.png"; 
 
 import { motion, AnimatePresence } from "motion/react";
 import {
@@ -195,14 +195,12 @@ const GoldConfetti = ({ liteMode = false }: { liteMode?: boolean }) => {
 
 const RealisticBackground = ({ liteMode = false }: { liteMode?: boolean }) => (
  <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
-  {/* Maintain a base background just in case, or for gradients/rays */}
-  <div className="absolute inset-0 bg-[#0a1580]" />
+  {/* Removed the solid bg-[#0a1580] div so your background image is visible */}
 
   {liteMode ? (
     <>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_38%,rgba(255,255,255,0.16)_0%,rgba(125,211,252,0.14)_18%,rgba(59,130,246,0.10)_32%,transparent_58%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(255,255,255,0.08),transparent_30%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),transparent_24%,transparent_72%,rgba(0,0,0,0.06))]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_38%,rgba(255,255,255,0.12)_0%,rgba(125,211,252,0.10)_18%,rgba(59,130,246,0.08)_32%,transparent_58%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(255,255,255,0.06),transparent_30%)]" />
     </>
   ) : (
     <>
@@ -211,7 +209,7 @@ const RealisticBackground = ({ liteMode = false }: { liteMode?: boolean }) => (
           <motion.div
             key={`ray-${i}`}
             animate={{
-              opacity: [0.15, 0.3, 0.15],
+              opacity: [0.10, 0.2, 0.10],
               rotate: [i * 45, i * 45 + 10, i * 45],
             }}
             transition={{
@@ -221,19 +219,19 @@ const RealisticBackground = ({ liteMode = false }: { liteMode?: boolean }) => (
             }}
             className="absolute inset-0 origin-center"
             style={{
-              background: `conic-gradient(from ${i * 45}deg at 50% 50%, transparent 0%, rgba(34,211,238,0.2) 5%, transparent 15%)`,
-              filter: "blur(15px)",
+              background: `conic-gradient(from ${i * 45}deg at 50% 50%, transparent 0%, rgba(34,211,238,0.15) 5%, transparent 15%)`,
+              filter: "blur(20px)",
             }}
           />
         ))}
         <motion.div
-          animate={{ scale: [1, 1.1, 1], opacity: [0.7, 1, 0.7] }}
+          animate={{ scale: [1, 1.1, 1], opacity: [0.4, 0.6, 0.4] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.8)_0%,rgba(125,211,252,0.4)_20%,rgba(143,177,233,0)_60%)] blur-[40px]"
+          className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.5)_0%,rgba(125,211,252,0.2)_20%,rgba(143,177,233,0)_60%)] blur-[50px]"
         />
       </div>
 
-      <div className="absolute inset-0 opacity-15 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
+      <div className="absolute inset-0 opacity-10 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
     </>
   )}
 </div>
@@ -1069,7 +1067,7 @@ useEffect(() => {
           id="hero-section"
           className="relative flex min-h-[124vh] items-center overflow-hidden sm:min-h-[128vh] md:min-h-[132vh] lg:min-h-[150vh] xl:min-h-[152vh] 2xl:min-h-[156vh]"
           style={{
-            backgroundImage: `url(${heroBackground1Img})`, // Set the new background image
+            backgroundImage: `url(${heroBackground1Img})`, 
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -1100,8 +1098,7 @@ useEffect(() => {
   "
 />
           
-          {/* UPDATED: Increased top percentage to move downward slightly (+3%) */}
-         <img
+          <img
   src={cola1Img}
   alt=""
   aria-hidden="true"
@@ -1111,7 +1108,6 @@ useEffect(() => {
       "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
   }}
 />
-          {/* UPDATED: Increased top percentage to move downward slightly (+3%) */}
 <div className="pointer-events-none absolute left-1/2 top-[46.5%] z-[9] w-[84%] max-w-[590px] -translate-x-1/2 sm:top-[47.5%] sm:w-[80%] sm:max-w-[640px] md:top-[48.5%] md:w-[76%] md:max-w-[690px] lg:top-[43.5%] lg:w-[46%] lg:max-w-[790px] xl:top-[42.5%] xl:w-[43%] xl:max-w-[850px] 2xl:top-[41.5%] 2xl:w-[41%] 2xl:max-w-[900px]">
   <img
     src={heroTextBoxImg}
@@ -1134,7 +1130,6 @@ useEffect(() => {
  </div>
 </div>
           
-          {/* UPDATED: Increased top percentage to move downward slightly (+3%) */}
           <motion.img
             src={airpodImg}
             alt=""
@@ -1184,8 +1179,6 @@ useEffect(() => {
                   const stageNumber = i + 1;
                   const isReached = progressLevel >= stageNumber;
                   const isCurrent = progressLevel === stageNumber;
-
-            
 
 if (item.type === "airpod") {
   const isUnlockedStage = progressLevel >= 3;
@@ -1254,12 +1247,6 @@ if (item.type === "airpod") {
   );
 }
 
-const trackerFillWidth =
-  progressLevel <= 1
-    ? "25%"
-    : progressLevel === 2
-    ? "52%"
-    : "78%";
                   return (
                     <motion.div
                       key={i}
@@ -1306,7 +1293,7 @@ const trackerFillWidth =
                               ease: "easeInOut",
                             }}
                             style={{
-                              backgroundImage: `url(${backgroundImg})`,
+                              backgroundImage: `url(${heroBackground1Img})`, // Updated to use your new background img
                               backgroundSize: "cover",
                               backgroundPosition: "center",
                             }}
