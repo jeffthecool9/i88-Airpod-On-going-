@@ -1,7 +1,7 @@
 import i882Img from "./assets/i882.png";
 import backgroundImg from "./assets/background.png";
 import airpodImg from "./assets/airpod.png";
-import coin1Img from "./assets/1.png"; // Newly added!
+import coin1Img from "./assets/1.png"; 
 import coinFrontImg from "./assets/3.png";
 import coinTiltImg from "./assets/4.png";
 import registerImg from "./assets/register.png";
@@ -32,15 +32,12 @@ import React, { useState, useEffect, ReactNode, useMemo } from "react";
 
 // *** High-Quality, Depth-of-Field Coins System ***
 const coinInstances = [
-  // Far background (small, very blurry, low opacity)
   { id: 1, x: 10, y: 15, size: 40, blur: 6, opacity: 0.15, speed: 0.01, z: 1, rotate: 15 },
   { id: 2, x: 85, y: 10, size: 50, blur: 5, opacity: 0.2, speed: 0.012, z: 1, rotate: -20 },
   { id: 3, x: 50, y: 60, size: 35, blur: 7, opacity: 0.1, speed: 0.008, z: 1, rotate: 45 },
-  // Mid-ground (medium size, light blur)
   { id: 4, x: 15, y: 55, size: 80, blur: 2.5, opacity: 0.35, speed: 0.025, z: 2, rotate: -10 },
   { id: 5, x: 75, y: 65, size: 90, blur: 2, opacity: 0.4, speed: 0.03, z: 2, rotate: 25 },
   { id: 6, x: 40, y: 10, size: 70, blur: 3, opacity: 0.3, speed: 0.02, z: 2, rotate: 180 },
-  // Near-foreground (large, sharp, glowing)
   { id: 7, x: 5, y: 25, size: 120, blur: 0, opacity: 0.6, speed: 0.05, z: 3, rotate: 0, glow: "0 0 10px rgba(251,191,36,0.5)" },
   { id: 8, x: 90, y: 35, size: 140, blur: 0, opacity: 0.65, speed: 0.06, z: 3, rotate: -15, glow: "0 0 10px rgba(251,191,36,0.5)" },
 ];
@@ -56,7 +53,6 @@ const FloatingHeroCoins = ({ mousePos, liteMode }: { mousePos: { x: number; y: n
     return liteMode ? coinInstances.slice(3, 7) : coinInstances;
   }, [liteMode]);
 
-  // Mixes your three specific coin images for realistic variety
   const coinAssets = [coin1Img, coinFrontImg, coinTiltImg];
 
   return (
@@ -242,7 +238,7 @@ const RealisticBackground = ({ liteMode = false }: { liteMode?: boolean }) => (
 </div>
   );
 
-// *** TOP-TIER SEAM: Pure Mathematical Curve (No Blue Lines) ***
+// *** UPDATED: Injected User's Glowing SVG SectionSeam ***
 const SectionSeam = ({
   className = "",
   fillColor = "#020f6a",
@@ -253,32 +249,47 @@ const SectionSeam = ({
   shape?: "dome" | "dip";
 }) => (
   <div
-    className={`absolute inset-x-0 overflow-hidden pointer-events-none z-20 leading-[0] ${className}`}
+    className={`absolute left-0 w-full overflow-hidden leading-[0] z-20 pointer-events-none ${className}`}
   >
-    {/* Anti-alias hack: Prevents a 1px microscopic white gap on some mobile browsers */}
-    {shape === "dip" && (
-      <div 
-        className="absolute inset-x-0 top-[-2px] h-[4px]" 
-        style={{ backgroundColor: fillColor }}
-      />
-    )}
-    
     <svg
       viewBox="0 0 1200 120"
       preserveAspectRatio="none"
-      className="relative block w-full h-[40px] sm:h-[60px] md:h-[80px]"
+      className="block w-full h-[76px] sm:h-[120px]"
     >
       {shape === "dome" ? (
-        <path
-          d="M0,120 C300,120 350,20 600,20 C850,20 900,120 1200,120 Z"
-          fill={fillColor}
-        />
+        <>
+          <path
+            d="M0,120 L0,100 C480,0 720,0 1200,100 L1200,120 Z"
+            fill={fillColor}
+          />
+          <path
+            d="M0,100 C480,0 720,0 1200,100"
+            fill="none"
+            stroke="url(#line-glow)"
+            strokeWidth="3"
+          />
+        </>
       ) : (
-        <path
-          d="M0,0 C300,0 350,110 600,110 C850,110 900,0 1200,0 L1200,120 L0,120 Z"
-          fill={fillColor}
-        />
+        <>
+          <path
+            d="M0,0 C480,100 720,100 1200,0 L1200,120 L0,120 Z"
+            fill={fillColor}
+          />
+          <path
+            d="M0,0 C480,100 720,100 1200,0"
+            fill="none"
+            stroke="url(#line-glow)"
+            strokeWidth="3"
+          />
+        </>
       )}
+      <defs>
+        <linearGradient id="line-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#22d3ee" stopOpacity="0" />
+          <stop offset="50%" stopColor="#22d3ee" stopOpacity="1" />
+          <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
+        </linearGradient>
+      </defs>
     </svg>
   </div>
 );
@@ -348,9 +359,6 @@ const RegistrationForm = () => {
         if (prev <= 1) {
           clearInterval(countdownTimer);
           clearInterval(progressTimer);
-
-          // window.location.href = "https://i88.com"; // Future redirect logic
-
           return 0;
         }
         return prev - 1;
@@ -1088,7 +1096,6 @@ useEffect(() => {
          <RealisticBackground liteMode={liteMode} />
         <GoldConfetti liteMode={liteMode} />
         
-        {/* INJECTED: Mixes your 1.png, 3.png, and 4.png for depth! */}
         <FloatingHeroCoins mousePos={mousePos} liteMode={liteMode} />
 
           <img
@@ -1559,10 +1566,9 @@ const trackerFillWidth =
 
           <div className="relative z-10 mx-auto w-full max-w-6xl" />
 
-          {/* *** BLANK SCREEN FIX: Swapped phantom component for perfect SectionSeam *** */}
           <SectionSeam
-            className="bottom-[-1px]" // Fixed jagged corner & blank screen issue
-            fillColor="#1E4FA3" // Connects flawlessly to the start of next section gradient
+            className="bottom-[-1px]" 
+            fillColor="#1E4FA3" 
             shape="dip" 
           />
         </section>
@@ -1575,10 +1581,9 @@ const trackerFillWidth =
               "linear-gradient(180deg, #1E4FA3 0%, #1B4DAE 38%, #1650B6 72%, #144FB9 100%)",
           }}
         >
-          {/* Specify dome shape at top of steps section to meet the dip shape of hero */}
           <SectionSeam
             className="top-[-1px]"
-            fillColor="#1E4FA3" // Matching context gradient start color
+            fillColor="#1E4FA3" 
             shape="dome"
           />
 
@@ -1650,7 +1655,7 @@ const trackerFillWidth =
 
           <SectionSeam
             className="bottom-[-1px]"
-            fillColor="#144FB9" // Background color specified by context
+            fillColor="#144FB9" 
             shape="dome"
           />
         </section>
