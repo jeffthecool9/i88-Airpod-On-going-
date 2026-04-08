@@ -13,6 +13,8 @@ import HeroRewardTracker from "./HeroRewardTracker";
 import cola1Img from "./assets/cola1.png";
 import heroTopTextImg from "./assets/text-2.png";
 import heroFinalTextImg from "./assets/text.png";
+import coinsImg from "./assets/coins.png"; // Added for background floating coins
+
 import { motion, AnimatePresence } from "motion/react";
 import {
   ChevronRight,
@@ -26,7 +28,67 @@ import {
   AlertCircle,
   ArrowLeft,
 } from "lucide-react";
-import React, { useState, useEffect, ReactNode } from "react";
+import React, { useState, useEffect, ReactNode, useMemo } from "react";
+
+// *** High-Quality, Depth-of-Field Coins System ***
+const coinInstances = [
+  // Far background (small, very blurry, low opacity)
+  { id: 1, x: 10, y: 15, size: 40, blur: 6, opacity: 0.15, speed: 0.01, z: 1, rotate: 15 },
+  { id: 2, x: 85, y: 10, size: 50, blur: 5, opacity: 0.2, speed: 0.012, z: 1, rotate: -20 },
+  { id: 3, x: 50, y: 60, size: 35, blur: 7, opacity: 0.1, speed: 0.008, z: 1, rotate: 45 },
+  // Mid-ground (medium size, light blur)
+  { id: 4, x: 15, y: 55, size: 80, blur: 2.5, opacity: 0.35, speed: 0.025, z: 2, rotate: -10 },
+  { id: 5, x: 75, y: 65, size: 90, blur: 2, opacity: 0.4, speed: 0.03, z: 2, rotate: 25 },
+  { id: 6, x: 40, y: 10, size: 70, blur: 3, opacity: 0.3, speed: 0.02, z: 2, rotate: 180 },
+  // Near-foreground (large, sharp, glowing)
+  { id: 7, x: 5, y: 25, size: 120, blur: 0, opacity: 0.6, speed: 0.05, z: 3, rotate: 0, glow: "0 0 10px rgba(251,191,36,0.5)" },
+  { id: 8, x: 90, y: 35, size: 140, blur: 0, opacity: 0.65, speed: 0.06, z: 3, rotate: -15, glow: "0 0 10px rgba(251,191,36,0.5)" },
+];
+
+const FloatingHeroCoins = ({ mousePos, liteMode }: { mousePos: { x: number; y: number }, liteMode: boolean }) => {
+  const winWidth = typeof window !== 'undefined' ? window.innerWidth : 1000;
+  const winHeight = typeof window !== 'undefined' ? window.innerHeight : 1000;
+  
+  const offsetX = (mousePos.x - winWidth / 2);
+  const offsetY = (mousePos.y - winHeight / 2);
+
+  const visibleCoins = useMemo(() => {
+    return liteMode ? coinInstances.slice(3, 7) : coinInstances;
+  }, [liteMode]);
+
+  return (
+    <div className="absolute inset-0 z-[5] pointer-events-none overflow-hidden">
+      {visibleCoins.map((coin) => (
+        <motion.div
+          key={coin.id}
+          className="absolute"
+          style={{
+            width: `${coin.size}px`,
+            left: `${coin.x}%`,
+            top: `${coin.y}%`,
+            opacity: coin.opacity,
+            zIndex: coin.z,
+            filter: `blur(${coin.blur}px) ${coin.glow ? `drop-shadow(${coin.glow})` : ''}`,
+            willChange: 'transform',
+          }}
+          animate={{
+            x: -offsetX * coin.speed,
+            y: -offsetY * coin.speed,
+            rotate: coin.rotate,
+          }}
+          transition={{
+            type: "spring",
+            stiffness: liteMode ? 20 : 10,
+            damping: 30,
+            mass: 1,
+          }}
+        >
+          <img src={coinsImg} alt="" className="w-full h-auto object-contain" />
+        </motion.div>
+      ))}
+    </div>
+  );
+};
 
 const HeroWord = ({
   children,
@@ -177,7 +239,7 @@ const RealisticBackground = ({ liteMode = false }: { liteMode?: boolean }) => (
 </div>
   );
 
-// *** REDESIGNED TOP-TIER SEAM: Mathematically Smooth + Layered Optical Glow ***
+// *** TOP-TIER SEAM: Pure Mathematical Curve (No Blue Lines) ***
 const SectionSeam = ({
   className = "",
   fillColor = "#020f6a",
@@ -188,72 +250,32 @@ const SectionSeam = ({
   shape?: "dome" | "dip";
 }) => (
   <div
-    className={`absolute left-0 w-full overflow-hidden leading-[0] z-20 pointer-events-none ${className}`}
+    className={`absolute inset-x-0 overflow-hidden pointer-events-none z-20 leading-[0] ${className}`}
   >
-    {/* Anti-alias hack: Fills a small bar just above the curve to kill subpixel gaps */}
+    {/* Anti-alias hack: Prevents a 1px microscopic white gap on some mobile browsers */}
     {shape === "dip" && (
       <div 
-        className="absolute inset-x-0 top-[-4px] h-[10px]" 
+        className="absolute inset-x-0 top-[-2px] h-[4px]" 
         style={{ backgroundColor: fillColor }}
       />
     )}
-
+    
     <svg
       viewBox="0 0 1200 120"
       preserveAspectRatio="none"
-      // Height increased for better curve flow at higher resolutions
-      className="relative block w-full h-[64px] sm:h-[80px] md:h-[96px]"
+      className="relative block w-full h-[40px] sm:h-[60px] md:h-[80px]"
     >
       {shape === "dome" ? (
-        <>
-          {/* Fills the INSIDE of the dome (half-circle pointing UP) */}
-          <path
-            d="M0,120 L0,100 C480,0 720,0 1200,100 L1200,120 Z"
-            fill={fillColor}
-          />
-          <path
-            d="M0,100 C480,0 720,0 1200,100"
-            fill="none"
-            stroke="url(#line-glow)"
-            strokeWidth="3"
-          />
-        </>
+        <path
+          d="M0,120 C300,120 350,20 600,20 C850,20 900,120 1200,120 Z"
+          fill={fillColor}
+        />
       ) : (
-        <>
-          {/* UPDATED: Flawless, smooth curve (Cosine Bell shaped function). Fills the INSIDE bowl shape. */}
-          <path
-            d="M0,0 C300,0 350,110 600,110 C850,110 900,0 1200,0 L1200,120 L0,120 Z"
-            fill={fillColor}
-          />
-          
-          {/* Layer 1: Ambient LED Glow (Blurred) */}
-          <path
-            d="M0,0 C300,0 350,110 600,110 C850,110 900,0 1200,0"
-            fill="none"
-            stroke="url(#line-glow)"
-            strokeWidth="8"
-            className="opacity-40 blur-[4px]"
-          />
-          
-          {/* Layer 2: Crisp Inner Light Line */}
-          <path
-            d="M0,0 C300,0 350,110 600,110 C850,110 900,0 1200,0"
-            fill="none"
-            stroke="url(#line-glow)"
-            strokeWidth="2.5"
-          />
-        </>
+        <path
+          d="M0,0 C300,0 350,110 600,110 C850,110 900,0 1200,0 L1200,120 L0,120 Z"
+          fill={fillColor}
+        />
       )}
-      <defs>
-        {/* Refined gradient: Hot central white hotspot with cyan falloff */}
-        <linearGradient id="line-glow" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#22d3ee" stopOpacity="0" />
-          <stop offset="15%" stopColor="#3bdcff" stopOpacity="0.5" />
-          <stop offset="50%" stopColor="#ffffff" stopOpacity="0.9" /> {/* Hot white center hotspot */}
-          <stop offset="85%" stopColor="#3bdcff" stopOpacity="0.5" />
-          <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
-        </linearGradient>
-      </defs>
     </svg>
   </div>
 );
@@ -1062,6 +1084,9 @@ useEffect(() => {
         <section className="relative flex min-h-[124vh] items-center overflow-hidden bg-[#0a1580] sm:min-h-[128vh] md:min-h-[132vh] lg:min-h-[150vh] xl:min-h-[152vh] 2xl:min-h-[156vh]">
          <RealisticBackground liteMode={liteMode} />
         <GoldConfetti liteMode={liteMode} />
+        
+        {/* INJECTED: The high-quality floating background coins from previous command */}
+        <FloatingHeroCoins mousePos={mousePos} liteMode={liteMode} />
 
           <img
             src={i882Img}
