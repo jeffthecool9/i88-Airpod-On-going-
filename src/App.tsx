@@ -1078,10 +1078,10 @@ useEffect(() => {
         <FloatingHeroCoins mousePos={mousePos} liteMode={liteMode} />
 
           <img
-            src={i882Img}
-            alt="i88"
-            className="pointer-events-none absolute left-1/2 top-0 z-[9] w-[120px] -translate-x-1/2 -translate-y-2 object-contain sm:w-[140px] sm:-translate-y-3 md:w-[160px] md:-translate-y-4"
-          />
+  src={i882Img}
+  alt="i88"
+  className="pointer-events-none absolute left-1/2 top-0 z-[30] w-[120px] -translate-x-1/2 -translate-y-2 object-contain sm:w-[140px] sm:-translate-y-3 md:w-[160px] md:-translate-y-4 lg:left-[22%] lg:top-[54px] lg:w-[120px] lg:-translate-x-1/2 lg:translate-y-0 xl:left-[20%] xl:top-[58px] xl:w-[140px] 2xl:left-[19%] 2xl:top-[62px] 2xl:w-[155px]"
+/>
 {/* Leave this one exactly where it is so it stays fixed */}
 <img
   src={rewardEventImg}
@@ -1129,26 +1129,25 @@ useEffect(() => {
   />
  </div>
 </div>
-          
           <motion.img
-            src={airpodImg}
-            alt=""
-            aria-hidden="true"
-          className="pointer-events-none absolute right-[10%] top-[18%] z-[9] w-[170px] object-contain sm:right-[11%] sm:top-[20%] sm:w-[210px] md:right-[12%] md:top-[21%] md:w-[250px] lg:right-[9%] lg:top-[11%] lg:w-[260px] xl:right-[8%] xl:top-[9%] xl:w-[300px] 2xl:right-[7%] 2xl:top-[8%] 2xl:w-[330px]"
-            animate={{
-              y: [0, -12, 0],
-              rotate: [0, -2, 0],
-            }}
-            transition={{
-              duration: 4.2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            style={{
-              filter:
-                "drop-shadow(0 18px 30px rgba(0,0,0,0.28)) drop-shadow(0 10px 24px rgba(56,189,248,0.16))",
-            }}
-          />
+  src={airpodImg}
+  alt=""
+  aria-hidden="true"
+  className="pointer-events-none absolute right-[10%] top-[18%] z-[15] w-[170px] object-contain sm:right-[11%] sm:top-[20%] sm:w-[210px] md:right-[12%] md:top-[21%] md:w-[250px] lg:left-[57%] lg:right-auto lg:top-[18%] lg:w-[145px] xl:left-[58%] xl:top-[17%] xl:w-[165px] 2xl:left-[58.5%] 2xl:top-[16%] 2xl:w-[180px]"
+  animate={{
+    y: [0, -12, 0],
+    rotate: [0, -2, 0],
+  }}
+  transition={{
+    duration: 4.2,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+  style={{
+    filter:
+      "drop-shadow(0 18px 30px rgba(0,0,0,0.28)) drop-shadow(0 10px 24px rgba(56,189,248,0.16))",
+  }}
+/>
 
        <motion.div
   aria-hidden="true"
