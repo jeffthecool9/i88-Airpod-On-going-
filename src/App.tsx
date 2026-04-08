@@ -1347,6 +1347,7 @@ export default function App() {
     />
   </svg>
 </div>
+  </div>
         </section>
 
         <section
