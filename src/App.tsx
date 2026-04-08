@@ -155,69 +155,7 @@ const SectionSeam = ({
     </svg>
   </div>
 );
-const SectionSeam = ({
-  className = "",
-  fillColor = "#020f6a",
-  shape = "dip",
-}: {
-  className?: string;
-  fillColor?: string;
-  shape?: "dome" | "dip";
-}) => (
-  <div
-    className={`absolute left-0 w-full overflow-hidden leading-[0] z-20 pointer-events-none ${className}`}
-  >
-    {/* Adds a block to kill top-gaps specifically when using the dip shape */}
-    {shape === "dip" && (
-      <div 
-        className="absolute inset-x-0 top-[-4px] h-[10px]" 
-        style={{ backgroundColor: fillColor }}
-      />
-    )}
 
-    <svg
-      viewBox="0 0 1200 120"
-      preserveAspectRatio="none"
-      className="relative block w-full h-[76px] sm:h-[120px]"
-    >
-      {shape === "dome" ? (
-        <>
-          <path
-            d="M0,120 L0,100 C480,0 720,0 1200,100 L1200,120 Z"
-            fill={fillColor}
-          />
-          <path
-            d="M0,100 C480,0 720,0 1200,100"
-            fill="none"
-            stroke="url(#line-glow)"
-            strokeWidth="3"
-          />
-        </>
-      ) : (
-        <>
-          {/* UPDATED: Fills the INSIDE of the dip/bowl and uses smoother curve points */}
-          <path
-            d="M0,0 C350,120 850,120 1200,0 L0,0 Z"
-            fill={fillColor}
-          />
-          <path
-            d="M0,0 C350,120 850,120 1200,0"
-            fill="none"
-            stroke="url(#line-glow)"
-            strokeWidth="3"
-          />
-        </>
-      )}
-      <defs>
-        <linearGradient id="line-glow" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#22d3ee" stopOpacity="0" />
-          <stop offset="50%" stopColor="#22d3ee" stopOpacity="1" />
-          <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
-        </linearGradient>
-      </defs>
-    </svg>
-  </div>
-);
 const RegistrationForm = () => {
   const [step, setStep] = useState(1);
   const [isSuccess, setIsSuccess] = useState(false);
