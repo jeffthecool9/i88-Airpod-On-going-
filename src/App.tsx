@@ -165,7 +165,7 @@ const HeroFullWidthDivider = ({
   <div
     className={`absolute bottom-0 left-0 right-0 z-20 pointer-events-none overflow-hidden leading-none ${className}`}
   >
-    {/* Corrected edge fill: dynamically matches fillColor and shifted down to prevent top-overlap */}
+    {/* edge fill shifted to kill side gaps without top-overlap */}
     <div 
       className="absolute inset-x-0 bottom-[-4px] h-[10px]" 
       style={{ backgroundColor: fillColor }}
@@ -176,12 +176,13 @@ const HeroFullWidthDivider = ({
       preserveAspectRatio="none"
       className="relative block h-[58px] w-full sm:h-[68px]"
     >
+      {/* Changed path: Perfectly balanced cubic bezier for a smooth half-circle dip */}
       <path
-        d="M0,0 C200,28 390,64 600,74 C810,64 1000,28 1200,0 L1200,120 L0,120 Z"
+        d="M0,0 C400,100 800,100 1200,0 L1200,120 L0,120 Z"
         fill={fillColor}
       />
       <path
-        d="M0,0 C200,28 390,64 600,74 C810,64 1000,28 1200,0"
+        d="M0,0 C400,100 800,100 1200,0"
         fill="none"
         stroke="url(#hero-divider-glow)"
         strokeWidth="3"
@@ -198,7 +199,6 @@ const HeroFullWidthDivider = ({
     </svg>
   </div>
 );
-
 const RegistrationForm = () => {
   const [step, setStep] = useState(1);
   const [isSuccess, setIsSuccess] = useState(false);
