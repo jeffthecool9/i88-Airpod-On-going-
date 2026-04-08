@@ -130,32 +130,34 @@ const SectionSeam = ({
 </>
       ) : (
         <>
-          <path
-            d="M0,0 C220,42 420,66 600,66 C780,66 980,42 1200,0 L1200,120 L0,120 Z"
-            fill={fillColor}
-          />
-          <path
-            d="M0,0 C220,42 420,66 600,66 C780,66 980,42 1200,0"
-            fill="none"
-            stroke="url(#line-glow)"
-            strokeWidth="2"
-          />
+         <path
+  d="M0,0 C180,18 360,42 600,48 C840,42 1020,18 1200,0 L1200,120 L0,120 Z"
+  fill={fillColor}
+/>
+<path
+  d="M0,0 C180,18 360,42 600,48 C840,42 1020,18 1200,0"
+  fill="none"
+  stroke="url(#hero-divider-glow)"
+  strokeWidth="2.6"
+/>
         </>
       )}
 
       <defs>
-        <linearGradient id="line-glow" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#22d3ee" stopOpacity="0" />
-          <stop offset="50%" stopColor="#22d3ee" stopOpacity="0.95" />
-          <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
-        </linearGradient>
+       <linearGradient id="hero-divider-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+  <stop offset="0%" stopColor="#22d3ee" stopOpacity="0" />
+  <stop offset="18%" stopColor="#3bdcff" stopOpacity="0.45" />
+  <stop offset="50%" stopColor="#46e3ff" stopOpacity="0.78" />
+  <stop offset="82%" stopColor="#3bdcff" stopOpacity="0.45" />
+  <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
+</linearGradient>
       </defs>
     </svg>
   </div>
 );
 const HeroFullWidthDivider = ({
   className = "",
-  fillColor = "#1E4FA3",
+ fillColor = "#1E4FA3",
 }: {
   className?: string;
   fillColor?: string;
@@ -164,7 +166,7 @@ const HeroFullWidthDivider = ({
     className={`absolute bottom-0 left-0 right-0 z-20 pointer-events-none overflow-hidden leading-none ${className}`}
   >
     {/* edge fill to kill side gaps */}
-    <div className="absolute inset-x-0 bottom-0 h-[72px] bg-[#1E4FA3]" />
+   <div className="absolute inset-x-0 bottom-0 h-[72px] bg-[#2957B0]" />
 
     <svg
       viewBox="0 0 1200 120"
