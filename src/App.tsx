@@ -953,10 +953,10 @@ export default function App() {
     <RealisticBackground liteMode={liteMode} />
 
     <img
-      src={i882Img}
-      alt="i88"
-      className="pointer-events-none absolute left-1/2 top-[6px] z-[30] w-[64px] -translate-x-1/2 object-contain sm:w-[72px]"
-    />
+  src={i882Img}
+  alt="i88"
+  className="pointer-events-none absolute left-1/2 top-[8px] z-[30] w-[120px] -translate-x-1/2 scale-[1.55] object-contain sm:w-[140px] sm:scale-[1.45]"
+/>
 
     <img
       src={rewardEventImg}
@@ -1330,11 +1330,12 @@ export default function App() {
 
 <div className="relative z-10 mx-auto w-full max-w-6xl" />
 
-          <SectionSeam
-            className="bottom-[-1px]"
-            fillColor="#1E4FA3"
-            shape="dip"
-          />
+         <SectionSeam
+              className="bottom-0"
+              fillColor="#1E4FA3"
+              shape="dip"
+            />
+        </div>
         </section>
 
 
