@@ -9,6 +9,7 @@ import playImg from "./assets/play.png";
 import colaImg from "./assets/cola2.png";
 import rewardEventImg from "./assets/reward-event.png";
 import heroTextBoxImg from "./assets/hero-textbox.png";
+import HeroRewardTracker from "./HeroRewardTracker";
 import cola1Img from "./assets/cola1.png";
 import heroTopTextImg from "./assets/text-2.png";
 import heroFinalTextImg from "./assets/text.png";
@@ -53,51 +54,130 @@ const HeroWord = ({
   </span>
 );
 
+const GoldConfetti = ({ liteMode = false }: { liteMode?: boolean }) => {
+  const pieces = React.useMemo(
+    () =>
+      Array.from({ length: liteMode ? 8 : 26 }, (_, i) => {
+        const width = 8 + (i % 4) * 4;
+        const height = 2 + (i % 3);
+        const left = 3 + ((i * 3.9) % 94);
+        const delay = (i % 9) * 0.35;
+        const duration = 7 + (i % 5) * 0.9;
+        const drift = ((i % 7) - 3) * 18;
+        const rotateEnd = (i % 2 === 0 ? 1 : -1) * (150 + i * 8);
+        const scale = 0.82 + (i % 4) * 0.08;
+        const opacity = 0.72 + (i % 3) * 0.08;
+
+        const bgList = [
+          "linear-gradient(135deg, #F8E27A 0%, #FFD84D 35%, #D4A72C 100%)",
+          "linear-gradient(135deg, #E7C35A 0%, #C9961A 40%, #8C6110 100%)",
+          "linear-gradient(135deg, #F2D98C 0%, #E1B94B 45%, #A36E1A 100%)",
+        ];
+
+        return {
+          id: i,
+          width,
+          height,
+          left,
+          delay,
+          duration,
+          drift,
+          rotateEnd,
+          scale,
+          opacity,
+          bg: bgList[i % bgList.length],
+        };
+      }),
+    []
+  );
+
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-[5]">
+      {pieces.map((piece) => (
+        <motion.div
+          key={piece.id}
+          className="absolute top-0"
+          style={{
+            left: `${piece.left}%`,
+            width: `${piece.width}px`,
+            height: `${piece.height}px`,
+            borderRadius: `${piece.height}px`,
+            background: piece.bg,
+            boxShadow:
+              "inset 0 1px 0 rgba(255,255,255,0.35), 0 2px 8px rgba(0,0,0,0.16)",
+            willChange: "transform, opacity",
+          }}
+          initial={{
+            y: -24,
+            x: 0,
+            opacity: 0,
+            rotate: 0,
+            scale: piece.scale,
+          }}
+          animate={{
+            y: ["0vh", "28vh", "62vh", "108vh"],
+            x: [0, piece.drift * 0.4, piece.drift, piece.drift * 0.2],
+            rotate: [0, piece.rotateEnd * 0.45, piece.rotateEnd],
+            opacity: [0, piece.opacity, piece.opacity, 0],
+          }}
+          transition={{
+            duration: liteMode ? piece.duration * 1.6 : piece.duration,
+            delay: piece.delay,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
 const RealisticBackground = ({ liteMode = false }: { liteMode?: boolean }) => (
-  <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
-    <div className="absolute inset-0 bg-[#0a1580]" />
+ <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
+  <div className="absolute inset-0 bg-[#0a1580]" />
 
-    {liteMode ? (
-      <>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_38%,rgba(255,255,255,0.16)_0%,rgba(125,211,252,0.14)_18%,rgba(59,130,246,0.10)_32%,transparent_58%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(255,255,255,0.08),transparent_30%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),transparent_24%,transparent_72%,rgba(0,0,0,0.06))]" />
-      </>
-    ) : (
-      <>
-        <div className="absolute left-1/2 top-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2">
-          {[...Array(8)].map((_, i) => (
-            <motion.div
-              key={`ray-${i}`}
-              animate={{
-                opacity: [0.15, 0.3, 0.15],
-                rotate: [i * 45, i * 45 + 10, i * 45],
-              }}
-              transition={{
-                duration: 8 + i,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="absolute inset-0 origin-center"
-              style={{
-                background: `conic-gradient(from ${i * 45}deg at 50% 50%, transparent 0%, rgba(34,211,238,0.2) 5%, transparent 15%)`,
-                filter: "blur(15px)",
-              }}
-            />
-          ))}
+  {liteMode ? (
+    <>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_38%,rgba(255,255,255,0.16)_0%,rgba(125,211,252,0.14)_18%,rgba(59,130,246,0.10)_32%,transparent_58%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(255,255,255,0.08),transparent_30%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),transparent_24%,transparent_72%,rgba(0,0,0,0.06))]" />
+    </>
+  ) : (
+    <>
+      <div className="absolute left-1/2 top-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2">
+        {[...Array(8)].map((_, i) => (
           <motion.div
-            animate={{ scale: [1, 1.1, 1], opacity: [0.7, 1, 0.7] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.8)_0%,rgba(125,211,252,0.4)_20%,rgba(143,177,233,0)_60%)] blur-[40px]"
+            key={`ray-${i}`}
+            animate={{
+              opacity: [0.15, 0.3, 0.15],
+              rotate: [i * 45, i * 45 + 10, i * 45],
+            }}
+            transition={{
+              duration: 8 + i,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="absolute inset-0 origin-center"
+            style={{
+              background: `conic-gradient(from ${i * 45}deg at 50% 50%, transparent 0%, rgba(34,211,238,0.2) 5%, transparent 15%)`,
+              filter: "blur(15px)",
+            }}
           />
-        </div>
+        ))}
+        <motion.div
+          animate={{ scale: [1, 1.1, 1], opacity: [0.7, 1, 0.7] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.8)_0%,rgba(125,211,252,0.4)_20%,rgba(143,177,233,0)_60%)] blur-[40px]"
+        />
+      </div>
 
-        <div className="absolute inset-0 opacity-15 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
-      </>
-    )}
-  </div>
-);
+      <div className="absolute inset-0 opacity-15 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/white-diamond.png')]" />
+    </>
+  )}
+</div>
+  );
 
+// *** REDESIGNED TOP-TIER SEAM: Mathematically Smooth + Layered Optical Glow ***
 const SectionSeam = ({
   className = "",
   fillColor = "#020f6a",
@@ -108,61 +188,68 @@ const SectionSeam = ({
   shape?: "dome" | "dip";
 }) => (
   <div
-    className={`absolute inset-x-0 overflow-hidden pointer-events-none z-20 leading-none ${className}`}
+    className={`absolute left-0 w-full overflow-hidden leading-[0] z-20 pointer-events-none ${className}`}
   >
+    {/* Anti-alias hack: Fills a small bar just above the curve to kill subpixel gaps */}
+    {shape === "dip" && (
+      <div 
+        className="absolute inset-x-0 top-[-4px] h-[10px]" 
+        style={{ backgroundColor: fillColor }}
+      />
+    )}
+
     <svg
       viewBox="0 0 1200 120"
       preserveAspectRatio="none"
-      // Slightly increased height to give the elegant curve room to breathe
-      className="block w-full h-[64px] sm:h-[80px] md:h-[96px]"
+      // Height increased for better curve flow at higher resolutions
+      className="relative block w-full h-[64px] sm:h-[80px] md:h-[96px]"
     >
       {shape === "dome" ? (
         <>
-          {/* Top-Tier Smooth Dome (Curves Up) */}
+          {/* Fills the INSIDE of the dome (half-circle pointing UP) */}
           <path
-            d="M0,120 C300,120 350,20 600,20 C850,20 900,120 1200,120 Z"
+            d="M0,120 L0,100 C480,0 720,0 1200,100 L1200,120 Z"
             fill={fillColor}
           />
           <path
-            d="M0,120 C300,120 350,20 600,20 C850,20 900,120 1200,120"
+            d="M0,100 C480,0 720,0 1200,100"
             fill="none"
-            stroke="url(#hero-divider-glow)"
-            strokeWidth="2.5"
+            stroke="url(#line-glow)"
+            strokeWidth="3"
           />
         </>
       ) : (
         <>
-          {/* Top-Tier Smooth Dip (Curves Down) - Fixes the sharp corners */}
+          {/* UPDATED: Flawless, smooth curve (Cosine Bell shaped function). Fills the INSIDE bowl shape. */}
           <path
             d="M0,0 C300,0 350,110 600,110 C850,110 900,0 1200,0 L1200,120 L0,120 Z"
             fill={fillColor}
           />
           
-          {/* Ambient Glow Layer (Creates the premium neon/LED effect) */}
+          {/* Layer 1: Ambient LED Glow (Blurred) */}
           <path
             d="M0,0 C300,0 350,110 600,110 C850,110 900,0 1200,0"
             fill="none"
-            stroke="url(#hero-divider-glow)"
+            stroke="url(#line-glow)"
             strokeWidth="8"
             className="opacity-40 blur-[4px]"
           />
           
-          {/* Crisp Inner Stroke */}
+          {/* Layer 2: Crisp Inner Light Line */}
           <path
             d="M0,0 C300,0 350,110 600,110 C850,110 900,0 1200,0"
             fill="none"
-            stroke="url(#hero-divider-glow)"
+            stroke="url(#line-glow)"
             strokeWidth="2.5"
           />
         </>
       )}
-
       <defs>
-        {/* Refined gradient for a more natural light falloff */}
-        <linearGradient id="hero-divider-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+        {/* Refined gradient: Hot central white hotspot with cyan falloff */}
+        <linearGradient id="line-glow" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="#22d3ee" stopOpacity="0" />
           <stop offset="15%" stopColor="#3bdcff" stopOpacity="0.5" />
-          <stop offset="50%" stopColor="#ffffff" stopOpacity="0.9" />
+          <stop offset="50%" stopColor="#ffffff" stopOpacity="0.9" /> {/* Hot white center hotspot */}
           <stop offset="85%" stopColor="#3bdcff" stopOpacity="0.5" />
           <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
         </linearGradient>
@@ -236,6 +323,9 @@ const RegistrationForm = () => {
         if (prev <= 1) {
           clearInterval(countdownTimer);
           clearInterval(progressTimer);
+
+          // window.location.href = "https://i88.com"; // Future redirect logic
+
           return 0;
         }
         return prev - 1;
@@ -254,10 +344,10 @@ const RegistrationForm = () => {
       className="relative z-10 overflow-hidden px-6 py-24 sm:py-32 bg-[radial-gradient(circle_at_12%_18%,rgba(34,211,238,0.16),transparent_24%),radial-gradient(circle_at_85%_22%,rgba(59,130,246,0.20),transparent_28%),radial-gradient(circle_at_50%_85%,rgba(56,189,248,0.08),transparent_30%),linear-gradient(180deg,#0B49B8_0%,#0A3D9D_35%,#082B78_72%,#03143E_100%)]"
     >
       <img
-  src={i882Img}
-  alt="i88"
-  className="pointer-events-none absolute left-1/2 top-[4px] z-[30] w-[128px] -translate-x-1/2 object-contain sm:w-[144px]"
-/>
+        src={i882Img}
+        alt="i88"
+        className="pointer-events-none absolute left-1/2 top-0 z-[9] w-[90px] -translate-x-1/2 -translate-y-2 object-contain opacity-95 sm:w-[110px] sm:-translate-y-3 md:w-[125px] md:-translate-y-4"
+      />
 
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-[4%] top-[10%] h-[260px] w-[260px] rounded-full bg-cyan-300/12 blur-[120px]" />
@@ -374,6 +464,7 @@ const RegistrationForm = () => {
                       </div>
                     </div>
                   </div>
+
                 </motion.div>
               ) : step === 1 ? (
                 <motion.div
@@ -490,7 +581,7 @@ const RegistrationForm = () => {
                       <UserPlus className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white" />
                       <input
                         type="text"
-                        placeholder="Alvin Tan"
+                        placeholder="John Doe"
                         className="w-full rounded-2xl border border-white/18 bg-[linear-gradient(180deg,rgba(233,233,242,0.26),rgba(233,233,242,0.18))] py-4 pl-12 pr-4 text-sm leading-none text-white placeholder:text-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-white/18"
                         value={formData.fullName}
                         onChange={(e) =>
@@ -619,9 +710,9 @@ const RegistrationForm = () => {
 };
 
 const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
-  const [showAtRegistration, setShowAtRegistration] = useState(false);
   const [showFromSteps, setShowFromSteps] = useState(false);
-  const [hideBubbleAtRegistration, setHideBubbleAtRegistration] = useState(false);
+  const [hideBubbleAtRegistration, setHideBubbleAtRegistration] =
+    useState(false);
   const [isUserActive, setIsUserActive] = useState(true);
 
   useEffect(() => {
@@ -632,22 +723,22 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
 
     const stepsObserver = new IntersectionObserver(
       ([entry]) => {
-        setShowFromSteps(entry.isIntersecting && entry.intersectionRatio > 0.28);
+        setShowFromSteps(entry.isIntersecting && entry.intersectionRatio > 0.18);
       },
       {
-        threshold: [0, 0.15, 0.28, 0.4, 0.6],
-        rootMargin: "0px 0px -18% 0px",
+        threshold: [0, 0.12, 0.18, 0.3, 0.5],
+        rootMargin: "0px 0px -6% 0px",
       }
     );
 
     const registrationObserver = new IntersectionObserver(
       ([entry]) => {
-        const active = entry.isIntersecting && entry.intersectionRatio > 0.12;
-        setShowAtRegistration(active);
-        setHideBubbleAtRegistration(active);
+        setHideBubbleAtRegistration(
+          entry.isIntersecting && entry.intersectionRatio > 0.15
+        );
       },
       {
-        threshold: [0, 0.08, 0.12, 0.2, 0.35],
+        threshold: [0, 0.08, 0.15, 0.25, 0.4],
         rootMargin: "0px 0px -10% 0px",
       }
     );
@@ -667,7 +758,7 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
     const resetTimer = () => {
       setIsUserActive(true);
       clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => setIsUserActive(false), liteMode ? 6000 : 10000);
+     timeoutId = setTimeout(() => setIsUserActive(false), liteMode ? 6000 : 10000);
     };
 
     window.addEventListener("mousemove", resetTimer);
@@ -686,37 +777,33 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
       window.removeEventListener("touchstart", resetTimer);
       window.removeEventListener("click", resetTimer);
     };
-  }, [liteMode]);
+  }, []);
 
   const handleInteract = () => {
-    const el = document.getElementById("registration-form");
-    if (!el) return;
-
-    requestAnimationFrame(() => {
-      el.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    });
+    document
+      .getElementById("registration-form")
+      ?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const shouldShowGirl = showFromSteps || showAtRegistration;
-  const shouldShowBubble = showFromSteps && !hideBubbleAtRegistration && isUserActive;
+  const shouldShowGirl = showFromSteps;
+  const shouldShowBubble =
+    showFromSteps && !hideBubbleAtRegistration && isUserActive;
 
   return (
     <motion.div
       aria-hidden="true"
       className="pointer-events-none fixed bottom-[-10px] right-[-40px] z-[25] select-none"
-      initial={{ opacity: 0, y: 18, scale: 0.98 }}
+      initial={{ opacity: 0, y: 30, scale: 0.96 }}
       animate={{
         opacity: shouldShowGirl ? 1 : 0,
-        y: shouldShowGirl ? 0 : 18,
-        scale: shouldShowGirl ? 1 : 0.98,
+        y: shouldShowGirl ? 0 : 30,
+        scale: shouldShowGirl ? 1 : 0.96,
       }}
-      transition={{
-        duration: 0.32,
-        ease: [0.22, 1, 0.36, 1],
-      }}
+   transition={{
+  duration: liteMode ? 4.2 : 2.8,
+  repeat: Infinity,
+  ease: "easeInOut",
+}}
     >
       <AnimatePresence>
         {shouldShowBubble && (
@@ -751,27 +838,27 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
         className="pointer-events-auto relative cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
         onClick={handleInteract}
       >
-        <img
-          src={colaImg}
-          alt=""
-          aria-hidden="true"
-          className={`absolute inset-0 h-auto w-[280px] object-contain sm:w-[360px] md:w-[480px] lg:w-[560px] xl:w-[640px] ${
-            shouldShowGirl ? "opacity-[0.78]" : "opacity-0"
-          }`}
-          style={{
-            transition: "opacity 180ms linear",
-            filter: liteMode
-              ? "brightness(1.05) drop-shadow(0 0 8px rgba(56,189,248,0.35))"
-              : `
-                brightness(1.15)
-                drop-shadow(0 0 8px rgba(125,211,252,1))
-                drop-shadow(0 0 16px rgba(56,189,248,0.95))
-                drop-shadow(0 0 28px rgba(59,130,246,0.85))
-                drop-shadow(0 0 46px rgba(34,211,238,0.65))
-              `,
-          }}
-        />
-        <img
+   <motion.img
+  src={colaImg}
+  alt=""
+  aria-hidden="true"
+  className="absolute inset-0 h-auto w-[280px] object-contain sm:w-[360px] md:w-[480px] lg:w-[560px] xl:w-[640px]"
+  animate={{ opacity: shouldShowGirl ? 0.78 : 0 }}
+  transition={{ duration: 0.2, ease: "linear" }}
+  style={{
+    filter: liteMode
+      ? "brightness(1.05) drop-shadow(0 0 8px rgba(56,189,248,0.35))"
+      : `
+        brightness(1.15)
+        drop-shadow(0 0 8px rgba(125,211,252,1))
+        drop-shadow(0 0 16px rgba(56,189,248,0.95))
+        drop-shadow(0 0 28px rgba(59,130,246,0.85))
+        drop-shadow(0 0 46px rgba(34,211,238,0.65))
+      `,
+  }}
+/>
+
+                <img
           src={colaImg}
           alt=""
           className="relative h-auto w-[280px] object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.35)] sm:w-[360px] md:w-[480px] lg:w-[560px] xl:w-[640px]"
@@ -787,7 +874,9 @@ const HeroCTA = () => {
   const [showExitSweep, setShowExitSweep] = useState(false);
 
   const scrollToRegister = () => {
-    document.getElementById("registration-form")?.scrollIntoView({ behavior: "smooth" });
+    document
+      .getElementById("registration-form")
+      ?.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleEnter = () => {
@@ -806,128 +895,136 @@ const HeroCTA = () => {
   };
 
   return (
-    <motion.button
-      onClick={scrollToRegister}
-      onMouseEnter={handleEnter}
-      onMouseLeave={handleLeave}
-      onTouchStart={handleEnter}
-      onTouchEnd={handleLeave}
-      whileHover={{ scale: 1.03, y: -1 }}
-      whileTap={{ scale: 0.985 }}
-      className="group pointer-events-auto relative isolate overflow-hidden rounded-[22px] border border-[#ffe7a3]/45 bg-[linear-gradient(180deg,#FFE08A_0%,#F7C948_30%,#D89A18_72%,#B9780C_100%)] px-12 py-3 text-lg font-extrabold tracking-wide text-[#fff7d1] shadow-[0_22px_44px_rgba(0,0,0,0.32),inset_0_1px_0_rgba(255,255,255,0.46),inset_0_-10px_22px_rgba(120,70,0,0.24)] transition-all sm:px-14 sm:py-3.5 sm:text-[22px]"
-      style={{
-        textShadow: "0 1px 2px rgba(120,70,0,0.35)",
-      }}
-    >
-      <div className="pointer-events-none absolute inset-x-[4%] top-[3px] h-[42%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.38),rgba(255,255,255,0.08),transparent)] blur-[1px]" />
-      <div className="pointer-events-none absolute inset-[1px] rounded-[21px] border border-white/10" />
-      <div className="pointer-events-none absolute -left-5 top-1/2 h-14 w-14 -translate-y-1/2 rounded-full bg-[#ffd76a]/22 blur-[18px]" />
-      <div className="pointer-events-none absolute -right-5 top-1/2 h-14 w-14 -translate-y-1/2 rounded-full bg-[#ffcf53]/18 blur-[18px]" />
+    <div className="absolute bottom-14 left-1/2 z-[10] -translate-x-1/2 sm:bottom-12 md:bottom-14 lg:bottom-16">
+      <motion.button
+        onClick={scrollToRegister}
+        onMouseEnter={handleEnter}
+        onMouseLeave={handleLeave}
+        onTouchStart={handleEnter}
+        onTouchEnd={handleLeave}
+        whileHover={{ scale: 1.03, y: -1 }}
+        whileTap={{ scale: 0.985 }}
+        className="group pointer-events-auto relative isolate overflow-hidden rounded-[22px] border border-[#ffe7a3]/45 bg-[linear-gradient(180deg,#FFE08A_0%,#F7C948_30%,#D89A18_72%,#B9780C_100%)] px-12 py-3 text-lg font-extrabold tracking-wide text-[#fff7d1] shadow-[0_22px_44px_rgba(0,0,0,0.32),inset_0_1px_0_rgba(255,255,255,0.46),inset_0_-10px_22px_rgba(120,70,0,0.24)] transition-all sm:px-14 sm:py-3.5 sm:text-[22px]"
+        style={{
+          textShadow: "0 1px 2px rgba(120,70,0,0.35)",
+        }}
+      >
+        <div className="pointer-events-none absolute inset-x-[4%] top-[3px] h-[42%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.38),rgba(255,255,255,0.08),transparent)] blur-[1px]" />
+        <div className="pointer-events-none absolute inset-[1px] rounded-[21px] border border-white/10" />
+        <div className="pointer-events-none absolute -left-5 top-1/2 h-14 w-14 -translate-y-1/2 rounded-full bg-[#ffd76a]/22 blur-[18px]" />
+        <div className="pointer-events-none absolute -right-5 top-1/2 h-14 w-14 -translate-y-1/2 rounded-full bg-[#ffcf53]/18 blur-[18px]" />
 
-      <AnimatePresence>
-        {isActive && (
-          <motion.div
-            key="active-full-sweep"
-            aria-hidden="true"
-            initial={{ x: "-130%", opacity: 0 }}
-            animate={{ x: ["-130%", "180%"], opacity: [0, 0.95, 0.95, 0] }}
-            exit={{ opacity: 0 }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="pointer-events-none absolute inset-y-[-35%] left-[-45%] w-[60%] rotate-[16deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.08),rgba(255,255,255,0.30),rgba(255,255,255,0.78),rgba(255,255,255,0.30),rgba(255,255,255,0.08),transparent)] blur-[3px]"
-          />
-        )}
-      </AnimatePresence>
+        <AnimatePresence>
+          {isActive && (
+            <motion.div
+              key="active-full-sweep"
+              aria-hidden="true"
+              initial={{ x: "-130%", opacity: 0 }}
+              animate={{ x: ["-130%", "180%"], opacity: [0, 0.95, 0.95, 0] }}
+              exit={{ opacity: 0 }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="pointer-events-none absolute inset-y-[-35%] left-[-45%] w-[60%] rotate-[16deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.08),rgba(255,255,255,0.30),rgba(255,255,255,0.78),rgba(255,255,255,0.30),rgba(255,255,255,0.08),transparent)] blur-[3px]"
+            />
+          )}
+        </AnimatePresence>
 
-      <AnimatePresence mode="wait">
-        {!isActive && showExitSweep && (
-          <motion.div
-            key={`exit-full-sweep-${exitSweepKey}`}
-            aria-hidden="true"
-            initial={{ x: "-130%", opacity: 0 }}
-            animate={{ x: ["-130%", "180%"], opacity: [0, 0.95, 0.95, 0] }}
-            exit={{ opacity: 0 }}
-            transition={{
-              duration: 3,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="pointer-events-none absolute inset-y-[-35%] left-[-45%] w-[60%] rotate-[16deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.08),rgba(255,255,255,0.30),rgba(255,255,255,0.78),rgba(255,255,255,0.30),rgba(255,255,255,0.08),transparent)] blur-[3px]"
-          />
-        )}
-      </AnimatePresence>
+        <AnimatePresence mode="wait">
+          {!isActive && showExitSweep && (
+            <motion.div
+              key={`exit-full-sweep-${exitSweepKey}`}
+              aria-hidden="true"
+              initial={{ x: "-130%", opacity: 0 }}
+              animate={{ x: ["-130%", "180%"], opacity: [0, 0.95, 0.95, 0] }}
+              exit={{ opacity: 0 }}
+              transition={{
+                duration: 3,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="pointer-events-none absolute inset-y-[-35%] left-[-45%] w-[60%] rotate-[16deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.08),rgba(255,255,255,0.30),rgba(255,255,255,0.78),rgba(255,255,255,0.30),rgba(255,255,255,0.08),transparent)] blur-[3px]"
+            />
+          )}
+        </AnimatePresence>
 
-      <span className="relative z-10 flex items-center gap-2 whitespace-nowrap">
-        Join Now
-        <ChevronRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-      </span>
-    </motion.button>
+        <span className="relative z-10 flex items-center gap-2 whitespace-nowrap">
+          Join Now
+          <ChevronRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+        </span>
+      </motion.button>
+    </div>
   );
 };
 
 export default function App() {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [progressLevel, setProgressLevel] = useState(1);
-  const [liteMode, setLiteMode] = useState(false);
+const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+const [progressLevel, setProgressLevel] = useState(1);
+const [liteMode, setLiteMode] = useState(false);
+useEffect(() => {
+  setProgressLevel(1);
 
-  useEffect(() => {
-    setProgressLevel(1);
+  const timeouts = [
+    { level: 2, delay: 2000 },
+    { level: 3, delay: 2000 },
+  ];
 
-    const timers = [
-      setTimeout(() => setProgressLevel(2), 2000),
-      setTimeout(() => setProgressLevel(3), 4000),
-    ];
+  let totalDelay = 0;
 
-    return () => timers.forEach(clearTimeout);
-  }, []);
+  timeouts.forEach(({ level, delay }) => {
+    totalDelay += delay;
+    setTimeout(() => {
+      setProgressLevel(level);
+    }, totalDelay);
+  });
 
-  useEffect(() => {
-    const detectLiteMode = () => {
-      const nav = navigator as Navigator & {
-        deviceMemory?: number;
-        connection?: { saveData?: boolean; effectiveType?: string };
-      };
-
-      const isSmallScreen = window.innerWidth < 768;
-      const lowMemory =
-        typeof nav.deviceMemory === "number" && nav.deviceMemory <= 4;
-      const lowCPU =
-        typeof navigator.hardwareConcurrency === "number" &&
-        navigator.hardwareConcurrency <= 4;
-      const saveData = !!nav.connection?.saveData;
-      const slowNetwork =
-        nav.connection?.effectiveType === "2g" ||
-        nav.connection?.effectiveType === "slow-2g";
-
-      setLiteMode(isSmallScreen || lowMemory || lowCPU || saveData || slowNetwork);
+}, []);
+useEffect(() => {
+  const detectLiteMode = () => {
+    const nav = navigator as Navigator & {
+      deviceMemory?: number;
+      connection?: { saveData?: boolean; effectiveType?: string };
     };
 
-    detectLiteMode();
-    window.addEventListener("resize", detectLiteMode);
-    return () => window.removeEventListener("resize", detectLiteMode);
-  }, []);
+    const isSmallScreen = window.innerWidth < 768;
+    const lowMemory =
+      typeof nav.deviceMemory === "number" && nav.deviceMemory <= 4;
+    const lowCPU =
+      typeof navigator.hardwareConcurrency === "number" &&
+      navigator.hardwareConcurrency <= 4;
+    const saveData = !!nav.connection?.saveData;
+    const slowNetwork =
+      nav.connection?.effectiveType === "2g" ||
+      nav.connection?.effectiveType === "slow-2g";
 
-  useEffect(() => {
-    if (liteMode) return;
+    setLiteMode(isSmallScreen || lowMemory || lowCPU || saveData || slowNetwork);
+  };
 
-    let rafId = 0;
+  detectLiteMode();
+  window.addEventListener("resize", detectLiteMode);
+  return () => window.removeEventListener("resize", detectLiteMode);
+}, []);
+  
+ useEffect(() => {
+  if (liteMode) return;
 
-    const handleMouseMove = (e: MouseEvent) => {
-      cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => {
-        setMousePos({ x: e.clientX, y: e.clientY });
-      });
-    };
+  let rafId = 0;
 
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+  const handleMouseMove = (e: MouseEvent) => {
+    cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(() => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    });
+  };
 
-    return () => {
-      cancelAnimationFrame(rafId);
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, [liteMode]);
+  window.addEventListener("mousemove", handleMouseMove, { passive: true });
+
+  return () => {
+    cancelAnimationFrame(rafId);
+    window.removeEventListener("mousemove", handleMouseMove);
+  };
+}, [liteMode]);
 
   const stepData = [
     { title: "Register", desc: "Create account", image: registerImg },
@@ -940,178 +1037,213 @@ export default function App() {
   ];
 
   const trackerItems = [
-    { title: "REGISTER", sub: "With Us", type: "text" as const },
-    { title: "188 FS", sub: "Deposit & Get FS", type: "text" as const },
-    { title: "MORE REWARD AWAITS", sub: "", type: "text" as const },
-    { title: "", sub: "", type: "airpod" as const },
-  ];
-
-  const heroProgressWidth =
-    progressLevel <= 1 ? "22%" : progressLevel === 2 ? "56%" : "84%";
+  { title: "REGISTER", sub: "With Us", type: "text" as const },
+  { title: "188 FS", sub: "Deposit & Get FS", type: "text" as const },
+  { title: "MORE REWARD AWAITS", type: "text" as const },
+  { title: "", sub: "", type: "airpod" as const },
+];
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-brand-navy/70 font-sans text-slate-200 selection:bg-blue-500/30">
-      {!liteMode && (
-        <div
-          className="pointer-events-none fixed inset-0 z-30 opacity-40 transition-opacity duration-300"
-          style={{
-            background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(59, 130, 246, 0.08), transparent 80%)`,
-          }}
-        />
-      )}
+    {!liteMode && (
+  <div
+    className="pointer-events-none fixed inset-0 z-30 opacity-40 transition-opacity duration-300"
+    style={{
+      background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(59, 130, 246, 0.08), transparent 80%)`,
+    }}
+  />
+)}
 
-      {!liteMode && (
-        <div className="pointer-events-none fixed inset-0 z-[100] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-      )}
+{!liteMode && (
+  <div className="pointer-events-none fixed inset-0 z-[100] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+)}
 
       <main className="relative z-10">
-      <section className="relative overflow-hidden bg-[#0a1580]">
-  <div className="relative mx-auto w-full max-w-[420px] min-h-[840px] overflow-hidden">
-    <RealisticBackground liteMode={liteMode} />
+        <section className="relative flex min-h-[124vh] items-center overflow-hidden bg-[#0a1580] sm:min-h-[128vh] md:min-h-[132vh] lg:min-h-[150vh] xl:min-h-[152vh] 2xl:min-h-[156vh]">
+         <RealisticBackground liteMode={liteMode} />
+        <GoldConfetti liteMode={liteMode} />
 
- <img
-  src={i882Img}
-  alt="i88"
-  className="pointer-events-none absolute left-1/2 top-[1.2%] z-[24] w-[74px] -translate-x-1/2 object-contain sm:w-[82px]"
+          <img
+            src={i882Img}
+            alt="i88"
+            className="pointer-events-none absolute left-1/2 top-0 z-[9] w-[120px] -translate-x-1/2 -translate-y-2 object-contain sm:w-[140px] sm:-translate-y-3 md:w-[160px] md:-translate-y-4"
+          />
+<img
+  src={rewardEventImg}
+  alt="AirPods Pro Reward Event"
+  className="
+    pointer-events-none absolute left-1/2 -translate-x-1/2 object-contain z-[10]
+
+    top-[140px] w-[320px]        /* MOBILE: bigger + lower */
+    sm:top-[150px] sm:w-[360px]
+
+    md:top-[72px] md:w-[340px]   /* keep tablet normal */
+    lg:top-[54px] lg:w-[430px]   /* keep desktop unchanged */
+    xl:top-[56px] xl:w-[500px]
+  "
 />
-    <img
-      src={rewardEventImg}
-      alt="AirPods Pro Reward Event"
-      className="pointer-events-none absolute left-1/2 top-[7.8%] z-[18] w-[78%] max-w-[320px] -translate-x-1/2 object-contain"
-    />
-
-            <img
-              src={cola1Img}
-              alt=""
-              aria-hidden="true"
-              className="pointer-events-none absolute left-1/2 top-[11.5%] z-[8] w-[84%] max-w-[355px] -translate-x-1/2 object-contain"
-              style={{
-                filter:
-                  "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
-              }}
-            />
-
-            <motion.img
-              src={airpodImg}
-              alt=""
-              aria-hidden="true"
-              className="pointer-events-none absolute right-[8%] top-[18.5%] z-[9] w-[30%] max-w-[132px] object-contain"
-              animate={{
-                y: [0, -12, 0],
-                rotate: [0, -2, 0],
-              }}
-              transition={{
-                duration: 4.2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              style={{
-                filter:
-                  "drop-shadow(0 18px 30px rgba(0,0,0,0.28)) drop-shadow(0 10px 24px rgba(56,189,248,0.16))",
-              }}
-            />
-
-         <div className="pointer-events-none absolute left-1/2 top-[40.5%] z-[9] w-[84%] max-w-[360px] -translate-x-1/2">
+          
+         <img
+  src={cola1Img}
+  alt=""
+  aria-hidden="true"
+ className="pointer-events-none absolute left-[-12%] top-[24%] z-[8] w-[1100px] object-contain sm:left-[-10%] sm:top-[24%] sm:w-[1200px] md:left-[-8%] md:top-[25%] md:w-[1300px] lg:left-1/2 lg:top-[13%] lg:w-[620px] lg:-translate-x-1/2 xl:top-[11%] xl:w-[700px] 2xl:top-[10%] 2xl:w-[760px]"
+  style={{
+    filter:
+      "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
+  }}
+/>
+<div className="pointer-events-none absolute left-1/2 top-[48.5%] z-[9] w-[84%] max-w-[590px] -translate-x-1/2 sm:top-[49.5%] sm:w-[80%] sm:max-w-[640px] md:top-[50.5%] md:w-[76%] md:max-w-[690px] lg:top-[45.5%] lg:w-[46%] lg:max-w-[790px] xl:top-[44.5%] xl:w-[43%] xl:max-w-[850px] 2xl:top-[43.5%] 2xl:w-[41%] 2xl:max-w-[900px]">
   <img
     src={heroTextBoxImg}
     alt=""
     className="w-full object-contain"
   />
 
-  <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
-    <img
-      src={heroTopTextImg}
-      alt="Your AirPods Awaits"
-      className="relative z-10 w-[80%] max-w-[280px] object-contain opacity-90"
-    />
+<div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center sm:px-6 md:px-8">
+  <img
+    src={heroTopTextImg}
+    alt="Your AirPods Awaits"
+    className="relative z-10 w-[90%] max-w-[400px] object-contain sm:max-w-[430px] md:max-w-[480px] lg:max-w-[540px]"
+  />
 
-    <img
-      src={heroFinalTextImg}
-      alt="Complete the final 1%"
-      className="relative z-10 mt-[2px] w-[92%] max-w-[320px] object-contain"
-    />
-  </div>
+  <img
+    src={heroFinalTextImg}
+    alt="Complete the final 1%"
+    className="relative z-10 -mt-6 w-[92%] max-w-[410px] object-contain sm:max-w-[445px] md:max-w-[495px] lg:max-w-[555px]"
+  />
+ </div>
 </div>
+          
+          <motion.img
+            src={airpodImg}
+            alt=""
+            aria-hidden="true"
+          className="pointer-events-none absolute right-[10%] top-[20%] z-[9] w-[170px] object-contain sm:right-[11%] sm:top-[22%] sm:w-[210px] md:right-[12%] md:top-[23%] md:w-[250px] lg:right-[9%] lg:top-[13%] lg:w-[260px] xl:right-[8%] xl:top-[11%] xl:w-[300px] 2xl:right-[7%] 2xl:top-[10%] 2xl:w-[330px]"
+            animate={{
+              y: [0, -12, 0],
+              rotate: [0, -2, 0],
+            }}
+            transition={{
+              duration: 4.2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            style={{
+              filter:
+                "drop-shadow(0 18px 30px rgba(0,0,0,0.28)) drop-shadow(0 10px 24px rgba(56,189,248,0.16))",
+            }}
+          />
 
-<div className="pointer-events-none absolute left-1/2 top-[53.8%] z-[12] w-[88%] max-w-[372px] -translate-x-1/2">
-              <div className="grid grid-cols-4 items-end gap-2">
+       <motion.div
+  aria-hidden="true"
+ className="pointer-events-none absolute left-1/2 top-[62%] z-[12] -translate-x-1/2 lg:top-[49%] xl:top-[48%] 2xl:top-[47%]"
+  animate={{
+    y: [0, 5, 0],
+    opacity: [0.16, 0.3, 0.16],
+  }}
+  transition={{
+    duration: 2.4,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+>
+  <ChevronDown
+    className="h-5 w-5 sm:h-6 sm:w-6"
+  style={{
+  color: "rgba(255,215,106,0.5)",
+  filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.22))",
+}}
+  />
+</motion.div>
+          
+          <div className="pointer-events-none absolute left-1/2 bottom-[285px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[300px] sm:px-6 md:bottom-[320px] lg:bottom-[185px] lg:max-w-[1280px] lg:px-10 xl:bottom-[170px] xl:max-w-[1380px] 2xl:bottom-[155px] 2xl:max-w-[1480px]">
+            <div className="mx-auto max-w-5xl">
+             <div className="mb-6 grid grid-cols-4 items-end gap-3 sm:gap-4 lg:gap-6 xl:gap-8 2xl:gap-10">
                 {trackerItems.map((item, i) => {
                   const stageNumber = i + 1;
                   const isReached = progressLevel >= stageNumber;
                   const isCurrent = progressLevel === stageNumber;
 
-                  if (item.type === "airpod") {
-                    const isUnlockedStage = progressLevel >= 3;
+            
 
-                    return (
-                      <motion.div
-                        key={i}
-                        className="relative flex min-w-0 flex-col items-center justify-end"
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                      >
-                        <div className="relative flex h-[62px] w-full items-end justify-center">
-                          <motion.div
-                            className="absolute inset-0 flex items-end justify-center"
-                            animate={
-                              isUnlockedStage
-                                ? {
-                                    y: [0, -4, 0],
-                                    scale: [1, 1.02, 1],
-                                  }
-                                : {}
-                            }
-                            transition={{
-                              duration: 2.6,
-                              repeat: Infinity,
-                              ease: "easeInOut",
-                            }}
-                          >
-                            <img
-                              src={airpodImg}
-                              alt="AirPods reward"
-                              className="relative z-10 w-[52px] object-contain opacity-70"
-                              style={{
-                                filter:
-                                  "grayscale(1) drop-shadow(0 12px 24px rgba(0,0,0,0.28))",
-                              }}
-                            />
-                          </motion.div>
+if (item.type === "airpod") {
+  const isUnlockedStage = progressLevel >= 3;
 
-                          <div className="pointer-events-none absolute right-[8%] top-[0px] z-20 flex h-7 w-7 items-center justify-center rounded-full border border-[#FFE08A]/30 bg-[linear-gradient(180deg,rgba(17,24,39,0.95)_0%,rgba(10,15,28,0.95)_100%)] shadow-[0_10px_20px_rgba(0,0,0,0.35)]">
-                            <Lock className="h-3.5 w-3.5 text-[#FFD76A]" />
-                          </div>
-                        </div>
+  return (
+    <motion.div
+      key={i}
+      className="relative flex min-w-0 flex-col items-center justify-end"
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <div className="relative flex h-[82px] w-full items-end justify-center sm:h-[86px] md:h-[92px]">
+        <motion.div
+          className="absolute inset-0 flex items-end justify-center"
+          animate={
+            isUnlockedStage
+              ? {
+                  y: [0, -4, 0],
+                  scale: [1, 1.02, 1],
+                }
+              : {}
+          }
+          transition={{
+            duration: 2.6,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          <img
+            src={airpodImg}
+            alt="AirPods reward"
+            className="relative z-10 w-[72px] object-contain sm:w-[88px] md:w-[102px] lg:w-[112px]"
+            style={{
+              filter: isUnlockedStage
+                ? "grayscale(1) opacity(0.58) drop-shadow(0 12px 24px rgba(0,0,0,0.28))"
+                : "grayscale(1) opacity(0.58) drop-shadow(0 12px 24px rgba(0,0,0,0.28))",
+            }}
+          />
+        </motion.div>
 
-                        <motion.div
-                          initial={false}
-                          animate={{
-                            opacity: isUnlockedStage ? 1 : 1,
-                            y: 0,
-                          }}
-                          transition={{ duration: 0.35, ease: "easeOut" }}
-                          className="mt-1 min-h-[26px] text-center"
-                        >
-                          <p
-                            className="text-[9px] font-bold leading-tight text-[#FFD76A]"
-                            style={{
-                              textShadow: "0 2px 8px rgba(0,0,0,0.28)",
-                            }}
-                          >
-                            Deposit &amp; Play To
-                            <br />
-                            Unlock
-                          </p>
-                        </motion.div>
-                      </motion.div>
-                    );
-                  }
+        <div className="pointer-events-none absolute right-[14%] top-[4px] z-20 flex h-7 w-7 items-center justify-center rounded-full border border-[#FFE08A]/30 bg-[linear-gradient(180deg,rgba(17,24,39,0.95)_0%,rgba(10,15,28,0.95)_100%)] shadow-[0_10px_20px_rgba(0,0,0,0.35)] sm:right-[18%] md:right-[20%]">
+          <Lock className="h-3.5 w-3.5 text-[#FFD76A]" />
+        </div>
+      </div>
 
+      <motion.div
+        initial={false}
+        animate={{
+          opacity: isUnlockedStage ? 1 : 0,
+          y: isUnlockedStage ? 0 : 6,
+        }}
+        transition={{ duration: 0.35, ease: "easeOut" }}
+        className="mt-2 min-h-[20px] text-center"
+      >
+        <p
+          className="text-[10px] font-bold leading-tight text-[#FFD76A] sm:text-[11px] md:text-[12px]"
+          style={{
+            textShadow: "0 2px 8px rgba(0,0,0,0.28)",
+          }}
+        >
+          Deposit &amp; Play To Unlock
+        </p>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+const trackerFillWidth =
+  progressLevel <= 1
+    ? "25%"
+    : progressLevel === 2
+    ? "52%"
+    : "78%";
                   return (
                     <motion.div
                       key={i}
-                      className="relative min-w-0"
+                      className="min-w-0"
                       initial={false}
                       animate={
                         isReached
@@ -1134,13 +1266,13 @@ export default function App() {
                       }}
                     >
                       <div
-                        className={`relative rounded-[18px] p-[2px] ${
+                        className={`relative rounded-[22px] p-[2px] ${
                           isReached
                             ? "bg-[linear-gradient(135deg,#FFE8A3_0%,#F7C948_25%,#C88A14_60%,#FFE08A_100%)]"
                             : "bg-[linear-gradient(135deg,rgba(255,255,255,0.12),rgba(255,255,255,0.05))]"
                         } shadow-[0_14px_32px_rgba(0,0,0,0.28)]`}
                       >
-                        <div className="relative h-[62px] overflow-hidden rounded-[16px]">
+                        <div className="relative h-[82px] overflow-hidden rounded-[20px] sm:h-[86px] md:h-[92px] lg:h-[92px] xl:h-[98px] 2xl:h-[104px]">
                           <motion.div
                             className="absolute inset-0"
                             animate={{
@@ -1168,39 +1300,41 @@ export default function App() {
                             }`}
                           />
 
-                          <div className="pointer-events-none absolute inset-[1px] rounded-[15px] border border-white/10" />
-                          <div className="pointer-events-none absolute inset-x-[8%] top-[3px] h-[22px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.14),transparent)] blur-[1px]" />
+                          <div className="pointer-events-none absolute inset-[1px] rounded-[19px] border border-white/10" />
+                          <div className="pointer-events-none absolute inset-x-[8%] top-[3px] h-[28px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.14),transparent)] blur-[1px]" />
                           <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-[36%] bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.18))]" />
 
-                          <div className="relative z-10 flex h-full flex-col items-center justify-center px-1 text-center">
+                          <div className="relative z-10 flex h-full flex-col items-center justify-center px-2 text-center sm:px-3 md:px-4">
                             <p
                               className={`font-black uppercase leading-[0.95] ${
                                 item.title === "MORE REWARD AWAITS"
-                                  ? "text-[10px]"
-                                  : "text-[11px]"
+                                  ? "text-[13px] sm:text-[15px] md:text-[17px] lg:text-[18px]"
+                                  : "text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px]"
                               } ${isReached ? "text-[#FFF4C8]" : "text-transparent"}`}
                               style={{
                                 letterSpacing: "-0.03em",
                                 textShadow: isReached
-                                  ? "0 1px 0 rgba(255,255,255,0.12), 0 8px 20px rgba(0,0,0,0.32)"
+                                  ? "0 1px 0 rgba(255,255,255,0.48), 0 2px 0 rgba(255,215,106,0.14), 0 8px 20px rgba(0,0,0,0.38), 0 0 12px rgba(255,215,106,0.16)"
                                   : "none",
-                                WebkitTextStroke: isReached
-                                  ? "0px transparent"
-                                  : "1px rgba(255,244,200,0.82)",
                               }}
                             >
                               {item.title}
                             </p>
 
-                            {item.sub ? (
-                              <p
-                                className={`mt-1 text-[8px] font-semibold leading-tight ${
-                                  isReached ? "text-white/95" : "text-white/75"
-                                }`}
-                              >
-                                {item.sub}
-                              </p>
-                            ) : null}
+                          {item.sub && (
+  <p
+    className={`mt-2 text-center font-bold leading-[1.08] text-[11px] sm:text-[12px] md:text-[13px] lg:text-[14px] ${
+      isReached ? "text-[#FFD76A]" : "text-transparent"
+    }`}
+    style={{
+      textShadow: isReached
+        ? "0 2px 8px rgba(0,0,0,0.22)"
+        : "none",
+    }}
+  >
+    {item.sub}
+  </p>
+)}
                           </div>
                         </div>
                       </div>
@@ -1208,161 +1342,218 @@ export default function App() {
                   );
                 })}
               </div>
-            </div>
 
-            <div className="pointer-events-none absolute left-1/2 top-[67.5%] z-[11] w-[86%] max-w-[340px] -translate-x-1/2">
-              <div className="relative h-[40px] overflow-hidden rounded-full border border-[#6fa7ff]/20 bg-[linear-gradient(180deg,#0F2A72_0%,#071A56_100%)] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05),0_16px_30px_rgba(0,0,0,0.22)]">
+              <div className="relative h-[56px] overflow-hidden rounded-full border border-white/10 bg-[linear-gradient(180deg,#0A225E_0%,#061948_55%,#041232_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.10),inset_0_-12px_24px_rgba(0,0,0,0.30),0_22px_42px_rgba(0,0,0,0.24)] sm:h-[60px] md:h-[64px]">
+                <div className="absolute inset-x-0 top-0 h-1/2 bg-[linear-gradient(180deg,rgba(255,255,255,0.10),rgba(255,255,255,0.02),transparent)]" />
+
+                <div className="absolute inset-y-[10px] left-1/4 w-[2px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.20),rgba(255,255,255,0.06))]" />
+                <div className="absolute inset-y-[10px] left-2/4 w-[2px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.20),rgba(255,255,255,0.06))]" />
+                <div className="absolute inset-y-[10px] left-3/4 w-[2px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.20),rgba(255,255,255,0.06))]" />
+
                 <motion.div
-                  className="absolute left-0 top-0 h-full rounded-full bg-[linear-gradient(90deg,#F5E8B8_0%,#FFE08A_18%,#F7C948_55%,#FFDF78_100%)] shadow-[0_0_24px_rgba(247,201,72,0.28)]"
-                  animate={{ width: heroProgressWidth }}
-                  transition={{ duration: 0.55, ease: "easeOut" }}
-                />
-                <div className="pointer-events-none absolute inset-y-[3px] left-[2%] right-[2%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0.00))]" />
+                  animate={{ width: `${progressLevel * 25}%` }}
+                  transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute inset-y-0 left-0 overflow-hidden rounded-full bg-[linear-gradient(90deg,#FFF0B8_0%,#FFF8DE_20%,#FFD86A_52%,#F3BA24_100%)] shadow-[0_10px_24px_rgba(255,215,106,0.20),0_0_28px_rgba(255,215,106,0.12)]"
+                >
+                  <div className="absolute inset-y-[7px] left-[10px] right-[10px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.24),rgba(255,255,255,0.05),transparent)]" />
+                  <div className="absolute inset-y-[10px] left-1/4 w-[2px] rounded-full bg-[linear-gradient(180deg,rgba(173,110,0,0.26),rgba(255,255,255,0.18),rgba(173,110,0,0.22))]" />
+                  <div className="absolute inset-y-[10px] left-2/4 w-[2px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,rgba(173,110,0,0.26),rgba(255,255,255,0.18),rgba(173,110,0,0.22))]" />
+                  <div className="absolute inset-y-[10px] left-3/4 w-[2px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,rgba(173,110,0,0.26),rgba(255,255,255,0.18),rgba(173,110,0,0.22))]" />
+
+                  <motion.div
+                    animate={{ x: ["-120%", "220%"] }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                    className="absolute inset-y-0 w-[28%] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.42),transparent)] blur-[7px]"
+                  />
+                </motion.div>
+
                 <motion.div
-                  className="absolute top-1/2 z-[2] flex h-[34px] w-[34px] -translate-y-1/2 items-center justify-center rounded-full border border-[#FFE8A3]/50 bg-[radial-gradient(circle_at_30%_30%,#FFF3C4_0%,#F7C948_58%,#D89A18_100%)] shadow-[0_0_0_2px_rgba(255,224,138,0.12),0_10px_18px_rgba(0,0,0,0.24)]"
                   animate={{
                     left:
-                      progressLevel <= 1
-                        ? "calc(22% - 17px)"
-                        : progressLevel === 2
-                        ? "calc(56% - 17px)"
-                        : "calc(84% - 17px)",
+                      progressLevel === 4
+                        ? "calc(100% - 64px)"
+                        : `calc(${progressLevel * 25}% - 24px)`,
                   }}
-                  transition={{ duration: 0.55, ease: "easeOut" }}
+                  transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute top-1/2 z-10 -translate-y-1/2"
                 >
-                  <div className="h-[14px] w-[14px] rounded-full bg-[radial-gradient(circle,#fff9df_0%,#fff0ba_40%,rgba(255,255,255,0)_72%)]" />
+                  <motion.div
+                    animate={{
+                      scale: progressLevel === 4 ? [1, 1.1, 1] : [1, 1.03, 1],
+                    }}
+                    transition={{
+                      duration: progressLevel === 4 ? 1.2 : 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="relative flex h-[50px] w-[50px] items-center justify-center rounded-full sm:h-[54px] sm:w-[54px] md:h-[58px] md:w-[58px]"
+                  >
+                    <div className="absolute inset-[-8px] rounded-full bg-yellow-300/20 blur-lg" />
+                    <div className="absolute inset-[-2px] rounded-full border border-[#FFE6A3]/45" />
+
+                    <div className="relative flex h-full w-full items-center justify-center rounded-full border border-white/26 bg-[linear-gradient(180deg,#FFE27B_0%,#F3BA24_100%)] shadow-[0_12px_24px_rgba(0,0,0,0.30),0_0_0_6px_rgba(255,216,77,0.12)]">
+                      <div className="absolute inset-[4px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.30),rgba(255,255,255,0.04))]" />
+                      <div className="absolute inset-x-[18%] top-[5px] h-[32%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.42),transparent)] blur-[1px]" />
+
+                      <span
+                        className="relative z-10 text-[16px] font-black text-white sm:text-[18px]"
+                        style={{
+                          textShadow:
+                            "0 1px 0 rgba(255,255,255,0.22), 0 4px 10px rgba(0,0,0,0.28)",
+                        }}
+                      >
+                        ✦
+                      </span>
+                    </div>
+                  </motion.div>
                 </motion.div>
               </div>
             </div>
+          </div>
 
-            <div className="pointer-events-none absolute left-1/2 top-[76.2%] z-[9] w-[90%] max-w-[360px] -translate-x-1/2">
-              <div className="grid grid-cols-3 gap-2">
-                {[
-                  "Trusted Since 2016",
-                  "5,000+ Active Members",
-                  "10+ Rewards To Unlock",
-                ].map((text, i) => (
+          <div className="pointer-events-none absolute bottom-[168px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[164px] sm:px-6 md:bottom-[150px] lg:bottom-[154px]">
+            <div className="grid grid-cols-3 gap-3 sm:gap-7 md:gap-9">
+              {[
+                "Trusted Since 2016",
+                "5,000+ Active Members",
+                "10+ Rewards For You",
+              ].map((text, i) => (
+                <motion.div
+                  key={text}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, delay: 0.06 + i * 0.07 }}
+                  className="group relative overflow-hidden rounded-[20px] sm:rounded-[26px]"
+                >
+                  <div className="absolute inset-0 rounded-[20px] bg-[linear-gradient(135deg,rgba(130,205,255,0.28)_0%,rgba(80,150,255,0.16)_22%,rgba(255,220,120,0.18)_52%,rgba(35,115,255,0.14)_78%,rgba(140,225,255,0.18)_100%)] p-[1.5px] shadow-[0_16px_34px_rgba(0,0,0,0.22),0_0_18px_rgba(71,190,255,0.10)] sm:rounded-[26px]">
+                    <div className="h-full w-full rounded-[19px] bg-[linear-gradient(180deg,rgba(46,92,215,0.95)_0%,rgba(33,67,180,0.97)_32%,rgba(25,43,141,0.98)_72%,rgba(18,29,110,0.99)_100%)] sm:rounded-[25px]" />
+                  </div>
+
                   <motion.div
-                    key={text}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.45, delay: 0.06 + i * 0.07 }}
-                    className="group relative overflow-hidden rounded-[18px]"
-                  >
-                    <div className="absolute inset-0 rounded-[18px] bg-[linear-gradient(135deg,rgba(130,205,255,0.28)_0%,rgba(80,150,255,0.16)_22%,rgba(255,220,120,0.18)_52%,rgba(35,115,255,0.14)_78%,rgba(140,225,255,0.18)_100%)] p-[1.5px] shadow-[0_16px_34px_rgba(0,0,0,0.22),0_0_18px_rgba(71,190,255,0.10)]">
-                      <div className="h-full w-full rounded-[17px] bg-[linear-gradient(180deg,rgba(46,92,215,0.95)_0%,rgba(33,67,180,0.97)_32%,rgba(25,43,141,0.98)_72%,rgba(18,29,110,0.99)_100%)]" />
-                    </div>
+                    className="absolute inset-[1px] rounded-[19px] sm:rounded-[25px]"
+                    animate={{
+                      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                    }}
+                    transition={{
+                      duration: 9,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    style={{
+                      backgroundImage: `
+                        linear-gradient(135deg,
+                          rgba(255,255,255,0.11) 0%,
+                          rgba(255,255,255,0.03) 18%,
+                          rgba(90,190,255,0.08) 32%,
+                          rgba(255,255,255,0.02) 46%,
+                          rgba(255,215,106,0.08) 62%,
+                          rgba(255,255,255,0.03) 78%,
+                          rgba(255,255,255,0.10) 100%
+                        )
+                      `,
+                      backgroundSize: "220% 220%",
+                      mixBlendMode: "screen",
+                    }}
+                  />
 
-                    <motion.div
-                      className="absolute inset-[1px] rounded-[17px]"
-                      animate={{
-                        backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                      }}
-                      transition={{
-                        duration: 9,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      }}
+                  <div className="pointer-events-none absolute inset-x-[10%] top-[3px] h-[40%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.28),rgba(255,255,255,0.08),transparent)] blur-[1px]" />
+                  <div className="pointer-events-none absolute -left-4 top-1/2 h-14 w-8 -translate-y-1/2 rounded-full bg-cyan-200/12 blur-[14px]" />
+                  <div className="pointer-events-none absolute -right-4 top-1/2 h-14 w-8 -translate-y-1/2 rounded-full bg-blue-200/10 blur-[14px]" />
+                  <div className="pointer-events-none absolute inset-x-[6%] bottom-[4px] h-[34%] rounded-b-[18px] bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.22))]" />
+
+                  <motion.div
+                    className="pointer-events-none absolute right-[12px] top-[10px] h-[18px] w-[18px] rounded-full"
+                    animate={{
+                      opacity: [0.25, 0.7, 0.25],
+                      scale: [1, 1.12, 1],
+                    }}
+                    transition={{
+                      duration: 2.2,
+                      repeat: Infinity,
+                      delay: i * 0.35,
+                      ease: "easeInOut",
+                    }}
+                    style={{
+                      background:
+                        "radial-gradient(circle, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.22) 35%, rgba(255,255,255,0) 72%)",
+                      filter: "blur(0.4px)",
+                    }}
+                  />
+
+                  <div className="pointer-events-none absolute inset-[1px] rounded-[19px] border border-white/10 sm:rounded-[25px]" />
+
+                  <div className="relative z-10 flex min-h-[62px] items-center justify-center px-3 py-4 text-center sm:min-h-[86px] sm:px-5 sm:py-6">
+                    <p
+                      className={`font-bold leading-[1.04] tracking-[-0.02em] text-white ${
+                        i === 2
+                          ? "text-[10px] sm:text-[15px] md:text-[19px] lg:text-[21px]"
+                          : "text-[12px] sm:text-[16px] md:text-[21px] lg:text-[23px]"
+                      }`}
                       style={{
-                        backgroundImage: `
-                          linear-gradient(135deg,
-                            rgba(255,255,255,0.11) 0%,
-                            rgba(255,255,255,0.03) 18%,
-                            rgba(90,190,255,0.08) 32%,
-                            rgba(255,255,255,0.02) 46%,
-                            rgba(255,215,106,0.08) 62%,
-                            rgba(255,255,255,0.03) 78%,
-                            rgba(255,255,255,0.10) 100%
-                          )
-                        `,
-                        backgroundSize: "220% 220%",
-                        mixBlendMode: "screen",
+                        textShadow:
+                          "0 1px 0 rgba(255,255,255,0.10), 0 3px 8px rgba(0,0,0,0.22)",
                       }}
-                    />
-
-                    <div className="pointer-events-none absolute inset-x-[10%] top-[3px] h-[40%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.28),rgba(255,255,255,0.08),transparent)] blur-[1px]" />
-                    <motion.div
-                      className="pointer-events-none absolute right-[10px] top-[8px] h-[14px] w-[14px] rounded-full"
-                      animate={{
-                        opacity: [0.25, 0.7, 0.25],
-                        scale: [1, 1.12, 1],
-                      }}
-                      transition={{
-                        duration: 2.2,
-                        repeat: Infinity,
-                        delay: i * 0.35,
-                        ease: "easeInOut",
-                      }}
-                      style={{
-                        background:
-                          "radial-gradient(circle, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.22) 35%, rgba(255,255,255,0) 72%)",
-                        filter: "blur(0.4px)",
-                      }}
-                    />
-
-                    <div className="pointer-events-none absolute inset-[1px] rounded-[17px] border border-white/10" />
-
-                    <div className="relative z-10 flex min-h-[46px] items-center justify-center px-2 py-3 text-center">
-                      <p
-                        className={`font-bold leading-[1.04] tracking-[-0.02em] text-white ${
-                          i === 2 ? "text-[8px]" : "text-[9px]"
-                        }`}
-                        style={{
-                          textShadow:
-                            "0 1px 0 rgba(255,255,255,0.10), 0 3px 8px rgba(0,0,0,0.22)",
-                        }}
-                      >
-                        {i === 0 && (
-                          <>
-                            Trusted Since
-                            <br />
-                            2016
-                          </>
-                        )}
-                        {i === 1 && (
-                          <>
-                            5,000+ Active
-                            <br />
-                            Members
-                          </>
-                        )}
-                        {i === 2 && (
-                          <>
-                            10+ Rewards
-                            <br />
-                            To Unlock
-                          </>
-                        )}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+                    >
+                      {i === 0 && (
+                        <>
+                          Trusted Since
+                          <br />
+                          2016
+                        </>
+                      )}
+                      {i === 1 && (
+                        <>
+                          5,000+ Active
+                          <br />
+                          Members
+                        </>
+                      )}
+                      {i === 2 && (
+                        <>
+                          10+ Rewards
+                          <br />
+                          To Unlock
+                        </>
+                      )}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
+          </div>
 
-           <div className="absolute bottom-[7.4%] left-1/2 z-[15] -translate-x-1/2">
-  <HeroCTA />
-</div>
+          <HeroCTA />
 
-<div className="relative z-10 mx-auto w-full max-w-6xl" />
+          <div className="relative z-10 mx-auto w-full max-w-6xl" />
 
-        <SectionSeam
-          className="bottom-[0px]"
-          fillColor="#1E4FA3"
-          shape="dip" 
-        />
-        </div>
+          {/* *** BLANK SCREEN FIX: Swapped phantom component for perfect SectionSeam *** */}
+          <SectionSeam
+            className="bottom-[-1px]" // Fixed jagged corner & blank screen issue
+            fillColor="#1E4FA3" // Connects flawlessly to the start of next section gradient
+            shape="dip" 
+          />
         </section>
-
 
         <section
           id="steps-to-claim"
-          className="relative z-10 overflow-hidden px-4 pt-12 pb-24 sm:px-6 sm:pt-14 sm:pb-28 md:pt-16"
+          className="relative z-10 -mt-2 overflow-hidden px-4 pt-10 pb-24 sm:px-6 sm:pt-12 sm:pb-28 md:pt-14"
           style={{
             background:
               "linear-gradient(180deg, #1E4FA3 0%, #1B4DAE 38%, #1650B6 72%, #144FB9 100%)",
           }}
         >
+          {/* Specify dome shape at top of steps section to meet the dip shape of hero */}
+          <SectionSeam
+            className="top-[-1px]"
+            fillColor="#1E4FA3" // Matching context gradient start color
+            shape="dome"
+          />
+
           <div
             className="pointer-events-none absolute inset-x-0 top-0 h-[120px]"
             style={{
@@ -1379,10 +1570,15 @@ export default function App() {
             }}
           />
 
+          <div className="pointer-events-none absolute inset-0 z-[1]">
+            <div className="absolute left-[18%] top-[16%] h-72 w-72 rounded-full bg-white/5 blur-[100px]" />
+            <div className="absolute right-[14%] bottom-[18%] h-72 w-72 rounded-full bg-cyan-300/10 blur-[110px]" />
+          </div>
+
           <div className="relative z-10 mx-auto max-w-5xl">
-            <div className="relative overflow-hidden rounded-[2.2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.10),rgba(255,255,255,0.05))] p-6 shadow-[0_28px_80px_rgba(0,0,0,0.24)] backdrop-blur-xl sm:p-8 md:p-10">
-              <div className="pointer-events-none absolute inset-[1px] rounded-[2rem] border border-white/8" />
-              <div className="pointer-events-none absolute inset-x-[8%] top-[3px] h-[34px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
+            <div className="relative overflow-hidden rounded-[24px] bg-[linear-gradient(180deg,rgba(58,128,255,0.26)_0%,rgba(41,101,220,0.24)_38%,rgba(31,78,182,0.26)_100%)] px-4 pt-6 pb-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.16),0_16px_44px_rgba(0,0,0,0.22),0_0_0_1px_rgba(255,255,255,0.08)] backdrop-blur-[26px] sm:px-6 sm:pt-7 sm:pb-9 md:px-8 md:pt-8 md:pb-10">
+              <div className="pointer-events-none absolute inset-0 rounded-[24px] border border-cyan-200/20" />
+              <div className="pointer-events-none absolute inset-x-[8%] top-[2px] h-[46px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[32%] bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.10))]" />
 
               <div className="relative z-10">
@@ -1426,12 +1622,12 @@ export default function App() {
 
           <SectionSeam
             className="bottom-[-1px]"
-            fillColor="#144FB9"
-            shape="dip"
+            fillColor="#144FB9" // Background color specified by context
+            shape="dome"
           />
         </section>
 
-         <RegistrationForm />
+        <RegistrationForm />
         <FloatingGirl />
       </main>
     </div>
