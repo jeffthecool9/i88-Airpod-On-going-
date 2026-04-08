@@ -1331,10 +1331,11 @@ export default function App() {
 
 <div className="relative z-10 mx-auto w-full max-w-6xl" />
 
-        <HeroFullWidthDivider
-  className="bottom-0"
-  fillColor="#1E4FA3"
-/>
+        <SectionSeam
+          className="bottom-[0px]"
+          fillColor="#1E4FA3"
+          shape="dip" 
+        />
         </div>
         </section>
 
