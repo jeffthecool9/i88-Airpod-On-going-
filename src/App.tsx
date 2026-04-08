@@ -1140,9 +1140,9 @@ useEffect(() => {
     sm:right-[11%] sm:top-[20%] sm:w-[210px]
     md:right-[12%] md:top-[21%] md:w-[250px]
 
-    lg:left-[58%] lg:right-auto lg:top-[14%] lg:w-[135px]
-    xl:left-[55%] xl:top-[13%] xl:w-[150px]
-    2xl:left-[55.5%] 2xl:top-[12%] 2xl:w-[165px]
+    lg:left-[62%] lg:-translate-x-1/2 lg:top-[14%] lg:w-[135px]
+xl:left-[63%] xl:-translate-x-1/2 xl:top-[13%] xl:w-[150px]
+2xl:left-[63.5%] 2xl:-translate-x-1/2 2xl:top-[12%] 2xl:w-[165px]
   "
   animate={{
     y: [0, -10, 0],
