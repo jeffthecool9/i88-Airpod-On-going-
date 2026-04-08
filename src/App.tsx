@@ -13,6 +13,7 @@ import heroTextBoxImg from "./assets/hero-textbox.png";
 import cola1Img from "./assets/cola1.png";
 import heroTopTextImg from "./assets/text-2.png";
 import heroFinalTextImg from "./assets/text.png";
+import heroBackground1Img from "uploaded:background1.png-25945e1e-5e94-4c8b-8ff2-05c7a081d82d"; // Import the new hero background
 
 import { motion, AnimatePresence } from "motion/react";
 import {
@@ -194,6 +195,7 @@ const GoldConfetti = ({ liteMode = false }: { liteMode?: boolean }) => {
 
 const RealisticBackground = ({ liteMode = false }: { liteMode?: boolean }) => (
  <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
+  {/* Maintain a base background just in case, or for gradients/rays */}
   <div className="absolute inset-0 bg-[#0a1580]" />
 
   {liteMode ? (
@@ -1063,7 +1065,15 @@ useEffect(() => {
 )}
 
       <main className="relative z-10">
-        <section id="hero-section" className="relative flex min-h-[124vh] items-center overflow-hidden bg-[#0a1580] sm:min-h-[128vh] md:min-h-[132vh] lg:min-h-[150vh] xl:min-h-[152vh] 2xl:min-h-[156vh]">
+        <section
+          id="hero-section"
+          className="relative flex min-h-[124vh] items-center overflow-hidden sm:min-h-[128vh] md:min-h-[132vh] lg:min-h-[150vh] xl:min-h-[152vh] 2xl:min-h-[156vh]"
+          style={{
+            backgroundImage: `url(${heroBackground1Img})`, // Set the new background image
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
          <RealisticBackground liteMode={liteMode} />
         <GoldConfetti liteMode={liteMode} />
         
@@ -1425,7 +1435,7 @@ const trackerFillWidth =
             </div>
           </div>
 
-          <div className="pointer-events-none absolute bottom-[210px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[250px] sm:px-6 md:bottom-[270px] lg:bottom-[290px]">
+          <div className="pointer-events-none absolute left-1/2 bottom-[210px] z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[250px] sm:px-6 md:bottom-[270px] lg:bottom-[290px]">
             <div className="grid grid-cols-3 gap-3 sm:gap-7 md:gap-9">
               {[
                 "Trusted Since 2016",
@@ -1490,7 +1500,7 @@ const trackerFillWidth =
                     }}
                     style={{
                       background:
-                        "radial-gradient(circle, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.22) 35%, rgba(255,255,255,0) 72%)",
+                        "radial-gradient(circle, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.22) 35%, rgba(255,255,255) 72%)",
                       filter: "blur(0.4px)",
                     }}
                   />
@@ -1525,9 +1535,11 @@ const trackerFillWidth =
                       )}
                       {i === 2 && (
                         <>
-                          10+ Rewards
+                          Clear Rewards,
                           <br />
-                          To Unlock
+                          Don&apos;t Forget to
+                          <br />
+                          Claim it
                         </>
                       )}
                     </p>
