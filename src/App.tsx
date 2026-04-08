@@ -1345,7 +1345,8 @@ export default function App() {
                 strokeWidth="2"
                 strokeOpacity="0.95"
               />
-            </svg>
+           </svg>
+          </div>
           </div>
         </section>
 
