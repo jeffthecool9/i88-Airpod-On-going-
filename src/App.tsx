@@ -897,7 +897,7 @@ const HeroCTA = () => {
   };
 
   return (
-   <div className="absolute bottom-[52px] left-1/2 z-[10] -translate-x-1/2 sm:bottom-[62px] md:bottom-[160px] lg:bottom-[180px]">
+   <div className="absolute bottom-[26px] left-1/2 z-[10] -translate-x-1/2 sm:bottom-[34px] md:bottom-[64px] lg:bottom-[96px]">
       <motion.button
         onClick={scrollToRegister}
         onMouseEnter={handleEnter}
@@ -1065,7 +1065,7 @@ useEffect(() => {
       <main className="relative z-10">
         <section
           id="hero-section"
-          className="relative flex min-h-[124vh] items-center overflow-hidden sm:min-h-[128vh] md:min-h-[132vh] lg:min-h-[150vh] xl:min-h-[152vh] 2xl:min-h-[156vh]"
+          className="relative flex min-h-[146vh] items-center overflow-hidden sm:min-h-[150vh] md:min-h-[154vh] lg:min-h-[150vh] xl:min-h-[152vh] 2xl:min-h-[156vh]"
           style={{
             backgroundImage: `url(${heroBackground1Img})`, 
             backgroundSize: "cover",
@@ -1136,13 +1136,13 @@ useEffect(() => {
   className="
     pointer-events-none absolute z-[15] object-contain
 
-    right-[10%] top-[18%] w-[170px]
-    sm:right-[11%] sm:top-[20%] sm:w-[210px]
-    md:right-[12%] md:top-[21%] md:w-[250px]
+    right-[10%] top-[22%] w-[170px]
+    sm:right-[11%] sm:top-[24%] sm:w-[210px]
+    md:right-[12%] md:top-[25%] md:w-[250px]
 
-    lg:left-[62%] lg:-translate-x-1/2 lg:top-[14%] lg:w-[135px]
-xl:left-[63%] xl:-translate-x-1/2 xl:top-[13%] xl:w-[150px]
-2xl:left-[63.5%] 2xl:-translate-x-1/2 2xl:top-[12%] 2xl:w-[165px]
+    lg:left-[62%] lg:-translate-x-1/2 lg:top-[15.5%] lg:w-[135px]
+xl:left-[63%] xl:-translate-x-1/2 xl:top-[14.5%] xl:w-[150px]
+2xl:left-[63.5%] 2xl:-translate-x-1/2 2xl:top-[13.5%] 2xl:w-[165px]
   "
   animate={{
     y: [0, -10, 0],
@@ -1161,7 +1161,7 @@ xl:left-[63%] xl:-translate-x-1/2 xl:top-[13%] xl:w-[150px]
 
        <motion.div
   aria-hidden="true"
- className="pointer-events-none absolute left-1/2 top-[62%] z-[12] -translate-x-1/2 lg:top-[49%] xl:top-[48%] 2xl:top-[47%]"
+ className="pointer-events-none absolute left-1/2 top-[66%] z-[12] -translate-x-1/2 lg:top-[52%] xl:top-[51%] 2xl:top-[50%]"
   animate={{
     y: [0, 5, 0],
     opacity: [0.16, 0.3, 0.16],
@@ -1181,7 +1181,7 @@ xl:left-[63%] xl:-translate-x-1/2 xl:top-[13%] xl:w-[150px]
   />
 </motion.div>
           
-          <div className="pointer-events-none absolute left-1/2 bottom-[310px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[340px] sm:px-6 md:bottom-[360px] lg:bottom-[380px] lg:max-w-[1280px] lg:px-10 xl:bottom-[400px] xl:max-w-[1380px] 2xl:bottom-[420px] 2xl:max-w-[1480px]">
+          <div className="pointer-events-none absolute left-1/2 bottom-[200px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[225px] sm:px-6 md:bottom-[240px] lg:bottom-[360px] lg:max-w-[1280px] lg:px-10 xl:bottom-[380px] xl:max-w-[1380px] 2xl:bottom-[400px] 2xl:max-w-[1480px]">
             <div className="mx-auto max-w-5xl">
              <div className="mb-6 grid grid-cols-4 items-end gap-3 sm:gap-4 lg:gap-6 xl:gap-8 2xl:gap-10">
                 {trackerItems.map((item, i) => {
@@ -1228,7 +1228,7 @@ if (item.type === "airpod") {
 />
         </motion.div>
 
-        <div className="pointer-events-none absolute right-[14%] top-[4px] z-20 flex h-7 w-7 items-center justify-center rounded-full border border-[#FFE08A]/30 bg-[linear-gradient(180deg,rgba(17,24,39,0.95)_0%,rgba(10,15,28,0.95)_100%)] shadow-[0_10px_20px_rgba(0,0,0,0.35)] sm:right-[18%] md:right-[20%]">
+        <div className="pointer-events-none absolute right-[14%] top-[14px] z-20 flex h-7 w-7 items-center justify-center rounded-full border border-[#FFE08A]/30 bg-[linear-gradient(180deg,rgba(17,24,39,0.95)_0%,rgba(10,15,28,0.95)_100%)] shadow-[0_10px_20px_rgba(0,0,0,0.35)] sm:right-[18%] md:right-[20%]">
           <Lock className="h-3.5 w-3.5 text-[#FFD76A]" />
         </div>
       </div>
@@ -1430,7 +1430,7 @@ if (item.type === "airpod") {
             </div>
           </div>
 
-          <div className="pointer-events-none absolute left-1/2 bottom-[210px] z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[250px] sm:px-6 md:bottom-[270px] lg:bottom-[290px]">
+          <div className="pointer-events-none absolute left-1/2 bottom-[95px] z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[120px] sm:px-6 md:bottom-[135px] lg:bottom-[215px]">
             <div className="grid grid-cols-3 gap-3 sm:gap-7 md:gap-9">
               {[
   "Trusted Since 2016",
