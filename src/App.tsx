@@ -113,44 +113,59 @@ const SectionSeam = ({
     <svg
       viewBox="0 0 1200 120"
       preserveAspectRatio="none"
-       className="block w-full h-[58px] sm:h-[62px] md:h-[68px]"
+      // Slightly increased height to give the elegant curve room to breathe
+      className="block w-full h-[64px] sm:h-[80px] md:h-[96px]"
     >
       {shape === "dome" ? (
-       <>
-  <path
-    d="M0,0 C180,30 360,78 600,88 C840,78 1020,30 1200,0 L1200,120 L0,120 Z"
-    fill={fillColor}
-  />
-  <path
-    d="M0,0 C180,30 360,78 600,88 C840,78 1020,30 1200,0"
-    fill="none"
-    stroke="url(#line-glow)"
-    strokeWidth="2.2"
-  />
-</>
+        <>
+          {/* Top-Tier Smooth Dome (Curves Up) */}
+          <path
+            d="M0,120 C300,120 350,20 600,20 C850,20 900,120 1200,120 Z"
+            fill={fillColor}
+          />
+          <path
+            d="M0,120 C300,120 350,20 600,20 C850,20 900,120 1200,120"
+            fill="none"
+            stroke="url(#hero-divider-glow)"
+            strokeWidth="2.5"
+          />
+        </>
       ) : (
         <>
-         <path
-  d="M0,0 C180,18 360,42 600,48 C840,42 1020,18 1200,0 L1200,120 L0,120 Z"
-  fill={fillColor}
-/>
-<path
-  d="M0,0 C180,18 360,42 600,48 C840,42 1020,18 1200,0"
-  fill="none"
-  stroke="url(#hero-divider-glow)"
-  strokeWidth="2.6"
-/>
+          {/* Top-Tier Smooth Dip (Curves Down) - Fixes the sharp corners */}
+          <path
+            d="M0,0 C300,0 350,110 600,110 C850,110 900,0 1200,0 L1200,120 L0,120 Z"
+            fill={fillColor}
+          />
+          
+          {/* Ambient Glow Layer (Creates the premium neon/LED effect) */}
+          <path
+            d="M0,0 C300,0 350,110 600,110 C850,110 900,0 1200,0"
+            fill="none"
+            stroke="url(#hero-divider-glow)"
+            strokeWidth="8"
+            className="opacity-40 blur-[4px]"
+          />
+          
+          {/* Crisp Inner Stroke */}
+          <path
+            d="M0,0 C300,0 350,110 600,110 C850,110 900,0 1200,0"
+            fill="none"
+            stroke="url(#hero-divider-glow)"
+            strokeWidth="2.5"
+          />
         </>
       )}
 
       <defs>
-       <linearGradient id="hero-divider-glow" x1="0%" y1="0%" x2="100%" y2="0%">
-  <stop offset="0%" stopColor="#22d3ee" stopOpacity="0" />
-  <stop offset="18%" stopColor="#3bdcff" stopOpacity="0.45" />
-  <stop offset="50%" stopColor="#46e3ff" stopOpacity="0.78" />
-  <stop offset="82%" stopColor="#3bdcff" stopOpacity="0.45" />
-  <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
-</linearGradient>
+        {/* Refined gradient for a more natural light falloff */}
+        <linearGradient id="hero-divider-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#22d3ee" stopOpacity="0" />
+          <stop offset="15%" stopColor="#3bdcff" stopOpacity="0.5" />
+          <stop offset="50%" stopColor="#ffffff" stopOpacity="0.9" />
+          <stop offset="85%" stopColor="#3bdcff" stopOpacity="0.5" />
+          <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
+        </linearGradient>
       </defs>
     </svg>
   </div>
