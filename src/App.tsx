@@ -113,32 +113,32 @@ const SectionSeam = ({
     <svg
       viewBox="0 0 1200 120"
       preserveAspectRatio="none"
-      className="block w-full h-[58px] sm:h-[74px] md:h-[88px]"
+      className="block w-full h-[44px] sm:h-[56px] md:h-[68px]"
     >
       {shape === "dome" ? (
         <>
           <path
-            d="M0,120 L0,92 C250,22 430,0 600,0 C770,0 950,22 1200,92 L1200,120 Z"
+            d="M0,120 L0,96 C220,56 420,28 600,28 C780,28 980,56 1200,96 L1200,120 Z"
             fill={fillColor}
           />
           <path
-            d="M0,92 C250,22 430,0 600,0 C770,0 950,22 1200,92"
+            d="M0,96 C220,56 420,28 600,28 C780,28 980,56 1200,96"
             fill="none"
             stroke="url(#line-glow)"
-            strokeWidth="2.5"
+            strokeWidth="2"
           />
         </>
       ) : (
         <>
           <path
-            d="M0,0 C250,70 430,96 600,96 C770,96 950,70 1200,0 L1200,120 L0,120 Z"
+            d="M0,0 C220,42 420,66 600,66 C780,66 980,42 1200,0 L1200,120 L0,120 Z"
             fill={fillColor}
           />
           <path
-            d="M0,0 C250,70 430,96 600,96 C770,96 950,70 1200,0"
+            d="M0,0 C220,42 420,66 600,66 C780,66 980,42 1200,0"
             fill="none"
             stroke="url(#line-glow)"
-            strokeWidth="2.5"
+            strokeWidth="2"
           />
         </>
       )}
@@ -952,12 +952,11 @@ export default function App() {
   <div className="relative mx-auto w-full max-w-[420px] min-h-[840px] overflow-hidden">
     <RealisticBackground liteMode={liteMode} />
 
-    <img
+  <img
   src={i882Img}
   alt="i88"
-  className="pointer-events-none absolute left-1/2 top-[8px] z-[30] w-[120px] -translate-x-1/2 scale-[1.55] object-contain sm:w-[140px] sm:scale-[1.45]"
+  className="pointer-events-none absolute left-1/2 top-[3.8%] z-[24] w-[72px] -translate-x-1/2 object-contain sm:w-[82px]"
 />
-
     <img
       src={rewardEventImg}
       alt="AirPods Pro Reward Event"
