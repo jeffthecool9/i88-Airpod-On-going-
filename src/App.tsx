@@ -1225,24 +1225,24 @@ if (item.type === "airpod") {
         </div>
       </div>
 
-      <motion.div
-        initial={false}
-        animate={{
-          opacity: isUnlockedStage ? 1 : 0,
-          y: isUnlockedStage ? 0 : 6,
-        }}
-        transition={{ duration: 0.35, ease: "easeOut" }}
-        className="mt-2 min-h-[20px] text-center"
-      >
-        <p
-          className="text-[10px] font-bold leading-tight text-[#FFD76A] sm:text-[11px] md:text-[12px]"
-          style={{
-            textShadow: "0 2px 8px rgba(0,0,0,0.28)",
-          }}
-        >
-          Deposit &amp; Play To Unlock
-        </p>
-      </motion.div>
+<motion.div
+  initial={false}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.35 }}
+  className="mt-2 min-h-[34px] text-center"
+>
+  <p
+    className="text-[12px] sm:text-[13px] md:text-[14px] font-extrabold leading-tight text-[#FFD76A]"
+    style={{
+      textShadow:
+        "0 1px 0 rgba(255,255,255,0.08), 0 2px 10px rgba(0,0,0,0.35)",
+    }}
+  >
+    Deposit &amp; Play To
+    <br />
+    Unlock
+  </p>
+</motion.div>
     </motion.div>
   );
 }
@@ -1568,9 +1568,14 @@ if (item.type === "airpod") {
 
               <div className="relative z-10">
                 <div className="mb-6 text-center sm:mb-8">
-                  <h2 className="text-[34px] font-bold leading-[0.95] tracking-tight text-white sm:text-[42px] md:text-[50px]">
-                    Steps to Claim
-                  </h2>
+         <h2
+  className="text-white font-black tracking-[-0.03em] text-[28px] sm:text-[32px] md:text-[36px]"
+  style={{
+    textShadow: "0 2px 12px rgba(0,0,0,0.28)",
+  }}
+>
+  Steps to Claim
+</h2>
                 </div>
 
                 <div className="grid grid-cols-3 gap-3 sm:gap-5 md:gap-8">
