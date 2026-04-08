@@ -1579,32 +1579,42 @@ if (item.type === "airpod") {
                 </div>
 
                 <div className="grid grid-cols-3 gap-3 sm:gap-5 md:gap-8">
-                  {stepData.map((item, i) => (
-                    <motion.div
-                      key={item.title}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.45, delay: i * 0.12 }}
-                      className="flex flex-col items-center text-center"
-                    >
-                      <div className="mb-3 flex h-[76px] w-[76px] items-center justify-center sm:h-[96px] sm:w-[96px] md:h-[116px] md:w-[116px]">
-                        <img
-                          src={item.image}
-                          alt={item.title}
-                          className="h-full w-full object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.24)]"
-                        />
-                      </div>
+                 {stepData.map((item, i) => (
+  <motion.div
+    key={item.title}
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.45, delay: i * 0.12 }}
+    className="flex flex-col items-center text-center"
+  >
+    <div className="mb-3 flex h-[76px] w-[76px] items-center justify-center sm:h-[96px] sm:w-[96px] md:h-[116px] md:w-[116px]">
+      <img
+        src={item.image}
+        alt={item.title}
+        className="h-full w-full object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.24)]"
+      />
+    </div>
 
-                      <h3 className="text-[15px] font-bold leading-tight text-white sm:text-[20px] md:text-[24px]">
-                        {item.title}
-                      </h3>
+    <h3
+      className="text-[18px] font-extrabold leading-tight tracking-[-0.02em] text-white sm:text-[24px] md:text-[28px]"
+      style={{
+        textShadow: "0 2px 8px rgba(0,0,0,0.25)",
+      }}
+    >
+      {item.title}
+    </h3>
 
-                      <p className="mt-2 h-auto min-h-[44px] max-w-[150px] text-[11px] font-medium leading-relaxed text-white/92 sm:max-w-[190px] sm:text-[13px] md:max-w-[220px] md:text-[15px]">
-                        {item.desc}
-                      </p>
-                    </motion.div>
-                  ))}
+    <p
+      className="mt-2 h-auto min-h-[44px] max-w-[150px] text-[12px] font-semibold leading-[1.25] text-white/95 sm:max-w-[190px] sm:text-[14px] md:max-w-[220px] md:text-[16px]"
+      style={{
+        textShadow: "0 1px 4px rgba(0,0,0,0.18)",
+      }}
+    >
+      {item.desc}
+    </p>
+  </motion.div>
+))}
                 </div>
               </div>
             </div>
