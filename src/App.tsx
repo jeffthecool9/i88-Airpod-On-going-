@@ -153,6 +153,43 @@ const SectionSeam = ({
     </svg>
   </div>
 );
+const HeroFullWidthDivider = ({
+  className = "",
+  fillColor = "#1E4FA3",
+}: {
+  className?: string;
+  fillColor?: string;
+}) => (
+  <div
+    className={`absolute inset-x-0 overflow-hidden pointer-events-none z-20 leading-none ${className}`}
+  >
+    <svg
+      viewBox="0 0 1200 120"
+      preserveAspectRatio="none"
+      className="block w-full h-[58px] sm:h-[68px]"
+    >
+      <path
+        d="M0,0 C200,28 390,64 600,74 C810,64 1000,28 1200,0 L1200,120 L0,120 Z"
+        fill={fillColor}
+      />
+      <path
+        d="M0,0 C200,28 390,64 600,74 C810,64 1000,28 1200,0"
+        fill="none"
+        stroke="url(#hero-divider-glow)"
+        strokeWidth="3"
+      />
+      <defs>
+        <linearGradient id="hero-divider-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#22d3ee" stopOpacity="0" />
+          <stop offset="14%" stopColor="#38dfff" stopOpacity="0.75" />
+          <stop offset="50%" stopColor="#2fe6ff" stopOpacity="1" />
+          <stop offset="86%" stopColor="#38dfff" stopOpacity="0.75" />
+          <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+);
 
 const RegistrationForm = () => {
   const [step, setStep] = useState(1);
@@ -955,7 +992,7 @@ export default function App() {
  <img
   src={i882Img}
   alt="i88"
-  className="pointer-events-none absolute left-1/2 top-[0.8%] z-[24] w-[86px] -translate-x-1/2 object-contain sm:w-[96px]"
+  className="pointer-events-none absolute left-1/2 top-[1.2%] z-[24] w-[74px] -translate-x-1/2 object-contain sm:w-[82px]"
 />
     <img
       src={rewardEventImg}
@@ -1329,11 +1366,10 @@ export default function App() {
 
 <div className="relative z-10 mx-auto w-full max-w-6xl" />
 
-         <SectionSeam
-              className="bottom-0"
-              fillColor="#1E4FA3"
-              shape="dip"
-            />
+        <HeroFullWidthDivider
+  className="bottom-0"
+  fillColor="#1E4FA3"
+/>
         </div>
         </section>
 
