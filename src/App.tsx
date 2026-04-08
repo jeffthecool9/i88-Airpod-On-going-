@@ -995,27 +995,29 @@ export default function App() {
               }}
             />
 
-            <div className="pointer-events-none absolute left-1/2 top-[40.5%] z-[9] w-[84%] max-w-[360px] -translate-x-1/2">
-              <img
-                src={heroTextBoxImg}
-                alt=""
-                className="w-full object-contain"
-              />
-
-          <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
+         <div className="pointer-events-none absolute left-1/2 top-[40.5%] z-[9] w-[84%] max-w-[360px] -translate-x-1/2">
   <img
-    src={heroTopTextImg}
-    alt="Your AirPods Awaits"
-    className="relative z-10 w-[80%] max-w-[280px] object-contain opacity-90"
+    src={heroTextBoxImg}
+    alt=""
+    className="w-full object-contain"
   />
 
-  <img
-    src={heroFinalTextImg}
-    alt="Complete the final 1%"
-    className="relative z-10 mt-[2px] w-[92%] max-w-[320px] object-contain"
-  />
+  <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
+    <img
+      src={heroTopTextImg}
+      alt="Your AirPods Awaits"
+      className="relative z-10 w-[80%] max-w-[280px] object-contain opacity-90"
+    />
+
+    <img
+      src={heroFinalTextImg}
+      alt="Complete the final 1%"
+      className="relative z-10 mt-[2px] w-[92%] max-w-[320px] object-contain"
+    />
+  </div>
 </div>
-            <div className="pointer-events-none absolute left-1/2 top-[53.8%] z-[12] w-[88%] max-w-[372px] -translate-x-1/2">
+
+<div className="pointer-events-none absolute left-1/2 top-[53.8%] z-[12] w-[88%] max-w-[372px] -translate-x-1/2">
               <div className="grid grid-cols-4 items-end gap-2">
                 {trackerItems.map((item, i) => {
                   const stageNumber = i + 1;
