@@ -1329,25 +1329,24 @@ export default function App() {
 </div>
 
 <div className="pointer-events-none absolute bottom-0 left-0 z-[20] w-full overflow-hidden leading-none">
-  <svg
-    viewBox="0 0 420 96"
-    preserveAspectRatio="none"
-    className="block h-[74px] w-full"
-  >
-    <path
-      d="M0,26 C70,42 130,58 210,62 C290,58 350,42 420,26 L420,96 L0,96 Z"
-      fill="#1E4FA3"
-    />
-    <path
-      d="M0,26 C70,42 130,58 210,62 C290,58 350,42 420,26"
-      fill="none"
-      stroke="#19d4ff"
-      strokeWidth="2"
-      strokeOpacity="0.95"
-    />
-  </svg>
-</div>
-  </div>
+            <svg
+              viewBox="0 0 1440 120"
+              preserveAspectRatio="none"
+              className="block h-[72px] w-full sm:h-[84px] md:h-[96px]"
+            >
+              <path
+                d="M0,28 C180,52 320,76 520,90 C700,102 860,102 920,102 C980,102 1140,102 1320,90 C1520,76 1660,52 1840,28 L1840,120 L0,120 Z"
+                fill="#1E4FA3"
+              />
+              <path
+                d="M0,28 C180,52 320,76 520,90 C700,102 860,102 920,102 C980,102 1140,102 1320,90 C1520,76 1660,52 1840,28"
+                fill="none"
+                stroke="#19d4ff"
+                strokeWidth="2"
+                strokeOpacity="0.95"
+              />
+            </svg>
+          </div>
         </section>
 
         <section
