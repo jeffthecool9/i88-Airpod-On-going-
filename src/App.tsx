@@ -897,7 +897,7 @@ const HeroCTA = () => {
   };
 
   return (
-    <div className="absolute bottom-[100px] left-1/2 z-[10] -translate-x-1/2 sm:bottom-[140px] md:bottom-[160px] lg:bottom-[180px]">
+   <div className="absolute bottom-[52px] left-1/2 z-[10] -translate-x-1/2 sm:bottom-[62px] md:bottom-[160px] lg:bottom-[180px]">
       <motion.button
         onClick={scrollToRegister}
         onMouseEnter={handleEnter}
@@ -1089,26 +1089,26 @@ useEffect(() => {
   className="
     pointer-events-none absolute left-1/2 -translate-x-1/2 object-contain z-[10]
 
-    top-[100px] w-[320px]        /* MOBILE: bigger + lower */
-    sm:top-[110px] sm:w-[360px]
+    top-[132px] w-[320px]
+    sm:top-[138px] sm:w-[360px]
 
-    md:top-[42px] md:w-[340px]   /* keep tablet normal */
-    lg:top-[24px] lg:w-[430px]   /* keep desktop unchanged */
+    md:top-[42px] md:w-[340px]
+    lg:top-[24px] lg:w-[430px]
     xl:top-[26px] xl:w-[500px]
   "
 />
           
-          <img
+       <img
   src={cola1Img}
   alt=""
   aria-hidden="true"
- className="pointer-events-none absolute left-[-12%] top-[22%] z-[8] w-[1100px] object-contain sm:left-[-10%] sm:top-[22%] sm:w-[1200px] md:left-[-8%] md:top-[23%] md:w-[1300px] lg:left-1/2 lg:top-[11%] lg:w-[620px] lg:-translate-x-1/2 xl:top-[9%] xl:w-[700px] 2xl:top-[8%] 2xl:w-[760px]"
+  className="pointer-events-none absolute left-[-12%] top-[22%] z-[8] w-[1100px] object-contain sm:left-[-10%] sm:top-[22%] sm:w-[1200px] md:left-[-8%] md:top-[23%] md:w-[1300px] lg:left-1/2 lg:top-[11%] lg:w-[620px] lg:-translate-x-1/2 xl:top-[9%] xl:w-[700px] 2xl:top-[8%] 2xl:w-[760px]"
   style={{
     filter:
       "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
   }}
 />
-<div className="pointer-events-none absolute left-1/2 top-[46.5%] z-[9] w-[84%] max-w-[590px] -translate-x-1/2 sm:top-[47.5%] sm:w-[80%] sm:max-w-[640px] md:top-[48.5%] md:w-[76%] md:max-w-[690px] lg:top-[43.5%] lg:w-[46%] lg:max-w-[790px] xl:top-[42.5%] xl:w-[43%] xl:max-w-[850px] 2xl:top-[41.5%] 2xl:w-[41%] 2xl:max-w-[900px]">
+<div className="pointer-events-none absolute left-1/2 top-[52%] z-[9] w-[84%] max-w-[590px] -translate-x-1/2 sm:top-[52.5%] sm:w-[80%] sm:max-w-[640px] md:top-[48.5%] md:w-[76%] md:max-w-[690px] lg:top-[43.5%] lg:w-[46%] lg:max-w-[790px] xl:top-[42.5%] xl:w-[43%] xl:max-w-[850px] 2xl:top-[41.5%] 2xl:w-[41%] 2xl:max-w-[900px]">
   <img
     src={heroTextBoxImg}
     alt=""
@@ -1217,16 +1217,15 @@ if (item.type === "airpod") {
             ease: "easeInOut",
           }}
         >
-          <img
-            src={airpodImg}
-            alt="AirPods reward"
-            className="relative z-10 w-[72px] object-contain sm:w-[88px] md:w-[102px] lg:w-[112px]"
-            style={{
-              filter: isUnlockedStage
-                ? "grayscale(1) opacity(0.58) drop-shadow(0 12px 24px rgba(0,0,0,0.28))"
-                : "grayscale(1) opacity(0.58) drop-shadow(0 12px 24px rgba(0,0,0,0.28))",
-            }}
-          />
+         <img
+  src={airpodImg}
+  alt="AirPods reward"
+  className="relative z-10 w-[78px] object-contain sm:w-[92px] md:w-[106px] lg:w-[116px]"
+  style={{
+    filter:
+      "grayscale(1) opacity(0.62) drop-shadow(0 12px 24px rgba(0,0,0,0.28))",
+  }}
+/>
         </motion.div>
 
         <div className="pointer-events-none absolute right-[14%] top-[4px] z-20 flex h-7 w-7 items-center justify-center rounded-full border border-[#FFE08A]/30 bg-[linear-gradient(180deg,rgba(17,24,39,0.95)_0%,rgba(10,15,28,0.95)_100%)] shadow-[0_10px_20px_rgba(0,0,0,0.35)] sm:right-[18%] md:right-[20%]">
