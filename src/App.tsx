@@ -238,7 +238,6 @@ const RealisticBackground = ({ liteMode = false }: { liteMode?: boolean }) => (
 </div>
   );
 
-// *** UPDATED: Injected User's Glowing SVG SectionSeam ***
 const SectionSeam = ({
   className = "",
   fillColor = "#020f6a",
@@ -744,43 +743,37 @@ const RegistrationForm = () => {
 
 const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
   const [showFromSteps, setShowFromSteps] = useState(false);
-  const [hideBubbleAtRegistration, setHideBubbleAtRegistration] =
-    useState(false);
+  const [hideBubbleAtRegistration, setHideBubbleAtRegistration] = useState(false);
   const [isUserActive, setIsUserActive] = useState(true);
 
   useEffect(() => {
-    const stepsSection = document.getElementById("steps-to-claim");
+    const heroSection = document.getElementById("hero-section");
     const registrationSection = document.getElementById("registration-form");
 
-    if (!stepsSection || !registrationSection) return;
+    if (!heroSection || !registrationSection) return;
 
-    const stepsObserver = new IntersectionObserver(
+    // Observe Hero: Hide girl entirely if Hero is visible. Show her as soon as user scrolls past it.
+    const heroObserver = new IntersectionObserver(
       ([entry]) => {
-        setShowFromSteps(entry.isIntersecting && entry.intersectionRatio > 0.18);
+        // If entry is intersecting (hero is in view), girl should hide (false).
+        setShowFromSteps(!entry.isIntersecting);
       },
-      {
-        threshold: [0, 0.12, 0.18, 0.3, 0.5],
-        rootMargin: "0px 0px -6% 0px",
-      }
+      { threshold: 0.15 } // Triggers when less than 15% of hero is visible
     );
 
+    // Observe Registration: Hide the bubble when they reach the bottom form.
     const registrationObserver = new IntersectionObserver(
       ([entry]) => {
-        setHideBubbleAtRegistration(
-          entry.isIntersecting && entry.intersectionRatio > 0.15
-        );
+        setHideBubbleAtRegistration(entry.isIntersecting);
       },
-      {
-        threshold: [0, 0.08, 0.15, 0.25, 0.4],
-        rootMargin: "0px 0px -10% 0px",
-      }
+      { threshold: 0.2 }
     );
 
-    stepsObserver.observe(stepsSection);
+    heroObserver.observe(heroSection);
     registrationObserver.observe(registrationSection);
 
     return () => {
-      stepsObserver.disconnect();
+      heroObserver.disconnect();
       registrationObserver.disconnect();
     };
   }, []);
@@ -819,8 +812,7 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
   };
 
   const shouldShowGirl = showFromSteps;
-  const shouldShowBubble =
-    showFromSteps && !hideBubbleAtRegistration && isUserActive;
+  const shouldShowBubble = showFromSteps && !hideBubbleAtRegistration && isUserActive;
 
   return (
     <motion.div
@@ -928,7 +920,7 @@ const HeroCTA = () => {
   };
 
   return (
-    <div className="absolute bottom-14 left-1/2 z-[10] -translate-x-1/2 sm:bottom-12 md:bottom-14 lg:bottom-16">
+    <div className="absolute bottom-[100px] left-1/2 z-[10] -translate-x-1/2 sm:bottom-[140px] md:bottom-[160px] lg:bottom-[180px]">
       <motion.button
         onClick={scrollToRegister}
         onMouseEnter={handleEnter}
@@ -995,6 +987,7 @@ export default function App() {
 const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 const [progressLevel, setProgressLevel] = useState(1);
 const [liteMode, setLiteMode] = useState(false);
+
 useEffect(() => {
   setProgressLevel(1);
 
@@ -1013,6 +1006,7 @@ useEffect(() => {
   });
 
 }, []);
+
 useEffect(() => {
   const detectLiteMode = () => {
     const nav = navigator as Navigator & {
@@ -1092,7 +1086,7 @@ useEffect(() => {
 )}
 
       <main className="relative z-10">
-        <section className="relative flex min-h-[124vh] items-center overflow-hidden bg-[#0a1580] sm:min-h-[128vh] md:min-h-[132vh] lg:min-h-[150vh] xl:min-h-[152vh] 2xl:min-h-[156vh]">
+        <section id="hero-section" className="relative flex min-h-[124vh] items-center overflow-hidden bg-[#0a1580] sm:min-h-[128vh] md:min-h-[132vh] lg:min-h-[150vh] xl:min-h-[152vh] 2xl:min-h-[156vh]">
          <RealisticBackground liteMode={liteMode} />
         <GoldConfetti liteMode={liteMode} />
         
@@ -1135,17 +1129,17 @@ useEffect(() => {
     className="w-full object-contain"
   />
 
-<div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center sm:px-6 md:px-8">
+<div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-4 pt-2 text-center sm:gap-4 sm:px-6 sm:pt-3 md:px-8 md:pt-3">
   <img
     src={heroTopTextImg}
     alt="Your AirPods Awaits"
-    className="relative z-10 w-[90%] max-w-[400px] object-contain sm:max-w-[430px] md:max-w-[480px] lg:max-w-[540px]"
+    className="relative z-10 w-[95%] max-w-[420px] object-contain sm:max-w-[460px] md:max-w-[520px] lg:max-w-[580px]"
   />
 
   <img
     src={heroFinalTextImg}
     alt="Complete the final 1%"
-    className="relative z-10 -mt-6 w-[92%] max-w-[410px] object-contain sm:max-w-[445px] md:max-w-[495px] lg:max-w-[555px]"
+    className="relative z-10 w-[98%] max-w-[440px] object-contain sm:max-w-[480px] md:max-w-[540px] lg:max-w-[610px]"
   />
  </div>
 </div>
@@ -1192,7 +1186,7 @@ useEffect(() => {
   />
 </motion.div>
           
-          <div className="pointer-events-none absolute left-1/2 bottom-[285px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[300px] sm:px-6 md:bottom-[320px] lg:bottom-[185px] lg:max-w-[1280px] lg:px-10 xl:bottom-[170px] xl:max-w-[1380px] 2xl:bottom-[155px] 2xl:max-w-[1480px]">
+          <div className="pointer-events-none absolute left-1/2 bottom-[310px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[340px] sm:px-6 md:bottom-[360px] lg:bottom-[380px] lg:max-w-[1280px] lg:px-10 xl:bottom-[400px] xl:max-w-[1380px] 2xl:bottom-[420px] 2xl:max-w-[1480px]">
             <div className="mx-auto max-w-5xl">
              <div className="mb-6 grid grid-cols-4 items-end gap-3 sm:gap-4 lg:gap-6 xl:gap-8 2xl:gap-10">
                 {trackerItems.map((item, i) => {
@@ -1450,7 +1444,7 @@ const trackerFillWidth =
             </div>
           </div>
 
-          <div className="pointer-events-none absolute bottom-[168px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[164px] sm:px-6 md:bottom-[150px] lg:bottom-[154px]">
+          <div className="pointer-events-none absolute bottom-[180px] left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[220px] sm:px-6 md:bottom-[240px] lg:bottom-[260px]">
             <div className="grid grid-cols-3 gap-3 sm:gap-7 md:gap-9">
               {[
                 "Trusted Since 2016",
@@ -1538,7 +1532,7 @@ const trackerFillWidth =
                         <>
                           Trusted Since
                           <br />
-                          2016
+                          2014
                         </>
                       )}
                       {i === 1 && (
@@ -1550,9 +1544,11 @@ const trackerFillWidth =
                       )}
                       {i === 2 && (
                         <>
-                          10+ Rewards
+                          Clear Rewards,
                           <br />
-                          To Unlock
+                          Don&apos;t Forget to
+                          <br />
+                          Claim it
                         </>
                       )}
                     </p>
@@ -1567,9 +1563,9 @@ const trackerFillWidth =
           <div className="relative z-10 mx-auto w-full max-w-6xl" />
 
           <SectionSeam
-            className="bottom-[-1px]" 
-            fillColor="#1E4FA3" 
-            shape="dip" 
+            className="bottom-[-1px]"
+            fillColor="#1E4FA3"
+            shape="dip"
           />
         </section>
 
