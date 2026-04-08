@@ -10,7 +10,6 @@ import playImg from "./assets/play.png";
 import colaImg from "./assets/cola2.png";
 import rewardEventImg from "./assets/reward-event.png";
 import heroTextBoxImg from "./assets/hero-textbox.png";
-import HeroRewardTracker from "./HeroRewardTracker";
 import cola1Img from "./assets/cola1.png";
 import heroTopTextImg from "./assets/text-2.png";
 import heroFinalTextImg from "./assets/text.png";
@@ -848,7 +847,6 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
         className="pointer-events-auto relative cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
         onClick={handleInteract}
       >
-        {/* Static, gentle, constant blue glow — NO pulsing, NO jumping */}
         <img
           src={colaImg}
           alt=""
@@ -1032,14 +1030,15 @@ useEffect(() => {
   };
 }, [liteMode]);
 
+  // UPDATE: Kept text precise and short to avoid layout breaking or looking messy
   const stepData = [
     { title: "Register", desc: "Create account", image: registerImg },
     {
       title: "Deposit",
-      desc: "Start from $50 & Unlock more Rewards",
+      desc: "Deposit $50 to unlock rewards",
       image: depositImg,
     },
-    { title: "Reward", desc: "Unlock up to 188 FS", image: playImg },
+    { title: "Reward", desc: "Get 188 free spins", image: playImg },
   ];
 
   const trackerItems = [
@@ -1618,7 +1617,8 @@ const trackerFillWidth =
                         {item.title}
                       </h3>
 
-                      <p className="mt-1 max-w-[150px] text-[10px] font-medium leading-tight text-white/92 sm:max-w-[190px] sm:text-[12px] md:max-w-[220px] md:text-[14px]">
+                      {/* UPDATE: Added min-h-[30px] so the descriptions stay aligned even if wrapped, and kept the max-width safe */}
+                      <p className="mt-1 min-h-[30px] max-w-[150px] text-[10px] font-medium leading-tight text-white/92 sm:max-w-[190px] sm:text-[12px] md:max-w-[220px] md:text-[14px]">
                         {item.desc}
                       </p>
                     </motion.div>
