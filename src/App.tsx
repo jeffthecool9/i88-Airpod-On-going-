@@ -747,35 +747,35 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
   const [isUserActive, setIsUserActive] = useState(true);
 
   useEffect(() => {
-    const heroSection = document.getElementById("hero-section");
-    const registrationSection = document.getElementById("registration-form");
+    const handleScroll = () => {
+      const stepsSection = document.getElementById("steps-to-claim");
+      const regSection = document.getElementById("registration-form");
 
-    if (!heroSection || !registrationSection) return;
+      // Show girl ONLY when we have completely scrolled out of Hero and reached Steps section
+      if (stepsSection) {
+        const stepsRect = stepsSection.getBoundingClientRect();
+        if (stepsRect.top < window.innerHeight - 100) {
+          setShowFromSteps(true);
+        } else {
+          setShowFromSteps(false);
+        }
+      }
 
-    // Observe Hero: Hide girl entirely if Hero is visible. Show her as soon as user scrolls past it.
-    const heroObserver = new IntersectionObserver(
-      ([entry]) => {
-        // If entry is intersecting (hero is in view), girl should hide (false).
-        setShowFromSteps(!entry.isIntersecting);
-      },
-      { threshold: 0.15 } // Triggers when less than 15% of hero is visible
-    );
-
-    // Observe Registration: Hide the bubble when they reach the bottom form.
-    const registrationObserver = new IntersectionObserver(
-      ([entry]) => {
-        setHideBubbleAtRegistration(entry.isIntersecting);
-      },
-      { threshold: 0.2 }
-    );
-
-    heroObserver.observe(heroSection);
-    registrationObserver.observe(registrationSection);
-
-    return () => {
-      heroObserver.disconnect();
-      registrationObserver.disconnect();
+      // Hide the bubble when deep into registration form to keep UI clean
+      if (regSection) {
+        const regRect = regSection.getBoundingClientRect();
+        if (regRect.top < window.innerHeight - 200) {
+          setHideBubbleAtRegistration(true);
+        } else {
+          setHideBubbleAtRegistration(false);
+        }
+      }
     };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Trigger immediately to establish state
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -784,7 +784,7 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
     const resetTimer = () => {
       setIsUserActive(true);
       clearTimeout(timeoutId);
-     timeoutId = setTimeout(() => setIsUserActive(false), liteMode ? 6000 : 10000);
+      timeoutId = setTimeout(() => setIsUserActive(false), liteMode ? 6000 : 10000);
     };
 
     window.addEventListener("mousemove", resetTimer);
@@ -803,7 +803,7 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
       window.removeEventListener("touchstart", resetTimer);
       window.removeEventListener("click", resetTimer);
     };
-  }, []);
+  }, [liteMode]);
 
   const handleInteract = () => {
     document
@@ -811,24 +811,14 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
       ?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const shouldShowGirl = showFromSteps;
   const shouldShowBubble = showFromSteps && !hideBubbleAtRegistration && isUserActive;
 
   return (
-    <motion.div
+    <div
       aria-hidden="true"
-      className="pointer-events-none fixed bottom-[-10px] right-[-40px] z-[25] select-none"
-      initial={{ opacity: 0, y: 30, scale: 0.96 }}
-      animate={{
-        opacity: shouldShowGirl ? 1 : 0,
-        y: shouldShowGirl ? 0 : 30,
-        scale: shouldShowGirl ? 1 : 0.96,
-      }}
-   transition={{
-  duration: liteMode ? 4.2 : 2.8,
-  repeat: Infinity,
-  ease: "easeInOut",
-}}
+      className={`pointer-events-none fixed bottom-[-10px] right-[-40px] z-[25] select-none transition-opacity duration-300 ${
+        showFromSteps ? "opacity-100" : "opacity-0"
+      }`}
     >
       <AnimatePresence>
         {shouldShowBubble && (
@@ -843,17 +833,12 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
               onClick={handleInteract}
               className="group relative cursor-pointer rounded-[20px] border border-cyan-400/60 bg-cyan-950/85 px-4 py-3 text-center shadow-[0_0_20px_rgba(34,211,238,0.3)] backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:bg-cyan-900/95 hover:shadow-[0_0_30px_rgba(34,211,238,0.6)] sm:px-5 sm:py-3.5 sm:text-left"
             >
-              <motion.div
-                initial={{ opacity: 0, y: 5 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.2 }}
-                className="flex items-center justify-center gap-2 sm:gap-2.5"
-              >
+              <div className="flex items-center justify-center gap-2 sm:gap-2.5">
                 <div className="h-2 w-2 shrink-0 animate-pulse rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
                 <p className="text-[11px] font-bold leading-tight tracking-wide text-white sm:whitespace-nowrap sm:text-sm">
                   Click here to register
                 </p>
-              </motion.div>
+              </div>
             </div>
           </motion.div>
         )}
@@ -863,33 +848,27 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
         className="pointer-events-auto relative cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
         onClick={handleInteract}
       >
-   <motion.img
-  src={colaImg}
-  alt=""
-  aria-hidden="true"
-  className="absolute inset-0 h-auto w-[280px] object-contain sm:w-[360px] md:w-[480px] lg:w-[560px] xl:w-[640px]"
-  animate={{ opacity: shouldShowGirl ? 0.78 : 0 }}
-  transition={{ duration: 0.2, ease: "linear" }}
-  style={{
-    filter: liteMode
-      ? "brightness(1.05) drop-shadow(0 0 8px rgba(56,189,248,0.35))"
-      : `
-        brightness(1.15)
-        drop-shadow(0 0 8px rgba(125,211,252,1))
-        drop-shadow(0 0 16px rgba(56,189,248,0.95))
-        drop-shadow(0 0 28px rgba(59,130,246,0.85))
-        drop-shadow(0 0 46px rgba(34,211,238,0.65))
-      `,
-  }}
-/>
+        {/* Static, gentle, constant blue glow — NO pulsing, NO jumping */}
+        <img
+          src={colaImg}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-auto w-[280px] object-contain sm:w-[360px] md:w-[480px] lg:w-[560px] xl:w-[640px]"
+          style={{
+            opacity: 0.65,
+            filter: liteMode
+              ? "brightness(1.05) drop-shadow(0 0 8px rgba(56,189,248,0.35))"
+              : "brightness(1.1) drop-shadow(0 0 10px rgba(56,189,248,0.7)) drop-shadow(0 0 20px rgba(59,130,246,0.5))",
+          }}
+        />
 
-                <img
+        <img
           src={colaImg}
           alt=""
           className="relative h-auto w-[280px] object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.35)] sm:w-[360px] md:w-[480px] lg:w-[560px] xl:w-[640px]"
         />
       </div>
-    </motion.div>
+    </div>
   );
 };
 
@@ -1129,17 +1108,17 @@ useEffect(() => {
     className="w-full object-contain"
   />
 
-<div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-4 pt-2 text-center sm:gap-4 sm:px-6 sm:pt-3 md:px-8 md:pt-3">
+<div className="absolute inset-0 flex flex-col items-center justify-center p-3 sm:p-4">
   <img
     src={heroTopTextImg}
     alt="Your AirPods Awaits"
-    className="relative z-10 w-[95%] max-w-[420px] object-contain sm:max-w-[460px] md:max-w-[520px] lg:max-w-[580px]"
+    className="relative z-10 w-[90%] sm:w-[92%] max-h-[42%] object-contain mb-1 sm:mb-2"
   />
 
   <img
     src={heroFinalTextImg}
     alt="Complete the final 1%"
-    className="relative z-10 w-[98%] max-w-[440px] object-contain sm:max-w-[480px] md:max-w-[540px] lg:max-w-[610px]"
+    className="relative z-10 w-[95%] sm:w-[96%] max-h-[42%] object-contain"
   />
  </div>
 </div>
@@ -1532,7 +1511,7 @@ const trackerFillWidth =
                         <>
                           Trusted Since
                           <br />
-                          2014
+                          2016
                         </>
                       )}
                       {i === 1 && (
