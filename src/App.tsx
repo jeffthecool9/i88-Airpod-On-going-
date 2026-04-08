@@ -157,7 +157,7 @@ const SectionSeam = ({
 );
 const HeroFullWidthDivider = ({
   className = "",
- fillColor = "#1E4FA3",
+  fillColor = "#1E4FA3",
 }: {
   className?: string;
   fillColor?: string;
@@ -165,8 +165,11 @@ const HeroFullWidthDivider = ({
   <div
     className={`absolute bottom-0 left-0 right-0 z-20 pointer-events-none overflow-hidden leading-none ${className}`}
   >
-    {/* edge fill to kill side gaps */}
-   <div className="absolute inset-x-0 bottom-0 h-[72px] bg-[#2957B0]" />
+    {/* Corrected edge fill: dynamically matches fillColor and shifted down to prevent top-overlap */}
+    <div 
+      className="absolute inset-x-0 bottom-[-4px] h-[10px]" 
+      style={{ backgroundColor: fillColor }}
+    />
 
     <svg
       viewBox="0 0 1200 120"
@@ -195,6 +198,7 @@ const HeroFullWidthDivider = ({
     </svg>
   </div>
 );
+
 const RegistrationForm = () => {
   const [step, setStep] = useState(1);
   const [isSuccess, setIsSuccess] = useState(false);
