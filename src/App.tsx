@@ -108,44 +108,45 @@ const SectionSeam = ({
   shape?: "dome" | "dip";
 }) => (
   <div
-    className={`absolute left-0 w-full overflow-hidden leading-[0] z-20 pointer-events-none ${className}`}
+    className={`absolute inset-x-0 overflow-hidden pointer-events-none z-20 leading-none ${className}`}
   >
     <svg
       viewBox="0 0 1200 120"
       preserveAspectRatio="none"
-      className="block w-full h-[76px] sm:h-[120px]"
+      className="block w-full h-[58px] sm:h-[74px] md:h-[88px]"
     >
       {shape === "dome" ? (
         <>
           <path
-            d="M0,120 L0,100 C480,0 720,0 1200,100 L1200,120 Z"
+            d="M0,120 L0,92 C250,22 430,0 600,0 C770,0 950,22 1200,92 L1200,120 Z"
             fill={fillColor}
           />
           <path
-            d="M0,100 C480,0 720,0 1200,100"
+            d="M0,92 C250,22 430,0 600,0 C770,0 950,22 1200,92"
             fill="none"
             stroke="url(#line-glow)"
-            strokeWidth="3"
+            strokeWidth="2.5"
           />
         </>
       ) : (
         <>
           <path
-            d="M0,0 C480,100 720,100 1200,0 L1200,120 L0,120 Z"
+            d="M0,0 C250,70 430,96 600,96 C770,96 950,70 1200,0 L1200,120 L0,120 Z"
             fill={fillColor}
           />
           <path
-            d="M0,0 C480,100 720,100 1200,0"
+            d="M0,0 C250,70 430,96 600,96 C770,96 950,70 1200,0"
             fill="none"
             stroke="url(#line-glow)"
-            strokeWidth="3"
+            strokeWidth="2.5"
           />
         </>
       )}
+
       <defs>
         <linearGradient id="line-glow" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="#22d3ee" stopOpacity="0" />
-          <stop offset="50%" stopColor="#22d3ee" stopOpacity="1" />
+          <stop offset="50%" stopColor="#22d3ee" stopOpacity="0.95" />
           <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
         </linearGradient>
       </defs>
@@ -951,12 +952,12 @@ export default function App() {
           <div className="relative mx-auto w-full max-w-[420px] min-h-[840px] overflow-hidden">
             <RealisticBackground liteMode={liteMode} />
 
-            <img
-              src={i882Img}
-              alt="i88"
-              className="pointer-events-none absolute left-1/2 top-[1.4%] z-[20] w-[82px] -translate-x-1/2 object-contain"
-            />
-
+           <img
+  src={i882Img}
+  alt="i88"
+  className="pointer-events-none absolute left-1/2 top-0 z-[30] w-[82px] -translate-x-1/2 object-contain sm:w-[88px]"
+  style={{ transform: "translate(-50%, 0)" }}
+/>
             <img
               src={rewardEventImg}
               alt="AirPods Pro Reward Event"
@@ -1326,12 +1327,11 @@ export default function App() {
             <div className="absolute bottom-[7.4%] left-1/2 z-[15] -translate-x-1/2">
               <HeroCTA />
             </div>
-
-            <SectionSeam
-              className="bottom-[-1px]"
-              fillColor="#1E4FA3"
-              shape="dip"
-            />
+<SectionSeam
+  className="bottom-0 left-0 w-full"
+  fillColor="#144FB9"
+  shape="dip"
+/>
           </div>
         </section>
 
