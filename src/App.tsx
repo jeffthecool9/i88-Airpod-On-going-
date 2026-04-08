@@ -1030,7 +1030,6 @@ useEffect(() => {
   };
 }, [liteMode]);
 
-  // UPDATE: Kept text precise and short to avoid layout breaking or looking messy
   const stepData = [
     { title: "Register", desc: "Create account", image: registerImg },
     {
@@ -1549,7 +1548,7 @@ const trackerFillWidth =
 
         <section
           id="steps-to-claim"
-          className="relative z-10 -mt-2 overflow-hidden px-4 pt-10 pb-24 sm:px-6 sm:pt-12 sm:pb-28 md:pt-14"
+          className="relative z-10 -mt-2 overflow-hidden px-4 pt-16 pb-32 sm:px-6 sm:pt-20 sm:pb-36 md:pt-24 md:pb-40"
           style={{
             background:
               "linear-gradient(180deg, #1E4FA3 0%, #1B4DAE 38%, #1650B6 72%, #144FB9 100%)",
@@ -1582,14 +1581,14 @@ const trackerFillWidth =
             <div className="absolute right-[14%] bottom-[18%] h-72 w-72 rounded-full bg-cyan-300/10 blur-[110px]" />
           </div>
 
-          <div className="relative z-10 mx-auto max-w-5xl">
-            <div className="relative overflow-hidden rounded-[24px] bg-[linear-gradient(180deg,rgba(58,128,255,0.26)_0%,rgba(41,101,220,0.24)_38%,rgba(31,78,182,0.26)_100%)] px-4 pt-6 pb-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.16),0_16px_44px_rgba(0,0,0,0.22),0_0_0_1px_rgba(255,255,255,0.08)] backdrop-blur-[26px] sm:px-6 sm:pt-7 sm:pb-9 md:px-8 md:pt-8 md:pb-10">
+          <div className="relative z-10 mx-auto max-w-5xl mt-8 sm:mt-12">
+            <div className="relative overflow-hidden rounded-[24px] bg-[linear-gradient(180deg,rgba(58,128,255,0.26)_0%,rgba(41,101,220,0.24)_38%,rgba(31,78,182,0.26)_100%)] px-4 pt-8 pb-12 shadow-[inset_0_1px_0_rgba(255,255,255,0.16),0_16px_44px_rgba(0,0,0,0.22),0_0_0_1px_rgba(255,255,255,0.08)] backdrop-blur-[26px] sm:px-6 sm:pt-10 sm:pb-14 md:px-8 md:pt-12 md:pb-16">
               <div className="pointer-events-none absolute inset-0 rounded-[24px] border border-cyan-200/20" />
               <div className="pointer-events-none absolute inset-x-[8%] top-[2px] h-[46px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[32%] bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.10))]" />
 
               <div className="relative z-10">
-                <div className="mb-5 text-center sm:mb-6">
+                <div className="mb-6 text-center sm:mb-8">
                   <h2 className="text-[34px] font-bold leading-[0.95] tracking-tight text-white sm:text-[42px] md:text-[50px]">
                     Steps to Claim
                   </h2>
@@ -1613,12 +1612,11 @@ const trackerFillWidth =
                         />
                       </div>
 
-                      <h3 className="text-[14px] font-bold leading-tight text-white sm:text-[20px] md:text-[24px]">
+                      <h3 className="text-[15px] font-bold leading-tight text-white sm:text-[20px] md:text-[24px]">
                         {item.title}
                       </h3>
 
-                      {/* UPDATE: Added min-h-[30px] so the descriptions stay aligned even if wrapped, and kept the max-width safe */}
-                      <p className="mt-1 min-h-[30px] max-w-[150px] text-[10px] font-medium leading-tight text-white/92 sm:max-w-[190px] sm:text-[12px] md:max-w-[220px] md:text-[14px]">
+                      <p className="mt-2 h-auto min-h-[44px] max-w-[150px] text-[11px] font-medium leading-relaxed text-white/92 sm:max-w-[190px] sm:text-[13px] md:max-w-[220px] md:text-[15px]">
                         {item.desc}
                       </p>
                     </motion.div>
