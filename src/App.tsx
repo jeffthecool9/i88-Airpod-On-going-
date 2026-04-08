@@ -952,17 +952,16 @@ export default function App() {
           <div className="relative mx-auto w-full max-w-[420px] min-h-[840px] overflow-hidden">
             <RealisticBackground liteMode={liteMode} />
 
-           <img
-  src={i882Img}
-  alt="i88"
-  className="pointer-events-none absolute left-1/2 top-0 z-[30] w-[82px] -translate-x-1/2 object-contain sm:w-[88px]"
-  style={{ transform: "translate(-50%, 0)" }}
+   <img
+  src={rewardEventImg}
+  alt="AirPods Pro Reward Event"
+  className="pointer-events-none absolute left-1/2 top-[5.8%] z-[18] w-[78%] max-w-[320px] -translate-x-1/2 object-contain"
 />
             <img
-              src={rewardEventImg}
-              alt="AirPods Pro Reward Event"
-              className="pointer-events-none absolute left-1/2 top-[5.8%] z-[18] w-[78%] max-w-[320px] -translate-x-1/2 object-contain"
-            />
+  src={rewardEventImg}
+  alt="AirPods Pro Reward Event"
+  className="pointer-events-none absolute left-1/2 top-[7.8%] z-[18] w-[78%] max-w-[320px] -translate-x-1/2 object-contain"
+/>
 
             <img
               src={cola1Img}
@@ -1326,13 +1325,25 @@ export default function App() {
 
             <div className="absolute bottom-[7.4%] left-1/2 z-[15] -translate-x-1/2">
               <HeroCTA />
-            </div>
-<SectionSeam
-  className="bottom-0 left-0 w-full"
-  fillColor="#144FB9"
-  shape="dip"
-/>
-          </div>
+            <div className="pointer-events-none absolute bottom-0 left-0 z-[20] w-full overflow-hidden leading-none">
+  <svg
+    viewBox="0 0 420 72"
+    preserveAspectRatio="none"
+    className="block h-[52px] w-full"
+  >
+    <path
+      d="M0,18 C90,46 150,60 210,60 C270,60 330,46 420,18 L420,72 L0,72 Z"
+      fill="#1E4FA3"
+    />
+    <path
+      d="M0,18 C90,46 150,60 210,60 C270,60 330,46 420,18"
+      fill="none"
+      stroke="#1ecbff"
+      strokeWidth="1.8"
+      strokeOpacity="0.9"
+    />
+  </svg>
+</div>
         </section>
 
         <section
