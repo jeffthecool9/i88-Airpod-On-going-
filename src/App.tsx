@@ -13,7 +13,7 @@ import heroTextBoxImg from "./assets/hero-textbox.png";
 import cola1Img from "./assets/cola1.png";
 import heroTopTextImg from "./assets/text-2.png";
 import heroFinalTextImg from "./assets/text.png";
-import heroBackground1Img from "uploaded:background1.png-25945e1e-5e94-4c8b-8ff2-05c7a081d82d"; // Import the new hero background
+import heroBackground1Img from "./assets/background1.png"; // Import the new hero background
 
 import { motion, AnimatePresence } from "motion/react";
 import {
