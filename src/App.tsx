@@ -1525,11 +1525,9 @@ const trackerFillWidth =
                       )}
                       {i === 2 && (
                         <>
-                          Clear Rewards,
+                          10+ Rewards
                           <br />
-                          Don&apos;t Forget to
-                          <br />
-                          Claim it
+                          To Unlock
                         </>
                       )}
                     </p>
