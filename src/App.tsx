@@ -1425,137 +1425,92 @@ if (item.type === "airpod") {
           <div className="pointer-events-none absolute left-1/2 bottom-[210px] z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[250px] sm:px-6 md:bottom-[270px] lg:bottom-[290px]">
             <div className="grid grid-cols-3 gap-3 sm:gap-7 md:gap-9">
               {[
-                "Trusted Since 2016",
-                "5,000+ Active Members",
-                "10+ Rewards For You",
-              ].map((text, i) => (
-                <motion.div
-                  key={text}
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, delay: 0.06 + i * 0.07 }}
-                  className="group relative overflow-hidden rounded-[20px] sm:rounded-[26px]"
-                >
-                  <div className="absolute inset-0 rounded-[20px] bg-[linear-gradient(135deg,rgba(130,205,255,0.28)_0%,rgba(80,150,255,0.16)_22%,rgba(255,220,120,0.18)_52%,rgba(35,115,255,0.14)_78%,rgba(140,225,255,0.18)_100%)] p-[1.5px] shadow-[0_16px_34px_rgba(0,0,0,0.22),0_0_18px_rgba(71,190,255,0.10)] sm:rounded-[26px]">
-                    <div className="h-full w-full rounded-[19px] bg-[linear-gradient(180deg,rgba(46,92,215,0.95)_0%,rgba(33,67,180,0.97)_32%,rgba(25,43,141,0.98)_72%,rgba(18,29,110,0.99)_100%)] sm:rounded-[25px]" />
-                  </div>
-
-                  <motion.div
-                    className="absolute inset-[1px] rounded-[19px] sm:rounded-[25px]"
-                    animate={{
-                      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                    }}
-                    transition={{
-                      duration: 9,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    style={{
-                      backgroundImage: `
-                        linear-gradient(135deg,
-                          rgba(255,255,255,0.11) 0%,
-                          rgba(255,255,255,0.03) 18%,
-                          rgba(90,190,255,0.08) 32%,
-                          rgba(255,255,255,0.02) 46%,
-                          rgba(255,215,106,0.08) 62%,
-                          rgba(255,255,255,0.03) 78%,
-                          rgba(255,255,255,0.10) 100%
-                        )
-                      `,
-                      backgroundSize: "220% 220%",
-                      mixBlendMode: "screen",
-                    }}
-                  />
-
-                  <div className="pointer-events-none absolute inset-x-[10%] top-[3px] h-[40%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.28),rgba(255,255,255,0.08),transparent)] blur-[1px]" />
-                  <div className="pointer-events-none absolute -left-4 top-1/2 h-14 w-8 -translate-y-1/2 rounded-full bg-cyan-200/12 blur-[14px]" />
-                  <div className="pointer-events-none absolute -right-4 top-1/2 h-14 w-8 -translate-y-1/2 rounded-full bg-blue-200/10 blur-[14px]" />
-                  <div className="pointer-events-none absolute inset-x-[6%] bottom-[4px] h-[34%] rounded-b-[18px] bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.22))]" />
-
-                 <motion.div
-  key={text}
-  initial={{ opacity: 0, y: 12 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.45, delay: 0.06 + i * 0.07 }}
-  className="group relative overflow-hidden rounded-[20px] sm:rounded-[26px]"
->
-  <div className="absolute inset-0 rounded-[20px] bg-[linear-gradient(135deg,rgba(130,205,255,0.28)_0%,rgba(80,150,255,0.16)_22%,rgba(255,220,120,0.18)_52%,rgba(35,115,255,0.14)_78%,rgba(140,225,255,0.18)_100%)] p-[1.5px] shadow-[0_16px_34px_rgba(0,0,0,0.22),0_0_18px_rgba(71,190,255,0.10)] sm:rounded-[26px]">
-    <div className="h-full w-full rounded-[19px] bg-[linear-gradient(180deg,rgba(46,92,215,0.95)_0%,rgba(33,67,180,0.97)_32%,rgba(25,43,141,0.98)_72%,rgba(18,29,110,0.99)_100%)] sm:rounded-[25px]" />
-  </div>
-
+  "Trusted Since 2016",
+  "5,000+ Active Members",
+  "10+ Rewards For You",
+].map((text, i) => (
   <motion.div
-    className="absolute inset-[1px] rounded-[19px] sm:rounded-[25px]"
-    animate={{
-      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-    }}
-    transition={{
-      duration: 9,
-      repeat: Infinity,
-      ease: "easeInOut",
-    }}
-    style={{
-      backgroundImage: `
-        linear-gradient(135deg,
-          rgba(255,255,255,0.11) 0%,
-          rgba(255,255,255,0.03) 18%,
-          rgba(90,190,255,0.08) 32%,
-          rgba(255,255,255,0.02) 46%,
-          rgba(255,215,106,0.08) 62%,
-          rgba(255,255,255,0.03) 78%,
-          rgba(255,255,255,0.10) 100%
-        )
-      `,
-      backgroundSize: "220% 220%",
-      mixBlendMode: "screen",
-    }}
-  />
+    key={text}
+    initial={{ opacity: 0, y: 12 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.45, delay: 0.06 + i * 0.07 }}
+    className="group relative overflow-hidden rounded-[20px] sm:rounded-[26px]"
+  >
+    <div className="absolute inset-0 rounded-[20px] bg-[linear-gradient(135deg,rgba(130,205,255,0.28)_0%,rgba(80,150,255,0.16)_22%,rgba(255,220,120,0.18)_52%,rgba(35,115,255,0.14)_78%,rgba(140,225,255,0.18)_100%)] p-[1.5px] shadow-[0_16px_34px_rgba(0,0,0,0.22),0_0_18px_rgba(71,190,255,0.10)] sm:rounded-[26px]">
+      <div className="h-full w-full rounded-[19px] bg-[linear-gradient(180deg,rgba(46,92,215,0.95)_0%,rgba(33,67,180,0.97)_32%,rgba(25,43,141,0.98)_72%,rgba(18,29,110,0.99)_100%)] sm:rounded-[25px]" />
+    </div>
 
-  <div className="pointer-events-none absolute inset-x-[10%] top-[3px] h-[40%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.22),rgba(255,255,255,0.06),transparent)] blur-[1px]" />
-  <div className="pointer-events-none absolute -left-4 top-1/2 h-14 w-8 -translate-y-1/2 rounded-full bg-cyan-200/12 blur-[14px]" />
-  <div className="pointer-events-none absolute -right-4 top-1/2 h-14 w-8 -translate-y-1/2 rounded-full bg-blue-200/10 blur-[14px]" />
-  <div className="pointer-events-none absolute inset-x-[6%] bottom-[4px] h-[34%] rounded-b-[18px] bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.22))]" />
-
-  <div className="pointer-events-none absolute inset-[1px] rounded-[19px] border border-white/10 sm:rounded-[25px]" />
-
-  <div className="relative z-10 flex min-h-[62px] items-center justify-center px-3 py-4 text-center sm:min-h-[86px] sm:px-5 sm:py-6">
-    <p
-      className={`font-bold leading-[1.04] tracking-[-0.02em] text-white ${
-        i === 2
-          ? "text-[10px] sm:text-[15px] md:text-[19px] lg:text-[21px]"
-          : "text-[12px] sm:text-[16px] md:text-[21px] lg:text-[23px]"
-      }`}
-      style={{
-        textShadow:
-          "0 1px 0 rgba(255,255,255,0.10), 0 3px 8px rgba(0,0,0,0.22)",
+    <motion.div
+      className="absolute inset-[1px] rounded-[19px] sm:rounded-[25px]"
+      animate={{
+        backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
       }}
-    >
-      {i === 0 && (
-        <>
-          Trusted Since
-          <br />
-          2016
-        </>
-      )}
-      {i === 1 && (
-        <>
-          5,000+ Active
-          <br />
-          Members
-        </>
-      )}
-      {i === 2 && (
-        <>
-          10+ Rewards
-          <br />
-          To Unlock
-        </>
-      )}
-    </p>
-  </div>
-</motion.div>
-                  ))}
+      transition={{
+        duration: 9,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+      style={{
+        backgroundImage: `
+          linear-gradient(135deg,
+            rgba(255,255,255,0.11) 0%,
+            rgba(255,255,255,0.03) 18%,
+            rgba(90,190,255,0.08) 32%,
+            rgba(255,255,255,0.02) 46%,
+            rgba(255,215,106,0.08) 62%,
+            rgba(255,255,255,0.03) 78%,
+            rgba(255,255,255,0.10) 100%
+          )
+        `,
+        backgroundSize: "220% 220%",
+        mixBlendMode: "screen",
+      }}
+    />
+
+    <div className="pointer-events-none absolute inset-x-[10%] top-[3px] h-[40%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.22),rgba(255,255,255,0.06),transparent)] blur-[1px]" />
+    <div className="pointer-events-none absolute -left-4 top-1/2 h-14 w-8 -translate-y-1/2 rounded-full bg-cyan-200/12 blur-[14px]" />
+    <div className="pointer-events-none absolute -right-4 top-1/2 h-14 w-8 -translate-y-1/2 rounded-full bg-blue-200/10 blur-[14px]" />
+    <div className="pointer-events-none absolute inset-x-[6%] bottom-[4px] h-[34%] rounded-b-[18px] bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.22))]" />
+    <div className="pointer-events-none absolute inset-[1px] rounded-[19px] border border-white/10 sm:rounded-[25px]" />
+
+    <div className="relative z-10 flex min-h-[62px] items-center justify-center px-3 py-4 text-center sm:min-h-[86px] sm:px-5 sm:py-6">
+      <p
+        className={`font-bold leading-[1.04] tracking-[-0.02em] text-white ${
+          i === 2
+            ? "text-[10px] sm:text-[15px] md:text-[19px] lg:text-[21px]"
+            : "text-[12px] sm:text-[16px] md:text-[21px] lg:text-[23px]"
+        }`}
+        style={{
+          textShadow:
+            "0 1px 0 rgba(255,255,255,0.10), 0 3px 8px rgba(0,0,0,0.22)",
+        }}
+      >
+        {i === 0 && (
+          <>
+            Trusted Since
+            <br />
+            2016
+          </>
+        )}
+        {i === 1 && (
+          <>
+            5,000+ Active
+            <br />
+            Members
+          </>
+        )}
+        {i === 2 && (
+          <>
+            10+ Rewards
+            <br />
+            To Unlock
+          </>
+        )}
+      </p>
+    </div>
+  </motion.div>
+))}
             </div>
           </div>
 
