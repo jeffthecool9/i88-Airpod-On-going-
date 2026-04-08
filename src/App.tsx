@@ -1325,7 +1325,7 @@ export default function App() {
 
             <div className="absolute bottom-[7.4%] left-1/2 z-[15] -translate-x-1/2">
               <HeroCTA />
-            <div className="pointer-events-none absolute bottom-0 left-0 z-[20] w-full overflow-hidden leading-none">
+     <div className="pointer-events-none absolute bottom-0 left-0 z-[20] w-full overflow-hidden leading-none">
   <svg
     viewBox="0 0 420 72"
     preserveAspectRatio="none"
@@ -1344,6 +1344,7 @@ export default function App() {
     />
   </svg>
 </div>
+          </div>
         </section>
 
         <section
