@@ -1133,13 +1133,23 @@ useEffect(() => {
   src={airpodImg}
   alt=""
   aria-hidden="true"
-  className="pointer-events-none absolute right-[10%] top-[18%] z-[15] w-[170px] object-contain sm:right-[11%] sm:top-[20%] sm:w-[210px] md:right-[12%] md:top-[21%] md:w-[250px] lg:left-[57%] lg:right-auto lg:top-[18%] lg:w-[145px] xl:left-[58%] xl:top-[17%] xl:w-[165px] 2xl:left-[58.5%] 2xl:top-[16%] 2xl:w-[180px]"
+  className="
+    pointer-events-none absolute z-[15] object-contain
+
+    right-[10%] top-[18%] w-[170px]
+    sm:right-[11%] sm:top-[20%] sm:w-[210px]
+    md:right-[12%] md:top-[21%] md:w-[250px]
+
+    lg:left-[54%] lg:right-auto lg:top-[14%] lg:w-[135px]
+    xl:left-[55%] xl:top-[13%] xl:w-[150px]
+    2xl:left-[55.5%] 2xl:top-[12%] 2xl:w-[165px]
+  "
   animate={{
-    y: [0, -12, 0],
+    y: [0, -10, 0],
     rotate: [0, -2, 0],
   }}
   transition={{
-    duration: 4.2,
+    duration: 4,
     repeat: Infinity,
     ease: "easeInOut",
   }}
