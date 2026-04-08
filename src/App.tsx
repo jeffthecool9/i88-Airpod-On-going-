@@ -1002,17 +1002,17 @@ export default function App() {
                 className="w-full object-contain"
               />
 
-            <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
+          <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
   <img
     src={heroTopTextImg}
     alt="Your AirPods Awaits"
-    className="relative z-10 w-[88%] max-w-[300px] object-contain"
+    className="relative z-10 w-[80%] max-w-[280px] object-contain opacity-90"
   />
 
   <img
     src={heroFinalTextImg}
     alt="Complete the final 1%"
-    className="relative z-10 mt-1 w-[90%] max-w-[310px] object-contain"
+    className="relative z-10 mt-[2px] w-[92%] max-w-[320px] object-contain"
   />
 </div>
             <div className="pointer-events-none absolute left-1/2 top-[53.8%] z-[12] w-[88%] max-w-[372px] -translate-x-1/2">
