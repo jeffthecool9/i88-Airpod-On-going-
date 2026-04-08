@@ -1328,27 +1328,15 @@ export default function App() {
   <HeroCTA />
 </div>
 
-<div className="pointer-events-none absolute bottom-0 left-0 z-[20] w-full overflow-hidden leading-none">
-            <svg
-              viewBox="0 0 1440 120"
-              preserveAspectRatio="none"
-              className="block h-[72px] w-full sm:h-[84px] md:h-[96px]"
-            >
-              <path
-                d="M0,28 C180,52 320,76 520,90 C700,102 860,102 920,102 C980,102 1140,102 1320,90 C1520,76 1660,52 1840,28 L1840,120 L0,120 Z"
-                fill="#1E4FA3"
-              />
-              <path
-                d="M0,28 C180,52 320,76 520,90 C700,102 860,102 920,102 C980,102 1140,102 1320,90 C1520,76 1660,52 1840,28"
-                fill="none"
-                stroke="#19d4ff"
-                strokeWidth="2"
-                strokeOpacity="0.95"
-              />
-           </svg>
-          </div>
-          </div>
+<div className="relative z-10 mx-auto w-full max-w-6xl" />
+
+          <SectionSeam
+            className="bottom-[-1px]"
+            fillColor="#1E4FA3"
+            shape="dip"
+          />
         </section>
+
 
         <section
           id="steps-to-claim"
