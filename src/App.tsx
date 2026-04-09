@@ -917,18 +917,23 @@ const HeroCTA = ({ isDesktop }: { isDesktop: boolean }) => {
 };
 
 export default function App() {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [progressLevel, setProgressLevel] = useState(1);
-  const [liteMode, setLiteMode] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
+ const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+const [progressLevel, setProgressLevel] = useState(1);
+const [liteMode, setLiteMode] = useState(false);
+const [isDesktop, setIsDesktop] = useState(false);
 
-  useEffect(() => {
-    const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+useEffect(() => {
+  const handleResize = () => {
+    setIsDesktop(window.innerWidth >= 1024);
+  };
 
+  handleResize();
+  window.addEventListener("resize", handleResize);
+
+  return () => {
+    window.removeEventListener("resize", handleResize);
+  };
+}, []);
   return (
 useEffect(() => {
   setProgressLevel(1);
