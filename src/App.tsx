@@ -311,12 +311,13 @@ const RegistrationForm = () => {
   const passwordRegex = /^(?=.*[0-9]).{6,}$/;
 
   const handleNext = () => {
-    if (formData.name && passwordRegex.test(formData.password)) {
+    if (formData.name.trim() && passwordRegex.test(formData.password)) {
       setStep(2);
     }
   };
 
-  const isStep1Valid = formData.name && passwordRegex.test(formData.password);
+  const isStep1Valid =
+    formData.name.trim().length > 0 && passwordRegex.test(formData.password);
   const isStep2Valid =
     formData.fullName &&
     formData.email &&
@@ -553,6 +554,11 @@ const RegistrationForm = () => {
                         }
                       />
                     </div>
+                    {formData.password.length === 0 && (
+                      <p className="ml-1 mt-1 text-xs text-blue-200/70">
+                        Must be 6+ characters and include a number
+                      </p>
+                    )}
                     {formData.password && !passwordRegex.test(formData.password) && (
                       <p className="ml-1 mt-1 text-xs text-red-400">
                         Password must be at least 6 characters and contain a number
