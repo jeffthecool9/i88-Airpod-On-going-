@@ -902,7 +902,7 @@ const HeroCTA = () => {
         onTouchEnd={handleLeave}
         whileHover={{ scale: 1.03, y: -1 }}
         whileTap={{ scale: 0.985 }}
-        className="group pointer-events-auto relative isolate overflow-hidden rounded-[22px] border border-[#ffe7a3]/45 bg-[linear-gradient(180deg,#FFE08A_0%,#F7C948_30%,#D89A18_72%,#B9780C_100%)] px-[clamp(2.5rem,4vw,3.5rem)] py-[clamp(0.75rem,1vw,0.9rem)] text-[clamp(1rem,1.5vw,1.375rem)] font-extrabold tracking-wide text-[#fff7d1] shadow-[0_22px_44px_rgba(0,0,0,0.32),inset_0_1px_0_rgba(255,255,255,0.46),inset_0_-10px_22px_rgba(120,70,0,0.24)] transition-all"
+        className="group pointer-events-auto relative isolate overflow-hidden rounded-[22px] border border-[#ffe7a3]/45 bg-[linear-gradient(180deg,#FFE08A_0%,#F7C948_30%,#D89A18_72%,#B9780C_100%)] px-[clamp(2.5rem,4vw,3.5rem)] py-[clamp(0.6rem,0.8vw,075rem)] text-[clamp(1rem,1.5vw,1.375rem)] font-extrabold tracking-wide text-[#fff7d1] shadow-[0_22px_44px_rgba(0,0,0,0.32),inset_0_1px_0_rgba(255,255,255,0.46),inset_0_-10px_22px_rgba(120,70,0,0.24)] transition-all"
         style={{
           textShadow: "0 1px 2px rgba(120,70,0,0.35)",
         }}
