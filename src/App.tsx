@@ -764,7 +764,7 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
 
       if (regSection) {
         const regRect = regSection.getBoundingClientRect();
-        setHideBubbleAtRegistration(regRect.top < window.innerHeight - 200);
+        setHideBubbleAtRegistration(regRect.top < window.innerHeight - 40);
       }
     };
 
@@ -810,73 +810,67 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
   const shouldShowBubble = showFromSteps && !hideBubbleAtRegistration && isUserActive;
 
   return (
-   <div
-  aria-hidden="true"
-  className={`pointer-events-none fixed bottom-[-0.8rem] right-[-4.25rem] z-[25] select-none transition-opacity duration-300 sm:right-[-5.5rem] ${
-    showFromSteps ? "opacity-100" : "opacity-0"
-  }`}
->
+    <div
+      aria-hidden="true"
+      className={`pointer-events-none fixed bottom-[-0.8rem] right-[-4.25rem] z-[25] select-none transition-opacity duration-300 sm:right-[-5.5rem] ${
+        showFromSteps ? "opacity-100" : "opacity-0"
+      }`}
+    >
       <AnimatePresence>
         {shouldShowBubble && (
-   <motion.div
-  initial={{ opacity: 0, y: 20, scale: 0.8 }}
-  animate={{ opacity: 1, y: 0, scale: 1 }}
-  exit={{ opacity: 0, y: 10, scale: 0.8, filter: "blur(5px)" }}
-  transition={{ type: "spring", stiffness: 200, damping: 20 }}
-  className="pointer-events-auto absolute bottom-[82%] right-[48%] z-30 w-max max-w-[min(42vw,220px)]"
->
-  <div
-    onClick={handleInteract}
-    className="group relative cursor-pointer rounded-[20px] border border-cyan-400/60 bg-cyan-950/85 px-4 py-3 text-center shadow-[0_0_20px_rgba(34,211,238,0.3)] backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:bg-cyan-900/95 hover:shadow-[0_0_30px_rgba(34,211,238,0.6)] sm:px-5 sm:py-3.5 sm:text-left"
-  >
-    <div className="flex items-center justify-center gap-2 sm:gap-2.5">
-      <div className="h-2 w-2 shrink-0 animate-pulse rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
-      <p className="text-[11px] font-bold leading-tight tracking-wide text-white sm:whitespace-nowrap sm:text-sm">
-        Click here to register
-      </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.8, filter: "blur(5px)" }}
+            transition={{ type: "spring", stiffness: 200, damping: 20 }}
+            className="pointer-events-auto absolute bottom-[82%] right-[48%] z-30 w-max max-w-[min(42vw,220px)]"
+          >
+            <div
+              onClick={handleInteract}
+              className="group relative cursor-pointer rounded-[20px] border border-cyan-400/60 bg-cyan-950/85 px-4 py-3 text-center shadow-[0_0_20px_rgba(34,211,238,0.3)] backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:bg-cyan-900/95 hover:shadow-[0_0_30px_rgba(34,211,238,0.6)] sm:px-5 sm:py-3.5 sm:text-left"
+            >
+              <div className="flex items-center justify-center gap-2 sm:gap-2.5">
+                <div className="h-2 w-2 shrink-0 animate-pulse rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
+                <p className="text-[11px] font-bold leading-tight tracking-wide text-white sm:whitespace-nowrap sm:text-sm">
+                  Click here to register
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div className="relative transition-transform duration-300 hover:scale-[1.02]">
+        <button
+          type="button"
+          onClick={handleInteract}
+          className="pointer-events-auto relative inline-block cursor-pointer border-0 bg-transparent p-0 outline-none"
+          style={{ width: "clamp(16rem,32vw,40rem)" }}
+          title="Register now"
+        >
+          <img
+            src={colaImg}
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 h-auto w-[clamp(16rem,32vw,40rem)] object-contain"
+            style={{
+              opacity: 0.65,
+              filter: liteMode
+                ? "brightness(1.05) drop-shadow(0 0 8px rgba(56,189,248,0.35))"
+                : "brightness(1.1) drop-shadow(0 0 10px rgba(56,189,248,0.7)) drop-shadow(0 0 20px rgba(59,130,246,0.5))",
+            }}
+          />
+
+          <img
+            src={colaImg}
+            alt=""
+            className="pointer-events-none relative h-auto w-[clamp(16rem,32vw,40rem)] object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.35)]"
+          />
+        </button>
+      </div>
     </div>
-  </div>
-</motion.div>
-)}
-</AnimatePresence>
-
-<div className="relative transition-transform duration-300 hover:scale-[1.02]">
-  <button
-    type="button"
-    onClick={handleInteract}
-    className="pointer-events-auto relative block border-0 bg-transparent p-0 outline-none"
-    style={{
-      width: "clamp(16rem,32vw,40rem)",
-      clipPath:
-        "polygon(32% 8%, 45% 2%, 58% 3%, 68% 10%, 74% 22%, 76% 36%, 78% 55%, 77% 78%, 71% 95%, 48% 100%, 28% 96%, 20% 80%, 18% 58%, 19% 34%, 23% 18%)",
-      WebkitClipPath:
-        "polygon(32% 8%, 45% 2%, 58% 3%, 68% 10%, 74% 22%, 76% 36%, 78% 55%, 77% 78%, 71% 95%, 48% 100%, 28% 96%, 20% 80%, 18% 58%, 19% 34%, 23% 18%)",
-    }}
-    title="Register now"
-  >
-    <img
-      src={colaImg}
-      alt=""
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-0 h-auto w-[clamp(16rem,32vw,40rem)] object-contain"
-      style={{
-        opacity: 0.65,
-        filter: liteMode
-          ? "brightness(1.05) drop-shadow(0 0 8px rgba(56,189,248,0.35))"
-          : "brightness(1.1) drop-shadow(0 0 10px rgba(56,189,248,0.7)) drop-shadow(0 0 20px rgba(59,130,246,0.5))",
-      }}
-    />
-
-    <img
-      src={colaImg}
-      alt=""
-      className="pointer-events-none relative h-auto w-[clamp(16rem,32vw,40rem)] object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.35)]"
-    />
-  </button>
-</div>
   );
 };
-
 
 const HeroCTA = () => {
   const [isActive, setIsActive] = useState(false);
