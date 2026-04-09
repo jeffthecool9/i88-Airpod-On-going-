@@ -1061,507 +1061,287 @@ useEffect(() => {
 
       <main className="relative z-10">
         
-        <section
-          id="hero-section"
-          className="relative flex min-h-screen items-center overflow-hidden"
-          style={{
-            backgroundImage: `url(${heroBackground1Img})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          <RealisticBackground liteMode={liteMode} />
-          <GoldConfetti liteMode={liteMode} />
-          <FloatingHeroCoins mousePos={mousePos} liteMode={liteMode} />
-
-          <div className="relative z-10 mx-auto flex w-full max-w-[1600px] items-center justify-center px-4 sm:px-6 lg:px-8">
-            <div
-              className="relative w-full"
-              style={{
-                minHeight: "max(112svh, 860px)",
-              }}
-            >
-              <div
-                className="relative mx-auto w-full max-w-[1500px]"
-                style={{
-                  aspectRatio: isDesktop ? "1440 / 980" : "1440 / 1280",
-                  minHeight: isDesktop ? "clamp(760px, 68vw, 980px)" : "clamp(860px, 132vw, 1580px)",
-                }}
-              >
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    width: isDesktop ? "min(1120px, 72vw)" : "100%",
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                  }}
-                >
-                  <img
-                    src={i882Img}
-                    alt="i88"
-                    className="pointer-events-none absolute z-[30] object-contain"
-                    style={{
-                      width: "clamp(6.4rem, 13.5vw, 9.2rem)",
-                      left: "50%",
-                      top: "0%",
-                      transform: "translate(-50%, -18%)",
-                    }}
-                  />
-
-                  <img
-                    src={rewardEventImg}
-                    alt="AirPods Pro Reward Event"
-                    className="pointer-events-none absolute left-1/2 z-[10] -translate-x-1/2 object-contain"
-                    style={{
-                      width: isDesktop ? "min(50rem, 94%)" : "min(84%, 47rem)",
-                      top: "7.2%",
-                    }}
-                  />
-
-                  <img
-                    src={cola1Img}
-                    alt=""
-                    aria-hidden="true"
-                    className="pointer-events-none absolute z-[8] object-contain"
-                    style={{
-                      width: isDesktop ? "clamp(29rem, 32vw, 35rem)" : "clamp(38rem, 58vw, 47.5rem)",
-                      left: "50%",
-                      top: "19.2%",
-                      transform: "translateX(-50%)",
-                      filter:
-                        "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
-                    }}
-                  />
-
-                  <div
-                    className="pointer-events-none absolute left-1/2 z-[9] -translate-x-1/2"
-                    style={{
-                      width: isDesktop ? "min(60rem, 96%)" : "min(78%, 1180px)",
-                      top: isDesktop ? "48.8%" : "48.4%",
-                    }}
-                  >
-                    <img
-                      src={heroTextBoxImg}
-                      alt=""
-                      className="w-full object-contain"
-                    />
-                    <div className="absolute inset-0 flex flex-col items-center justify-center p-3 sm:p-4">
-                      <img
-                        src={heroTopTextImg}
-                        alt="Your AirPods Awaits"
-                        className="relative z-10 mb-1 max-h-[42%] w-[90%] object-contain sm:mb-2 sm:w-[92%]"
-                      />
-
-                      <img
-                        src={heroFinalTextImg}
-                        alt="Complete the final 1%"
-                        className="relative z-10 max-h-[42%] w-[95%] object-contain sm:w-[96%]"
-                      />
-                    </div>
-                  </div>
-
-                  <motion.img
-                    src={airpodImg}
-                    alt=""
-                    aria-hidden="true"
-                    className="pointer-events-none absolute z-[15] object-contain"
-                    animate={{
-                      y: [0, -10, 0],
-                      rotate: [0, -2, 0],
-                    }}
-                    transition={{
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    style={{
-                      width: isDesktop ? "clamp(7rem, 8.4vw, 8.75rem)" : "clamp(8.75rem, 12.5vw, 10.75rem)",
-                      left: isDesktop ? "58.5%" : "63.2%",
-                      top: isDesktop ? "16.6%" : "16.2%",
-                      transform: "translateX(-50%)",
-                      filter:
-                        "drop-shadow(0 18px 30px rgba(0,0,0,0.28)) drop-shadow(0 10px 24px rgba(56,189,248,0.16))",
-                    }}
-                  />
-                </div>
-
-                <motion.div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute left-1/2 z-[12] -translate-x-1/2"
-                  style={{ top: "51.8%" }}
-                  animate={{
-                    y: [0, 5, 0],
-                    opacity: [0.16, 0.3, 0.16],
-                  }}
-                  transition={{
-                    duration: 2.4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                >
-                  <ChevronDown
-                    className="h-5 w-5 sm:h-6 sm:w-6"
-                    style={{
-                      color: "rgba(255,215,106,0.5)",
-                      filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.22))",
-                    }}
-                  />
-                </motion.div>
-
-                <div
-  className="pointer-events-none absolute z-[9] w-full max-w-[1480px] px-3 sm:px-5 lg:px-8"
+       <section
+  id="hero-section"
+  className="relative flex min-h-screen items-center overflow-hidden"
   style={{
-    left: "50%",
-    bottom: "22.2%",
-    transform: "translateX(-50%)",
+    backgroundImage: `url(${heroBackground1Img})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
   }}
 >
-                  <div className={`mx-auto ${isDesktop ? "max-w-[1080px]" : "max-w-5xl"}`}>
-                    <div className="mb-7 grid grid-cols-4 items-end gap-3 sm:gap-4 lg:gap-5 xl:gap-5 2xl:gap-6">
-                      {trackerItems.map((item, i) => {
-                        const stageNumber = i + 1;
-                        const isReached = progressLevel >= stageNumber;
-                        const isCurrent = progressLevel === stageNumber;
+  <RealisticBackground liteMode={liteMode} />
+  <GoldConfetti liteMode={liteMode} />
+  <FloatingHeroCoins mousePos={mousePos} liteMode={liteMode} />
 
-                        if (item.type === "airpod") {
-                          const isUnlockedStage = progressLevel >= 3;
+  <div className="relative z-10 mx-auto flex w-full max-w-[1600px] items-center justify-center px-4 sm:px-6 lg:px-8">
+    <div
+      className="relative w-full"
+      style={{
+        minHeight: isDesktop ? "max(100svh, 900px)" : "max(112svh, 860px)",
+      }}
+    >
+      <div
+        className="relative mx-auto w-full max-w-[1500px]"
+        style={{
+          aspectRatio: isDesktop ? "1440 / 980" : "1440 / 1280",
+          minHeight: isDesktop
+            ? "clamp(820px, 68vw, 980px)"
+            : "clamp(860px, 132vw, 1580px)",
+        }}
+      >
+        {/* Desktop-centered hero stage / mobile untouched */}
+        <div
+          className="absolute inset-0"
+          style={{
+            width: isDesktop ? "min(1120px, 78vw)" : "100%",
+            left: "50%",
+            transform: "translateX(-50%)",
+          }}
+        >
+          <img
+            src={i882Img}
+            alt="i88"
+            className="pointer-events-none absolute z-[30] object-contain"
+            style={{
+              width: "clamp(6.4rem, 13.5vw, 9.2rem)",
+              left: "50%",
+              top: "0%",
+              transform: "translate(-50%, -18%)",
+            }}
+          />
 
-                          return (
-                            <motion.div
-                              key={i}
-                              className="relative flex min-w-0 flex-col items-center justify-end"
-                              initial={{ opacity: 0, y: 10 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                            >
-                              <div className="relative flex h-[82px] w-full items-end justify-center sm:h-[86px] md:h-[92px]">
-                                <motion.div
-                                  className="absolute inset-0 flex items-end justify-center"
-                                  animate={
-                                    isUnlockedStage
-                                      ? {
-                                          y: [0, -4, 0],
-                                          scale: [1, 1.02, 1],
-                                        }
-                                      : {}
-                                  }
-                                  transition={{
-                                    duration: 2.6,
-                                    repeat: Infinity,
-                                    ease: "easeInOut",
-                                  }}
-                                >
-                                  <img
-                                    src={airpodImg}
-                                    alt="AirPods reward"
-                                    className="relative z-10 w-[78px] object-contain sm:w-[92px] md:w-[106px] lg:w-[116px]"
-                                    style={{
-                                      filter:
-                                        "grayscale(1) opacity(0.62) drop-shadow(0 12px 24px rgba(0,0,0,0.28))",
-                                    }}
-                                  />
-                                </motion.div>
+          <img
+            src={rewardEventImg}
+            alt="AirPods Pro Reward Event"
+            className="pointer-events-none absolute left-1/2 z-[10] -translate-x-1/2 object-contain"
+            style={{
+              width: isDesktop ? "min(54rem, 96%)" : "min(84%, 47rem)",
+              top: isDesktop ? "7.8%" : "7.2%",
+            }}
+          />
 
-                                <div className="pointer-events-none absolute right-[24%] top-[22px] z-20 flex h-7 w-7 items-center justify-center rounded-full border border-[#FFE08A]/30 bg-[linear-gradient(180deg,rgba(17,24,39,0.95)_0%,rgba(10,15,28,0.95)_100%)] shadow-[0_10px_20px_rgba(0,0,0,0.35)]">
-                                  <Lock className="h-3.5 w-3.5 text-[#FFD76A]" />
-                                </div>
-                              </div>
+          <img
+            src={cola1Img}
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute z-[8] object-contain"
+            style={{
+              width: isDesktop
+                ? "clamp(26rem, 30vw, 33rem)"
+                : "clamp(38rem, 58vw, 47.5rem)",
+              left: "50%",
+              top: isDesktop ? "22.5%" : "19.2%",
+              transform: "translateX(-50%)",
+              filter:
+                "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
+            }}
+          />
 
-                              <motion.div
-                                initial={false}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.35 }}
-                                className="mt-2 min-h-[34px] text-center"
-                              >
-                                <p
-                                  className="text-[12px] font-extrabold leading-tight text-[#FFD76A] sm:text-[13px] md:text-[14px]"
-                                  style={{
-                                    textShadow:
-                                      "0 1px 0 rgba(255,255,255,0.08), 0 2px 10px rgba(0,0,0,0.35)",
-                                  }}
-                                >
-                                  Deposit &amp; Play To
-                                  <br />
-                                  Unlock
-                                </p>
-                              </motion.div>
-                            </motion.div>
-                          );
-                        }
-
-                        return (
-                          <motion.div
-                            key={i}
-                            className="min-w-0"
-                            initial={false}
-                            animate={
-                              isReached
-                                ? {
-                                    opacity: 1,
-                                    y: 0,
-                                    scale: isReached || isCurrent ? [1, 1.04, 1] : 1,
-                                    rotate: 0,
-                                  }
-                                : {
-                                    opacity: 0,
-                                    y: 14,
-                                    scale: 0.92,
-                                    rotate: 0,
-                                  }
-                            }
-                            transition={{
-                              duration: 0.4,
-                              ease: "easeOut",
-                            }}
-                          >
-                            <div
-                              className={`relative rounded-[22px] p-[2px] ${
-                                isReached
-                                  ? "bg-[linear-gradient(135deg,#FFE8A3_0%,#F7C948_25%,#C88A14_60%,#FFE08A_100%)]"
-                                  : "bg-[linear-gradient(135deg,rgba(255,255,255,0.12),rgba(255,255,255,0.05))]"
-                              } shadow-[0_14px_32px_rgba(0,0,0,0.28)]`}
-                            >
-                              <div className="relative h-[82px] overflow-hidden rounded-[20px] sm:h-[86px] md:h-[92px] lg:h-[92px] xl:h-[98px] 2xl:h-[104px]">
-                                <motion.div
-                                  className="absolute inset-0"
-                                  animate={{
-                                    scale: [1, 1.05, 1],
-                                    x: [0, -6, 0],
-                                    y: [0, -4, 0],
-                                  }}
-                                  transition={{
-                                    duration: 8,
-                                    repeat: Infinity,
-                                    ease: "easeInOut",
-                                  }}
-                                  style={{
-                                    backgroundImage: `url(${heroBackground1Img})`,
-                                    backgroundSize: "cover",
-                                    backgroundPosition: "center",
-                                  }}
-                                />
-
-                                <div
-                                  className={`absolute inset-0 ${
-                                    isReached
-                                      ? "bg-[linear-gradient(180deg,rgba(8,28,84,0.28)_0%,rgba(6,21,70,0.42)_100%)]"
-                                      : "bg-[linear-gradient(180deg,rgba(8,28,84,0.42)_0%,rgba(6,21,70,0.58)_100%)]"
-                                  }`}
-                                />
-
-                                <div className="pointer-events-none absolute inset-[1px] rounded-[19px] border border-white/10" />
-                                <div className="pointer-events-none absolute inset-x-[8%] top-[3px] h-[28px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.14),transparent)] blur-[1px]" />
-                                <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-[36%] bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.18))]" />
-                                <div className="relative z-10 flex h-full flex-col items-center justify-center px-1.5 text-center sm:px-2">
-                                  <div className="mb-1 sm:mb-1.5">
-                                    <p
-                                      className={`font-black uppercase leading-[0.9] tracking-[-0.04em] ${
-                                        item.title === "MORE REWARD AWAITS"
-                                          ? "text-[14px] sm:text-[18px] md:text-[21px] lg:text-[24px]"
-                                          : "text-[16px] sm:text-[20px] md:text-[24px] lg:text-[27px]"
-                                      }`}
-                                      style={{
-                                        color: isReached ? "#fffdf4" : "rgba(255,255,255,0.85)",
-                                        textShadow: isReached
-                                          ? "0 1px 0 rgba(255,255,255,0.18), 0 8px 18px rgba(0,0,0,0.30)"
-                                          : "0 2px 10px rgba(0,0,0,0.28)",
-                                      }}
-                                    >
-                                      {item.title}
-                                    </p>
-                                  </div>
-
-                                  {item.sub ? (
-                                    <p
-                                      className="text-[10px] font-semibold uppercase tracking-[0.06em] text-[#D9EEFF] sm:text-[11px] md:text-[12px] lg:text-[13px]"
-                                      style={{
-                                        textShadow: isReached
-                                          ? "0 2px 8px rgba(0,0,0,0.22)"
-                                          : "none",
-                                      }}
-                                    >
-                                      {item.sub}
-                                    </p>
-                                  ) : null}
-                                </div>
-                              </div>
-                            </div>
-                          </motion.div>
-                        );
-                      })}
-                    </div>
-
-                    <div className="relative h-[56px] overflow-visible rounded-full border border-white/10 bg-[linear-gradient(180deg,#0A225E_0%,#061948_55%,#041232_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.10),inset_0_-12px_24px_rgba(0,0,0,0.30),0_22px_42px_rgba(0,0,0,0.24)] sm:h-[60px] md:h-[64px]">
-                      <div className="absolute inset-x-0 top-0 h-1/2 bg-[linear-gradient(180deg,rgba(255,255,255,0.10),rgba(255,255,255,0.02),transparent)]" />
-
-                      <div className="absolute inset-y-[10px] left-1/4 w-[2px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.20),rgba(255,255,255,0.06))]" />
-                      <div className="absolute inset-y-[10px] left-2/4 w-[2px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.20),rgba(255,255,255,0.06))]" />
-                      <div className="absolute inset-y-[10px] left-3/4 w-[2px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.20),rgba(255,255,255,0.06))]" />
-
-                      <motion.div
-                        animate={{ width: `${progressLevel * 25}%` }}
-                        transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-                        className="absolute inset-y-0 left-0 overflow-hidden rounded-full bg-[linear-gradient(90deg,#FFF0B8_0%,#FFF8DE_20%,#FFD86A_52%,#F3BA24_100%)] shadow-[0_10px_24px_rgba(255,215,106,0.20),0_0_28px_rgba(255,215,106,0.12)]"
-                      >
-                        <div className="absolute inset-y-[7px] left-[10px] right-[10px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.24),rgba(255,255,255,0.05),transparent)]" />
-                        <div className="absolute inset-y-[10px] left-1/4 w-[2px] rounded-full bg-[linear-gradient(180deg,rgba(173,110,0,0.26),rgba(255,255,255,0.18),rgba(173,110,0,0.22))]" />
-                        <div className="absolute inset-y-[10px] left-2/4 w-[2px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,rgba(173,110,0,0.26),rgba(255,255,255,0.18),rgba(173,110,0,0.22))]" />
-                        <div className="absolute inset-y-[10px] left-3/4 w-[2px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,rgba(173,110,0,0.26),rgba(255,255,255,0.18),rgba(173,110,0,0.22))]" />
-
-                        <motion.div
-                          animate={{ x: ["-120%", "220%"] }}
-                          transition={{
-                            duration: 3,
-                            repeat: Infinity,
-                            ease: "linear",
-                          }}
-                          className="absolute inset-y-0 w-[28%] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.42),transparent)] blur-[7px]"
-                        />
-                      </motion.div>
-
-                      <motion.div
-                        animate={{
-                          left:
-                            progressLevel === 4
-                              ? "calc(100% - 76px)"
-                              : `calc(${progressLevel * 25}% - 4px)`,
-                        }}
-                        transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-                        className="absolute top-1/2 z-10 -translate-y-1/2"
-                      >
-                        <motion.div
-                          animate={{
-                            scale: progressLevel === 4 ? [1, 1.1, 1] : [1, 1.03, 1],
-                          }}
-                          transition={{
-                            duration: progressLevel === 4 ? 1.2 : 2,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                          }}
-                          className="relative flex h-[50px] w-[50px] items-center justify-center rounded-full sm:h-[54px] sm:w-[54px] md:h-[58px] md:w-[58px]"
-                        >
-                          <div className="absolute inset-[-8px] rounded-full bg-yellow-300/20 blur-lg" />
-                          <div className="absolute inset-[-2px] rounded-full border border-[#FFE6A3]/45" />
-
-                          <div className="relative flex h-full w-full items-center justify-center rounded-full border border-white/26 bg-[linear-gradient(180deg,#FFE27B_0%,#F3BA24_100%)] shadow-[0_12px_24px_rgba(0,0,0,0.30),0_0_0_6px_rgba(255,216,77,0.12)]">
-                            <div className="absolute inset-[4px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.30),rgba(255,255,255,0.04))]" />
-                            <div className="absolute inset-x-[18%] top-[5px] h-[32%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.42),transparent)] blur-[1px]" />
-
-                            <span
-                              className="relative z-10 text-[16px] font-black text-white sm:text-[18px]"
-                              style={{
-                                textShadow:
-                                  "0 1px 0 rgba(255,255,255,0.22), 0 4px 10px rgba(0,0,0,0.28)",
-                              }}
-                            >
-                              ✦
-                            </span>
-                          </div>
-                        </motion.div>
-                      </motion.div>
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  className="pointer-events-none absolute left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:px-6"
-                  style={{ bottom: "12.4%" }}
-                >
-                  <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6">
-                    {[
-                      "Trusted Since 2016",
-                      "5,000+ Active Members",
-                      "10+ Rewards For You",
-                    ].map((text, i) => (
-                      <motion.div
-                        key={text}
-                        initial={{ opacity: 0, y: 12 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.45, delay: 0.06 + i * 0.07 }}
-                        className="group relative overflow-hidden rounded-[20px] sm:rounded-[26px]"
-                      >
-                        <div className="absolute inset-0 rounded-[20px] bg-[linear-gradient(135deg,rgba(130,205,255,0.28)_0%,rgba(80,150,255,0.16)_22%,rgba(255,220,120,0.18)_52%,rgba(35,115,255,0.14)_78%,rgba(140,225,255,0.18)_100%)] p-[1.5px] shadow-[0_16px_34px_rgba(0,0,0,0.22),0_0_18px_rgba(71,190,255,0.10)] sm:rounded-[26px]">
-                          <div className="h-full w-full rounded-[19px] bg-[linear-gradient(180deg,rgba(46,92,215,0.95)_0%,rgba(33,67,180,0.97)_32%,rgba(25,43,141,0.98)_72%,rgba(18,29,110,0.99)_100%)] sm:rounded-[25px]" />
-                        </div>
-
-                        <motion.div
-                          className="absolute inset-[1px] rounded-[19px] sm:rounded-[25px]"
-                          animate={{
-                            backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                          }}
-                          transition={{
-                            duration: 9,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                          }}
-                          style={{
-                            backgroundImage: `
-                              linear-gradient(135deg,
-                                rgba(255,255,255,0.11) 0%,
-                                rgba(255,255,255,0.03) 18%,
-                                rgba(90,190,255,0.08) 32%,
-                                rgba(255,255,255,0.02) 46%,
-                                rgba(255,215,106,0.08) 62%,
-                                rgba(255,255,255,0.03) 78%,
-                                rgba(255,255,255,0.10) 100%
-                              )
-                            `,
-                            backgroundSize: "220% 220%",
-                            mixBlendMode: "screen",
-                          }}
-                        />
-
-                        <div className="pointer-events-none absolute inset-x-[10%] top-[3px] h-[40%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.22),rgba(255,255,255,0.06),transparent)] blur-[1px]" />
-                        <div className="pointer-events-none absolute -left-4 top-1/2 h-14 w-8 -translate-y-1/2 rounded-full bg-cyan-200/12 blur-[14px]" />
-                        <div className="pointer-events-none absolute -right-4 top-1/2 h-14 w-8 -translate-y-1/2 rounded-full bg-blue-200/10 blur-[14px]" />
-                        <div className="pointer-events-none absolute inset-x-[6%] bottom-[4px] h-[34%] rounded-b-[18px] bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.22))]" />
-                        <div className="pointer-events-none absolute inset-[1px] rounded-[19px] border border-white/10 sm:rounded-[25px]" />
-
-                        <div className="relative z-10 flex min-h-[58px] items-center justify-center px-3 py-3.5 text-center sm:min-h-[78px] sm:px-5 sm:py-5">
-                          <p
-                            className={`font-bold leading-[1.04] tracking-[-0.02em] text-white ${
-                              i === 2
-                                ? "text-[10px] sm:text-[15px] md:text-[19px] lg:text-[21px]"
-                                : "text-[12px] sm:text-[16px] md:text-[21px] lg:text-[23px]"
-                            }`}
-                            style={{
-                              textShadow:
-                                "0 1px 0 rgba(255,255,255,0.10), 0 3px 8px rgba(0,0,0,0.22)",
-                            }}
-                          >
-                            {i === 0 && (
-                              <>
-                                Trusted Since
-                                <br />
-                                2016
-                              </>
-                            )}
-                            {i === 1 && (
-                              <>
-                                5,000+ Active
-                                <br />
-                                Members
-                              </>
-                            )}
-                            {i === 2 && (
-                              <>
-                                10+ Rewards
-                                <br />
-                                To Unlock
-                              </>
-                            )}
-                          </p>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-
-                <HeroCTA />
-              </div>
+          <div
+            className="pointer-events-none absolute left-1/2 z-[9] -translate-x-1/2"
+            style={{
+              width: isDesktop ? "min(64rem, 96%)" : "min(78%, 1180px)",
+              top: isDesktop ? "55.5%" : "48.4%",
+            }}
+          >
+            <img
+              src={heroTextBoxImg}
+              alt=""
+              className="w-full object-contain"
+            />
+            <div className="absolute inset-0 flex flex-col items-center justify-center p-3 sm:p-4">
+              <img
+                src={heroTopTextImg}
+                alt="Your AirPods Awaits"
+                className="relative z-10 mb-1 max-h-[42%] w-[90%] object-contain sm:mb-2 sm:w-[92%]"
+              />
+              <img
+                src={heroFinalTextImg}
+                alt="Complete the final 1%"
+                className="relative z-10 max-h-[42%] w-[95%] object-contain sm:w-[96%]"
+              />
             </div>
           </div>
+
+          <motion.img
+            src={airpodImg}
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute z-[15] object-contain"
+            animate={{
+              y: [0, -10, 0],
+              rotate: [0, -2, 0],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            style={{
+              width: isDesktop
+                ? "clamp(6.8rem, 8.2vw, 8.8rem)"
+                : "clamp(8.75rem, 12.5vw, 10.75rem)",
+              left: isDesktop ? "63%" : "63.2%",
+              top: isDesktop ? "19%" : "16.2%",
+              transform: "translateX(-50%)",
+              filter:
+                "drop-shadow(0 18px 30px rgba(0,0,0,0.28)) drop-shadow(0 10px 24px rgba(56,189,248,0.16))",
+            }}
+          />
+
+          <motion.div
+            aria-hidden="true"
+            className="pointer-events-none absolute left-1/2 z-[12] -translate-x-1/2"
+            style={{ top: isDesktop ? "59.5%" : "51.8%" }}
+            animate={{
+              y: [0, 5, 0],
+              opacity: [0.16, 0.3, 0.16],
+            }}
+            transition={{
+              duration: 2.4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <ChevronDown
+              className="h-5 w-5 sm:h-6 sm:w-6"
+              style={{
+                color: "rgba(255,215,106,0.5)",
+                filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.22))",
+              }}
+            />
+          </motion.div>
+        </div>
+
+        {/* Lower hero stack */}
+        <div
+          className="pointer-events-none absolute z-[9] w-full px-3 sm:px-5 lg:px-8"
+          style={{
+            left: "50%",
+            bottom: isDesktop ? "7.5%" : "22.2%",
+            transform: "translateX(-50%)",
+          }}
+        >
+          <div className={`mx-auto ${isDesktop ? "max-w-[1080px]" : "max-w-5xl"}`}>
+            <div
+              className={`grid grid-cols-4 items-end ${
+                isDesktop
+                  ? "mb-6 gap-4"
+                  : "mb-7 gap-3 sm:gap-4 lg:gap-5 xl:gap-5 2xl:gap-6"
+              }`}
+            >
+              {trackerItems.map((item, i) => {
+                const stageNumber = i + 1;
+                const isReached = progressLevel >= stageNumber;
+                const isCurrent = progressLevel === stageNumber;
+
+                if (item.type === "airpod") {
+                  const isUnlockedStage = progressLevel >= 3;
+
+                  return (
+                    <motion.div
+                      key={i}
+                      className="relative flex min-w-0 flex-col items-center justify-end"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                      <div className="relative flex h-full min-h-[96px] w-full items-end justify-center">
+                        <img
+                          src={airpodImg}
+                          alt=""
+                          className="pointer-events-none absolute bottom-[18px] left-1/2 z-[2] w-[58px] -translate-x-1/2 object-contain opacity-90"
+                        />
+                        <div className="absolute right-[16%] top-[8px] z-[3] flex h-10 w-10 items-center justify-center rounded-full border border-[#FFD76A]/45 bg-[#081B59]/90 shadow-[0_8px_20px_rgba(0,0,0,0.28)]">
+                          <Lock
+                            className={`h-4 w-4 ${
+                              isUnlockedStage ? "text-[#FFD76A]" : "text-[#FFD76A]/70"
+                            }`}
+                          />
+                        </div>
+                        <p className="relative z-[1] mt-[88px] text-center text-[clamp(0.72rem,0.95vw,0.95rem)] font-bold leading-tight text-[#FFD76A]">
+                          Deposit &amp; Play To Unlock
+                        </p>
+                      </div>
+                    </motion.div>
+                  );
+                }
+
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                    className={`relative flex min-h-[88px] min-w-0 items-center justify-center rounded-[22px] border px-3 text-center shadow-[0_12px_28px_rgba(0,0,0,0.25)] ${
+                      isCurrent
+                        ? "border-[#FFD76A] bg-[linear-gradient(180deg,#174BFF_0%,#0D2EB2_100%)]"
+                        : "border-[#D9A120] bg-[linear-gradient(180deg,#174BFF_0%,#0D2EB2_100%)]"
+                    }`}
+                  >
+                    <div className="absolute inset-[1px] rounded-[21px] border border-white/10" />
+                    <div className="absolute inset-x-[8%] top-[6px] h-[34%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent)] blur-[1px]" />
+                    <div className="relative z-[2]">
+                      <div className="text-[clamp(1rem,1.25vw,1.6rem)] font-extrabold leading-[0.95] text-white">
+                        {item.title}
+                      </div>
+                      {item.sub && (
+                        <div className="mt-1 text-[clamp(0.72rem,0.82vw,0.95rem)] font-semibold uppercase tracking-[0.02em] text-white/95">
+                          {item.sub}
+                        </div>
+                      )}
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            <div className={`mx-auto ${isDesktop ? "max-w-[1040px]" : "max-w-none"}`}>
+              <div className="relative h-[56px] overflow-hidden rounded-full bg-[linear-gradient(90deg,#FFF8D8_0%,#F5D452_52%,#041C66_77%,#02103C_100%)] shadow-[0_18px_40px_rgba(0,0,0,0.22)]">
+                <div className="absolute inset-y-[18%] left-[21%] w-[2px] rounded-full bg-[#E9C856]/40" />
+                <div className="absolute inset-y-[18%] left-[39%] w-[2px] rounded-full bg-[#E9C856]/40" />
+                <div className="absolute inset-y-[18%] left-[58%] w-[2px] rounded-full bg-[#E9C856]/40" />
+                <motion.div
+                  className="absolute left-[72%] top-1/2 z-[3] h-[72px] w-[72px] -translate-y-1/2 rounded-full border border-[#E7C35A] bg-[radial-gradient(circle_at_35%_35%,#FFF8D8_0%,#F4D24D_55%,#D79D12_100%)] shadow-[0_0_0_4px_rgba(255,215,106,0.12),0_0_26px_rgba(255,215,106,0.35)]"
+                  animate={{
+                    x: progressLevel >= 3 ? 0 : -90,
+                  }}
+                  transition={{ type: "spring", stiffness: 120, damping: 20 }}
+                >
+                  <div className="absolute inset-[9px] rounded-full border border-white/25" />
+                  <div className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-[3px] bg-white/95 shadow-[0_0_18px_rgba(255,255,255,0.55)]" />
+                </motion.div>
+              </div>
+            </div>
+
+            <div
+              className={`mx-auto grid grid-cols-3 ${
+                isDesktop ? "mt-6 max-w-[1080px] gap-6" : "mt-4 gap-3"
+              }`}
+            >
+              {[
+                "Trusted Since 2016",
+                "5,000+ Active Members",
+                "10+ Rewards To Unlock",
+              ].map((text) => (
+                <div
+                  key={text}
+                  className="relative flex min-h-[82px] items-center justify-center rounded-[24px] border border-white/8 bg-[linear-gradient(180deg,rgba(57,105,255,0.75)_0%,rgba(13,35,137,0.85)_100%)] px-4 text-center shadow-[0_18px_38px_rgba(0,0,0,0.22)]"
+                >
+                  <div className="absolute inset-[1px] rounded-[23px] border border-white/8" />
+                  <div className="absolute inset-x-[8%] top-[7px] h-[36%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0.04),transparent)] blur-[1px]" />
+                  <span className="relative z-[2] text-[clamp(0.95rem,1vw,1.4rem)] font-bold leading-tight text-white">
+                    {text}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <HeroCTA />
+          </div>
+        </div>
+      </div>
 
           <div className="relative z-10 mx-auto w-full max-w-6xl" />
 
