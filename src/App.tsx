@@ -961,7 +961,7 @@ export default function App() {
 const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 const [progressLevel, setProgressLevel] = useState(1);
 const [liteMode, setLiteMode] = useState(false);
-
+const isDesktop = typeof window !== "undefined" && window.innerWidth >= 1024;
 useEffect(() => {
   setProgressLevel(1);
 
@@ -1084,97 +1084,106 @@ useEffect(() => {
               <div
                 className="relative mx-auto w-full max-w-[1500px]"
                 style={{
-                  aspectRatio: "1440 / 1280",
-                  minHeight: "clamp(860px, 132vw, 1580px)",
+                  aspectRatio: isDesktop ? "1440 / 980" : "1440 / 1280",
+                  minHeight: isDesktop ? "clamp(760px, 68vw, 980px)" : "clamp(860px, 132vw, 1580px)",
                 }}
               >
-                <img
-                  src={i882Img}
-                  alt="i88"
-                  className="pointer-events-none absolute z-[30] object-contain"
-                 style={{
-  width: "clamp(6.4rem, 13.5vw, 9.2rem)",
-  left: "50%",
-  top: "0%",
-  transform: "translate(-50%, -18%)",
-}}
-                />
-
-                <img
-                  src={rewardEventImg}
-                  alt="AirPods Pro Reward Event"
-                  className="pointer-events-none absolute left-1/2 z-[10] -translate-x-1/2 object-contain"
-                  style={{
-                    width: "min(84%, 47rem)",
-                    top: "7.2%",
-                  }}
-                />
-
-                <img
-                  src={cola1Img}
-                  alt=""
-                  aria-hidden="true"
-                  className="pointer-events-none absolute z-[8] object-contain"
-                  style={{
-                    width: "clamp(38rem, 58vw, 47.5rem)",
-                    left: "50%",
-                    top: "19.2%",
-                    transform: "translateX(-50%)",
-                    filter:
-                      "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
-                  }}
-                />
-
                 <div
-                  className="pointer-events-none absolute left-1/2 z-[9] -translate-x-1/2"
+                  className="absolute inset-0"
                   style={{
-                    width: "min(78%, 1180px)",
-                    top: "48.4%",
+                    width: isDesktop ? "min(1120px, 72vw)" : "100%",
+                    left: "50%",
+                    transform: "translateX(-50%)",
                   }}
                 >
                   <img
-                    src={heroTextBoxImg}
-                    alt=""
-                    className="w-full object-contain"
+                    src={i882Img}
+                    alt="i88"
+                    className="pointer-events-none absolute z-[30] object-contain"
+                    style={{
+                      width: "clamp(6.4rem, 13.5vw, 9.2rem)",
+                      left: "50%",
+                      top: "0%",
+                      transform: "translate(-50%, -18%)",
+                    }}
                   />
-                  <div className="absolute inset-0 flex flex-col items-center justify-center p-3 sm:p-4">
-                    <img
-                      src={heroTopTextImg}
-                      alt="Your AirPods Awaits"
-                      className="relative z-10 mb-1 max-h-[42%] w-[90%] object-contain sm:mb-2 sm:w-[92%]"
-                    />
 
+                  <img
+                    src={rewardEventImg}
+                    alt="AirPods Pro Reward Event"
+                    className="pointer-events-none absolute left-1/2 z-[10] -translate-x-1/2 object-contain"
+                    style={{
+                      width: isDesktop ? "min(50rem, 94%)" : "min(84%, 47rem)",
+                      top: "7.2%",
+                    }}
+                  />
+
+                  <img
+                    src={cola1Img}
+                    alt=""
+                    aria-hidden="true"
+                    className="pointer-events-none absolute z-[8] object-contain"
+                    style={{
+                      width: isDesktop ? "clamp(29rem, 32vw, 35rem)" : "clamp(38rem, 58vw, 47.5rem)",
+                      left: "50%",
+                      top: "19.2%",
+                      transform: "translateX(-50%)",
+                      filter:
+                        "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
+                    }}
+                  />
+
+                  <div
+                    className="pointer-events-none absolute left-1/2 z-[9] -translate-x-1/2"
+                    style={{
+                      width: isDesktop ? "min(60rem, 96%)" : "min(78%, 1180px)",
+                      top: isDesktop ? "48.8%" : "48.4%",
+                    }}
+                  >
                     <img
-                      src={heroFinalTextImg}
-                      alt="Complete the final 1%"
-                      className="relative z-10 max-h-[42%] w-[95%] object-contain sm:w-[96%]"
+                      src={heroTextBoxImg}
+                      alt=""
+                      className="w-full object-contain"
                     />
+                    <div className="absolute inset-0 flex flex-col items-center justify-center p-3 sm:p-4">
+                      <img
+                        src={heroTopTextImg}
+                        alt="Your AirPods Awaits"
+                        className="relative z-10 mb-1 max-h-[42%] w-[90%] object-contain sm:mb-2 sm:w-[92%]"
+                      />
+
+                      <img
+                        src={heroFinalTextImg}
+                        alt="Complete the final 1%"
+                        className="relative z-10 max-h-[42%] w-[95%] object-contain sm:w-[96%]"
+                      />
+                    </div>
                   </div>
-                </div>
 
-                <motion.img
-                  src={airpodImg}
-                  alt=""
-                  aria-hidden="true"
-                  className="pointer-events-none absolute z-[15] object-contain"
-                  animate={{
-                    y: [0, -10, 0],
-                    rotate: [0, -2, 0],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  style={{
-                    width: "clamp(8.75rem, 12.5vw, 10.75rem)",
-                    left: "63.2%",
-                    top: "16.2%",
-                    transform: "translateX(-50%)",
-                    filter:
-                      "drop-shadow(0 18px 30px rgba(0,0,0,0.28)) drop-shadow(0 10px 24px rgba(56,189,248,0.16))",
-                  }}
-                />
+                  <motion.img
+                    src={airpodImg}
+                    alt=""
+                    aria-hidden="true"
+                    className="pointer-events-none absolute z-[15] object-contain"
+                    animate={{
+                      y: [0, -10, 0],
+                      rotate: [0, -2, 0],
+                    }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    style={{
+                      width: isDesktop ? "clamp(7rem, 8.4vw, 8.75rem)" : "clamp(8.75rem, 12.5vw, 10.75rem)",
+                      left: isDesktop ? "58.5%" : "63.2%",
+                      top: isDesktop ? "16.6%" : "16.2%",
+                      transform: "translateX(-50%)",
+                      filter:
+                        "drop-shadow(0 18px 30px rgba(0,0,0,0.28)) drop-shadow(0 10px 24px rgba(56,189,248,0.16))",
+                    }}
+                  />
+                </div>
 
                 <motion.div
                   aria-hidden="true"
@@ -1207,7 +1216,7 @@ useEffect(() => {
     transform: "translateX(-50%)",
   }}
 >
-                  <div className="mx-auto max-w-5xl">
+                  <div className={`mx-auto ${isDesktop ? "max-w-[1080px]" : "max-w-5xl"}`}>
                     <div className="mb-7 grid grid-cols-4 items-end gap-3 sm:gap-4 lg:gap-5 xl:gap-5 2xl:gap-6">
                       {trackerItems.map((item, i) => {
                         const stageNumber = i + 1;
