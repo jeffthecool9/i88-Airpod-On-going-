@@ -889,7 +889,7 @@ const HeroCTA = () => {
   };
 
   return (
-    <div className="absolute bottom-[clamp(2.125rem,5vw,13.375rem)] left-1/2 z-[10] -translate-x-1/2">
+    <div className="absolute bottom-[clamp(1.5rem,3.4vw,7rem)] left-1/2 z-[10] -translate-x-1/2">
       <motion.button
         onClick={scrollToRegister}
         onMouseEnter={handleEnter}
@@ -1074,14 +1074,14 @@ useEffect(() => {
             <div
               className="relative w-full"
               style={{
-                minHeight: "max(100svh, 780px)",
+                minHeight: "max(112svh, 860px)",
               }}
             >
               <div
                 className="relative mx-auto w-full max-w-[1500px]"
                 style={{
-                  aspectRatio: "1440 / 1220",
-                  minHeight: "clamp(780px, 112vw, 1500px)",
+                  aspectRatio: "1440 / 1280",
+                  minHeight: "clamp(860px, 132vw, 1580px)",
                 }}
               >
                 <img
@@ -1091,7 +1091,7 @@ useEffect(() => {
                   style={{
                     width: "clamp(5rem, 11vw, 7.5rem)",
                     left: "50%",
-                    top: "1.6%",
+                    top: "0.4%",
                     transform: "translateX(-50%)",
                   }}
                 />
@@ -1101,8 +1101,8 @@ useEffect(() => {
                   alt="AirPods Pro Reward Event"
                   className="pointer-events-none absolute left-1/2 z-[10] -translate-x-1/2 object-contain"
                   style={{
-                    width: "min(82%, 46rem)",
-                    top: "4.2%",
+                    width: "min(84%, 47rem)",
+                    top: "5.2%",
                   }}
                 />
 
@@ -1114,7 +1114,7 @@ useEffect(() => {
                   style={{
                     width: "clamp(38rem, 58vw, 47.5rem)",
                     left: "50%",
-                    top: "8.4%",
+                    top: "12.2%",
                     transform: "translateX(-50%)",
                     filter:
                       "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
@@ -1124,8 +1124,8 @@ useEffect(() => {
                 <div
                   className="pointer-events-none absolute left-1/2 z-[9] -translate-x-1/2"
                   style={{
-                    width: "min(72%, 1100px)",
-                    top: "43.8%",
+                    width: "min(78%, 1180px)",
+                    top: "48.4%",
                   }}
                 >
                   <img
@@ -1163,9 +1163,9 @@ useEffect(() => {
                     ease: "easeInOut",
                   }}
                   style={{
-                    width: "clamp(8.5rem, 12vw, 10.5rem)",
+                    width: "clamp(8.75rem, 12.5vw, 10.75rem)",
                     left: "63.2%",
-                    top: "12.8%",
+                    top: "16.2%",
                     transform: "translateX(-50%)",
                     filter:
                       "drop-shadow(0 18px 30px rgba(0,0,0,0.28)) drop-shadow(0 10px 24px rgba(56,189,248,0.16))",
@@ -1175,7 +1175,7 @@ useEffect(() => {
                 <motion.div
                   aria-hidden="true"
                   className="pointer-events-none absolute left-1/2 z-[12] -translate-x-1/2"
-                  style={{ top: "46.6%" }}
+                  style={{ top: "51.8%" }}
                   animate={{
                     y: [0, 5, 0],
                     opacity: [0.16, 0.3, 0.16],
@@ -1198,13 +1198,13 @@ useEffect(() => {
                 <div
                   className="pointer-events-none absolute z-[9] w-full max-w-[1480px] px-3 sm:px-5 lg:px-8"
                   style={{
-                    left: "53.2%",
-                    bottom: "23.2%",
+                    left: "54.2%",
+                    bottom: "15.2%",
                     transform: "translateX(-50%)",
                   }}
                 >
                   <div className="mx-auto max-w-5xl">
-                    <div className="mb-4 grid grid-cols-4 items-end gap-2.5 sm:gap-3 lg:gap-4 xl:gap-5 2xl:gap-6">
+                    <div className="mb-5 grid grid-cols-4 items-end gap-2.5 sm:gap-3 lg:gap-4 xl:gap-5 2xl:gap-6">
                       {trackerItems.map((item, i) => {
                         const stageNumber = i + 1;
                         const isReached = progressLevel >= stageNumber;
@@ -1249,7 +1249,7 @@ useEffect(() => {
                                   />
                                 </motion.div>
 
-                                <div className="pointer-events-none absolute right-[30%] top-[16px] z-20 flex h-7 w-7 items-center justify-center rounded-full border border-[#FFE08A]/30 bg-[linear-gradient(180deg,rgba(17,24,39,0.95)_0%,rgba(10,15,28,0.95)_100%)] shadow-[0_10px_20px_rgba(0,0,0,0.35)] sm:right-[30%] md:right-[30%]">
+                                <div className="pointer-events-none absolute right-[24%] top-[22px] z-20 flex h-7 w-7 items-center justify-center rounded-full border border-[#FFE08A]/30 bg-[linear-gradient(180deg,rgba(17,24,39,0.95)_0%,rgba(10,15,28,0.95)_100%)] shadow-[0_10px_20px_rgba(0,0,0,0.35)]">
                                   <Lock className="h-3.5 w-3.5 text-[#FFD76A]" />
                                 </div>
                               </div>
@@ -1378,7 +1378,7 @@ useEffect(() => {
                       })}
                     </div>
 
-                    <div className="relative overflow-visible h-[56px] rounded-full border border-white/10 bg-[linear-gradient(180deg,#0A225E_0%,#061948_55%,#041232_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.10),inset_0_-12px_24px_rgba(0,0,0,0.30),0_22px_42px_rgba(0,0,0,0.24)] sm:h-[60px] md:h-[64px]">
+                    <div className="relative h-[56px] overflow-visible rounded-full border border-white/10 bg-[linear-gradient(180deg,#0A225E_0%,#061948_55%,#041232_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.10),inset_0_-12px_24px_rgba(0,0,0,0.30),0_22px_42px_rgba(0,0,0,0.24)] sm:h-[60px] md:h-[64px]">
                       <div className="absolute inset-x-0 top-0 h-1/2 bg-[linear-gradient(180deg,rgba(255,255,255,0.10),rgba(255,255,255,0.02),transparent)]" />
 
                       <div className="absolute inset-y-[10px] left-1/4 w-[2px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.20),rgba(255,255,255,0.06))]" />
@@ -1411,7 +1411,7 @@ useEffect(() => {
                           left:
                             progressLevel === 4
                               ? "calc(100% - 76px)"
-                              : `calc(${progressLevel * 25}% - 8px)`,
+                              : `calc(${progressLevel * 25}% - 4px)`,
                         }}
                         transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
                         className="absolute top-1/2 z-10 -translate-y-1/2"
@@ -1452,7 +1452,7 @@ useEffect(() => {
 
                 <div
                   className="pointer-events-none absolute left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:px-6"
-                  style={{ bottom: "14.8%" }}
+                  style={{ bottom: "8.4%" }}
                 >
                   <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6">
                     {[
