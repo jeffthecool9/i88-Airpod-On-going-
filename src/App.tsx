@@ -568,19 +568,19 @@ const RegistrationForm = () => {
 
                 <motion.button
   type="button"
-  whileHover={isStep2Valid ? { scale: 1.02 } : {}}
-  whileTap={isStep2Valid ? { scale: 0.98 } : {}}
-  onClick={handleFinalCTA}
-  disabled={!isStep2Valid}
-  className={`relative z-[40] flex w-full cursor-pointer items-center justify-center gap-2 rounded-2xl bg-[linear-gradient(90deg,#1D4ED8_0%,#2563EB_42%,#22D3EE_100%)] py-4 font-bold text-white shadow-[0_18px_40px_rgba(37,99,235,0.38)] transition-all ${
-    !isStep2Valid
+  whileHover={isStep1Valid ? { scale: 1.02 } : {}}
+  whileTap={isStep1Valid ? { scale: 0.98 } : {}}
+  onClick={handleNext}
+  disabled={!isStep1Valid}
+  className={`group relative z-[40] flex w-full cursor-pointer items-center justify-center gap-2 rounded-2xl bg-[linear-gradient(90deg,#1D4ED8_0%,#2563EB_42%,#22D3EE_100%)] py-4 font-bold text-white shadow-[0_18px_40px_rgba(37,99,235,0.38)] transition-all ${
+    !isStep1Valid
       ? "cursor-not-allowed opacity-40 grayscale-[0.5]"
       : "hover:brightness-110 hover:shadow-[0_20px_50px_rgba(34,211,238,0.28)]"
   }`}
   style={{ pointerEvents: "auto" }}
 >
-  <span className="pointer-events-none">Complete Registration</span>
-  <CheckCircle2 className="h-5 w-5 pointer-events-none" />
+  <span className="pointer-events-none">Join Now</span>
+  <ChevronRight className="h-5 w-5 pointer-events-none transition-transform duration-300 group-hover:translate-x-1" />
 </motion.button>
                 </motion.div>
               ) : (
