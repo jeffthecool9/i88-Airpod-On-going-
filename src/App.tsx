@@ -897,7 +897,7 @@ const HeroCTA = () => {
   };
 
   return (
-   <div className="absolute bottom-[34px] left-1/2 z-[10] -translate-x-1/2 sm:bottom-[42px] md:bottom-[54px] lg:bottom-[104px]">
+   <div className="absolute bottom-[84px] left-1/2 z-[10] -translate-x-1/2 sm:bottom-[98px] md:bottom-[118px] lg:bottom-[174px]">
       <motion.button
         onClick={scrollToRegister}
         onMouseEnter={handleEnter}
@@ -1065,7 +1065,7 @@ useEffect(() => {
       <main className="relative z-10">
         <section
           id="hero-section"
-          className="relative flex min-h-[118vh] items-center overflow-hidden sm:min-h-[121vh] md:min-h-[124vh] lg:min-h-[136vh] xl:min-h-[140vh] 2xl:min-h-[144vh]"
+          className="relative flex min-h-[112vh] items-center overflow-hidden sm:min-h-[115vh] md:min-h-[118vh] lg:min-h-[130vh] xl:min-h-[134vh] 2xl:min-h-[138vh]"
           style={{
             backgroundImage: `url(${heroBackground1Img})`, 
             backgroundSize: "cover",
@@ -1181,7 +1181,7 @@ xl:left-[63%] xl:-translate-x-1/2 xl:top-[13.2%] xl:w-[150px]
   />
 </motion.div>
           
-          <div className="pointer-events-none absolute left-1/2 bottom-[196px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[208px] sm:px-6 md:bottom-[224px] lg:bottom-[332px] lg:max-w-[1280px] lg:px-10 xl:bottom-[348px] xl:max-w-[1380px] 2xl:bottom-[368px] 2xl:max-w-[1480px]">
+          <div className="pointer-events-none absolute left-1/2 bottom-[286px] z-[9] w-full max-w-6xl -translate-x-1/2 px-4 sm:bottom-[304px] sm:px-6 md:bottom-[324px] lg:bottom-[430px] lg:max-w-[1280px] lg:px-10 xl:bottom-[448px] xl:max-w-[1380px] 2xl:bottom-[470px] 2xl:max-w-[1480px]">
             <div className="mx-auto max-w-5xl">
              <div className="mb-3 grid grid-cols-4 items-end gap-2 sm:gap-2.5 lg:gap-4 xl:gap-5 2xl:gap-6">
                 {trackerItems.map((item, i) => {
@@ -1430,7 +1430,7 @@ if (item.type === "airpod") {
             </div>
           </div>
 
-          <div className="pointer-events-none absolute left-1/2 bottom-[94px] z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[104px] sm:px-6 md:bottom-[116px] lg:bottom-[185px]">
+          <div className="pointer-events-none absolute left-1/2 bottom-[178px] z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:bottom-[196px] sm:px-6 md:bottom-[214px] lg:bottom-[292px]">
             <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6">
               {[
   "Trusted Since 2016",
