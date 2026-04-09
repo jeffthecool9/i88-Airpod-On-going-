@@ -889,7 +889,11 @@ const HeroCTA = () => {
   };
 
   return (
-    <div className="absolute bottom-[clamp(3.75rem,5.2vw,8.5rem)] left-1/2 z-[10] -translate-x-1/2">
+    <div className="absolute left-1/2 z-[10] -translate-x-1/2"
+  style={{
+    bottom: "calc(clamp(3.75rem,5.2vw,8.5rem) - 4px)"
+  }}
+>
       <motion.button
         onClick={scrollToRegister}
         onMouseEnter={handleEnter}
