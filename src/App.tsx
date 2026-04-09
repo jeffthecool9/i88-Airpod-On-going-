@@ -1342,10 +1342,10 @@ useEffect(() => {
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
-          <div className="relative z-10 mx-auto w-full max-w-6xl" />
-
-          <SectionSeam
+        <SectionSeam
             className="bottom-[-1px]"
             fillColor="#1E4FA3"
             shape="dip"
