@@ -961,6 +961,13 @@ export default function App() {
 const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 const [progressLevel, setProgressLevel] = useState(1);
 const [liteMode, setLiteMode] = useState(false);
+const isDesktop = typeof window !== "undefined" && window.innerWidth >= 1024;
+  useEffect(() => {
+  const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
+  handleResize();
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
 
 useEffect(() => {
   setProgressLevel(1);
@@ -1082,12 +1089,14 @@ useEffect(() => {
               }}
             >
               <div
-                className="relative mx-auto w-full max-w-[1500px]"
-                style={{
-                  aspectRatio: "1440 / 1280",
-                  minHeight: "clamp(860px, 132vw, 1580px)",
-                }}
-              >
+  className="relative mx-auto w-full max-w-[1500px]"
+  style={{
+    aspectRatio: isDesktop ? "1440 / 980" : "1440 / 1280",
+    minHeight: isDesktop
+      ? "clamp(760px, 70vw, 980px)"
+      : "clamp(860px, 132vw, 1580px)",
+  }}
+>
                 <img
                   src={i882Img}
                   alt="i88"
@@ -1202,13 +1211,19 @@ useEffect(() => {
                 <div
   className="pointer-events-none absolute z-[9] w-full max-w-[1480px] px-3 sm:px-5 lg:px-8"
   style={{
-    left: "50%",
-    bottom: "22.2%",
+    left: isDesktop ? "50%" : "54.2%",
+    bottom: isDesktop ? "10.5%" : "21.2%",
     transform: "translateX(-50%)",
   }}
 >
-                  <div className="mx-auto max-w-5xl">
-                    <div className="mb-7 grid grid-cols-4 items-end gap-3 sm:gap-4 lg:gap-5 xl:gap-5 2xl:gap-6">
+                  <div className={`${isDesktop ? "max-w-[1180px]" : "max-w-5xl"} mx-auto`}>
+                    <div
+  className={`grid grid-cols-4 items-end ${
+    isDesktop
+      ? "mb-6 gap-5"
+      : "mb-5 gap-2.5 sm:gap-3 lg:gap-4 xl:gap-5 2xl:gap-6"
+  }`}
+>
                       {trackerItems.map((item, i) => {
                         const stageNumber = i + 1;
                         const isReached = progressLevel >= stageNumber;
@@ -1554,7 +1569,11 @@ useEffect(() => {
             </div>
           </div>
 
-          <div className="relative z-10 mx-auto w-full max-w-6xl" />
+          <div
+  className={`mx-auto grid grid-cols-3 ${
+    isDesktop ? "mt-6 max-w-[1080px] gap-8" : "mt-4 gap-3"
+  }`}
+>
 
           <SectionSeam
             className="bottom-[-1px]"
