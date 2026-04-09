@@ -1114,7 +1114,7 @@ useEffect(() => {
                   style={{
                     width: "clamp(38rem, 58vw, 47.5rem)",
                     left: "50%",
-                    top: "22.2%",
+                    top: "19.2%",
                     transform: "translateX(-50%)",
                     filter:
                       "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
