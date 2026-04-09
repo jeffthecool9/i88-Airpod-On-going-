@@ -891,7 +891,7 @@ const HeroCTA = () => {
   return (
     <div className="absolute left-1/2 z-[10] -translate-x-1/2"
   style={{
-   bottom: "clamp(3.4rem,5vw,8.2rem)"
+   bottom: "calc(clamp(3.25rem,4.8vw,7.8rem) - 6px)"
   }}
 >
       <motion.button
@@ -1092,12 +1092,12 @@ useEffect(() => {
                   src={i882Img}
                   alt="i88"
                   className="pointer-events-none absolute z-[30] object-contain"
-                  style={{
-                    width: "clamp(5.9rem, 13vw, 8.8rem)",
-                    left: "50%",
-                    top: "-0.8%",
-                    transform: "translateX(-50%)",
-                  }}
+                 style={{
+  width: "clamp(6.4rem, 13.5vw, 9.2rem)",
+  left: "50%",
+  top: "0%",
+  transform: "translate(-50%, -18%)",
+}}
                 />
 
                 <img
@@ -1200,15 +1200,15 @@ useEffect(() => {
                 </motion.div>
 
                 <div
-                  className="pointer-events-none absolute z-[9] w-full max-w-[1480px] px-3 sm:px-5 lg:px-8"
-                  style={{
-                    left: "54.2%",
-                    bottom: "21.2%",
-                    transform: "translateX(-50%)",
-                  }}
-                >
+  className="pointer-events-none absolute z-[9] w-full max-w-[1480px] px-3 sm:px-5 lg:px-8"
+  style={{
+    left: "50%",
+    bottom: "22.2%",
+    transform: "translateX(-50%)",
+  }}
+>
                   <div className="mx-auto max-w-5xl">
-                    <div className="mt-[5px] mb-0 grid grid-cols-4 items-end gap-2.5 sm:gap-3 lg:gap-4 xl:gap-5 2xl:gap-6">
+                    <div className="mb-7 grid grid-cols-4 items-end gap-3 sm:gap-4 lg:gap-5 xl:gap-5 2xl:gap-6">
                       {trackerItems.map((item, i) => {
                         const stageNumber = i + 1;
                         const isReached = progressLevel >= stageNumber;
