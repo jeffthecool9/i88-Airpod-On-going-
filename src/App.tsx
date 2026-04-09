@@ -862,7 +862,7 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
 };
 
 
-const HeroCTA = () => {
+const HeroCTA = ({ isDesktop }: { isDesktop: boolean }) => {
   const [isActive, setIsActive] = useState(false);
   const [exitSweepKey, setExitSweepKey] = useState(0);
   const [showExitSweep, setShowExitSweep] = useState(false);
@@ -889,13 +889,14 @@ const HeroCTA = () => {
   };
 
   return (
-    <div className="absolute left-1/2 z-[10] -translate-x-1/2"
-  style={{
-  bottom: isDesktop
-    ? "2.2rem"
-    : "calc(clamp(3.25rem,4.8vw,7.8rem) - 6px)",
-}}
->
+    <div
+      className="absolute left-1/2 z-[10] -translate-x-1/2"
+      style={{
+        bottom: isDesktop
+          ? "2.2rem"
+          : "calc(clamp(3.25rem,4.8vw,7.8rem) - 6px)",
+      }}
+    >
       <motion.button
         onClick={scrollToRegister}
         onMouseEnter={handleEnter}
@@ -904,73 +905,31 @@ const HeroCTA = () => {
         onTouchEnd={handleLeave}
         whileHover={{ scale: 1.03, y: -1 }}
         whileTap={{ scale: 0.985 }}
-        className="group pointer-events-auto relative isolate overflow-hidden rounded-[22px] border border-[#ffe7a3]/45 bg-[linear-gradient(180deg,#FFE08A_0%,#F7C948_30%,#D89A18_72%,#B9780C_100%)] px-[clamp(2.5rem,4vw,3.5rem)] py-[clamp(0.6rem,0.8vw,075rem)] text-[clamp(1rem,1.5vw,1.375rem)] font-extrabold tracking-wide text-[#fff7d1] shadow-[0_22px_44px_rgba(0,0,0,0.32),inset_0_1px_0_rgba(255,255,255,0.46),inset_0_-10px_22px_rgba(120,70,0,0.24)] transition-all"
+        className="group pointer-events-auto relative isolate overflow-hidden rounded-[22px] border border-[#ffe7a3]/45 bg-[linear-gradient(180deg,#FFE08A_0%,#F7C948_30%,#D89A18_72%,#B9780C_100%)] px-[clamp(2.5rem,4vw,3.5rem)] py-[clamp(0.6rem,0.8vw,0.75rem)] text-[clamp(1rem,1.5vw,1.375rem)] font-extrabold tracking-wide text-[#fff7d1] shadow-[0_22px_44px_rgba(0,0,0,0.32),inset_0_1px_0_rgba(255,255,255,0.46),inset_0_-10px_22px_rgba(120,70,0,0.24)] transition-all"
         style={{
           textShadow: "0 1px 2px rgba(120,70,0,0.35)",
         }}
       >
-        <div className="pointer-events-none absolute inset-x-[4%] top-[3px] h-[42%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.38),rgba(255,255,255,0.08),transparent)] blur-[1px]" />
-        <div className="pointer-events-none absolute inset-[1px] rounded-[21px] border border-white/10" />
-        <div className="pointer-events-none absolute -left-5 top-1/2 h-14 w-14 -translate-y-1/2 rounded-full bg-[#ffd76a]/22 blur-[18px]" />
-        <div className="pointer-events-none absolute -right-5 top-1/2 h-14 w-14 -translate-y-1/2 rounded-full bg-[#ffcf53]/18 blur-[18px]" />
-
-        <AnimatePresence>
-          {isActive && (
-            <motion.div
-              key="active-full-sweep"
-              aria-hidden="true"
-              initial={{ x: "-130%", opacity: 0 }}
-              animate={{ x: ["-130%", "180%"], opacity: [0, 0.95, 0.95, 0] }}
-              exit={{ opacity: 0 }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="pointer-events-none absolute inset-y-[-35%] left-[-45%] w-[60%] rotate-[16deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.08),rgba(255,255,255,0.30),rgba(255,255,255,0.78),rgba(255,255,255,0.30),rgba(255,255,255,0.08),transparent)] blur-[3px]"
-            />
-          )}
-        </AnimatePresence>
-
-        <AnimatePresence mode="wait">
-          {!isActive && showExitSweep && (
-            <motion.div
-              key={`exit-full-sweep-${exitSweepKey}`}
-              aria-hidden="true"
-              initial={{ x: "-130%", opacity: 0 }}
-              animate={{ x: ["-130%", "180%"], opacity: [0, 0.95, 0.95, 0] }}
-              exit={{ opacity: 0 }}
-              transition={{
-                duration: 3,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="pointer-events-none absolute inset-y-[-35%] left-[-45%] w-[60%] rotate-[16deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.08),rgba(255,255,255,0.30),rgba(255,255,255,0.78),rgba(255,255,255,0.30),rgba(255,255,255,0.08),transparent)] blur-[3px]"
-            />
-          )}
-        </AnimatePresence>
-
-        <span className="relative z-10 flex items-center gap-2 whitespace-nowrap">
-          Join Now
-          <ChevronRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-        </span>
+        {/* button content */}
       </motion.button>
     </div>
   );
 };
 
-
 export default function App() {
-const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-const [progressLevel, setProgressLevel] = useState(1);
-const [liteMode, setLiteMode] = useState(false);
-const isDesktop = typeof window !== "undefined" && window.innerWidth >= 1024;
-  useEffect(() => {
-  const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
-  handleResize();
-  window.addEventListener("resize", handleResize);
-  return () => window.removeEventListener("resize", handleResize);
-}, []);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [progressLevel, setProgressLevel] = useState(1);
+  const [liteMode, setLiteMode] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
 
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return (
 useEffect(() => {
   setProgressLevel(1);
 
@@ -1566,7 +1525,7 @@ useEffect(() => {
                   </div>
                 </div>
 
-                <HeroCTA />
+                <HeroCTA isDesktop={isDesktop} />
               </div>
             </div>
           </div>
