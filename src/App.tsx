@@ -566,24 +566,22 @@ const RegistrationForm = () => {
                     )}
                   </div>
 
-                  <motion.button
-                    whileHover={isStep1Valid ? { scale: 1.02 } : {}}
-                    whileTap={isStep1Valid ? { scale: 0.98 } : {}}
-                    onClick={handleNext}
-                    disabled={!isStep1Valid}
-                    className={`group flex w-full items-center justify-center gap-2 rounded-2xl bg-[linear-gradient(90deg,#1D4ED8_0%,#2563EB_42%,#22D3EE_100%)] py-4 font-bold text-white shadow-[0_18px_40px_rgba(37,99,235,0.38)] transition-all ${
-                      !isStep1Valid
-                        ? "cursor-not-allowed opacity-40 grayscale-[0.5]"
-                        : "hover:brightness-110 hover:shadow-[0_20px_50px_rgba(34,211,238,0.28)]"
-                    }`}
-                  >
-                    Join Now
-                    <ChevronRight
-                      className={`h-5 w-5 transition-transform ${
-                        isStep1Valid ? "group-hover:translate-x-1" : ""
-                      }`}
-                    />
-                  </motion.button>
+                <motion.button
+  type="button"
+  whileHover={isStep2Valid ? { scale: 1.02 } : {}}
+  whileTap={isStep2Valid ? { scale: 0.98 } : {}}
+  onClick={handleFinalCTA}
+  disabled={!isStep2Valid}
+  className={`relative z-[40] flex w-full cursor-pointer items-center justify-center gap-2 rounded-2xl bg-[linear-gradient(90deg,#1D4ED8_0%,#2563EB_42%,#22D3EE_100%)] py-4 font-bold text-white shadow-[0_18px_40px_rgba(37,99,235,0.38)] transition-all ${
+    !isStep2Valid
+      ? "cursor-not-allowed opacity-40 grayscale-[0.5]"
+      : "hover:brightness-110 hover:shadow-[0_20px_50px_rgba(34,211,238,0.28)]"
+  }`}
+  style={{ pointerEvents: "auto" }}
+>
+  <span className="pointer-events-none">Complete Registration</span>
+  <CheckCircle2 className="h-5 w-5 pointer-events-none" />
+</motion.button>
                 </motion.div>
               ) : (
                 <motion.div
@@ -810,12 +808,12 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
   const shouldShowBubble = showFromSteps && !hideBubbleAtRegistration && isUserActive;
 
   return (
-    <div
-      aria-hidden="true"
-      className={`pointer-events-none fixed bottom-[-0.8rem] right-[-0.8rem] z-[25] select-none transition-opacity duration-300 ${
-        showFromSteps ? "opacity-100" : "opacity-0"
-      }`}
-    >
+   <div
+  aria-hidden="true"
+  className={`pointer-events-none fixed bottom-[-0.8rem] right-[-4.25rem] z-[25] select-none transition-opacity duration-300 sm:right-[-5.5rem] ${
+    showFromSteps ? "opacity-100" : "opacity-0"
+  }`}
+>
       <AnimatePresence>
         {shouldShowBubble && (
           <motion.div
