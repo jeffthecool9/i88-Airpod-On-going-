@@ -724,14 +724,16 @@ const RegistrationForm = () => {
                   </motion.button>
 
                   <motion.button
-                    whileHover={{ x: -5, scale: 1.06 }}
-                    whileTap={{ scale: 0.94 }}
-                    onClick={() => setStep(1)}
-                    className="group mx-auto mt-8 flex h-12 w-12 items-center justify-center rounded-full border border-cyan-300/20 bg-white/5 text-cyan-300/60 backdrop-blur-md transition-all duration-300 hover:border-cyan-300/50 hover:bg-cyan-400/10 hover:text-cyan-200 hover:shadow-[0_0_20px_rgba(34,211,238,0.25)]"
-                    title="Back to Step 1"
-                  >
-                    <ArrowLeft className="h-6 w-6 transition-transform duration-300 group-hover:-translate-x-1" />
-                  </motion.button>
+  type="button"
+  whileHover={{ x: -5, scale: 1.06 }}
+  whileTap={{ scale: 0.94 }}
+  onClick={() => setStep(1)}
+  className="group relative z-[40] mx-auto mt-8 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-cyan-300/20 bg-white/5 text-cyan-300/60 backdrop-blur-md transition-all duration-300 hover:border-cyan-300/50 hover:bg-cyan-400/10 hover:text-cyan-200 hover:shadow-[0_0_20px_rgba(34,211,238,0.25)]"
+  style={{ pointerEvents: "auto" }}
+  title="Back to Step 1"
+>
+  <ArrowLeft className="h-6 w-6 pointer-events-none transition-transform duration-300 group-hover:-translate-x-1" />
+</motion.button>
                 </motion.div>
               )}
             </AnimatePresence>
