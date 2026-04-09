@@ -891,7 +891,7 @@ const HeroCTA = () => {
   return (
     <div className="absolute left-1/2 z-[10] -translate-x-1/2"
   style={{
-    bottom: "calc(clamp(3.75rem,5.2vw,8.5rem) - 4px)"
+   bottom: "clamp(3.4rem,5vw,8.2rem)"
   }}
 >
       <motion.button
@@ -1208,7 +1208,7 @@ useEffect(() => {
                   }}
                 >
                   <div className="mx-auto max-w-5xl">
-                    <div className="mb-5 grid grid-cols-4 items-end gap-2.5 sm:gap-3 lg:gap-4 xl:gap-5 2xl:gap-6">
+                    <div className="mt-[5px] mb-0 grid grid-cols-4 items-end gap-2.5 sm:gap-3 lg:gap-4 xl:gap-5 2xl:gap-6">
                       {trackerItems.map((item, i) => {
                         const stageNumber = i + 1;
                         const isReached = progressLevel >= stageNumber;
