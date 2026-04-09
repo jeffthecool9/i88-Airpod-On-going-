@@ -1106,7 +1106,7 @@ useEffect(() => {
                   className="pointer-events-none absolute left-1/2 z-[10] -translate-x-1/2 object-contain"
                   style={{
                     width: "min(84%, 47rem)",
-                    top: "5.2%",
+                    top: "7.2%",
                   }}
                 />
 
