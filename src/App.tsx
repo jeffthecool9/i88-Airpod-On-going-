@@ -889,7 +889,7 @@ const HeroCTA = () => {
   };
 
   return (
-    <div className="absolute bottom-[clamp(1.5rem,3.4vw,7rem)] left-1/2 z-[10] -translate-x-1/2">
+    <div className="absolute bottom-[clamp(3.75rem,5.2vw,8.5rem)] left-1/2 z-[10] -translate-x-1/2">
       <motion.button
         onClick={scrollToRegister}
         onMouseEnter={handleEnter}
@@ -1089,9 +1089,9 @@ useEffect(() => {
                   alt="i88"
                   className="pointer-events-none absolute z-[30] object-contain"
                   style={{
-                    width: "clamp(5rem, 11vw, 7.5rem)",
+                    width: "clamp(5.9rem, 13vw, 8.8rem)",
                     left: "50%",
-                    top: "0.4%",
+                    top: "-0.8%",
                     transform: "translateX(-50%)",
                   }}
                 />
@@ -1199,7 +1199,7 @@ useEffect(() => {
                   className="pointer-events-none absolute z-[9] w-full max-w-[1480px] px-3 sm:px-5 lg:px-8"
                   style={{
                     left: "54.2%",
-                    bottom: "15.2%",
+                    bottom: "21.2%",
                     transform: "translateX(-50%)",
                   }}
                 >
@@ -1452,7 +1452,7 @@ useEffect(() => {
 
                 <div
                   className="pointer-events-none absolute left-1/2 z-[9] w-full max-w-6xl -translate-x-1/2 px-3 sm:px-6"
-                  style={{ bottom: "8.4%" }}
+                  style={{ bottom: "12.4%" }}
                 >
                   <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6">
                     {[
