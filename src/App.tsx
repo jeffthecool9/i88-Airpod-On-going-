@@ -862,7 +862,7 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
 };
 
 
-const HeroCTA = ({ isDesktop }: { isDesktop: boolean }) => {
+const HeroCTA = () => {
   const [isActive, setIsActive] = useState(false);
   const [exitSweepKey, setExitSweepKey] = useState(0);
   const [showExitSweep, setShowExitSweep] = useState(false);
@@ -889,14 +889,11 @@ const HeroCTA = ({ isDesktop }: { isDesktop: boolean }) => {
   };
 
   return (
-    <div
-      className="absolute left-1/2 z-[10] -translate-x-1/2"
-      style={{
-        bottom: isDesktop
-          ? "2.2rem"
-          : "calc(clamp(3.25rem,4.8vw,7.8rem) - 6px)",
-      }}
-    >
+    <div className="absolute left-1/2 z-[10] -translate-x-1/2"
+  style={{
+   bottom: "calc(clamp(3.25rem,4.8vw,7.8rem) - 6px)"
+  }}
+>
       <motion.button
         onClick={scrollToRegister}
         onMouseEnter={handleEnter}
@@ -910,29 +907,61 @@ const HeroCTA = ({ isDesktop }: { isDesktop: boolean }) => {
           textShadow: "0 1px 2px rgba(120,70,0,0.35)",
         }}
       >
-        {/* button content */}
+        <div className="pointer-events-none absolute inset-x-[4%] top-[3px] h-[42%] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.38),rgba(255,255,255,0.08),transparent)] blur-[1px]" />
+        <div className="pointer-events-none absolute inset-[1px] rounded-[21px] border border-white/10" />
+        <div className="pointer-events-none absolute -left-5 top-1/2 h-14 w-14 -translate-y-1/2 rounded-full bg-[#ffd76a]/22 blur-[18px]" />
+        <div className="pointer-events-none absolute -right-5 top-1/2 h-14 w-14 -translate-y-1/2 rounded-full bg-[#ffcf53]/18 blur-[18px]" />
+
+        <AnimatePresence>
+          {isActive && (
+            <motion.div
+              key="active-full-sweep"
+              aria-hidden="true"
+              initial={{ x: "-130%", opacity: 0 }}
+              animate={{ x: ["-130%", "180%"], opacity: [0, 0.95, 0.95, 0] }}
+              exit={{ opacity: 0 }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="pointer-events-none absolute inset-y-[-35%] left-[-45%] w-[60%] rotate-[16deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.08),rgba(255,255,255,0.30),rgba(255,255,255,0.78),rgba(255,255,255,0.30),rgba(255,255,255,0.08),transparent)] blur-[3px]"
+            />
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence mode="wait">
+          {!isActive && showExitSweep && (
+            <motion.div
+              key={`exit-full-sweep-${exitSweepKey}`}
+              aria-hidden="true"
+              initial={{ x: "-130%", opacity: 0 }}
+              animate={{ x: ["-130%", "180%"], opacity: [0, 0.95, 0.95, 0] }}
+              exit={{ opacity: 0 }}
+              transition={{
+                duration: 3,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="pointer-events-none absolute inset-y-[-35%] left-[-45%] w-[60%] rotate-[16deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.08),rgba(255,255,255,0.30),rgba(255,255,255,0.78),rgba(255,255,255,0.30),rgba(255,255,255,0.08),transparent)] blur-[3px]"
+            />
+          )}
+        </AnimatePresence>
+
+        <span className="relative z-10 flex items-center gap-2 whitespace-nowrap">
+          Join Now
+          <ChevronRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+        </span>
       </motion.button>
     </div>
   );
 };
 
+
 export default function App() {
- const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 const [progressLevel, setProgressLevel] = useState(1);
 const [liteMode, setLiteMode] = useState(false);
-const [isDesktop, setIsDesktop] = useState(false);
 
-useEffect(() => {
-  const handleResize = () => {
-    setIsDesktop(window.innerWidth >= 1024);
-  };
-
-  handleResize();
-  window.addEventListener("resize", handleResize);
-  return () => window.removeEventListener("resize", handleResize);
-}, []);
-  
-  return (
 useEffect(() => {
   setProgressLevel(1);
 
@@ -1053,14 +1082,12 @@ useEffect(() => {
               }}
             >
               <div
-  className="relative mx-auto w-full max-w-[1500px]"
-  style={{
-    aspectRatio: isDesktop ? "1440 / 980" : "1440 / 1280",
-    minHeight: isDesktop
-      ? "clamp(760px, 70vw, 980px)"
-      : "clamp(860px, 132vw, 1580px)",
-  }}
->
+                className="relative mx-auto w-full max-w-[1500px]"
+                style={{
+                  aspectRatio: "1440 / 1280",
+                  minHeight: "clamp(860px, 132vw, 1580px)",
+                }}
+              >
                 <img
                   src={i882Img}
                   alt="i88"
@@ -1175,19 +1202,13 @@ useEffect(() => {
                 <div
   className="pointer-events-none absolute z-[9] w-full max-w-[1480px] px-3 sm:px-5 lg:px-8"
   style={{
-    left: isDesktop ? "50%" : "54.2%",
-    bottom: isDesktop ? "10.5%" : "21.2%",
+    left: "50%",
+    bottom: "22.2%",
     transform: "translateX(-50%)",
   }}
 >
-                  <div className={`${isDesktop ? "max-w-[1180px]" : "max-w-5xl"} mx-auto`}>
-                    <div
-  className={`grid grid-cols-4 items-end ${
-    isDesktop
-      ? "mb-6 gap-5"
-      : "mb-5 gap-2.5 sm:gap-3 lg:gap-4 xl:gap-5 2xl:gap-6"
-  }`}
->
+                  <div className="mx-auto max-w-5xl">
+                    <div className="mb-7 grid grid-cols-4 items-end gap-3 sm:gap-4 lg:gap-5 xl:gap-5 2xl:gap-6">
                       {trackerItems.map((item, i) => {
                         const stageNumber = i + 1;
                         const isReached = progressLevel >= stageNumber;
@@ -1528,16 +1549,12 @@ useEffect(() => {
                   </div>
                 </div>
 
-                <HeroCTA isDesktop={isDesktop} />
+                <HeroCTA />
               </div>
             </div>
           </div>
 
-          <div
-  className={`mx-auto grid grid-cols-3 ${
-    isDesktop ? "mt-6 max-w-[1080px] gap-8" : "mt-4 gap-3"
-  }`}
->
+          <div className="relative z-10 mx-auto w-full max-w-6xl" />
 
           <SectionSeam
             className="bottom-[-1px]"
