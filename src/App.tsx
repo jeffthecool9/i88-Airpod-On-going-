@@ -1082,12 +1082,13 @@ useEffect(() => {
               }}
             >
               <div
-                className="relative mx-auto w-full max-w-[1500px]"
-                style={{
-                  aspectRatio: "1440 / 1280",
-                  minHeight: "clamp(860px, 132vw, 1580px)",
-                }}
-              >
+  className="absolute inset-0"
+  style={{
+    width: window.innerWidth >= 1024 ? "min(1200px, 78vw)" : "100%",
+    left: "50%",
+    transform: "translateX(-50%)",
+  }}
+>
                 <img
                   src={i882Img}
                   alt="i88"
@@ -1104,10 +1105,12 @@ useEffect(() => {
                   src={rewardEventImg}
                   alt="AirPods Pro Reward Event"
                   className="pointer-events-none absolute left-1/2 z-[10] -translate-x-1/2 object-contain"
-                  style={{
-                    width: "min(84%, 47rem)",
-                    top: "7.2%",
-                  }}
+style={{
+  width: window.innerWidth >= 1024 ? "min(76%, 56rem)" : "min(84%, 47rem)",
+  top: "7.2%",
+  left: "50%",
+  transform: "translateX(-50%)",
+}}
                 />
 
                 <img
@@ -1116,10 +1119,12 @@ useEffect(() => {
                   aria-hidden="true"
                   className="pointer-events-none absolute z-[8] object-contain"
                   style={{
-                    width: "clamp(38rem, 58vw, 47.5rem)",
-                    left: "50%",
-                    top: "19.2%",
-                    transform: "translateX(-50%)",
+  width: window.innerWidth >= 1024
+    ? "clamp(30rem, 36vw, 40rem)"
+    : "clamp(38rem, 58vw, 47.5rem)",
+  left: "50%",
+  top: "19.2%",
+  transform: "translateX(-50%)",
                     filter:
                       "drop-shadow(0 25px 40px rgba(0,0,0,0.35)) drop-shadow(0 12px 28px rgba(56,189,248,0.18))",
                   }}
@@ -1127,10 +1132,12 @@ useEffect(() => {
 
                 <div
                   className="pointer-events-none absolute left-1/2 z-[9] -translate-x-1/2"
-                  style={{
-                    width: "min(78%, 1180px)",
-                    top: "48.4%",
-                  }}
+                 style={{
+  width: window.innerWidth >= 1024 ? "min(82%, 980px)" : "min(78%, 1180px)",
+  top: "48.4%",
+  left: "50%",
+  transform: "translateX(-50%)",
+}}
                 >
                   <img
                     src={heroTextBoxImg}
@@ -1167,10 +1174,10 @@ useEffect(() => {
                     ease: "easeInOut",
                   }}
                   style={{
-                    width: "clamp(8.75rem, 12.5vw, 10.75rem)",
-                    left: "63.2%",
-                    top: "16.2%",
-                    transform: "translateX(-50%)",
+  width: "clamp(8.75rem, 12.5vw, 10.75rem)",
+  left: window.innerWidth >= 1024 ? "61%" : "63.2%",
+  top: "16.2%",
+  transform: "translateX(-50%)",
                     filter:
                       "drop-shadow(0 18px 30px rgba(0,0,0,0.28)) drop-shadow(0 10px 24px rgba(56,189,248,0.16))",
                   }}
@@ -1207,7 +1214,7 @@ useEffect(() => {
     transform: "translateX(-50%)",
   }}
 >
-                  <div className="mx-auto max-w-5xl">
+                  <div className="mx-auto w-full max-w-[1100px]">
                     <div className="mb-7 grid grid-cols-4 items-end gap-3 sm:gap-4 lg:gap-5 xl:gap-5 2xl:gap-6">
                       {trackerItems.map((item, i) => {
                         const stageNumber = i + 1;
