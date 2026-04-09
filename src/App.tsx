@@ -807,7 +807,8 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
       ?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const shouldShowBubble = showFromSteps && !hideBubbleAtRegistration && isUserActive;
+ const shouldShowBubble = showFromSteps && !hideBubbleAtRegistration && isUserActive;
+const shouldAllowGirlClick = showFromSteps && !hideBubbleAtRegistration;
 
   return (
     <div
@@ -840,14 +841,23 @@ const FloatingGirl = ({ liteMode = false }: { liteMode?: boolean }) => {
         )}
       </AnimatePresence>
 
-      <div className="relative transition-transform duration-300 hover:scale-[1.02]">
-        <button
-          type="button"
-          onClick={handleInteract}
-          className="pointer-events-auto relative inline-block cursor-pointer border-0 bg-transparent p-0 outline-none"
-          style={{ width: "clamp(16rem,32vw,40rem)" }}
-          title="Register now"
-        >
+     <div
+  className={`relative transition-transform duration-300 ${
+    shouldAllowGirlClick ? "hover:scale-[1.02]" : ""
+  }`}
+>
+  <button
+    type="button"
+    onClick={handleInteract}
+    disabled={!shouldAllowGirlClick}
+    className={`relative inline-block border-0 bg-transparent p-0 outline-none ${
+      shouldAllowGirlClick
+        ? "pointer-events-auto cursor-pointer"
+        : "pointer-events-none cursor-default"
+    }`}
+    style={{ width: "clamp(16rem,32vw,40rem)" }}
+    title="Register now"
+  >
           <img
             src={colaImg}
             alt=""
