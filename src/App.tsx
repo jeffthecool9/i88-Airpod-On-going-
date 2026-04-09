@@ -1089,9 +1089,9 @@ useEffect(() => {
                   alt="i88"
                   className="pointer-events-none absolute z-[30] object-contain"
                   style={{
-                    width: "clamp(7rem, 9vw, 9.75rem)",
-                    left: "20%",
-                    top: "4.5%",
+                    width: "clamp(5rem, 11vw, 7.5rem)",
+                    left: "50%",
+                    top: "1.6%",
                     transform: "translateX(-50%)",
                   }}
                 />
@@ -1101,8 +1101,8 @@ useEffect(() => {
                   alt="AirPods Pro Reward Event"
                   className="pointer-events-none absolute left-1/2 z-[10] -translate-x-1/2 object-contain"
                   style={{
-                    width: "clamp(20rem, 36vw, 31.25rem)",
-                    top: "2.2%",
+                    width: "min(82%, 46rem)",
+                    top: "4.2%",
                   }}
                 />
 
@@ -1124,8 +1124,8 @@ useEffect(() => {
                 <div
                   className="pointer-events-none absolute left-1/2 z-[9] -translate-x-1/2"
                   style={{
-                    width: "min(42%, 900px)",
-                    top: "40.6%",
+                    width: "min(72%, 1100px)",
+                    top: "43.8%",
                   }}
                 >
                   <img
@@ -1196,11 +1196,15 @@ useEffect(() => {
                 </motion.div>
 
                 <div
-                  className="pointer-events-none absolute left-1/2 z-[9] w-full max-w-[1480px] -translate-x-1/2 px-3 sm:px-5 lg:px-8"
-                  style={{ bottom: "29.8%" }}
+                  className="pointer-events-none absolute z-[9] w-full max-w-[1480px] px-3 sm:px-5 lg:px-8"
+                  style={{
+                    left: "53.2%",
+                    bottom: "23.2%",
+                    transform: "translateX(-50%)",
+                  }}
                 >
                   <div className="mx-auto max-w-5xl">
-                    <div className="mb-3 grid grid-cols-4 items-end gap-2 sm:gap-2.5 lg:gap-4 xl:gap-5 2xl:gap-6">
+                    <div className="mb-4 grid grid-cols-4 items-end gap-2.5 sm:gap-3 lg:gap-4 xl:gap-5 2xl:gap-6">
                       {trackerItems.map((item, i) => {
                         const stageNumber = i + 1;
                         const isReached = progressLevel >= stageNumber;
@@ -1245,7 +1249,7 @@ useEffect(() => {
                                   />
                                 </motion.div>
 
-                                <div className="pointer-events-none absolute right-[14%] top-[14px] z-20 flex h-7 w-7 items-center justify-center rounded-full border border-[#FFE08A]/30 bg-[linear-gradient(180deg,rgba(17,24,39,0.95)_0%,rgba(10,15,28,0.95)_100%)] shadow-[0_10px_20px_rgba(0,0,0,0.35)] sm:right-[18%] md:right-[20%]">
+                                <div className="pointer-events-none absolute right-[30%] top-[16px] z-20 flex h-7 w-7 items-center justify-center rounded-full border border-[#FFE08A]/30 bg-[linear-gradient(180deg,rgba(17,24,39,0.95)_0%,rgba(10,15,28,0.95)_100%)] shadow-[0_10px_20px_rgba(0,0,0,0.35)] sm:right-[30%] md:right-[30%]">
                                   <Lock className="h-3.5 w-3.5 text-[#FFD76A]" />
                                 </div>
                               </div>
@@ -1374,7 +1378,7 @@ useEffect(() => {
                       })}
                     </div>
 
-                    <div className="relative h-[56px] overflow-hidden rounded-full border border-white/10 bg-[linear-gradient(180deg,#0A225E_0%,#061948_55%,#041232_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.10),inset_0_-12px_24px_rgba(0,0,0,0.30),0_22px_42px_rgba(0,0,0,0.24)] sm:h-[60px] md:h-[64px]">
+                    <div className="relative overflow-visible h-[56px] rounded-full border border-white/10 bg-[linear-gradient(180deg,#0A225E_0%,#061948_55%,#041232_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.10),inset_0_-12px_24px_rgba(0,0,0,0.30),0_22px_42px_rgba(0,0,0,0.24)] sm:h-[60px] md:h-[64px]">
                       <div className="absolute inset-x-0 top-0 h-1/2 bg-[linear-gradient(180deg,rgba(255,255,255,0.10),rgba(255,255,255,0.02),transparent)]" />
 
                       <div className="absolute inset-y-[10px] left-1/4 w-[2px] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.20),rgba(255,255,255,0.06))]" />
@@ -1406,8 +1410,8 @@ useEffect(() => {
                         animate={{
                           left:
                             progressLevel === 4
-                              ? "calc(100% - 64px)"
-                              : `calc(${progressLevel * 25}% - 24px)`,
+                              ? "calc(100% - 76px)"
+                              : `calc(${progressLevel * 25}% - 8px)`,
                         }}
                         transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
                         className="absolute top-1/2 z-10 -translate-y-1/2"
