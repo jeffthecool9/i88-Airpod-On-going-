@@ -603,7 +603,7 @@ const RegistrationForm = () => {
                     {formData.name && (
                       <p className="mt-3 text-sm font-medium text-cyan-100/90">
                         Hi <span className="font-bold text-white">{formData.name}</span>,
-                        please fill in the form to start your journey
+                        please fill in the form to claim your FS!
                       </p>
                     )}
                   </div>
@@ -1060,7 +1060,7 @@ useEffect(() => {
   const trackerItems = [
   { title: "REGISTER", sub: "With Us", type: "text" as const },
   { title: "188 FS", sub: "Deposit & Get FS", type: "text" as const },
-  { title: "MORE REWARD AWAITS", type: "text" as const },
+  { title: "MORE REWARDs AWAITS", type: "text" as const },
   { title: "", sub: "", type: "airpod" as const },
 ];
 
