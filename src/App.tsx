@@ -325,22 +325,44 @@ const RegistrationForm = () => {
     formData.phone &&
     formData.agreedToTerms;
 
-  const handleFinalCTA = () => {
-    if (!isStep2Valid) return;
+  const handleFinalCTA = async () => {
+  if (!isStep2Valid) return;
 
-    (window as any).trackCTA?.("final_complete_registration");
+  const payload = {
+    ...formData,
+    turnstileToken,
+  };
 
-    (window as any).trackCustomEvent?.("Final_CTA_Click", {
+  try {
+    const res = await fetch("/api/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      setTurnstileError(data.message || "Verification failed.");
+      return;
+    }
+
+    // ✅ ONLY fire after success
+    window.trackCTA?.("final_complete_registration");
+
+    window.trackCustomEvent?.("Final_CTA_Click", {
       button_name: "Complete Registration",
       step: 2,
-      username: formData.name,
     });
 
     setIsSuccess(true);
     setCountdown(8);
     setProgress(0);
-  };
 
+  } catch (error) {
+    console.error("Registration error:", error);
+  }
+};
   useEffect(() => {
     if (!isSuccess) return;
 
